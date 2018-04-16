@@ -12,7 +12,8 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 import { FuseUtils } from '../../../../core/fuseUtils';
-
+import { OrganizeService } from '../../../shared/server/webapi/organize.service';
+import { Organize } from '../../../shared/models/organize';
 @Component({
     selector: 'app-organ-page',
     templateUrl: './organ-page.component.html',
@@ -21,19 +22,17 @@ import { FuseUtils } from '../../../../core/fuseUtils';
 })
 export class OrganPageComponent implements OnInit {
     dataSource: FilesDataSource | null;
-    displayedColumns = ['id',  'name'];
+    displayedColumns = ['id', 'name'];
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild('filter') filter: ElementRef;
     @ViewChild(MatSort) sort: MatSort;
 
-    constructor(
-        // private productsService: EcommerceProductsService
-    ) {
+    constructor(private organSrv: OrganizeService) {
     }
 
     ngOnInit() {
-        this.dataSource = new FilesDataSource(this.paginator, this.sort);
+        this.dataSource = new FilesDataSource(this.organSrv, this.paginator, this.sort);
         Observable.fromEvent(this.filter.nativeElement, 'keyup')
             .debounceTime(150)
             .distinctUntilChanged()
@@ -50,7 +49,7 @@ export class FilesDataSource extends DataSource<any>
 {
     _filterChange = new BehaviorSubject('');
     _filteredDataChange = new BehaviorSubject('');
-
+    organs: Array<Organize> = [];
     get filteredData(): any {
         return this._filteredDataChange.value;
     }
@@ -67,17 +66,19 @@ export class FilesDataSource extends DataSource<any>
         this._filterChange.next(filter);
     }
 
-    constructor(
-        // private productsService: EcommerceProductsService,
-        private _paginator: MatPaginator,
-        private _sort: MatSort
-    ) {
+    constructor(private organSrv: OrganizeService, private _paginator: MatPaginator, private _sort: MatSort) {
         super();
         // this.filteredData = this.productsService.products;
+        // this.filteredData=
+
     }
 
     connect(): Observable<any[]> {
-        return Observable.of([{id:'12323',name:'leon'}]);
+        return Observable.of([{ id: '12323', name: 'leon' }]);
+        // this.organSrv.query('', '', 1, 15, '', false).subscribe(rdata => {
+        //     console.log(111, 'organ query', rdata);
+        //     this.filteredData = rdata.data;
+        // });
     }
 
     /** Connect function called by the table to retrieve one stream containing the data to render. */

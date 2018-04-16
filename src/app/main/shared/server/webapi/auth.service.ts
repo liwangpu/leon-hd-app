@@ -9,12 +9,12 @@ export class AuthService extends ApiService<{ id: string, name: string }> {
 
     account: string;
     logined: boolean;
-    set token(value) {
-        localStorage.setItem('token', value);
-    }
-    get token() {
-        return localStorage.getItem('token');
-    }
+    // set token(value) {
+    //     localStorage.setItem('token', value);
+    // }
+    // get token() {
+    //     return localStorage.getItem('token');
+    // }
     constructor(private http: HttpClient, private config: ConfigService) {
         super(http, config);
         this.uriPart = 'token';
@@ -31,26 +31,10 @@ export class AuthService extends ApiService<{ id: string, name: string }> {
         let md5pwd = Md5.hashStr(pwd).toString();
         const res = this.http.post(this.uri, { account: account, password: md5pwd }, { headers: this.header });
         res.subscribe(rdata => {
-            this.token = rdata["token"];
+            // this.token = rdata["token"];
             this.logined = true;
         })
         return res;
-    }
-
-    logout() {
-        this.token = "";
-        // this.navi.setNavigationModel({});
-
-        // if (this.config.loginStyle == 1) {
-        //     this.router.navigateByUrl('/pages/auth/login');
-        // }
-        // else {
-        //     this.router.navigateByUrl('/pages/auth/login-2');
-        // }
-    }
-
-    isLogined(): boolean {
-        return this.token && this.token.length > 0;
     }
 
     loadNavigationData() {
