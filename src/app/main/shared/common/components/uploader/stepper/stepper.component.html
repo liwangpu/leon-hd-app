@@ -1,0 +1,24 @@
+<form [formGroup]="uploadForm">
+  <mat-vertical-stepper>
+    <!-- <ng-container formArrayName="items" *ngFor="let item of uploadForm.get('items').controls; let i = index;"> -->
+    <!-- <mat-step label="sdd"> -->
+    <!-- <div [formGroupName]="i">
+          <input formControlName="name" placeholder="Item name">
+          <input formControlName="description" placeholder="Item description">
+          <input formControlName="price" placeholder="Item price">
+        </div> -->
+    <!-- sdfgdfg -->
+    <!-- </mat-step> -->
+    <mat-step label="{{stepNames[i]}}" formArrayName="items" *ngFor="let item of uploadForm.get('items').controls; let i = index;">
+      <div [formGroupName]="i" class="upload-container">
+        <mat-form-field>
+          <input matInput placeholder="文件名" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="描述" formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+    </mat-step>
+    <!-- </ng-container> -->
+  </mat-vertical-stepper>
+</form>

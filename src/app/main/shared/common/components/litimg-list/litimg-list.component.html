@@ -1,0 +1,18 @@
+<div class="shared-litimg-container">
+    <ng-container *ngFor='let lit of imgs'>
+        <div class="shared-litimg-ct" appLitimgCt appLitimg [id]='lit.id' (onSelect)='_onSelected($event)' (onFocusOut)='_onFocusOut($event)'
+            (onFocus)='_onFocus($event)' matTooltip="{{lit.name?lit.name:'...'}}">
+            <div class="shared-litimg-tool" *ngIf='isEdit' [id]='lit.id' appLitimgTool>
+                <mat-grid-list cols="2" rowHeight="25px">
+                    <mat-grid-tile>
+                        <mat-icon style="color:#2A7DFE" (click)='_onCopy(lit.id)'>content_copy</mat-icon>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-icon (click)='_onDelete(lit.id)' style="color:red">delete_forever</mat-icon>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+    </ng-container>
+    <mat-icon style="color:#B2B2B2;font-size: 85px;" (click)='_onAdd()'>add_box</mat-icon>
+</div>

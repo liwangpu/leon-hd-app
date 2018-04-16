@@ -24,12 +24,12 @@ import { IconsPageComponent } from './icons/icons-page.component';
 
 const routes = [
     {
-        path     : 'pages/products',
+        path: 'pages/products',
         component: ProductPageComponent,
         canActivate: [RouteGuardService]
     },
     {
-        path     : 'pages/products/:id',
+        path: 'pages/products/:id',
         component: ProductDetailComponent,
         canActivate: [RouteGuardService],
         data: { apiName: 'products' },
@@ -108,7 +108,7 @@ const routes = [
 ];
 
 @NgModule({
-    imports     : [
+    imports: [
         SharedModule,
         RouterModule.forChild(routes),
         FuseDemoModule,
@@ -128,9 +128,10 @@ const routes = [
         TagsPageComponent,
         SolutionPageComponent,
         SolutionDetailComponent,
-        IconsPageComponent
+        IconsPageComponent,
+        OrgandetailComponent
     ],
-    exports:[
+    exports: [
         ProductPageComponent,
         OrdersPageComponent,
         OrderDetailComponent,
@@ -150,6 +151,5 @@ const routes = [
         GetByIdService
     ]
 })
-export class BambooPagesModule
-{
+export class BambooPagesModule {
 }
