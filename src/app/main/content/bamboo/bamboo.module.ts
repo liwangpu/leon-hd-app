@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { TranslateModule } from '@ngx-translate/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -50,6 +51,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CdkTableModule,
     MatInputModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent]
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent]
 })
 export class BambooModule { }

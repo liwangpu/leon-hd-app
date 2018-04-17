@@ -9,7 +9,6 @@ import 'hammerjs';
 import { SharedModule } from './core/modules/shared.module';
 import { AppComponent } from './app.component';
 import { ProjectModule } from './main/content/apps/dashboards/project/project.module';
-import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 import { FuseMainModule } from './main/main.module';
 import { PagesModule } from './main/content/pages/pages.module';
 import { UIModule } from './main/content/ui/ui.module';
@@ -19,15 +18,11 @@ import { FuseConfigService } from './core/services/config.service';
 import { FuseNavigationService } from './core/components/navigation/navigation.service';
 import { ComponentsThirdPartyModule } from './main/content/components-third-party/components-third-party.module';
 import { ServicesModule } from './main/content/services/services.module';
-import { FuseAngularMaterialModule } from './main/content/components/angular-material/angular-material.module';
 import { MarkdownModule } from 'angular2-markdown';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouteGuardService } from './main/content/services/routeguard.service';
 // import { AuthService } from './main/content/services/auth.service';
 import { ConfigService } from './main/content/services/config.service';
-import { OmegaPagesModule } from './main/content/omegapages/omegapages.module';
-import { BambooComponentsModule } from './main/content/bambooComponents/bambooComponents.module';
-import { BambooPagesModule } from './main/content/bambooPages/bambooPages.module';
 import { DataService } from './main/content/services/data.service';
 import { BambooModule } from "./main/content/bamboo/bamboo.module";
 const appRoutes: Routes = [
@@ -68,7 +63,7 @@ const appRoutes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'apps/dashboards/project'
+        redirectTo: 'app/dashboard'
     }
 ];
 
@@ -86,20 +81,12 @@ const appRoutes: Routes = [
         MarkdownModule.forRoot(),
         TranslateModule.forRoot(),
         BambooModule,
-        InMemoryWebApiModule.forRoot(FuseFakeDbService, {
-            delay: 0,
-            passThruUnknownUrl: true
-        }),
         FuseMainModule,
         ProjectModule,
-        OmegaPagesModule,
-        BambooComponentsModule,
-        BambooPagesModule,
         PagesModule,
         UIModule,
         ServicesModule,
         ComponentsModule,
-        FuseAngularMaterialModule,
         ComponentsThirdPartyModule
     ],
     providers: [

@@ -38,25 +38,25 @@ export class ProjectsDashboardService implements Resolve<any>
         });
     }
 
-    getProjects(): Promise<any>
+    getProjects()
     {
-        return new Promise((resolve, reject) => {
-            this.http.get('api/projects-dashboard-projects')
-                .subscribe((response: any) => {
-                    this.projects = response;
-                    resolve(response);
-                }, reject);
-        });
+        // return new Promise((resolve, reject) => {
+        //     this.http.get('api/projects-dashboard-projects')
+        //         .subscribe((response: any) => {
+        //             this.projects = response;
+        //             resolve(response);
+        //         }, reject);
+        // });
     }
 
-    getWidgets(): Promise<any>
+    getWidgets()
     {
-        return new Promise((resolve, reject) => {
-            this.http.get('api/projects-dashboard-widgets')
-                .subscribe((response: any) => {
-                    this.widgets = response;
-                    resolve(response);
-                }, reject);
-        });
+        // return new Promise((resolve, reject) => {
+        //     this.http.get('api/projects-dashboard-widgets')
+        //         .subscribe((response: any) => {
+        //             this.widgets = response;
+        //             resolve(response);
+        //         }, reject);
+        // });
     }
 }

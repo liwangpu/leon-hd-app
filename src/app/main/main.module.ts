@@ -28,18 +28,17 @@ import { FuseSearchBarModule } from '../core/components/search-bar/search-bar.mo
         FuseThemeOptionsComponent,
         FuseQuickPanelComponent
     ],
-    imports     : [
+    imports: [
         SharedModule,
         RouterModule,
         FuseNavigationModule,
         FuseShortcutsModule,
         FuseSearchBarModule
     ],
-    exports     : [
+    exports: [
         FuseMainComponent
     ]
 })
 
-export class FuseMainModule
-{
+export class FuseMainModule {
 }

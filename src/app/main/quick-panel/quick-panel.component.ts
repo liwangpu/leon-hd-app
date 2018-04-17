@@ -27,15 +27,15 @@ export class FuseQuickPanelComponent implements OnInit
 
     ngOnInit()
     {
-        this.http.get('api/quick-panel-notes')
-            .subscribe((response: any) => {
-                this.notes = response;
-            });
+        // this.http.get('api/quick-panel-notes')
+        //     .subscribe((response: any) => {
+        //         this.notes = response;
+        //     });
 
-        this.http.get('api/quick-panel-events')
-            .subscribe((response: any) => {
-                this.events = response;
-            });
+        // this.http.get('api/quick-panel-events')
+        //     .subscribe((response: any) => {
+        //         this.events = response;
+        //     });
 
     }
 

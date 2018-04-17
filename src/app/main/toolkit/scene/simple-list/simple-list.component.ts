@@ -28,7 +28,7 @@ export class SimpleListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.dataSource = new PaginatorStore(this.productSrv, this.paginator, this.sort, this.filter);
+    // this.dataSource = new PaginatorStore(this.productSrv, this.paginator, this.sort, this.filter);
   }
 
   ngAfterViewInit() {
