@@ -1,6 +1,10 @@
 <mat-form-field>
-  <input matInput (keyup)='applyFilter($event.target.value)' placeholder='过滤'>
+  <input matInput (keyup)='applyFilter($event.target.value)' #filter>
 </mat-form-field>
+<br>
+<button (click)='getData()'>获取数据</button>
+<button (click)='clear()'>清除搜索</button>
+<br>
 <mat-table #table [dataSource]='dataSource' matSort>
   <ng-container matColumnDef="select">
     <mat-header-cell *matHeaderCellDef>
@@ -12,7 +16,7 @@
       </mat-checkbox>
     </mat-cell>
   </ng-container>
-  <ng-container matColumnDef="userName">
+  <ng-container matColumnDef="Name">
     <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
     <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
   </ng-container>
@@ -23,6 +27,5 @@
   <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
   <mat-row *matRowDef="let myRowData; columns: columnsToDisplay" (click)="selection.toggle(row)"></mat-row>
 </mat-table>
-
-<!-- <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
-</mat-paginator> -->
+<mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25,100]">
+</mat-paginator>

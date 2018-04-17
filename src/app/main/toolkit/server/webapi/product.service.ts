@@ -4,8 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../config.service';
 import { Product } from '../../models/product';
 import { Observable } from 'rxjs/Observable';
+import { IListableService } from "./ilistableService";
 @Injectable()
-export class ProductService extends ApiService<Product> {
+export class ProductService extends ApiService<Product> implements IListableService<Product> {
 
     constructor(private http: HttpClient, private config: ConfigService) {
         super(http, config);

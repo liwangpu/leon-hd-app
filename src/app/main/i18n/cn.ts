@@ -2,15 +2,15 @@ export const locale = {
     lang: 'cn',
     data: {
         'MAIL': {
-            'COMPOSE'                 : '写信',
-            'FOLDERS'                 : '文件夹',
-            'FILTERS'                 : '过滤器',
-            'LABELS'                  : '标签',
-            'NO_MESSAGES'             : '没有新的消息!',
+            'COMPOSE': '写信',
+            'FOLDERS': '文件夹',
+            'FILTERS': '过滤器',
+            'LABELS': '标签',
+            'NO_MESSAGES': '没有新的消息!',
             'SELECT_A_MESSAGE_TO_READ': '选择一条消息来阅读',
-            'SEARCH_PLACEHOLDER'      : '搜索联系人或者邮件'
+            'SEARCH_PLACEHOLDER': '搜索联系人或者邮件'
         },
-        'nav':{
+        'nav': {
             'General': '通用',
             'dashboards': '仪表盘',
             'profile': '个人信息',

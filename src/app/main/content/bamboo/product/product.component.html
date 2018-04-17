@@ -1,3 +1,54 @@
-<p>
-  product works!
-</p>
+<div id="products" class="page-layout carded fullwidth" fusePerfectScrollbar>
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg mat-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header white-fg" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <h2>PRODUCT</h2>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-input-wrapper mx-12 m-md-0" fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+                <label class="mr-8">
+                    <mat-icon class="secondary-text">search</mat-icon>
+                </label>
+                <mat-form-field floatPlaceholder="never" fxFlex="1 0 auto">
+                    <input matInput #filter placeholder="Search">
+                </mat-form-field>
+            </div>
+            <!-- / SEARCH -->
+
+            <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'" class="add-product-button mat-white-bg my-12 mt-sm-0">
+                <span>ADD NEW PRODUCT</span>
+            </button>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card mat-white-bg">
+            <div fxLayout='column' fxFill style="height: 100%;">
+                <div fxFlex>
+                    <div fxLayout="row wrap" fxLayoutAlign="start start" style="padding:10px;">
+                        <icon-item *ngFor="let item of items" [Id]='item.id' [Name]='item.name' [Description]='item.description' [Icon]='item.icon'></icon-item>
+                    </div>
+                </div>
+                <div fxFlex='56px'>
+                    <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]='true'>
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

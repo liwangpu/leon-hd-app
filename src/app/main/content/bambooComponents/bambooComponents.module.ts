@@ -19,7 +19,7 @@ const routes = [
 ];
 
 @NgModule({
-    imports     : [
+    imports: [
         SharedModule,
         RouterModule.forChild(routes),
     ],
@@ -29,13 +29,12 @@ const routes = [
         IconItemComponent,
         PaginatorComponent
     ],
-    exports:[
+    exports: [
         CommonFilterComponent,
         PropertyPanelComponent,
         IconItemComponent,
         PaginatorComponent
     ]
 })
-export class BambooComponentsModule
-{
+export class BambooComponentsModule {
 }
