@@ -23,51 +23,51 @@ import { FuseAngularMaterialModule } from './main/content/components/angular-mat
 import { MarkdownModule } from 'angular2-markdown';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouteGuardService } from './main/content/services/routeguard.service';
-import { AuthService } from './main/content/services/auth.service';
+// import { AuthService } from './main/content/services/auth.service';
 import { ConfigService } from './main/content/services/config.service';
 import { OmegaPagesModule } from './main/content/omegapages/omegapages.module';
 import { BambooComponentsModule } from './main/content/bambooComponents/bambooComponents.module';
 import { BambooPagesModule } from './main/content/bambooPages/bambooPages.module';
 import { DataService } from './main/content/services/data.service';
-
+import { BambooModule } from "./main/content/bamboo/bamboo.module";
 const appRoutes: Routes = [
     {
-        path        : 'apps/mail',
+        path: 'apps/mail',
         loadChildren: './main/content/apps/mail/mail.module#FuseMailModule',
         canActivate: [RouteGuardService]
     },
     {
-        path        : 'apps/chat',
+        path: 'apps/chat',
         loadChildren: './main/content/apps/chat/chat.module#FuseChatModule',
         canActivate: [RouteGuardService]
     },
     {
-        path        : 'apps/calendar',
+        path: 'apps/calendar',
         loadChildren: './main/content/apps/calendar/calendar.module#FuseCalendarModule',
         canActivate: [RouteGuardService]
     },
     {
-        path        : 'apps/todo',
+        path: 'apps/todo',
         loadChildren: './main/content/apps/todo/todo.module#FuseTodoModule',
         canActivate: [RouteGuardService]
     },
     {
-        path        : 'apps/file-manager',
+        path: 'apps/file-manager',
         loadChildren: './main/content/apps/file-manager/file-manager.module#FuseFileManagerModule',
         canActivate: [RouteGuardService]
     },
     {
-        path        : 'apps/contacts',
+        path: 'apps/contacts',
         loadChildren: './main/content/apps/contacts/contacts.module#FuseContactsModule',
         canActivate: [RouteGuardService]
     },
     {
-        path        : 'apps/scrumboard',
+        path: 'apps/scrumboard',
         loadChildren: './main/content/apps/scrumboard/scrumboard.module#FuseScrumboardModule',
         canActivate: [RouteGuardService]
     },
     {
-        path      : '**',
+        path: '**',
         redirectTo: 'apps/dashboards/project'
     }
 ];
@@ -76,7 +76,7 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         HttpModule,
         HttpClientModule,
@@ -85,19 +85,16 @@ const appRoutes: Routes = [
         SharedModule,
         MarkdownModule.forRoot(),
         TranslateModule.forRoot(),
-
+        BambooModule,
         InMemoryWebApiModule.forRoot(FuseFakeDbService, {
-            delay             : 0,
+            delay: 0,
             passThruUnknownUrl: true
         }),
-
         FuseMainModule,
-
         ProjectModule,
         OmegaPagesModule,
         BambooComponentsModule,
         BambooPagesModule,
-
         PagesModule,
         UIModule,
         ServicesModule,
@@ -105,19 +102,17 @@ const appRoutes: Routes = [
         FuseAngularMaterialModule,
         ComponentsThirdPartyModule
     ],
-    providers   : [
+    providers: [
         FuseSplashScreenService,
         FuseConfigService,
         FuseNavigationService,
         RouteGuardService,
-        AuthService,
         ConfigService,
         DataService
     ],
-    bootstrap   : [
+    bootstrap: [
         AppComponent
     ]
 })
-export class AppModule
-{
+export class AppModule {
 }

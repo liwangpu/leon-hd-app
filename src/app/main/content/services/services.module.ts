@@ -3,7 +3,7 @@ import { SharedModule } from '../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 import { FuseConfigServiceDocsComponent } from './config/config.component';
 import { FuseSplashScreenServiceDocsComponent } from './splash-screen/splash-screen.component';
-import { AppServiceModule } from "../../shared/server/app.service.module";
+import { AppServiceModule } from "../../toolkit/server/app.service.module";
 const routes = [
     {
         path: 'services/config',
@@ -17,8 +17,8 @@ const routes = [
 
 @NgModule({
     imports: [
-        AppServiceModule,
         SharedModule,
+        AppServiceModule,
         RouterModule.forChild(routes)
     ],
     declarations: [

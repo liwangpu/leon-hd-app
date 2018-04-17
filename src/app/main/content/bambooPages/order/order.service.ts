@@ -5,8 +5,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ConfigService } from '../../services/config.service';
-import { AuthService } from '../../services/auth.service';
-
+import { AuthService } from "../../../toolkit/server/webapi/auth.service";
 @Injectable()
 export class OrderService implements Resolve<any>
 {
@@ -18,8 +17,7 @@ export class OrderService implements Resolve<any>
         private http: HttpClient,
         private config: ConfigService,
         private auth: AuthService
-    )
-    {
+    ) {
 
     }
 
@@ -29,8 +27,7 @@ export class OrderService implements Resolve<any>
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
-    {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 
         this.routeParams = route.params;
 
@@ -47,8 +44,7 @@ export class OrderService implements Resolve<any>
         });
     }
 
-    getOrder()
-    {
+    getOrder() {
         return new Promise((resolve, reject) => {
             const url = `${this.config.serverBase}/orders/${this.routeParams.id}`;
             console.log('order service get order request ' + url);
@@ -58,7 +54,7 @@ export class OrderService implements Resolve<any>
                     'Authorization': 'bearer ' + this.auth.token
                 })
             }
-            this.http.get(url, authOpt).subscribe((response: any) =>{
+            this.http.get(url, authOpt).subscribe((response: any) => {
                 this.order = response;
                 console.log(response);
                 this.onOrderChanged.next(this.order);

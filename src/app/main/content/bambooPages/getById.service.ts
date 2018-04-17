@@ -5,7 +5,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ConfigService } from '../services/config.service';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from "../../toolkit/server/webapi/auth.service";
 
 @Injectable()
 export class GetByIdService implements Resolve<any>
@@ -17,8 +17,7 @@ export class GetByIdService implements Resolve<any>
         private http: HttpClient,
         private config: ConfigService,
         private auth: AuthService
-    )
-    {
+    ) {
 
     }
 
@@ -28,8 +27,7 @@ export class GetByIdService implements Resolve<any>
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
-    {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         let id = route.params.id;
         let apiName = route.data.apiName;
 
@@ -46,8 +44,7 @@ export class GetByIdService implements Resolve<any>
         });
     }
 
-    getObject(apiName: string, id: string)
-    {
+    getObject(apiName: string, id: string) {
         return new Promise((resolve, reject) => {
             const url = `${this.config.serverBase}/${apiName}/${id}`;
             let authOpt = {
@@ -56,7 +53,7 @@ export class GetByIdService implements Resolve<any>
                     'Authorization': 'bearer ' + this.auth.token
                 })
             }
-            this.http.get(url, authOpt).subscribe((response: any) =>{
+            this.http.get(url, authOpt).subscribe((response: any) => {
                 this.obj = response;
                 this.onOrderChanged.next(this.obj);
                 resolve(response);

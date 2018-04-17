@@ -20,8 +20,7 @@ import { TagsPageComponent } from './tags/tags-page.component';
 import { SolutionPageComponent } from './solution/solution-page.component';
 import { SolutionDetailComponent } from './solution/solution-detail.component';
 import { IconsPageComponent } from './icons/icons-page.component';
-import { DMZSharedModule } from '../../shared/dmzshared.module';
-
+import { ToolkitModule } from "../../toolkit/toolkit.module";
 const routes = [
     {
         path: 'pages/products',
@@ -112,7 +111,7 @@ const routes = [
         SharedModule,
         RouterModule.forChild(routes),
         FuseDemoModule,
-        DMZSharedModule,
+        ToolkitModule,
         BambooComponentsModule
     ],
     declarations: [

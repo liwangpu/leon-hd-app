@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from "../../toolkit/server/webapi/auth.service";
 import { ConfigService } from './config.service';
 import { FuseNavigationService } from '../../../core/components/navigation/navigation.service'
-import { AccountService } from '../../shared/server/webapi/account.service';
+
 
 @Injectable()
 export class RouteGuardService implements CanActivate {
-    constructor(private router: Router, private auth: AuthService, private config: ConfigService, private navi: FuseNavigationService, private accountSrv: AccountService) {
+    constructor(
+        private router: Router,
+        private auth: AuthService,
+        private config: ConfigService,
+        private navi: FuseNavigationService,
+        private http: HttpClient
+    ) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
