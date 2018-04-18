@@ -62,6 +62,8 @@ export class PaginatorStore<T> extends DataSource<any> {
         Observable.from(this.filterChange).takeUntil(this.destroy$).subscribe(sorting => {
             this.setFiltering(this.filterChange.value);
             this.query();
+            if (this.options.paginator)
+                this.options.paginator.previousPage();
         });
 
 
@@ -102,8 +104,7 @@ export class PaginatorStore<T> extends DataSource<any> {
         this.options.service.query(this.queryParams).subscribe(res => {
             this._dataSubject.next(res);
             // this.dataSubject.next(res.data ? res.data : []);
-            if (this.options.paginator){
-                this.options.paginator.previousPage();
+            if (this.options.paginator) {
                 this.options.paginator.length = res.total;
             }
         });
