@@ -104,11 +104,11 @@ export class FuseToolbarComponent {
         this.auth.logout();
         this.navi.setNavigationModel({});
 
-        if (this.config.loginStyle == 1) {
-            this.router.navigateByUrl('/pages/auth/login');
-        }
-        else {
-            this.router.navigateByUrl('/pages/auth/login-2');
-        }
+        // if (this.config.loginStyle == 1) {
+        //     this.router.navigateByUrl('/pages/auth/login');
+        // }
+        // else {
+        this.router.navigateByUrl('/app/login2');
+        // }
     }
 }

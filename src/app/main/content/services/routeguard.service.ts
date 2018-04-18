@@ -26,14 +26,14 @@ export class RouteGuardService implements CanActivate {
             this.auth.loadNavigationData();
         }
 
-        if (this.config.maintainingEndDate && this.config.maintainingEndDate.length > 6) {
-            this.router.navigateByUrl('/pages/coming-soon');
-            return false;
-        }
-        if (this.config.isMaintaining == true) {
-            this.router.navigateByUrl('/pages/maintenance');
-            return false;
-        }
+        // if (this.config.maintainingEndDate && this.config.maintainingEndDate.length > 6) {
+        //     this.router.navigateByUrl('/pages/coming-soon');
+        //     return false;
+        // }
+        // if (this.config.isMaintaining == true) {
+        //     this.router.navigateByUrl('/pages/maintenance');
+        //     return false;
+        // }
         console.log("routeguard. request " + state.url + " user: " + this.auth.account + " islogined: " + this.auth.isLogined());
         if (this.auth.isLogined()) {
             console.log("logined, route allowed");
@@ -44,12 +44,12 @@ export class RouteGuardService implements CanActivate {
         if (url && url.indexOf('/auth/login') < 0) {
             sessionStorage.setItem('redirectUrl', url);
         }
-        if (this.config.loginStyle == 1) {
-            this.router.navigateByUrl('/pages/auth/login');
-        }
-        else {
-            this.router.navigateByUrl('/pages/auth/login-2');
-        }
+        // if (this.config.loginStyle == 1) {
+        //     this.router.navigateByUrl('/pages/auth/login');
+        // }
+        // else {
+            this.router.navigateByUrl('/app/login2');
+        // }
         return false;
     }
 }

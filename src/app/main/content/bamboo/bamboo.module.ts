@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { IconItemComponent } from "./common/iconitem.component";
+import { SharedModule } from '../../../core/modules/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,10 +25,12 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { TranslateModule } from '@ngx-translate/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { Login2Component } from './login2/login2.component';
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
   imports: [
+    SharedModule,
     CommonModule,
     MatStepperModule,
     BrowserAnimationsModule,
@@ -51,6 +54,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CdkTableModule,
     MatInputModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent]
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent]
 })
 export class BambooModule { }
