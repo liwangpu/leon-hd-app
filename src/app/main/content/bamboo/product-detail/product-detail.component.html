@@ -38,14 +38,17 @@
             </div>
             <!-- / APP TITLE -->
 
-            <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0" [disabled]="productForm.invalid" *ngIf="pageType ==='new'"
+            <!-- <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0" [disabled]="productForm.invalid" *ngIf="pageType ==='new'"
                 (click)="addProduct()">
                 <span>ADD</span>
-            </button>
+            </button> -->
 
-            <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0" [disabled]="productForm.invalid || productForm.pristine"
+            <!-- <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0" [disabled]="productForm.invalid || productForm.pristine"
                 *ngIf="pageType ==='edit'" (click)="saveProduct()">
                 <span>SAVE</span>
+            </button> -->
+            <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0" *ngIf="pageType ==='edit'" (click)="saveProduct()">
+                <span>{{'button.Save'|translate}}</span>
             </button>
         </div>
         <!-- / HEADER -->

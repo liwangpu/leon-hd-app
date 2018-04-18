@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { IEntitybase } from '../../models/ientitybase';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
@@ -10,6 +10,7 @@ import { catchError, retry } from 'rxjs/operators';
  * webapi serve基类
  */
 export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>> {
+    onServiceChange = new BehaviorSubject<Array<T>>([]);
     private uriBase: string;//webapi基路径 例如:localhost:4200
     protected uriPart: string;//webapi实体路径 例如products
     protected header: HttpHeaders;//默认为application/json的Content-Type Header
@@ -107,7 +108,10 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
         return this.httpClient.request<Paging<T>>('get', this.uri, { headers: this.header, params: params }).pipe(
             // retry(3),
             catchError(this.handleError)
-        );
+        ).map((res) => {
+            this.onServiceChange.next(res.data);
+            return res;
+        });
     }
 
 

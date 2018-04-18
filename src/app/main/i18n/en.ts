@@ -25,6 +25,7 @@ export const locale = {
             "InteriorDesignProducts": "Products"
         },
         "glossary": {
+            "Product": "Product",
             "ProductName": "Product Name",
             "ProductDescription": "Product Description",
             "ProductSpecification": "Specs",
@@ -50,7 +51,9 @@ export const locale = {
             "Cancel": "Cancel",
             "Download": "DownLoad",
             "Confirm": "Confirm",
-            "Next": "Next"
+            "Next": "Next",
+            "Search": "Search",
+            "AddProduct": "ADD NEW PRODUCT"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",
@@ -70,6 +73,7 @@ export const locale = {
             "Name": "Name",
             "File": "File",
             "Action": "Action",
+            "ItemPerPage": "items per page",
             "UploadMesh": "Upload Static Mesh",
             "UploadMaterial": "Upload Material",
             "UploadProductSpecIcon": "Upload ICon",

@@ -13,7 +13,7 @@
             <!-- APP TITLE -->
             <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon class="logo-icon mr-16" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">shopping_basket</mat-icon>
-                <span class="logo-text h1" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Products</span>
+                <span class="logo-text h1" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">{{'glossary.Product'|translate}}</span>
             </div>
             <!-- / APP TITLE -->
 
@@ -23,13 +23,13 @@
                     <mat-icon class="secondary-text">search</mat-icon>
                 </label>
                 <mat-form-field floatPlaceholder="never" fxFlex="1 0 auto">
-                    <input id="search" matInput #filter placeholder="Search">
+                    <input id="search" matInput #filter placeholder="{{'button.Search'|translate}}">
                 </mat-form-field>
             </div>
             <!-- / SEARCH -->
 
             <button mat-raised-button [routerLink]="'/apps/e-commerce/products/new'" class="add-product-button mat-white-bg my-12 mt-sm-0">
-                <span>ADD NEW PRODUCT</span>
+                <span>{{'button.AddProduct'|translate}}</span>
             </button>
 
         </div>
@@ -41,7 +41,7 @@
                 <icon-item *ngFor="let item of productItems" [Id]='item.id' [Name]='item.name' [Description]='item.description' [Icon]='item.icon'
                     [routerLink]="'/app/product-detail/' + item.id"></icon-item>
             </div>
-            <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+            <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]='true'>
             </mat-paginator>
 
         </div>

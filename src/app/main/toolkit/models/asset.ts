@@ -1,5 +1,6 @@
 import { Iasset } from "./iasset";
-export class Asset implements Iasset {
+import { EntityBase } from "./entitybase";
+export class Asset extends EntityBase implements Iasset {
     folderId: string;
     categoryId: string;
     description: string;

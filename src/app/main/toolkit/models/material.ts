@@ -1,13 +1,12 @@
 import { Iasset } from "./iasset";
-export class Material implements Iasset {
+import { EntityBase } from "./entitybase";
+export class Material extends EntityBase implements Iasset {
     folderId: string;
     categoryId: string;
     description: string;
     icon: string;
     createTime: string;
     modifyTime: string;
-    id: string;
-    name: string;
     /// <summary>
     /// 原始文件路径
     /// </summary>

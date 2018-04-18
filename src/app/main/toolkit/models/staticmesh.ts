@@ -1,14 +1,13 @@
 import { Iasset } from "./iasset";
 import { Material } from "./material";
-export class StaticMesh implements Iasset {
+import { EntityBase } from "./entitybase";
+export class StaticMesh extends EntityBase implements Iasset {
     folderId: string;
     categoryId: string;
     description: string;
     icon: string;
     createTime: string;
     modifyTime: string;
-    id: string;
-    name: string;
     /// <summary>
     /// 原始文件路径
     /// </summary>

@@ -49,11 +49,10 @@ export class DessertService {
     //rememberLogin
     get rememberLogin() {
         let tmp = this.lcStoreSrv.getItem(REMEMBER_LOGIN);
-        let vl = tmp ? Boolean(tmp) : false;
-        return vl;
+        return tmp ? true : false;
     }
     set rememberLogin(vl: boolean) {
-        this.lcStoreSrv.setItem(REMEMBER_LOGIN, vl)
+        this.lcStoreSrv.setItem(REMEMBER_LOGIN, vl ? 'true' : '')
     };
     //language
     get language() {

@@ -14,7 +14,7 @@ import { FileAssetService } from "./webapi/fileasset.service";
 import { MaterialService } from './webapi/material.service';
 import { ChartletService } from './webapi/chartlet.service';
 import { ConfigModule } from "../config/config.module";
-
+import { OrganService } from "./webapi/organ.service";
 @NgModule({
     imports: [
         ConfigModule
@@ -29,6 +29,7 @@ import { ConfigModule } from "../config/config.module";
         , ProductSpecService
         , AuthService
         , AccountService
+        , OrganService
         , StaticmeshService
         , FileAssetService
         , MaterialService

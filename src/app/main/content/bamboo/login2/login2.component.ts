@@ -72,11 +72,11 @@ export class Login2Component implements OnInit {
             }
         }
         // this.config.rememberLogin = this.rememberLogin;
-
+        this.dessertSrv.rememberLogin = this.rememberLogin;
     }
 
     login() {
-        this.dessertSrv.rememberLogin = this.rememberLogin;
+       
         let loginAsync = () => {
             return new Promise((resolve, reject) => {
                 this.auth.login(this.loginForm.value.account, this.loginForm.value.password).subscribe(rdata => {

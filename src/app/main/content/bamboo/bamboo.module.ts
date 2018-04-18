@@ -28,6 +28,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { Login2Component } from './login2/login2.component';
 import { LoginComponent } from "./login/login.component";
 import { ServicesModule } from "../services/services.module";
+import { OrganComponent } from './organ/organ.component';
 @NgModule({
   imports: [
     ServicesModule,
@@ -55,6 +56,6 @@ import { ServicesModule } from "../services/services.module";
     CdkTableModule,
     MatInputModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent]
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent]
 })
 export class BambooModule { }
