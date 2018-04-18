@@ -26,13 +26,13 @@
 
                 <div fxLayout="column" fxLayoutAlign="start start" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     <div class="h2" *ngIf="pageType ==='edit'">
-                        {{product.name}}
+                        {{product?.name}}
                     </div>
                     <div class="h2" *ngIf="pageType ==='new'">
-                        New Product
+                        {{'glossary.NewProduct'|translate}}
                     </div>
                     <div class="subtitle secondary-text">
-                        <span>{{product.name}}</span>
+                        <span>{{product?.name}}</span>
                     </div>
                 </div>
             </div>

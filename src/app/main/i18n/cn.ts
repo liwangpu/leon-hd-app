@@ -37,7 +37,18 @@ export const locale = {
             "ProductMesh": "Mess",
             "FileName": "文件名称",
             "FileSize": "文件大小",
-            "Status": "状态"
+            "Status": "状态",
+            "Organ": "组织",
+            "Name": "名称",
+            "Description": "描述",
+            "CreatedTime": "创建时间",
+            "NewProduct": "新产品",
+            "NewOrgan": "新组织",
+            "OrganName": "组织名称",
+            "OrganDescription": "组织描述",
+            "BasicInfo": "基础信息",
+            "Album": "相册",
+            "OrganDepartment": "部门",
         },
         "button": {
             "Save": "保存",
@@ -49,6 +60,7 @@ export const locale = {
             "Cancel": "取消",
             "Search": "搜索",
             "AddProduct": "添加产品",
+            "AddOrgan": "添加组织",
             "Next": "下一步"
         },
         "message": {

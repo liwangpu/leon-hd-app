@@ -10,8 +10,7 @@ import { IListableService } from "../../server/webapi/ilistableService";
  * 提供过滤,分页和排序功能
  */
 export class PaginatorStore<T> extends DataSource<any> {
-    _dataSubject = new BehaviorSubject<Paging<T>>({ data: [], total: 0, page: 1, size: 10, });
-
+    _dataSubject = new BehaviorSubject<Paging<T>>({ data: [], total: 0, page: 1, size: 10 });
     private filterChange = new BehaviorSubject('');
     private queryParams: IQuery;
     private pagingSubjection: Observable<any>;
@@ -27,52 +26,40 @@ export class PaginatorStore<T> extends DataSource<any> {
         this.filterChange.next(vl);
     }
 
-    constructor(private options: PaginatorStoreOptions<T>) {
+    constructor(private option: PaginatorStoreOptions<T>) {
         super();
-        this.queryParams = { page: options.paginator ? options.paginator.pageIndex : 1, pageSize: options.paginator.pageSize ? options.paginator.pageSize : 10, search: '' };
+        this.queryParams = { page: this.option.paginator ? this.option.paginator.pageIndex : 1, pageSize: this.option.paginator ? this.option.paginator.pageSize : 10 };
         this.query();//默认查询
         //订阅分页响应事件
-        if (options.paginator) {
-            Observable.from(options.paginator.page).subscribe(paging => {
+        if (this.option.paginator)
+            Observable.from(this.option.paginator.page).takeUntil(this.destroy$).subscribe(paging => {
                 this.setPaging(paging['pageIndex'], paging['pageSize']);
                 this.query();
             });
-        }
-
         //订阅排序响应事件
-        if (options.sort) {
-            Observable.from(options.sort.sortChange).subscribe(sorting => {
+        if (this.option.sort)
+            Observable.from(this.option.sort.sortChange).takeUntil(this.destroy$).subscribe(sorting => {
                 this.setSorting(sorting['active'], sorting['direction']);
                 this.query();
+
+                // console.log(222, 'sort', this.queryParams);
             });
-        }
-
+        //订阅过滤条件过滤响应事件
+        Observable.from(this.filterChange).takeUntil(this.destroy$).subscribe(sorting => {
+            this.setFiltering(this.filterChange.value);
+            this.query();
+        });
         //订阅搜索框输入响应事件
-        if (options.searchInputEle) {
-            Observable.fromEvent(options.searchInputEle.nativeElement, 'keyup')
-
+        if (this.option.searchInputEle) {
+            Observable.fromEvent(this.option.searchInputEle.nativeElement, 'keyup')
+                .takeUntil(this.destroy$)
                 .debounceTime(150)
                 .distinctUntilChanged()
                 .subscribe(() => {
-                    this.setFiltering(options.searchInputEle.nativeElement.value);
+                    this.setFiltering(this.option.searchInputEle.nativeElement.value);
                     this.query();
                 });
-        }
-
-        //订阅过滤条件过滤响应事件
-        Observable.from(this.filterChange).subscribe(sorting => {
-            this.setFiltering(this.filterChange.value);
-            this.query();
-            if (this.options.paginator)
-                this.options.paginator.previousPage();
-        });
-
-
-
-
-        this.options.service.onServiceChange.subscribe(ms => {
-            console.log(111, 'ms', ms);
-        });
+        }//if
     }//constructor
 
     /**
@@ -107,12 +94,9 @@ export class PaginatorStore<T> extends DataSource<any> {
      * 查询数据
      */
     private query() {
-        this.options.service.query(this.queryParams).subscribe(res => {
+        this.option.service.query(this.queryParams).subscribe(res => {
             this._dataSubject.next(res);
             // this.dataSubject.next(res.data ? res.data : []);
-            if (this.options.paginator) {
-                this.options.paginator.length = res.total;
-            }
         });
     }//query
 
@@ -120,39 +104,18 @@ export class PaginatorStore<T> extends DataSource<any> {
      * 基类事件
      */
     connect(): Observable<any[]> {
-        // return this._dataSubject.map(rdata => {
-        //     console.log(3333, 'pasing', rdata.data);
-        //     return rdata.data;
-        // });
-
-        // return Observable
-        // this._dataSubject.subscribe(rdata => {
-        //     console.log(3333, 'pasing', rdata.data);
-        //     // return rdata.data;
-        // });
-
-        // console.log(111, 'init');
-
-        let subj = [];
-
-        const obs = [this.options.service.onServiceChange];
-        return Observable.merge(...obs).map((rdata) => {
-            console.log(3333, 'pasing', rdata);
-
-            return rdata;
+        return this._dataSubject.map(rdata => {
+            this.option.paginator.length = rdata.total;
+            return rdata.data;
         });
-        // return this._dataSubject.map(rdata => {
-        //     // console.log(3333, 'pasing', rdata.data);
-        //     return rdata.data;
-        // });
     }
 
     /**
      * 基类事件
      */
     disconnect(): void {
-        // this.destroy$.next(true);
-        // this.destroy$.unsubscribe();
+        this.destroy$.next(true);
+        this.destroy$.unsubscribe();
     }
 }//PaginatorStore
 

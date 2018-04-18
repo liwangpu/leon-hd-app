@@ -5,6 +5,7 @@ import { ApiService } from './api.service';
 import { Observable } from 'rxjs/Observable';
 import { Md5 } from 'ts-md5/dist/md5';
 import { IEntitybase } from "../../models/ientitybase";
+import { AppCache } from "../../cache/appcache";
 @Injectable()
 export class AuthService extends ApiService<IEntitybase> {
 
@@ -28,6 +29,7 @@ export class AuthService extends ApiService<IEntitybase> {
         let md5pwd = Md5.hashStr(pwd).toString();
         return this.http.post(this.uri, { account: account, password: md5pwd }, { headers: this.header }).map(rdata => {
             this.token = rdata["token"];
+            AppCache.getInstance().token = this.token;
             return rdata;
         });
     }

@@ -7,6 +7,7 @@ import { FuseUtils } from '../../../../core/fuseUtils';
 import { Organization } from "../../../toolkit/models/organization";
 import { OrganService } from "../../../toolkit/server/webapi/organ.service";
 import { PaginatorStore } from "../../../toolkit/common/classes/paginator-store";
+import { DataSource } from '@angular/cdk/collections';
 @Component({
   selector: 'app-organ',
   templateUrl: './organ.component.html',
@@ -14,18 +15,16 @@ import { PaginatorStore } from "../../../toolkit/common/classes/paginator-store"
   animations: fuseAnimations
 })
 export class OrganComponent implements OnInit {
-  dataSource: PaginatorStore<Organization> | null;
-  displayedColumns = ['name'];
-
+  displayedColumns = ['icon', 'name', 'description', 'createdTime'];
+  dataSource: PaginatorStore<Organization>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild('filter') filter: ElementRef;
   @ViewChild(MatSort) sort: MatSort;
-  private dataStore: PaginatorStore<Organization>;
+  @ViewChild('filter') filter: ElementRef;
   constructor(private organSrv: OrganService) {
   }
 
   ngOnInit() {
-    this.dataStore = new PaginatorStore<Organization>({ service: this.organSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort })
+    this.dataSource = new PaginatorStore<Organization>({ service: this.organSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort })
     //   this.dataSource = new FilesDataSource(this.productsService, this.paginator, this.sort);
     //   Observable.fromEvent(this.filter.nativeElement, 'keyup')
     //     .debounceTime(150)
@@ -37,5 +36,34 @@ export class OrganComponent implements OnInit {
     //       this.dataSource.filter = this.filter.nativeElement.value;
     //     });
     // }
+  }
+
+
+  applyFilter(fvalue: string) {
+    // console.log(111, 'receive', fvalue);
+    // fvalue = fvalue.trim().toLocaleLowerCase();
+    // this.dataSource.filter = fvalue;
+  }
+
+  isAllSelected() {
+    // const numSelected = this.selection.selected.length;
+    // const numRows = this.dataSource.data.length;
+    // return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    // this.isAllSelected() ?werwer
+    //   this.selection.clear() :
+    //   this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  getData() {
+    // this.dataSource.filteredData = [];
+    // this.dataStore.filter = 'leon';
+  }
+
+  clear() {
+    // this.dataStore.filter = '';
   }
 }

@@ -29,15 +29,22 @@ import { Login2Component } from './login2/login2.component';
 import { LoginComponent } from "./login/login.component";
 import { ServicesModule } from "../services/services.module";
 import { OrganComponent } from './organ/organ.component';
+import { OrganDetailComponent } from './organ-detail/organ-detail.component';
+import { OrganDepartmentComponent } from './organ-department/organ-department.component';
+import { MatSelectModule } from '@angular/material/select';
+import { FuseContactsModule } from "./contacts/contacts.module";
+import { MatSidenavModule } from '@angular/material/sidenav';
 @NgModule({
   imports: [
     ServicesModule,
     SharedModule,
     CommonModule,
+    MatSidenavModule,
     MatStepperModule,
     BrowserAnimationsModule,
     BambooRoutingModule,
     FormsModule,
+    MatSelectModule,
     ReactiveFormsModule,
     MatCheckboxModule,
     TranslateModule,
@@ -54,8 +61,9 @@ import { OrganComponent } from './organ/organ.component';
     MatGridListModule,
     MatFormFieldModule,
     CdkTableModule,
-    MatInputModule
+    MatInputModule,
+    FuseContactsModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent]
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OrganDepartmentComponent]
 })
 export class BambooModule { }

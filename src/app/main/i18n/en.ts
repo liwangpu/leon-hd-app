@@ -39,7 +39,18 @@ export const locale = {
             "FileSize": "Size",
             "Status": "Status",
             "MaxFileLimit": "Max File Limit",
-            "FileCount": "Files"
+            "FileCount": "Files",
+            "Organ": "Organiztion",
+            "Name": "Name",
+            "Description": "Description",
+            "CreatedTime": "Created Time",
+            "NewProduct": "NEW PRODUCT",
+            "NewOrgan": "NEW ORGANIZATION",
+            "OrganName": "Organiztion Name",
+            "OrganDescription": "Organiztion Description",
+            "BasicInfo": "Basic Info",
+            "Album": "Album",
+            "OrganDepartment": "Department",
         },
         "button": {
             "Save": "Save",
@@ -53,7 +64,8 @@ export const locale = {
             "Confirm": "Confirm",
             "Next": "Next",
             "Search": "Search",
-            "AddProduct": "ADD NEW PRODUCT"
+            "AddProduct": "ADD NEW PRODUCT",
+            "AddOrgan": "ADD NEW ORGAN"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",

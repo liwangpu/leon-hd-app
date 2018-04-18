@@ -23,8 +23,6 @@ import { OrganService } from "./webapi/organ.service";
         , TranslateModule.forRoot()
     ],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
         , ProductService
         , ProductSpecService
         , AuthService
@@ -34,6 +32,8 @@ import { OrganService } from "./webapi/organ.service";
         , FileAssetService
         , MaterialService
         , ChartletService
+        , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+        , { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
     ]
 })
 export class AppServiceModule {

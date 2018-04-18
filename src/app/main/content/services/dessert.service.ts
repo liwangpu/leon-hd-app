@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from "../../toolkit/config/config.service";
 import { LocalStoreService } from "./localstore.service";
-
+import { AppCache } from "../../toolkit/cache/appcache";
 const LOGIN_STYLE = "LoginStyle";
 const SERVER_BASE = 'ServerBase';
 const REMEMBER_LOGIN = 'RememberLogin';
@@ -10,6 +10,12 @@ const LANGUAGE = 'Language';
 const IS_MAINTAINING = 'IsMainaining';
 const NAVI = 'Navi';
 const TOKEN = 'Token';
+
+/**
+ * 该服务为应用提供缓存数据
+ * 与cache类紧密相关,存数据除了存local或者indexeddb,
+ * 还存储一份到cache类,取值默认先取cache缓存
+ */
 @Injectable()
 export class DessertService {
     //loginStyle
@@ -73,9 +79,13 @@ export class DessertService {
     }
     //token
     get token() {
+        let tmp = AppCache.getInstance().token;
+        if (tmp)
+            return tmp;
         return this.lcStoreSrv.getItem(TOKEN);
     }
     set token(vl: string) {
+        AppCache.getInstance().token = vl;
         this.lcStoreSrv.setItem(TOKEN, vl)
     }
     //isTokenValid
@@ -91,12 +101,20 @@ export class DessertService {
     }
 
     reload() {
-        this.translate.use(this.language);
+        // this.translate.use(this.language);
+
     }
 
     clear() {
         this.rememberLogin = false;
         this.navi = '';
         this.token = '';
+    }
+
+    /**
+     * 用于从localstore/indexeddb还原数据到cache类
+     */
+    restoreCache() {
+        AppCache.getInstance().token = this.token;
     }
 }

@@ -35,6 +35,8 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<T> | Observable<Observable<T>> | Promise<Observable<T>> {
         let id = route.paramMap.get('id');
+        console.log(111, 'sfsdfs', id);
+
         return this.getEntity<T>(id);
     }
 
@@ -51,11 +53,13 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      * @param id 
      */
     protected getEntity<T>(id: number | string): Observable<T> {
-        if (id)
+        if (id) {
+            console.log(111, 'sdfsd', id);
             return this.httpClient.get<T>(`${this.uri}/${id}`, { headers: this.header }).pipe(
                 // retry(3),
                 catchError(this.handleError)
             );
+        }
         return Observable.of<T>({} as T);
     }
 
