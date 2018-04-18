@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { ConfigService } from '../config.service';
+import { ConfigService } from '../../config/config.service';
 import { Observable } from 'rxjs/Observable';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { IEntitybase } from '../../models/ientitybase';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService, Paging, IQuery } from './api.service';
 import { HttpClient } from '@angular/common/http';
-import { ConfigService } from '../config.service';
+import { ConfigService } from '../../config/config.service';
 import { Product } from '../../models/product';
 import { Observable } from 'rxjs/Observable';
 import { IListableService } from "./ilistableService";

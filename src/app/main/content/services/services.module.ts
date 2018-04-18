@@ -5,6 +5,10 @@ import { FuseConfigServiceDocsComponent } from './config/config.component';
 import { FuseSplashScreenServiceDocsComponent } from './splash-screen/splash-screen.component';
 import { AppServiceModule } from "../../toolkit/server/app.service.module";
 import { RouteGuardService } from "./routeguard.service";
+import { LocalStoreService } from "./localstore.service";
+import { DessertService } from "./dessert.service";
+import { TranslateService } from '@ngx-translate/core';
+import { ConfigModule } from "../../toolkit/config/config.module";
 const routes = [
     {
         path: 'services/config',
@@ -18,12 +22,16 @@ const routes = [
 
 @NgModule({
     imports: [
+        ConfigModule,
         SharedModule,
         AppServiceModule,
         RouterModule.forChild(routes)
     ],
     providers: [
-        RouteGuardService
+        RouteGuardService,
+        LocalStoreService,
+        DessertService,
+        TranslateService
     ],
     declarations: [
         FuseConfigServiceDocsComponent,

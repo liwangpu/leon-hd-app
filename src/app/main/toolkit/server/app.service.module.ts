@@ -5,7 +5,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { AuthService } from './webapi/auth.service';
 import { ProductService } from './webapi/product.service';
-import { ConfigService } from './config.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { AccountService } from './webapi/account.service';
 import { ProductSpecService } from './webapi/productSpec.service';
@@ -14,9 +13,12 @@ import { StaticmeshService } from './webapi/staticmesh.service';
 import { FileAssetService } from "./webapi/fileasset.service";
 import { MaterialService } from './webapi/material.service';
 import { ChartletService } from './webapi/chartlet.service';
+import { ConfigModule } from "../config/config.module";
+
 @NgModule({
     imports: [
-        HttpClientModule
+        ConfigModule
+        , HttpClientModule
         , RouterModule
         , TranslateModule.forRoot()
     ],
@@ -25,7 +27,6 @@ import { ChartletService } from './webapi/chartlet.service';
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
         , ProductService
         , ProductSpecService
-        , ConfigService
         , AuthService
         , AccountService
         , StaticmeshService

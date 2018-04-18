@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterContentInit, Input, Output } from '@angular/core';
-import { ConfigService } from '../../../server/config.service';
+import { ConfigService } from '../../../config/config.service';
 import { FileAsset } from "../../../models/fileasset";
 import { ProductSpecService } from '../../../server/webapi/productSpec.service';
 import { ProductSpec } from '../../../models/productspec';

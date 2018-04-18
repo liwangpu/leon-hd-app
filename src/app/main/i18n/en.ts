@@ -22,7 +22,7 @@ export const locale = {
             "InteriorDesign": "Interior Design",
             "InteriorDesignSolutions": "Solutions",
             "InteriorDesignCategories": "Categories",
-            "InteriorDesignProducts": "Products-1"
+            "InteriorDesignProducts": "Products"
         },
         "glossary": {
             "ProductName": "Product Name",

@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { FuseConfigService } from '../../core/services/config.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfigService } from "../toolkit/server/config.service";
 import { AuthService } from "../toolkit/server/webapi/auth.service";
 import { FuseNavigationService } from "../../core/components/navigation/navigation.service";
+import { DessertService } from "../content/services/dessert.service";
 @Component({
     selector: 'fuse-toolbar',
     templateUrl: './toolbar.component.html',
@@ -23,8 +23,8 @@ export class FuseToolbarComponent {
         private fuseConfig: FuseConfigService,
         private translate: TranslateService,
         private auth: AuthService,
-        private config: ConfigService,
-        private navi: FuseNavigationService
+        private navi: FuseNavigationService,
+        private dessertSrv: DessertService
     ) {
         this.userStatusOptions = [
             {
@@ -96,19 +96,21 @@ export class FuseToolbarComponent {
 
         // Use the selected language for translations
         this.translate.use(lang.id);
-        this.config.language = lang.id;
-        this.config.save();
+        // this.config.language = lang.id;
+        // this.config.save();
+        this.dessertSrv.language = lang.id;
     }
 
     logout() {
+        this.dessertSrv.clear();
         this.auth.logout();
         this.navi.setNavigationModel({});
 
-        // if (this.config.loginStyle == 1) {
-        //     this.router.navigateByUrl('/pages/auth/login');
-        // }
-        // else {
-        this.router.navigateByUrl('/app/login2');
-        // }
+        if (this.dessertSrv.loginStyle == 1) {
+            this.router.navigateByUrl('/app/login');
+        }
+        else {
+            this.router.navigateByUrl('/app/login2');
+        }
     }
 }

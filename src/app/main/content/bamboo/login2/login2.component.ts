@@ -4,8 +4,9 @@ import { FuseConfigService } from '../../../../core/services/config.service';
 import { fuseAnimations } from '../../../../core/animations';
 import { Router } from '@angular/router';
 import { AuthService } from "../../../toolkit/server/webapi/auth.service";
-import { ConfigService } from "../../../toolkit/server/config.service";
+import { ConfigService } from "../../../toolkit/config/config.service";
 import { FuseNavigationService } from "../../../../core/components/navigation/navigation.service";
+import { DessertService } from "../../services/dessert.service";
 @Component({
     selector: 'app-login2',
     templateUrl: './login2.component.html',
@@ -24,7 +25,8 @@ export class Login2Component implements OnInit {
         private router: Router,
         private auth: AuthService,
         private config: ConfigService,
-        private navi: FuseNavigationService
+        private navi: FuseNavigationService,
+        private dessertSrv: DessertService
     ) {
         this.fuseConfig.setSettings({
             layout: {
@@ -38,7 +40,7 @@ export class Login2Component implements OnInit {
             account: {},
             password: {}
         };
-        this.rememberLogin = this.config.rememberLogin;
+        this.rememberLogin = dessertSrv.rememberLogin;
     }
 
     ngOnInit() {
@@ -69,16 +71,16 @@ export class Login2Component implements OnInit {
                 this.loginFormErrors[field] = control.errors;
             }
         }
-        this.config.rememberLogin = this.rememberLogin;
-        this.config.save();
+        // this.config.rememberLogin = this.rememberLogin;
+
     }
 
     login() {
+        this.dessertSrv.rememberLogin = this.rememberLogin;
         let loginAsync = () => {
             return new Promise((resolve, reject) => {
                 this.auth.login(this.loginForm.value.account, this.loginForm.value.password).subscribe(rdata => {
-                    if (this.config.rememberLogin)
-                        localStorage.setItem("token", rdata['token']);
+                    this.dessertSrv.token = rdata['token'];
                     resolve();
                 }, err => {
                     reject(err);
@@ -102,6 +104,7 @@ export class Login2Component implements OnInit {
             return new Promise((resolve, reject) => {
                 this.auth.loadNavigationData().subscribe((rdata) => {
                     this.navi.setNavigationModel(rdata);
+                    this.dessertSrv.navi = rdata;
                     resolve();
                 }, err => {
                     reject(err);

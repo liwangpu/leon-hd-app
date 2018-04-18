@@ -12,17 +12,18 @@
 
             <!-- APP TITLE -->
             <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
-                <h2>PRODUCT</h2>
+                <mat-icon class="logo-icon mr-16" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">shopping_basket</mat-icon>
+                <span class="logo-text h1" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Products</span>
             </div>
             <!-- / APP TITLE -->
 
             <!-- SEARCH -->
             <div class="search-input-wrapper mx-12 m-md-0" fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
-                <label class="mr-8">
+                <label for="search" class="mr-8">
                     <mat-icon class="secondary-text">search</mat-icon>
                 </label>
                 <mat-form-field floatPlaceholder="never" fxFlex="1 0 auto">
-                    <input matInput #filter placeholder="Search">
+                    <input id="search" matInput #filter placeholder="Search">
                 </mat-form-field>
             </div>
             <!-- / SEARCH -->
@@ -36,17 +37,13 @@
 
         <!-- CONTENT CARD -->
         <div class="content-card mat-white-bg">
-            <div fxLayout='column' fxFill style="height: 100%;">
-                <div fxFlex>
-                    <div fxLayout="row wrap" fxLayoutAlign="start start" style="padding:10px;">
-                        <icon-item *ngFor="let item of items" [Id]='item.id' [Name]='item.name' [Description]='item.description' [Icon]='item.icon'></icon-item>
-                    </div>
-                </div>
-                <div fxFlex='56px'>
-                    <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]='true'>
-                    </mat-paginator>
-                </div>
+            <div class="products-table">
+                <icon-item *ngFor="let item of productItems" [Id]='item.id' [Name]='item.name' [Description]='item.description' [Icon]='item.icon'
+                    [routerLink]="'/app/product-detail/' + item.id"></icon-item>
             </div>
+            <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+
         </div>
         <!-- / CONTENT CARD -->
     </div>
