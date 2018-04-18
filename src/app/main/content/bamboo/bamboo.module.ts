@@ -27,9 +27,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Login2Component } from './login2/login2.component';
 import { LoginComponent } from "./login/login.component";
-
+import { ServicesModule } from "../services/services.module";
 @NgModule({
   imports: [
+    ServicesModule,
     SharedModule,
     CommonModule,
     MatStepperModule,

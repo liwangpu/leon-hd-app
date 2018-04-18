@@ -15,10 +15,6 @@ import { FuseNavigationService } from './core/components/navigation/navigation.s
 import { ServicesModule } from './main/content/services/services.module';
 import { MarkdownModule } from 'angular2-markdown';
 import { TranslateModule } from '@ngx-translate/core';
-import { RouteGuardService } from './main/content/services/routeguard.service';
-// import { AuthService } from './main/content/services/auth.service';
-import { ConfigService } from './main/content/services/config.service';
-import { DataService } from './main/content/services/data.service';
 import { BambooModule } from "./main/content/bamboo/bamboo.module";
 const appRoutes: Routes = [
     {
@@ -47,10 +43,7 @@ const appRoutes: Routes = [
     providers: [
         FuseSplashScreenService,
         FuseConfigService,
-        FuseNavigationService,
-        RouteGuardService,
-        ConfigService,
-        DataService
+        FuseNavigationService
     ],
     bootstrap: [
         AppComponent

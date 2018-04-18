@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { FuseConfigService } from '../../core/services/config.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfigService } from '../content/services/config.service';
+import { ConfigService } from "../toolkit/server/config.service";
 import { AuthService } from "../toolkit/server/webapi/auth.service";
 import { FuseNavigationService } from "../../core/components/navigation/navigation.service";
 @Component({

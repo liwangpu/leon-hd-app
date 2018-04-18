@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from "../../toolkit/server/webapi/auth.service";
-import { ConfigService } from './config.service';
+import { ConfigService } from "../../toolkit/server/config.service";
 import { FuseNavigationService } from '../../../core/components/navigation/navigation.service'
 
 
