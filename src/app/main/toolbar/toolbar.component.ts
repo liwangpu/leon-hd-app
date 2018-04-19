@@ -17,15 +17,10 @@ export class FuseToolbarComponent {
     selectedLanguage: any;
     showLoadingBar: boolean;
     horizontalNav: boolean;
+    nickName: string;
+    constructor(private router: Router, private fuseConfig: FuseConfigService, private translate: TranslateService, private auth: AuthService, private navi: FuseNavigationService, private dessertSrv: DessertService) {
+        this.nickName = this.dessertSrv.nickName ? this.dessertSrv.nickName : '用户';
 
-    constructor(
-        private router: Router,
-        private fuseConfig: FuseConfigService,
-        private translate: TranslateService,
-        private auth: AuthService,
-        private navi: FuseNavigationService,
-        private dessertSrv: DessertService
-    ) {
         this.userStatusOptions = [
             {
                 'title': 'Online',

@@ -105,7 +105,8 @@ export class PaginatorStore<T> extends DataSource<any> {
      */
     connect(): Observable<any[]> {
         return this._dataSubject.map(rdata => {
-            this.option.paginator.length = rdata.total;
+            if (this.option.paginator)
+                this.option.paginator.length = rdata.total;
             return rdata.data;
         });
     }

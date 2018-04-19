@@ -40,6 +40,8 @@ import { OAccountDetailComponent } from './organ/o-account-detail/o-account-deta
 import { AccountComponent } from './account/account.component';
 import { AccountDetailComponent } from './account/account-detail/account-detail.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DepartmentCardComponent } from './account/department-card/department-card.component';
+import { AccountListComponent } from './account/account-list/account-list.component';
 @NgModule({
   imports: [
     ServicesModule,
@@ -71,7 +73,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     FuseContactsModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OrganDepartmentComponent, OAdminComponent, OAccountComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OrganDepartmentComponent, OAdminComponent, OAccountComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent],
   entryComponents: [AccountDetailComponent]
 })
 export class BambooModule { }

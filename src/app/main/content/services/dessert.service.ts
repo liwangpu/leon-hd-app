@@ -10,6 +10,10 @@ const LANGUAGE = 'Language';
 const IS_MAINTAINING = 'IsMainaining';
 const NAVI = 'Navi';
 const TOKEN = 'Token';
+const AVATAR = 'User_Avatar';
+const NICKNAME = 'NICK_NAME';
+const ORGANID = 'Organ_Id';
+const DEPARTMENTID = 'Department_Id';
 
 /**
  * 该服务为应用提供缓存数据
@@ -18,18 +22,73 @@ const TOKEN = 'Token';
  */
 @Injectable()
 export class DessertService {
+    //nickName
+    get nickName() {
+        let chvl = AppCache.getInstance().nickName;
+        if (chvl)
+            return chvl;
+        let vl = this.lcStoreSrv.getItem(NICKNAME);
+        return vl;
+    }
+    set nickName(vl: string) {
+        AppCache.getInstance().nickName = vl;
+        this.lcStoreSrv.setItem(NICKNAME, vl)
+    }
+    //icon即avatar
+    get icon() {
+        let chvl = AppCache.getInstance().icon;
+        if (chvl)
+            return chvl;
+        let vl = this.lcStoreSrv.getItem(AVATAR);
+        return vl;
+    }
+    set icon(vl: string) {
+        AppCache.getInstance().icon = vl;
+        this.lcStoreSrv.setItem(AVATAR, vl)
+    }
+    //organId
+    get organId() {
+        let chvl = AppCache.getInstance().organId;
+        if (chvl)
+            return chvl;
+        let vl = this.lcStoreSrv.getItem(ORGANID);
+        return vl;
+    }
+    set organId(vl: string) {
+        AppCache.getInstance().organId = vl;
+        this.lcStoreSrv.setItem(ORGANID, vl)
+    }
+    //organId
+    get departmentId() {
+        let chvl = AppCache.getInstance().departmentId;
+        if (chvl)
+            return chvl;
+        let vl = this.lcStoreSrv.getItem(DEPARTMENTID);
+        return vl;
+    }
+    set departmentId(vl: string) {
+        AppCache.getInstance().departmentId = vl;
+        this.lcStoreSrv.setItem(DEPARTMENTID, vl)
+    }
     //loginStyle
     get loginStyle() {
+        let tmp = AppCache.getInstance().loginStyle;
+        if (tmp)
+            return tmp;
         let vl = parseInt(this.lcStoreSrv.getItem(LOGIN_STYLE));
         if (!vl)
             return this.configSrv.loginStyle;
         return vl;
     };
     set loginStyle(vl: number) {
-        if (this.configSrv.loginStyle < 1 || this.configSrv.loginStyle > 2)
-            this.lcStoreSrv.setItem(LOGIN_STYLE, 2)
-        else
-            this.lcStoreSrv.setItem(LOGIN_STYLE, vl)
+        if (this.configSrv.loginStyle < 1 || this.configSrv.loginStyle > 2) {
+            AppCache.getInstance().loginStyle = 2;
+            this.lcStoreSrv.setItem(LOGIN_STYLE, 2);
+        }
+        else {
+            AppCache.getInstance().loginStyle = vl;
+            this.lcStoreSrv.setItem(LOGIN_STYLE, vl);
+        }
     };
     //isMaintaining
     get isMaintaining() {
@@ -116,5 +175,9 @@ export class DessertService {
      */
     restoreCache() {
         AppCache.getInstance().token = this.token;
+        AppCache.getInstance().nickName = this.nickName;
+        AppCache.getInstance().icon = this.icon;
+        AppCache.getInstance().organId = this.organId;
+        AppCache.getInstance().departmentId = this.departmentId;
     }
 }

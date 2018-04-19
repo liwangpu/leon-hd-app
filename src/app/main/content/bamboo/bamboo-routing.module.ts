@@ -10,12 +10,14 @@ import { ProductService } from "../../toolkit/server/webapi/product.service";
 import { OrganComponent } from './organ/organ.component';
 import { OrganDetailComponent } from './organ-detail/organ-detail.component';
 import { OrganService } from "../../toolkit/server/webapi/organ.service";
+import { AccountComponent } from './account/account.component';
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
   , { path: 'app/dashboard', component: DashboardComponent, canActivate: [RouteGuardService] }
   , { path: 'app/products', component: ProductComponent, canActivate: [RouteGuardService] }
   , { path: 'app/organ', component: OrganComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/organ-account', component: AccountComponent, canActivate: [RouteGuardService] }
   , {
     path: 'app/product-detail/:id'
     , component: ProductDetailComponent

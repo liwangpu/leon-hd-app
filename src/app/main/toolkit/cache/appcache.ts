@@ -18,7 +18,15 @@ export class AppCache {
         return this._instance;
     }
 
-
     token: string;
-
+    loginStyle: number;
+    isMaintaining: boolean;
+    maintainingEndDate: Date;
+    language: string;
+    navi: string;
+    nickName: string;
+    icon: string;
+    userId: string;
+    organId: string;
+    departmentId: string;
 }

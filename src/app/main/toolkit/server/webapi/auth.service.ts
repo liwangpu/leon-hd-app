@@ -60,8 +60,8 @@ export class AuthService extends ApiService<IEntitybase> {
      */
     getProfile(): Observable<any> {
         return this.http.get(`${this.config.serverBase}/account/profile`).map(rdata => {
-            this.nickName = rdata['nickName'];
-            this.icon = rdata['icon'];
+            AppCache.getInstance().nickName = rdata['nickname'];
+            AppCache.getInstance().icon = rdata['avatar'];
             return rdata;
         });
     }

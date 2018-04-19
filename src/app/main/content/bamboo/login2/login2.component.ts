@@ -76,7 +76,7 @@ export class Login2Component implements OnInit {
     }
 
     login() {
-       
+
         let loginAsync = () => {
             return new Promise((resolve, reject) => {
                 this.auth.login(this.loginForm.value.account, this.loginForm.value.password).subscribe(rdata => {
@@ -91,8 +91,10 @@ export class Login2Component implements OnInit {
         let getProfileAsync = () => {
             return new Promise((resolve, reject) => {
                 this.auth.getProfile().subscribe(data => {
-                    localStorage.setItem("icon", data['icon']);
-                    localStorage.setItem("nickName", data['nickName']);
+                    this.dessertSrv.nickName = data['nickname'];
+                    this.dessertSrv.icon = data['avatar'];
+                    console.log('login2-page get profile ', data);
+
                     resolve();
                 }, err => {
                     reject(err);
