@@ -34,6 +34,12 @@ import { OrganDepartmentComponent } from './organ-department/organ-department.co
 import { MatSelectModule } from '@angular/material/select';
 import { FuseContactsModule } from "./contacts/contacts.module";
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { OAdminComponent } from './organ-department/o-admin/o-admin.component';
+import { OAccountComponent } from './organ-department/o-account/o-account.component';
+import { OAccountDetailComponent } from './organ/o-account-detail/o-account-detail.component';
+import { AccountComponent } from './account/account.component';
+import { AccountDetailComponent } from './account/account-detail/account-detail.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 @NgModule({
   imports: [
     ServicesModule,
@@ -44,6 +50,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     BrowserAnimationsModule,
     BambooRoutingModule,
     FormsModule,
+    MatDatepickerModule,
     MatSelectModule,
     ReactiveFormsModule,
     MatCheckboxModule,
@@ -64,6 +71,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatInputModule,
     FuseContactsModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OrganDepartmentComponent]
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OrganDepartmentComponent, OAdminComponent, OAccountComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent],
+  entryComponents: [AccountDetailComponent]
 })
 export class BambooModule { }

@@ -22,7 +22,8 @@ export const locale = {
             "InteriorDesign": "室内设计",
             "InteriorDesignSolutions": "方案",
             "InteriorDesignCategories": "分类",
-            "InteriorDesignProducts": "产品"
+            "InteriorDesignProducts": "产品",
+            "Organization": "组织"   
         },
         "glossary": {
             "Product": "产品",
@@ -61,7 +62,8 @@ export const locale = {
             "Search": "搜索",
             "AddProduct": "添加产品",
             "AddOrgan": "添加组织",
-            "Next": "下一步"
+            "Next": "下一步",
+            "OrganOwnerManagement": "管理员设置"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",

@@ -61,6 +61,31 @@
           <mat-cell *matCellDef="let element"> {{element.createdTime|date:'yyyy-MM-dd'}} </mat-cell>
         </ng-container>
 
+        <ng-container cdkColumnDef="buttons">
+          <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+          <mat-cell *cdkCellDef="let element">
+            <div fxFlex="row" fxLayoutAlign="end center">
+              <!-- <button mat-icon-button (click)="$event.stopPropagation();toggleStar(element.id)" aria-label="Toggle star">
+                      <mat-icon >star</mat-icon>
+                      <mat-icon *ngIf="!user.starred.includes(element.id)">star_outline</mat-icon>
+                  </button> -->
+
+              <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation();">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+
+              <mat-menu #moreMenu="matMenu">
+                <button mat-menu-item aria-label="remove" (click)="onEditAdmin(element.id)">
+                  <mat-icon>account_circle</mat-icon>
+                  <span>{{'button.OrganOwnerManagement'|translate}}</span>
+                </button>
+              </mat-menu>
+            </div>
+
+          </mat-cell>
+        </ng-container>
+
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="'/app/organ-detail/'+row.id">
         </mat-row>

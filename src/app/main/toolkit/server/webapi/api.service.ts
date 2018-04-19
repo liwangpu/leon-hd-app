@@ -11,9 +11,9 @@ import { catchError, retry } from 'rxjs/operators';
  */
 export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>> {
     onServiceChange = new BehaviorSubject<Array<T>>([]);
+    header: HttpHeaders;//默认为application/json的Content-Type Header
     private uriBase: string;//webapi基路径 例如:localhost:4200
     protected uriPart: string;//webapi实体路径 例如products
-    protected header: HttpHeaders;//默认为application/json的Content-Type Header
     /**
      * 完整的webapi请求路径
      */
@@ -35,8 +35,6 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<T> | Observable<Observable<T>> | Promise<Observable<T>> {
         let id = route.paramMap.get('id');
-        console.log(111, 'sfsdfs', id);
-
         return this.getEntity<T>(id);
     }
 
@@ -54,7 +52,6 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      */
     protected getEntity<T>(id: number | string): Observable<T> {
         if (id) {
-            console.log(111, 'sdfsd', id);
             return this.httpClient.get<T>(`${this.uri}/${id}`, { headers: this.header }).pipe(
                 // retry(3),
                 catchError(this.handleError)
@@ -123,7 +120,7 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      * 异常控制
      * @param error 
      */
-    protected handleError(error: HttpErrorResponse) {
+    handleError(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.
             console.error('An error occurred:', error.error.message);

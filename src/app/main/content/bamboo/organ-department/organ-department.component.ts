@@ -26,4 +26,7 @@ export class OrganDepartmentComponent implements OnInit {
   ngOnInit() {
   }
 
+  onEditAdmin() {
+    alert(1);
+  }
 }

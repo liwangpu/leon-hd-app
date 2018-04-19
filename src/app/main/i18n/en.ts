@@ -22,7 +22,8 @@ export const locale = {
             "InteriorDesign": "Interior Design",
             "InteriorDesignSolutions": "Solutions",
             "InteriorDesignCategories": "Categories",
-            "InteriorDesignProducts": "Products"
+            "InteriorDesignProducts": "Products",
+            "Organization":"Organization"
         },
         "glossary": {
             "Product": "Product",
@@ -65,7 +66,8 @@ export const locale = {
             "Next": "Next",
             "Search": "Search",
             "AddProduct": "ADD NEW PRODUCT",
-            "AddOrgan": "ADD NEW ORGAN"
+            "AddOrgan": "ADD NEW ORGAN",
+            "OrganOwnerManagement": "Owner Management"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { fuseAnimations } from '../../../../core/animations';
 import { MatPaginator, MatSort } from '@angular/material';
@@ -8,6 +8,10 @@ import { Organization } from "../../../toolkit/models/organization";
 import { OrganService } from "../../../toolkit/server/webapi/organ.service";
 import { PaginatorStore } from "../../../toolkit/common/classes/paginator-store";
 import { DataSource } from '@angular/cdk/collections';
+import { AccountDetailComponent } from "../account/account-detail/account-detail.component";
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { Account } from "../../../toolkit/models/account";
+import { AccountTypeEnums } from "../../../toolkit/enums/enums";
 @Component({
   selector: 'app-organ',
   templateUrl: './organ.component.html',
@@ -15,12 +19,14 @@ import { DataSource } from '@angular/cdk/collections';
   animations: fuseAnimations
 })
 export class OrganComponent implements OnInit {
-  displayedColumns = ['icon', 'name', 'description', 'createdTime'];
+  displayedColumns = ['icon', 'name', 'description', 'createdTime', 'buttons'];
   dataSource: PaginatorStore<Organization>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
-  constructor(private organSrv: OrganService) {
+  @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
+  dialogRef: any;
+  constructor(private organSrv: OrganService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -38,32 +44,32 @@ export class OrganComponent implements OnInit {
     // }
   }
 
+  onEditAdmin(organId: string) {
+    this.organSrv.getById(organId).subscribe(rdata => {
+      let owner = rdata.owner ? rdata.owner : new Account();
+      owner.organizationId = organId;
+      owner.type = AccountTypeEnums.organization;
+      this.dialogRef = this.dialog.open(AccountDetailComponent, {
+        panelClass: 'contact-form-dialog',
+        data: {
+          account: owner
+        }
+      });
+    });
+    // this.dialogRef = this.dialog.open(AccountDetailComponent, {
+    //   panelClass: 'contact-form-dialog',
+    //   data: {
+    //     account: {
+    //       organizationId: organId,
+    //       type: AccountTypeEnums.organization
+    //     }
+    //   }
+    // });
 
-  applyFilter(fvalue: string) {
-    // console.log(111, 'receive', fvalue);
-    // fvalue = fvalue.trim().toLocaleLowerCase();
-    // this.dataSource.filter = fvalue;
-  }
+    // this.dialogRef.afterClosed()
+    //   .subscribe(response => {
+    //     console.log(111);
+    //   });
+  }//onEditAdmin
 
-  isAllSelected() {
-    // const numSelected = this.selection.selected.length;
-    // const numRows = this.dataSource.data.length;
-    // return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    // this.isAllSelected() ?werwer
-    //   this.selection.clear() :
-    //   this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  getData() {
-    // this.dataSource.filteredData = [];
-    // this.dataStore.filter = 'leon';
-  }
-
-  clear() {
-    // this.dataStore.filter = '';
-  }
 }

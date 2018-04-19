@@ -1,4 +1,23 @@
-<mat-drawer-container class="example-container">
-        <mat-drawer mode="side" opened="true">Drawer content</mat-drawer>
-        <mat-drawer-content>Main content</mat-drawer-content>
-      </mat-drawer-container>
+<div class="page-layout simple fullwidth h-100-p" fusePerfectScrollbar>
+
+  <!-- CONTENT -->
+  <div class="content mat-white-bg h-100-p">
+
+    <div fxLayout='row' fxFill>
+      <div fxFlex='250px'>
+        <!-- <fuse-contacts-main-sidenav *fuseIfOnDom [@animate]="{value:'*'}"></fuse-contacts-main-sidenav> -->
+        <app-organ-o-admin></app-organ-o-admin>
+      </div>
+      <div fxFlex class="h-100-p">
+        <mat-drawer-container class="h-100-p organ-account-list">
+          <mat-drawer-content>
+            <app-organ-o-accounts></app-organ-o-accounts>
+          </mat-drawer-content>
+        </mat-drawer-container>
+      </div>
+    </div>
+
+  </div>
+  <!-- / CONTENT -->
+
+</div>
