@@ -30,12 +30,9 @@ import { LoginComponent } from "./login/login.component";
 import { ServicesModule } from "../services/services.module";
 import { OrganComponent } from './organ/organ.component';
 import { OrganDetailComponent } from './organ-detail/organ-detail.component';
-import { OrganDepartmentComponent } from './organ-department/organ-department.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FuseContactsModule } from "./contacts/contacts.module";
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { OAdminComponent } from './organ-department/o-admin/o-admin.component';
-import { OAccountComponent } from './organ-department/o-account/o-account.component';
 import { OAccountDetailComponent } from './organ/o-account-detail/o-account-detail.component';
 import { AccountComponent } from './account/account.component';
 import { AccountDetailComponent } from './account/account-detail/account-detail.component';
@@ -74,7 +71,7 @@ import { DepartmentFormComponent } from './account/department-form/department-fo
     MatInputModule,
     FuseContactsModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OrganDepartmentComponent, OAdminComponent, OAccountComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent],
   entryComponents: [AccountDetailComponent, DepartmentFormComponent]
 })
 export class BambooModule { }

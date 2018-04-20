@@ -24,7 +24,6 @@ import { ActivatedRoute } from "@angular/router";
 export class ProductDetailComponent implements OnInit, OnDestroy {
   product: Product;
   onProductChanged: Subscription;
-  pageType = 'new';
   productForm: FormGroup;
 
   constructor(private productService: ProductService, private formBuilder: FormBuilder, public snackBar: MatSnackBar, private location: Location, private route: ActivatedRoute) {
@@ -33,8 +32,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.product = this.route.snapshot.data.entity;
-    if (this.product.id)
-      this.pageType = 'edit'
     // console.log(111, this.product);
     // Subscribe to update product on changes
     // this.onProductChanged =

@@ -26,6 +26,7 @@ const routes: Routes = [
       entity: ProductService
     }
   }
+  , { path: 'app/product-detail', component: ProductDetailComponent, canActivate: [RouteGuardService] }
   , {
     path: 'app/organ-detail/:id'
     , component: OrganDetailComponent
