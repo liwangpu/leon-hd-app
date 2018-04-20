@@ -1,0 +1,40 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar matDialogTitle class="mat-accent m-0">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span>{{(department?.id?'button.EditDepartment':'button.AddDepartment')|translate}}</span>
+      <button mat-button class="mat-icon-button" (click)="dialogRef.close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+    <form [formGroup]="departForm">
+      <input type="hidden" formControlName="id">
+      <input type="hidden" formControlName="organizationId">
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <mat-icon class="mr-12 mt-12">label</mat-icon>
+        <mat-form-field fxFlex>
+          <input name="name" formControlName="name" matInput placeholder="{{'glossary.Name'|translate}}">
+        </mat-form-field>
+      </div>
+
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <mat-icon class="mr-12 mt-12">description</mat-icon>
+        <mat-form-field fxFlex>
+          <input name="description" formControlName="description" matInput placeholder="{{'glossary.Description'|translate}}">
+        </mat-form-field>
+      </div>
+
+    </form>
+
+  </div>
+
+  <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+
+    <button mat-raised-button class="save-button mat-accent" [disabled]="departForm.invalid" (click)='onSubmit()' aria-label="SAVE">
+      SAVE
+    </button>
+  </div>
+</div>

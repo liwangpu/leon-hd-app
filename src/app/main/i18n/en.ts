@@ -23,7 +23,8 @@ export const locale = {
             "InteriorDesignSolutions": "Solutions",
             "InteriorDesignCategories": "Categories",
             "InteriorDesignProducts": "Products",
-            "Organization":"Organization"
+            "Organization": "Organization",
+            "OrganAccounts": "Account Management"
         },
         "glossary": {
             "Product": "Product",
@@ -60,6 +61,7 @@ export const locale = {
             "Upload": "Upload",
             "Close": "Close",
             "Clear": "Clear",
+            "Edit": "Edit",
             "Cancel": "Cancel",
             "Download": "DownLoad",
             "Confirm": "Confirm",
@@ -67,12 +69,16 @@ export const locale = {
             "Search": "Search",
             "AddProduct": "ADD NEW PRODUCT",
             "AddOrgan": "ADD NEW ORGAN",
-            "OrganOwnerManagement": "Owner Management"
+            "OrganOwnerManagement": "Owner Management",
+            "AddDepartment": "New Department",
+            "EditDepartment": "Edit Department",
+            "AllUsers": "All Users"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",
             "UploadUnSuccessfully": "Files Upload Failed",
             "DeleteSuccessfully": "Delete Successfully",
+            "DeleteError": "Error in the delete process,detail:\"{{value}}\"",
             "OperationError": "Operated Error:{{value}",
             "DeleteConfirm": "Are you sure to delete \"{{value}}\" ?",
             "CopyConfirm": "Are you sure to copy \"{{value}}\" ?",

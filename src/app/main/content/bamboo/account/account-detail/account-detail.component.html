@@ -21,6 +21,27 @@
       <input type="hidden" formControlName="id">
       <input type="hidden" formControlName="organizationId">
       <input type="hidden" formControlName="type">
+
+
+      <!-- <mat-form-field>
+          <mat-select placeholder="Favorite food">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{ food.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start" *ngIf='!hideDepartment'>
+        <mat-icon class="mr-12 mt-12">device_hub</mat-icon>
+        <mat-form-field fxFlex>
+          <mat-select name="departmentId" formControlName="departmentId" placeholder="部门">
+            <mat-option *ngFor="let dev of departments" [value]="dev.id">
+              {{ dev.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
       <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
         <mat-icon class="mr-12 mt-12">star</mat-icon>
         <mat-form-field fxFlex>
@@ -34,8 +55,6 @@
           <input name="mail" formControlName="mail" matInput type="email" placeholder="Email">
         </mat-form-field>
       </div>
-
-
 
       <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
         <mat-icon class="mr-12 mt-12">phone</mat-icon>
@@ -90,7 +109,7 @@
 
   <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
 
-    <button mat-raised-button class="save-button mat-accent" [disabled]="accountForm.invalid" (click)='onSave()' aria-label="SAVE">
+    <button mat-raised-button class="save-button mat-accent" [disabled]="accountForm.invalid" (click)='submit()' aria-label="SAVE">
       SAVE
     </button>
 

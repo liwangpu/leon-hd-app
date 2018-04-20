@@ -26,6 +26,7 @@ export class PaginatorStore<T> extends DataSource<any> {
         this.filterChange.next(vl);
     }
 
+
     constructor(private option: PaginatorStoreOptions<T>) {
         super();
         this.queryParams = { page: this.option.paginator ? this.option.paginator.pageIndex : 1, pageSize: this.option.paginator ? this.option.paginator.pageSize : 10 };
@@ -124,5 +125,6 @@ export interface PaginatorStoreOptions<T> {
     service: IListableService<T>;
     paginator?: MatPaginator;
     sort?: MatSort;
-    searchInputEle?: ElementRef
+    searchInputEle?: ElementRef;
+    queryPlus?: any;
 }

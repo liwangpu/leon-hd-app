@@ -19,35 +19,36 @@ import { AccountTypeEnums } from '../../../toolkit/enums/enums';
 })
 export class AccountComponent implements OnInit {
   dialogRef: any;
+  selectedDepId = 'all';
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  newContact() {
+  newAccount() {
     let account = new Account();
-    // account.organizationId = organId;
-    account.type = AccountTypeEnums.organization;
-    // account.organizationId = organId;
     account.type = AccountTypeEnums.user;
-    this.dialogRef = this.dialog.open(AccountDetailComponent, {
+    let dial = this.dialog.open(AccountDetailComponent, {
       panelClass: 'contact-form-dialog',
       data: {
         account: account
       }
     });
 
-    // this.dialogRef.afterClosed()
-    //   .subscribe((response) => {
-    //     console.log(111);
-    //     // if (!response) {
-    //     //   return;
-    //     // }
+    const obs = dial.componentInstance.onSave.subscribe((res) => {
 
-    //     // this.contactsService.updateContact(response.getRawValue());
-
-    //   });
-
+    });
+    dial.afterClosed().subscribe(() => {
+      obs.unsubscribe();
+    });
   }
+
+  onDepartmentSelect(depId) {
+    this.selectedDepId = depId;
+    console.log(1, 'dep select', depId);
+
+
+
+  }//onDepartmentSelect
 
 }

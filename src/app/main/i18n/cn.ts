@@ -23,7 +23,8 @@ export const locale = {
             "InteriorDesignSolutions": "方案",
             "InteriorDesignCategories": "分类",
             "InteriorDesignProducts": "产品",
-            "Organization": "组织"   
+            "Organization": "组织",
+            "OrganAccounts": "人员管理"
         },
         "glossary": {
             "Product": "产品",
@@ -58,17 +59,22 @@ export const locale = {
             "Upload": "上传附件",
             "Close": "关闭",
             "Clear": "清除",
+            "Edit": "编辑",
             "Cancel": "取消",
             "Search": "搜索",
             "AddProduct": "添加产品",
             "AddOrgan": "添加组织",
             "Next": "下一步",
-            "OrganOwnerManagement": "管理员设置"
+            "OrganOwnerManagement": "管理员设置",
+            "AddDepartment": "添加部门",
+            "EditDepartment": "编辑部门",
+            "AllUsers": "所有人员"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
             "UploadUnSuccessfully": "文件上传失败",
-            "DeleteSuccessfully": "文件删除成功",
+            "DeleteSuccessfully": "删除成功",
+            "DeleteError": "删除过程出现异常,信息:\"{{value}}\"",
             "OperationError": "操作出现异常:{{value}",
             "DeleteConfirm": "您确定要删除 \"{{value}}\" 吗?",
             "CopyConfirm": "您确定要复制 \"{{value}}\" 吗?",

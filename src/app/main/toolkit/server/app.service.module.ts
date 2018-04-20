@@ -15,6 +15,7 @@ import { MaterialService } from './webapi/material.service';
 import { ChartletService } from './webapi/chartlet.service';
 import { ConfigModule } from "../config/config.module";
 import { OrganService } from "./webapi/organ.service";
+import { DepartmentService } from "./webapi/department.service";
 @NgModule({
     imports: [
         ConfigModule
@@ -32,6 +33,7 @@ import { OrganService } from "./webapi/organ.service";
         , FileAssetService
         , MaterialService
         , ChartletService
+        , DepartmentService
         , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
         , { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
     ]

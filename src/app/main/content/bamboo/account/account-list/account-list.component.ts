@@ -1,7 +1,5 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
-// import { ContactsService } from '../contacts.service';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-// import { FuseContactsContactFormDialogComponent } from '../contact-form/contact-form.component';
 import { AccountDetailComponent } from "../account-detail/account-detail.component";
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
@@ -23,21 +21,18 @@ import { MatSort } from '@angular/material';
 export class AccountListComponent implements OnInit {
   @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
   @ViewChild(MatSort) sort: MatSort;
+  @Input() departmentId: string;
   contacts: any;
   user: any;
   dataSource: PaginatorStore<Account> | null;
-  displayedColumns = ['checkbox', 'avatar', 'name', 'email', 'phone', 'jobTitle', 'buttons'];
+  displayedColumns = ['avatar', 'name', 'email', 'phone', 'buttons'];
   selectedContacts: any[];
   checkboxes: {};
-
   onContactsChangedSubscription: Subscription;
   onSelectedContactsChangedSubscription: Subscription;
   onUserDataChangedSubscription: Subscription;
-
   dialogRef: any;
-
   confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
-
   constructor(private accountSrv: AccountService) { }
 
   ngOnInit() {

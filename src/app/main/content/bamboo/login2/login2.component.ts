@@ -93,8 +93,8 @@ export class Login2Component implements OnInit {
                 this.auth.getProfile().subscribe(data => {
                     this.dessertSrv.nickName = data['nickname'];
                     this.dessertSrv.icon = data['avatar'];
+                    this.dessertSrv.organId = data['organizationId'];
                     console.log('login2-page get profile ', data);
-
                     resolve();
                 }, err => {
                     reject(err);

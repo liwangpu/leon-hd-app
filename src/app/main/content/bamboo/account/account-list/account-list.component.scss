@@ -11,10 +11,16 @@ app-account-list {
             }
         }
         .mat-column-avatar {
-            flex: 0 1 64px;
+            flex: 0 1 124px;
+        }
+        .mat-column-name {
+            flex: 0 1 124px;
+        }
+        .mat-column-email {
+            flex: 0 1 124px;
         }
         .mat-column-buttons {
-            flex: 0 1 80px;
+            flex: 0 1 120px;
         }
         .mat-row {
             position: relative;
