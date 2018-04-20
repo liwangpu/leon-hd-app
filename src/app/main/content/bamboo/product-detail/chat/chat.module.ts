@@ -11,21 +11,21 @@ import { FuseChatLeftSidenavComponent } from './sidenavs/left/left.component';
 import { FuseChatRightSidenavComponent } from './sidenavs/right/right.component';
 import { FuseChatContactSidenavComponent } from './sidenavs/right/contact/contact.component';
 
-const routes: Routes = [
-    {
-        path: '**',
-        component: FuseChatComponent,
-        children: [],
-        resolve: {
-            chat: ChatService
-        }
-    }
-];
+// const routes: Routes = [
+//     {
+//         path: '**',
+//         component: FuseChatComponent,
+//         children: [],
+//         resolve: {
+//             chat: ChatService
+//         }
+//     }
+// ];
 
 @NgModule({
     imports: [
         SharedModule,
-        RouterModule.forChild(routes)
+        // RouterModule.forChild(routes)
     ],
     declarations: [
         FuseChatComponent,
@@ -40,7 +40,7 @@ const routes: Routes = [
     providers: [
         ChatService
     ],
-    exports: [FuseChatComponent]
+    exports: [FuseChatComponent, FuseChatLeftSidenavComponent, FuseChatRightSidenavComponent, FuseChatContactSidenavComponent, FuseChatChatsSidenavComponent, FuseChatStartComponent, FuseChatViewComponent]
 })
 export class FuseChatModule {
 }

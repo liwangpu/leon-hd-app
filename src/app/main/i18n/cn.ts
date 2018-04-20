@@ -29,6 +29,7 @@ export const locale = {
         "glossary": {
             "Product": "产品",
             "ProductName": "产品名称",
+            "ProductSpec": "产品规格",
             "ProductDescription": "产品描述",
             "ProductSpecification": "产品规格",
             "Editing": "编辑中",

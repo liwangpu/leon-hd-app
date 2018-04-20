@@ -41,6 +41,10 @@ import { DepartmentCardComponent } from './account/department-card/department-ca
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { DepartmentFormComponent } from './account/department-form/department-form.component';
 import { FuseChatModule } from "./product-detail/chat/chat.module";
+import { SpecsNavLeftComponent } from './product-detail/specs-navs/specs-nav-left/specs-nav-left.component';
+import { SpecsNavRightComponent } from './product-detail/specs-navs/specs-nav-right/specs-nav-right.component';
+import { SpecNavLeftProductComponent } from './product-detail/specs-navs/specs-nav-left/spec-nav-left-product/spec-nav-left-product.component';
+import { SpecNavLeftSpecsComponent } from './product-detail/specs-navs/specs-nav-left/spec-nav-left-specs/spec-nav-left-specs.component';
 
 
 @NgModule({
@@ -75,7 +79,7 @@ import { FuseChatModule } from "./product-detail/chat/chat.module";
     FuseContactsModule,
     FuseChatModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, SpecsNavLeftComponent, SpecsNavRightComponent, SpecNavLeftProductComponent, SpecNavLeftSpecsComponent],
   entryComponents: [AccountDetailComponent, DepartmentFormComponent]
 })
 export class BambooModule { }

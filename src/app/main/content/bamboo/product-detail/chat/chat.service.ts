@@ -20,6 +20,7 @@ export class ChatService implements Resolve<any>
     onRightSidenavViewChanged = new Subject<any>();
 
     constructor(private http: HttpClient) {
+        this.user = { mood: 'dsfg', status: 'wer' };
     }
 
     /**

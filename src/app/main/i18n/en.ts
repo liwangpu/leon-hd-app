@@ -29,6 +29,7 @@ export const locale = {
         "glossary": {
             "Product": "Product",
             "ProductName": "Product Name",
+            "ProductSpec": "Product Specification",
             "ProductDescription": "Product Description",
             "ProductSpecification": "Specs",
             "Editing": "Editing",
