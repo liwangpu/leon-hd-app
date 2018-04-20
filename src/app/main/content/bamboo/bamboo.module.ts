@@ -40,9 +40,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DepartmentCardComponent } from './account/department-card/department-card.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { DepartmentFormComponent } from './account/department-form/department-form.component';
-import { LeftComponent } from './product-detail/spec-navs/left/left.component';
-import { RightComponent } from './product-detail/spec-navs/right/right.component';
-import { SpecListComponent } from './product-detail/spec-navs/left/spec-list/spec-list.component';
+import { FuseChatModule } from "./product-detail/chat/chat.module";
+
+
 @NgModule({
   imports: [
     ServicesModule,
@@ -72,9 +72,10 @@ import { SpecListComponent } from './product-detail/spec-navs/left/spec-list/spe
     MatFormFieldModule,
     CdkTableModule,
     MatInputModule,
-    FuseContactsModule
+    FuseContactsModule,
+    FuseChatModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, LeftComponent, RightComponent, SpecListComponent],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent],
   entryComponents: [AccountDetailComponent, DepartmentFormComponent]
 })
 export class BambooModule { }
