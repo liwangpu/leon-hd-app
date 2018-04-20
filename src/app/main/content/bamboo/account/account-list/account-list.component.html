@@ -1,59 +1,45 @@
 <mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}" matSort>
 
-  <!-- Avatar Column -->
-  <ng-container cdkColumnDef="avatar">
-    <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
-    <mat-cell *cdkCellDef="let contact">
-      <img class="avatar" *ngIf="contact.avatar" [alt]="contact.name" [src]="contact.avatar" />
+  <ng-container matColumnDef="icon">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <!-- <img class="product-image" [src]="'assets/images/ecommerce/product-image-placeholder.png'"> -->
+      <mat-icon style="font-size: 48px;">account_circle</mat-icon>
     </mat-cell>
   </ng-container>
 
-  <!-- Name Column -->
-  <ng-container cdkColumnDef="name">
-    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Name</mat-header-cell>
-    <mat-cell *cdkCellDef="let contact">
-      <p class="text-truncate font-weight-600">{{contact.name}} {{contact.lastName}}</p>
-    </mat-cell>
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'glossary.Name'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
   </ng-container>
 
-  <!-- Email Column -->
-  <ng-container cdkColumnDef="email">
-    <mat-header-cell *cdkHeaderCellDef mat-sort-header>email</mat-header-cell>
-    <mat-cell *cdkCellDef="let contact" fxShow.gt-sm>
-      <p class="email text-truncate">
-        {{contact.email}}
-      </p>
-    </mat-cell>
+  <ng-container matColumnDef="phone">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'glossary.Phone'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
   </ng-container>
 
-  <!-- Phone Column -->
-  <ng-container cdkColumnDef="phone">
-    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Phone</mat-header-cell>
-    <mat-cell *cdkCellDef="let contact" fxHide fxShow.gt-md>
-      <p class="phone text-truncate">
-        {{contact.phone}}
-      </p>
-    </mat-cell>
+  <ng-container matColumnDef="mail">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'glossary.Mail'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.mail}} </mat-cell>mail
   </ng-container>
-
   <!-- Buttons Column -->
   <ng-container cdkColumnDef="buttons">
     <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
     <mat-cell *cdkCellDef="let contact">
       <div fxFlex="row" fxLayoutAlign="end center">
-        <button mat-icon-button (click)="$event.stopPropagation();toggleStar(contact.id)" aria-label="Toggle star">
-          <mat-icon *ngIf="user.starred.includes(contact.id)">star</mat-icon>
-          <mat-icon *ngIf="!user.starred.includes(contact.id)">star_outline</mat-icon>
-        </button>
 
         <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation();">
           <mat-icon>more_vert</mat-icon>
         </button>
 
         <mat-menu #moreMenu="matMenu">
-          <button mat-menu-item aria-label="remove" (click)="deleteContact(contact)">
+          <button mat-menu-item (click)="editAccount(contact)">
+            <mat-icon>mode_edit</mat-icon>
+            {{'button.Edit'|translate}}
+          </button>
+          <button mat-menu-item aria-label="remove" (click)="deleteAccount(contact)">
             <mat-icon>delete</mat-icon>
-            <span>Remove</span>
+            {{'button.Delete'|translate}}
           </button>
         </mat-menu>
       </div>
@@ -62,7 +48,6 @@
   </ng-container>
 
   <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *cdkRowDef="let contact; columns: displayedColumns;" class="contact" (click)="editContact(contact)" [ngClass]="{'mat-light-blue-50-bg':checkboxes[contact.id]}"
-    matRipple [@animate]="{value:'*',params:{y:'100%'}}">
+  <mat-row *cdkRowDef="let contact; columns: displayedColumns;" class="contact" (click)="editAccount(contact)" matRipple [@animate]="{value:'*',params:{y:'100%'}}">
   </mat-row>
 </mat-table>

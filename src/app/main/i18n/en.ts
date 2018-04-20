@@ -44,6 +44,8 @@ export const locale = {
             "FileCount": "Files",
             "Organ": "Organiztion",
             "Name": "Name",
+            "Phone": "Phone",
+            "Mail": "Mail",
             "Description": "Description",
             "CreatedTime": "Created Time",
             "NewProduct": "NEW PRODUCT",

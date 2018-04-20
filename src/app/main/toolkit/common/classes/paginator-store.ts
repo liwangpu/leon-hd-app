@@ -119,6 +119,10 @@ export class PaginatorStore<T> extends DataSource<any> {
         this.destroy$.next(true);
         this.destroy$.unsubscribe();
     }
+
+    refresh() {
+        this.query();
+    }
 }//PaginatorStore
 
 export interface PaginatorStoreOptions<T> {

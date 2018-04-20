@@ -42,6 +42,8 @@ export const locale = {
             "Status": "状态",
             "Organ": "组织",
             "Name": "名称",
+            "Phone": "电话",
+            "Mail": "邮件",
             "Description": "描述",
             "CreatedTime": "创建时间",
             "NewProduct": "新产品",

@@ -30,6 +30,17 @@ export class AccountService extends ApiService<Account> {
     }//registAccount
 
     /**
+     * 根据Id获取用户信息
+     * @param id 
+     */
+    getById(id: string | number): Observable<Account> {
+        if (!id) {
+            return Observable.of(new Account());
+        }
+        return super.getEntity(id);
+    }
+
+    /**
      * 更新用户
      * @param entity 
      */

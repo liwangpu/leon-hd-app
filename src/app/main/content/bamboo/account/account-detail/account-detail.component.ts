@@ -52,7 +52,7 @@ export class AccountDetailComponent implements OnInit {
       organizationId: [''],
       departmentId: [''],
       type: [''],
-      name: ['组织管理员'],
+      name: [''],
       mail: ['', [Validators.required]],
       phone: [''],
       password: [''],
@@ -73,5 +73,7 @@ export class AccountDetailComponent implements OnInit {
       console.log('nnn', err);
       this.snackBarSrv.simpleBar('保存失败:' + err);
     });
+
+    // this.onSave.next(this.account);
   }//onSave
 }

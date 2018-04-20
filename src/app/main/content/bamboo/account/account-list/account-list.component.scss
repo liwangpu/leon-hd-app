@@ -10,17 +10,20 @@ app-account-list {
                 display: none !important; //fix for broken rendering
             }
         }
-        .mat-column-avatar {
-            flex: 0 1 124px;
+        .mat-column-icon {
+            flex: 0 1 80px;
         }
-        .mat-column-name {
-            flex: 0 1 124px;
-        }
-        .mat-column-email {
-            flex: 0 1 124px;
-        }
+        // .mat-column-name {
+        //     flex: 0 1 150px;
+        // }
+        // .mat-column-phone {
+        //     flex: 0 1 150px;
+        // }
+        // .mat-column-mail {
+        //     flex: 0 1 150px;
+        // }
         .mat-column-buttons {
-            flex: 0 1 120px;
+            // flex: 0 1 120px;
         }
         .mat-row {
             position: relative;
