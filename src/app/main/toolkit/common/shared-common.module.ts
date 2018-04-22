@@ -29,6 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { DownloadService } from './services/download.service';
 import { InputCtDirective } from './directives/input-ct.directive';
 import { AppServiceModule } from '../server/app.service.module';
+import { MomentService } from "./services/moment.service";
+import { DatePipe } from "@angular/common";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -66,8 +69,10 @@ import { AppServiceModule } from '../server/app.service.module';
     SnackbarService,
     TranslateService,
     FilenamePipe,
-    DownloadService
-  ]
+    DownloadService,
+    DatePipe,
+    MomentService
+  ] 
   , exports: [
     LitimgListComponent,
     StepperComponent,
