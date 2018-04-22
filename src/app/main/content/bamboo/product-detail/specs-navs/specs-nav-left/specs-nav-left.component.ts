@@ -16,7 +16,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { fuseAnimations } from '../../../../../../core/animations';
-import { ChatService } from '../../chat/chat.service';
+import { ProductDetailService } from "../../product-detail.service";
 
 @Component({
   selector: 'app-specs-nav-left',
@@ -27,12 +27,12 @@ import { ChatService } from '../../chat/chat.service';
 export class SpecsNavLeftComponent implements OnInit {
   view: string;
 
-  constructor(private chatService: ChatService) {
-    this.view = 'chats';
+  constructor(private detailService: ProductDetailService) {
+    this.view = 'specs';
   }
 
   ngOnInit() {
-    this.chatService.onLeftSidenavViewChanged.subscribe(view => {
+    this.detailService.onLeftSidenavViewChanged.subscribe(view => {
       this.view = view;
     });
   }

@@ -12,7 +12,7 @@
         </button>
       </div>
       <div>
-        <span class="bar-title">{{'glossary.Product'|translate}}</span>
+        <span class="bar-title">{{'glossary.ProductSpec'|translate}}</span>
       </div>
     </mat-toolbar-row>
     <!-- / TOOLBAR TOP -->
@@ -36,7 +36,7 @@
   <!-- USER MOOD -->
   <mat-card>
 
-    <form [formGroup]="productForm" fxLayout="column">
+    <form [formGroup]="productSpecForm" fxLayout="column">
       <mat-form-field class="mb-24" fxFlex="0 1 auto">
         <input matInput placeholder="{{'glossary.Name'|translate}}" name="name" formControlName="name" required/>
       </mat-form-field>
@@ -47,7 +47,7 @@
 
     <div fxLayout='row' fxLayoutAlign='end start'>
       <div>
-        <button mat-button (click)='onSaveProduct()'>{{'button.Save'|translate}}</button>
+        <button mat-button (click)='onSaveProductSpec()'>{{'button.Save'|translate}}</button>
       </div>
     </div>
   </mat-card>

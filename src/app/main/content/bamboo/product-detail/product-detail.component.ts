@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ChatService } from './chat/chat.service';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, AfterContentInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 import { fuseAnimations } from '../../../../core/animations';
-
+import { ProductDetailService } from "./product-detail.service";
+import { Product } from '../../../toolkit/models/product';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -9,17 +10,32 @@ import { fuseAnimations } from '../../../../core/animations';
   encapsulation: ViewEncapsulation.None,
   animations: fuseAnimations
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, AfterViewInit, AfterContentInit {
+
   selectedChat: any;
 
-  constructor(private chatService: ChatService) {
+  constructor(private detailService: ProductDetailService, private route: ActivatedRoute) {
+    let entity = this.route.snapshot.data.entity ? this.route.snapshot.data.entity : new Product();
+    this.detailService.product = entity;
   }
 
   ngOnInit() {
-    this.chatService.onChatSelected
-      .subscribe(chatData => {
-        this.selectedChat = chatData;
-      });
+    // this.chatService.onChatSelected
+    //   .subscribe(chatData => {
+    //     this.selectedChat = chatData;
+    //   });
+
+  }
+
+  ngAfterViewInit(): void {
+
+  }
+
+  ngAfterContentInit(): void {
+    // this.detailService.AfterProductChange.next(this.detailService.product);
+    // setTimeout(() => {
+    //   this.detailService.AfterProductChange.next(this.detailService.product);
+    // }, 1000);
   }
 
 }

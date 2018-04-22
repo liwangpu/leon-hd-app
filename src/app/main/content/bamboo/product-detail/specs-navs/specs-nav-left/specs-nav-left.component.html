@@ -1,13 +1,10 @@
 <div [ngSwitch]="view" class="views">
-  <app-spec-nav-left-specs class="view" *ngSwitchCase="'chats'" [@slideInRight]>
+  <app-spec-nav-left-specs class="view" *ngSwitchCase="'specs'" [@slideInRight]>
   </app-spec-nav-left-specs>
 
-  <app-spec-nav-left-product class="view" *ngSwitchCase="'user'" [@slideInLeft]>
+  <app-spec-nav-left-product class="view" *ngSwitchCase="'product'" [@slideInLeft]>
   </app-spec-nav-left-product>
 
-  <!-- <app-spec-nav-left-product class="view" [@slideInRight]>
-  </app-spec-nav-left-product> -->
-
-  <!-- <app-spec-nav-left-product class="view" [@slideInLeft]>
-  </app-spec-nav-left-product> -->
+  <app-spec-nav-left-spec class="view" *ngSwitchCase="'spec'" [@slideInLeft]>
+  </app-spec-nav-left-spec>
 </div>

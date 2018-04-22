@@ -83,7 +83,8 @@ export const locale = {
             "CopyConfirm": "您确定要复制 \"{{value}}\" 吗?",
             "Cannot_Add_Cuz_UnSaving": "请先保存当前的记录",
             "Upload_Successflly": "\"{{value}}\" 上传成功",
-            "Upload_Failed": "\"{{value}}\" 上传失败"
+            "Upload_Failed": "\"{{value}}\" 上传失败",
+            "SaveSuccessfully": "保存成功"
         },
         "tips": {
             "DragOrClickHere": "点击或拖拽文件到这里",

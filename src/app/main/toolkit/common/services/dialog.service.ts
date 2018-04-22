@@ -27,5 +27,5 @@ export class DialogService {
       height: height ? `${height}px` : '600px',
       data: { title: title, step: step }
     });
-  }
+  }//stepperUploader
 }

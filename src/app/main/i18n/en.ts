@@ -55,7 +55,7 @@ export const locale = {
             "OrganDescription": "Organiztion Description",
             "BasicInfo": "Basic Info",
             "Album": "Album",
-            "OrganDepartment": "Department",
+            "OrganDepartment": "Department"
         },
         "button": {
             "Save": "Save",
@@ -87,7 +87,8 @@ export const locale = {
             "CopyConfirm": "Are you sure to copy \"{{value}}\" ?",
             "Cannot_Add_Cuz_UnSaving": "Please save the current new item first",
             "Upload_Successflly": "\"{{value}}\" upload Successfully",
-            "Upload_Failed": "\"{{value}}\" upload failed"
+            "Upload_Failed": "\"{{value}}\" upload failed",
+            "SaveSuccessfully": "Save Successfully"
         },
         "tips": {
             "DragOrClickHere": "Click or Drop your files here",
