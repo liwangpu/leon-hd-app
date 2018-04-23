@@ -4,6 +4,7 @@ import { fuseAnimations } from '../../../../core/animations';
 import { ProductDetailService } from "./product-detail.service";
 import { Product } from '../../../toolkit/models/product';
 import { FileAsset } from '../../../toolkit/models/fileasset';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -19,11 +20,10 @@ export class ProductDetailComponent implements OnInit, AfterViewInit, AfterConte
   }
 
   ngOnInit() {
-    this.detailService.onProductSpecSelected
-      .subscribe(charlets => {
-        this.productSpecCharlets = charlets;
-      });
-
+    // this.detailService.onProductSpecSelected
+    //   .subscribe(charlets => {
+    //     this.productSpecCharlets = charlets;
+    //   });
   }
 
   ngAfterViewInit(): void {

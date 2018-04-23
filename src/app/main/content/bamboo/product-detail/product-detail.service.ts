@@ -26,7 +26,7 @@ export class ProductDetailService implements Resolve<any>
     currentEditSpec: ProductSpec;
     afterProductChange = new Subject<Product>();
     afterProductSpecChange = new Subject<ProductSpec>();
-    onProductSpecSelected = new BehaviorSubject<Array<FileAsset>>(null);
+    onProductSpecSelected = new BehaviorSubject<ProductSpec>(null);
     constructor(private http: HttpClient) {
         this.user = { mood: 'dsfg', status: 'wer' };
     }

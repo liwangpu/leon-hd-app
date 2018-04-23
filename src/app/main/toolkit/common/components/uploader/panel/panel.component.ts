@@ -47,14 +47,11 @@ export class PanelComponent implements OnInit, OnChanges {
     this.uploader = new FileUploader({ url: this.url, queueLimit: this.maxFileLimit ? this.maxFileLimit : 10, headers: [{ name: 'Authorization', value: `bearer ${AppCache.getInstance().token}` }], removeAfterUpload: true });
     //订阅文件上传成功事件
     this.uploader.onCompleteItem = ((item: FileItem, response: string, status: number, headers: ParsedResponseHeaders) => {
-      let asset = JSON.parse(response);
-
-      // console.log(111,'file',asset);
+      const asset = JSON.parse(response);
       asset.name = this.getRegistryFileName(item.file.name);
       this.downloadFiles.push({ id: asset.id, name: asset.name, url: asset.url });
       this.refreshPanel();
       this.fileSrv.update(asset).subscribe(rdata => {
-        // console.log(111,'file-111',asset);
         this.onUpload.emit({ fileName: asset.name, asset: asset });
       }, err => {
         this.tanslateSrv.get('message.OperationError', { value: name }).subscribe(msg => {

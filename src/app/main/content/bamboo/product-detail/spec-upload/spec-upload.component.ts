@@ -23,7 +23,7 @@ export class SpecUploadComponent implements OnInit {
   materialFiles: Array<Material> = [];
   iconFiles: Array<FileAsset> = [];
   chartletFiles: Array<FileAsset> = [];
-  fileUrl: string = `${this.configSrv.serverBase}/files/upload`;
+  fileUrl: string = `${this.configSrv.serverBase}/files/UploadFormFile`;
   serverBase: string = `${this.configSrv.serverBase}`;
   private staticMeshId: string;
   private isMeshSatisfy: boolean;
@@ -69,7 +69,6 @@ export class SpecUploadComponent implements OnInit {
 
   onMaterialSatisfy() {
     this.isMaterialSatisfy = true;
-    console.log(111, 'material file satisfy');
   }
   /**
    * 上传模型
@@ -114,6 +113,7 @@ export class SpecUploadComponent implements OnInit {
     updateMeshAsync().then(updateSpecAsync).then(transAsync).then((msg: string) => {
       this.snackbarSrv.simpleBar(msg);
     });
+
 
   }//onUploadMess
 
@@ -247,9 +247,11 @@ export class SpecUploadComponent implements OnInit {
     this.chartletSrv.UploadChartlet(durl, this.productSpec.id, file.asset.id).subscribe(() => {
       this.translate.get('message.UploadSuccessfully').subscribe(msg => {
         this.snackbarSrv.simpleBar(msg);
+        console.log(111, 'after upload success', msg);
       });
     }, err => {
       this.snackbarSrv.simpleBar(err);
+      console.log(111, 'after upload error', err);
     });
   }
 

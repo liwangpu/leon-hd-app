@@ -122,7 +122,7 @@ export class SpecNavLeftSpecsComponent implements OnInit, AfterViewInit, OnDestr
 
   onEditProductSpecPics(specId: string) {
     this.productSpecSrv.getById(specId).subscribe(resSpec => {
-      this.detailService.onProductSpecSelected.next(resSpec.charlets ? resSpec.charlets : []);
+      this.detailService.onProductSpecSelected.next(resSpec);
     });
 
 
