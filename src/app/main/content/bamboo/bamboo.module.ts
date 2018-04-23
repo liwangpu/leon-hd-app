@@ -40,7 +40,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DepartmentCardComponent } from './account/department-card/department-card.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { DepartmentFormComponent } from './account/department-form/department-form.component';
-import { FuseChatModule } from "./product-detail/chat/chat.module";
 import { SpecsNavLeftComponent } from './product-detail/specs-navs/specs-nav-left/specs-nav-left.component';
 import { SpecsNavRightComponent } from './product-detail/specs-navs/specs-nav-right/specs-nav-right.component';
 import { SpecNavLeftProductComponent } from './product-detail/specs-navs/specs-nav-left/spec-nav-left-product/spec-nav-left-product.component';
@@ -83,8 +82,7 @@ import { SpecCharletsComponent } from './product-detail/spec-charlets/spec-charl
     MatFormFieldModule,
     CdkTableModule,
     MatInputModule,
-    FuseContactsModule,
-    FuseChatModule
+    FuseContactsModule
   ],
   declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, SpecsNavLeftComponent, SpecsNavRightComponent, SpecNavLeftProductComponent, SpecNavLeftSpecsComponent, SpecNavLeftSpecComponent, SpecUploadComponent, SpecCharletsComponent],
   entryComponents: [AccountDetailComponent, DepartmentFormComponent, SpecUploadComponent],

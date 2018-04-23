@@ -1,8 +1,6 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-// import { ContactsService } from './contacts.service';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { fuseAnimations } from '../../../../core/animations';
 import { FormControl, FormGroup } from '@angular/forms';
-// import { FuseContactsContactFormDialogComponent } from './contact-form/contact-form.component';
 import { MatDialog } from '@angular/material';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -12,7 +10,7 @@ import { Account } from "../../../toolkit/models/account";
 import { AccountTypeEnums } from '../../../toolkit/enums/enums';
 import { DessertService } from "../../services/dessert.service";
 import { MomentService } from "../../../toolkit/common/services/moment.service";
-
+import { AccountListComponent } from "./account-list/account-list.component";
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -23,6 +21,7 @@ import { MomentService } from "../../../toolkit/common/services/moment.service";
 export class AccountComponent implements OnInit {
   dialogRef: any;
   selectedDepId = 'all';
+  @ViewChild('accList') accList: AccountListComponent;
   constructor(public dialog: MatDialog, private dessertSrv: DessertService, private momentSrv: MomentService) { }
 
   ngOnInit() {
@@ -43,7 +42,8 @@ export class AccountComponent implements OnInit {
     });
 
     const obs = dial.componentInstance.onSave.subscribe((res) => {
-
+      // this.dataSource.refresh();
+      this.accList.refresh();
     });
     dial.afterClosed().subscribe(() => {
       obs.unsubscribe();

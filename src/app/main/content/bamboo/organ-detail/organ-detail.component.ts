@@ -12,6 +12,7 @@ import { AccountService } from '../../../toolkit/server/webapi/account.service';
 import { DatePipe } from "@angular/common";
 import { MomentService } from "../../../toolkit/common/services/moment.service";
 import { TranslateService } from '@ngx-translate/core';
+import { AccountTypeEnums } from '../../../toolkit/enums/enums';
 @Component({
   selector: 'app-organ-detail',
   templateUrl: './organ-detail.component.html',
@@ -84,6 +85,7 @@ export class OrganDetailComponent implements OnInit {
           acc.mail = this.organ.mail;
           acc.password = '1111';
           acc.name = '组织管理员';
+          acc.type=AccountTypeEnums.organization;
           acc.activationTime = this.momentSrv.addDaysTransform(new Date(), -1, 'yyyy-MM-dd');
           acc.expireTime = this.momentSrv.addYearsTransform(new Date(), 10, 'yyyy-MM-dd');
           this.accountSrv.regist(acc).subscribe(resAccount => {

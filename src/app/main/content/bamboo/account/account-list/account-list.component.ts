@@ -41,6 +41,10 @@ export class AccountListComponent implements OnInit, OnChanges {
     }
   }
 
+  refresh() {
+    this.dataSource.refresh();
+  }
+
   editAccount(acc: Account) {
     this.accountSrv.getById(acc.id).subscribe(rdata => {
       rdata.organizationId = this.dessertSrv.organId;

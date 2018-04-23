@@ -53,7 +53,6 @@ export class OrganComponent implements OnInit {
       owner.organizationId = organId;
       owner.type = AccountTypeEnums.organization;
 
-      // console.log(1111, 'resAccount', owner);
       this.dialogRef = this.dialog.open(AccountDetailComponent, {
         panelClass: 'contact-form-dialog',
         data: {

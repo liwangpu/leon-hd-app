@@ -96,6 +96,7 @@ export const locale = {
             "WaitUploadCount": "文件上传失败",
             "Name": "名称",
             "File": "文件",
+            "UploadFile": "上传文件",
             "Action": "操作",
             "ItemPerPage": "每页记录",
             "UploadMesh": "上传模型文件",

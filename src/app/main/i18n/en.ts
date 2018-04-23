@@ -100,6 +100,7 @@ export const locale = {
             "WaitUploadCount": "File Wait Upload",
             "Name": "Name",
             "File": "File",
+            "UploadFile": "Upload File",
             "Action": "Action",
             "ItemPerPage": "items per page",
             "UploadMesh": "Upload Static Mesh",

@@ -38,9 +38,6 @@ export class SpecUploadComponent implements OnInit {
   ngOnInit() {
     // let id = 'G6U786658EA398';
     this.productSpeServ.getById(this.productSpec.id).subscribe(res => {
-
-      console.log(111, 'get spec data', res);
-
       this.productSpec = res;
       //用if减少赋值次数,减少OnChange触发次数
       if (res.staticMeshes && res.staticMeshes.length)
@@ -49,11 +46,9 @@ export class SpecUploadComponent implements OnInit {
         this.iconFiles = [res.iconAsset];
       if (res.charlets && res.charlets.length)
         this.chartletFiles = res.charlets;
-      if (this.meshFiles.length) {
+      if (this.meshFiles && this.meshFiles.length) {
         this.staticMeshId = this.meshFiles[0].id;
-        this.meshSrv.getById(this.staticMeshId).subscribe(mas => {
-          this.materialFiles = mas.materials ? mas.materials : [];
-        });
+        this.materialFiles = this.meshFiles[0].materials ? this.meshFiles[0].materials : [];
       }
     });
   }//ngOnInit
@@ -86,12 +81,40 @@ export class SpecUploadComponent implements OnInit {
     mesh.id = '';
     mesh.productSpecId = this.productSpec.id;
     mesh.name = file.fileName;
-    this.meshSrv.update(mesh).subscribe(ass => {
-      this.staticMeshId = ass.id;
-      this.translate.get('message.UploadSuccessfully', { value: file.fileName }).subscribe((msg) => {
-        this.snackbarSrv.simpleBar(msg);
-      })
+    let updateMeshAsync = () => {
+      return new Promise((resolve, reject) => {
+        this.meshSrv.update(mesh).subscribe(resMesh => {
+          this.staticMeshId = resMesh.id;
+          resMesh.fileAssetId = file.asset.id;
+          resolve(resMesh);
+        }, err => {
+          reject(err);
+        });
+      });//Promise
+    };//updateMeshAsync
+
+    let updateSpecAsync = (resMesh) => {
+      return new Promise((resolve, reject) => {
+        this.productSpeServ.uploadMesh({ productSpecId: this.productSpec.id, assetId: resMesh.id }).subscribe(() => {
+          resolve({ k: 'message.UploadSuccessfully' });
+        }, err => {
+          reject({ k: 'message.OperationError', v: err });
+        });
+      });//Promise 
+    };//updateSpecAsync
+
+    let transAsync = (msgObj: { k: string, v: string }) => {
+      return new Promise((resolve, reject) => {
+        this.translate.get(msgObj.k, msgObj.v).subscribe(msg => {
+          resolve(msg);
+        });
+      });//Promise 
+    };//transAsync
+
+    updateMeshAsync().then(updateSpecAsync).then(transAsync).then((msg: string) => {
+      this.snackbarSrv.simpleBar(msg);
     });
+
   }//onUploadMess
 
   /**
@@ -99,13 +122,28 @@ export class SpecUploadComponent implements OnInit {
    * @param id 
    */
   onDeleteMesh(id: string) {
-    this.meshSrv.delete(id).subscribe(() => {
-      this.translate.get('message.DeleteSuccessfully').subscribe(msg => {
-        this.snackbarSrv.simpleBar(msg);
+    let deleteSpecMeshAsync = () => {
+      return new Promise((resolve, reject) => {
+        this.productSpeServ.deleteMesh({ productSpecId: this.productSpec.id, assetId: id }).subscribe(() => {
+          resolve({ k: 'message.UploadSuccessfully' });
+        }, err => {
+          reject({ k: 'message.OperationError', v: err });
+        });
       });
-    }, err => {
-      this.snackbarSrv.simpleBar(err);
+    };//deleteSpecMeshAsync
+
+    let transAsync = (msgObj: { k: string, v: string }) => {
+      return new Promise((resolve, reject) => {
+        this.translate.get(msgObj.k, msgObj.v).subscribe(msg => {
+          resolve(msg);
+        });
+      });//Promise 
+    };//transAsync
+
+    deleteSpecMeshAsync().then(transAsync).then((msg: string) => {
+      this.snackbarSrv.simpleBar(msg);
     });
+
   }//onDeleteMesh
 
   /**
@@ -118,10 +156,38 @@ export class SpecUploadComponent implements OnInit {
     material.id = '';
     material.staticMeshId = this.staticMeshId;
     material.name = file.fileName;
-    this.materialSrv.create(material).subscribe(ass => {
-      this.translate.get('message.UploadSuccessfully', { value: file.fileName }).subscribe((msg) => {
-        this.snackbarSrv.simpleBar(msg);
-      })
+
+    let uploadMaterialAsync = () => {
+      return new Promise((resolve, reject) => {
+        this.materialSrv.create(material).subscribe(resMaterial => {
+          resolve(resMaterial);
+        }, err => {
+          reject(err);
+        });
+      });
+    };//uploadMaterialAsync
+
+    let updateMaterialAsync = (resMaterial) => {
+      return new Promise((resolve, reject) => {
+        this.productSpeServ.uploadMaterial({ productSpecId: this.productSpec.id, assetId: resMaterial.id, staticMeshId: this.staticMeshId }).subscribe(() => {
+          resolve({ k: 'message.UploadSuccessfully' });
+        }, err => {
+          reject({ k: 'message.OperationError', v: err });
+        });
+      });//Promise 
+    };//updateMaterialAsync
+
+
+    let transAsync = (msgObj: { k: string, v: string }) => {
+      return new Promise((resolve, reject) => {
+        this.translate.get(msgObj.k, msgObj.v).subscribe(msg => {
+          resolve(msg);
+        });
+      });//Promise 
+    };//transAsync
+
+    uploadMaterialAsync().then(updateMaterialAsync).then(transAsync).then((msg: string) => {
+      this.snackbarSrv.simpleBar(msg);
     });
   }//onUploadMaterial
 
@@ -130,12 +196,27 @@ export class SpecUploadComponent implements OnInit {
    * @param id 
    */
   onDeleteMaterial(id: string) {
-    this.materialSrv.delete(id).subscribe(() => {
-      this.translate.get('message.DeleteSuccessfully').subscribe(msg => {
-        this.snackbarSrv.simpleBar(msg);
-      });
-    }, err => {
-      this.snackbarSrv.simpleBar(err);
+
+    let deleteMaterialAsync = () => {
+      return new Promise((resolve, reject) => {
+        this.productSpeServ.deleteMaterial({ productSpecId: this.productSpec.id, assetId: id, staticMeshId: this.staticMeshId }).subscribe(() => {
+          resolve({ k: 'message.UploadSuccessfully' });
+        }, err => {
+          reject({ k: 'message.OperationError', v: err });
+        });
+      });//Promise 
+    };//deleteMaterialAsync
+
+    let transAsync = (msgObj: { k: string, v: string }) => {
+      return new Promise((resolve, reject) => {
+        this.translate.get(msgObj.k, msgObj.v).subscribe(msg => {
+          resolve(msg);
+        });
+      });//Promise 
+    };//transAsync
+
+    deleteMaterialAsync().then(transAsync).then((msg: string) => {
+      this.snackbarSrv.simpleBar(msg);
     });
   }//onDeleteMaterial
 
@@ -168,7 +249,6 @@ export class SpecUploadComponent implements OnInit {
         this.snackbarSrv.simpleBar(msg);
       });
     }, err => {
-      console.log(111, 'upload icon error', err);
       this.snackbarSrv.simpleBar(err);
     });
   }
