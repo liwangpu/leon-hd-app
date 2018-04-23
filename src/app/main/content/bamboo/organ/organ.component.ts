@@ -46,16 +46,20 @@ export class OrganComponent implements OnInit {
 
   onEditAdmin(organId: string) {
     this.organSrv.getById(organId).subscribe(resAccount => {
-      console.log(1111, 'resAccount', resAccount);
-      // let owner = rdata.owner ? rdata.owner : new Account();
-      // owner.organizationId = organId;
-      // owner.type = AccountTypeEnums.organization;
-      // this.dialogRef = this.dialog.open(AccountDetailComponent, {
-      //   panelClass: 'contact-form-dialog',
-      //   data: {
-      //     account: owner
-      //   }
-      // });
+
+      let owner = resAccount.owner ? resAccount.owner : new Account();
+      if (!owner.id)
+        owner.name = '组织管理员';
+      owner.organizationId = organId;
+      owner.type = AccountTypeEnums.organization;
+
+      // console.log(1111, 'resAccount', owner);
+      this.dialogRef = this.dialog.open(AccountDetailComponent, {
+        panelClass: 'contact-form-dialog',
+        data: {
+          account: owner
+        }
+      });
     });
     // this.dialogRef = this.dialog.open(AccountDetailComponent, {
     //   panelClass: 'contact-form-dialog',

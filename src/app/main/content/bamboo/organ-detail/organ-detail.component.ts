@@ -61,6 +61,7 @@ export class OrganDetailComponent implements OnInit {
         else {
           let dep = new Department();
           dep.organizationId = resOrgan.id;
+          dep.name = resOrgan.name;
           this.departmentSrv.update(dep).subscribe(resDepartment => {
             this.organ.departments = [resDepartment];
             resolve(resDepartment);
@@ -82,6 +83,7 @@ export class OrganDetailComponent implements OnInit {
           acc.departmentId = resDepartment.id;
           acc.mail = this.organ.mail;
           acc.password = '1111';
+          acc.name = '组织管理员';
           acc.activationTime = this.momentSrv.addDaysTransform(new Date(), -1, 'yyyy-MM-dd');
           acc.expireTime = this.momentSrv.addYearsTransform(new Date(), 10, 'yyyy-MM-dd');
           this.accountSrv.regist(acc).subscribe(resAccount => {
@@ -105,6 +107,6 @@ export class OrganDetailComponent implements OnInit {
     saveOrgnAsync().then(createDefaultDepartmentAsync).then(createDefaultOwner).then(transAsync).then((msg: string) => {
       this.snackbarSrv.simpleBar(msg);
     });
-  }
+  }//saveOrgan
 
 }

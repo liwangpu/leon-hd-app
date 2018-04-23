@@ -31,7 +31,7 @@ export class SpecUploadComponent implements OnInit {
   constructor(private configSrv: ConfigService, private productSpeServ: ProductSpecService, private meshSrv: StaticmeshService, private snackbarSrv: SnackbarService, private translate: TranslateService, private materialSrv: MaterialService, private chartletSrv: ChartletService, @Inject(MAT_DIALOG_DATA) private data: any) {
     // this.materialFiles = [];
     // this.mes
-    console.log(111, 'get product spec id', this.data.productSpecId);
+    // console.log(111, 'get product spec id', this.data.productSpecId);
     this.productSpec.id = this.data.productSpecId;
   }
 
@@ -45,8 +45,8 @@ export class SpecUploadComponent implements OnInit {
       //用if减少赋值次数,减少OnChange触发次数
       if (res.staticMeshes && res.staticMeshes.length)
         this.meshFiles = res.staticMeshes ? res.staticMeshes : [];
-      // if (res.icon)
-      //   this.iconFiles = [res.icon];
+      if (res.iconAsset)
+        this.iconFiles = [res.iconAsset];
       if (res.charlets && res.charlets.length)
         this.chartletFiles = res.charlets;
       if (this.meshFiles.length) {
@@ -86,7 +86,7 @@ export class SpecUploadComponent implements OnInit {
     mesh.id = '';
     mesh.productSpecId = this.productSpec.id;
     mesh.name = file.fileName;
-    this.meshSrv.create(mesh).subscribe(ass => {
+    this.meshSrv.update(mesh).subscribe(ass => {
       this.staticMeshId = ass.id;
       this.translate.get('message.UploadSuccessfully', { value: file.fileName }).subscribe((msg) => {
         this.snackbarSrv.simpleBar(msg);
@@ -168,6 +168,7 @@ export class SpecUploadComponent implements OnInit {
         this.snackbarSrv.simpleBar(msg);
       });
     }, err => {
+      console.log(111, 'upload icon error', err);
       this.snackbarSrv.simpleBar(err);
     });
   }

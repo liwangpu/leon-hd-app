@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { fuseAnimations } from '../../../../core/animations';
 import { ProductDetailService } from "./product-detail.service";
 import { Product } from '../../../toolkit/models/product';
+import { FileAsset } from '../../../toolkit/models/fileasset';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -11,19 +12,17 @@ import { Product } from '../../../toolkit/models/product';
   animations: fuseAnimations
 })
 export class ProductDetailComponent implements OnInit, AfterViewInit, AfterContentInit {
-
-  selectedChat: any;
-
+  productSpecCharlets: Array<FileAsset>;
   constructor(private detailService: ProductDetailService, private route: ActivatedRoute) {
     let entity = this.route.snapshot.data.entity ? this.route.snapshot.data.entity : new Product();
     this.detailService.product = entity;
   }
 
   ngOnInit() {
-    // this.chatService.onChatSelected
-    //   .subscribe(chatData => {
-    //     this.selectedChat = chatData;
-    //   });
+    this.detailService.onProductSpecSelected
+      .subscribe(charlets => {
+        this.productSpecCharlets = charlets;
+      });
 
   }
 

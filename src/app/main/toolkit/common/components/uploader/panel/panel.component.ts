@@ -12,6 +12,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { IInputCtData } from '../../../directives/input-ct.directive';
 import { FileAssetService } from '../../../../server/webapi/fileasset.service';
 import { SnackbarService } from '../../../services/snackbar.service';
+import { AppCache } from "../../../../cache/appcache";
+
+
 @Component({
   selector: 'app-file-upload-panel',
   templateUrl: './panel.component.html',
@@ -37,11 +40,11 @@ export class PanelComponent implements OnInit, OnChanges {
   private showDownload: boolean;
   private showUpload: boolean;
   private disabledAddFile: boolean;
-  constructor(private renderer: Renderer, private authSrv: AuthService, private fileNamePipe: FilenamePipe, private downloadSrv: DownloadService, private dialogSrv: DialogService, private tanslateSrv: TranslateService, private fileSrv: FileAssetService, private snackBarSrv: SnackbarService) { }
+  constructor(private renderer: Renderer, private fileNamePipe: FilenamePipe, private downloadSrv: DownloadService, private dialogSrv: DialogService, private tanslateSrv: TranslateService, private fileSrv: FileAssetService, private snackBarSrv: SnackbarService) { }
 
   ngOnInit() {
     //文件上传控件设置
-    this.uploader = new FileUploader({ url: this.url, queueLimit: this.maxFileLimit ? this.maxFileLimit : 10, headers: [{ name: 'Authorization', value: `bearer ${this.authSrv.token}` }], removeAfterUpload: true });
+    this.uploader = new FileUploader({ url: this.url, queueLimit: this.maxFileLimit ? this.maxFileLimit : 10, headers: [{ name: 'Authorization', value: `bearer ${AppCache.getInstance().token}` }], removeAfterUpload: true });
     //订阅文件上传成功事件
     this.uploader.onCompleteItem = ((item: FileItem, response: string, status: number, headers: ParsedResponseHeaders) => {
       let asset = JSON.parse(response);

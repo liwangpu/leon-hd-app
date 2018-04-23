@@ -47,6 +47,8 @@ export const locale = {
             "Name": "Name",
             "Phone": "Phone",
             "Mail": "Mail",
+            "Password": "Password",
+            "Location": "Location",
             "Description": "Description",
             "CreatedTime": "Created Time",
             "NewProduct": "NEW PRODUCT",
@@ -55,7 +57,9 @@ export const locale = {
             "OrganDescription": "Organiztion Description",
             "BasicInfo": "Basic Info",
             "Album": "Album",
-            "OrganDepartment": "Department"
+            "OrganDepartment": "Department",
+            "ActivationTime": "Activation Time",
+            "ExpireTime": "Expire Time"
         },
         "button": {
             "Save": "Save",

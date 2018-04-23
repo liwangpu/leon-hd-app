@@ -45,7 +45,9 @@ export const locale = {
             "Name": "名称",
             "Phone": "电话",
             "Mail": "邮件",
+            "Password": "密码",
             "Description": "描述",
+            "Location": "地址",
             "CreatedTime": "创建时间",
             "NewProduct": "新产品",
             "NewOrgan": "新组织",
@@ -54,6 +56,8 @@ export const locale = {
             "BasicInfo": "基础信息",
             "Album": "相册",
             "OrganDepartment": "部门",
+            "ActivationTime": "账号启用时间",
+            "ExpireTime": "账号有效期"
         },
         "button": {
             "Save": "保存",

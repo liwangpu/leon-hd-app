@@ -73,7 +73,7 @@
             </div>
 
             <button mat-button class="contact" *ngFor="let spec of productSpecs | filter: searchText" [@animate]="{value:'*',params:{y:'100%'}}"
-                (click)='onEditProductSpecPics(spec)' [ngStyle]='{"padding":"0 0 0 10px"}'>
+                (click)='onEditProductSpecPics(spec.id)' [ngStyle]='{"padding":"0 0 0 10px"}'>
 
                 <div fxLayout="row" fxLayoutAlign="start center">
 

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { CalendarEvent } from 'angular-calendar';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
@@ -10,7 +10,7 @@ import { AccountTypeEnums } from "../../../../toolkit/enums/enums";
 import { DepartmentService } from "../../../../toolkit/server/webapi/department.service";
 import { Department } from "../../../../toolkit/models/department";
 import { DessertService } from "../../../services/dessert.service";
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-account-detail',
   templateUrl: './account-detail.component.html',
@@ -18,7 +18,7 @@ import { DessertService } from "../../../services/dessert.service";
   encapsulation: ViewEncapsulation.None
 })
 export class AccountDetailComponent implements OnInit {
-  onSave: Subject<Account> = new Subject();
+  onSave: EventEmitter<Account> = new EventEmitter();
   event: CalendarEvent;
   dialogTitle: string;
   accountForm: FormGroup;
@@ -26,14 +26,10 @@ export class AccountDetailComponent implements OnInit {
   hidePassword = true;
   hideDepartment: boolean;
   departments: Array<Department> = [];
-  constructor(private departmentSrv: DepartmentService, private dessertSrv: DessertService, public dialogRef: MatDialogRef<AccountDetailComponent>, @Inject(MAT_DIALOG_DATA) private data: any, private formBuilder: FormBuilder, private accountSrv: AccountService, private snackBarSrv: SnackbarService) {
+  constructor(private departmentSrv: DepartmentService, private dessertSrv: DessertService, public dialogRef: MatDialogRef<AccountDetailComponent>, @Inject(MAT_DIALOG_DATA) private data: any, private formBuilder: FormBuilder, private accountSrv: AccountService, private snackBarSrv: SnackbarService, private tranSrv: TranslateService) {
     this.account = data.account;
-    // console.log(111, 'get admin', this.account);
     this.accountForm = this.createAccountForm();
-    if (this.account.type === AccountTypeEnums.user) {
-      this.hideDepartment = false;
-      this.getDepartment();
-    }
+    this.getDepartment();
   }
 
   ngOnInit() {
@@ -41,7 +37,7 @@ export class AccountDetailComponent implements OnInit {
   }
 
   private getDepartment() {
-    this.departmentSrv.getByOrgan(this.dessertSrv.organId).subscribe(res => {
+    this.departmentSrv.getByOrgan(this.account.organizationId).subscribe(res => {
       this.departments = res;
     });
   }//getDepartment
@@ -62,18 +58,35 @@ export class AccountDetailComponent implements OnInit {
     });
   }//createAccountForm
 
-  private submit() {
+  private onSubmit() {
     let acc = this.accountForm.value;
-    this.accountSrv.update(acc).subscribe(rdata => {
-      rdata.password = acc.password;
-      this.accountForm.patchValue(rdata);
-      this.snackBarSrv.simpleBar('保存成功');
-      this.onSave.next(rdata);
-    }, err => {
-      console.log('nnn', err);
-      this.snackBarSrv.simpleBar('保存失败:' + err);
-    });
+    let saveAccountAsync = () => {
+      return new Promise((resolve, reject) => {
+        this.accountSrv.update(acc).subscribe(resAccount => {
+          resAccount.password = acc.password;
+          resAccount.departmentId = acc.departmentId;
+          this.accountForm.patchValue(resAccount);
+          this.onSave.next(resAccount);
+          resolve({ k: 'message.SaveSuccessfully' });
+        }, err => {
+          reject({ k: 'message.OperationError', v: { value: err } });
+        });
+      });//promise
+    };//saveAccountAsync
 
-    // this.onSave.next(this.account);
-  }//onSave
+    let tranAsync = (msgObj: { k: string, v: any }) => {
+      return new Promise((resolve, reject) => {
+        this.tranSrv.get(msgObj.k, msgObj.v).subscribe(resMsg => {
+          resolve(resMsg);
+        });
+      });//promise
+    };//tranAsync
+
+
+    saveAccountAsync().then(tranAsync).then((msg: string) => {
+      this.snackBarSrv.simpleBar(msg);
+    });
+  }//onSubmit
+
+
 }

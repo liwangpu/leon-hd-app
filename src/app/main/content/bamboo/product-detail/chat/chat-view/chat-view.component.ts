@@ -4,12 +4,11 @@ import { NgForm } from '@angular/forms';
 import { FusePerfectScrollbarDirective } from '../../../../../../core/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 
 @Component({
-    selector   : 'fuse-chat-view',
+    selector: 'fuse-chat-view',
     templateUrl: './chat-view.component.html',
-    styleUrls  : ['./chat-view.component.scss']
+    styleUrls: ['./chat-view.component.scss']
 })
-export class FuseChatViewComponent implements OnInit, AfterViewInit
-{
+export class FuseChatViewComponent implements OnInit, AfterViewInit {
     user: any;
     chat: any;
     dialog: any;
@@ -20,17 +19,14 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
     @ViewChildren('replyInput') replyInputField;
     @ViewChild('replyForm') replyForm: NgForm;
 
-    constructor(private chatService: ChatService)
-    {
+    constructor(private chatService: ChatService) {
     }
 
-    ngOnInit()
-    {
+    ngOnInit() {
         this.user = this.chatService.user;
         this.chatService.onChatSelected
             .subscribe(chatData => {
-                if ( chatData )
-                {
+                if (chatData) {
                     this.selectedChat = chatData;
                     this.contact = chatData.contact;
                     this.dialog = chatData.dialog;
@@ -39,19 +35,16 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
             });
     }
 
-    ngAfterViewInit()
-    {
+    ngAfterViewInit() {
         this.replyInput = this.replyInputField.first.nativeElement;
         this.readyToReply();
     }
 
-    selectContact()
-    {
+    selectContact() {
         this.chatService.selectContact(this.contact);
     }
 
-    readyToReply()
-    {
+    readyToReply() {
         setTimeout(() => {
             this.replyForm.reset();
             this.focusReplyInput();
@@ -60,18 +53,15 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
 
     }
 
-    focusReplyInput()
-    {
+    focusReplyInput() {
         setTimeout(() => {
             this.replyInput.focus();
         });
     }
 
-    scrollToBottom(speed?: number)
-    {
+    scrollToBottom(speed?: number) {
         speed = speed || 400;
-        if ( this.directiveScroll )
-        {
+        if (this.directiveScroll) {
             this.directiveScroll.update();
 
             setTimeout(() => {
@@ -80,13 +70,12 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
         }
     }
 
-    reply(event)
-    {
+    reply(event) {
         // Message
         const message = {
-            who    : this.user.id,
+            who: this.user.id,
             message: this.replyForm.form.value.message,
-            time   : new Date().toISOString()
+            time: new Date().toISOString()
         };
 
         // Add the message to the chat

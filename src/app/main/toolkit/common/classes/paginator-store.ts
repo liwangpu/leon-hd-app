@@ -121,6 +121,7 @@ export class PaginatorStore<T> extends DataSource<any> {
     }
 
     refresh() {
+        console.log (111,'刷新页面');
         this.query();
     }
 }//PaginatorStore

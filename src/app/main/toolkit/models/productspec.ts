@@ -19,4 +19,5 @@ export class ProductSpec extends EntityBase implements Iasset {
 
     staticMeshes: Array<StaticMesh>;
     charlets: Array<FileAsset>;
+    iconAsset: FileAsset;
 }

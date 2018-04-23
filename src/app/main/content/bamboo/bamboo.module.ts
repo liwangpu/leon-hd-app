@@ -50,6 +50,7 @@ import { SpecNavLeftSpecComponent } from './product-detail/specs-navs/specs-nav-
 // import { SceneModule } from "../../toolkit/scene/scene.module";
 // import { UploadComponent } from "../../toolkit/scene/product-spec/upload/upload.component";
 import { SpecUploadComponent } from './product-detail/spec-upload/spec-upload.component';
+import { SpecCharletsComponent } from './product-detail/spec-charlets/spec-charlets.component';
 
 
 @NgModule({
@@ -85,7 +86,7 @@ import { SpecUploadComponent } from './product-detail/spec-upload/spec-upload.co
     FuseContactsModule,
     FuseChatModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, SpecsNavLeftComponent, SpecsNavRightComponent, SpecNavLeftProductComponent, SpecNavLeftSpecsComponent, SpecNavLeftSpecComponent, SpecUploadComponent],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, SpecsNavLeftComponent, SpecsNavRightComponent, SpecNavLeftProductComponent, SpecNavLeftSpecsComponent, SpecNavLeftSpecComponent, SpecUploadComponent, SpecCharletsComponent],
   entryComponents: [AccountDetailComponent, DepartmentFormComponent, SpecUploadComponent],
   providers: [
     ProductDetailService

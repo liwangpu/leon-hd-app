@@ -45,7 +45,8 @@ export class AccountListComponent implements OnInit, OnChanges {
     this.accountSrv.getById(acc.id).subscribe(rdata => {
       rdata.organizationId = this.dessertSrv.organId;
       rdata.type = AccountTypeEnums.user;
-      rdata.name = '用户';
+      if (!rdata.id)
+        rdata.name = '用户';
       let ndialog = this.dialog.open(AccountDetailComponent, {
         panelClass: 'contact-form-dialog',
         data: {
@@ -54,7 +55,6 @@ export class AccountListComponent implements OnInit, OnChanges {
       });
 
       const onSaveDepartmetnObs = ndialog.componentInstance.onSave.subscribe(res => {
-        console.log(111, 'after save acc 222');
         this.dataSource.refresh();
       });
 

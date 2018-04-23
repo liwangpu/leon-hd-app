@@ -120,8 +120,16 @@ export class SpecNavLeftSpecsComponent implements OnInit, AfterViewInit, OnDestr
     });
   }
 
-  onEditProductSpecPics() {
+  onEditProductSpecPics(specId: string) {
+    this.productSpecSrv.getById(specId).subscribe(resSpec => {
+      this.detailService.onProductSpecSelected.next(resSpec.charlets ? resSpec.charlets : []);
+    });
 
+
+
+    // if (!this.media.isActive('gt-md')) {
+    //   this.fuseMatSidenavService.getSidenav('chat-left-sidenav').toggle();
+    // }
   }
 
   logout() {

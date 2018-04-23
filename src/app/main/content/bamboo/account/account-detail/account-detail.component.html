@@ -31,10 +31,10 @@
           </mat-select>
         </mat-form-field> -->
 
-      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start" *ngIf='!hideDepartment'>
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
         <mat-icon class="mr-12 mt-12">device_hub</mat-icon>
         <mat-form-field fxFlex>
-          <mat-select name="departmentId" formControlName="departmentId" placeholder="部门">
+          <mat-select name="departmentId" formControlName="departmentId" placeholder="{{'glossary.OrganDepartment'|translate}}" required>
             <mat-option *ngFor="let dev of departments" [value]="dev.id">
               {{ dev.name }}
             </mat-option>
@@ -45,41 +45,36 @@
       <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
         <mat-icon class="mr-12 mt-12">star</mat-icon>
         <mat-form-field fxFlex>
-          <input name="name" formControlName="name" matInput placeholder="姓名">
+          <input name="name" formControlName="name" matInput placeholder="{{'glossary.Name'|translate}}" required>
         </mat-form-field>
       </div>
 
       <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
         <mat-icon class="mr-12 mt-12">email</mat-icon>
         <mat-form-field fxFlex>
-          <input name="mail" formControlName="mail" matInput type="email" placeholder="Email">
+          <input name="mail" formControlName="mail" matInput type="email" placeholder="{{'glossary.Mail'|translate}}" required>
         </mat-form-field>
       </div>
 
       <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
         <mat-icon class="mr-12 mt-12">phone</mat-icon>
         <mat-form-field fxFlex>
-          <input formControlName="phone" matInput placeholder="Phone number">
+          <input formControlName="phone" matInput placeholder="{{'glossary.Phone'|translate}}">
         </mat-form-field>
       </div>
 
       <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
         <mat-icon class="mr-12 mt-12">vpn_key</mat-icon>
         <mat-form-field fxFlex>
-          <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'" placeholder="password">
+          <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'" placeholder="{{'glossary.Password'|translate}}">
           <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
         </mat-form-field>
       </div>
 
-      <!-- <mat-form-field>
-        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-      </mat-form-field> -->
-
       <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
         <mat-icon class="mr-12 mt-12">history</mat-icon>
         <mat-form-field fxFlex>
-          <input [matDatepicker]="activationTimePicker" formControlName="activationTime" matInput placeholder="启用时间">
+          <input [matDatepicker]="activationTimePicker" formControlName="activationTime" matInput placeholder="{{'glossary.ActivationTime'|translate}}">
           <mat-datepicker-toggle matSuffix [for]="activationTimePicker"></mat-datepicker-toggle>
           <mat-datepicker #activationTimePicker></mat-datepicker>
         </mat-form-field>
@@ -88,7 +83,7 @@
       <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
         <mat-icon class="mr-12 mt-12">slow_motion_video</mat-icon>
         <mat-form-field fxFlex>
-          <input [matDatepicker]="expireTimePicker" formControlName="expireTime" matInput placeholder="到期时间">
+          <input [matDatepicker]="expireTimePicker" formControlName="expireTime" matInput placeholder="{{'glossary.ExpireTime'|translate}}">
           <mat-datepicker-toggle matSuffix [for]="expireTimePicker"></mat-datepicker-toggle>
           <mat-datepicker #expireTimePicker></mat-datepicker>
         </mat-form-field>
@@ -99,7 +94,7 @@
           <i class="material-icons">account_balance</i>
         </mat-icon>
         <mat-form-field fxFlex>
-          <input name="location" formControlName="location" matInput placeholder="Location">
+          <input name="location" formControlName="location" matInput placeholder="{{'glossary.Location'|translate}}">
         </mat-form-field>
       </div>
 
@@ -109,15 +104,9 @@
 
   <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
 
-    <button mat-raised-button class="save-button mat-accent" [disabled]="accountForm.invalid" (click)='submit()' aria-label="SAVE">
-      SAVE
+    <button mat-raised-button class="save-button mat-accent" [disabled]="accountForm.invalid" (click)='onSubmit()' aria-label="SAVE">
+      {{'button.Save'|translate}}
     </button>
-
-    <!-- <button *ngIf="action ==='edit'" mat-raised-button (click)="dialogRef.close(['save',accountForm])" class="save-button mat-accent"
-      [disabled]="accountForm.invalid" aria-label="SAVE">
-      SAVE
-    </button> -->
-
     <button *ngIf="action ==='edit'" mat-button class="mat-icon-button" (click)="dialogRef.close(['delete',accountForm])" aria-label="Delete"
       matTooltip="Lock">
       <mat-icon>lock_outline</mat-icon>

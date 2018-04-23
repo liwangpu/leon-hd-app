@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { FuseUtils } from '../../../../core/fuseUtils';
 import { Product } from "../../../toolkit/models/product";
 import { ProductSpec } from "../../../toolkit/models/productspec";
-
+import { FileAsset } from "../../../toolkit/models/fileasset";
 @Injectable()
 export class ProductDetailService implements Resolve<any>
 {
@@ -26,11 +26,23 @@ export class ProductDetailService implements Resolve<any>
     currentEditSpec: ProductSpec;
     afterProductChange = new Subject<Product>();
     afterProductSpecChange = new Subject<ProductSpec>();
+    onProductSpecSelected = new BehaviorSubject<Array<FileAsset>>(null);
     constructor(private http: HttpClient) {
         this.user = { mood: 'dsfg', status: 'wer' };
     }
 
 
+    getCharlet(specId: string) {
+
+
+
+        // this.chatService.getChat(contact);
+
+        // if ( !this.media.isActive('gt-md') )
+        // {
+        //     this.fuseMatSidenavService.getSidenav('chat-left-sidenav').toggle();
+        // }
+    }
 
 
     /**

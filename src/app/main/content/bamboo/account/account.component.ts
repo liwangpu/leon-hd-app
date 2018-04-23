@@ -10,6 +10,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { AccountDetailComponent } from "./account-detail/account-detail.component";
 import { Account } from "../../../toolkit/models/account";
 import { AccountTypeEnums } from '../../../toolkit/enums/enums';
+import { DessertService } from "../../services/dessert.service";
+import { MomentService } from "../../../toolkit/common/services/moment.service";
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -20,14 +23,18 @@ import { AccountTypeEnums } from '../../../toolkit/enums/enums';
 export class AccountComponent implements OnInit {
   dialogRef: any;
   selectedDepId = 'all';
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private dessertSrv: DessertService, private momentSrv: MomentService) { }
 
   ngOnInit() {
   }
 
   newAccount() {
     let account = new Account();
+    account.organizationId = this.dessertSrv.organId;
     account.type = AccountTypeEnums.user;
+    account.name = '用户';
+    account.activationTime = this.momentSrv.addDaysTransform(new Date(), -1, 'yyyy-MM-dd');
+    account.expireTime = this.momentSrv.addYearsTransform(new Date(), 10, 'yyyy-MM-dd');
     let dial = this.dialog.open(AccountDetailComponent, {
       panelClass: 'contact-form-dialog',
       data: {
@@ -41,7 +48,7 @@ export class AccountComponent implements OnInit {
     dial.afterClosed().subscribe(() => {
       obs.unsubscribe();
     });
-  }
+  }//newAccount
 
   onDepartmentSelect(depId) {
     this.selectedDepId = depId;
