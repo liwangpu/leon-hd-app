@@ -19,17 +19,13 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 
 
-    handleError(error: HttpErrorResponse) {
-        if (error.error instanceof ErrorEvent) {
-            // A client-side or network error occurred. Handle it accordingly.
-            // console.error('An error occurred:', error.error.message);
+    handleError(handle: HttpErrorResponse) {
+        let errorMsg = '';
+        if (handle.error instanceof ErrorEvent) {
+            errorMsg = handle.error.message;
         } else {
-            // The backend returned an unsuccessful response code.
-            // The response body may contain clues as to what went wrong,
-            // console.error(
-            //     `Backend returned code ${error.status}, ` +
-            //     `body was: ${error.error}`);
+            errorMsg = handle.error;
         }
-        return Observable.throw(error);
+        return Observable.throw(errorMsg);
     }
 }

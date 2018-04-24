@@ -88,7 +88,11 @@ export const locale = {
             "Cannot_Add_Cuz_UnSaving": "请先保存当前的记录",
             "Upload_Successflly": "\"{{value}}\" 上传成功",
             "Upload_Failed": "\"{{value}}\" 上传失败",
-            "SaveSuccessfully": "保存成功"
+            "SaveSuccessfully": "保存成功",
+            "account or password wrong": "用户名或者密码有误",
+            "account expired":"账户已经过期",
+            "account is forzen by admin":"账户已经被冻结",
+            "account not activate yet":"账户未激活"
         },
         "tips": {
             "DragOrClickHere": "点击或拖拽文件到这里",

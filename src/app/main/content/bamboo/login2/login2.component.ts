@@ -7,6 +7,8 @@ import { AuthService } from "../../../toolkit/server/webapi/auth.service";
 import { ConfigService } from "../../../toolkit/config/config.service";
 import { FuseNavigationService } from "../../../../core/components/navigation/navigation.service";
 import { DessertService } from "../../services/dessert.service";
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-login2',
     templateUrl: './login2.component.html',
@@ -26,7 +28,8 @@ export class Login2Component implements OnInit {
         private auth: AuthService,
         private config: ConfigService,
         private navi: FuseNavigationService,
-        private dessertSrv: DessertService
+        private dessertSrv: DessertService,
+        private tranSrv: TranslateService
     ) {
         this.fuseConfig.setSettings({
             layout: {
@@ -83,7 +86,7 @@ export class Login2Component implements OnInit {
                     this.dessertSrv.token = rdata['token'];
                     resolve();
                 }, err => {
-                    reject(err);
+                    reject({ k: err });
                 });
             });
         };//loginAsync
@@ -94,10 +97,9 @@ export class Login2Component implements OnInit {
                     this.dessertSrv.nickName = data['nickname'];
                     this.dessertSrv.icon = data['avatar'];
                     this.dessertSrv.organId = data['organizationId'];
-                    console.log('login2-page get profile ', data);
                     resolve();
                 }, err => {
-                    reject(err);
+                    reject({ k: 'message.OperationError', v: { value: err } });
                 });
             });
         };//getProfileAsync
@@ -109,21 +111,46 @@ export class Login2Component implements OnInit {
                     this.dessertSrv.navi = rdata;
                     resolve();
                 }, err => {
-                    reject(err);
+                    reject({ k: 'message.OperationError', v: { value: err } });
                 });
             });
         };//getNaviDataAsync
 
-        loginAsync().then(getProfileAsync).then(getNaviDataAsync).then(() => {
+        let tranAsync = (msgObj: { k: string, v: string }) => {
+            return new Promise((resolve, reject) => {
+                if (msgObj && msgObj.k)
+                    this.tranSrv.get(msgObj.k, msgObj.v).subscribe(msg => {
+                        resolve(msg);
+                    });
+                else {
+                    resolve();
+                }
+            });
+        };//tranAsync
+
+
+        loginAsync().then(getProfileAsync).then(getNaviDataAsync).then(tranAsync).then(() => {
             if (sessionStorage.getItem('redirectUrl'))
                 this.router.navigateByUrl(sessionStorage.getItem('redirectUrl'));
             else
                 this.router.navigateByUrl("");
-        }).catch(err => {
-            this.loginResult = '账户或密码有误';
+        }).catch(tranAsync).then(msg => {
+            this.loginResult = msg as string;
             setTimeout(() => {
                 this.loginResult = '';
             }, 2000);
         });
+
+        // loginAsync().then(getProfileAsync).then(getNaviDataAsync).then(() => {
+        //     if (sessionStorage.getItem('redirectUrl'))
+        //         this.router.navigateByUrl(sessionStorage.getItem('redirectUrl'));
+        //     else
+        //         this.router.navigateByUrl("");
+        // }).catch(err => {
+        //     this.loginResult = '账户或密码有误';
+        //     setTimeout(() => {
+        //         this.loginResult = '';
+        //     }, 2000);
+        // });
     }//login
 }

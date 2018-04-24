@@ -31,7 +31,7 @@
 
   <!-- CHAT CONTENT -->
   <div id="chat-content" fxFlex fusePerfectScrollbar fxLayout='column'>
-    <div *ngFor='let charlet of charlets'>
+    <div *ngFor='let charlet of charlets' class="detail-img-container">
       <img [src]='getCharletUrl(charlet.url)' style="width:100%;">
     </div>
 

@@ -92,7 +92,11 @@ export const locale = {
             "Cannot_Add_Cuz_UnSaving": "Please save the current new item first",
             "Upload_Successflly": "\"{{value}}\" upload Successfully",
             "Upload_Failed": "\"{{value}}\" upload failed",
-            "SaveSuccessfully": "Save Successfully"
+            "SaveSuccessfully": "Save Successfully",
+            "account or password wrong": "account or password wrong",
+            "account expired":"account expired",
+            "account is forzen by admin":"account is forzen by admin",
+            "account not activate yet":"account not activate yet"
         },
         "tips": {
             "DragOrClickHere": "Click or Drop your files here",

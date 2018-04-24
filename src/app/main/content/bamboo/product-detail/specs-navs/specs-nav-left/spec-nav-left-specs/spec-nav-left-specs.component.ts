@@ -12,7 +12,7 @@ import { DialogService } from '../../../../../../toolkit/common/services/dialog.
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UploadComponent } from "../../../../../../toolkit/scene/product-spec/upload/upload.component";
 import { SpecUploadComponent } from "../../../spec-upload/spec-upload.component";
-
+import { PathService } from "../../../../../services/path.service";
 @Component({
   selector: 'app-spec-nav-left-specs',
   templateUrl: './spec-nav-left-specs.component.html',
@@ -25,7 +25,7 @@ export class SpecNavLeftSpecsComponent implements OnInit, AfterViewInit, OnDestr
   product: Product;
   destroy$ = new Subject();
   productSpecs: Array<ProductSpec>;
-  constructor(private detailService: ProductDetailService, public media: ObservableMedia, private productSpecSrv: ProductSpecService, private productSrv: ProductService, private dialog: MatDialog) {
+  constructor(private detailService: ProductDetailService, public media: ObservableMedia, private productSpecSrv: ProductSpecService, private productSrv: ProductService, private dialog: MatDialog, private pathSrv: PathService) {
     this.chatSearch = {
       name: ''
     };

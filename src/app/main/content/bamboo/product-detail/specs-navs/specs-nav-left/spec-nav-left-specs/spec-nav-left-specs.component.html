@@ -78,8 +78,10 @@
                 <div fxLayout="row" fxLayoutAlign="start center">
 
                     <div class="avatar-wrapper" fxFlex="0 1 auto" fxLayoutAlign="center center">
-                        <img [src]="'assets/images/ecommerce/product-image-placeholder.png'" class="avatar" />
+                        <img [src]="spec.icon?pathSrv.redirectServerUrl(spec.icon):'assets/images/ecommerce/product-image-placeholder.png'" class="avatar"
+                        />
                         <!-- <mat-icon class="s-16 status" [ngClass]="contacts |getById:chat.contactId:'status'"></mat-icon> -->
+
                     </div>
 
                     <div fxLayout="row" fxFlex>

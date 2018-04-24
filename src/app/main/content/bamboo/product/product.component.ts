@@ -33,7 +33,8 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.dataStore = new PaginatorStore<Product>({ service: this.productSrv, paginator: this.paginator, searchInputEle: this.filter });
     this.dataStore._dataSubject.subscribe(res => {
-      if (res.total)
+      // console.log(111, 'ps', res);
+      // if (res.total)
         this.productItems = res.data;
     });
   }

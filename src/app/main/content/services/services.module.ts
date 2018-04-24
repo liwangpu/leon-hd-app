@@ -9,6 +9,7 @@ import { LocalStoreService } from "./localstore.service";
 import { DessertService } from "./dessert.service";
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigModule } from "../../toolkit/config/config.module";
+import { PathService } from "./path.service";
 const routes = [
     {
         path: 'services/config',
@@ -31,7 +32,8 @@ const routes = [
         RouteGuardService,
         LocalStoreService,
         DessertService,
-        TranslateService
+        TranslateService,
+        PathService
     ],
     declarations: [
         FuseConfigServiceDocsComponent,
