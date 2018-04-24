@@ -1,19 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-spec-nav-left-specs',
-//   templateUrl: './spec-nav-left-specs.component.html',
-//   styleUrls: ['./spec-nav-left-specs.component.scss']
-// })
-// export class SpecNavLeftSpecsComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ProductDetailService } from "../../../product-detail.service";
 import { ObservableMedia } from '@angular/flex-layout';
@@ -41,7 +25,7 @@ export class SpecNavLeftSpecsComponent implements OnInit, AfterViewInit, OnDestr
   product: Product;
   destroy$ = new Subject();
   productSpecs: Array<ProductSpec>;
-  constructor(private detailService: ProductDetailService, private fuseMatSidenavService: FuseMatSidenavHelperService, public media: ObservableMedia, private productSpecSrv: ProductSpecService, private productSrv: ProductService, private dialog: MatDialog) {
+  constructor(private detailService: ProductDetailService, public media: ObservableMedia, private productSpecSrv: ProductSpecService, private productSrv: ProductService, private dialog: MatDialog) {
     this.chatSearch = {
       name: ''
     };
@@ -85,17 +69,6 @@ export class SpecNavLeftSpecsComponent implements OnInit, AfterViewInit, OnDestr
     //  console.log(111,'SpecNavLeftSpecsComponent destroy');
   }
 
-  getChat(contact) {
-    this.detailService.getChat(contact);
-
-    if (!this.media.isActive('gt-md')) {
-      this.fuseMatSidenavService.getSidenav('chat-left-sidenav').toggle();
-    }
-  }
-
-  setUserStatus(status) {
-    this.detailService.setUserStatus(status);
-  }
 
   onEditProduct() {
     this.detailService.onLeftSidenavViewChanged.next('product');
@@ -124,16 +97,6 @@ export class SpecNavLeftSpecsComponent implements OnInit, AfterViewInit, OnDestr
     this.productSpecSrv.getById(specId).subscribe(resSpec => {
       this.detailService.onProductSpecSelected.next(resSpec);
     });
-
-
-
-    // if (!this.media.isActive('gt-md')) {
-    //   this.fuseMatSidenavService.getSidenav('chat-left-sidenav').toggle();
-    // }
-  }
-
-  logout() {
-    console.log('logout triggered');
   }
 
 }

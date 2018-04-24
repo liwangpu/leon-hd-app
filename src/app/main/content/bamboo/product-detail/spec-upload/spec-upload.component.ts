@@ -12,6 +12,7 @@ import { Material } from '../../../../toolkit/models/material';
 import { MaterialService } from '../../../../toolkit/server/webapi/material.service';
 import { ChartletService } from '../../../../toolkit/server/webapi/chartlet.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ProductDetailService } from "../product-detail.service";
 @Component({
   selector: 'app-spec-upload',
   templateUrl: './spec-upload.component.html',
@@ -28,15 +29,11 @@ export class SpecUploadComponent implements OnInit {
   private staticMeshId: string;
   private isMeshSatisfy: boolean;
   private isMaterialSatisfy: boolean;
-  constructor(private configSrv: ConfigService, private productSpeServ: ProductSpecService, private meshSrv: StaticmeshService, private snackbarSrv: SnackbarService, private translate: TranslateService, private materialSrv: MaterialService, private chartletSrv: ChartletService, @Inject(MAT_DIALOG_DATA) private data: any) {
-    // this.materialFiles = [];
-    // this.mes
-    // console.log(111, 'get product spec id', this.data.productSpecId);
+  constructor(private configSrv: ConfigService, private productSpeServ: ProductSpecService, private meshSrv: StaticmeshService, private snackbarSrv: SnackbarService, private translate: TranslateService, private materialSrv: MaterialService, private chartletSrv: ChartletService, @Inject(MAT_DIALOG_DATA) private data: any, private detailSrv: ProductDetailService) {
     this.productSpec.id = this.data.productSpecId;
   }
 
   ngOnInit() {
-    // let id = 'G6U786658EA398';
     this.productSpeServ.getById(this.productSpec.id).subscribe(res => {
       this.productSpec = res;
       //用if减少赋值次数,减少OnChange触发次数
@@ -223,8 +220,11 @@ export class SpecUploadComponent implements OnInit {
   onUploadICon(file: IUpload) {
     let durl = 'productSpec/ChangeICon';
     this.chartletSrv.UploadICon(durl, this.productSpec.id, file.asset.id).subscribe(() => {
+
+      console.log(111, 'on icon save', file);
       this.translate.get('message.UploadSuccessfully').subscribe(msg => {
         this.snackbarSrv.simpleBar(msg);
+        this.detailSrv.afterProductSpecChange.next(this.productSpec);
       });
     }, err => {
       this.snackbarSrv.simpleBar(err);
@@ -247,11 +247,9 @@ export class SpecUploadComponent implements OnInit {
     this.chartletSrv.UploadChartlet(durl, this.productSpec.id, file.asset.id).subscribe(() => {
       this.translate.get('message.UploadSuccessfully').subscribe(msg => {
         this.snackbarSrv.simpleBar(msg);
-        console.log(111, 'after upload success', msg);
       });
     }, err => {
       this.snackbarSrv.simpleBar(err);
-      console.log(111, 'after upload error', err);
     });
   }
 

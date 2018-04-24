@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 const SERVER_BASE = 'http://localhost:1882';
+// const SERVER_BASE = "http://testapi.damaozhu.com.cn";
 const LOGIN_STYLE = 2;
 const IS_MAINTAINING = false;
 const MAINTAINING_ENDDATE = '';

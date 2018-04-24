@@ -69,7 +69,7 @@ export class AccountDetailComponent implements OnInit {
           this.onSave.next(resAccount);
           resolve({ k: 'message.SaveSuccessfully' });
         }, err => {
-          reject({ k: 'message.OperationError', v: { value: err } });
+          resolve({ k: 'message.OperationError', v: { value: err } });
         });
       });//promise
     };//saveAccountAsync

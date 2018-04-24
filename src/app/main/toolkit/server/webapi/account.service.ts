@@ -23,10 +23,7 @@ export class AccountService extends ApiService<Account> {
      * @param entity 
      */
     regist(entity: Account): Observable<Account> {
-        return this.http.post<Account>(`${this.uri}/register`, entity, { headers: this.header }).pipe(
-            // retry(3),
-            catchError(this.handleError)
-        );
+        return this.http.post<Account>(`${this.uri}/register`, entity, { headers: this.header });
     }//registAccount
 
     /**
@@ -47,10 +44,7 @@ export class AccountService extends ApiService<Account> {
     update(entity: Account): Observable<Account> {
         if (!entity.id)
             return this.regist(entity);
-        return this.http.put<Account>(`${this.uri}`, entity, { headers: this.header }).pipe(
-            // retry(3),
-            catchError(this.handleError)
-        );
+        return this.http.put<Account>(`${this.uri}`, entity, { headers: this.header });
     }//update
 
     /**

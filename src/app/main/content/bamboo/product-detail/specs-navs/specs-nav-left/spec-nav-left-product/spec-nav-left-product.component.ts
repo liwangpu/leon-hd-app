@@ -1,22 +1,5 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-spec-nav-left-product',
-//   templateUrl: './spec-nav-left-product.component.html',
-//   styleUrls: ['./spec-nav-left-product.component.scss']
-// })
-// export class SpecNavLeftProductComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductDetailService } from "../../../product-detail.service";
-// import { FormControl, FormGroup } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';

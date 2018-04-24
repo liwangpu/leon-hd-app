@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductDetailService } from '../product-detail.service';
-import { FusePerfectScrollbarDirective } from '../../../../../core/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 import { FileAsset } from '../../../../toolkit/models/fileasset';
 import { ProductSpec } from '../../../../toolkit/models/productspec';
 import { ConfigService } from "../../../../toolkit/config/config.service";
@@ -10,9 +9,9 @@ import { ConfigService } from "../../../../toolkit/config/config.service";
   styleUrls: ['./spec-charlets.component.scss']
 })
 export class SpecCharletsComponent implements OnInit {
+
   specname: string;
   charlets: Array<FileAsset> = [];
-  @ViewChild(FusePerfectScrollbarDirective) directiveScroll: FusePerfectScrollbarDirective;
   constructor(private productDetailService: ProductDetailService, private configSrv: ConfigService) {
   }
 
@@ -29,6 +28,11 @@ export class SpecCharletsComponent implements OnInit {
         }
       });
   }//ngOnInit
+
+  reset() {
+    this.specname = '';
+    this.charlets = [];
+  }
 
   getCharletUrl(url: string) {
     return `${this.configSrv.serverBase}/${url}`;

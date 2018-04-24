@@ -5,7 +5,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { AuthService } from './webapi/auth.service';
 import { ProductService } from './webapi/product.service';
-import { TranslateModule } from '@ngx-translate/core';
 import { AccountService } from './webapi/account.service';
 import { ProductSpecService } from './webapi/productSpec.service';
 import { ErrorService } from './webapi/error.service';
@@ -21,7 +20,6 @@ import { DepartmentService } from "./webapi/department.service";
         ConfigModule
         , HttpClientModule
         , RouterModule
-        , TranslateModule.forRoot()
     ],
     providers: [
         , ProductService
@@ -32,6 +30,7 @@ import { DepartmentService } from "./webapi/department.service";
         , StaticmeshService
         , FileAssetService
         , MaterialService
+        , ErrorService
         , ChartletService
         , DepartmentService
         , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

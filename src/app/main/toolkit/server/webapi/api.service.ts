@@ -52,10 +52,7 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      */
     protected getEntity<T>(id: number | string): Observable<T> {
         if (id) {
-            return this.httpClient.get<T>(`${this.uri}/${id}`, { headers: this.header }).pipe(
-                // retry(3),
-                catchError(this.handleError)
-            );
+            return this.httpClient.get<T>(`${this.uri}/${id}`, { headers: this.header });
         }
         return Observable.of<T>({} as T);
     }
@@ -65,10 +62,7 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      * @param entity 
      */
     protected createEntity<T>(entity: T): Observable<T> {
-        return this.httpClient.post<T>(`${this.uri}`, entity, { headers: this.header }).pipe(
-            // retry(3),
-            catchError(this.handleError)
-        );
+        return this.httpClient.post<T>(`${this.uri}`, entity, { headers: this.header });
     }
 
     /**
@@ -77,10 +71,7 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      */
     protected updateEntity<T extends IEntitybase>(entity: T): Observable<T> {
         if (entity.id)
-            return this.httpClient.put<T>(`${this.uri}`, entity, { headers: this.header }).pipe(
-                // retry(3),
-                catchError(this.handleError)
-            );
+            return this.httpClient.put<T>(`${this.uri}`, entity, { headers: this.header });
         return this.createEntity(entity);
     }
 
@@ -106,35 +97,8 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
 
         params = params.append('page', `${query.page ? query.page : 1}`);
         params = params.append('pageSize', `${query.pageSize ? query.pageSize : 10}`);
-        return this.httpClient.request<Paging<T>>('get', this.uri, { headers: this.header, params: params }).pipe(
-            // retry(3),
-            catchError(this.handleError)
-        ).map((res) => {
-            this.onServiceChange.next(res.data);
-            return res;
-        });
+        return this.httpClient.request<Paging<T>>('get', this.uri, { headers: this.header, params: params });
     }
-
-
-    /**
-     * 异常控制
-     * @param error 
-     */
-    handleError(error: HttpErrorResponse) {
-        if (error.error instanceof ErrorEvent) {
-            // A client-side or network error occurred. Handle it accordingly.
-            console.error('An error occurred:', error.error.message);
-        } else {
-            // The backend returned an unsuccessful response code.
-            // The response body may contain clues as to what went wrong,
-            console.error(
-                `Backend returned code ${error.status}, ` +
-                `body was: ${error.error}`);
-        }
-        // return an ErrorObservable with a user-facing error message
-        return new ErrorObservable(
-            'Something bad happened; please try again later.');
-    };
 }
 
 /**

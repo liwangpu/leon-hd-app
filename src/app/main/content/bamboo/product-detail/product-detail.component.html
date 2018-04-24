@@ -25,14 +25,13 @@
                 <!-- CONTENT -->
                 <!-- <fuse-chat-start *ngIf="!productSpecCharlets"></fuse-chat-start> -->
 
-                <app-product-detail-spec-charlets></app-product-detail-spec-charlets>
+                <app-product-detail-spec-charlets #charletCt></app-product-detail-spec-charlets>
                 <!-- <app-product-detail-spec-charlets *ngIf="productSpecCharlets"></app-product-detail-spec-charlets> -->
                 <!-- <fuse-chat-view></fuse-chat-view> -->
                 <!-- / CONTENT -->
 
                 <!-- RIGHT SIDENAV -->
                 <mat-sidenav class="sidenav" align="end" opened="false" mode="over" fuseMatSidenavHelper="chat-right-sidenav">
-                    <!-- <fuse-chat-right-sidenav></fuse-chat-right-sidenav> -->
                     <app-specs-nav-right></app-specs-nav-right>
                 </mat-sidenav>
                 <!-- / RIGHT SIDENAV -->
