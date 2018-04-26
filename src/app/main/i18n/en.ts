@@ -29,7 +29,7 @@ export const locale = {
         "glossary": {
             "Product": "Product",
             "ProductName": "Product Name",
-            "ProductSpec": "Product Specification",
+            "ProductSpec": "Specification",
             "ProductDescription": "Product Description",
             "ProductSpecification": "Specs",
             "Editing": "Editing",
@@ -59,7 +59,8 @@ export const locale = {
             "Album": "Album",
             "OrganDepartment": "Department",
             "ActivationTime": "Activation Time",
-            "ExpireTime": "Expire Time"
+            "ExpireTime": "Expire Time",
+            "Solution":"Solution"
         },
         "button": {
             "Save": "Save",
@@ -79,7 +80,8 @@ export const locale = {
             "OrganOwnerManagement": "Owner Management",
             "AddDepartment": "New Department",
             "EditDepartment": "Edit Department",
-            "AllUsers": "All Users"
+            "AllUsers": "All Users",
+            "AddSolution": "ADD NEW SOLUTION"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",
@@ -94,9 +96,11 @@ export const locale = {
             "Upload_Failed": "\"{{value}}\" upload failed",
             "SaveSuccessfully": "Save Successfully",
             "account or password wrong": "account or password wrong",
-            "account expired":"account expired",
-            "account is forzen by admin":"account is forzen by admin",
-            "account not activate yet":"account not activate yet"
+            "account expired": "account expired",
+            "account is forzen by admin": "account is forzen by admin",
+            "account not activate yet": "account not activate yet",
+            "RequiredError":"Fill Necessarily",
+            "MaxLengthError":"More than the standard length"
         },
         "tips": {
             "DragOrClickHere": "Click or Drop your files here",

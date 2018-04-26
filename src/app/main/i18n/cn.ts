@@ -57,7 +57,8 @@ export const locale = {
             "Album": "相册",
             "OrganDepartment": "部门",
             "ActivationTime": "账号启用时间",
-            "ExpireTime": "账号有效期"
+            "ExpireTime": "账号有效期",
+            "Solution": "方案"
         },
         "button": {
             "Save": "保存",
@@ -75,7 +76,8 @@ export const locale = {
             "OrganOwnerManagement": "管理员设置",
             "AddDepartment": "添加部门",
             "EditDepartment": "编辑部门",
-            "AllUsers": "所有人员"
+            "AllUsers": "所有人员",
+            "AddSolution": "添加解决方案"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
@@ -90,9 +92,11 @@ export const locale = {
             "Upload_Failed": "\"{{value}}\" 上传失败",
             "SaveSuccessfully": "保存成功",
             "account or password wrong": "用户名或者密码有误",
-            "account expired":"账户已经过期",
-            "account is forzen by admin":"账户已经被冻结",
-            "account not activate yet":"账户未激活"
+            "account expired": "账户已经过期",
+            "account is forzen by admin": "账户已经被冻结",
+            "account not activate yet": "账户未激活",
+            "RequiredError": "必填信息",
+            "MaxLengthError": "长度超限"
         },
         "tips": {
             "DragOrClickHere": "点击或拖拽文件到这里",

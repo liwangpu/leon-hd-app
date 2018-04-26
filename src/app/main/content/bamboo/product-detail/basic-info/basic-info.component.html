@@ -1,0 +1,14 @@
+<div class="basic-info-container">
+  <form name="productForm" [formGroup]="productForm">
+    <input type="hidden" formControlName='id' name='id'>
+    <mat-form-field>
+      <input matInput name="name" formControlName="name" required placeholder="{{'glossary.ProductName'|translate}}">
+      <mat-error *ngIf="productForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
+      <mat-error *ngIf="productForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+    </mat-form-field>
+  </form>
+</div>

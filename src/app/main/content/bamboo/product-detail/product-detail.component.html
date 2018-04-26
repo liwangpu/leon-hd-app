@@ -1,47 +1,37 @@
-<!-- <fuse-chat-product-spec-detail></fuse-chat-product-spec-detail> -->
-
-<!-- <app-product-spec-fus></app-product-spec-fus> -->
-
-<div id="chat" class="page-layout carded fullwidth">
-
-    <!-- TOP BACKGROUND -->
-    <div class="top-bg mat-accent-bg"></div>
-    <!-- / TOP BACKGROUND -->
-
-    <!-- CENTER -->
-    <div class="center">
-
-        <!-- CONTENT CARD -->
-        <div class="content-card">
-
-            <mat-sidenav-container>
-
-                <!-- LEFT SIDENAV -->
-                <mat-sidenav class="sidenav" align="start" opened="true" mode="side" fuseMatSidenavHelper="chat-left-sidenav" mat-is-locked-open="gt-md">
-                    <app-specs-nav-left></app-specs-nav-left>
-                </mat-sidenav>
-                <!-- / LEFT SIDENAV -->
-
-                <!-- CONTENT -->
-                <!-- <fuse-chat-start *ngIf="!productSpecCharlets"></fuse-chat-start> -->
-
-                <app-product-detail-spec-charlets #charletCt></app-product-detail-spec-charlets>
-                <!-- <app-product-detail-spec-charlets *ngIf="productSpecCharlets"></app-product-detail-spec-charlets> -->
-                <!-- <fuse-chat-view></fuse-chat-view> -->
-                <!-- / CONTENT -->
-
-                <!-- RIGHT SIDENAV -->
-                <mat-sidenav class="sidenav" align="end" opened="false" mode="over" fuseMatSidenavHelper="chat-right-sidenav">
-                    <app-specs-nav-right></app-specs-nav-right>
-                </mat-sidenav>
-                <!-- / RIGHT SIDENAV -->
-
-            </mat-sidenav-container>
-
+<div class="page-layout blank" fusePerfectScrollbar>
+  <div class="page-container" fxLayout='column'>
+    <div class="page-header" fxFlex='300px'>
+      <div class="summary-container" fxLayout='column' fxLayoutAlign='center center' fxLayoutGap='10px' fxLayout.gt-sm='row' fxLayoutAlign.gt-sm='space-between end'>
+        <div>
+          <div class="product-avatar-container">
+            <img class="product-avatar" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+          </div>
         </div>
-        <!-- / CONTENT CARD -->
-
+        <div>
+          <span class="primary-title product-tip-title">
+            Product
+          </span>
+          <span class="sub-title product-title" *ngIf='productName'>
+            {{productName}}
+          </span>
+        </div>
+        <div fxFlex.lt-md='0' fxFlex.gt-sm></div>
+        <div>
+          <button mat-raised-button color="accent" *ngIf='showSubmitBtn' (click)='submit()'>
+            <mat-icon style="color: white;">done</mat-icon>
+            {{'button.Save'|translate}}
+          </button>
+        </div>
+      </div>
     </div>
-    <!-- / CENTER -->
+    <div class="page-content">
+      <mat-tab-group>
+        <mat-tab label="{{'glossary.BasicInfo'|translate}}">
+          <app-product-detail-basic-info></app-product-detail-basic-info>
+        </mat-tab>
+        <mat-tab label="{{'glossary.ProductSpec'|translate}}">Content 2</mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
 
 </div>
