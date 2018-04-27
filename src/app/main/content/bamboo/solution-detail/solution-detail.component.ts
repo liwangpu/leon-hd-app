@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { fuseAnimations } from '../../../../core/animations';
+import { Component, OnInit } from '@angular/core';
 import { Subject } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { Solution } from '../../../toolkit/models/solution';
@@ -7,9 +6,7 @@ import { SolutionDetailMdService } from "./solution-detail-md.service";
 @Component({
   selector: 'app-solution-detail',
   templateUrl: './solution-detail.component.html',
-  styleUrls: ['./solution-detail.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  animations: fuseAnimations
+  styleUrls: ['./solution-detail.component.scss']
 })
 export class SolutionDetailComponent implements OnInit {
 

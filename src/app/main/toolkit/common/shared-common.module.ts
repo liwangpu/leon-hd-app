@@ -31,6 +31,7 @@ import { InputCtDirective } from './directives/input-ct.directive';
 import { AppServiceModule } from '../server/app.service.module';
 import { MomentService } from "./services/moment.service";
 import { DatePipe } from "@angular/common";
+import { OrderbyPipe } from './pipes/orderby.pipe';
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import { DatePipe } from "@angular/common";
     , StepperComponent,
     PanelComponent,
     FilenamePipe,
-    InputCtDirective
+    InputCtDirective,
+    OrderbyPipe
   ],
   providers: [
     DialogService,
@@ -72,11 +74,12 @@ import { DatePipe } from "@angular/common";
     DownloadService,
     DatePipe,
     MomentService
-  ] 
+  ]
   , exports: [
     LitimgListComponent,
     StepperComponent,
-    PanelComponent
+    PanelComponent,
+    OrderbyPipe
   ],
   entryComponents: [
     SimpleDialogComponent,

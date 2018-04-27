@@ -14,6 +14,8 @@ import { AccountComponent } from './account/account.component';
 import { SolutionComponent } from "./solution/solution.component";
 import { SolutionDetailComponent } from "./solution-detail/solution-detail.component";
 import { SolutionService } from "../../toolkit/server/webapi/solution.service";
+import { ProductCategoryComponent } from './product-category/product-category.component';
+
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -22,6 +24,7 @@ const routes: Routes = [
   , { path: 'app/organ', component: OrganComponent, canActivate: [RouteGuardService] }
   , { path: 'app/solutions', component: SolutionComponent, canActivate: [RouteGuardService] }
   , { path: 'app/organ-account', component: AccountComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/product-category', component: ProductCategoryComponent, canActivate: [RouteGuardService] }
   , {
     path: 'app/product-detail/:id'
     , component: ProductDetailComponent

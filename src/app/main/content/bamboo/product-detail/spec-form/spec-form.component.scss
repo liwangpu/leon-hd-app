@@ -1,0 +1,13 @@
+:host {
+    div.spec-form-container {
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    div.spec-form-container * {
+        width: 100%;
+    }
+    div.spec-form-buttons {
+        width: 100%;
+    }
+}

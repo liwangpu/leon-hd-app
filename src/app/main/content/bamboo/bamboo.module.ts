@@ -46,11 +46,19 @@ import { SolutionComponent } from './solution/solution.component';
 import { SolutionDetailComponent } from './solution-detail/solution-detail.component';
 import { BasicInfoComponent as SolutionBasicInfoComponent } from "./solution-detail/basic-info/basic-info.component";
 import { SolutionDetailMdService } from "./solution-detail/solution-detail-md.service";
+import { SpecsListComponent as ProductSpecsListComponent } from './product-detail/specs-list/specs-list.component';
+import { SpecsCardComponent as ProductSpecsCardComponent } from './product-detail/specs-card/specs-card.component';
+import { SpecFormComponent as ProductSpecFormComponent } from './product-detail/spec-form/spec-form.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
+import { CategoryListComponent as ProductCategoryListComponent } from './product-category/category-list/category-list.component';
+import { MainCategoryComponent as ProductMainCategoryComponent } from './product-category/main-category/main-category.component';
+import { CategoryItemDirective as ProductCategoryItemDirective} from './product-category/category-list/category-item.directive';
+import { SpecUploadComponent as ProductSpecUploadComponent } from './product-detail/spec-upload/spec-upload.component';
+
 @NgModule({
   imports: [
     ServicesModule,
     SharedModule,
-    // SceneModule,
     CommonModule,
     MatSidenavModule,
     MatStepperModule,
@@ -78,8 +86,8 @@ import { SolutionDetailMdService } from "./solution-detail/solution-detail-md.se
     MatInputModule,
     FuseContactsModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent],
-  entryComponents: [AccountDetailComponent, DepartmentFormComponent],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductMainCategoryComponent, ProductCategoryItemDirective, ProductSpecUploadComponent],
+  entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent,ProductSpecUploadComponent],
   providers: [
     ProductDetailMdService,
     SolutionDetailMdService

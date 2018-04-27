@@ -16,6 +16,7 @@ import { ConfigModule } from "../config/config.module";
 import { OrganService } from "./webapi/organ.service";
 import { DepartmentService } from "./webapi/department.service";
 import { SolutionService } from "./webapi/solution.service";
+import { ProductCategoryService } from "./webapi/productcategory.service";
 
 @NgModule({
     imports: [
@@ -35,7 +36,8 @@ import { SolutionService } from "./webapi/solution.service";
         , ErrorService
         , ChartletService
         , DepartmentService
-        , SolutionService 
+        , SolutionService
+        , ProductCategoryService
         , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
         , { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
     ]

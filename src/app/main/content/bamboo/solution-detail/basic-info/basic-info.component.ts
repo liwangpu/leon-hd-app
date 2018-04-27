@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime.js';
 import { SolutionDetailMdService } from "../solution-detail-md.service";
@@ -6,10 +6,13 @@ import { SolutionService } from "../../../../toolkit/server/webapi/solution.serv
 import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
 import { Subject } from 'rxjs';
+import { fuseAnimations } from '../../../../../core/animations';
 @Component({
   selector: 'app-solution-detail-basic-info',
   templateUrl: './basic-info.component.html',
-  styleUrls: ['./basic-info.component.scss']
+  styleUrls: ['./basic-info.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  animations: fuseAnimations
 })
 export class BasicInfoComponent implements OnInit {
 

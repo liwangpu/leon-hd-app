@@ -1,0 +1,20 @@
+<div class="spec-form-container">
+
+  <form [formGroup]="specForm">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="productId">
+    <mat-form-field>
+      <input name="name" formControlName="name" matInput placeholder="{{'glossary.Name'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input name="description" formControlName="description" matInput placeholder="{{'glossary.Description'|translate}}">
+    </mat-form-field>
+
+  </form>
+</div>
+<div class="spec-form-buttons" fxLayout='row' fxLayoutAlign='end center' *ngIf='showUploadBtn'>
+  <div>
+    <button mat-button (click)='onUpload()'>上传附件</button>
+  </div>
+</div>

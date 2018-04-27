@@ -24,7 +24,8 @@ export const locale = {
             "InteriorDesignCategories": "分类",
             "InteriorDesignProducts": "产品",
             "Organization": "组织",
-            "OrganAccounts": "人员管理"
+            "OrganAccounts": "人员管理",
+            "ProductCategorys": "产品分类"
         },
         "glossary": {
             "Product": "产品",
@@ -58,7 +59,9 @@ export const locale = {
             "OrganDepartment": "部门",
             "ActivationTime": "账号启用时间",
             "ExpireTime": "账号有效期",
-            "Solution": "方案"
+            "Solution": "方案",
+            "ProductCategory": "产品分类",
+            "ProductMainCategory": "主要分类"
         },
         "button": {
             "Save": "保存",
@@ -77,7 +80,8 @@ export const locale = {
             "AddDepartment": "添加部门",
             "EditDepartment": "编辑部门",
             "AllUsers": "所有人员",
-            "AddSolution": "添加解决方案"
+            "AddSolution": "添加解决方案",
+            "AddProductSpec": "添加规格"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",

@@ -24,7 +24,8 @@ export const locale = {
             "InteriorDesignCategories": "Categories",
             "InteriorDesignProducts": "Products",
             "Organization": "Organization",
-            "OrganAccounts": "Account Management"
+            "OrganAccounts": "Account Management",
+            "ProductCategorys": "Product Category"
         },
         "glossary": {
             "Product": "Product",
@@ -60,7 +61,9 @@ export const locale = {
             "OrganDepartment": "Department",
             "ActivationTime": "Activation Time",
             "ExpireTime": "Expire Time",
-            "Solution":"Solution"
+            "Solution": "Solution",
+            "ProductCategory": "Product Category",
+            "ProductMainCategory": "Main Category"
         },
         "button": {
             "Save": "Save",
@@ -81,7 +84,8 @@ export const locale = {
             "AddDepartment": "New Department",
             "EditDepartment": "Edit Department",
             "AllUsers": "All Users",
-            "AddSolution": "ADD NEW SOLUTION"
+            "AddSolution": "ADD NEW SOLUTION",
+            "AddProductSpec": "ADD NEW SPECIFICATION"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",
@@ -99,8 +103,8 @@ export const locale = {
             "account expired": "account expired",
             "account is forzen by admin": "account is forzen by admin",
             "account not activate yet": "account not activate yet",
-            "RequiredError":"Fill Necessarily",
-            "MaxLengthError":"More than the standard length"
+            "RequiredError": "Fill Necessarily",
+            "MaxLengthError": "More than the standard length"
         },
         "tips": {
             "DragOrClickHere": "Click or Drop your files here",

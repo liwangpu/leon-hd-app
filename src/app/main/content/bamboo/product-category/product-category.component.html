@@ -1,0 +1,94 @@
+<div class="page-layout carded left-sidenav" fusePerfectScrollbar>
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg mat-accent-bg"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <mat-sidenav-container>
+
+    <!-- SIDENAV -->
+    <mat-sidenav class="sidenav" align="start" opened="true" mode="side" fuseMatSidenavHelper="carded-left-sidenav" mat-is-locked-open="gt-md">
+
+      <!-- SIDENAV HEADER -->
+      <div class="header p-24" ngClass="mat-accent-bg" ngClass.gt-md="white-fg">
+        <mat-icon class="logo-icon mr-16" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">shopping_basket</mat-icon>
+        <span class="logo-text h1" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">{{'glossary.ProductCategory'|translate}}</span>
+      </div>
+      <!-- / SIDENAV HEADER -->
+
+      <!-- SIDENAV CONTENT -->
+      <div class="content left-category-content" fusePerfectScrollbar>
+
+        <!-- <fuse-demo-sidenav></fuse-demo-sidenav> -->
+        <!-- <app-product-category-main-category></app-product-category-main-category> -->
+        <app-product-category-list [categories]='mainCategories' (onCategorySelected)='onMainCategorySelect($event)'></app-product-category-list>
+      </div>
+      <!-- / SIDENAV CONTENT -->
+
+    </mat-sidenav>
+    <!-- / SIDENAV -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+      <!-- CONTENT HEADER -->
+      <div class="header white-fg p-24">
+        <!-- <h2>Left sidenav with content scroll</h2> -->
+      </div>
+      <!-- / CONTENT HEADER -->
+
+      <!-- CONTENT CARD -->
+      <div class="content-card mat-white-bg">
+
+        <!-- CONTENT TOOLBAR -->
+        <div class="toolbar px-24 py-8">
+          <button mat-button class="mat-icon-button sidenav-toggle" fuseMatSidenavToggler="carded-left-sidenav" fxHide.gt-md>
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span>Content toolbar</span>
+        </div>
+        <!-- / CONTENT TOOLBAR -->
+
+        <!-- CONTENT -->
+        <div class="content p-24" fusePerfectScrollbar>
+
+          <div class="fxLayout-container" fxLayout='row'>
+
+
+            <div fxFlex='450px'>
+              <!--产品分类编辑面板-->
+              <div class="category-form-container">
+                <form [formGroup]="categoryForm">
+                  <input type="hidden" formControlName="id">
+                  <input type="hidden" formControlName="organizationId">
+                  <input type="hidden" formControlName="type">
+                  <input type="hidden" formControlName="parentId">
+                  <mat-form-field>
+                    <input name="name" formControlName="name" matInput placeholder="{{'glossary.Name'|translate}}">
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input name="description" formControlName="description" matInput placeholder="{{'glossary.Description'|translate}}">
+                  </mat-form-field>
+                </form>
+              </div>
+              <div class="fxLayout-container" fxLayout='row' fxLayoutAlign='end start'>
+                <div>
+                  <button mat-button (click)='onSubmitCategory()'>{{'button.Save'|translate}}</button>
+                </div>
+              </div>
+              <!--/产品分类编辑面板-->
+            </div>
+          </div>
+        </div>
+        <!-- / CONTENT -->
+
+      </div>
+      <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+  </mat-sidenav-container>
+
+</div>
