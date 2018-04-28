@@ -32,7 +32,7 @@ import { AppServiceModule } from '../server/app.service.module';
 import { MomentService } from "./services/moment.service";
 import { DatePipe } from "@angular/common";
 import { OrderbyPipe } from './pipes/orderby.pipe';
-
+import { MathexService } from "./services/mathex.service";
 @NgModule({
   imports: [
     CommonModule,
@@ -73,7 +73,8 @@ import { OrderbyPipe } from './pipes/orderby.pipe';
     FilenamePipe,
     DownloadService,
     DatePipe,
-    MomentService
+    MomentService,
+    MathexService
   ]
   , exports: [
     LitimgListComponent,

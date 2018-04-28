@@ -84,7 +84,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     };//submitAsync
 
 
-    submitAsync();
+    // submitAsync();
 
   }//onSubmitCategory
 }

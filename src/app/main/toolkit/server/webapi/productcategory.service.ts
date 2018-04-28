@@ -37,4 +37,28 @@ export class ProductCategoryService extends AssetCategoryService<ProductCategory
     public updateProductCategory(entity: ProductCategory): Observable<ProductCategory> {
         return this.updateType(entity);
     }//updateProductCategory
+
+    /**
+     * 上移产品分类
+     * @param entity 
+     */
+    public moveUpProductCategory(entity: ProductCategory): Observable<ProductCategory> {
+        return this.arrowUp(entity);
+    }//moveUpProductCategory
+
+    /**
+     *下移产品分类
+     * @param entity 
+     */
+    public moveDownProductCategory(entity: ProductCategory): Observable<ProductCategory> {
+        return this.arrowDown(entity);
+    }//moveDownProductCategory
+
+    /**
+     * 删除分类
+     * @param id 
+     */
+    public deleteProductCategory(id: string): Observable<any> {
+        return super.deleteType(this.type, id);
+    }//deleteProductCategory
 }

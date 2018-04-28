@@ -56,4 +56,44 @@ export class AssetCategoryService<T extends AssetCategory> {
         return this.createType(entity);
     }//updateType
 
+    /**
+     * 删除分类
+     * @param type 
+     * @param id 
+     */
+    protected deleteType(type: string, id: string) {
+        // return this.httpClient.delete<void>(`${this.uri}?type=${type}&id=${id}`);
+        return this.httpClient.request('DELETE', `${this.uri}?type=${type}&id=${id}`, {
+            responseType: 'text'
+        });
+    }//deleteType
+
+    /**
+     * 移动分类
+     * @param type 
+     * @param id 
+     * @param targetId 
+     */
+    private arrow(entity: T): Observable<T> {
+        return this.httpClient.post<T>(`${this.uri}/DisplayIndex?type=${entity.type}&id=${entity.id}&index=${entity.displayIndex}`, { headers: this.header });
+    }//move
+
+    /**
+     * 上移分类
+     * @param entity 
+     */
+    protected arrowUp(entity: T): Observable<T> {
+        entity.displayIndex--;
+        return this.arrow(entity);
+    }//moveUp
+
+    /**
+     * 下移分类
+     * @param entity 
+     */
+    protected arrowDown(entity: T): Observable<T> {
+        entity.displayIndex++;
+        return this.arrow(entity);
+    }//moveDown
+
 }

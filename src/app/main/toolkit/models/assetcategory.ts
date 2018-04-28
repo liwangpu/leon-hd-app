@@ -5,5 +5,6 @@ export class AssetCategory extends EntityBase {
     displayIndex: number;
     parentId: string;
     description: string;
+    type: string;
     children: Array<AssetCategory>;
 }

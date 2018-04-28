@@ -7,8 +7,8 @@
         <div class="category-header-title" fxFlex fxFlexAlign='stretch'>
           Main Category
         </div>
-        <div>
-          <button mat-button class="mat-icon-button" aria-label="Close dialog">
+        <div *ngIf='closable'>
+          <button mat-button class="mat-icon-button">
             <mat-icon class="operate-button-icon">close</mat-icon>
           </button>
         </div>
@@ -18,12 +18,12 @@
     <div fxFlex='25px'>
       <div class="fxLayout-container operate-bar" fxLayout='row' fxLayoutAlign='end end'>
         <div>
-          <button class="operate-button" mat-icon-button>
+          <button class="operate-button" mat-icon-button (click)='onMoveUp()'>
             <mat-icon class="operate-button-icon">keyboard_arrow_up</mat-icon>
           </button>
         </div>
         <div>
-          <button class="operate-button" mat-icon-button>
+          <button class="operate-button" mat-icon-button (click)='onMoveDown()'>
             <mat-icon class="operate-button-icon">keyboard_arrow_down</mat-icon>
           </button>
         </div>
@@ -33,7 +33,7 @@
           </button>
         </div>
         <div>
-          <button class="operate-button" mat-icon-button>
+          <button class="operate-button" mat-icon-button (click)='onRemove()'>
             <mat-icon class="operate-button-icon" style="font-size: 20px;height: 20px;">remove</mat-icon>
           </button>
         </div>
