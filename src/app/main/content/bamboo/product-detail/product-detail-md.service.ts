@@ -5,7 +5,6 @@ import { Subject } from "rxjs/Subject";
 @Injectable()
 export class ProductDetailMdService implements OnDestroy {
 
-
   currentEditPointer: EditPointer = EditPointer.PoductDetail;
   product: Product;//当前编辑的产品信息
   productSpec: ProductSpec;//当前编辑的规格信息
@@ -16,6 +15,7 @@ export class ProductDetailMdService implements OnDestroy {
   submitProduct$: Subject<void> = new Subject();
   submitProductSpec$: Subject<void> = new Subject();
   afterSelectProductSpec$: Subject<void> = new Subject();//选择规格事件
+  afterProductCharletChange$: Subject<boolean> = new Subject();
   submitData$: Subject<EditPointer> = new Subject();//提交按钮事件
   destroy$: Subject<boolean> = new Subject();
   constructor() {

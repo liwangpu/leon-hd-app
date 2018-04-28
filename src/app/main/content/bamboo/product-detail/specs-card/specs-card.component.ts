@@ -36,11 +36,13 @@ export class SpecsCardComponent implements OnInit, OnDestroy {
       this.detailMdSrv.productSpec = new ProductSpec();
       this.detailMdSrv.productSpec.productId = this.detailMdSrv.product.id;
       this.detailMdSrv.afterSelectProductSpec$.next();
+      this.detailMdSrv.afterProductCharletChange$.next(false);
     }
     else {
       this.productSpecSrv.getById(specid).takeUntil(this.destroy$).subscribe(resSpec => {
         this.detailMdSrv.productSpec = resSpec;
         this.detailMdSrv.afterSelectProductSpec$.next();
+        this.detailMdSrv.afterProductCharletChange$.next(resSpec.charlets && resSpec.charlets.length ? true : false);
       });
     }
   }//onEditSpec

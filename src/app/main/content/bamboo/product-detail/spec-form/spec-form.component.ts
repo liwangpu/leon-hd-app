@@ -96,13 +96,12 @@ export class SpecFormComponent implements OnInit, OnDestroy {
     let ndialog = this.dialog.open(SpecUploadComponent, {
       width: '400px',
       height: '600px',
-      data: {
-        productSpec: this.detailMdSrv.productSpec
-      }
+      data: { productSpecId: this.detailMdSrv.productSpec.id }
     });
 
-    ndialog.afterClosed().takeUntil(this.destroy$).subscribe(()=>{
-      // this.productSpecSrv.
+    ndialog.afterClosed().takeUntil(this.destroy$).subscribe(() => {
+      if (ndialog.componentInstance.isCharletChange)
+        this.detailMdSrv.afterProductCharletChange$.next(true);
     });
   }//onUpload
 }

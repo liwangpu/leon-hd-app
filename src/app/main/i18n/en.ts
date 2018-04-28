@@ -85,7 +85,8 @@ export const locale = {
             "EditDepartment": "Edit Department",
             "AllUsers": "All Users",
             "AddSolution": "ADD NEW SOLUTION",
-            "AddProductSpec": "ADD NEW SPECIFICATION"
+            "AddProductSpec": "ADD NEW SPECIFICATION",
+            "FileManagement": "File Manage"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",

@@ -11,4 +11,24 @@
         border: 1px solid gray;
         margin: 10px;
     }
+    div.spec-charlet-container {
+        width: 100%;
+        padding: 0 0 0 10px;
+    }
+    div.spec-charlet-item {
+        height: 55px;
+        // border: 1px solid gray;
+        margin-bottom: 3px;
+    }
+    div.spec-charlet-item:hover {
+        cursor: pointer;
+    }
+    img.spec-charlet-item-pic {
+        width: 55px;
+        height: 55px;
+    }
+    img.spec-charlet-detail-pic{
+        width: 400px;
+        height: 400px;
+    }
 }

@@ -1,6 +1,13 @@
 <div class="list-container" fxLayout='row' fxLayoutGap='10px'>
-  <div fxFlex='420px'>
-    <div class="spec-detail-pic-container"></div>
+  <div fxFlex='420px' *ngIf='charlets.length'>
+    <div class="spec-detail-pic-container">
+      <img class="spec-charlet-detail-pic" [src]="detailCharletUrl">
+    </div>
+    <div class="spec-charlet-container" fxLayout='row wrap' fxLayoutGap='3px'>
+      <div class="spec-charlet-item" fxFlex='55px' *ngFor='let charitem of charlets' (click)='watchDetaiCharlet(charitem.url)'>
+        <img class="spec-charlet-item-pic" [src]="getCharletUrl(charitem.url)">
+      </div>
+    </div>
   </div>
   <div fxFlex='250px'>
     <app-product-detail-specs-card></app-product-detail-specs-card>
