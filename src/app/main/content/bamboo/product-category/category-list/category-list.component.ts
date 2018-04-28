@@ -14,8 +14,10 @@ import { SnackbarService } from '../../../../toolkit/common/services/snackbar.se
 })
 export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, OnChanges {
 
+  @Input() title: string;
   @Input() closable: boolean;
   @Input() categories: Array<ProductCategory>;
+  @Output() onClose: EventEmitter<void> = new EventEmitter();
   @Output() onCategorySelected: EventEmitter<string> = new EventEmitter();
   @ViewChildren(CategoryItemDirective) categoryItems: QueryList<CategoryItemDirective>;
   private destroy$: Subject<boolean> = new Subject();
@@ -132,5 +134,9 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
 
     getTranAsync().then(confirmAsync).then(deleteCategoryAsync);
   }//onDeleteCategory
+
+  close() {
+    this.onClose.next();
+  }//close
 
 }

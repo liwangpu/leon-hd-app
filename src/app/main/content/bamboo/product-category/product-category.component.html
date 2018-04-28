@@ -21,7 +21,7 @@
 
         <!-- <fuse-demo-sidenav></fuse-demo-sidenav> -->
         <!-- <app-product-category-main-category></app-product-category-main-category> -->
-        <app-product-category-list [categories]='mainCategories' (onCategorySelected)='onMainCategorySelect($event)'></app-product-category-list>
+        <app-product-category-list [categories]='mainCategories' (onCategorySelected)='onMainCategorySelect($event)' [title]="'glossary.ProductMainCategory'|translate"></app-product-category-list>
       </div>
       <!-- / SIDENAV CONTENT -->
 
@@ -50,14 +50,11 @@
         <!-- / CONTENT TOOLBAR -->
 
         <!-- CONTENT -->
-        <div class="content p-24" fusePerfectScrollbar>
-
-          <div class="fxLayout-container" fxLayout='row'>
-
-
+        <div class="content" fusePerfectScrollbar>
+          <ng-template #categoryPanel></ng-template>
+          <!-- <div class="fxLayout-container" fxLayout='row'>
             <div fxFlex='450px'>
-              <!--产品分类编辑面板-->
-              <div class="category-form-container">
+               <div class="category-form-container">
                 <form [formGroup]="categoryForm">
                   <input type="hidden" formControlName="id">
                   <input type="hidden" formControlName="organizationId">
@@ -77,9 +74,8 @@
                   <button mat-button (click)='onSubmitCategory()'>{{'button.Save'|translate}}</button>
                 </div>
               </div>
-              <!--/产品分类编辑面板-->
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- / CONTENT -->
 

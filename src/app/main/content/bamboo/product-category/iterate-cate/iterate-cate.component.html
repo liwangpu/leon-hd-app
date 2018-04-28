@@ -1,0 +1,9 @@
+<div class="fxLayout-container" fxLayout='row'>
+  <div class="category-folder" fxFlex='240px'>
+    <app-product-category-list [categories]='categories' [closable]='true' [title]='title' (onCategorySelected)='openChildCategory($event)'
+      (onClose)="closePanel()"></app-product-category-list>
+  </div>
+  <div class="category-sub-folder" fxFlex>
+    <ng-template #childCategory></ng-template>
+  </div>
+</div>

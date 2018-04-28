@@ -52,8 +52,10 @@ import { SpecFormComponent as ProductSpecFormComponent } from './product-detail/
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { CategoryListComponent as ProductCategoryListComponent } from './product-category/category-list/category-list.component';
 import { MainCategoryComponent as ProductMainCategoryComponent } from './product-category/main-category/main-category.component';
-import { CategoryItemDirective as ProductCategoryItemDirective} from './product-category/category-list/category-item.directive';
+import { CategoryItemDirective as ProductCategoryItemDirective } from './product-category/category-list/category-item.directive';
 import { SpecUploadComponent as ProductSpecUploadComponent } from './product-detail/spec-upload/spec-upload.component';
+import { EditPanelComponent as ProductCategoryEditPanelComponent } from './product-category/edit-panel/edit-panel.component';
+import { IterateCateComponent as ProductCategoryIterateCateComponent } from './product-category/iterate-cate/iterate-cate.component';
 
 @NgModule({
   imports: [
@@ -86,8 +88,8 @@ import { SpecUploadComponent as ProductSpecUploadComponent } from './product-det
     MatInputModule,
     FuseContactsModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductMainCategoryComponent, ProductCategoryItemDirective, ProductSpecUploadComponent],
-  entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent,ProductSpecUploadComponent],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductMainCategoryComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryEditPanelComponent, ProductCategoryIterateCateComponent],
+  entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent],
   providers: [
     ProductDetailMdService,
     SolutionDetailMdService

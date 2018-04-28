@@ -5,10 +5,10 @@
     <div fxFlex>
       <div class="category-container" fxLayout='row' fxLayoutAlign='space-between start'>
         <div class="category-header-title" fxFlex fxFlexAlign='stretch'>
-          Main Category
+          {{title}}
         </div>
         <div *ngIf='closable'>
-          <button mat-button class="mat-icon-button">
+          <button mat-button class="mat-icon-button" (click)='close()'>
             <mat-icon class="operate-button-icon">close</mat-icon>
           </button>
         </div>

@@ -82,7 +82,7 @@ export const locale = {
             "AllUsers": "所有人员",
             "AddSolution": "添加解决方案",
             "AddProductSpec": "添加规格",
-            "FileManagement": "文件管理"
+            "FileManagement": "文件管理"     
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
