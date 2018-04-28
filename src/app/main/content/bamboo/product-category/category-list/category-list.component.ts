@@ -7,6 +7,8 @@ import { ProductCategoryService } from '../../../../toolkit/server/webapi/produc
 import { DialogService } from '../../../../toolkit/common/services/dialog.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
+import { MatDialog } from '@angular/material';
+import { CategoryFormComponent } from "../category-form/category-form.component";
 @Component({
   selector: 'app-product-category-list',
   templateUrl: './category-list.component.html',
@@ -24,9 +26,7 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
   private selectedCategory: ProductCategory;
   private minIdx = 0;//最小展示序号
   private maxIdx = 0;//最大展示序号
-  constructor(private mathexSrv: MathexService, private categorySrv: ProductCategoryService, private dialogSrv: DialogService, private tranSrv: TranslateService, private snackbarSrv: SnackbarService) {
-    //TODO:删除
-    // this.closable = true;
+  constructor(private mathexSrv: MathexService, private categorySrv: ProductCategoryService, private dialogSrv: DialogService, private tranSrv: TranslateService, private snackbarSrv: SnackbarService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -135,8 +135,27 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
     getTranAsync().then(confirmAsync).then(deleteCategoryAsync);
   }//onDeleteCategory
 
+  onEdit() {
+    if (!this.selectedCategory)
+      return;
+    let dialogObj = this.dialog.open(CategoryFormComponent, {
+      width: '400px',
+      height: '600px',
+      // data: { productSpecId: this.detailMdSrv.productSpec.id }
+    });
+
+    let obs = dialogObj.afterClosed().subscribe(() => {
+
+      obs.unsubscribe();
+      // if (ndialog.componentInstance.isCharletChange)
+      //   this.detailMdSrv.afterProductCharletChange$.next(true);
+    });
+
+  }//onEdit
+
   close() {
     this.onClose.next();
   }//close
+
 
 }

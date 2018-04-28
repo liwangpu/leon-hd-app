@@ -31,7 +31,6 @@ import { ServicesModule } from "../services/services.module";
 import { OrganComponent } from './organ/organ.component';
 import { OrganDetailComponent } from './organ-detail/organ-detail.component';
 import { MatSelectModule } from '@angular/material/select';
-import { FuseContactsModule } from "./contacts/contacts.module";
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { OAccountDetailComponent } from './organ/o-account-detail/o-account-detail.component';
 import { AccountComponent } from './account/account.component';
@@ -51,11 +50,10 @@ import { SpecsCardComponent as ProductSpecsCardComponent } from './product-detai
 import { SpecFormComponent as ProductSpecFormComponent } from './product-detail/spec-form/spec-form.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { CategoryListComponent as ProductCategoryListComponent } from './product-category/category-list/category-list.component';
-import { MainCategoryComponent as ProductMainCategoryComponent } from './product-category/main-category/main-category.component';
 import { CategoryItemDirective as ProductCategoryItemDirective } from './product-category/category-list/category-item.directive';
 import { SpecUploadComponent as ProductSpecUploadComponent } from './product-detail/spec-upload/spec-upload.component';
-import { EditPanelComponent as ProductCategoryEditPanelComponent } from './product-category/edit-panel/edit-panel.component';
 import { IterateCateComponent as ProductCategoryIterateCateComponent } from './product-category/iterate-cate/iterate-cate.component';
+import { CategoryFormComponent as ProductCategoryCategoryFormComponent } from './product-category/category-form/category-form.component';
 
 @NgModule({
   imports: [
@@ -85,11 +83,10 @@ import { IterateCateComponent as ProductCategoryIterateCateComponent } from './p
     MatGridListModule,
     MatFormFieldModule,
     CdkTableModule,
-    MatInputModule,
-    FuseContactsModule
+    MatInputModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductMainCategoryComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryEditPanelComponent, ProductCategoryIterateCateComponent],
-  entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent],
+  entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent],
   providers: [
     ProductDetailMdService,
     SolutionDetailMdService
