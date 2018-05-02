@@ -43,9 +43,6 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
         this.detaiMdSrv.currentEditPointer = EditPointer.PoductDetail;
       }
     });
-    this.categorySrv.getById(this.detaiMdSrv.product.categoryId).first().subscribe(resCate => {
-      this.productForm.patchValue({categoryName:resCate.name});
-    });
   }
 
   ngOnDestroy(): void {
@@ -57,11 +54,14 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
   submitProduct() {
 
     let saveProdAsync = () => {
+      let vl = this.productForm.value;
       return new Promise((resolve) => {
-        this.productSrv.update(this.productForm.value).subscribe(resProd => {
+        this.productSrv.update(vl).subscribe(resProd => {
           this.detaiMdSrv.product.id = resProd.id;
           this.detaiMdSrv.product.name = resProd.name;
           this.detaiMdSrv.product.description = resProd.description;
+          this.detaiMdSrv.product.categoryId = vl.categoryId;
+          this.detaiMdSrv.product.categoryName = vl.categoryName;
           this.detaiMdSrv.afterSaveProduct$.next();
           this.productForm.patchValue(this.detaiMdSrv.product);
           resolve({ k: 'message.SaveSuccessfully' });

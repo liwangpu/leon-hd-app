@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ProductSpecService } from "../../../../toolkit/server/webapi/productSpec.service";
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { SpecUploadComponent } from "../spec-upload/spec-upload.component";
+import { CategoryPanelComponent } from '../../productspec-cateogory/category-panel/category-panel.component';
 @Component({
   selector: 'app-product-detail-spec-form',
   templateUrl: './spec-form.component.html',
@@ -23,7 +24,10 @@ export class SpecFormComponent implements OnInit, OnDestroy {
       id: [''],
       name: ['', [Validators.required]],
       description: [''],
-      productId: ['']
+      productId: [''],
+      price: [''],
+      categoryId: [''],
+      categoryName: ['', [Validators.required]]
     });
 
     this.detailMdSrv.afterSelectProductSpec$.takeUntil(this.destroy$).subscribe(() => {
@@ -63,11 +67,14 @@ export class SpecFormComponent implements OnInit, OnDestroy {
 
   private submitProductSpec() {
     let saveProdSpecAsync = () => {
+      let vl = this.specForm.value;
       return new Promise((resolve) => {
-        this.productSpecSrv.update(this.specForm.value).subscribe(resProd => {
+        this.productSpecSrv.update(vl).subscribe(resProd => {
           this.detailMdSrv.productSpec.id = resProd.id;
           this.detailMdSrv.productSpec.name = resProd.name;
           this.detailMdSrv.productSpec.description = resProd.description;
+          this.detailMdSrv.productSpec.categoryId = vl.categoryId;
+          this.detailMdSrv.productSpec.categoryName = vl.categoryName;
           this.showUploadBtn = true;
           this.detailMdSrv.afterSaveProductSpec$.next();
           this.specForm.patchValue(this.detailMdSrv.productSpec);
@@ -104,4 +111,20 @@ export class SpecFormComponent implements OnInit, OnDestroy {
         this.detailMdSrv.afterProductCharletChange$.next(true);
     });
   }//onUpload
+
+  onEditCategory() {
+    let dialogObj = this.dialog.open(CategoryPanelComponent, {
+      width: '700px',
+      height: '800px'
+    });//
+
+    let dialogDestroy$ = new Subject<boolean>();
+    dialogObj.componentInstance.afterUserSelect$.takeUntil(dialogDestroy$).subscribe(resCate => {
+      this.specForm.patchValue({ categoryId: resCate.id, categoryName: resCate.name });
+    });
+    dialogObj.afterClosed().first().subscribe(() => {
+      dialogDestroy$.next(true);
+      dialogDestroy$.unsubscribe();
+    });
+  }//onEditCategory
 }

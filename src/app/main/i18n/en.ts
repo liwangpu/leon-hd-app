@@ -25,7 +25,8 @@ export const locale = {
             "InteriorDesignProducts": "Products",
             "Organization": "Organization",
             "OrganAccounts": "Account Management",
-            "ProductCategorys": "Product Category"
+            "ProductCategorys": "Product Category",
+            "ProductSpecCategorys": "Product Spec Category"
         },
         "glossary": {
             "Product": "Product",
@@ -48,6 +49,7 @@ export const locale = {
             "Name": "Name",
             "Phone": "Phone",
             "Mail": "Mail",
+            "Price": "Price",
             "Password": "Password",
             "Location": "Location",
             "Description": "Description",
@@ -63,7 +65,8 @@ export const locale = {
             "ExpireTime": "Expire Time",
             "Solution": "Solution",
             "ProductCategory": "Product Category",
-            "ProductMainCategory": "Main Category"
+            "ProductMainCategory": "Main Category",
+            "ProductSpecCategory": "Spec Category",
         },
         "button": {
             "Save": "Save",
@@ -125,6 +128,7 @@ export const locale = {
             "AtLeastUploadMaterialFileTotal": "At Least Upload File",
             "UploadStaticMeshFileFirst": "Please Upload Static Mesh File First",
             "EditProductCategory": "Edit Product Category",
+            "EditProductSpecCategory": "Edit Product Spec Category",
             "CurrentSelectd": "Current Selected"
         }
     }

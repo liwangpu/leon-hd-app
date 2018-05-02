@@ -5,6 +5,7 @@ import { EntityBase } from "./entitybase";
 export class ProductSpec extends EntityBase implements Iasset {
     folderId: string;
     categoryId: string;
+    categoryName: string;
     description: string;
     icon: string;
     createTime: string;

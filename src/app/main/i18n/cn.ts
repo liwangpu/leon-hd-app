@@ -25,7 +25,8 @@ export const locale = {
             "InteriorDesignProducts": "产品",
             "Organization": "组织",
             "OrganAccounts": "人员管理",
-            "ProductCategorys": "产品分类"
+            "ProductCategorys": "产品分类",
+            "ProductSpecCategorys": "产品规格分类"
         },
         "glossary": {
             "Product": "产品",
@@ -46,6 +47,7 @@ export const locale = {
             "Name": "名称",
             "Phone": "电话",
             "Mail": "邮件",
+            "Price": "价格",
             "Password": "密码",
             "Description": "描述",
             "Location": "地址",
@@ -61,7 +63,8 @@ export const locale = {
             "ExpireTime": "账号有效期",
             "Solution": "方案",
             "ProductCategory": "产品分类",
-            "ProductMainCategory": "主要分类"
+            "ProductMainCategory": "主要分类",
+            "ProductSpecCategory": "规格分类",
         },
         "button": {
             "Save": "保存",
@@ -121,6 +124,7 @@ export const locale = {
             "AtLeastUploadMaterialFileTotal": "至少上传文件",
             "UploadStaticMeshFileFirst": "请先上传模型文件",
             "EditProductCategory": "编辑产品分类",
+            "EditProductSpecCategory": "编辑规格分类",
             "CurrentSelectd": "当前选择"
         }
     }
