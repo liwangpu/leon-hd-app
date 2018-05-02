@@ -15,6 +15,7 @@ import { FuseUtils } from '../../../../core/fuseUtils';
 import { PaginatorStore } from "../../../toolkit/common/classes/paginator-store";
 import { Product } from '../../../toolkit/models/product';
 import { ProductService } from "../../../toolkit/server/webapi/product.service";
+import { PathService } from '../../services/path.service';
 @Component({
   selector: 'app-products',
   templateUrl: './product.component.html',
@@ -26,7 +27,7 @@ export class ProductComponent implements OnInit {
   dataStore: PaginatorStore<Product>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('filter') filter: ElementRef;
-  constructor(private productSrv: ProductService) {
+  constructor(private productSrv: ProductService,private pathSrv:PathService) {
 
   }
 

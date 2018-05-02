@@ -35,6 +35,8 @@ export class ProductCategoryService extends AssetCategoryService<ProductCategory
      * @param entity 
      */
     public updateProductCategory(entity: ProductCategory): Observable<ProductCategory> {
+        if (!entity.id)
+            return this.createProductCategory(entity);
         return this.updateType(entity);
     }//updateProductCategory
 

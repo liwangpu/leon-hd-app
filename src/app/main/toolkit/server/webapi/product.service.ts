@@ -5,10 +5,12 @@ import { ConfigService } from '../../config/config.service';
 import { Product } from '../../models/product';
 import { Observable } from 'rxjs/Observable';
 import { IListableService } from "./ilistableService";
+import { IconService } from './icon.service';
+import { IconModel } from '../../models/iconmodel';
 @Injectable()
 export class ProductService extends ApiService<Product> implements IListableService<Product> {
 
-    constructor(private http: HttpClient, private config: ConfigService) {
+    constructor(private http: HttpClient, private config: ConfigService, private iconSrv: IconService) {
         super(http, config);
         this.uriPart = 'products';
     }
@@ -46,5 +48,14 @@ export class ProductService extends ApiService<Product> implements IListableServ
      */
     query(query: IQuery): Observable<Paging<Product>> {
         return super.queryEntities(query);
+    }
+
+    /**
+     * 更改图标信息
+     * @param entity 
+     */
+    changeIcon(entity: IconModel) {
+        let url = `${this.uri}/changeICon`;
+        return this.iconSrv.changeIcon(url, entity);
     }
 }

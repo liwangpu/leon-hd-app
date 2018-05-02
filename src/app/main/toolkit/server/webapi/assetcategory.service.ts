@@ -37,7 +37,6 @@ export class AssetCategoryService<T extends AssetCategory> {
         return Observable.of<T>({} as T);
     }//getByType
 
-
     /**
      * 创建分类
      * @param entity 
@@ -96,4 +95,11 @@ export class AssetCategoryService<T extends AssetCategory> {
         return this.arrow(entity);
     }//moveDown
 
+    /**
+     * 根据id获取分类信息
+     * @param id 
+     */
+    public getById(id: string) {
+        return this.httpClient.get<T>(`${this.uri}/getById/?id=${id}`, { headers: this.header });
+    }
 }

@@ -5,6 +5,8 @@ import { ProductSpec } from '../../../../toolkit/models/productspec';
 import { ProductSpecService } from '../../../../toolkit/server/webapi/productSpec.service';
 import { FileAsset } from '../../../../toolkit/models/fileasset';
 import { ConfigService } from '../../../../toolkit/config/config.service';
+import { ProductService } from '../../../../toolkit/server/webapi/product.service';
+import { IconModel } from '../../../../toolkit/models/iconmodel';
 
 @Component({
   selector: 'app-product-detail-specs-list',
@@ -15,11 +17,12 @@ export class SpecsListComponent implements OnInit, OnDestroy {
   private detailCharletUrl = "";
   private charlets: Array<FileAsset> = [];
   private detroy$: Subject<boolean> = new Subject();
-  constructor(private detailMdSrv: ProductDetailMdService, private productSpeServ: ProductSpecService, private configSrv: ConfigService) {
+  constructor(private detailMdSrv: ProductDetailMdService, private productSpeServ: ProductSpecService, private configSrv: ConfigService, private productSrv: ProductService) {
     //订阅规格图片更改事件
     this.detailMdSrv.afterProductCharletChange$.takeUntil(this.detroy$).subscribe((hasCharlet) => {
-      if (hasCharlet)
+      if (hasCharlet) {
         this.refreshCharlet();
+      }
     });
   }
 
@@ -37,6 +40,14 @@ export class SpecsListComponent implements OnInit, OnDestroy {
       if (resSpec.charlets && resSpec.charlets.length) {
         this.charlets = resSpec.charlets;
         this.watchDetaiCharlet(this.charlets[0].url);
+        //更改图标信息
+        let iconMd = new IconModel();
+        iconMd.AssetId = this.charlets[0].id;
+        iconMd.ObjId = this.detailMdSrv.product.id;
+        this.productSrv.changeIcon(iconMd).first().subscribe(() => {
+
+        });
+
       }
     });
   }//refreshCharlet
@@ -47,5 +58,5 @@ export class SpecsListComponent implements OnInit, OnDestroy {
 
   watchDetaiCharlet(url: string) {
     this.detailCharletUrl = this.getCharletUrl(url);
-  }
+  }//watchDetaiCharlet
 }

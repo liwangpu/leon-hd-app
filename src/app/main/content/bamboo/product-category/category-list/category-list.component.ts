@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
 import { MatDialog } from '@angular/material';
 import { CategoryFormComponent } from "../category-form/category-form.component";
+import { CategoryMdService } from '../category-md.service';
 @Component({
   selector: 'app-product-category-list',
   templateUrl: './category-list.component.html',
@@ -16,17 +17,22 @@ import { CategoryFormComponent } from "../category-form/category-form.component"
 })
 export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, OnChanges {
 
+  @Input() organizationId: string;
+  @Input() parentId: string;
+  @Input() type: string;
   @Input() title: string;
   @Input() closable: boolean;
+  @Input() brief: boolean;
   @Input() categories: Array<ProductCategory>;
   @Output() onClose: EventEmitter<void> = new EventEmitter();
   @Output() onCategorySelected: EventEmitter<string> = new EventEmitter();
+  @Output() afterCategoryDeleted: EventEmitter<string> = new EventEmitter();
   @ViewChildren(CategoryItemDirective) categoryItems: QueryList<CategoryItemDirective>;
   private destroy$: Subject<boolean> = new Subject();
   private selectedCategory: ProductCategory;
   private minIdx = 0;//最小展示序号
   private maxIdx = 0;//最大展示序号
-  constructor(private mathexSrv: MathexService, private categorySrv: ProductCategoryService, private dialogSrv: DialogService, private tranSrv: TranslateService, private snackbarSrv: SnackbarService, private dialog: MatDialog) {
+  constructor(private mathexSrv: MathexService, private categorySrv: ProductCategoryService, private dialogSrv: DialogService, private tranSrv: TranslateService, private snackbarSrv: SnackbarService, private dialog: MatDialog, private categoryMdSrv: CategoryMdService) {
   }
 
   ngOnInit() {
@@ -61,10 +67,10 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
     });
     this.onCategorySelected.next(id);
     this.selectedCategory = this.categories.filter(x => x.id === id)[0];
+    this.categoryMdSrv.afterCategorySelect$.next(this.selectedCategory);
   }//onItemSelected
 
   selectedItem(id: string) {
-
     this.categoryItems.forEach(it => {
       if (it.id === id)
         it.select();
@@ -73,10 +79,17 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
     });
   }
 
+  onClear() {
+    this.categoryItems.forEach(it => {
+      it.reset();
+      this.selectedCategory = null;
+    });
+  }//onClear
+
 
   onMoveUp() {
     if (this.selectedCategory.displayIndex > this.minIdx) {
-      this.categorySrv.moveUpProductCategory(this.selectedCategory).takeUntil(this.destroy$).subscribe(resCate => {
+      this.categorySrv.moveUpProductCategory(this.selectedCategory).first().subscribe(resCate => {
         this.categories = resCate.children;
         setTimeout(() => {
           this.selectedItem(this.selectedCategory.id);
@@ -87,9 +100,8 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
 
   onMoveDown() {
     if (this.selectedCategory.displayIndex < this.maxIdx) {
-      this.categorySrv.moveDownProductCategory(this.selectedCategory).takeUntil(this.destroy$).subscribe(resCate => {
+      this.categorySrv.moveDownProductCategory(this.selectedCategory).first().subscribe(resCate => {
         this.categories = resCate.children;
-
         setTimeout(() => {
           this.selectedItem(this.selectedCategory.id);
         }, 200);
@@ -126,7 +138,8 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
     let deleteCategoryAsync = () => {
       let obs = this.categorySrv.deleteProductCategory(this.selectedCategory.id).subscribe(() => {
         this.snackbarSrv.simpleBar('message.DeleteSuccessfully');
-        this.categories = this.categories.filter(x => x.id !== this.selectedCategory.id);
+        this.afterCategoryDeleted.next(this.selectedCategory.id);
+        // this.categories = this.categories.filter(x => x.id !== this.selectedCategory.id);
         this.selectedCategory = undefined;
         obs.unsubscribe();
       });
@@ -135,21 +148,43 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
     getTranAsync().then(confirmAsync).then(deleteCategoryAsync);
   }//onDeleteCategory
 
-  onEdit() {
-    if (!this.selectedCategory)
+  onEdit(type?: string) {
+    if (type === 'edit' && !this.selectedCategory)
       return;
+
+    let defaultCate: ProductCategory;
+    if (type === 'new') {
+      defaultCate = new ProductCategory();
+      defaultCate.type = this.type;
+      defaultCate.organizationId = this.organizationId;
+      defaultCate.parentId = this.parentId;
+      defaultCate.displayIndex = 0;
+    }
+
     let dialogObj = this.dialog.open(CategoryFormComponent, {
       width: '400px',
-      height: '600px',
-      // data: { productSpecId: this.detailMdSrv.productSpec.id }
-    });
+      height: '450px',
+      data: { category: type === 'edit' ? this.selectedCategory : defaultCate }
+    });//
 
-    let obs = dialogObj.afterClosed().subscribe(() => {
-
-      obs.unsubscribe();
-      // if (ndialog.componentInstance.isCharletChange)
-      //   this.detailMdSrv.afterProductCharletChange$.next(true);
+    let dialogDestroy = new Subject<boolean>();
+    dialogObj.afterClosed().first().subscribe(() => {
+      dialogDestroy.next(true);
     });
+    dialogObj.componentInstance.afterCategorySubmit.takeUntil(dialogDestroy).subscribe(resCate => {
+      let isExist = this.categories.some(x => x.id === resCate.id);
+      if (isExist) {
+        for (let idx = this.categories.length - 1; idx >= 0; idx--) {
+          if (this.categories[idx].id === resCate.id) {
+            this.categories[idx] = resCate;
+            break;
+          }
+        }//for
+      }
+      else {
+        this.categories.push(resCate);
+      }
+    });//subscribe
 
   }//onEdit
 

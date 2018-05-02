@@ -38,7 +38,7 @@
         <!-- CONTENT CARD -->
         <div class="content-card mat-white-bg">
             <div class="products-table">
-                <icon-item *ngFor="let item of productItems" [Id]='item.id' [Name]='item.name' [Description]='item.description' [Icon]='item.icon'
+                <icon-item *ngFor="let item of productItems" [Id]='item.id' [Name]='item.name' [Description]='item.description' [Icon]='item.icon?pathSrv.redirectServerUrl(item.icon):"/assets/images/place-holder/product.jpg"'
                     [routerLink]="'/app/product-detail/' + item.id"></icon-item>
             </div>
             <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]='true'>

@@ -1,9 +1,15 @@
 <div class="basic-info-container">
   <form name="productForm" [formGroup]="productForm">
     <input type="hidden" formControlName='id' name='id'>
+    <input type="hidden" formControlName='categoryId' name='categoryId'>
     <mat-form-field>
       <input matInput name="name" formControlName="name" required placeholder="{{'glossary.ProductName'|translate}}">
       <mat-error *ngIf="productForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput readonly name="categoryName" formControlName="categoryName" required placeholder="{{'glossary.ProductCategory'|translate}}" (click)='onEditCategory()'>
+      <mat-error *ngIf="productForm.get('categoryId').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
     </mat-form-field>
 
     <mat-form-field>

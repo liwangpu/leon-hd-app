@@ -12,6 +12,10 @@ export class IterateCateComponent implements OnInit, OnDestroy {
   _ref: any;
   title: string;
   categories: Array<ProductCategory> = [];
+  organizationId: string;
+  parentId: string;
+  type: string;
+  brief: boolean;
   @ViewChild('childCategory', {
     read: ViewContainerRef
   }) folderContainer: ViewContainerRef;
@@ -25,6 +29,7 @@ export class IterateCateComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+    this.folderContainer.clear();
   }//ngOnDestroy
 
   closePanel() {
@@ -38,7 +43,14 @@ export class IterateCateComponent implements OnInit, OnDestroy {
     let dyCom = this.folderContainer.createComponent(comp);
     dyCom.instance._ref = dyCom;
     dyCom.instance.title = curCate.name;
-    dyCom.instance.categories =curCate.children;
-    // console.log('sle', curCate);
+    dyCom.instance.categories = curCate.children;
+    dyCom.instance.organizationId = this.organizationId;
+    dyCom.instance.parentId = id;
+    dyCom.instance.type = this.type;
+    dyCom.instance.brief = this.brief;
   }//openChildCategory
+
+  onCurrentCategoryDeleted(id: string) {
+    this.categories = this.categories.filter(x => x.id !== id);
+  }
 }

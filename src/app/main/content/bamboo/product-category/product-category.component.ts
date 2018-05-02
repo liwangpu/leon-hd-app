@@ -5,6 +5,7 @@ import { ProductCategoryService } from '../../../toolkit/server/webapi/productca
 import { Subject } from 'rxjs';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { IterateCateComponent } from './iterate-cate/iterate-cate.component';
+import { DessertService } from '../../services/dessert.service';
 
 @Component({
   selector: 'app-product-category',
@@ -13,7 +14,9 @@ import { IterateCateComponent } from './iterate-cate/iterate-cate.component';
   animations: fuseAnimations
 })
 export class ProductCategoryComponent implements OnInit, OnDestroy {
-
+  private organizationId: string;
+  private categoryType: string;
+  private parentId: string;
   private cacheProductCategory: ProductCategory;
   private categoryForm: FormGroup;
   private currentCategory: ProductCategory = new ProductCategory();
@@ -22,7 +25,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   @ViewChild('categoryPanel', {
     read: ViewContainerRef
   }) folderContainer: ViewContainerRef;
-  constructor(private categorySrv: ProductCategoryService, private formBuilder: FormBuilder, private comFactory: ComponentFactoryResolver) {
+  constructor(private categorySrv: ProductCategoryService, private formBuilder: FormBuilder, private comFactory: ComponentFactoryResolver, private dessertSrv: DessertService) {
 
     this.categoryForm = this.formBuilder.group({
       id: [''],
@@ -38,7 +41,10 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     this.categorySrv.getAllProductCategory().takeUntil(this.destroy$).subscribe(resCate => {
       this.cacheProductCategory = resCate;
       this.mainCategories = resCate.children ? resCate.children : [];
+      this.categoryType = resCate.type;
+      this.parentId = resCate.id;
     });
+    this.organizationId = this.dessertSrv.organId;
   }//ngOnInit
 
   ngOnDestroy(): void {
@@ -55,44 +61,10 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     dyCom.instance._ref = dyCom;
     dyCom.instance.title = this.currentCategory.name;
     dyCom.instance.categories = this.currentCategory.children;
+    dyCom.instance.organizationId = this.organizationId;
+    dyCom.instance.parentId = this.currentCategory.id;
+    dyCom.instance.type = this.categoryType;
 
-    // let allMainCategory = this.cacheProductCategory.children ? this.cacheProductCategory.children : [];
-    // for (let idx = allMainCategory.length - 1; idx >= 0; idx--) {
-    //   if (allMainCategory[idx].id === id) {
-    //     this.categoryForm.patchValue(allMainCategory[idx]);
-    //     break;
-    //   }
-    // }
   }//onMainCategorySelect
 
-  onEditCategory(cate: ProductCategory) {
-
-  }//onEditCategory
-
-  onSubmitCategory() {
-
-    // let submitAsync = () => {
-    //   return new Promise((resolve, reject) => {
-    //     this.categorySrv.updateProductCategory(this.categoryForm.value).takeUntil(this.destroy$).subscribe(resCate => {
-    //       // console.log(111, 'juju 11', resCate);
-
-    //       // deepForEach(this.cacheProductCategory, (value, key, subject, path) => {
-    //       //   // console.log(111, 'value', value,'key',key);
-    //       //   if (key === 'id') {
-    //       //     if (value === resCate.id) {
-    //       //     }
-    //       //   }
-    //       // });//deepForEach
-
-
-    //     }, err => {
-    //       console.log(111, 'juju 11 err', err);
-    //     });
-    //   });
-    // };//submitAsync
-
-
-    // submitAsync();
-
-  }//onSubmitCategory
 }

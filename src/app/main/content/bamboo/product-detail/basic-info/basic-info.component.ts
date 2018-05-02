@@ -6,6 +6,9 @@ import { ProductService } from "../../../../toolkit/server/webapi/product.servic
 import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
 import { Subject } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { CategoryPanelComponent } from '../../product-category/category-panel/category-panel.component';
+import { ProductCategoryService } from '../../../../toolkit/server/webapi/productcategory.service';
 
 @Component({
   selector: 'app-product-detail-basic-info',
@@ -16,11 +19,13 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
 
   private productForm: FormGroup;
   private destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private formBuilder: FormBuilder, private detaiMdSrv: ProductDetailMdService, private productSrv: ProductService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(private formBuilder: FormBuilder, private detaiMdSrv: ProductDetailMdService, private productSrv: ProductService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private dialog: MatDialog, private categorySrv: ProductCategoryService) {
     this.productForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
-      description: ['', [Validators.maxLength(200)]]
+      description: ['', [Validators.maxLength(200)]],
+      categoryId: [''],
+      categoryName: ['', [Validators.required]]
     });
 
     //订阅提交事件
@@ -33,11 +38,13 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
     this.productForm.patchValue(this.detaiMdSrv.product);
     //value change事件发布
     this.productForm.valueChanges.takeUntil(this.destroy$).debounceTime(150).subscribe(data => {
-      if (this.productForm.valid){
+      if (this.productForm.valid) {
         this.detaiMdSrv.onEdit$.next();
         this.detaiMdSrv.currentEditPointer = EditPointer.PoductDetail;
       }
-
+    });
+    this.categorySrv.getById(this.detaiMdSrv.product.categoryId).first().subscribe(resCate => {
+      this.productForm.patchValue({categoryName:resCate.name});
     });
   }
 
@@ -76,4 +83,21 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
       this.snackBarSrv.simpleBar(msg as string);
     });
   }//submitProduct
+
+  onEditCategory() {
+    let dialogObj = this.dialog.open(CategoryPanelComponent, {
+      width: '700px',
+      height: '800px'
+    });//
+
+    let dialogDestroy$ = new Subject<boolean>();
+    dialogObj.componentInstance.afterUserSelect$.takeUntil(dialogDestroy$).subscribe(resCate => {
+      console.log(222, resCate);
+      this.productForm.patchValue({ categoryId: resCate.id, categoryName: resCate.name });
+    });
+    dialogObj.afterClosed().first().subscribe(() => {
+      dialogDestroy$.next(true);
+      dialogDestroy$.unsubscribe();
+    });
+  }//onEditCategory
 }

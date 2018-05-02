@@ -73,6 +73,7 @@ export const locale = {
             "Edit": "编辑",
             "Cancel": "取消",
             "Search": "搜索",
+            "Select": "选择",
             "AddProduct": "添加产品",
             "AddOrgan": "添加组织",
             "Next": "下一步",
@@ -82,7 +83,7 @@ export const locale = {
             "AllUsers": "所有人员",
             "AddSolution": "添加解决方案",
             "AddProductSpec": "添加规格",
-            "FileManagement": "文件管理"     
+            "FileManagement": "文件管理"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
@@ -118,7 +119,9 @@ export const locale = {
             "UploadProductSpeChartlet": "上传贴图",
             "NeedUploadStaticMeshFileTotal": "必须上传文件",
             "AtLeastUploadMaterialFileTotal": "至少上传文件",
-            "UploadStaticMeshFileFirst": "请先上传模型文件"
+            "UploadStaticMeshFileFirst": "请先上传模型文件",
+            "EditProductCategory": "编辑产品分类",
+            "CurrentSelectd": "当前选择"
         }
     }
 };

@@ -1,5 +1,6 @@
 <div class="category-container" fxLayout='column'>
-  <div fxFlex='80px'>
+  <!--header-->
+  <div fxFlex='80px' *ngIf='!brief'>
     <div class="category-header" fxLayout='column'>
       <div fxFlex>
         <div class="category-container" fxLayout='row' fxLayoutAlign='space-between start'>
@@ -26,12 +27,12 @@
             </button>
           </div>
           <div>
-              <button class="operate-button" mat-icon-button (click)='onEdit()'>
-                <mat-icon class="operate-button-icon" style="font-size: 18px;height: 18px;">create</mat-icon>
-              </button>
-            </div>
+            <button class="operate-button" mat-icon-button (click)='onEdit("edit")'>
+              <mat-icon class="operate-button-icon" style="font-size: 18px;height: 18px;">create</mat-icon>
+            </button>
+          </div>
           <div>
-            <button class="operate-button" mat-icon-button>
+            <button class="operate-button" mat-icon-button (click)='onEdit("new")'>
               <mat-icon class="operate-button-icon" style="font-size: 20px;height: 20px;">add</mat-icon>
             </button>
           </div>
@@ -44,6 +45,9 @@
       </div>
     </div>
   </div>
+  <!--/header-->
+
+  <!--content-->
   <div fxFlex fusePerfectScrollbar>
     <div class="category-item" *ngFor='let item of categories|orderBy:"displayIndex":0' appProductCategoryItem [id]='item.id'
       (onSelected)='onItemSelected($event)'>
@@ -55,4 +59,5 @@
       </div>
     </div>
   </div>
+  <!--/content-->
 </div>

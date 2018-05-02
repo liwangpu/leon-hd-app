@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SpecsCardComponent } from "../specs-card/specs-card.component";
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
 import { ProductDetailMdService, EditPointer } from "../product-detail-md.service";
@@ -99,7 +99,7 @@ export class SpecFormComponent implements OnInit, OnDestroy {
       data: { productSpecId: this.detailMdSrv.productSpec.id }
     });
 
-    ndialog.afterClosed().takeUntil(this.destroy$).subscribe(() => {
+    ndialog.afterClosed().first().subscribe(() => {
       if (ndialog.componentInstance.isCharletChange)
         this.detailMdSrv.afterProductCharletChange$.next(true);
     });

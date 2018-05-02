@@ -78,6 +78,7 @@ export const locale = {
             "Confirm": "Confirm",
             "Next": "Next",
             "Search": "Search",
+            "Select": "Select",            
             "AddProduct": "ADD NEW PRODUCT",
             "AddOrgan": "ADD NEW ORGAN",
             "OrganOwnerManagement": "Owner Management",
@@ -122,7 +123,9 @@ export const locale = {
             "UploadProductSpeChartlet": "Upload Chartlet",
             "NeedUploadStaticMeshFileTotal": "Must Upload File",
             "AtLeastUploadMaterialFileTotal": "At Least Upload File",
-            "UploadStaticMeshFileFirst": "Please Upload Static Mesh File First"
+            "UploadStaticMeshFileFirst": "Please Upload Static Mesh File First",
+            "EditProductCategory": "Edit Product Category",
+            "CurrentSelectd": "Current Selected"
         }
     }
 };
