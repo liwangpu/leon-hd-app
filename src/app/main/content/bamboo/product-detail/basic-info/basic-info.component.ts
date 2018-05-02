@@ -92,7 +92,6 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
 
     let dialogDestroy$ = new Subject<boolean>();
     dialogObj.componentInstance.afterUserSelect$.takeUntil(dialogDestroy$).subscribe(resCate => {
-      console.log(222, resCate);
       this.productForm.patchValue({ categoryId: resCate.id, categoryName: resCate.name });
     });
     dialogObj.afterClosed().first().subscribe(() => {

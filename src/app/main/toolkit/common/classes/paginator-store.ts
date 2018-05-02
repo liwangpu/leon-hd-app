@@ -42,8 +42,6 @@ export class PaginatorStore<T> extends DataSource<any> {
             Observable.from(this.option.sort.sortChange).takeUntil(this.destroy$).subscribe(sorting => {
                 this.setSorting(sorting['active'], sorting['direction']);
                 this.query();
-
-                // console.log(222, 'sort', this.queryParams);
             });
         //订阅过滤条件过滤响应事件
         Observable.from(this.filterChange).takeUntil(this.destroy$).subscribe(sorting => {
@@ -79,6 +77,7 @@ export class PaginatorStore<T> extends DataSource<any> {
      * @param size 
      */
     private setPaging(index: number, size: number) {
+        index++;
         this.queryParams.page = index;
         this.queryParams.pageSize = size;
     }//setPaging

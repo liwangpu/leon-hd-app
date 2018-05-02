@@ -50,7 +50,7 @@ export class BasicInfoComponent implements OnInit {
 
     let saveProdAsync = () => {
       return new Promise((resolve) => {
-        this.solutionSrv.update(this.detailForm.value).subscribe(resProd => {
+        this.solutionSrv.update(this.detailForm.value).first().subscribe(resProd => {
           this.detaiMdSrv.solution.id = resProd.id;
           this.detaiMdSrv.solution.name = resProd.name;
           this.detaiMdSrv.solution.description = resProd.description;
@@ -65,7 +65,7 @@ export class BasicInfoComponent implements OnInit {
 
     let transAsync = (mobj: { k: string, v: any }) => {
       return new Promise((resolve) => {
-        this.tranSrv.get(mobj.k, mobj.v).subscribe(msg => {
+        this.tranSrv.get(mobj.k, mobj.v).first().subscribe(msg => {
           resolve(msg);
         });
       });//promise

@@ -1,5 +1,5 @@
-<div class="basic-info-container">
-  <form name="detailForm" [formGroup]="detailForm">
+<form name="detailForm" [formGroup]="detailForm">
+  <div class="basic-info-container good">
     <input type="hidden" formControlName='id' name='id'>
     <mat-form-field>
       <input matInput name="name" formControlName="name" required placeholder="{{'glossary.Name'|translate}}">
@@ -10,5 +10,5 @@
       <textarea matInput name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
       <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
     </mat-form-field>
-  </form>
-</div>
+  </div>
+</form>
