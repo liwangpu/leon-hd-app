@@ -30,7 +30,7 @@ export class AccountComponent implements OnInit {
   newAccount() {
     let account = new Account();
     account.organizationId = this.dessertSrv.organId;
-    account.type = AccountTypeEnums.user;
+    account.type = AccountTypeEnums.organMember;
     account.name = '用户';
     account.activationTime = this.momentSrv.addDaysTransform(new Date(), -1, 'yyyy-MM-dd');
     account.expireTime = this.momentSrv.addYearsTransform(new Date(), 10, 'yyyy-MM-dd');

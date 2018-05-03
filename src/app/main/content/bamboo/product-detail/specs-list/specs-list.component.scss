@@ -17,15 +17,16 @@
     }
     div.spec-charlet-item {
         height: 55px;
-        // border: 1px solid gray;
+        border: 1px solid gray;
         margin-bottom: 3px;
+        padding: 1px;
     }
     div.spec-charlet-item:hover {
         cursor: pointer;
     }
     img.spec-charlet-item-pic {
-        width: 55px;
-        height: 55px;
+        width: 53px;
+        height: 52px;
     }
     img.spec-charlet-detail-pic{
         width: 398px;

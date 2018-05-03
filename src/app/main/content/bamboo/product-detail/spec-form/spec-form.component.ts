@@ -27,9 +27,7 @@ export class SpecFormComponent implements OnInit, OnDestroy {
       name: ['', [Validators.required]],
       description: [''],
       productId: [''],
-      price: [''],
-      categoryId: [''],
-      categoryName: ['', [Validators.required]]
+      price: ['']
     });
 
     this.detailMdSrv.afterSelectProductSpec$.takeUntil(this.destroy$).subscribe(() => {
@@ -75,8 +73,7 @@ export class SpecFormComponent implements OnInit, OnDestroy {
           this.detailMdSrv.productSpec.id = resProd.id;
           this.detailMdSrv.productSpec.name = resProd.name;
           this.detailMdSrv.productSpec.description = resProd.description;
-          this.detailMdSrv.productSpec.categoryId = vl.categoryId;
-          this.detailMdSrv.productSpec.categoryName = vl.categoryName;
+          this.detailMdSrv.productSpec.price = vl.price;
           this.showUploadBtn = true;
           this.detailMdSrv.afterSaveProductSpec$.next();
           this.specForm.patchValue(this.detailMdSrv.productSpec);

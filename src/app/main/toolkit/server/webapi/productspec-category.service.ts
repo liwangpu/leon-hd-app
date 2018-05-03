@@ -18,8 +18,8 @@ export class ProductspecCategoryService extends AssetCategoryService<Productspec
   /**
    * 获取所有的产品规格分类树
    */
-  public getAllProductCategory(): Observable<ProductspecCategory> {
-    return this.getByType(this.type);
+  public getAllProductCategory(organId:string): Observable<ProductspecCategory> {
+    return this.getByType(this.type,organId);
   }//getAllProductCategory
 
   /**

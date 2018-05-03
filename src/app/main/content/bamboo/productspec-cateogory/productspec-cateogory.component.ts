@@ -38,7 +38,7 @@ export class ProductspecCateogoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.categorySrv.getAllProductCategory().takeUntil(this.destroy$).subscribe(resCate => {
+    this.categorySrv.getAllProductCategory(this.dessertSrv.organId).takeUntil(this.destroy$).subscribe(resCate => {
       this.cacheProductCategory = resCate;
       this.mainCategories = resCate.children ? resCate.children : [];
       this.categoryType = resCate.type;

@@ -51,7 +51,7 @@ export class OrganComponent implements OnInit {
       if (!owner.id)
         owner.name = '组织管理员';
       owner.organizationId = organId;
-      owner.type = AccountTypeEnums.organization;
+      owner.type = AccountTypeEnums.organAdmin;
 
       this.dialogRef = this.dialog.open(AccountDetailComponent, {
         panelClass: 'contact-form-dialog',

@@ -85,7 +85,7 @@ export class OrganDetailComponent implements OnInit {
           acc.mail = this.organ.mail;
           acc.password = '1111';
           acc.name = '组织管理员';
-          acc.type=AccountTypeEnums.organization;
+          acc.type=AccountTypeEnums.organAdmin;
           acc.activationTime = this.momentSrv.addDaysTransform(new Date(), -1, 'yyyy-MM-dd');
           acc.expireTime = this.momentSrv.addYearsTransform(new Date(), 10, 'yyyy-MM-dd');
           this.accountSrv.regist(acc).subscribe(resAccount => {

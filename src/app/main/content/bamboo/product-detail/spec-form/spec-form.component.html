@@ -3,19 +3,12 @@
   <form [formGroup]="specForm">
     <input type="hidden" formControlName="id">
     <input type="hidden" formControlName="productId">
-    <input type="hidden" formControlName='categoryId' name='categoryId'>
     <mat-form-field>
       <input name="name" formControlName="name" required matInput placeholder="{{'glossary.Name'|translate}}">
     </mat-form-field>
 
     <mat-form-field>
       <input name="price" formControlName="price" required matInput placeholder="{{'glossary.Price'|translate}}">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput readonly name="categoryName" formControlName="categoryName" required placeholder="{{'glossary.ProductSpecCategory'|translate}}"
-        (click)='onEditCategory()'>
-      <mat-error *ngIf="specForm.get('categoryId').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
     </mat-form-field>
 
     <mat-form-field>

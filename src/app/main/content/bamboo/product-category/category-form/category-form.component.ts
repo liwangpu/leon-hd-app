@@ -6,6 +6,7 @@ import { ProductCategoryService } from '../../../../toolkit/server/webapi/produc
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
+import { DessertService } from '../../../services/dessert.service';
 @Component({
   selector: 'app-product-category-category-form',
   templateUrl: './category-form.component.html',
@@ -15,8 +16,9 @@ export class CategoryFormComponent implements OnInit {
   afterCategorySubmit: Subject<ProductCategory> = new Subject();
   private category: ProductCategory;
   private categoryForm: FormGroup;
-  constructor(private dialogRef: MatDialogRef<CategoryFormComponent>, private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: any, private categorySrv: ProductCategoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(private dialogRef: MatDialogRef<CategoryFormComponent>, private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: any, private categorySrv: ProductCategoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private dessertSrv: DessertService) {
     this.category = this.data.category;
+    this.category.organizationId=this.dessertSrv.organId;
     this.categoryForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],

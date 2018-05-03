@@ -30,9 +30,9 @@ export class AssetCategoryService<T extends AssetCategory> {
      * 获取所有分类
      * @param type 
      */
-    protected getByType(type: string) {
+    protected getByType(type: string,organId:string) {
         if (type) {
-            return this.httpClient.get<T>(`${this.uri}/?type=${type}`, { headers: this.header });
+            return this.httpClient.get<T>(`${this.uri}/?type=${type}&organId=${organId}`, { headers: this.header });
         }
         return Observable.of<T>({} as T);
     }//getByType
@@ -61,7 +61,6 @@ export class AssetCategoryService<T extends AssetCategory> {
      * @param id 
      */
     protected deleteType(type: string, id: string) {
-        // return this.httpClient.delete<void>(`${this.uri}?type=${type}&id=${id}`);
         return this.httpClient.request('DELETE', `${this.uri}?type=${type}&id=${id}`, {
             responseType: 'text'
         });

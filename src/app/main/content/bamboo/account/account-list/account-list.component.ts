@@ -48,7 +48,7 @@ export class AccountListComponent implements OnInit, OnChanges {
   editAccount(acc: Account) {
     this.accountSrv.getById(acc.id).subscribe(rdata => {
       rdata.organizationId = this.dessertSrv.organId;
-      rdata.type = AccountTypeEnums.user;
+      rdata.type = AccountTypeEnums.organMember;
       if (!rdata.id)
         rdata.name = '用户';
       let ndialog = this.dialog.open(AccountDetailComponent, {
