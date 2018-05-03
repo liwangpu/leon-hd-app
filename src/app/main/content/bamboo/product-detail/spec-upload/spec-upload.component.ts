@@ -24,6 +24,7 @@ export class SpecUploadComponent implements OnInit {
   materialFiles: Array<Material> = [];
   iconFiles: Array<FileAsset> = [];
   chartletFiles: Array<FileAsset> = [];
+  latestChartlet: FileAsset;//最新的贴图
   fileUrl: string = `${this.configSrv.serverBase}/files/UploadFormFile`;
   serverBase: string = `${this.configSrv.serverBase}`;
   private staticMeshId: string;
@@ -41,7 +42,7 @@ export class SpecUploadComponent implements OnInit {
         this.meshFiles = res.staticMeshes ? res.staticMeshes : [];
       if (res.iconAsset)
         this.iconFiles = [res.iconAsset];
-      if (res.charlets && res.charlets.length) 
+      if (res.charlets && res.charlets.length)
         this.chartletFiles = res.charlets;
       if (this.meshFiles && this.meshFiles.length) {
         this.staticMeshId = this.meshFiles[0].id;
@@ -245,6 +246,7 @@ export class SpecUploadComponent implements OnInit {
       this.translate.get('message.UploadSuccessfully').subscribe(msg => {
         this.snackbarSrv.simpleBar(msg);
         this.isCharletChange = true;
+        this.latestChartlet = file.asset;
       });
     }, err => {
       this.snackbarSrv.simpleBar(err);

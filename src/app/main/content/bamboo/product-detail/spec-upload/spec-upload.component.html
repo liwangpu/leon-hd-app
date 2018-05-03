@@ -69,7 +69,7 @@
     <div fxLayout='column' fxFill>
       <div>
         <app-file-upload-panel [serverBase]='serverBase' [maxFileLimit]='99' [unLimited]='true' [url]='fileUrl' (onUpload)='onUploadChartlet($event)'
-          (onError)='onUploadError($event)' (onDelete)='onDeleteChartlet($event)' [fileAsset]='chartletFiles'></app-file-upload-panel>
+          (onError)='onUploadError($event)' (onDelete)='onDeleteChartlet($event)' [fileAsset]='chartletFiles' #chartletUpload></app-file-upload-panel>
       </div>
       <div>
         <div fxLayout='row'>

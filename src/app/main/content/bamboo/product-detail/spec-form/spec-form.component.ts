@@ -9,6 +9,8 @@ import { ProductSpecService } from "../../../../toolkit/server/webapi/productSpe
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { SpecUploadComponent } from "../spec-upload/spec-upload.component";
 import { CategoryPanelComponent } from '../../productspec-cateogory/category-panel/category-panel.component';
+import { IconModel } from '../../../../toolkit/models/iconmodel';
+import { ProductService } from '../../../../toolkit/server/webapi/product.service';
 @Component({
   selector: 'app-product-detail-spec-form',
   templateUrl: './spec-form.component.html',
@@ -19,7 +21,7 @@ export class SpecFormComponent implements OnInit, OnDestroy {
   private specForm: FormGroup;
   private dialogRef: any;
   private destroy$: Subject<boolean> = new Subject();
-  constructor(private detailMdSrv: ProductDetailMdService, private formBuilder: FormBuilder, private snackBarSrv: SnackbarService, private tranSrv: TranslateService, private productSpecSrv: ProductSpecService, private dialog: MatDialog) {
+  constructor(private detailMdSrv: ProductDetailMdService, private formBuilder: FormBuilder, private snackBarSrv: SnackbarService, private tranSrv: TranslateService, private productSpecSrv: ProductSpecService, private dialog: MatDialog, private productSrv: ProductService) {
     this.specForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
@@ -107,8 +109,16 @@ export class SpecFormComponent implements OnInit, OnDestroy {
     });
 
     ndialog.afterClosed().first().subscribe(() => {
-      if (ndialog.componentInstance.isCharletChange)
+      if (ndialog.componentInstance.isCharletChange) {
         this.detailMdSrv.afterProductCharletChange$.next(true);
+        // //更改图标信息
+        if (ndialog.componentInstance.latestChartlet) {
+          let iconMd = new IconModel();
+          iconMd.AssetId = ndialog.componentInstance.latestChartlet.id;
+          iconMd.ObjId = this.detailMdSrv.product.id;
+          this.productSrv.changeIcon(iconMd).first().subscribe(() => { });
+        }
+      }
     });
   }//onUpload
 
