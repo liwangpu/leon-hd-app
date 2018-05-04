@@ -23,7 +23,7 @@ export class AccountService extends ApiService<Account> {
      * @param entity 
      */
     regist(entity: Account): Observable<Account> {
-        return this.http.post<Account>(`${this.uri}/register`, entity, { headers: this.header });
+        return this.http.post<Account>(`${this.uri}`, entity, { headers: this.header });
     }//registAccount
 
     /**

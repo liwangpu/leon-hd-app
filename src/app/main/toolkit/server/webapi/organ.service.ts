@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { Organization } from '../../models/organization';
 import { Observable } from 'rxjs/Observable';
-
+import { Account } from "../../models/account";
 @Injectable()
 export class OrganService extends ApiService<Organization> {
     constructor(private http: HttpClient, private config: ConfigService) {
@@ -17,10 +17,15 @@ export class OrganService extends ApiService<Organization> {
      * @param id 
      */
     getById(id: string | number): Observable<Organization> {
-        if (!id) {
+        if (!id)
             return Observable.of(new Organization());
-        }
         return super.getEntity(id);
+    }
+
+    getOwner(id: string | number): Observable<Account> {
+        if (!id)
+            return Observable.of(new Account());
+        return this.http.get<Account>(`${this.uri}/owner?organId=${id}`, { headers: this.header });
     }
 
     /**
@@ -46,4 +51,6 @@ export class OrganService extends ApiService<Organization> {
     query(query: IQuery): Observable<Paging<Organization>> {
         return super.queryEntities(query);
     }
+
+
 }

@@ -45,9 +45,9 @@ export class OrganComponent implements OnInit {
   }
 
   onEditAdmin(organId: string) {
-    this.organSrv.getById(organId).subscribe(resAccount => {
+    this.organSrv.getOwner(organId).subscribe(resAccount => {
 
-      let owner = resAccount.owner ? resAccount.owner : new Account();
+      let owner = resAccount ? resAccount : new Account();
       if (!owner.id)
         owner.name = '组织管理员';
       owner.organizationId = organId;

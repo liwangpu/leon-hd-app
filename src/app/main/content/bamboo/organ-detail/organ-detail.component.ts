@@ -42,71 +42,27 @@ export class OrganDetailComponent implements OnInit {
   saveOrgan() {
     let saveOrgnAsync = () => {
       return new Promise((resolve, reject) => {
-        this.organSrv.update(this.organForm.value).subscribe(resOrgan => {
+        this.organSrv.update(this.organForm.value).first().subscribe(resOrgan => {
           resOrgan.departments = this.organ.departments ? this.organ.departments : [];
           resOrgan.owner = this.organ.owner ? this.organ.owner : null;
           this.organ = resOrgan;
           this.organForm.patchValue(resOrgan);
-          resolve(resOrgan);
+          resolve({ k: 'message.SaveSuccessfully' });
         }, err => {
-          reject(err);
+          reject({ k: 'message.OperationError', v: { value: err } });
         });
       });
     };//saveOrgnAsync
 
-    let createDefaultDepartmentAsync = (resOrgan) => {
-      return new Promise((resolve, reject) => {
-        if (this.organ.departments && this.organ.departments.length >= 1) {
-          resolve(this.organ.departments[0]);
-        }
-        else {
-          let dep = new Department();
-          dep.organizationId = resOrgan.id;
-          dep.name = resOrgan.name;
-          this.departmentSrv.update(dep).subscribe(resDepartment => {
-            this.organ.departments = [resDepartment];
-            resolve(resDepartment);
-          }, err => {
-            reject(err);
-          });
-        }
-      });
-    };//checkDefaultDepartmentAsync
-
-    let createDefaultOwner = (resDepartment) => {
-      return new Promise((resolve, reject) => {
-        if (this.organ.owner) {
-          resolve({ k: 'message.SaveSuccessfully' });
-        }
-        else {
-          let acc = new Account();
-          acc.organizationId = resDepartment.organizationId;
-          acc.departmentId = resDepartment.id;
-          acc.mail = this.organ.mail;
-          acc.password = '1111';
-          acc.name = '组织管理员';
-          acc.type=AccountTypeEnums.organAdmin;
-          acc.activationTime = this.momentSrv.addDaysTransform(new Date(), -1, 'yyyy-MM-dd');
-          acc.expireTime = this.momentSrv.addYearsTransform(new Date(), 10, 'yyyy-MM-dd');
-          this.accountSrv.regist(acc).subscribe(resAccount => {
-            this.organ.owner = resAccount;
-            resolve({ k: 'message.SaveSuccessfully' });
-          }, err => {
-            reject({ k: 'message.OperationError', v: { value: err } });
-          });
-        }
-      });
-    };//createDefaultOwner
-
     let transAsync = (msgObj: { k: string, v: any }) => {
       return new Promise((resolve, reject) => {
-        this.tranSrv.get(msgObj.k, msgObj.v).subscribe(msg => {
+        this.tranSrv.get(msgObj.k, msgObj.v).first().subscribe(msg => {
           resolve(msg);
         });
       });
     };//transAsync
 
-    saveOrgnAsync().then(createDefaultDepartmentAsync).then(createDefaultOwner).then(transAsync).then((msg: string) => {
+    saveOrgnAsync().then(transAsync).then((msg: string) => {
       this.snackbarSrv.simpleBar(msg);
     });
   }//saveOrgan
