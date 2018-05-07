@@ -1,14 +1,14 @@
-<div class="list-container" fxLayout='row' fxLayoutGap='10px'>
+<div class="list-container" fxLayout='row wrap' fxLayoutGap='10px'>
 
   <div fxFlex='250px'>
     <app-product-detail-specs-card></app-product-detail-specs-card>
   </div>
 
-  <div fxFlex>
+  <div fxFlex fxFlex.lt-sm>
     <app-product-detail-spec-form></app-product-detail-spec-form>
   </div>
 
-  <div fxFlex='420px' *ngIf='charlets.length'>
+  <div *ngIf='charlets.length' fxFlex='420px' fxFlex.lt-md>
     <div class="spec-detail-pic-container">
       <img class="spec-charlet-detail-pic" [src]="detailCharletUrl">
     </div>
@@ -18,5 +18,5 @@
       </div>
     </div>
   </div>
-  
+
 </div>
