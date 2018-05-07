@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { IterateCateComponent } from './iterate-cate/iterate-cate.component';
 import { DessertService } from '../../services/dessert.service';
+import { CategoryMdService } from './category-md.service';
 
 @Component({
   selector: 'app-product-category',
@@ -25,7 +26,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   @ViewChild('categoryPanel', {
     read: ViewContainerRef
   }) folderContainer: ViewContainerRef;
-  constructor(private categorySrv: ProductCategoryService, private formBuilder: FormBuilder, private comFactory: ComponentFactoryResolver, private dessertSrv: DessertService) {
+  constructor(private categorySrv: ProductCategoryService, private formBuilder: FormBuilder, private comFactory: ComponentFactoryResolver, private dessertSrv: DessertService, private categoryMdSrv: CategoryMdService) {
 
     this.categoryForm = this.formBuilder.group({
       id: [''],
@@ -45,6 +46,8 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
       this.parentId = resCate.id;
     });
     this.organizationId = this.dessertSrv.organId;
+    //获取一次扁平结构产品分类信息,供产品改变父分类下拉框
+    this.categoryMdSrv.getAndCacheFlatProductCategories();
   }//ngOnInit
 
   ngOnDestroy(): void {

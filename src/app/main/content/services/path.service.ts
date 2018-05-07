@@ -15,8 +15,10 @@ export class PathService {
      * @param url 
      */
     redirectServerUrl(url?: string): string {
-        if (url)
-            return `${this.cfgSrv.serverBase}/${url}`;
+        if (url) {
+            let path = `${this.cfgSrv.serverBase}/${url}`;
+            return path.replace(/\/{1,}/, '/');
+        }
         return '';
     }
 

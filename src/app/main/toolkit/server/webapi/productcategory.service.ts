@@ -18,9 +18,17 @@ export class ProductCategoryService extends AssetCategoryService<ProductCategory
     /**
      * 获取所有的产品分类树
      */
-    public getAllProductCategory(organId:string): Observable<ProductCategory> {
-        return this.getByType(this.type,organId);
+    public getAllProductCategory(organId: string): Observable<ProductCategory> {
+        return this.getByType(this.type, organId);
     }//getAllProductCategory
+
+    /**
+     * 获取扁平结构的产品分类信息
+     * @param organId 
+     */
+    public getAllFlatProductCategory(organId: string): Observable<Array<ProductCategory>> {
+        return this.getFlat(this.type, organId);
+    }//getAllFlatProductCategory
 
     /**
      * 创建产品分类

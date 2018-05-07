@@ -28,7 +28,7 @@ export class AssetCategoryService<T extends AssetCategory> {
      * 获取所有分类
      * @param type 
      */
-    protected getByType(type: string,organId:string) {
+    protected getByType(type: string, organId: string) {
         if (type) {
             return this.httpClient.get<T>(`${this.uri}/?type=${type}&organId=${organId}`, { headers: this.header });
         }
@@ -91,4 +91,13 @@ export class AssetCategoryService<T extends AssetCategory> {
         entity.displayIndex++;
         return this.arrow(entity);
     }//moveDown
+
+    /**
+     * 获取扁平结构的分类信息
+     * @param type 
+     * @param organId 
+     */
+    protected getFlat(type: string, organId: string): Observable<Array<T>> {
+        return this.httpClient.get<Array<T>>(`${this.uri}/flat?type=${type}&organId=${organId}`, { headers: this.header });
+    }
 }
