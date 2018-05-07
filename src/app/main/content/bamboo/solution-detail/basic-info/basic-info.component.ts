@@ -16,8 +16,8 @@ import { fuseAnimations } from '../../../../../core/animations';
 })
 export class BasicInfoComponent implements OnInit {
 
-  private detailForm: FormGroup;
-  private destroy$: Subject<boolean> = new Subject<boolean>();
+  detailForm: FormGroup;
+  destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(private formBuilder: FormBuilder, private detaiMdSrv: SolutionDetailMdService, private solutionSrv: SolutionService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
     this.detailForm = this.formBuilder.group({
       id: [''],

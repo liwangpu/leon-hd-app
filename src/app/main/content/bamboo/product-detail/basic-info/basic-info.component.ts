@@ -17,8 +17,8 @@ import { ProductCategoryService } from '../../../../toolkit/server/webapi/produc
 })
 export class BasicInfoComponent implements OnInit, OnDestroy {
 
-  private productForm: FormGroup;
-  private destroy$: Subject<boolean> = new Subject<boolean>();
+  productForm: FormGroup;
+  destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(private formBuilder: FormBuilder, private detaiMdSrv: ProductDetailMdService, private productSrv: ProductService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private dialog: MatDialog, private categorySrv: ProductCategoryService) {
     this.productForm = this.formBuilder.group({
       id: [''],

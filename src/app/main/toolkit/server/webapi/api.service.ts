@@ -1,11 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse, HttpParams, HttpErrorResponse } from '@angular/common/http';
+
+import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { IEntitybase } from '../../models/ientitybase';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { catchError, retry } from 'rxjs/operators';
 /**
  * webapi serve基类
  */
@@ -21,7 +19,7 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
         return `${this.uriBase}/${this.uriPart}`;
     }
     constructor(private httpClient: HttpClient, private configService: ConfigService) {
-        this.uriBase = configService.serverBase;
+        this.uriBase = this.configService.serverBase;
 
         this.header = new HttpHeaders({
             'Content-Type': 'application/json'

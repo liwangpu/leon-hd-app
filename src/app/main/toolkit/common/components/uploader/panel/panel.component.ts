@@ -32,14 +32,14 @@ export class PanelComponent implements OnInit, OnChanges {
   @Output() onFileSatisfy: EventEmitter<void> = new EventEmitter();
   @Output() onFileNotSatisfy: EventEmitter<void> = new EventEmitter();
   @ViewChild('fileInputCt') fileInputCt: ElementRef;
-  private uploader: FileUploader;
-  private hasBaseDropZoneOver: boolean = false;
-  private hasAnotherDropZoneOver: boolean = false;
-  private downloadFiles: Array<IDownload> = [];
-  private uploadFiles: Array<IDownload> = [];
-  private showDownload: boolean;
-  private showUpload: boolean;
-  private disabledAddFile: boolean;
+   uploader: FileUploader;
+   hasBaseDropZoneOver: boolean = false;
+   hasAnotherDropZoneOver: boolean = false;
+   downloadFiles: Array<IDownload> = [];
+   uploadFiles: Array<IDownload> = [];
+   showDownload: boolean;
+   showUpload: boolean;
+   disabledAddFile: boolean;
   constructor(private renderer: Renderer, private fileNamePipe: FilenamePipe, private downloadSrv: DownloadService, private dialogSrv: DialogService, private tanslateSrv: TranslateService, private fileSrv: FileAssetService, private snackBarSrv: SnackbarService) { }
 
   ngOnInit() {
@@ -90,7 +90,7 @@ export class PanelComponent implements OnInit, OnChanges {
    * FileUploader标准方法
    * @param e 
    */
-  private fileOverBase(e: any): void {
+   fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
   }
 
@@ -98,14 +98,14 @@ export class PanelComponent implements OnInit, OnChanges {
    * FileUploader标准方法
    * @param e 
    */
-  private fileOverAnother(e: any): void {
+   fileOverAnother(e: any): void {
     this.hasAnotherDropZoneOver = e;
   }
 
   /**
    * 添加文件
    */
-  private _onAddFiles() {
+   _onAddFiles() {
     this.fileInputCt.nativeElement.click();
   }
 
@@ -113,7 +113,7 @@ export class PanelComponent implements OnInit, OnChanges {
    * 下载文件
    * @param path 
    */
-  private _onDownload(path: string) {
+   _onDownload(path: string) {
     this.downloadSrv.download(`${this.serverBase}/${path}`);
   }//_onDownload
 
@@ -122,7 +122,7 @@ export class PanelComponent implements OnInit, OnChanges {
    * @param id 
    * @param name 
    */
-  private _onDeleteFile(id: string, name: string) {
+   _onDeleteFile(id: string, name: string) {
     this.tanslateSrv.get('message.DeleteConfirm', { value: name }).subscribe(msg => {
       let dialog = this.dialogSrv.confirmDialog(msg);
       dialog.afterClosed().subscribe(res => {
@@ -140,7 +140,7 @@ export class PanelComponent implements OnInit, OnChanges {
    * 移除上传队列
    * @param item 
    */
-  private _onClear(item?: FileItem) {
+   _onClear(item?: FileItem) {
     if (item) {
       item.remove();
     }
@@ -153,7 +153,7 @@ export class PanelComponent implements OnInit, OnChanges {
   /**
    * 更新面板展示状态
    */
-  private refreshPanel() {
+   refreshPanel() {
     this.showDownload = this.downloadFiles.length > 0;
     this.showUpload = !this.showDownload && this.uploader && this.uploader.queue && this.uploader.queue.length <= 0;
     this.disabledAddFile = (this.uploader && this.uploader.queue && this.uploader.queue.length >= this.maxFileLimit) || this.downloadFiles.length >= this.maxFileLimit;
@@ -169,7 +169,7 @@ export class PanelComponent implements OnInit, OnChanges {
    * 注册上传附件信息
    * @param value 
    */
-  private registryUploadFile(value: IInputCtData): void {
+   registryUploadFile(value: IInputCtData): void {
     let isExist = this.uploadFiles.some(fl => fl.id == value.ctIndentity);
     if (isExist) {
       for (let idx = this.uploadFiles.length - 1; idx >= 0; idx--) {
@@ -187,7 +187,7 @@ export class PanelComponent implements OnInit, OnChanges {
    * 根据Id获取文件信息
    * @param identify 
    */
-  private getRegistryFileName(identify: string): string {
+   getRegistryFileName(identify: string): string {
     for (let idx = this.uploadFiles.length - 1; idx >= 0; idx--) {
       let curItem = this.uploadFiles[idx];
       if (curItem.id == identify)

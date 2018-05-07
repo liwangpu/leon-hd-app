@@ -17,7 +17,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarService } from './services/snackbar.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateService } from '@ngx-translate/core';
-import { StepperComponent } from './components/uploader/stepper/stepper.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { PanelComponent } from './components/uploader/panel/panel.component';
@@ -59,8 +58,7 @@ import { MathexService } from "./services/mathex.service";
     , LitimgCtDirective
     , LitimgToolDirective
     , SimpleDialogComponent
-    , ConfirmDialogComponent
-    , StepperComponent,
+    , ConfirmDialogComponent,
     PanelComponent,
     FilenamePipe,
     InputCtDirective,
@@ -78,14 +76,12 @@ import { MathexService } from "./services/mathex.service";
   ]
   , exports: [
     LitimgListComponent,
-    StepperComponent,
     PanelComponent,
     OrderbyPipe
   ],
   entryComponents: [
     SimpleDialogComponent,
     ConfirmDialogComponent,
-    StepperComponent,
     PanelComponent
   ]
 })

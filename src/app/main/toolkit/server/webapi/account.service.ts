@@ -4,7 +4,6 @@ import { ConfigService } from '../../config/config.service';
 import { ApiService, IQuery, Paging } from './api.service';
 import { Observable } from 'rxjs/Observable';
 import { Account } from '../../models/account';
-import { catchError, retry } from 'rxjs/operators';
 @Injectable()
 export class AccountService extends ApiService<Account> {
 

@@ -13,9 +13,9 @@ import { ProductService } from '../../../../toolkit/server/webapi/product.servic
 export class SpecsCardComponent implements OnInit, OnDestroy {
 
   @Output() onSelected: EventEmitter<string> = new EventEmitter();
-  private filterBy = 'all';
-  private productSpecs: Array<ProductSpec> = [];
-  private destroy$: Subject<boolean> = new Subject();
+  filterBy = 'all';
+  productSpecs: Array<ProductSpec> = [];
+  destroy$: Subject<boolean> = new Subject();
   constructor(private detailMdSrv: ProductDetailMdService, private productSpecSrv: ProductSpecService, private productSrv: ProductService) {
     this.detailMdSrv.afterSaveProductSpec$.takeUntil(this.destroy$).subscribe(() => {
       this.refreshSpecs();
@@ -31,7 +31,7 @@ export class SpecsCardComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
 
-  private onEditSpec(specid?: string) {
+  onEditSpec(specid?: string) {
     if (!specid) {
       this.detailMdSrv.productSpec = new ProductSpec();
       this.detailMdSrv.productSpec.productId = this.detailMdSrv.product.id;
@@ -47,14 +47,14 @@ export class SpecsCardComponent implements OnInit, OnDestroy {
     }
   }//onEditSpec
 
-  private refreshSpecs() {
+  refreshSpecs() {
     this.productSrv.getById(this.detailMdSrv.product.id).takeUntil(this.destroy$).subscribe(resProd => {
       this.detailMdSrv.product = resProd;
       this.productSpecs = resProd.specifications;
     });
   }//refreshSpecs
 
-  private onDeleteSpec(specid: string) {
+  onDeleteSpec(specid: string) {
 
   }
 

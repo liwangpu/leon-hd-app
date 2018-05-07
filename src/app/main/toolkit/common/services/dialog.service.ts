@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
-import { StepperComponent } from '../components/uploader/stepper/stepper.component';
 @Injectable()
 export class DialogService {
 
@@ -21,11 +20,4 @@ export class DialogService {
     });
   }//confirmDialog
 
-  stepperUploader(title: string, step: number, width?: number, height?: number) {
-    return this.dialog.open(StepperComponent, {
-      width: width ? `${width}px` : '500px',
-      height: height ? `${height}px` : '600px',
-      data: { title: title, step: step }
-    });
-  }//stepperUploader
 }

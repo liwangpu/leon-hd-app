@@ -14,14 +14,14 @@ import { IterateCateComponent } from '../product-category/iterate-cate/iterate-c
   animations: fuseAnimations
 })
 export class ProductspecCateogoryComponent implements OnInit, OnDestroy {
-  private organizationId: string;
-  private categoryType: string;
-  private parentId: string;
-  private cacheProductCategory: ProductCategory;
-  private categoryForm: FormGroup;
-  private currentCategory: ProductCategory = new ProductCategory();
-  private mainCategories: Array<ProductCategory> = [];
-  private destroy$: Subject<boolean> = new Subject();
+  organizationId: string;
+  categoryType: string;
+  parentId: string;
+  cacheProductCategory: ProductCategory;
+  categoryForm: FormGroup;
+  currentCategory: ProductCategory = new ProductCategory();
+  mainCategories: Array<ProductCategory> = [];
+  destroy$: Subject<boolean> = new Subject();
   @ViewChild('categoryPanel', {
     read: ViewContainerRef
   }) folderContainer: ViewContainerRef;

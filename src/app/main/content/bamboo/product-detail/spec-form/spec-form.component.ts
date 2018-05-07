@@ -17,10 +17,10 @@ import { ProductService } from '../../../../toolkit/server/webapi/product.servic
   styleUrls: ['./spec-form.component.scss']
 })
 export class SpecFormComponent implements OnInit, OnDestroy {
-  private showUploadBtn: boolean;
-  private specForm: FormGroup;
-  private dialogRef: any;
-  private destroy$: Subject<boolean> = new Subject();
+  showUploadBtn: boolean;
+  specForm: FormGroup;
+  dialogRef: any;
+  destroy$: Subject<boolean> = new Subject();
   constructor(private detailMdSrv: ProductDetailMdService, private formBuilder: FormBuilder, private snackBarSrv: SnackbarService, private tranSrv: TranslateService, private productSpecSrv: ProductSpecService, private dialog: MatDialog, private productSrv: ProductService) {
     this.specForm = this.formBuilder.group({
       id: [''],
@@ -54,7 +54,7 @@ export class SpecFormComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }//ngOnDestroy
 
-  private onSelectSpec() {
+  onSelectSpec() {
     if (!this.detailMdSrv.productSpec.id) {
       this.specForm.reset();
       this.showUploadBtn = false;
@@ -65,7 +65,7 @@ export class SpecFormComponent implements OnInit, OnDestroy {
     this.specForm.patchValue(this.detailMdSrv.productSpec);
   }//onSelectSpec
 
-  private submitProductSpec() {
+  submitProductSpec() {
     let saveProdSpecAsync = () => {
       let vl = this.specForm.value;
       return new Promise((resolve) => {

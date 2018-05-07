@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, EventEmitter } from '@angular/core';
 import { fuseAnimations } from '../../../../../core/animations';
 import { FormControl, FormGroup } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
@@ -19,6 +19,7 @@ import { DialogService } from "../../../../toolkit/common/services/dialog.servic
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { OutputType } from '@angular/core/src/view';
+import { AccountMdService } from '../account-md.service';
 @Component({
   selector: 'app-department-card',
   templateUrl: './department-card.component.html',
@@ -26,29 +27,41 @@ import { OutputType } from '@angular/core/src/view';
 })
 export class DepartmentCardComponent implements OnInit {
 
-  @Output() onSelected: EventEmitter<string> = new EventEmitter();
   filterBy = 'all';
   dialogRef: any;
   departments: Array<Department> = [];
-  constructor(private snackBarSrv: SnackbarService, public dialog: MatDialog, private departmentSrv: DepartmentService, private dessertSrv: DessertService, private dialogSrv: DialogService, private transSrv: TranslateService) { }
+  constructor(private snackBarSrv: SnackbarService, public dialog: MatDialog, private departmentSrv: DepartmentService, private dessertSrv: DessertService, private dialogSrv: DialogService, private transSrv: TranslateService, private accountMdSrv: AccountMdService) { }
 
   ngOnInit() {
     this.getAllDepartment();
   }
 
-  changeFilter(filter) {
-    this.filterBy = filter;
-    this.onSelected.next(filter);
-    console.log('filter', filter);
-  }
+  /**
+   * 过滤部门人员信息
+   * @param filter 
+   */
+  changeFilter(depId: string) {
+    this.filterBy = depId;
+    this.accountMdSrv.selectedDepartment = depId;
+    this.accountMdSrv.afterDepartmentChange.next(depId);
+    // this.onSelected.next(filter);
+  }//changeFilter
 
-  private getAllDepartment() {
+  /**
+   * 获取所有部门信息
+   */
+  getAllDepartment() {
     this.departmentSrv.getByOrgan(this.dessertSrv.organId).subscribe(res => {
       this.departments = res;
     });
   }//getAllDepartment
 
-  private editDepartment(depId?: string) {
+
+  /**
+   * 编辑部门信息
+   * @param depId 
+   */
+  editDepartment(depId?: string) {
     let ndepartment = new Department();
     if (depId)
       ndepartment = this.departments.filter(x => x.id == depId)[0];
@@ -69,16 +82,20 @@ export class DepartmentCardComponent implements OnInit {
     });
   }//editDepartment
 
-  private deleteDepartment(depId: string, depName: string) {
-
+  /**
+   * 删除部门信息
+   * @param depId 
+   * @param depName 
+   */
+  deleteDepartment(depId: string, depName: string) {
     let confirmPro = () => {
       return new Promise((resolve, reject) => {
         this.transSrv.get('message.DeleteConfirm', { value: depName }).subscribe((msg) => {
           let dial = this.dialogSrv.confirmDialog(msg);
-          const obs = dial.componentInstance.onConfirm.subscribe(() => {
+          const obs = dial.componentInstance.onConfirm.first().subscribe(() => {
             resolve();
           });
-          dial.afterClosed().subscribe(() => {
+          dial.afterClosed().first().subscribe(() => {
             obs.unsubscribe();
           });
         });
@@ -87,7 +104,7 @@ export class DepartmentCardComponent implements OnInit {
 
     let deletePro = () => {
       return new Promise((resolve, reject) => {
-        this.departmentSrv.delete(depId).subscribe(() => {
+        this.departmentSrv.delete(depId).first().subscribe(() => {
           resolve();
         }, err => {
           reject(err);
@@ -96,7 +113,7 @@ export class DepartmentCardComponent implements OnInit {
     };//deletePro
 
     confirmPro().then(deletePro).then(() => {
-      this.transSrv.get('message.DeleteSuccessfully').subscribe(msg => {
+      this.transSrv.get('message.DeleteSuccessfully').first().subscribe(msg => {
         this.getAllDepartment();
         this.snackBarSrv.simpleBar(msg);
       });

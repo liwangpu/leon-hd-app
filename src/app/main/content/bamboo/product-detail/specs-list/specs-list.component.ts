@@ -13,15 +13,19 @@ import { IconModel } from '../../../../toolkit/models/iconmodel';
   styleUrls: ['./specs-list.component.scss']
 })
 export class SpecsListComponent implements OnInit, OnDestroy {
-  private detailCharletUrl = "";
-  private charlets: Array<FileAsset> = [];
-  private detroy$: Subject<boolean> = new Subject();
+  detailCharletUrl = "";
+  charlets: Array<FileAsset> = [];
+  detroy$: Subject<boolean> = new Subject();
   constructor(private detailMdSrv: ProductDetailMdService, private productSpeServ: ProductSpecService, private configSrv: ConfigService) {
     //订阅规格图片更改事件
     this.detailMdSrv.afterProductCharletChange$.takeUntil(this.detroy$).subscribe((hasCharlet) => {
       if (hasCharlet) {
         this.refreshCharlet();
       }
+      else{
+        this.charlets=[];
+      }
+      console.log('hasCharlet',hasCharlet);
     });
   }
 

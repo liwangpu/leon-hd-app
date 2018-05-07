@@ -43,13 +43,11 @@ export class OrganDetailComponent implements OnInit {
     let saveOrgnAsync = () => {
       return new Promise((resolve, reject) => {
         this.organSrv.update(this.organForm.value).first().subscribe(resOrgan => {
-          resOrgan.departments = this.organ.departments ? this.organ.departments : [];
-          resOrgan.owner = this.organ.owner ? this.organ.owner : null;
           this.organ = resOrgan;
           this.organForm.patchValue(resOrgan);
           resolve({ k: 'message.SaveSuccessfully' });
         }, err => {
-          reject({ k: 'message.OperationError', v: { value: err } });
+          resolve({ k: 'message.OperationError', v: { value: err } });
         });
       });
     };//saveOrgnAsync

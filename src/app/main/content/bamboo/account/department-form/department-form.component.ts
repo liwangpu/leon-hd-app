@@ -26,7 +26,7 @@ export class DepartmentFormComponent implements OnInit {
     this.departForm.patchValue(this.department);
   }
 
-  private createDepartmentForm() {
+  createDepartmentForm() {
     return this.formBuilder.group({
       id: [''],
       organizationId: [''],
@@ -35,7 +35,7 @@ export class DepartmentFormComponent implements OnInit {
     });
   }//createAccountForm
 
-  private onSubmit() {
+  onSubmit() {
     this.departmentSrv.update(this.departForm.value).subscribe(res => {
       this.departForm.patchValue(res);
       this.department = res;

@@ -1,7 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
-import { IEntitybase } from '../../models/ientitybase';
 import { AssetCategory } from "../../models/assetcategory";
 import { Observable } from 'rxjs/Observable';
 /**
@@ -19,7 +17,7 @@ export class AssetCategoryService<T extends AssetCategory> {
         return `${this.uriBase}/${this.uriPart}`;
     }
     constructor(private httpClient: HttpClient, private configService: ConfigService) {
-        this.uriBase = configService.serverBase;
+        this.uriBase = this.configService.serverBase;
 
         this.header = new HttpHeaders({
             'Content-Type': 'application/json'

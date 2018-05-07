@@ -107,10 +107,6 @@
     <button mat-raised-button class="save-button mat-accent" [disabled]="accountForm.invalid" (click)='onSubmit()' aria-label="SAVE">
       {{'button.Save'|translate}}
     </button>
-    <button *ngIf="action ==='edit'" mat-button class="mat-icon-button" (click)="dialogRef.close(['delete',accountForm])" aria-label="Delete"
-      matTooltip="Lock">
-      <mat-icon>lock_outline</mat-icon>
-    </button>
 
   </div>
 </div>

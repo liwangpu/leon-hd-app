@@ -10,10 +10,10 @@ import { ProductSpec } from '../../../toolkit/models/productspec';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
-  private productName: string;
-  private showSubmitBtn: boolean;
-  private showSpecification: boolean;
-  private detroy$: Subject<boolean> = new Subject<boolean>();
+  productName: string;
+  showSubmitBtn: boolean;
+  showSpecification: boolean;
+  detroy$: Subject<boolean> = new Subject<boolean>();
   constructor(private detailMdSrv: ProductDetailMdService, private route: ActivatedRoute) {
     let tmp = this.route.snapshot.data.entity;
     this.detailMdSrv.product = tmp ? tmp : new Product();

@@ -26,7 +26,7 @@ import { ProductspecCategoryService } from "./webapi/productspec-category.servic
         , RouterModule
     ],
     providers: [
-        , ProductService
+        ProductService
         , ProductSpecService
         , AuthService
         , AccountService

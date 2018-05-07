@@ -36,13 +36,13 @@ export class AccountDetailComponent implements OnInit {
     this.accountForm.patchValue(this.account);
   }
 
-  private getDepartment() {
+   getDepartment() {
     this.departmentSrv.getByOrgan(this.account.organizationId).subscribe(res => {
       this.departments = res;
     });
   }//getDepartment
 
-  private createAccountForm() {
+   createAccountForm() {
     return this.formBuilder.group({
       id: [''],
       organizationId: [''],
@@ -58,7 +58,7 @@ export class AccountDetailComponent implements OnInit {
     });
   }//createAccountForm
 
-  private onSubmit() {
+   onSubmit() {
     let acc = this.accountForm.value;
     let saveAccountAsync = () => {
       return new Promise((resolve, reject) => {

@@ -10,9 +10,9 @@ import { SolutionDetailMdService } from "./solution-detail-md.service";
 })
 export class SolutionDetailComponent implements OnInit {
 
-  private solutionName: string;
-  private showSubmitBtn: boolean;
-  private detroy$: Subject<boolean> = new Subject<boolean>();
+  solutionName: string;
+  showSubmitBtn: boolean;
+  detroy$: Subject<boolean> = new Subject<boolean>();
   constructor(private detailMdSrv: SolutionDetailMdService, private route: ActivatedRoute) {
     let tmp = this.route.snapshot.data.entity;
     this.detailMdSrv.solution = tmp ? tmp : new Solution();

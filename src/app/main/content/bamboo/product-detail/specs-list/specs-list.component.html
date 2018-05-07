@@ -1,4 +1,13 @@
 <div class="list-container" fxLayout='row' fxLayoutGap='10px'>
+
+  <div fxFlex='250px'>
+    <app-product-detail-specs-card></app-product-detail-specs-card>
+  </div>
+
+  <div fxFlex>
+    <app-product-detail-spec-form></app-product-detail-spec-form>
+  </div>
+
   <div fxFlex='420px' *ngIf='charlets.length'>
     <div class="spec-detail-pic-container">
       <img class="spec-charlet-detail-pic" [src]="detailCharletUrl">
@@ -9,10 +18,5 @@
       </div>
     </div>
   </div>
-  <div fxFlex='250px'>
-    <app-product-detail-specs-card></app-product-detail-specs-card>
-  </div>
-  <div fxFlex>
-    <app-product-detail-spec-form></app-product-detail-spec-form>
-  </div>
+  
 </div>

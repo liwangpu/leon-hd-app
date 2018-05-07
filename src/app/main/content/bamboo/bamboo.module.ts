@@ -58,7 +58,7 @@ import { CategoryPanelComponent as ProductCategoryPanelComponent } from './produ
 import { CategoryMdService } from './product-category/category-md.service';
 import { ProductspecCateogoryComponent } from './productspec-cateogory/productspec-cateogory.component';
 import { CategoryPanelComponent as ProductSpecCategoryPanelComponent } from './productspec-cateogory/category-panel/category-panel.component';
-
+import { AccountMdService } from "./account/account-md.service";
 @NgModule({
   imports: [
     ServicesModule,
@@ -94,7 +94,8 @@ import { CategoryPanelComponent as ProductSpecCategoryPanelComponent } from './p
   providers: [
     ProductDetailMdService,
     SolutionDetailMdService,
-    CategoryMdService
+    CategoryMdService,
+    AccountMdService
   ]
 })
 export class BambooModule { }

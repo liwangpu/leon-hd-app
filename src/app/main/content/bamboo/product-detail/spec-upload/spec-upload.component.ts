@@ -25,13 +25,15 @@ export class SpecUploadComponent implements OnInit {
   iconFiles: Array<FileAsset> = [];
   chartletFiles: Array<FileAsset> = [];
   latestChartlet: FileAsset;//最新的贴图
-  fileUrl: string = `${this.configSrv.serverBase}/files/UploadFormFile`;
-  serverBase: string = `${this.configSrv.serverBase}`;
-  private staticMeshId: string;
-  private isMeshSatisfy: boolean;
-  private isMaterialSatisfy: boolean;
+  fileUrl: string;
+  serverBase: string;
+  staticMeshId: string;
+  isMeshSatisfy: boolean;
+  isMaterialSatisfy: boolean;
   constructor(private configSrv: ConfigService, private productSpeServ: ProductSpecService, private meshSrv: StaticmeshService, private snackbarSrv: SnackbarService, private translate: TranslateService, private materialSrv: MaterialService, private chartletSrv: ChartletService, @Inject(MAT_DIALOG_DATA) private data: any) {
     this.productSpec.id = this.data.productSpecId;
+    this.serverBase = this.configSrv.serverBase;
+    this.fileUrl = this.configSrv.serverBase + "/files/UploadFormFile";
   }
 
   ngOnInit() {

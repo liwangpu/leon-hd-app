@@ -50,12 +50,5 @@ export class AccountComponent implements OnInit {
     });
   }//newAccount
 
-  onDepartmentSelect(depId) {
-    this.selectedDepId = depId;
-    console.log(1, 'dep select', depId);
-
-
-
-  }//onDepartmentSelect
 
 }

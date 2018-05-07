@@ -14,11 +14,11 @@ import { DessertService } from '../../../services/dessert.service';
 })
 export class CategoryFormComponent implements OnInit {
   afterCategorySubmit: Subject<ProductCategory> = new Subject();
-  private category: ProductCategory;
-  private categoryForm: FormGroup;
+  category: ProductCategory;
+  categoryForm: FormGroup;
   constructor(private dialogRef: MatDialogRef<CategoryFormComponent>, private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: any, private categorySrv: ProductCategoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private dessertSrv: DessertService) {
     this.category = this.data.category;
-    this.category.organizationId=this.dessertSrv.organId;
+    this.category.organizationId = this.dessertSrv.organId;
     this.categoryForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
@@ -35,11 +35,11 @@ export class CategoryFormComponent implements OnInit {
     this.categoryForm.patchValue(this.category);
   }//ngOnInit
 
-  private closeDialog() {
+  closeDialog() {
     this.dialogRef.close();
   }//closeDialog
 
-  private submit() {
+  submit() {
     let saveAsync = () => {
       return new Promise((resolve, reject) => {
         this.categorySrv.updateProductCategory(this.categoryForm.value).first().subscribe(resCate => {

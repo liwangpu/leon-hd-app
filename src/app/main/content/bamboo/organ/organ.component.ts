@@ -31,19 +31,12 @@ export class OrganComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new PaginatorStore<Organization>({ service: this.organSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort })
-    //   this.dataSource = new FilesDataSource(this.productsService, this.paginator, this.sort);
-    //   Observable.fromEvent(this.filter.nativeElement, 'keyup')
-    //     .debounceTime(150)
-    //     .distinctUntilChanged()
-    //     .subscribe(() => {
-    //       if (!this.dataSource) {
-    //         return;
-    //       }
-    //       this.dataSource.filter = this.filter.nativeElement.value;
-    //     });
-    // }
-  }
+  }//ngOnInit
 
+  /**
+   * 编辑组织管理员
+   * @param organId 
+   */
   onEditAdmin(organId: string) {
     this.organSrv.getOwner(organId).subscribe(resAccount => {
 
@@ -60,20 +53,6 @@ export class OrganComponent implements OnInit {
         }
       });
     });
-    // this.dialogRef = this.dialog.open(AccountDetailComponent, {
-    //   panelClass: 'contact-form-dialog',
-    //   data: {
-    //     account: {
-    //       organizationId: organId,
-    //       type: AccountTypeEnums.organization
-    //     }
-    //   }
-    // });
-
-    // this.dialogRef.afterClosed()
-    //   .subscribe(response => {
-    //     console.log(111);
-    //   });
   }//onEditAdmin
 
 }

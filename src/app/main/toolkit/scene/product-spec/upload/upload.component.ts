@@ -26,9 +26,9 @@ export class UploadComponent implements OnInit {
   chartletFiles: Array<FileAsset> = [];
   fileUrl: string = `${this.configSrv.serverBase}/files/upload`;
   serverBase: string = `${this.configSrv.serverBase}`;
-  private staticMeshId: string;
-  private isMeshSatisfy: boolean;
-  private isMaterialSatisfy: boolean;
+   staticMeshId: string;
+   isMeshSatisfy: boolean;
+   isMaterialSatisfy: boolean;
   constructor(private configSrv: ConfigService, private productSpeServ: ProductSpecService, private meshSrv: StaticmeshService, private snackbarSrv: SnackbarService, private translate: TranslateService, private materialSrv: MaterialService, private chartletSrv: ChartletService) {
     // this.materialFiles = [];
     // this.mes

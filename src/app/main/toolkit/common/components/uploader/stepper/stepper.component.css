@@ -1,8 +1,0 @@
-.upload-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.upload-container>* {
-    width: 100%;
-}

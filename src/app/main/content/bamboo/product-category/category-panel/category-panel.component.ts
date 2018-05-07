@@ -18,15 +18,15 @@ export class CategoryPanelComponent implements OnInit, OnDestroy {
 
   afterUserSelect$: Subject<ProductCategory> = new Subject();
   @Input() brief = true;
-  private organizationId: string;
-  private categoryType: string;
-  private parentId: string;
-  private cacheProductCategory: ProductCategory;
-  private categoryForm: FormGroup;
-  private currentCategory: ProductCategory = new ProductCategory();
-  private mainCategories: Array<ProductCategory> = [];
-  private destroy$: Subject<boolean> = new Subject();
-  private userSelectCate: ProductCategory;//用户当前选择的分类
+  organizationId: string;
+  categoryType: string;
+  parentId: string;
+  cacheProductCategory: ProductCategory;
+  categoryForm: FormGroup;
+  currentCategory: ProductCategory = new ProductCategory();
+  mainCategories: Array<ProductCategory> = [];
+  destroy$: Subject<boolean> = new Subject();
+  userSelectCate: ProductCategory;//用户当前选择的分类
   @ViewChild('categoryPanel', {
     read: ViewContainerRef
   }) folderContainer: ViewContainerRef;

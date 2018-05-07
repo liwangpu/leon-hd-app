@@ -21,7 +21,7 @@
         <div class="fxLayout-container" fxLayout='row'>
           <div fxFlex='250px'>
             <app-product-category-list [categories]='mainCategories' [type]='categoryType' [parentId]='parentId' [organizationId]='organizationId'
-              (onCategorySelected)='onMainCategorySelect($event)' [title]="'glossary.ProductMainCategory'|translate" [brief]='brief'></app-product-category-list>
+              (onCategorySelected)='onMainCategorySelect($event)' [title]="'glossary.ProductMainCategory'|translate"></app-product-category-list>
           </div>
           <div fxFlex>
             <ng-template #categoryPanel></ng-template>

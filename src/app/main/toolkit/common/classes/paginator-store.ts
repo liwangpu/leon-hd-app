@@ -31,17 +31,22 @@ export class PaginatorStore<T> extends DataSource<any> {
         super();
         this.queryParams = { page: this.option.paginator ? this.option.paginator.pageIndex : 1, pageSize: this.option.paginator ? this.option.paginator.pageSize : 10 };
         this.query();//默认查询
+        let allowTrigger = true;//事件订阅触发开关,因为比如过滤事件会触发分页控件返回首页,然后又造成分页控件触发查询,所以需要临时开关关闭相关事件触发机制
         //订阅分页响应事件
         if (this.option.paginator)
             Observable.from(this.option.paginator.page).takeUntil(this.destroy$).subscribe(paging => {
-                this.setPaging(paging['pageIndex'], paging['pageSize']);
-                this.query();
+                if (allowTrigger) {
+                    this.setPaging(paging['pageIndex'], paging['pageSize']);
+                    this.query();
+                }
             });
         //订阅排序响应事件
         if (this.option.sort)
             Observable.from(this.option.sort.sortChange).takeUntil(this.destroy$).subscribe(sorting => {
-                this.setSorting(sorting['active'], sorting['direction']);
-                this.query();
+                if (allowTrigger) {
+                    this.setSorting(sorting['active'], sorting['direction']);
+                    this.query();
+                }
             });
         //订阅过滤条件过滤响应事件
         Observable.from(this.filterChange).takeUntil(this.destroy$).subscribe(sorting => {
@@ -56,6 +61,12 @@ export class PaginatorStore<T> extends DataSource<any> {
                 .distinctUntilChanged()
                 .subscribe(() => {
                     this.setFiltering(this.option.searchInputEle.nativeElement.value);
+                    if (this.option.paginator) {
+                        allowTrigger = false;
+                        this.option.paginator.firstPage();
+                        this.queryParams.page = 0;
+                        allowTrigger = true;
+                    }
                     this.query();
                 });
         }//if
@@ -76,10 +87,11 @@ export class PaginatorStore<T> extends DataSource<any> {
      * @param index 
      * @param size 
      */
-    private setPaging(index: number, size: number) {
+    private setPaging(index: number, size?: number) {
         index++;
         this.queryParams.page = index;
-        this.queryParams.pageSize = size;
+        if (size)
+            this.queryParams.pageSize = size;
     }//setPaging
 
     /**
