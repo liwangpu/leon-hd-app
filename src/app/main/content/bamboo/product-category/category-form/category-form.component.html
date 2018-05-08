@@ -28,11 +28,11 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input type="text" matInput formControlName="parentObj" [matAutocomplete]="auto">
+          <input type="text" matInput formControlName="parentObj" [matAutocomplete]="auto" placeholder="{{'glossary.ParentCategory'|translate}}" required>
         </mat-form-field>
 
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-          <mat-option *ngFor="let item of filteredOptions | async" [value]="item.id">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onParentSelected($event)">
+          <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
             {{ item?.name }}
           </mat-option>
         </mat-autocomplete>

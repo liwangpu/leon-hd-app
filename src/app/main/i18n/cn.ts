@@ -65,6 +65,7 @@ export const locale = {
             "ProductCategory": "产品分类",
             "ProductMainCategory": "主要分类",
             "ProductSpecCategory": "规格分类",
+            "ParentCategory": "上级分类"
         },
         "button": {
             "Save": "保存",

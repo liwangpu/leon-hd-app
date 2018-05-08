@@ -67,6 +67,7 @@ export const locale = {
             "ProductCategory": "Product Category",
             "ProductMainCategory": "Main Category",
             "ProductSpecCategory": "Spec Category",
+            "ParentCategory": "Parent Category"
         },
         "button": {
             "Save": "Save",

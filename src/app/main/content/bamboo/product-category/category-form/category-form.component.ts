@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatAutocompleteSelectedEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ProductCategory } from '../../../../toolkit/models/productcategory';
 import { ProductCategoryService } from '../../../../toolkit/server/webapi/productcategory.service';
@@ -42,16 +42,10 @@ export class CategoryFormComponent implements OnInit {
   ngOnInit() {
     this.flatCategories = this.categoryMdSrv.productCategories;
     this.categoryForm.patchValue(this.category);
-    this.categoryForm.patchValue({ parentObj: this.flatCategories.filter(x => x.id == this.category.id)[0].name });
-    // this.categoryForm.get('parentId').valueChanges.takeUntil(this.destroy$).subscribe(val => {
-
-    //   // this.filteredOptions=Observable.of(this.flatCategories).pipe(map(val=>val));
-    //   Observable.of(this.flatCategories).pipe(map(val=>val));
-    // });
-
+    this.categoryForm.patchValue({ parentObj: this.flatCategories.filter(x => x.id == this.category.parentId)[0] });
     this.filteredOptions = this.categoryForm.get('parentObj').valueChanges.takeUntil(this.destroy$).pipe(
       map(val => this.filter(val)));
-    // Observable.of(1,2,3).pipe(map(val=>val));
+
   }//ngOnInit
 
   closeDialog() {
@@ -79,10 +73,10 @@ export class CategoryFormComponent implements OnInit {
       });//promise
     };//tranAsync
 
-    // saveAsync().then(tranAsync).then((msg) => {
-    //   this.snackBarSrv.simpleBar(msg as string);
-    // });
-    console.log(111, 'submit', this.categoryForm.value);
+    saveAsync().then(tranAsync).then((msg) => {
+      this.snackBarSrv.simpleBar(msg as string);
+    });
+    // console.log(111, 'submit', this.categoryForm.value);
   }//submit
 
   filter(val: string): Array<ProductCategory> {
@@ -90,13 +84,15 @@ export class CategoryFormComponent implements OnInit {
       option.name.includes(val));
   }//
 
-  // displayFn(cat?: ProductCategory): string | undefined {
-  //   console.log(111, ' this.flatCategories', this.flatCategories);
-  //   return cat ? cat.name : '';
-  // }
+  displayFn(cat?: ProductCategory): string | undefined {
+    return cat ? cat.name : '';
+  }//displayFn
 
-  displayFn(cat?: string): string | undefined {
-    console.log(111, ' this.flatCategories', this.flatCategories);
-    return cat;
-  }
+  /**
+   * 父分类选择后事件
+   * @param vl 
+   */
+  onParentSelected(vl: MatAutocompleteSelectedEvent) {
+    this.categoryForm.patchValue({ parentId: vl.option.value.id });
+  }//onParentSelected
 }
