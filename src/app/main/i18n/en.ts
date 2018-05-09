@@ -26,7 +26,8 @@ export const locale = {
             "Organization": "Organization",
             "OrganAccounts": "Account Management",
             "ProductCategorys": "Product Category",
-            "ProductSpecCategorys": "Product Spec Category"
+            "ProductSpecCategorys": "Product Spec Category",
+            "Order": "Order",
         },
         "glossary": {
             "Product": "Product",
@@ -50,6 +51,10 @@ export const locale = {
             "Phone": "Phone",
             "Mail": "Mail",
             "Price": "Price",
+            "Amount": "Amount",
+            "Quantity": "Quantity",
+            "UnitPrice": "Unit Price",
+            "TotalPrice": "Total Price",
             "Password": "Password",
             "Location": "Location",
             "Description": "Description",
@@ -67,7 +72,9 @@ export const locale = {
             "ProductCategory": "Product Category",
             "ProductMainCategory": "Main Category",
             "ProductSpecCategory": "Spec Category",
-            "ParentCategory": "Parent Category"
+            "ParentCategory": "Parent Category",
+            "Order": "Order",
+            "OrderContent": "Content"
         },
         "button": {
             "Save": "Save",
@@ -82,7 +89,7 @@ export const locale = {
             "Confirm": "Confirm",
             "Next": "Next",
             "Search": "Search",
-            "Select": "Select",            
+            "Select": "Select",
             "AddProduct": "ADD NEW PRODUCT",
             "AddOrgan": "ADD NEW ORGAN",
             "OrganOwnerManagement": "Owner Management",

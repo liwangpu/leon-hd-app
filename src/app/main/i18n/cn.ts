@@ -26,7 +26,8 @@ export const locale = {
             "Organization": "组织",
             "OrganAccounts": "人员管理",
             "ProductCategorys": "产品分类",
-            "ProductSpecCategorys": "产品规格分类"
+            "ProductSpecCategorys": "产品规格分类",
+            "Order": "订单",
         },
         "glossary": {
             "Product": "产品",
@@ -48,6 +49,10 @@ export const locale = {
             "Phone": "电话",
             "Mail": "邮件",
             "Price": "价格",
+            "Amount": "合计",
+            "Quantity": "数量",
+            "UnitPrice": "单价",
+            "TotalPrice": "总价",
             "Password": "密码",
             "Description": "描述",
             "Location": "地址",
@@ -65,7 +70,9 @@ export const locale = {
             "ProductCategory": "产品分类",
             "ProductMainCategory": "主要分类",
             "ProductSpecCategory": "规格分类",
-            "ParentCategory": "上级分类"
+            "ParentCategory": "上级分类",
+            "Order": "订单",
+            "OrderContent": "订单详情"
         },
         "button": {
             "Save": "保存",

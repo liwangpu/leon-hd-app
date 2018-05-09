@@ -30,7 +30,7 @@ export class OrganComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource = new PaginatorStore<Organization>({ service: this.organSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort })
+    this.dataSource = new PaginatorStore<Organization>({ service: this.organSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort });
   }//ngOnInit
 
   /**

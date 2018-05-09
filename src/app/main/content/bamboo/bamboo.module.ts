@@ -17,7 +17,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CdkTableModule } from '@angular/cdk/table';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatStepperModule } from '@angular/material/stepper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
@@ -60,6 +60,11 @@ import { CategoryMdService } from './product-category/category-md.service';
 import { ProductspecCateogoryComponent } from './productspec-cateogory/productspec-cateogory.component';
 import { CategoryPanelComponent as ProductSpecCategoryPanelComponent } from './productspec-cateogory/category-panel/category-panel.component';
 import { AccountMdService } from "./account/account-md.service";
+import { OrderComponent } from './order/order.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { BasicInfoComponent as OrderBasicInfoComponent } from './order-detail/basic-info/basic-info.component';
+import { OrderDetailMdService } from "./order-detail/order-detail-md.service";
+import { DetailContentComponent as OrderDetailContentComponent } from './order-detail/detail-content/detail-content.component';
 @NgModule({
   imports: [
     ServicesModule,
@@ -91,13 +96,17 @@ import { AccountMdService } from "./account/account-md.service";
     MatInputModule,
     MatAutocompleteModule
   ],
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent],
+  
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderBasicInfoComponent, OrderDetailContentComponent],
+
   entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductSpecCategoryPanelComponent],
+
   providers: [
     ProductDetailMdService,
     SolutionDetailMdService,
     CategoryMdService,
-    AccountMdService
+    AccountMdService,
+    OrderDetailMdService
   ]
 })
 export class BambooModule { }
