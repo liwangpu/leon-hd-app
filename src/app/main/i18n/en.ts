@@ -28,6 +28,7 @@ export const locale = {
             "ProductCategorys": "Product Category",
             "ProductSpecCategorys": "Product Spec Category",
             "Order": "Order",
+            "Package": "Package",
         },
         "glossary": {
             "Product": "Product",
@@ -74,7 +75,9 @@ export const locale = {
             "ProductSpecCategory": "Spec Category",
             "ParentCategory": "Parent Category",
             "Order": "Order",
-            "OrderContent": "Content"
+            "OrderContent": "Content",
+            "Package": "Package",
+            "PackageContent": "Content"
         },
         "button": {
             "Save": "Save",

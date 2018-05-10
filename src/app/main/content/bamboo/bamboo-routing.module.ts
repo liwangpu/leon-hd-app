@@ -15,10 +15,14 @@ import { SolutionComponent } from "./solution/solution.component";
 import { SolutionDetailComponent } from "./solution-detail/solution-detail.component";
 import { SolutionService } from "../../toolkit/server/webapi/solution.service";
 import { OrderService } from "../../toolkit/server/webapi/order.service";
+import { PackageService } from "../../toolkit/server/webapi/package.service";
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { ProductspecCateogoryComponent } from './productspec-cateogory/productspec-cateogory.component';
 import { OrderComponent } from './order/order.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { PackageComponent } from './package/package.component';
+import { PackageDetailComponent } from './package-detail/package-detail.component';
+
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -27,6 +31,7 @@ const routes: Routes = [
   , { path: 'app/organ', component: OrganComponent, canActivate: [RouteGuardService] }
   , { path: 'app/solutions', component: SolutionComponent, canActivate: [RouteGuardService] }
   , { path: 'app/orders', component: OrderComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/packages', component: PackageComponent, canActivate: [RouteGuardService] }
   , { path: 'app/organ-account', component: AccountComponent, canActivate: [RouteGuardService] }
   , { path: 'app/product-category', component: ProductCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/productspec-category', component: ProductspecCateogoryComponent, canActivate: [RouteGuardService] }
@@ -66,6 +71,15 @@ const routes: Routes = [
     }
   }
   , { path: 'app/order-detail', component: OrderDetailComponent, canActivate: [RouteGuardService] }
+  , {
+    path: 'app/package-detail/:id'
+    , component: PackageDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: PackageService
+    }
+  }
+  , { path: 'app/package-detail', component: PackageDetailComponent, canActivate: [RouteGuardService] }
 ];
 
 @NgModule({

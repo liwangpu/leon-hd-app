@@ -19,7 +19,6 @@ export class DetailContentComponent implements OnInit {
 
   ngOnInit() {
     this.orderContent = this.detaiMdSrv.currentOrder.contentIns;
-    //加统计行
     let items = this.orderContent.items ? this.orderContent.items : [];
     this.dataSource = new MatTableDataSource(items);
   }//ngOnInit

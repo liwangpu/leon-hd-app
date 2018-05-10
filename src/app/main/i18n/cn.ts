@@ -28,6 +28,7 @@ export const locale = {
             "ProductCategorys": "产品分类",
             "ProductSpecCategorys": "产品规格分类",
             "Order": "订单",
+            "Package": "套餐",
         },
         "glossary": {
             "Product": "产品",
@@ -72,7 +73,9 @@ export const locale = {
             "ProductSpecCategory": "规格分类",
             "ParentCategory": "上级分类",
             "Order": "订单",
-            "OrderContent": "订单详情"
+            "OrderContent": "订单详情",
+            "Package": "套餐",
+            "PackageContent": "套餐详情"
         },
         "button": {
             "Save": "保存",

@@ -20,6 +20,7 @@ import { ProductCategoryService } from "./webapi/productcategory.service";
 import { IconService } from "./webapi/icon.service";
 import { ProductspecCategoryService } from "./webapi/productspec-category.service";
 import { OrderService } from "./webapi/order.service";
+import { PackageService } from "./webapi/package.service";
 @NgModule({
     imports: [
         ConfigModule
@@ -43,6 +44,7 @@ import { OrderService } from "./webapi/order.service";
         , IconService
         , ProductspecCategoryService
         , OrderService
+        , PackageService
         , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
         , { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
     ]

@@ -2,50 +2,49 @@ import { Injectable } from '@angular/core';
 import { ApiService, Paging, IQuery } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
-import { Order } from '../../models/order';
+import { Package } from '../../models/package';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class OrderService extends ApiService<Order> {
+export class PackageService extends ApiService<Package>  {
 
   constructor(private http: HttpClient, private config: ConfigService) {
     super(http, config);
-    this.uriPart = 'Orders';
+    this.uriPart = 'Package';
   }
 
   /**
-    * 根据id获取订单信息
+    * 根据id获取套餐信息
     * @param id 
     */
-  getById(id: string | number): Observable<Order> {
+  getById(id: string | number): Observable<Package> {
     if (!id) {
-      return Observable.of(new Order());
+      return Observable.of(new Package());
     }
     return super.getEntity(id);
   }
 
   /**
-   * 创建订单信息
+   * 创建套餐信息
    * @param entity 
    */
-  create(entity: Order): Observable<Order> {
+  create(entity: Package): Observable<Package> {
     return super.createEntity(entity);
   }
 
   /**
-   * 更新订单信息
+   * 更新套餐信息
    * @param entity 
    */
-  update(entity: Order): Observable<Order> {
+  update(entity: Package): Observable<Package> {
     return super.updateEntity(entity);
   }
 
   /**
-   * 查询订单信息
+   * 查询套餐信息
    * @param query 
    */
-  query(query: IQuery): Observable<Paging<Order>> {
+  query(query: IQuery): Observable<Paging<Package>> {
     return super.queryEntities(query);
   }
-
-}//OrderService
+}

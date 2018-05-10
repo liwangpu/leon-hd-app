@@ -64,7 +64,12 @@ import { OrderComponent } from './order/order.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { BasicInfoComponent as OrderBasicInfoComponent } from './order-detail/basic-info/basic-info.component';
 import { OrderDetailMdService } from "./order-detail/order-detail-md.service";
+import { PackageDetailMdService } from "./package-detail/package-detail-md.service";
 import { DetailContentComponent as OrderDetailContentComponent } from './order-detail/detail-content/detail-content.component';
+import { PackageComponent } from './package/package.component';
+import { PackageDetailComponent } from './package-detail/package-detail.component';
+import { BasicInfoComponent as PackageBasicInfoComponent } from './package-detail/basic-info/basic-info.component';
+import { DetailContentComponent as PacakgeDetailContentComponent } from './package-detail/detail-content/detail-content.component';
 @NgModule({
   imports: [
     ServicesModule,
@@ -96,8 +101,8 @@ import { DetailContentComponent as OrderDetailContentComponent } from './order-d
     MatInputModule,
     MatAutocompleteModule
   ],
-  
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderBasicInfoComponent, OrderDetailContentComponent],
+
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, OAccountDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderBasicInfoComponent, OrderDetailContentComponent, PackageComponent, PackageDetailComponent, PackageBasicInfoComponent, PacakgeDetailContentComponent],
 
   entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductSpecCategoryPanelComponent],
 
@@ -106,7 +111,8 @@ import { DetailContentComponent as OrderDetailContentComponent } from './order-d
     SolutionDetailMdService,
     CategoryMdService,
     AccountMdService,
-    OrderDetailMdService
+    OrderDetailMdService,
+    PackageDetailMdService
   ]
 })
 export class BambooModule { }

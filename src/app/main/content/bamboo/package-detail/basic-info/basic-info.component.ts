@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { OrderDetailMdService } from '../order-detail-md.service';
+import { PackageDetailMdService } from '../package-detail-md.service';
 import { TranslateService } from '@ngx-translate/core';
-import { OrderService } from '../../../../toolkit/server/webapi/order.service';
+import { PackageService } from '../../../../toolkit/server/webapi/package.service';
 import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
 
 @Component({
-  selector: 'app-order-detail-basic-info',
+  selector: 'app-package-detail-basic-info',
   templateUrl: './basic-info.component.html',
   styleUrls: ['./basic-info.component.scss']
 })
@@ -16,7 +16,7 @@ export class BasicInfoComponent implements OnInit {
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private formBuilder: FormBuilder, private detaiMdSrv: OrderDetailMdService, private orderSrv: OrderService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(private formBuilder: FormBuilder, private detaiMdSrv: PackageDetailMdService, private packageSrv: PackageService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
@@ -25,16 +25,15 @@ export class BasicInfoComponent implements OnInit {
   }//constructor
 
   ngOnInit() {
-    this.detailForm.patchValue(this.detaiMdSrv.currentOrder);
+    this.detailForm.patchValue(this.detaiMdSrv.currentPackage);
   }//ngOnInit
 
   submit() {
-
     let saveProdAsync = () => {
       return new Promise((resolve) => {
-        this.orderSrv.update(this.detailForm.value).first().subscribe(resOrder => {
-          this.detaiMdSrv.currentOrder = resOrder;
-          this.detaiMdSrv.afterOrderChange$.next();
+        this.packageSrv.update(this.detailForm.value).first().subscribe(resOrder => {
+          this.detaiMdSrv.currentPackage = resOrder;
+          this.detaiMdSrv.afterPackageChange$.next();
           this.detailForm.patchValue({ id: resOrder.id });
           resolve({ k: 'message.SaveSuccessfully' });
         }, err => {
