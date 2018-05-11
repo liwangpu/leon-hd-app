@@ -17,6 +17,7 @@ import { SolutionService } from "../../toolkit/server/webapi/solution.service";
 import { OrderService } from "../../toolkit/server/webapi/order.service";
 import { PackageService } from "../../toolkit/server/webapi/package.service";
 import { StaticmeshService } from "../../toolkit/server/webapi/staticmesh.service";
+import { MaterialService } from "../../toolkit/server/webapi/material.service";
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { ProductspecCateogoryComponent } from './productspec-cateogory/productspec-cateogory.component';
 import { OrderComponent } from './order/order.component';
@@ -25,6 +26,9 @@ import { PackageComponent } from './package/package.component';
 import { PackageDetailComponent } from './package-detail/package-detail.component';
 import { StaticmeshComponent } from './staticmesh/staticmesh.component';
 import { StaticmeshDetailComponent } from './staticmesh-detail/staticmesh-detail.component';
+import { MaterialComponent } from './material/material.component';
+import { MaterialDetailComponent } from './material-detail/material-detail.component';
+
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -38,7 +42,7 @@ const routes: Routes = [
   , { path: 'app/product-category', component: ProductCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/productspec-category', component: ProductspecCateogoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/staticmeshs', component: StaticmeshComponent, canActivate: [RouteGuardService] }
-
+  , { path: 'app/materials', component: MaterialComponent, canActivate: [RouteGuardService] }
 
 
   , {
@@ -92,6 +96,14 @@ const routes: Routes = [
     , canActivate: [RouteGuardService],
     resolve: {
       entity: StaticmeshService
+    }
+  }
+  , {
+    path: 'app/material-detail/:id'
+    , component: MaterialDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: MaterialService
     }
   }
 ];

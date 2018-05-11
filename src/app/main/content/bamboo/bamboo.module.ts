@@ -73,6 +73,10 @@ import { DetailContentComponent as PacakgeDetailContentComponent } from './packa
 import { StaticmeshComponent } from './staticmesh/staticmesh.component';
 import { StaticmeshDetailComponent } from './staticmesh-detail/staticmesh-detail.component';
 import { BasicInfoComponent as StaticMeshBasicInfoComponent } from './staticmesh-detail/basic-info/basic-info.component';
+import { MaterialComponent } from './material/material.component';
+import { MaterialDetailComponent } from './material-detail/material-detail.component';
+import { BasicInfoComponent as MaterialBasicInfoComponent } from './material-detail/basic-info/basic-info.component';
+import { MaterialDetailMdService } from './material-detail/material-detail-md.service';
 @NgModule({
   imports: [
     ServicesModule,
@@ -105,7 +109,7 @@ import { BasicInfoComponent as StaticMeshBasicInfoComponent } from './staticmesh
     MatAutocompleteModule
   ],
 
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderBasicInfoComponent, OrderDetailContentComponent, PackageComponent, PackageDetailComponent, PackageBasicInfoComponent, PacakgeDetailContentComponent, StaticmeshComponent, StaticmeshDetailComponent, StaticMeshBasicInfoComponent],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderBasicInfoComponent, OrderDetailContentComponent, PackageComponent, PackageDetailComponent, PackageBasicInfoComponent, PacakgeDetailContentComponent, StaticmeshComponent, StaticmeshDetailComponent, StaticMeshBasicInfoComponent, MaterialComponent, MaterialDetailComponent, MaterialBasicInfoComponent],
 
   entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductSpecCategoryPanelComponent],
 
@@ -116,7 +120,8 @@ import { BasicInfoComponent as StaticMeshBasicInfoComponent } from './staticmesh
     AccountMdService,
     OrderDetailMdService,
     PackageDetailMdService,
-    StaticmeshDetailMdService
+    StaticmeshDetailMdService,
+    MaterialDetailMdService
   ]
 })
 export class BambooModule { }

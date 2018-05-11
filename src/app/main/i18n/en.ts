@@ -30,6 +30,7 @@ export const locale = {
             "Order": "Order",
             "Package": "Package",
             "StaticMesh": "StaticMesh",
+            "Material":"Material"
         },
         "glossary": {
             "Product": "Product",
@@ -80,6 +81,7 @@ export const locale = {
             "Package": "Package",
             "PackageContent": "Content",
             "StaticMesh": "StaticMesh",
+            "Material":"Material"
         },
         "button": {
             "Save": "Save",

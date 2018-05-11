@@ -30,6 +30,7 @@ export const locale = {
             "Order": "订单",
             "Package": "套餐",
             "StaticMesh": "模型",
+            "Material":"材质"
         },
         "glossary": {
             "Product": "产品",
@@ -78,6 +79,7 @@ export const locale = {
             "Package": "套餐",
             "PackageContent": "套餐详情",
             "StaticMesh": "模型",
+            "Material":"材质"
         },
         "button": {
             "Save": "保存",
