@@ -29,6 +29,7 @@ export const locale = {
             "ProductSpecCategorys": "Product Spec Category",
             "Order": "Order",
             "Package": "Package",
+            "StaticMesh": "StaticMesh",
         },
         "glossary": {
             "Product": "Product",
@@ -77,7 +78,8 @@ export const locale = {
             "Order": "Order",
             "OrderContent": "Content",
             "Package": "Package",
-            "PackageContent": "Content"
+            "PackageContent": "Content",
+            "StaticMesh": "StaticMesh",
         },
         "button": {
             "Save": "Save",

@@ -35,7 +35,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(111, 'paginator', this.paginator);
     this.dataStore = new PaginatorStore<Product>({ service: this.productSrv, paginator: this.paginator, searchInputEle: this.filter });
     this.dataStore._dataSubject.takeUntil(this.destroy$).subscribe(res => {
       this.paginator.length=res.total;

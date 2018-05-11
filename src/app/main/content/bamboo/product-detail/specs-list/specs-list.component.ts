@@ -6,6 +6,7 @@ import { ProductSpecService } from '../../../../toolkit/server/webapi/productSpe
 import { FileAsset } from '../../../../toolkit/models/fileasset';
 import { ConfigService } from '../../../../toolkit/config/config.service'
 import { IconModel } from '../../../../toolkit/models/iconmodel';
+import { PathService } from '../../../services/path.service';
 
 @Component({
   selector: 'app-product-detail-specs-list',
@@ -16,16 +17,15 @@ export class SpecsListComponent implements OnInit, OnDestroy {
   detailCharletUrl = "";
   charlets: Array<FileAsset> = [];
   detroy$: Subject<boolean> = new Subject();
-  constructor(private detailMdSrv: ProductDetailMdService, private productSpeServ: ProductSpecService, private configSrv: ConfigService) {
+  constructor(private detailMdSrv: ProductDetailMdService, private productSpeServ: ProductSpecService, private configSrv: ConfigService, private pathSrv: PathService) {
     //订阅规格图片更改事件
     this.detailMdSrv.afterProductCharletChange$.takeUntil(this.detroy$).subscribe((hasCharlet) => {
       if (hasCharlet) {
         this.refreshCharlet();
       }
-      else{
-        this.charlets=[];
+      else {
+        this.charlets = [];
       }
-      console.log('hasCharlet',hasCharlet);
     });
   }
 
@@ -56,7 +56,7 @@ export class SpecsListComponent implements OnInit, OnDestroy {
   }//refreshCharlet
 
   getCharletUrl(url: string) {
-    return `${this.configSrv.serverBase}/${url}`;
+    return this.pathSrv.redirectServerUrl(url);
   }//getCharletUrl
 
   watchDetaiCharlet(url: string) {

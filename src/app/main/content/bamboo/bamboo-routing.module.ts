@@ -16,13 +16,15 @@ import { SolutionDetailComponent } from "./solution-detail/solution-detail.compo
 import { SolutionService } from "../../toolkit/server/webapi/solution.service";
 import { OrderService } from "../../toolkit/server/webapi/order.service";
 import { PackageService } from "../../toolkit/server/webapi/package.service";
+import { StaticmeshService } from "../../toolkit/server/webapi/staticmesh.service";
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { ProductspecCateogoryComponent } from './productspec-cateogory/productspec-cateogory.component';
 import { OrderComponent } from './order/order.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { PackageComponent } from './package/package.component';
 import { PackageDetailComponent } from './package-detail/package-detail.component';
-
+import { StaticmeshComponent } from './staticmesh/staticmesh.component';
+import { StaticmeshDetailComponent } from './staticmesh-detail/staticmesh-detail.component';
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -35,6 +37,10 @@ const routes: Routes = [
   , { path: 'app/organ-account', component: AccountComponent, canActivate: [RouteGuardService] }
   , { path: 'app/product-category', component: ProductCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/productspec-category', component: ProductspecCateogoryComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/staticmeshs', component: StaticmeshComponent, canActivate: [RouteGuardService] }
+
+
+
   , {
     path: 'app/product-detail/:id'
     , component: ProductDetailComponent
@@ -80,6 +86,14 @@ const routes: Routes = [
     }
   }
   , { path: 'app/package-detail', component: PackageDetailComponent, canActivate: [RouteGuardService] }
+  , {
+    path: 'app/staticmesh-detail/:id'
+    , component: StaticmeshDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: StaticmeshService
+    }
+  }
 ];
 
 @NgModule({
