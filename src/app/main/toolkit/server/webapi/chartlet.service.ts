@@ -29,22 +29,22 @@ export class ChartletService {
     }
 
     /**
-     * 上传贴图
+     * 上传图册
      * @param url 
      * @param objId 
      * @param assetId 
      */
-    UploadChartlet(url: string, objId: string, assetId: string): Observable<any> {
+    UploadAlbum(url: string, objId: string, assetId: string): Observable<any> {
         return this.httpClient.put(`${this.uriBase}/${url}`, { ObjId: objId, AssetId: assetId }, { headers: this.header });
     }
 
     /**
-     * 删除贴图
+     * 删除图册
      * @param url 
      * @param objId 
      * @param assetId 
      */
-    DeleteChartlet(url: string, objId: string, assetId: string): Observable<any> {
+    DeleteAlbum(url: string, objId: string, assetId: string): Observable<any> {
         return this.httpClient.put(`${this.uriBase}/${url}`, { ObjId: objId, AssetId: assetId }, { headers: this.header });
     }
 }

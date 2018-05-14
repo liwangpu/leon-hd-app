@@ -46,15 +46,15 @@ export class UploadComponent implements OnInit {
         this.meshFiles = res.staticMeshes ? res.staticMeshes : [];
       // if (res.icon)
       //   this.iconFiles = [res.icon];
-      if (res.charlets && res.charlets.length)
-        this.chartletFiles = res.charlets;
+      if (res.album && res.album.length)
+        this.chartletFiles = res.album;
       if (this.meshFiles.length) {
         this.staticMeshId = this.meshFiles[0].id;
         this.meshSrv.getById(this.staticMeshId).subscribe(mas => {
           this.materialFiles = mas.materials ? mas.materials : [];
         });
       }
-    });
+    }); 
   }//ngOnInit
 
   /**
@@ -162,7 +162,7 @@ export class UploadComponent implements OnInit {
 
   onUploadChartlet(file: IUpload) {
     let durl = 'productSpec/UploadChartlet';
-    this.chartletSrv.UploadChartlet(durl, this.productSpec.id, file.asset.id).subscribe(() => {
+    this.chartletSrv.UploadAlbum(durl, this.productSpec.id, file.asset.id).subscribe(() => {
       this.translate.get('message.UploadSuccessfully').subscribe(msg => {
         this.snackbarSrv.simpleBar(msg);
       });
@@ -173,7 +173,7 @@ export class UploadComponent implements OnInit {
 
   onDeleteChartlet(id: string) {
     let durl = 'productSpec/DeleteChartlet';
-    this.chartletSrv.DeleteChartlet(durl, this.productSpec.id, id).subscribe(() => {
+    this.chartletSrv.DeleteAlbum(durl, this.productSpec.id, id).subscribe(() => {
       this.translate.get('message.DeleteSuccessfully').subscribe(msg => {
         this.snackbarSrv.simpleBar(msg);
       });

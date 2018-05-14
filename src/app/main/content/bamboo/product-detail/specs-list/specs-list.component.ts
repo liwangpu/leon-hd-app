@@ -40,8 +40,8 @@ export class SpecsListComponent implements OnInit, OnDestroy {
 
   refreshCharlet() {
     this.productSpeServ.getById(this.detailMdSrv.productSpec.id).takeUntil(this.detroy$).subscribe(resSpec => {
-      if (resSpec.charlets && resSpec.charlets.length) {
-        this.charlets = resSpec.charlets;
+      if (resSpec.album && resSpec.album.length) {
+        this.charlets = resSpec.album;
         this.watchDetaiCharlet(this.charlets[0].url);
         // //更改图标信息
         // let iconMd = new IconModel();

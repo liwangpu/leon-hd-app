@@ -86,11 +86,11 @@ export class ProductSpecService extends ApiService<ProductSpec> {
 
 interface IMeshUpload {
     productSpecId: string;
-    assetId: string;
+    staticMeshId: string;
 }
 
 interface IMaterialUpload {
     productSpecId: string;
     staticMeshId: string;
-    assetId: string;
+    materialId: string;
 }

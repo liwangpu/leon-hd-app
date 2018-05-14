@@ -44,8 +44,8 @@ export class SpecUploadComponent implements OnInit {
         this.meshFiles = res.staticMeshes ? res.staticMeshes : [];
       if (res.iconAsset)
         this.iconFiles = [res.iconAsset];
-      if (res.charlets && res.charlets.length)
-        this.chartletFiles = res.charlets;
+      if (res.album && res.album.length)
+        this.chartletFiles = res.album;
       if (this.meshFiles && this.meshFiles.length) {
         this.staticMeshId = this.meshFiles[0].id;
         this.materialFiles = this.meshFiles[0].materials ? this.meshFiles[0].materials : [];
@@ -94,7 +94,7 @@ export class SpecUploadComponent implements OnInit {
 
     let updateSpecAsync = (resMesh) => {
       return new Promise((resolve, reject) => {
-        this.productSpeServ.uploadMesh({ productSpecId: this.productSpec.id, assetId: resMesh.id }).subscribe(() => {
+        this.productSpeServ.uploadMesh({ productSpecId: this.productSpec.id, staticMeshId: resMesh.id }).subscribe(() => {
           resolve({ k: 'message.UploadSuccessfully' });
         }, err => {
           reject({ k: 'message.OperationError', v: err });
@@ -124,7 +124,7 @@ export class SpecUploadComponent implements OnInit {
   onDeleteMesh(id: string) {
     let deleteSpecMeshAsync = () => {
       return new Promise((resolve, reject) => {
-        this.productSpeServ.deleteMesh({ productSpecId: this.productSpec.id, assetId: id }).subscribe(() => {
+        this.productSpeServ.deleteMesh({ productSpecId: this.productSpec.id, staticMeshId: id }).subscribe(() => {
           resolve({ k: 'message.UploadSuccessfully' });
         }, err => {
           reject({ k: 'message.OperationError', v: err });
@@ -169,7 +169,7 @@ export class SpecUploadComponent implements OnInit {
 
     let updateMaterialAsync = (resMaterial) => {
       return new Promise((resolve, reject) => {
-        this.productSpeServ.uploadMaterial({ productSpecId: this.productSpec.id, assetId: resMaterial.id, staticMeshId: this.staticMeshId }).subscribe(() => {
+        this.productSpeServ.uploadMaterial({ productSpecId: this.productSpec.id, materialId: resMaterial.id, staticMeshId: this.staticMeshId }).subscribe(() => {
           resolve({ k: 'message.UploadSuccessfully' });
         }, err => {
           reject({ k: 'message.OperationError', v: err });
@@ -199,7 +199,7 @@ export class SpecUploadComponent implements OnInit {
 
     let deleteMaterialAsync = () => {
       return new Promise((resolve, reject) => {
-        this.productSpeServ.deleteMaterial({ productSpecId: this.productSpec.id, assetId: id, staticMeshId: this.staticMeshId }).subscribe(() => {
+        this.productSpeServ.deleteMaterial({ productSpecId: this.productSpec.id, materialId: id, staticMeshId: this.staticMeshId }).subscribe(() => {
           resolve({ k: 'message.UploadSuccessfully' });
         }, err => {
           reject({ k: 'message.OperationError', v: err });
@@ -243,8 +243,8 @@ export class SpecUploadComponent implements OnInit {
   }//onDeleteICon
 
   onUploadChartlet(file: IUpload) {
-    let durl = 'productSpec/UploadChartlet';
-    this.chartletSrv.UploadChartlet(durl, this.productSpec.id, file.asset.id).subscribe((resData) => {
+    let durl = 'productSpec/UploadAlbum';
+    this.chartletSrv.UploadAlbum(durl, this.productSpec.id, file.asset.id).subscribe((resData) => {
       this.translate.get('message.UploadSuccessfully').subscribe(msg => {
         this.snackbarSrv.simpleBar(msg);
         this.isCharletChange = true;
@@ -256,8 +256,8 @@ export class SpecUploadComponent implements OnInit {
   }
 
   onDeleteChartlet(id: string) {
-    let durl = 'productSpec/DeleteChartlet';
-    this.chartletSrv.DeleteChartlet(durl, this.productSpec.id, id).subscribe(() => {
+    let durl = 'productSpec/DeleteAlbum';
+    this.chartletSrv.DeleteAlbum(durl, this.productSpec.id, id).subscribe(() => {
       this.translate.get('message.DeleteSuccessfully').subscribe(msg => {
         this.snackbarSrv.simpleBar(msg);
         this.isCharletChange = true;
