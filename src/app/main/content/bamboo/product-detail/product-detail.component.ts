@@ -4,6 +4,7 @@ import { Subject } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { Product } from '../../../toolkit/models/product';
 import { ProductSpec } from '../../../toolkit/models/productspec';
+import { PathService } from '../../services/path.service';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -14,7 +15,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   showSubmitBtn: boolean;
   showSpecification: boolean;
   detroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private detailMdSrv: ProductDetailMdService, private route: ActivatedRoute) {
+  constructor(private detailMdSrv: ProductDetailMdService, private route: ActivatedRoute,private pathSrv:PathService) {
     let tmp = this.route.snapshot.data.entity;
     this.detailMdSrv.product = tmp ? tmp : new Product();
     this.detailMdSrv.productSpec = new ProductSpec();
@@ -46,6 +47,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    this.detailMdSrv.submitData$.next();
+  
   }
 }

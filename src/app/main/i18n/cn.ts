@@ -90,6 +90,8 @@ export const locale = {
             "Clear": "清除",
             "Edit": "编辑",
             "Cancel": "取消",
+            "Download": "下载",
+            "Confirm": "确认",
             "Search": "搜索",
             "Select": "选择",
             "AddProduct": "添加产品",
@@ -101,7 +103,8 @@ export const locale = {
             "AllUsers": "所有人员",
             "AddSolution": "添加解决方案",
             "AddProductSpec": "添加规格",
-            "FileManagement": "文件管理"
+            "FileManagement": "文件管理",
+            "ChangeICon": "更换图标",
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
@@ -140,7 +143,8 @@ export const locale = {
             "UploadStaticMeshFileFirst": "请先上传模型文件",
             "EditProductCategory": "编辑产品分类",
             "EditProductSpecCategory": "编辑规格分类",
-            "CurrentSelectd": "当前选择"
+            "CurrentSelectd": "当前选择",
+            "ChangeICon":"更换图标"
         }
     }
 };

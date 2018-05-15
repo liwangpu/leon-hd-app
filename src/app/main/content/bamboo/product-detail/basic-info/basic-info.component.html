@@ -8,7 +8,8 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput readonly name="categoryName" formControlName="categoryName" required placeholder="{{'glossary.ProductCategory'|translate}}" (click)='onEditCategory()'>
+      <input matInput readonly name="categoryName" formControlName="categoryName" required placeholder="{{'glossary.ProductCategory'|translate}}"
+        (click)='onEditCategory()'>
       <mat-error *ngIf="productForm.get('categoryId').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
     </mat-form-field>
 
@@ -17,4 +18,18 @@
       <mat-error *ngIf="productForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
     </mat-form-field>
   </form>
+</div>
+
+<div fxLayout='row' fxLayoutAlign='end center'>
+  <div>
+    <button mat-button *ngIf='detaiMdSrv.product.id' appIconChangeCt [uploadUrl]='iconUploadUrl' [objId]='detaiMdSrv.product.id'
+      [iconUrl]='pathSrv.redirectServerUrl(detaiMdSrv.product.icon)' (afterUpload)='afterIConChange($event)'>
+      <span>{{'button.ChangeICon'|translate}}</span>
+    </button>
+  </div>
+  <div>
+    <button mat-button (click)="submitProduct()" [disabled]='!productForm.valid'>
+      <span>{{'button.Save'|translate}}</span>
+    </button>
+  </div>
 </div>

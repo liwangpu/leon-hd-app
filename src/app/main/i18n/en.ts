@@ -105,7 +105,8 @@ export const locale = {
             "AllUsers": "All Users",
             "AddSolution": "ADD NEW SOLUTION",
             "AddProductSpec": "ADD NEW SPECIFICATION",
-            "FileManagement": "File Manage"
+            "FileManagement": "File Manage",
+            "ChangeICon": "Change ICon",
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",
@@ -144,7 +145,8 @@ export const locale = {
             "UploadStaticMeshFileFirst": "Please Upload Static Mesh File First",
             "EditProductCategory": "Edit Product Category",
             "EditProductSpecCategory": "Edit Product Spec Category",
-            "CurrentSelectd": "Current Selected"
+            "CurrentSelectd": "Current Selected",
+            "ChangeICon":"Change ICon"
         }
     }
 };

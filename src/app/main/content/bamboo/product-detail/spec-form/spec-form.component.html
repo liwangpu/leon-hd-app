@@ -8,7 +8,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input name="price" formControlName="price" required matInput placeholder="{{'glossary.Price'|translate}}">
+      <input type="number" name="price" formControlName="price" required matInput placeholder="{{'glossary.Price'|translate}}">
     </mat-form-field>
 
     <mat-form-field>
@@ -20,5 +20,10 @@
 <div class="spec-form-buttons" fxLayout='row' fxLayoutAlign='end center' *ngIf='showUploadBtn'>
   <div>
     <button mat-button (click)='onUpload()'>{{'button.FileManagement'|translate}}</button>
+  </div>
+  <div>
+    <button mat-button (click)="submitProductSpec()" [disabled]='!specForm.valid'>
+      <span>{{'button.Save'|translate}}</span>
+    </button>
   </div>
 </div>

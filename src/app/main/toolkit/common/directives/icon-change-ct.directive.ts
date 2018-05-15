@@ -15,7 +15,7 @@ export class IconChangeCtDirective implements OnInit, OnDestroy {
   @Input() iconUrl: string;
   @Output() afterUpload: EventEmitter<FileAsset> = new EventEmitter();
   @HostListener('click') onClick() {
-    let dialog = this.dialogSrv.changeIConDialogSuit(ChangeIconComponent, '更换图标', this.uploadUrl, this.objId, this.iconUrl);
+    let dialog = this.dialogSrv.changeIConDialogSuit(ChangeIconComponent, '', this.uploadUrl, this.objId, this.iconUrl);
     let obs = dialog.componentInstance.afterUpload$.subscribe(resass => {
       this.afterUpload.next(resass);
     });

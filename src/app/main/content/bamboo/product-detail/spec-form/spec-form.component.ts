@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SpecsCardComponent } from "../specs-card/specs-card.component";
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
-import { ProductDetailMdService, EditPointer } from "../product-detail-md.service";
+import { ProductDetailMdService } from "../product-detail-md.service";
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductSpecService } from "../../../../toolkit/server/webapi/productSpec.service";
@@ -40,13 +40,6 @@ export class SpecFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.specForm.patchValue(this.detailMdSrv.productSpec);
-    //value change事件发布
-    this.specForm.valueChanges.takeUntil(this.destroy$).debounceTime(150).subscribe(data => {
-      if (this.specForm.valid) {
-        this.detailMdSrv.onEdit$.next();
-        this.detailMdSrv.currentEditPointer = EditPointer.ProductSpec;
-      }
-    });
   }//ngOnInit
 
   ngOnDestroy(): void {

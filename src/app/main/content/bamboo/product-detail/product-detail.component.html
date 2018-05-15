@@ -18,7 +18,7 @@
         </button>
 
         <div class="product-image mr-8 mr-sm-16">
-          <img [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+          <img [src]="detailMdSrv.product.icon?pathSrv.redirectServerUrl(detailMdSrv.product.icon):'assets/images/ecommerce/product-image-placeholder.png'">
         </div>
 
         <div fxLayout="column" fxLayoutAlign="start start">
@@ -32,9 +32,9 @@
       </div>
       <!-- / APP TITLE -->
 
-      <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0" *ngIf='showSubmitBtn' (click)="submit()">
+      <!-- <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0" *ngIf='showSubmitBtn' (click)="submit()">
         <span>{{'button.Save'|translate}}</span>
-      </button>
+      </button> -->
     </div>
     <!-- / HEADER -->
 

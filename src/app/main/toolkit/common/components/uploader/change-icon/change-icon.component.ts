@@ -53,6 +53,8 @@ export class ChangeIconComponent implements OnInit, OnDestroy, IUploadIConDialog
   }//select
 
   uploadIcon() {
+    if (!this.uploadUrl || !this.objId)
+      return;
     let fileBrowser = this.fileInputCt.nativeElement;
     if (fileBrowser.files && fileBrowser.files[0]) {
       let formData = new FormData();
