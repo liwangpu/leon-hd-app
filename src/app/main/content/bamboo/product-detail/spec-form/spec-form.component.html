@@ -17,12 +17,12 @@
 
   </form>
 </div>
-<div class="spec-form-buttons" fxLayout='row' fxLayoutAlign='end center' *ngIf='showUploadBtn'>
-  <div>
+<div class="spec-form-buttons" fxLayout='row' fxLayoutAlign='end center'>
+  <div *ngIf='showUploadBtn'>
     <button mat-button (click)='onUpload()'>{{'button.FileManagement'|translate}}</button>
   </div>
   <div>
-    <button mat-button (click)="submitProductSpec()" [disabled]='!specForm.valid'>
+    <button mat-button (click)="submitProductSpec()" [disabled]='!specForm.valid&&!specForm.dirty'>
       <span>{{'button.Save'|translate}}</span>
     </button>
   </div>

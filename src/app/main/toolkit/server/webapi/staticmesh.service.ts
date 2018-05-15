@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class StaticmeshService extends ApiService<StaticMesh> {
 
-    constructor(private http: HttpClient, private config: ConfigService) {
+    constructor(protected http: HttpClient, protected config: ConfigService) {
         super(http, config);
         this.uriPart = 'staticMesh';
     }

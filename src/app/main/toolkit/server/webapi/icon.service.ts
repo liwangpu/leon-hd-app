@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ConfigService } from '../../config/config.service';
 import { IconModel } from "../../models/iconmodel";
 @Injectable()
 export class IconService {
 
-  constructor(private httpClient: HttpClient, private configService: ConfigService) {
+  constructor(private httpClient: HttpClient) {
 
   }
 

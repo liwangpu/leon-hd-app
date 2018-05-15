@@ -15,7 +15,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   showSubmitBtn: boolean;
   showSpecification: boolean;
   detroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private detailMdSrv: ProductDetailMdService, private route: ActivatedRoute,private pathSrv:PathService) {
+  constructor(public detailMdSrv: ProductDetailMdService, private route: ActivatedRoute,public pathSrv:PathService) {
     let tmp = this.route.snapshot.data.entity;
     this.detailMdSrv.product = tmp ? tmp : new Product();
     this.detailMdSrv.productSpec = new ProductSpec();

@@ -44,7 +44,7 @@
     <div fxLayout='column' fxFill>
       <div>
         <app-file-upload-panel [serverBase]='serverBase' [maxFileLimit]='1' [url]='fileUrl' (onUpload)='onUploadICon($event)' (onError)='onUploadError($event)'
-          (onDelete)='onDeleteICon($event)' [fileAsset]='iconFiles'></app-file-upload-panel>
+          (onDelete)='onDeleteICon()' [fileAsset]='iconFiles'></app-file-upload-panel>
       </div>
       <div>
         <div fxLayout='row'>

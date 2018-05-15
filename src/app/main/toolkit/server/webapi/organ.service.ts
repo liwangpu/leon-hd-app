@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { Account } from "../../models/account";
 @Injectable()
 export class OrganService extends ApiService<Organization> {
-    constructor(private http: HttpClient, private config: ConfigService) {
+    constructor(protected http: HttpClient, protected config: ConfigService) {
         super(http, config);
         this.uriPart = 'organ';
     }

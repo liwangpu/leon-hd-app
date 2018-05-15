@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ConfigService } from '../../../config/config.service';
 import { FileAsset } from "../../../models/fileasset";
 import { ProductSpecService } from '../../../server/webapi/productSpec.service';
@@ -117,7 +117,7 @@ export class UploadComponent implements OnInit {
     material.id = '';
     material.staticMeshId = this.staticMeshId;
     material.name = file.fileName;
-    this.materialSrv.create(material).subscribe(ass => {
+    this.materialSrv.create(material).subscribe(() => {
       this.translate.get('message.UploadSuccessfully', { value: file.fileName }).subscribe((msg) => {
         this.snackbarSrv.simpleBar(msg);
       })
@@ -149,7 +149,7 @@ export class UploadComponent implements OnInit {
     });
   }//onUploadICon
 
-  onDeleteICon(id: string) {
+  onDeleteICon() {
     let durl = 'productSpec/ChangeICon';
     this.chartletSrv.UploadICon(durl, this.productSpec.id, '').subscribe(() => {
       this.translate.get('message.DeleteSuccessfully').subscribe(msg => {

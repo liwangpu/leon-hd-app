@@ -1,12 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import {  MatSort, MatPaginator } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
-import { DataSource } from '@angular/cdk/collections';
-import { Observable, BehaviorSubject, Subject } from "rxjs";
-import { ProductService } from "../../server/webapi/product.service";
-import { IListableService } from "../../server/webapi/ilistableService";
 import { Product } from "../../models/product";
-import { Paging, IQuery } from "../../server/webapi/api.service";
 import { PaginatorStore } from "../../common/classes/paginator-store";
 
 @Component({
@@ -21,7 +16,7 @@ export class SimpleListComponent implements OnInit, AfterViewInit {
   columnsToDisplay = ['select', 'Name', 'age'];
   dataSource: PaginatorStore<Product> | null;
   selection = new SelectionModel<{ name: string, age: number }>(true, []);
-  constructor(private productSrv: ProductService) {
+  constructor() {
     // for (let idx = 0; idx < 15; idx++) {
     //   this.myDataArray.push({ name: 'Leon'+idx, age: 18 });
     // }werewrewr
@@ -37,7 +32,7 @@ export class SimpleListComponent implements OnInit, AfterViewInit {
 
   }
 
-  applyFilter(fvalue: string) {
+  applyFilter() {
     // console.log(111, 'receive', fvalue);
     // fvalue = fvalue.trim().toLocaleLowerCase();
     // this.dataSource.filter = fvalue;

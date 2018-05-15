@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class FileAssetService extends ApiService<FileAsset> {
 
-    constructor(private http: HttpClient, private config: ConfigService) {
+    constructor(protected http: HttpClient, protected config: ConfigService) {
         super(http, config);
         this.uriPart = 'files';
     }

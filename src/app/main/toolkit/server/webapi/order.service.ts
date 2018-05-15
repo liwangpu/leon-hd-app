@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class OrderService extends ApiService<Order> {
 
-  constructor(private http: HttpClient, private config: ConfigService) {
+  constructor(protected http: HttpClient, protected config: ConfigService) {
     super(http, config);
     this.uriPart = 'Orders';
   }

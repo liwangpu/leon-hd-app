@@ -22,7 +22,7 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
   iconUploadUrl: string;
   productForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private formBuilder: FormBuilder, private detaiMdSrv: ProductDetailMdService, private productSrv: ProductService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private dialog: MatDialog, private categorySrv: ProductCategoryService, private pathSrv: PathService) {
+  constructor(private formBuilder: FormBuilder, public detaiMdSrv: ProductDetailMdService, private productSrv: ProductService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private dialog: MatDialog, private categorySrv: ProductCategoryService, private pathSrv: PathService) {
     this.productForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],

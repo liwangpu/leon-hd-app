@@ -37,6 +37,8 @@ import { ChangeIconComponent } from './components/uploader/change-icon/change-ic
 import { IconChangeCtDirective } from './directives/icon-change-ct.directive';
 import { ConfirmDialogComponent as DialogSetConfirmDialogComponent } from "./components/dialog/confirm-dialog/confirm-dialog.component";
 import { UploadIconDialogComponent as DialogSetUploadIconDialogComponent } from './components/dialog/upload-icon-dialog/upload-icon-dialog.component';
+import { Panel2Component } from './components/uploader/panel2/panel2.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -72,7 +74,8 @@ import { UploadIconDialogComponent as DialogSetUploadIconDialogComponent } from 
     ChangeIconComponent,
     IconChangeCtDirective,
     DialogSetConfirmDialogComponent,
-    DialogSetUploadIconDialogComponent
+    DialogSetUploadIconDialogComponent,
+    Panel2Component
   ],
   providers: [
     DialogService,

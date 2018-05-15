@@ -1,6 +1,6 @@
 import { ElementRef } from '@angular/core';
 import { DataSource, } from '@angular/cdk/collections';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatSort, MatPaginator } from '@angular/material';
 import { Observable, BehaviorSubject, Subject } from "rxjs";
 import { Paging, IQuery } from "../../server/webapi/api.service";
 import { IListableService } from "../../server/webapi/ilistableService";
@@ -13,9 +13,9 @@ export class PaginatorStore<T> extends DataSource<any> {
     _dataSubject = new BehaviorSubject<Paging<T>>({ data: [], total: 0, page: 1, size: 10 });
     private filterChange = new BehaviorSubject('');
     private queryParams: IQuery;
-    private pagingSubjection: Observable<any>;
-    private sortingSubjection: Observable<any>;
-    private filteringSubjection: Observable<any>;
+    // private pagingSubjection: Observable<any>;
+    // private sortingSubjection: Observable<any>;
+    // private filteringSubjection: Observable<any>;
     private destroy$: Subject<boolean> = new Subject<boolean>();
 
     get filter() {
@@ -49,7 +49,7 @@ export class PaginatorStore<T> extends DataSource<any> {
                 }
             });
         //订阅过滤条件过滤响应事件
-        Observable.from(this.filterChange).takeUntil(this.destroy$).subscribe(sorting => {
+        Observable.from(this.filterChange).takeUntil(this.destroy$).subscribe(() => {
             this.setFiltering(this.filterChange.value);
             this.query();
         });

@@ -10,7 +10,7 @@ import { IconModel } from '../../models/iconmodel';
 @Injectable()
 export class ProductService extends ApiService<Product> implements IListableService<Product> {
 
-    constructor(private http: HttpClient, private config: ConfigService, private iconSrv: IconService) {
+    constructor(protected http: HttpClient, protected config: ConfigService, private iconSrv: IconService) {
         super(http, config);
         this.uriPart = 'products';
     }

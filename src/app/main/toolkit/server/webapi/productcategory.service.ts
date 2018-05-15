@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Paging, IQuery } from './api.service';
 import { AssetCategoryService } from "./assetcategory.service";
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
@@ -10,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 export class ProductCategoryService extends AssetCategoryService<ProductCategory> {
 
     private type = 'product';
-    constructor(private http: HttpClient, private config: ConfigService) {
+    constructor(protected http: HttpClient, protected config: ConfigService) {
         super(http, config);
         this.uriPart = 'category';
     }

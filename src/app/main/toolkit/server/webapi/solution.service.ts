@@ -8,7 +8,7 @@ import { IListableService } from "./ilistableService";
 @Injectable()
 export class SolutionService extends ApiService<Solution> implements IListableService<Solution> {
 
-    constructor(private http: HttpClient, private config: ConfigService) {
+    constructor(protected http: HttpClient, protected config: ConfigService) {
         super(http, config);
         this.uriPart = 'solution';
     }

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ConfirmDialogComponent as SuitConfirmDialogComponent } from '../components/dialog/confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogComponent as SimpleConfirmDialogComponent } from "../components/confirm-dialog/confirm-dialog.component";
 import { ComponentType } from '@angular/cdk/portal';
-import { IConfirmDialog } from '../components/dialog/confirm-dialog/confirm-dialog.component';
 import { UploadIconDialogComponent } from '../components/dialog/upload-icon-dialog/upload-icon-dialog.component';
 @Injectable()
 export class DialogService {
@@ -25,7 +24,7 @@ export class DialogService {
   }//confirmDialog
 
   confirmDialogSuit(component: ComponentType<any>, message: string, width?: number, height?: number) {
-    let dialog = this.dialog.open(SuitConfirmDialogComponent, {
+    this.dialog.open(SuitConfirmDialogComponent, {
       width: width ? `${width}px` : '450px',
       height: height ? `${height}px` : '500px',
       data: { message: message, component: component }

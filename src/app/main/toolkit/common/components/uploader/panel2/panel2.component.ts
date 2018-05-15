@@ -20,7 +20,7 @@ export class Panel2Component implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
-  }//
+  }// 
 
   /**
    * 添加上传文件

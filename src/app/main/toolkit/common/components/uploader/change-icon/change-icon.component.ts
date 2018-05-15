@@ -1,9 +1,6 @@
-import { Component, OnInit, ElementRef, ViewChild, OnDestroy, Input, Inject, Renderer2 } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
-import { IConfirmDialog } from '../../dialog/confirm-dialog/confirm-dialog.component';
+import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IUploadIConDialog } from '../../dialog/upload-icon-dialog/upload-icon-dialog.component';
-import { Observable } from "rxjs";
 import { IconService } from '../../../../server/webapi/icon.service';
 import { ConfigService } from '../../../../config/config.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -28,7 +25,7 @@ export class ChangeIconComponent implements OnInit, OnDestroy, IUploadIConDialog
   iconUrl: string;
   @ViewChild('fileInputCt') fileInputCt: ElementRef;
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data: any, private renderer2: Renderer2, private iconSrv: IconService, private http: HttpClient, private config: ConfigService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor( private iconSrv: IconService, private http: HttpClient, private config: ConfigService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
     this.onSelect$.takeUntil(this.destroy$).subscribe(() => {
       this.selectICon();
     });
@@ -80,7 +77,7 @@ export class ChangeIconComponent implements OnInit, OnDestroy, IUploadIConDialog
       let changeIConAsync = (resFile: FileAsset) => {
         return new Promise((resolve, reject) => {
           this.iconSrv.changeIcon(this.uploadUrl, { ObjId: this.objId, AssetId: resFile.id }).first()
-            .subscribe((resIcon) => {
+            .subscribe(() => {
               resolve({ k: 'message.SaveSuccessfully' });
             }, err => {
               reject({ k: 'message.OperationError', v: { value: err } });

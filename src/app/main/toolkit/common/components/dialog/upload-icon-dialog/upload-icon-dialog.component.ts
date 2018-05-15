@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnDestroy, ComponentRef } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { Observable } from 'rxjs/Observable';
 import { FileAsset } from '../../../../models/fileasset';
 
 @Component({

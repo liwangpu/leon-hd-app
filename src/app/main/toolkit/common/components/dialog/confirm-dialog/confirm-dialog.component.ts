@@ -18,10 +18,9 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    let component = this.data.component as IConfirmDialog;
     this.dialogContentContainer.clear();
     let comp = this.comFactory.resolveComponentFactory(this.data.component);
-    let dyCom = this.dialogContentContainer.createComponent(comp);
+    this.dialogContentContainer.createComponent(comp);
 
   }//ngOnInit
 

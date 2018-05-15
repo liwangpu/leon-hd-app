@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-import { finalize, tap } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
 /**
  * 用户Error Interceptor
@@ -13,8 +12,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler):
         Observable<HttpEvent<any>> {
-        const started = Date.now();
-        let ok: string;
         return next.handle(req).pipe(catchError(this.handleError));
     }
 

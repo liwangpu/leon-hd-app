@@ -1,5 +1,5 @@
 <mat-form-field>
-  <input matInput (keyup)='applyFilter($event.target.value)' #filter>
+  <input matInput (keyup)='applyFilter()' #filter>
 </mat-form-field>
 <br>
 <button (click)='getData()'>获取数据</button>

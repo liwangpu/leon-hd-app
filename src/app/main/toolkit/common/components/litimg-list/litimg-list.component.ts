@@ -92,7 +92,7 @@ export class LitimgListComponent implements OnInit, AfterViewInit {
   }//onFocus
 
 
-  _onFocusOut(id: string) {
+  _onFocusOut() {
     this.activeLitTool(this.blankId);
   }//onFocusOut
 
@@ -100,7 +100,7 @@ export class LitimgListComponent implements OnInit, AfterViewInit {
     this.translate.get('message.DeleteConfirm', { value: this.getLitName(id) })
       .subscribe(msg => {
         let dialog = this.dialogSrv.confirmDialog(msg);
-        dialog.afterClosed().subscribe(res => {
+        dialog.afterClosed().subscribe(() => {
           if (dialog.componentInstance.isConfirm) {
             this.onDelete.emit(id);
             this.imgs = this.imgs.filter(it => it.id !== id);
@@ -137,7 +137,7 @@ export class LitimgListComponent implements OnInit, AfterViewInit {
     this.translate.get('message.CopyConfirm', { value: this.getLitName(id) })
       .subscribe(msg => {
         let dialog = this.dialogSrv.confirmDialog(msg);
-        dialog.afterClosed().subscribe(res => {
+        dialog.afterClosed().subscribe(() => {
           if (dialog.componentInstance.isConfirm) {
             this.onCopy.emit(id);
           }

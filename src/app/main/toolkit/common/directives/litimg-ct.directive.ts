@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, OnInit, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appLitimgCt]'
