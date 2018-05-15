@@ -1,0 +1,6 @@
+<div class="icon-change-container" *ngIf='iconUrl' [style.background-image]="'url(' + iconUrl + ')'">
+</div>
+
+<div style="display: none;">
+  <input type="file" #fileInputCt (change)="onFileChange($event)">
+</div>

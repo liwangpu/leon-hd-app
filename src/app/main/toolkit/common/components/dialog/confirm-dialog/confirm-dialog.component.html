@@ -1,0 +1,23 @@
+<div class="confirm-dialog-container fxLayout-container" fxLayout='column'>
+    <div class="confirm-dialog-header" fxFlex='60px' fxLayout='row' fxLayoutAlign='space-between center'>
+        <div>
+            <span class="panel-header-title">{{'tips.ChangeICon'|translate}}</span>
+        </div>
+        <div>
+            <button mat-button mat-dialog-close class="mat-icon-button">
+                <mat-icon class="operate-button-icon">close</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="confirm-dialog-content" fxFlex>
+        <ng-template #dialogContentContainer></ng-template>
+    </div>
+    <div class="confirm-dialog-footer" fxFlex='60px' fxLayout='row' fxLayoutAlign='end center'>
+        <div>
+            <button (click)='cancel()' mat-button>{{'button.Cancel'|translate}}</button>
+        </div>
+        <div>
+            <button (click)='confirm()' mat-button>{{'button.Confirm'|translate}}</button>
+        </div>
+    </div>
+</div>

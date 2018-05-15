@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LitimgListComponent } from './components/litimg-list/litimg-list.component';
 import { LitimgCtDirective } from './directives/litimg-ct.directive';
@@ -32,10 +33,15 @@ import { MomentService } from "./services/moment.service";
 import { DatePipe } from "@angular/common";
 import { OrderbyPipe } from './pipes/orderby.pipe';
 import { MathexService } from "./services/mathex.service";
+import { ChangeIconComponent } from './components/uploader/change-icon/change-icon.component';
+import { IconChangeCtDirective } from './directives/icon-change-ct.directive';
+import { ConfirmDialogComponent as DialogSetConfirmDialogComponent } from "./components/dialog/confirm-dialog/confirm-dialog.component";
+import { UploadIconDialogComponent as DialogSetUploadIconDialogComponent } from './components/dialog/upload-icon-dialog/upload-icon-dialog.component';
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatGridListModule,
     FileUploadModule,
@@ -44,7 +50,7 @@ import { MathexService } from "./services/mathex.service";
     MatButtonModule,
     MatSnackBarModule,
     MatTooltipModule,
-    TranslateModule,
+    TranslateModule.forRoot(),
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
@@ -54,15 +60,19 @@ import { MathexService } from "./services/mathex.service";
     AppServiceModule
   ],
   declarations: [
-    LitimgListComponent
-    , LitimgCtDirective
-    , LitimgToolDirective
-    , SimpleDialogComponent
-    , ConfirmDialogComponent,
+    LitimgListComponent,
+    LitimgCtDirective,
+    LitimgToolDirective,
+    SimpleDialogComponent,
+    ConfirmDialogComponent,
     PanelComponent,
     FilenamePipe,
     InputCtDirective,
-    OrderbyPipe
+    OrderbyPipe,
+    ChangeIconComponent,
+    IconChangeCtDirective,
+    DialogSetConfirmDialogComponent,
+    DialogSetUploadIconDialogComponent
   ],
   providers: [
     DialogService,
@@ -77,12 +87,17 @@ import { MathexService } from "./services/mathex.service";
   , exports: [
     LitimgListComponent,
     PanelComponent,
-    OrderbyPipe
+    OrderbyPipe,
+    ChangeIconComponent,
+    IconChangeCtDirective
   ],
   entryComponents: [
     SimpleDialogComponent,
     ConfirmDialogComponent,
-    PanelComponent
+    PanelComponent,
+    ChangeIconComponent,
+    DialogSetConfirmDialogComponent,
+    DialogSetUploadIconDialogComponent
   ]
 })
 export class SharedCommonModule { }
