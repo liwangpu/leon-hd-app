@@ -21,7 +21,21 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (handle.error instanceof ErrorEvent) {
             errorMsg = handle.error.message;
         } else {
-            errorMsg = handle.error;
+            if (handle.error.errors && handle.error.errors.length) {
+                let msg = '';
+                for (let idx = handle.error.errors.length - 1; idx >= 0; idx--) {
+                    let curError = handle.error.errors[idx];
+                    if (msg !== '')
+                        msg += `,${curError.field}:${curError.message}`;
+                    else
+                        msg += `${curError.field}:${curError.message}`;
+                }
+                errorMsg = msg;
+            }
+            else {
+                errorMsg = handle.error.message;
+            }
+
         }
         return Observable.throw(errorMsg);
     }

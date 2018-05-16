@@ -111,7 +111,7 @@ export const locale = {
             "UploadUnSuccessfully": "文件上传失败",
             "DeleteSuccessfully": "删除成功",
             "DeleteError": "删除过程出现异常,信息:\"{{value}}\"",
-            "OperationError": "操作出现异常:{{value}}",
+            "OperationError": "操作出现异常: {{value}}",
             "DeleteConfirm": "您确定要删除 \"{{value}}\" 吗?",
             "CopyConfirm": "您确定要复制 \"{{value}}\" 吗?",
             "Cannot_Add_Cuz_UnSaving": "请先保存当前的记录",

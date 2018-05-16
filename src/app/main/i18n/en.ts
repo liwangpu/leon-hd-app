@@ -113,7 +113,7 @@ export const locale = {
             "UploadUnSuccessfully": "Files Upload Failed",
             "DeleteSuccessfully": "Delete Successfully",
             "DeleteError": "Error in the delete process,detail:\"{{value}}\"",
-            "OperationError": "Operated Error:{{value}}",
+            "OperationError": "Operated Error: {{value}}",
             "DeleteConfirm": "Are you sure to delete \"{{value}}\" ?",
             "CopyConfirm": "Are you sure to copy \"{{value}}\" ?",
             "Cannot_Add_Cuz_UnSaving": "Please save the current new item first",
