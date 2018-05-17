@@ -40,11 +40,9 @@ import { DepartmentCardComponent } from './account/department-card/department-ca
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { DepartmentFormComponent } from './account/department-form/department-form.component';
 import { BasicInfoComponent as ProductBasicInfoComponent } from './product-detail/basic-info/basic-info.component';
-import { ProductDetailMdService } from "./product-detail/product-detail-md.service";
 import { SolutionComponent } from './solution/solution.component';
 import { SolutionDetailComponent } from './solution-detail/solution-detail.component';
 import { BasicInfoComponent as SolutionBasicInfoComponent } from "./solution-detail/basic-info/basic-info.component";
-import { SolutionDetailMdService } from "./solution-detail/solution-detail-md.service";
 import { SpecsListComponent as ProductSpecsListComponent } from './product-detail/specs-list/specs-list.component';
 import { SpecsCardComponent as ProductSpecsCardComponent } from './product-detail/specs-card/specs-card.component';
 import { SpecFormComponent as ProductSpecFormComponent } from './product-detail/spec-form/spec-form.component';
@@ -55,16 +53,11 @@ import { SpecUploadComponent as ProductSpecUploadComponent } from './product-det
 import { IterateCateComponent as ProductCategoryIterateCateComponent } from './product-category/iterate-cate/iterate-cate.component';
 import { CategoryFormComponent as ProductCategoryCategoryFormComponent } from './product-category/category-form/category-form.component';
 import { CategoryPanelComponent as ProductCategoryPanelComponent } from './product-category/category-panel/category-panel.component';
-import { CategoryMdService } from './product-category/category-md.service';
 import { ProductspecCateogoryComponent } from './productspec-cateogory/productspec-cateogory.component';
 import { CategoryPanelComponent as ProductSpecCategoryPanelComponent } from './productspec-cateogory/category-panel/category-panel.component';
-import { AccountMdService } from "./account/account-md.service";
 import { OrderComponent } from './order/order.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { BasicInfoComponent as OrderBasicInfoComponent } from './order-detail/basic-info/basic-info.component';
-import { OrderDetailMdService } from "./order-detail/order-detail-md.service";
-import { PackageDetailMdService } from "./package-detail/package-detail-md.service";
-import { StaticmeshDetailMdService } from "./staticmesh-detail/staticmesh-detail-md.service";
 import { DetailContentComponent as OrderDetailContentComponent } from './order-detail/detail-content/detail-content.component';
 import { PackageComponent } from './package/package.component';
 import { PackageDetailComponent } from './package-detail/package-detail.component';
@@ -76,7 +69,6 @@ import { BasicInfoComponent as StaticMeshBasicInfoComponent } from './staticmesh
 import { MaterialComponent } from './material/material.component';
 import { MaterialDetailComponent } from './material-detail/material-detail.component';
 import { BasicInfoComponent as MaterialBasicInfoComponent } from './material-detail/basic-info/basic-info.component';
-import { MaterialDetailMdService } from './material-detail/material-detail-md.service';
 @NgModule({
   imports: [
     ServicesModule,
@@ -114,14 +106,7 @@ import { MaterialDetailMdService } from './material-detail/material-detail-md.se
   entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductSpecCategoryPanelComponent],
 
   providers: [
-    ProductDetailMdService,
-    SolutionDetailMdService,
-    CategoryMdService,
-    AccountMdService,
-    OrderDetailMdService,
-    PackageDetailMdService,
-    StaticmeshDetailMdService,
-    MaterialDetailMdService
+
   ]
 })
 export class BambooModule { }

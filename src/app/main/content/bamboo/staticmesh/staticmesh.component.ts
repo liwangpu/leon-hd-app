@@ -4,6 +4,7 @@ import { StaticMesh } from '../../../toolkit/models/staticmesh';
 import { MatSort, MatPaginator } from '@angular/material';
 import { StaticmeshService } from '../../../toolkit/server/webapi/staticmesh.service';
 import { fuseAnimations } from '../../../../core/animations';
+import { PathService } from '../../services/path.service';
 
 @Component({
   selector: 'app-staticmesh',
@@ -19,7 +20,7 @@ export class StaticmeshComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
-  constructor(private meshSrv: StaticmeshService) { }
+  constructor(public meshSrv: StaticmeshService, public pathSrv: PathService) { }
 
   ngOnInit() {
     this.dataSource = new PaginatorStore<StaticMesh>({ service: this.meshSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort })

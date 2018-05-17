@@ -41,9 +41,9 @@
         <ng-container matColumnDef="icon">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
           <mat-cell *matCellDef="let element">
-            <img class="product-image" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+            <img class="listable-icon" [src]="element.icon?pathSrv.redirectServerUrl(element.icon):'assets/images/ecommerce/product-image-placeholder.png'">
           </mat-cell>
-        </ng-container>
+        </ng-container> 
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef mat-sort-header>{{'glossary.Name'|translate}}</mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>

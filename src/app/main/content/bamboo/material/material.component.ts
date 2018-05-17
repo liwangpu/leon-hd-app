@@ -5,6 +5,7 @@ import { PaginatorStore } from '../../../toolkit/common/classes/paginator-store'
 import { MatSort, MatPaginator } from '@angular/material';
 import { Subject } from 'rxjs';
 import { fuseAnimations } from '../../../../core/animations';
+import { PathService } from '../../services/path.service';
 
 @Component({
   selector: 'app-material',
@@ -20,7 +21,9 @@ export class MaterialComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
-  constructor(private materialSrv: MaterialService) { }
+  constructor(private materialSrv: MaterialService, public pathSrv: PathService) {
+    
+   }
 
   ngOnInit() {
     this.dataSource = new PaginatorStore<Material>({ service: this.materialSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort })

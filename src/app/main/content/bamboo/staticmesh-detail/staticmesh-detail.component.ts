@@ -3,17 +3,19 @@ import { Subject } from 'rxjs';
 import { StaticmeshDetailMdService } from './staticmesh-detail-md.service';
 import { StaticMesh } from '../../../toolkit/models/staticmesh';
 import { ActivatedRoute } from '@angular/router';
+import { PathService } from '../../services/path.service';
 
 @Component({
   selector: 'app-staticmesh-detail',
   templateUrl: './staticmesh-detail.component.html',
-  styleUrls: ['./staticmesh-detail.component.scss']
+  styleUrls: ['./staticmesh-detail.component.scss'],
+  providers: [StaticmeshDetailMdService]
 })
 export class StaticmeshDetailComponent implements OnInit, OnDestroy {
 
   staticmeshName: string;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private detailMdSrv: StaticmeshDetailMdService, private route: ActivatedRoute) {
+  constructor(public detailMdSrv: StaticmeshDetailMdService, public route: ActivatedRoute, public pathSrv: PathService) {
     let tmp = this.route.snapshot.data.entity;
     this.detailMdSrv.currentStaticMesh = tmp ? tmp : new StaticMesh();
 

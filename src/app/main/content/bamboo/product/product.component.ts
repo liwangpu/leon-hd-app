@@ -30,7 +30,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('filter') filter: ElementRef;
-  constructor(private productSrv: ProductService, private pathSrv: PathService) {
+  constructor(public productSrv: ProductService, public pathSrv: PathService) {
 
   }
 

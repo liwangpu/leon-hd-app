@@ -8,14 +8,15 @@ import { PathService } from '../../services/path.service';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss']
+  styleUrls: ['./product-detail.component.scss'],
+  providers: [ProductDetailMdService]
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
   productName: string;
   showSubmitBtn: boolean;
   showSpecification: boolean;
   detroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(public detailMdSrv: ProductDetailMdService, private route: ActivatedRoute,public pathSrv:PathService) {
+  constructor(public detailMdSrv: ProductDetailMdService, private route: ActivatedRoute, public pathSrv: PathService) {
     let tmp = this.route.snapshot.data.entity;
     this.detailMdSrv.product = tmp ? tmp : new Product();
     this.detailMdSrv.productSpec = new ProductSpec();
@@ -47,6 +48,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-  
+
   }
 }

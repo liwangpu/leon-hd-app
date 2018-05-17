@@ -7,7 +7,8 @@ import { Order } from '../../../toolkit/models/order';
 @Component({
   selector: 'app-order-detail',
   templateUrl: './order-detail.component.html',
-  styleUrls: ['./order-detail.component.scss']
+  styleUrls: ['./order-detail.component.scss'],
+  providers: [OrderDetailMdService]
 })
 export class OrderDetailComponent implements OnInit, OnDestroy {
 

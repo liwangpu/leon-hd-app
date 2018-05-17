@@ -53,6 +53,7 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
     let saveProdAsync = () => {
       let vl = this.productForm.value;
       return new Promise((resolve) => {
+        vl.iconAssetId = this.detaiMdSrv.product.iconAssetId;
         this.productSrv.update(vl).subscribe(resProd => {
           this.detaiMdSrv.product.id = resProd.id;
           this.detaiMdSrv.product.name = resProd.name;
@@ -99,5 +100,6 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
 
   afterIConChange(ass: FileAsset) {
     this.detaiMdSrv.product.icon = ass.url;
+    this.detaiMdSrv.product.iconAssetId = ass.id;
   }//afterIConChange
 }

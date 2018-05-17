@@ -3,17 +3,19 @@ import { Subject } from 'rxjs';
 import { Material } from '../../../toolkit/models/material';
 import { ActivatedRoute } from '@angular/router';
 import { MaterialDetailMdService } from './material-detail-md.service';
+import { PathService } from '../../services/path.service';
 
 @Component({
   selector: 'app-material-detail',
   templateUrl: './material-detail.component.html',
-  styleUrls: ['./material-detail.component.scss']
+  styleUrls: ['./material-detail.component.scss'],
+  providers: [MaterialDetailMdService]
 })
 export class MaterialDetailComponent implements OnInit {
 
-  materialName:string;
+  materialName: string;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private detailMdSrv: MaterialDetailMdService, private route: ActivatedRoute) {
+  constructor(private detailMdSrv: MaterialDetailMdService, private route: ActivatedRoute, public pathSrv: PathService) {
     let tmp = this.route.snapshot.data.entity;
     this.detailMdSrv.currentMaterial = tmp ? tmp : new Material();
 

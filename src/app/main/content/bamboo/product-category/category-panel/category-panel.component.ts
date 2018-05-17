@@ -12,7 +12,8 @@ import { CategoryMdService } from '../category-md.service';
 @Component({
   selector: 'app-product-category-panel',
   templateUrl: './category-panel.component.html',
-  styleUrls: ['./category-panel.component.scss']
+  styleUrls: ['./category-panel.component.scss'],
+  providers: [CategoryMdService]
 })
 export class CategoryPanelComponent implements OnInit, OnDestroy {
 

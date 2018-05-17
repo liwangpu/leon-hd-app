@@ -5,6 +5,8 @@ import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { StaticmeshService } from '../../../../toolkit/server/webapi/staticmesh.service';
 import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
+import { FileAsset } from '../../../../toolkit/models/fileasset';
+import { PathService } from '../../../services/path.service';
 
 @Component({
   selector: 'app-static-mesh-basic-info',
@@ -13,14 +15,16 @@ import { SnackbarService } from '../../../../toolkit/common/services/snackbar.se
 })
 export class BasicInfoComponent implements OnInit {
 
+  iconUploadUrl: string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private formBuilder: FormBuilder, private detaiMdSrv: StaticmeshDetailMdService, private staticMeshSrv: StaticmeshService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(private formBuilder: FormBuilder, private detaiMdSrv: StaticmeshDetailMdService, private staticMeshSrv: StaticmeshService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public pathSrv: PathService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
       description: ['', [Validators.maxLength(200)]]
     });
+    this.iconUploadUrl = this.staticMeshSrv.uri + '/changeICon';
   }//constructor
 
   ngOnInit() {
@@ -30,6 +34,8 @@ export class BasicInfoComponent implements OnInit {
   submit() {
     let saveProdAsync = () => {
       return new Promise((resolve) => {
+        let vl = this.detailForm.value;
+        vl.iconAssetId = this.detaiMdSrv.currentStaticMesh.iconAssetId;
         this.staticMeshSrv.update(this.detailForm.value).first().subscribe(resOrder => {
           this.detaiMdSrv.currentStaticMesh = resOrder;
           this.detaiMdSrv.afterEdit$.next();
@@ -54,4 +60,9 @@ export class BasicInfoComponent implements OnInit {
     });
 
   }//submit
+
+  afterIConChange(ass: FileAsset) {
+    this.detaiMdSrv.currentStaticMesh.icon = ass.url;
+    this.detaiMdSrv.currentStaticMesh.iconAssetId = ass.id;
+  }//afterIConChange
 }

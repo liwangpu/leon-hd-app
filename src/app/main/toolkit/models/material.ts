@@ -5,6 +5,7 @@ export class Material extends EntityBase implements Iasset {
     categoryId: string;
     description: string;
     icon: string;
+    iconAssetId: string;
     createTime: string;
     modifyTime: string;
     /// <summary>

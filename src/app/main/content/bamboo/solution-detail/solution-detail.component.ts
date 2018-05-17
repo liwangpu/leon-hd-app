@@ -6,7 +6,8 @@ import { SolutionDetailMdService } from "./solution-detail-md.service";
 @Component({
   selector: 'app-solution-detail',
   templateUrl: './solution-detail.component.html',
-  styleUrls: ['./solution-detail.component.scss']
+  styleUrls: ['./solution-detail.component.scss'],
+  providers: [SolutionDetailMdService]
 })
 export class SolutionDetailComponent implements OnInit, OnDestroy {
 

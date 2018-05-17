@@ -8,6 +8,7 @@ export class Product extends EntityBase implements Iasset {
     categoryName: string;
     description: string;
     icon: string;
+    iconAssetId: string;
     createTime: string;
     modifyTime: string;
     specifications: ProductSpec[];

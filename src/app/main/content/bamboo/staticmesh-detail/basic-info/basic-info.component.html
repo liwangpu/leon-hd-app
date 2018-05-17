@@ -13,6 +13,12 @@
   </div>
 </form>
 <div class="form-button" fxLayout='row' fxLayoutAlign='end center'>
+    <div>
+        <button mat-button *ngIf='detaiMdSrv.currentStaticMesh.id' appIconChangeCt [uploadUrl]='iconUploadUrl' [objId]='detaiMdSrv.currentStaticMesh.id'
+          [iconUrl]='pathSrv.redirectServerUrl(detaiMdSrv.currentStaticMesh.icon)' (afterUpload)='afterIConChange($event)'>
+          <span>{{'button.ChangeICon'|translate}}</span>
+        </button>
+      </div>
   <div>
     <button mat-button (click)="submit()">
       <span>{{'button.Save'|translate}}</span>

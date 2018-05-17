@@ -23,7 +23,8 @@ import { Subject } from 'rxjs';
   templateUrl: './account-list.component.html',
   styleUrls: ['./account-list.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: fuseAnimations
+  animations: fuseAnimations,
+  providers: [AccountMdService]
 })
 export class AccountListComponent implements OnInit, OnChanges, OnDestroy {
 
