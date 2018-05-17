@@ -15,7 +15,7 @@ export class MaterialDetailComponent implements OnInit {
 
   materialName: string;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private detailMdSrv: MaterialDetailMdService, private route: ActivatedRoute, public pathSrv: PathService) {
+  constructor(public detailMdSrv: MaterialDetailMdService, private route: ActivatedRoute, public pathSrv: PathService) {
     let tmp = this.route.snapshot.data.entity;
     this.detailMdSrv.currentMaterial = tmp ? tmp : new Material();
 

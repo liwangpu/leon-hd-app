@@ -69,6 +69,7 @@ import { BasicInfoComponent as StaticMeshBasicInfoComponent } from './staticmesh
 import { MaterialComponent } from './material/material.component';
 import { MaterialDetailComponent } from './material-detail/material-detail.component';
 import { BasicInfoComponent as MaterialBasicInfoComponent } from './material-detail/basic-info/basic-info.component';
+import { CategoryMdService } from './product-category/category-md.service';
 @NgModule({
   imports: [
     ServicesModule,
@@ -106,7 +107,7 @@ import { BasicInfoComponent as MaterialBasicInfoComponent } from './material-det
   entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductSpecCategoryPanelComponent],
 
   providers: [
-
+    CategoryMdService
   ]
 })
 export class BambooModule { }

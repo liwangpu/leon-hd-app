@@ -23,8 +23,7 @@ import { Subject } from 'rxjs';
   templateUrl: './account-list.component.html',
   styleUrls: ['./account-list.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: fuseAnimations,
-  providers: [AccountMdService]
+  animations: fuseAnimations
 })
 export class AccountListComponent implements OnInit, OnChanges, OnDestroy {
 
@@ -41,7 +40,7 @@ export class AccountListComponent implements OnInit, OnChanges, OnDestroy {
     this.dataSource = new PaginatorStore({ service: this.accountSrv, sort: this.sort });
 
     this.accountMdSrv.afterDepartmentChange.takeUntil(this.destroy$).subscribe(depId => {
-      this.dataSource.filter = depId;
+      // this.dataSource.filter = depId;
     });
   }//ngOnInit
 

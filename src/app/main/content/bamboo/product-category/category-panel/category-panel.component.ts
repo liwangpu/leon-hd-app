@@ -13,7 +13,6 @@ import { CategoryMdService } from '../category-md.service';
   selector: 'app-product-category-panel',
   templateUrl: './category-panel.component.html',
   styleUrls: ['./category-panel.component.scss'],
-  providers: [CategoryMdService]
 })
 export class CategoryPanelComponent implements OnInit, OnDestroy {
 

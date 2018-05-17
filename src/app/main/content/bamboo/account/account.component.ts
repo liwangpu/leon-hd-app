@@ -11,12 +11,14 @@ import { AccountTypeEnums } from '../../../toolkit/enums/enums';
 import { DessertService } from "../../services/dessert.service";
 import { MomentService } from "../../../toolkit/common/services/moment.service";
 import { AccountListComponent } from "./account-list/account-list.component";
+import { AccountMdService } from './account-md.service';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: fuseAnimations
+  animations: fuseAnimations,
+  providers: [AccountMdService]
 })
 export class AccountComponent implements OnInit {
   dialogRef: any;

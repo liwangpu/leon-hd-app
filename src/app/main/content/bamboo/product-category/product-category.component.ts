@@ -12,8 +12,7 @@ import { CategoryMdService } from './category-md.service';
   selector: 'app-product-category',
   templateUrl: './product-category.component.html',
   styleUrls: ['./product-category.component.scss'],
-  animations: fuseAnimations,
-  providers: [CategoryMdService]
+  animations: fuseAnimations
 })
 export class ProductCategoryComponent implements OnInit, OnDestroy {
   organizationId: string;
