@@ -29,6 +29,9 @@ import { StaticmeshDetailComponent } from './staticmesh-detail/staticmesh-detail
 import { MaterialComponent } from './material/material.component';
 import { MaterialDetailComponent } from './material-detail/material-detail.component';
 import { MapComponent } from './map/map.component';
+import { MapDetailComponent } from './map-detail/map-detail.component';
+import { MapService } from '../../toolkit/server/webapi/map.service';
+
 
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
@@ -105,6 +108,14 @@ const routes: Routes = [
     , canActivate: [RouteGuardService],
     resolve: {
       entity: MaterialService
+    }
+  }
+  , {
+    path: 'app/map-detail/:id'
+    , component: MapDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: MapService
     }
   }
 ];

@@ -82,7 +82,8 @@ export const locale = {
             "Package": "Package",
             "PackageContent": "Content",
             "StaticMesh": "StaticMesh",
-            "Material":"Material"
+            "Material":"Material",
+            "Map":"Map"
         },
         "button": {
             "Save": "Save",

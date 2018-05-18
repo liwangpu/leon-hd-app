@@ -80,7 +80,8 @@ export const locale = {
             "Package": "套餐",
             "PackageContent": "套餐详情",
             "StaticMesh": "模型",
-            "Material": "材质"
+            "Material": "材质",
+            "Map":"场景"
         },
         "button": {
             "Save": "保存",

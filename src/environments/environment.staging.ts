@@ -5,5 +5,13 @@ export const environment = {
     loginStyle: 2,
     isMaintaining: false,
     maintainingEndDate: '',
-    language: 'en'
+    language: 'en',
+    dialogMin: {
+        width: '450px',
+        height: '600px'
+    },
+    dialogMed: {
+        width: '600px',
+        height: '750px'
+    }
 };

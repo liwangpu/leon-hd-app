@@ -5,7 +5,7 @@ import { ApiService } from './api.service';
 import { Observable } from 'rxjs/Observable';
 import { Md5 } from 'ts-md5/dist/md5';
 import { IEntitybase } from "../../models/ientitybase";
-import { AppCache } from "../../cache/appcache";
+import { Memory } from "../../memory/memory";
 @Injectable()
 export class AuthService extends ApiService<IEntitybase> {
 
@@ -29,7 +29,7 @@ export class AuthService extends ApiService<IEntitybase> {
         let md5pwd = Md5.hashStr(pwd).toString();
         return this.http.post(this.uri, { account: account, password: md5pwd }, { headers: this.header }).map(rdata => {
             this.token = rdata["token"];
-            AppCache.getInstance().token = this.token;
+            Memory.getInstance().token = this.token;
             return rdata;
         });
     }
@@ -60,8 +60,8 @@ export class AuthService extends ApiService<IEntitybase> {
      */
     getProfile(): Observable<any> {
         return this.http.get(`${this.config.serverBase}/account/profile`).map(rdata => {
-            AppCache.getInstance().nickName = rdata['nickname'];
-            AppCache.getInstance().icon = rdata['avatar'];
+            Memory.getInstance().nickName = rdata['nickname'];
+            Memory.getInstance().icon = rdata['avatar'];
             return rdata;
         });
     }

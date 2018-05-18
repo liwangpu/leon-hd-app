@@ -1,0 +1,56 @@
+<div id="product" class="page-layout carded fullwidth" fusePerfectScrollbar>
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg mat-accent-bg"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+
+    <!-- HEADER -->
+    <div class="header white-fg" fxLayout="row" fxLayoutAlign="space-between center">
+
+      <!-- APP TITLE -->
+      <div fxLayout="row" fxLayoutAlign="start center">
+
+        <button class="mr-0 mr-sm-16" mat-icon-button [routerLink]="'/app/maps'">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+
+        <div class="product-image mr-8 mr-sm-16">
+            <img [src]="detailMdSrv.currentMap.icon?pathSrv.redirectServerUrl(detailMdSrv.currentMap.icon):'assets/images/ecommerce/product-image-placeholder.png'">
+          </div>
+
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <div class="h2">
+            {{'glossary.Map'|translate}}
+          </div>
+          <div class="subtitle secondary-text">
+            <span>{{map.name}}</span>
+          </div>
+        </div>
+      </div>
+      <!-- / APP TITLE -->
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card mat-white-bg">
+
+      <!-- CONTENT -->
+      <div class="content">
+        <mat-tab-group>
+          <mat-tab label="{{'glossary.BasicInfo'|translate}}">
+            <app-map-detail-basic-info></app-map-detail-basic-info>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <!-- / CONTENT -->
+
+    </div>
+    <!-- / CONTENT CARD -->
+
+  </div>
+  <!-- / CENTER -->
+</div>

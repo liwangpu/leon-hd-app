@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IInputCtData } from '../../../directives/input-ct.directive';
 import { FileAssetService } from '../../../../server/webapi/fileasset.service';
 import { SnackbarService } from '../../../services/snackbar.service';
-import { AppCache } from "../../../../cache/appcache";
+import { Memory } from "../../../../memory/memory";
 
 
 @Component({
@@ -41,7 +41,7 @@ export class PanelComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     //文件上传控件设置
-    this.uploader = new FileUploader({ url: this.url, queueLimit: this.maxFileLimit ? this.maxFileLimit : 10, headers: [{ name: 'Authorization', value: `bearer ${AppCache.getInstance().token}` }], removeAfterUpload: true });
+    this.uploader = new FileUploader({ url: this.url, queueLimit: this.maxFileLimit ? this.maxFileLimit : 10, headers: [{ name: 'Authorization', value: `bearer ${Memory.getInstance().token}` }], removeAfterUpload: true });
     //订阅文件上传成功事件
     this.uploader.onCompleteItem = ((item: FileItem, response: string) => {
       const asset = JSON.parse(response);

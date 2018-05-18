@@ -1,8 +1,8 @@
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-import { AppCache } from "../../cache/appcache";
+import { Memory } from "../../memory/memory";
 /**
  * 用户Token Interceptor
  * 用于向WeApi请求Header中添加Authorization Token信息
@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler):
         Observable<HttpEvent<any>> {
-        let token = AppCache.getInstance().token;
+        let token = Memory.getInstance().token;
         if (token) {
             let secureHeaders = req.headers;
             secureHeaders = secureHeaders.append('Authorization', `bearer ${token}`);

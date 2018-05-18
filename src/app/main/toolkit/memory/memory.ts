@@ -2,18 +2,18 @@
  * 该类用于存储一些内存流的数据
  * 因为基于服务的存储无法进入interceptor
  */
-export class AppCache {
+export class Memory {
     /**************** Singleton ****************/
-    private static _instance: AppCache;
+    private static _instance: Memory;
     private constructor() { }
     /**************** Singleton End ****************/
 
     /**
-    * 获取AppCache实例
+    * 获取Memory实例
     */
-    public static getInstance(): AppCache {
+    public static getInstance(): Memory {
         if (!this._instance) {
-            this._instance = new AppCache();
+            this._instance = new Memory();
         }
         return this._instance;
     }

@@ -5,7 +5,7 @@ import { AuthService } from "../../toolkit/server/webapi/auth.service";
 import { ConfigService } from "../../toolkit/config/config.service";
 import { FuseNavigationService } from '../../../core/components/navigation/navigation.service'
 import { DessertService } from "./dessert.service";
-import { AppCache } from "../../toolkit/cache/appcache";
+
 @Injectable()
 export class RouteGuardService implements CanActivate {
     constructor(

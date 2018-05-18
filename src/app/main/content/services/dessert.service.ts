@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from "../../toolkit/config/config.service";
 import { LocalStoreService } from "./localstore.service";
-import { AppCache } from "../../toolkit/cache/appcache";
+import { Memory } from "../../toolkit/memory/memory";
 const LOGIN_STYLE = "LoginStyle";
 const SERVER_BASE = 'ServerBase';
 const REMEMBER_LOGIN = 'RememberLogin';
@@ -24,55 +24,55 @@ const DEPARTMENTID = 'Department_Id';
 export class DessertService {
     //nickName
     get nickName() {
-        let chvl = AppCache.getInstance().nickName;
+        let chvl = Memory.getInstance().nickName;
         if (chvl)
             return chvl;
         let vl = this.lcStoreSrv.getItem(NICKNAME);
         return vl;
     }
     set nickName(vl: string) {
-        AppCache.getInstance().nickName = vl;
+        Memory.getInstance().nickName = vl;
         this.lcStoreSrv.setItem(NICKNAME, vl)
     }
     //icon即avatar
     get icon() {
-        let chvl = AppCache.getInstance().icon;
+        let chvl = Memory.getInstance().icon;
         if (chvl)
             return chvl;
         let vl = this.lcStoreSrv.getItem(AVATAR);
         return vl;
     }
     set icon(vl: string) {
-        AppCache.getInstance().icon = vl;
+        Memory.getInstance().icon = vl;
         this.lcStoreSrv.setItem(AVATAR, vl)
     }
     //organId
     get organId() {
-        let chvl = AppCache.getInstance().organId;
+        let chvl = Memory.getInstance().organId;
         if (chvl)
             return chvl;
         let vl = this.lcStoreSrv.getItem(ORGANID);
         return vl;
     }
     set organId(vl: string) {
-        AppCache.getInstance().organId = vl;
+        Memory.getInstance().organId = vl;
         this.lcStoreSrv.setItem(ORGANID, vl)
     }
     //organId
     get departmentId() {
-        let chvl = AppCache.getInstance().departmentId;
+        let chvl = Memory.getInstance().departmentId;
         if (chvl)
             return chvl;
         let vl = this.lcStoreSrv.getItem(DEPARTMENTID);
         return vl;
     }
     set departmentId(vl: string) {
-        AppCache.getInstance().departmentId = vl;
+        Memory.getInstance().departmentId = vl;
         this.lcStoreSrv.setItem(DEPARTMENTID, vl)
     }
     //loginStyle
     get loginStyle() {
-        let tmp = AppCache.getInstance().loginStyle;
+        let tmp = Memory.getInstance().loginStyle;
         if (tmp)
             return tmp;
         let vl = parseInt(this.lcStoreSrv.getItem(LOGIN_STYLE));
@@ -82,11 +82,12 @@ export class DessertService {
     };
     set loginStyle(vl: number) {
         if (this.configSrv.loginStyle < 1 || this.configSrv.loginStyle > 2) {
-            AppCache.getInstance().loginStyle = 2;
+            let tmp = Memory.getInstance().loginStyle;
+            Memory.getInstance().loginStyle = 2;
             this.lcStoreSrv.setItem(LOGIN_STYLE, 2);
         }
         else {
-            AppCache.getInstance().loginStyle = vl;
+            Memory.getInstance().loginStyle = vl;
             this.lcStoreSrv.setItem(LOGIN_STYLE, vl);
         }
     };
@@ -138,13 +139,13 @@ export class DessertService {
     }
     //token
     get token() {
-        let tmp = AppCache.getInstance().token;
+        let tmp = Memory.getInstance().token;
         if (tmp)
             return tmp;
         return this.lcStoreSrv.getItem(TOKEN);
     }
     set token(vl: string) {
-        AppCache.getInstance().token = vl;
+        Memory.getInstance().token = vl;
         this.lcStoreSrv.setItem(TOKEN, vl)
     }
     //isTokenValid
@@ -174,10 +175,10 @@ export class DessertService {
      * 用于从localstore/indexeddb还原数据到cache类
      */
     restoreCache() {
-        AppCache.getInstance().token = this.token;
-        AppCache.getInstance().nickName = this.nickName;
-        AppCache.getInstance().icon = this.icon;
-        AppCache.getInstance().organId = this.organId;
-        AppCache.getInstance().departmentId = this.departmentId;
+        Memory.getInstance().token = this.token;
+        Memory.getInstance().nickName = this.nickName;
+        Memory.getInstance().icon = this.icon;
+        Memory.getInstance().organId = this.organId;
+        Memory.getInstance().departmentId = this.departmentId;
     }
 }

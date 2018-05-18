@@ -78,7 +78,8 @@ export class SpecUploadComponent implements OnInit {
     let mesh = file.asset as StaticMesh;
     mesh.fileAssetId = file.asset.id;
     mesh.id = '';
-    mesh.productSpecId = this.productSpec.id;
+    //TODO:实体里面移除了这儿字段,需要验证这个字段是否在别的地方使用
+    // mesh.productSpecId = this.productSpec.id;
     mesh.name = file.fileName;
     let updateMeshAsync = () => {
       return new Promise((resolve, reject) => {

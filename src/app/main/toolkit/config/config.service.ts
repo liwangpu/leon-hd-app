@@ -22,4 +22,11 @@ export class ConfigService {
     get language() {
         return environment.language;
     }
+    get dialog_min(): { width: string, height: string } {
+        return environment.dialogMin;
+    }
+
+    get dialog_med(): { width: string, height: string } {
+        return environment.dialogMed;
+    }
 }
