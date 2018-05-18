@@ -4,5 +4,5 @@ export class Package extends ListableBase {
     state: string;
     stateTime: string;
     content: string;
-    contentIns: PackageContent;
+    contentIns?: PackageContent;
 }

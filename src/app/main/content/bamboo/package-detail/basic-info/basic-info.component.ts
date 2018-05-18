@@ -5,6 +5,8 @@ import { PackageDetailMdService } from '../package-detail-md.service';
 import { TranslateService } from '@ngx-translate/core';
 import { PackageService } from '../../../../toolkit/server/webapi/package.service';
 import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
+import { FileAsset } from '../../../../toolkit/models/fileasset';
+import { PathService } from '../../../services/path.service';
 
 @Component({
   selector: 'app-package-detail-basic-info',
@@ -13,15 +15,17 @@ import { SnackbarService } from '../../../../toolkit/common/services/snackbar.se
 })
 export class BasicInfoComponent implements OnInit {
 
+  iconUploadUrl: string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private formBuilder: FormBuilder, private detaiMdSrv: PackageDetailMdService, private packageSrv: PackageService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(private formBuilder: FormBuilder, public detaiMdSrv: PackageDetailMdService, private packageSrv: PackageService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public pathSrv: PathService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
       description: ['', [Validators.maxLength(200)]]
     });
+    this.iconUploadUrl = this.packageSrv.uri + '/changeICon';
   }//constructor
 
   ngOnInit() {
@@ -31,7 +35,9 @@ export class BasicInfoComponent implements OnInit {
   submit() {
     let saveProdAsync = () => {
       return new Promise((resolve) => {
-        this.packageSrv.update(this.detailForm.value).first().subscribe(resOrder => {
+        let vl = this.detailForm.value;
+        let ol = this.detaiMdSrv.currentPackage;
+        this.packageSrv.update({ ...ol, ...vl }).first().subscribe(resOrder => {
           this.detaiMdSrv.currentPackage = resOrder;
           this.detaiMdSrv.afterPackageChange$.next();
           this.detailForm.patchValue({ id: resOrder.id });
@@ -55,4 +61,9 @@ export class BasicInfoComponent implements OnInit {
     });
 
   }//submit
+
+  afterIConChange(ass: FileAsset) {
+    this.detaiMdSrv.currentPackage.icon = ass.url;
+    this.detaiMdSrv.currentPackage.iconAssetId = ass.id;
+  }//afterIConChange
 }

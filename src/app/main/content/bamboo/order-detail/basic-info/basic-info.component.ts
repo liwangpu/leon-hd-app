@@ -5,6 +5,8 @@ import { OrderDetailMdService } from '../order-detail-md.service';
 import { TranslateService } from '@ngx-translate/core';
 import { OrderService } from '../../../../toolkit/server/webapi/order.service';
 import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
+import { FileAsset } from '../../../../toolkit/models/fileasset';
+import { PathService } from '../../../services/path.service';
 
 @Component({
   selector: 'app-order-detail-basic-info',
@@ -13,15 +15,17 @@ import { SnackbarService } from '../../../../toolkit/common/services/snackbar.se
 })
 export class BasicInfoComponent implements OnInit {
 
+  iconUploadUrl: string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private formBuilder: FormBuilder, private detaiMdSrv: OrderDetailMdService, private orderSrv: OrderService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(private formBuilder: FormBuilder, public detaiMdSrv: OrderDetailMdService, private orderSrv: OrderService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public pathSrv: PathService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
       description: ['', [Validators.maxLength(200)]]
     });
+    this.iconUploadUrl = this.orderSrv.uri + '/changeICon';
   }//constructor
 
   ngOnInit() {
@@ -32,7 +36,9 @@ export class BasicInfoComponent implements OnInit {
 
     let saveProdAsync = () => {
       return new Promise((resolve) => {
-        this.orderSrv.update(this.detailForm.value).first().subscribe(resOrder => {
+        let vl = this.detailForm.value;
+        let ol = this.detaiMdSrv.currentOrder;
+        this.orderSrv.update({ ...ol, ...vl }).first().subscribe(resOrder => {
           this.detaiMdSrv.currentOrder = resOrder;
           this.detaiMdSrv.afterOrderChange$.next();
           this.detailForm.patchValue({ id: resOrder.id });
@@ -56,4 +62,9 @@ export class BasicInfoComponent implements OnInit {
     });
 
   }//submit
+
+  afterIConChange(ass: FileAsset) {
+    this.detaiMdSrv.currentOrder.icon = ass.url;
+    this.detaiMdSrv.currentOrder.iconAssetId = ass.id;
+  }//afterIConChange
 }

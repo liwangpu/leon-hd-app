@@ -19,7 +19,7 @@ export class DetailContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.packageContent = this.detaiMdSrv.currentPackage.contentIns;
+    this.packageContent = this.detaiMdSrv.currentPackage.contentIns ? this.detaiMdSrv.currentPackage.contentIns : new PackageContent();
     let items = this.packageContent.items ? this.packageContent.items : [];
     this.dataSource = new MatTableDataSource(items);
   }//ngOnInit

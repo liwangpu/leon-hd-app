@@ -13,6 +13,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { Account } from "../../../toolkit/models/account";
 import { AccountTypeEnums } from "../../../toolkit/enums/enums";
 import { Subject } from 'rxjs';
+import { PathService } from '../../services/path.service';
 
 @Component({
   selector: 'app-order',
@@ -28,7 +29,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
   destroy$: Subject<boolean> = new Subject();
-  constructor(private orderSrv: OrderService) { }
+  constructor(private orderSrv: OrderService, public pathSrv: PathService) { }
 
   ngOnInit() {
     this.dataSource = new PaginatorStore<Order>({ service: this.orderSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort });

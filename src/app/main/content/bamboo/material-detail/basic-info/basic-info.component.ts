@@ -34,9 +34,9 @@ export class BasicInfoComponent implements OnInit {
   submit() {
     let saveProdAsync = () => {
       return new Promise((resolve) => {
-        let vl=this.detailForm.value;
-        vl.iconAssetId=this.detaiMdSrv.currentMaterial.iconAssetId;
-        this.materialSrv.update(this.detailForm.value).first().subscribe(resOrder => {
+        let vl = this.detailForm.value;
+        let ol = this.detaiMdSrv.currentMaterial;
+        this.materialSrv.update({ ...ol, ...vl }).first().subscribe(resOrder => {
           this.detaiMdSrv.currentMaterial = resOrder;
           this.detaiMdSrv.afterEdit$.next();
           this.detailForm.patchValue({ id: resOrder.id });

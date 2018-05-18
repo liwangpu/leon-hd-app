@@ -3,6 +3,8 @@ import { Order } from '../../../toolkit/models/order';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { PackageDetailMdService } from './package-detail-md.service';
+import { Package } from '../../../toolkit/models/package';
+import { PathService } from '../../services/path.service';
 
 @Component({
   selector: 'app-package-detail',
@@ -12,10 +14,10 @@ import { PackageDetailMdService } from './package-detail-md.service';
 })
 export class PackageDetailComponent implements OnInit {
 
-  package: Order = new Order();
+  package: Package = new Package();
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private route: ActivatedRoute, private detailMdSrv: PackageDetailMdService) {
+  constructor(private route: ActivatedRoute, public detailMdSrv: PackageDetailMdService, public pathSrv: PathService) {
     this.detailMdSrv.currentPackage = this.route.snapshot.data.entity;
 
     this.detailMdSrv.afterPackageChange$.takeUntil(this.destroy$).subscribe(() => {

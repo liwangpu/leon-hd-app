@@ -13,6 +13,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { Account } from "../../../toolkit/models/account";
 import { AccountTypeEnums } from "../../../toolkit/enums/enums";
 import { Subject } from 'rxjs';
+import { PathService } from '../../services/path.service';
 
 @Component({
   selector: 'app-package',
@@ -28,7 +29,7 @@ export class PackageComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
   destroy$: Subject<boolean> = new Subject();
-  constructor(private packageSrv: PackageService) {
+  constructor(private packageSrv: PackageService, public pathSrv: PathService) {
 
 
   }

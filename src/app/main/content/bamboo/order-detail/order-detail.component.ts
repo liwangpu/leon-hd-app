@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { OrderDetailMdService } from './order-detail-md.service';
 import { Order } from '../../../toolkit/models/order';
+import { PathService } from '../../services/path.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -15,7 +16,7 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   order: Order = new Order();
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private route: ActivatedRoute, private orderMdSrv: OrderDetailMdService) {
+  constructor(private route: ActivatedRoute, public orderMdSrv: OrderDetailMdService, public pathSrv: PathService) {
     this.orderMdSrv.currentOrder = this.route.snapshot.data.entity;
 
     this.orderMdSrv.afterOrderChange$.takeUntil(this.destroy$).subscribe(() => {

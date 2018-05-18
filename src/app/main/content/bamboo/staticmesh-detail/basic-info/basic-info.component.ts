@@ -35,8 +35,9 @@ export class BasicInfoComponent implements OnInit {
     let saveProdAsync = () => {
       return new Promise((resolve) => {
         let vl = this.detailForm.value;
+        let ol = this.detaiMdSrv.currentStaticMesh;
         vl.iconAssetId = this.detaiMdSrv.currentStaticMesh.iconAssetId;
-        this.staticMeshSrv.update(this.detailForm.value).first().subscribe(resOrder => {
+        this.staticMeshSrv.update({ ...ol, ...vl }).first().subscribe(resOrder => {
           this.detaiMdSrv.currentStaticMesh = resOrder;
           this.detaiMdSrv.afterEdit$.next();
           this.detailForm.patchValue({ id: resOrder.id });

@@ -7,6 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
 import { Subject } from 'rxjs';
 import { fuseAnimations } from '../../../../../core/animations';
+import { FileAsset } from '../../../../toolkit/models/fileasset';
+import { PathService } from '../../../services/path.service';
 @Component({
   selector: 'app-solution-detail-basic-info',
   templateUrl: './basic-info.component.html',
@@ -16,20 +18,17 @@ import { fuseAnimations } from '../../../../../core/animations';
 })
 export class BasicInfoComponent implements OnInit {
 
+  iconUploadUrl: string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private formBuilder: FormBuilder, private detaiMdSrv: SolutionDetailMdService, private solutionSrv: SolutionService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(private formBuilder: FormBuilder, public detaiMdSrv: SolutionDetailMdService, private solutionSrv: SolutionService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public pathSrv: PathService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
       description: ['', [Validators.maxLength(200)]]
     });
-
-    //订阅提交事件
-    this.detaiMdSrv.submitSolution$.takeUntil(this.destroy$).subscribe(() => {
-      this.submitProduct();
-    });
-  }
+    this.iconUploadUrl = this.solutionSrv.uri + '/changeICon';
+  }//constructor
 
   ngOnInit() {
     this.detailForm.patchValue(this.detaiMdSrv.solution);
@@ -46,11 +45,13 @@ export class BasicInfoComponent implements OnInit {
   }
 
 
-  submitProduct() {
+  submit() {
 
     let saveProdAsync = () => {
       return new Promise((resolve) => {
-        this.solutionSrv.update(this.detailForm.value).first().subscribe(resProd => {
+        let vl = this.detailForm.value;
+        let ol = this.detaiMdSrv.solution;
+        this.solutionSrv.update({ ...ol, ...vl }).first().subscribe(resProd => {
           this.detaiMdSrv.solution.id = resProd.id;
           this.detaiMdSrv.solution.name = resProd.name;
           this.detaiMdSrv.solution.description = resProd.description;
@@ -74,5 +75,10 @@ export class BasicInfoComponent implements OnInit {
     saveProdAsync().then(transAsync).then(msg => {
       this.snackBarSrv.simpleBar(msg as string);
     });
-  }//submitProduct
+  }//submit
+
+  afterIConChange(ass: FileAsset) {
+    this.detaiMdSrv.solution.icon = ass.url;
+    this.detaiMdSrv.solution.iconAssetId = ass.id;
+  }//afterIConChange
 }

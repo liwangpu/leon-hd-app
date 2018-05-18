@@ -18,7 +18,7 @@ export class DetailContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderContent = this.detaiMdSrv.currentOrder.contentIns;
+    this.orderContent = this.detaiMdSrv.currentOrder.contentIns ? this.detaiMdSrv.currentOrder.contentIns : new OrderContent();
     let items = this.orderContent.items ? this.orderContent.items : [];
     this.dataSource = new MatTableDataSource(items);
   }//ngOnInit

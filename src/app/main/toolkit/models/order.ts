@@ -4,5 +4,5 @@ export class Order extends ListableBase {
     state: string;
     stateTime: string;
     content: string;
-    contentIns: OrderContent;
+    contentIns?: OrderContent;
 }

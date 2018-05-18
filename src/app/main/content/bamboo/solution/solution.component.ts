@@ -9,6 +9,7 @@ import { AccountDetailComponent } from "../account/account-detail/account-detail
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { Account } from "../../../toolkit/models/account";
 import { AccountTypeEnums } from "../../../toolkit/enums/enums";
+import { PathService } from '../../services/path.service';
 @Component({
   selector: 'app-solution',
   templateUrl: './solution.component.html',
@@ -23,7 +24,7 @@ export class SolutionComponent implements OnInit {
   @ViewChild('filter') filter: ElementRef;
   @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
   dialogRef: any;
-  constructor(private solutionSrv: SolutionService, public dialog: MatDialog) {
+  constructor(private solutionSrv: SolutionService, public dialog: MatDialog, public pathSrv: PathService) {
   }
 
   ngOnInit() {

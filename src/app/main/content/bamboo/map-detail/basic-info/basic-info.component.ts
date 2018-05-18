@@ -18,7 +18,7 @@ export class BasicInfoComponent implements OnInit {
   iconUploadUrl:string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private formBuilder: FormBuilder, private detaiMdSrv: MapDetailMdService, private mapSrv: MapService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public pathSrv: PathService) {
+  constructor(private formBuilder: FormBuilder, public detaiMdSrv: MapDetailMdService, private mapSrv: MapService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public pathSrv: PathService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],

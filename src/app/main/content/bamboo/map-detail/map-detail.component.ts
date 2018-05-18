@@ -15,7 +15,7 @@ export class MapDetailComponent implements OnInit {
   map: Map = new Map();
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private route: ActivatedRoute, private detailMdSrv: MapDetailMdService, public pathSrv: PathService) {
+  constructor(private route: ActivatedRoute, public detailMdSrv: MapDetailMdService, public pathSrv: PathService) {
     this.detailMdSrv.currentMap = this.route.snapshot.data.entity;
 
     this.detailMdSrv.afterMapChange$.takeUntil(this.destroy$).subscribe(() => {

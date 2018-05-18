@@ -18,7 +18,7 @@
         </button>
 
         <div class="product-image mr-8 mr-sm-16">
-          <img [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+            <img [src]="orderMdSrv.currentOrder.icon?pathSrv.redirectServerUrl(orderMdSrv.currentOrder.icon):'assets/images/ecommerce/product-image-placeholder.png'">
         </div>
 
         <div fxLayout="column" fxLayoutAlign="start start">
