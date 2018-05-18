@@ -109,6 +109,7 @@ export const locale = {
             "AddProductSpec": "ADD NEW SPECIFICATION",
             "FileManagement": "File Manage",
             "ChangeICon": "Change ICon",
+            "BulkManage":"Bulk Manage"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",

@@ -28,9 +28,27 @@
             </div>
             <!-- / SEARCH -->
 
-            <button mat-raised-button [routerLink]="'/app/product-detail'" class="add-product-button mat-white-bg my-12 mt-sm-0">
-                <span>{{'button.AddProduct'|translate}}</span>
-            </button>
+            <div fxLayout='column'>
+                <div>
+                    <button mat-raised-button [routerLink]="'/app/product-detail'" class="add-product-button mat-white-bg my-12 mt-sm-0">
+                        <span>{{'button.AddProduct'|translate}}</span>
+                    </button>
+                </div>
+                <div fxLayout='row' fxLayoutAlign='end center'>
+                    <div>
+                        <button mat-icon-button [matMenuTriggerFor]="advSettings">
+                            <mat-icon>settings</mat-icon>
+                        </button>
+
+                        <mat-menu #advSettings="matMenu">
+                            <button mat-menu-item>
+                                <mat-icon>waves</mat-icon>
+                                {{'button.BulkManage'|translate}}
+                            </button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!-- / HEADER -->

@@ -81,7 +81,7 @@ export const locale = {
             "PackageContent": "套餐详情",
             "StaticMesh": "模型",
             "Material": "材质",
-            "Map":"场景"
+            "Map": "场景"
         },
         "button": {
             "Save": "保存",
@@ -107,6 +107,7 @@ export const locale = {
             "AddProductSpec": "添加规格",
             "FileManagement": "文件管理",
             "ChangeICon": "更换图标",
+            "BulkManage": "批量管理"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
