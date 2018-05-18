@@ -28,6 +28,7 @@ import { StaticmeshComponent } from './staticmesh/staticmesh.component';
 import { StaticmeshDetailComponent } from './staticmesh-detail/staticmesh-detail.component';
 import { MaterialComponent } from './material/material.component';
 import { MaterialDetailComponent } from './material-detail/material-detail.component';
+import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
@@ -43,7 +44,7 @@ const routes: Routes = [
   , { path: 'app/productspec-category', component: ProductspecCateogoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/staticmeshs', component: StaticmeshComponent, canActivate: [RouteGuardService] }
   , { path: 'app/materials', component: MaterialComponent, canActivate: [RouteGuardService] }
-
+  , { path: 'app/maps', component: MapComponent, canActivate: [RouteGuardService] }
 
   , {
     path: 'app/product-detail/:id'

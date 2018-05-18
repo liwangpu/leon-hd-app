@@ -1,13 +1,7 @@
-import { EntityBase } from "./entitybase";
-import { Ilistable } from "./ilistable";
+
+import { ListableBase } from "./listablebase";
 import { Account } from "./account";
-export class Department extends EntityBase implements Ilistable {
-    description: string;
-    icon: string;
-    createTime: string;
-    modifyTime: string;
-    id: string;
-    name: string;
+export class Department extends ListableBase {
     organizationId: string;
     members: Array<Account>;
 }

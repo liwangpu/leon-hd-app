@@ -5,5 +5,10 @@
 
 export const environment = {
     production: false,
-    hmr       : false
+    hmr: false,
+    serveBase: 'http://localhost:1882',
+    loginStyle: 2,
+    isMaintaining: false,
+    maintainingEndDate: '',
+    language: 'en'
 };

@@ -30,7 +30,8 @@ export const locale = {
             "Order": "Order",
             "Package": "Package",
             "StaticMesh": "StaticMesh",
-            "Material":"Material"
+            "Material":"Material",
+            "Map":"Map"
         },
         "glossary": {
             "Product": "Product",

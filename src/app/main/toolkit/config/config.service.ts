@@ -1,33 +1,25 @@
 import { Injectable } from '@angular/core';
-
-const SERVER_BASE = 'http://localhost:1882';
-// const SERVER_BASE = "http://testapi.damaozhu.com.cn";
-const LOGIN_STYLE = 2;
-const IS_MAINTAINING = false;
-const MAINTAINING_ENDDATE = '';
-// const rememberLogin = true;
-const LANGUAGE = 'en';
-
+import { environment } from "../../../../environments/environment";
 @Injectable()
 export class ConfigService {
 
     get serverBase() {
-        return SERVER_BASE;
+        return environment.serveBase;
     }
 
     get loginStyle() {
-        return LOGIN_STYLE;
+        return environment.loginStyle;
     }
 
     get isMaintaining() {
-        return IS_MAINTAINING;
+        return environment.isMaintaining;
     }
 
     get maintainingEndDate() {
-        return MAINTAINING_ENDDATE;
+        return environment.maintainingEndDate;
     }
 
     get language() {
-        return LANGUAGE;
+        return environment.language;
     }
 }

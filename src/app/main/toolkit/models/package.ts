@@ -1,15 +1,8 @@
-import { EntityBase } from "./entitybase";
+import { ListableBase } from "./listablebase";
 import { PackageContent } from "./package-content";
-export class Package extends EntityBase {
-    description: string;
-    icon: string;
-    accountId: string
+export class Package extends ListableBase {
     state: string;
     stateTime: string;
-    createdTime: string;
-    modifiedTime: string;
-    creator: string;
-    modifier: string;
     content: string;
     contentIns: PackageContent;
 }

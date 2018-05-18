@@ -1,15 +1,8 @@
-import { EntityBase } from "./entitybase";
+import { ListableBase } from "./listablebase";
 import { OrderContent } from "./order-content";
-export class Order extends EntityBase {
-    description: string;
-    icon: string;
-    accountId: string
+export class Order extends ListableBase {
     state: string;
     stateTime: string;
-    createdTime: string;
-    modifiedTime: string;
-    creator: string;
-    modifier: string;
     content: string;
-    contentIns:OrderContent;
+    contentIns: OrderContent;
 }

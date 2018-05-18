@@ -2,6 +2,13 @@ import { IEntitybase } from "./ientitybase";
 export class EntityBase implements IEntitybase {
     id: string;
     name: string;
+    description: string;
+    createdTime: string;
+    modifiedTime: string;
+    creator: string;
+    modifier: string;
+    activeFlag: number;
+    resourceType: number;
 
     /**
      * 持久化的实体
