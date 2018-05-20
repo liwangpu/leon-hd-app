@@ -26,6 +26,7 @@ export const locale = {
             "Organization": "组织",
             "OrganAccounts": "人员管理",
             "ProductCategorys": "产品分类",
+            "MaterialCategorys": "材质分类",
             "ProductSpecCategorys": "产品规格分类",
             "Order": "订单",
             "Package": "套餐",
@@ -81,7 +82,9 @@ export const locale = {
             "PackageContent": "套餐详情",
             "StaticMesh": "模型",
             "Material": "材质",
-            "Map": "场景"
+            "Map": "场景",
+            "UnCategory": "未分类",
+            "MaterialCategory": "材质分类"
         },
         "button": {
             "Save": "保存",
@@ -107,7 +110,9 @@ export const locale = {
             "AddProductSpec": "添加规格",
             "FileManagement": "文件管理",
             "ChangeICon": "更换图标",
-            "BulkManage": "批量管理"
+            "BulkManage": "批量管理",
+            "ChangeCategory": "改变分类",
+            "ClearSelect": "清除选择"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
@@ -147,7 +152,8 @@ export const locale = {
             "EditProductCategory": "编辑产品分类",
             "EditProductSpecCategory": "编辑规格分类",
             "CurrentSelectd": "当前选择",
-            "ChangeICon": "更换图标"
+            "ChangeICon": "更换图标",
+            "SelectAll": "全选"
         }
     }
 };

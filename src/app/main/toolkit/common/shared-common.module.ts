@@ -38,6 +38,11 @@ import { IconChangeCtDirective } from './directives/icon-change-ct.directive';
 import { ConfirmDialogComponent as DialogSetConfirmDialogComponent } from "./components/dialog/confirm-dialog/confirm-dialog.component";
 import { UploadIconDialogComponent as DialogSetUploadIconDialogComponent } from './components/dialog/upload-icon-dialog/upload-icon-dialog.component';
 import { Panel2Component } from './components/uploader/panel2/panel2.component';
+import { SizeCtDirective } from './directives/size-ct.directive';
+import { WindowService } from './object/window.service';
+import { SimpleConfirmDialogTplsComponent } from './factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
+import { SimpleMessageContentComponent } from './factory/dialog-template/simple-message-content/simple-message-content.component';
+import { DialogFactoryService } from './factory/dialog-factory.service';
 
 @NgModule({
   imports: [
@@ -75,7 +80,10 @@ import { Panel2Component } from './components/uploader/panel2/panel2.component';
     IconChangeCtDirective,
     DialogSetConfirmDialogComponent,
     DialogSetUploadIconDialogComponent,
-    Panel2Component
+    Panel2Component,
+    SizeCtDirective,
+    SimpleConfirmDialogTplsComponent,
+    SimpleMessageContentComponent
   ],
   providers: [
     DialogService,
@@ -85,14 +93,17 @@ import { Panel2Component } from './components/uploader/panel2/panel2.component';
     DownloadService,
     DatePipe,
     MomentService,
-    MathexService
+    MathexService,
+    WindowService,
+    DialogFactoryService
   ]
   , exports: [
     LitimgListComponent,
     PanelComponent,
     OrderbyPipe,
     ChangeIconComponent,
-    IconChangeCtDirective
+    IconChangeCtDirective,
+    SizeCtDirective
   ],
   entryComponents: [
     SimpleDialogComponent,
@@ -100,7 +111,9 @@ import { Panel2Component } from './components/uploader/panel2/panel2.component';
     PanelComponent,
     ChangeIconComponent,
     DialogSetConfirmDialogComponent,
-    DialogSetUploadIconDialogComponent
+    DialogSetUploadIconDialogComponent,
+    SimpleConfirmDialogTplsComponent,
+    SimpleMessageContentComponent
   ]
 })
 export class SharedCommonModule { }

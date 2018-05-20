@@ -1,50 +1,55 @@
-import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
-// import { EcommerceProductsService } from './products.service';
-import { DataSource } from '@angular/cdk/collections';
-import { Observable } from 'rxjs/Observable';
-import { fuseAnimations } from '../../../../core/animations';
-import { MatPaginator } from '@angular/material';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/observable/fromEvent';
-import { FuseUtils } from '../../../../core/fuseUtils';
-import { PaginatorStore } from "../../../toolkit/common/classes/paginator-store";
-import { Product } from '../../../toolkit/models/product';
-import { ProductService } from "../../../toolkit/server/webapi/product.service";
-import { PathService } from '../../services/path.service';
-import { Subject } from 'rxjs';
+import { OnInit, Component, OnDestroy, ViewChild, ElementRef } from "@angular/core";
+import { ProductMdService } from "./product-md.service";
+import { fuseAnimations } from "../../../../core/animations";
+import { Observable } from "rxjs/Observable";
+
 @Component({
   selector: 'app-products',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
-  animations: fuseAnimations
+  animations: fuseAnimations,
+  providers: [ProductMdService]
 })
 export class ProductComponent implements OnInit, OnDestroy {
 
-  productItems: any[];
-  dataStore: PaginatorStore<Product>;
-  destroy$: Subject<boolean> = new Subject();
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  selectMode: boolean;
+  hasSelectItems: boolean;
   @ViewChild('filter') filter: ElementRef;
-  constructor(public productSrv: ProductService, public pathSrv: PathService) {
+  constructor(public mdSrv: ProductMdService) {
 
-  }
+    this.mdSrv.multipleSelect.subscribe(check => {
+      this.hasSelectItems = check;
+    });
+
+    this.mdSrv.anyItemSelected.subscribe(hasItemSelected => {
+      this.hasSelectItems = hasItemSelected;
+    });
+  }//constructor
 
   ngOnInit() {
-    this.dataStore = new PaginatorStore<Product>({ service: this.productSrv, paginator: this.paginator, searchInputEle: this.filter });
-    this.dataStore._dataSubject.takeUntil(this.destroy$).subscribe(res => {
-      this.paginator.length=res.total;
-      this.productItems = res.data;
-    });
+    Observable.fromEvent(this.filter.nativeElement, 'keyup')
+      .debounceTime(150)
+      .distinctUntilChanged()
+      .subscribe((vl) => {
+        this.mdSrv.onSearch.next(this.filter.nativeElement.value);
+      });
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
+
   }//ngOnDestroy
 
+  onSelect() {
+    this.selectMode = !this.selectMode;
+    this.mdSrv.onSelectMode.next(true);
+  }//onSelectAll
+
+  onUnSelect() {
+    this.selectMode = !this.selectMode;
+    this.mdSrv.onSelectMode.next(false);
+  }//onUnSelect
+
+  bulkChangeCategory() {
+    this.mdSrv.changeCategoryItems.next();
+  }//bulkChangeCategory
 }

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { Material } from '../../models/material';
 import { Observable } from 'rxjs/Observable';
+import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
 
 @Injectable()
 export class MaterialService extends ApiService<Material> {
@@ -43,8 +44,18 @@ export class MaterialService extends ApiService<Material> {
     /**
      * 查询材质信息
      * @param query 
+     * @param advanceQueryFilters 
      */
-    query(query: IQuery): Observable<Paging<Material>> {
-        return super.queryEntities(query);
+    query(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<Material>> {
+        return super.queryEntities(query, advanceQueryFilters);
     }
+
+    /**
+    * 批量修改材质分类
+    * @param ids 
+    * @param categoryId 
+    */
+    bulkChangeCategory(ids: string, categoryId: string) {
+        return this.http.request('PUT', this.uri + '/BulkChangeCategory', { headers: this.header, body: { ids: ids, categoryId: categoryId }, responseType: 'text' });
+    }//bulkChangeCategory
 }

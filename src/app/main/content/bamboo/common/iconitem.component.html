@@ -1,13 +1,17 @@
-<!-- <mat-card class="example-card">
-    <img mat-card-image src="{{Icon}}" alt="{{Description}}">
-    <mat-card-content>
-      <p>{{Name}}</p>
-    </mat-card-content>
-  </mat-card> -->
-
-  <button mat-button class="item-button">
-    <div class="image-container">
+<div class="item-container">
+  <div fxLayout='column'>
+    <button mat-button class="item-button" (click)='onClick()'>
+      <div class="image-container">
         <img class="title-img" src="{{Icon}}" alt="{{Description}}">
+      </div>
+    </button>
+    <div fxFlex='38px' fxLayout='row' fxLayoutAlign='center center'>
+      <div fxFlexOffset='15px' *ngIf='SelectMode'>
+        <mat-checkbox *ngIf='SelectMode' [checked]='Selected'></mat-checkbox>
+      </div>
+      <div fxFlex style="text-align: center;">
+        <span class="title-text" title="{{Id}} {{Name}}">{{Name}}</span>
+      </div>
     </div>
-    <span class="title-text" title="{{Id}} {{Name}}">{{Name}}</span>
-  </button>
+  </div>
+</div>

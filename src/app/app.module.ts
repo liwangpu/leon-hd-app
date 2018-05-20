@@ -16,6 +16,7 @@ import { ServicesModule } from './main/content/services/services.module';
 import { MarkdownModule } from 'angular2-markdown';
 import { TranslateModule } from '@ngx-translate/core';
 import { BambooModule } from "./main/content/bamboo/bamboo.module";
+import { TestComponent } from './test/test.component';
 const appRoutes: Routes = [
     {
         path: '**',
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        TestComponent
     ],
     imports: [
         BrowserModule,

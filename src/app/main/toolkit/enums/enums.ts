@@ -5,6 +5,9 @@ export enum AccountTypeEnums {
     organMember = 'organmember'
 }
 
+export enum QueryOperateEnums {
+    equal = 'equal'
+}
 
 // public const string AccountType_SysAdmin = "sysadmin";
 // public const string AccountType_OrganAdmin = "organadmin";

@@ -1,10 +1,17 @@
 <form name="detailForm" [formGroup]="detailForm">
   <div class="basic-info-container good">
     <input type="hidden" formControlName='id' name='id'>
+    <input type="hidden" formControlName='categoryId' name='categoryId'>
     <mat-form-field>
       <input matInput name="name" formControlName="name" required placeholder="{{'glossary.Name'|translate}}">
       <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
     </mat-form-field>
+
+    <mat-form-field>
+        <input matInput readonly name="categoryName" formControlName="categoryName" required placeholder="{{'glossary.ProductCategory'|translate}}"
+          (click)='onEditCategory()'>
+        <mat-error *ngIf="detailForm.get('categoryId').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+      </mat-form-field>
 
     <mat-form-field>
       <textarea matInput name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>

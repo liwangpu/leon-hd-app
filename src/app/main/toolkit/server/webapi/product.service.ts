@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { IListableService } from "./ilistableService";
 import { IconService } from './icon.service';
 import { IconModel } from '../../models/iconmodel';
+import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
 @Injectable()
 export class ProductService extends ApiService<Product> implements IListableService<Product> {
 
@@ -45,9 +46,10 @@ export class ProductService extends ApiService<Product> implements IListableServ
     /**
      * 查询产品信息
      * @param query 
+     * @param advanceQueryFilters 
      */
-    query(query: IQuery): Observable<Paging<Product>> {
-        return super.queryEntities(query);
+    query(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<Product>> {
+        return super.queryEntities(query, advanceQueryFilters);
     }
 
     /**
@@ -58,4 +60,13 @@ export class ProductService extends ApiService<Product> implements IListableServ
         let url = `${this.uri}/changeICon`;
         return this.iconSrv.changeIcon(url, entity);
     }
+
+    /**
+     * 批量修改产品分类
+     * @param ids 
+     * @param categoryId 
+     */
+    bulkChangeCategory(ids: string, categoryId: string) {
+        return this.http.request('PUT', this.uri + '/BulkChangeCategory', { headers: this.header, body: { ids: ids, categoryId: categoryId }, responseType: 'text' });
+    }//bulkChangeCategory
 }

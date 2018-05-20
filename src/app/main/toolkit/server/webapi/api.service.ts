@@ -4,6 +4,8 @@ import { ConfigService } from '../../config/config.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { IEntitybase } from '../../models/ientitybase';
+import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
+import { QueryOperateEnums } from '../../enums/enums';
 /**
  * webapi serve基类
  */
@@ -75,14 +77,10 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
 
     /**
      * 查询实体信息
-     * @param search 
-     * @param page 
-     * @param pageSize 
-     * @param orderBy 
-     * @param desc 
-     * @param plus 
+     * @param query 
+     * @param advanceQueryFilters 
      */
-    protected queryEntities<T>(query: IQuery): Observable<Paging<T>> {
+    protected queryEntities<T>(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<T>> {
         var params = new HttpParams();
         if (query.search)
             params = params.append('search', `${query.search}`);
@@ -93,11 +91,34 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
         if (query.desc)
             params = params.append('desc', `${query.desc}`);
 
+        let queryPart = conjunctFilter(advanceQueryFilters);
+
         params = params.append('page', `${query.page ? query.page : 1}`);
         params = params.append('pageSize', `${query.pageSize ? query.pageSize : 10}`);
-        return this.httpClient.request<Paging<T>>('get', this.uri, { headers: this.header, params: params });
+        return this.httpClient.request<Paging<T>>('get', `${this.uri}?${queryPart}`, { headers: this.header, params: params });
     }
 }
+//TODO:转为q查询方式
+function conjunctFilter(advanceQueryFilters?: Array<IQueryFilter>): string {
+    let queryPart = '';
+    if (advanceQueryFilters && advanceQueryFilters.length) {
+        for (let item of advanceQueryFilters) {
+            let operateStr = '';
+            switch (item.operate) {
+                case QueryOperateEnums.equal:
+                    operateStr = '=';
+                    break;
+                default:
+                    operateStr = '=';
+                    break;
+            }
+            queryPart += `${item.field}${operateStr}${item.value}&`;
+        }
+    }
+    return queryPart;
+}//conjunctFilter
+
+
 
 /**
  * 查询分页信息

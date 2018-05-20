@@ -31,6 +31,7 @@ import { MaterialDetailComponent } from './material-detail/material-detail.compo
 import { MapComponent } from './map/map.component';
 import { MapDetailComponent } from './map-detail/map-detail.component';
 import { MapService } from '../../toolkit/server/webapi/map.service';
+import { MaterialCategoryComponent } from './material-category/material-category.component';
 
 
 const routes: Routes = [
@@ -44,11 +45,11 @@ const routes: Routes = [
   , { path: 'app/packages', component: PackageComponent, canActivate: [RouteGuardService] }
   , { path: 'app/organ-account', component: AccountComponent, canActivate: [RouteGuardService] }
   , { path: 'app/product-category', component: ProductCategoryComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/material-category', component: MaterialCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/productspec-category', component: ProductspecCateogoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/staticmeshs', component: StaticmeshComponent, canActivate: [RouteGuardService] }
   , { path: 'app/materials', component: MaterialComponent, canActivate: [RouteGuardService] }
   , { path: 'app/maps', component: MapComponent, canActivate: [RouteGuardService] }
-
   , {
     path: 'app/product-detail/:id'
     , component: ProductDetailComponent

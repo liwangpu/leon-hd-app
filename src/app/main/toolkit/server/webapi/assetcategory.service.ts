@@ -30,6 +30,8 @@ export class AssetCategoryService<T extends AssetCategory> {
      */
     protected getByType(type: string, organId: string) {
         if (type) {
+            if (!organId)
+                organId = '';//防止organId为null或者undefine被转为字符串
             return this.httpClient.get<T>(`${this.uri}/?type=${type}&organId=${organId}`, { headers: this.header });
         }
         return Observable.of<T>({} as T);

@@ -11,6 +11,9 @@ import { CategoryPanelComponent } from '../../product-category/category-panel/ca
 import { ProductCategoryService } from '../../../../toolkit/server/webapi/productcategory.service';
 import { PathService } from '../../../services/path.service';
 import { FileAsset } from '../../../../toolkit/models/fileasset';
+import { DialogFactoryService } from '../../../../toolkit/common/factory/dialog-factory.service';
+import { SimpleConfirmDialogTplsComponent } from '../../../../toolkit/common/factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
+import { CategoryChangeSuitComponent } from './category-change-suit.component';
 
 @Component({
   selector: 'app-product-detail-basic-info',
@@ -22,7 +25,7 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
   iconUploadUrl: string;
   productForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private formBuilder: FormBuilder, public detaiMdSrv: ProductDetailMdService, private productSrv: ProductService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private dialog: MatDialog, private categorySrv: ProductCategoryService, private pathSrv: PathService) {
+  constructor(private formBuilder: FormBuilder, public detaiMdSrv: ProductDetailMdService, private productSrv: ProductService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private dialog: MatDialog, private categorySrv: ProductCategoryService, private pathSrv: PathService, protected dialogFac: DialogFactoryService) {
     this.productForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
@@ -83,19 +86,15 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
   }//submitProduct
 
   onEditCategory() {
-    let dialogObj = this.dialog.open(CategoryPanelComponent, {
-      width: '700px',
-      height: '800px'
-    });//
+    let dialog = this.dialogFac.tplsConfirm('选择分类', CategoryChangeSuitComponent, { width: '450px', height: '550px', data: {} });
 
-    let dialogDestroy$ = new Subject<boolean>();
-    dialogObj.componentInstance.afterUserSelect$.takeUntil(dialogDestroy$).subscribe(resCate => {
-      this.productForm.patchValue({ categoryId: resCate.id, categoryName: resCate.name });
+    dialog.afterOpen().first().subscribe(() => {
+      let ins = (dialog.componentInstance.componentIns as CategoryChangeSuitComponent);
+      ins.refreshData.subscribe(cate => {
+        this.productForm.patchValue({ categoryId: cate.id, categoryName: cate.name });
+      });
     });
-    dialogObj.afterClosed().first().subscribe(() => {
-      dialogDestroy$.next(true);
-      dialogDestroy$.unsubscribe();
-    });
+
   }//onEditCategory
 
   afterIConChange(ass: FileAsset) {

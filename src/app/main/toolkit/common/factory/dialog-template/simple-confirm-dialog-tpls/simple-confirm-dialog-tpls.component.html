@@ -1,0 +1,34 @@
+<div class="dialog-container fxLayout-container" fxLayout='column'>
+  <div class="dialog-header" fxFlex="60px" fxLayout='row' fxLayoutAlign='space-between center'>
+    <div class="with-icon dialog-title" fxLayout='row' fxLayoutAlign='start center'>
+      <mat-icon>turned_in</mat-icon>
+      {{title}}
+    </div>
+    <div>
+      <button mat-button class="mat-icon-button" (click)='closeDialog()'>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="dialog-content" fxFlex>
+    <div style="position: relative;height: 100%;">
+      <div style="position:absolute;overflow-y: auto;width: 100%;height: 100%;">
+        <ng-template #dialogContentContainer></ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-footer" fxFlex="60px" fxLayout='row' fxLayoutAlign='end center'>
+    <div>
+      <button mat-button (click)='onCancel()'>
+        <mat-icon class="cus-cancel-button">clear</mat-icon>
+        {{'button.Cancel'|translate}}
+      </button>
+    </div>
+    <div>
+      <button mat-button [disabled]='!satisfyConfirm' (click)='onConfirm()'>
+        <mat-icon class="cus-confirm-button">done</mat-icon>
+        {{'button.Confirm'|translate}}
+      </button>
+    </div>
+  </div>
+</div>

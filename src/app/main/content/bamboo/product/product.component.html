@@ -1,17 +1,14 @@
-<div id="products" class="page-layout carded fullwidth" fusePerfectScrollbar>
+<div class="page-layout simple left-sidenav inner-sidenav" fusePerfectScrollbar>
 
-    <!-- TOP BACKGROUND -->
-    <div class="top-bg mat-accent-bg"></div>
-    <!-- / TOP BACKGROUND -->
-
-    <!-- CENTER -->
-    <div class="center">
-
-        <!-- HEADER -->
-        <div class="header white-fg" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
-
+    <!-- HEADER -->
+    <div class="header mat-accent-bg" fxLayout="column">
+        <div fxFlex='30px'></div>
+        <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
             <!-- APP TITLE -->
-            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+            <div class="ml-12" fxLayout='row' fxLayoutAlign='start center'>
+                <button mat-button class="mat-icon-button sidenav-toggle" fuseMatSidenavToggler="simple-left-sidenav-3" fxHide.gt-md>
+                    <mat-icon>menu</mat-icon>
+                </button>
                 <mat-icon class="logo-icon mr-16" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">shopping_basket</mat-icon>
                 <span class="logo-text h1" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">{{'glossary.Product'|translate}}</span>
             </div>
@@ -28,42 +25,52 @@
             </div>
             <!-- / SEARCH -->
 
-            <div fxLayout='column'>
-                <div>
-                    <button mat-raised-button [routerLink]="'/app/product-detail'" class="add-product-button mat-white-bg my-12 mt-sm-0">
-                        <span>{{'button.AddProduct'|translate}}</span>
-                    </button>
-                </div>
-                <div fxLayout='row' fxLayoutAlign='end center'>
-                    <div>
-                        <button mat-icon-button [matMenuTriggerFor]="advSettings">
-                            <mat-icon>settings</mat-icon>
-                        </button>
-
-                        <mat-menu #advSettings="matMenu">
-                            <button mat-menu-item>
-                                <mat-icon>waves</mat-icon>
-                                {{'button.BulkManage'|translate}}
-                            </button>
-                        </mat-menu>
-                    </div>
-                </div>
-            </div>
+            <button mat-raised-button [routerLink]="'/app/product-detail'" class="add-product-button mat-white-bg mr-12">
+                <span>{{'button.AddProduct'|translate}}</span>
+            </button>
 
         </div>
-        <!-- / HEADER -->
-
-        <!-- CONTENT CARD -->
-        <div class="content-card mat-white-bg">
-            <div class="products-table">
-                <icon-item *ngFor="let item of productItems" [Id]='item.id' [Name]='item.name' [Description]='item.description' [Icon]='item.icon?pathSrv.redirectServerUrl(item.icon):"/assets/images/place-holder/product.jpg"'
-                    [routerLink]="'/app/product-detail/' + item.id"></icon-item>
+        <div fxFlex='25px'>
+            <div class="fxLayout-container" fxLayout='row' fxLayoutAlign='end center'>
+                <button mat-button *ngIf='!selectMode' (click)='onSelect()'>
+                    <mat-icon>check_box</mat-icon>
+                    {{'button.Select'|translate}}
+                </button>
+                <button mat-button *ngIf='selectMode' (click)='onUnSelect()'>
+                    <mat-icon>check_box_outline_blank</mat-icon>
+                    {{'button.ClearSelect'|translate}}
+                </button>
+                <button mat-button *ngIf='selectMode&&hasSelectItems'>
+                    <mat-icon>delete</mat-icon>
+                    {{'button.Delete'|translate}}
+                </button>
+                <button mat-button *ngIf='selectMode&&hasSelectItems' (click)='bulkChangeCategory()'>
+                    <mat-icon>swap_horiz</mat-icon>
+                    {{'button.ChangeCategory'|translate}}
+                </button>
             </div>
-            <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]='true'>
-            </mat-paginator>
-
         </div>
-        <!-- / CONTENT CARD -->
     </div>
-    <!-- / CENTER -->
+    <!-- / HEADER -->
+
+    <mat-sidenav-container>
+
+        <!-- SIDENAV -->
+        <mat-sidenav class="sidenav" align="start" opened="true" mode="side" fuseMatSidenavHelper="simple-left-sidenav-3" mat-is-locked-open="gt-md">
+
+            <div class="sidenav-content" fusePerfectScrollbar>
+                <app-product-category-view-list></app-product-category-view-list>
+            </div>
+
+        </mat-sidenav>
+        <!-- / SIDENAV -->
+
+        <!-- CENTER -->
+        <div class="center list-content" fusePerfectScrollbar>
+            <app-product-view-list></app-product-view-list>
+        </div>
+        <!-- / CENTER -->
+
+    </mat-sidenav-container>
+
 </div>

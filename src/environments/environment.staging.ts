@@ -1,4 +1,5 @@
 export const environment = {
+    moc: "serve",
     production: true,
     hmr: false,
     serveBase: 'http://testapi.damaozhu.com.cn',

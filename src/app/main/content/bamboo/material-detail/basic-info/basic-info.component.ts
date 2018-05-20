@@ -7,6 +7,8 @@ import { SnackbarService } from '../../../../toolkit/common/services/snackbar.se
 import { MaterialService } from '../../../../toolkit/server/webapi/material.service';
 import { PathService } from '../../../services/path.service';
 import { FileAsset } from '../../../../toolkit/models/fileasset';
+import { DialogFactoryService } from '../../../../toolkit/common/factory/dialog-factory.service';
+import { CategoryChangeSuitComponent } from './category-change-suit.component';
 
 @Component({
   selector: 'app-material-detail-basic-info',
@@ -18,11 +20,13 @@ export class BasicInfoComponent implements OnInit {
   iconUploadUrl: string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private formBuilder: FormBuilder, public detaiMdSrv: MaterialDetailMdService, private materialSrv: MaterialService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public pathSrv: PathService) {
+  constructor(private formBuilder: FormBuilder, public detaiMdSrv: MaterialDetailMdService, private materialSrv: MaterialService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public pathSrv: PathService, protected dialogFac: DialogFactoryService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
-      description: ['', [Validators.maxLength(200)]]
+      description: ['', [Validators.maxLength(200)]],
+      categoryId: [''],
+      categoryName: ['', [Validators.required]]
     });
     this.iconUploadUrl = this.materialSrv.uri + '/changeICon';
   }//constructor
@@ -65,4 +69,16 @@ export class BasicInfoComponent implements OnInit {
     this.detaiMdSrv.currentMaterial.icon = ass.url;
     this.detaiMdSrv.currentMaterial.iconAssetId = ass.id;
   }//afterIConChange
+
+  onEditCategory() {
+    let dialog = this.dialogFac.tplsConfirm('选择分类', CategoryChangeSuitComponent, { width: '450px', height: '550px', data: {} });
+
+    dialog.afterOpen().first().subscribe(() => {
+      let ins = (dialog.componentInstance.componentIns as CategoryChangeSuitComponent);
+      ins.refreshData.subscribe(cate => {
+        this.detailForm.patchValue({ categoryId: cate.id, categoryName: cate.name });
+      });
+    });
+
+  }//onEditCategory
 }

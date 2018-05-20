@@ -22,6 +22,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TreeModule } from 'ng2-tree';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { TranslateModule } from '@ngx-translate/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -73,11 +74,26 @@ import { CategoryMdService } from './product-category/category-md.service';
 import { MapComponent } from './map/map.component';
 import { MapDetailComponent } from './map-detail/map-detail.component';
 import { BasicInfoComponent as MapBasicInfoComponent } from './map-detail/basic-info/basic-info.component';
+import { CategoryListComponent as ProductViewCategoryListComponent } from './product/category-list/category-list.component';
+import { ProductListComponent as ProductListViewComponent } from './product/product-list/product-list.component';
+import { SelectPanelComponent as ProductCategorySelectPanelComponent } from './product-category/select-panel/select-panel.component';
+import { ChangeCategoryComponent as ProductCategoryChangeCategoryComponent } from "./product/change-category.component";
+import { CategoryChangeSuitComponent as ProductDetailCateChangeSuitComponent } from './product-detail/basic-info/category-change-suit.component';
+import { MaterialCategoryComponent } from './material-category/material-category.component';
+import { CategoryListComponent as MaterialCategoryListComponent } from './material/category-list/category-list.component';
+import { SelectPanelComponent as MaterialSelectPanelComponent } from './material-category/select-panel/select-panel.component';
+import { MaterialListComponent } from './material/material-list/material-list.component';
+import { ChangeCategorySuitComponent as MaterialChangeCategorySuitComponent } from './material/change-category-suit.component';
+import { CategoryChangeSuitComponent as MaterialCategoryChangeSuitComponent } from './material-detail/basic-info/category-change-suit.component';
+
+
+
 @NgModule({
   imports: [
     ServicesModule,
     SharedModule,
     CommonModule,
+    TreeModule,
     MatSidenavModule,
     MatStepperModule,
     BrowserAnimationsModule,
@@ -105,12 +121,18 @@ import { BasicInfoComponent as MapBasicInfoComponent } from './map-detail/basic-
     MatAutocompleteModule
   ],
 
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderBasicInfoComponent, OrderDetailContentComponent, PackageComponent, PackageDetailComponent, PackageBasicInfoComponent, PacakgeDetailContentComponent, StaticmeshComponent, StaticmeshDetailComponent, StaticMeshBasicInfoComponent, MaterialComponent, MaterialDetailComponent, MaterialBasicInfoComponent, MapComponent, MapDetailComponent, MapBasicInfoComponent],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderBasicInfoComponent, OrderDetailContentComponent, PackageComponent, PackageDetailComponent, PackageBasicInfoComponent, PacakgeDetailContentComponent, StaticmeshComponent, StaticmeshDetailComponent, StaticMeshBasicInfoComponent, MaterialComponent, MaterialDetailComponent, MaterialBasicInfoComponent, MapComponent, MapDetailComponent, MapBasicInfoComponent, ProductViewCategoryListComponent, ProductListViewComponent, ProductCategorySelectPanelComponent, ProductCategoryChangeCategoryComponent, ProductDetailCateChangeSuitComponent, MaterialCategoryComponent, MaterialCategoryListComponent, MaterialSelectPanelComponent, MaterialListComponent, MaterialChangeCategorySuitComponent, MaterialCategoryChangeSuitComponent,],
 
-  entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductSpecCategoryPanelComponent],
+  entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductSpecCategoryPanelComponent, ProductCategorySelectPanelComponent
+    , ProductCategoryChangeCategoryComponent, ProductDetailCateChangeSuitComponent, MaterialChangeCategorySuitComponent
+    , MaterialCategoryChangeSuitComponent],
 
   providers: [
     CategoryMdService
+  ]
+
+  , exports: [
+    ProductComponent
   ]
 })
 export class BambooModule { }

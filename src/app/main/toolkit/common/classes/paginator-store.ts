@@ -4,6 +4,8 @@ import { MatSort, MatPaginator } from '@angular/material';
 import { Observable, BehaviorSubject, Subject } from "rxjs";
 import { Paging, IQuery } from "../../server/webapi/api.service";
 import { IListableService } from "../../server/webapi/ilistableService";
+import { QueryOperateEnums } from '../../enums/enums';
+import { IQueryFilter } from '../interfaces/iqueryFilter';
 
 /**
  * 分页列表数据仓库
@@ -11,39 +13,52 @@ import { IListableService } from "../../server/webapi/ilistableService";
  */
 export class PaginatorStore<T> extends DataSource<any> {
     _dataSubject = new BehaviorSubject<Paging<T>>({ data: [], total: 0, page: 1, size: 10 });
+    private allowTrigger: boolean = true;//事件订阅触发开关,因为比如过滤事件会触发分页控件返回首页,然后又造成分页控件触发查询,所以需要临时开关关闭相关事件触发机制
     private filterChange = new BehaviorSubject('');
+    private advanceFilterChange = new BehaviorSubject([]);
     private queryParams: IQuery;
-    // private pagingSubjection: Observable<any>;
-    // private sortingSubjection: Observable<any>;
-    // private filteringSubjection: Observable<any>;
+    private advanceQueryParams: Array<IQueryFilter>;
     private destroy$: Subject<boolean> = new Subject<boolean>();
 
     get filter() {
         return this.filterChange.value;
     }
     set filter(vl: string) {
+        this.resetPaginator();
         this.setFiltering(vl);
         this.filterChange.next(vl);
     }
 
+    set advanceFilter(filters: Array<IQueryFilter>) {
+        //重置分页参数
+        this.resetPaginator();
+        this.advanceQueryParams = filters;
+        this.advanceFilterChange.next(filters);
+    }//
+
+    get advanceFilter() {
+        return this.advanceFilterChange.value;
+    }//
 
     constructor(private option: PaginatorStoreOptions<T>) {
         super();
         this.queryParams = { page: this.option.paginator ? this.option.paginator.pageIndex : 1, pageSize: this.option.paginator ? this.option.paginator.pageSize : 10 };
         this.query();//默认查询
-        let allowTrigger = true;//事件订阅触发开关,因为比如过滤事件会触发分页控件返回首页,然后又造成分页控件触发查询,所以需要临时开关关闭相关事件触发机制
+        // let allowTrigger = true;//事件订阅触发开关,因为比如过滤事件会触发分页控件返回首页,然后又造成分页控件触发查询,所以需要临时开关关闭相关事件触发机制
         //订阅分页响应事件
         if (this.option.paginator)
             Observable.from(this.option.paginator.page).takeUntil(this.destroy$).subscribe(paging => {
-                if (allowTrigger) {
+                if (this.allowTrigger) {
                     this.setPaging(paging['pageIndex'], paging['pageSize']);
+                    // this.queryParams.page = paging['pageIndex'];
+                    // this.queryParams.pageSize = paging['pageSize'];
                     this.query();
                 }
             });
         //订阅排序响应事件
         if (this.option.sort)
             Observable.from(this.option.sort.sortChange).takeUntil(this.destroy$).subscribe(sorting => {
-                if (allowTrigger) {
+                if (this.allowTrigger) {
                     this.setSorting(sorting['active'], sorting['direction']);
                     this.query();
                 }
@@ -53,6 +68,11 @@ export class PaginatorStore<T> extends DataSource<any> {
             this.setFiltering(this.filterChange.value);
             this.query();
         });
+        //订阅高级过滤响应事件
+        Observable.from(this.advanceFilterChange).takeUntil(this.destroy$).subscribe(() => {
+            this.query();
+        });
+
         //订阅搜索框输入响应事件
         if (this.option.searchInputEle) {
             Observable.fromEvent(this.option.searchInputEle.nativeElement, 'keyup')
@@ -61,16 +81,20 @@ export class PaginatorStore<T> extends DataSource<any> {
                 .distinctUntilChanged()
                 .subscribe(() => {
                     this.setFiltering(this.option.searchInputEle.nativeElement.value);
-                    if (this.option.paginator) {
-                        allowTrigger = false;
-                        this.option.paginator.firstPage();
-                        this.queryParams.page = 0;
-                        allowTrigger = true;
-                    }
+                    this.resetPaginator();
                     this.query();
                 });
         }//if
     }//constructor
+
+    private resetPaginator() {
+        if (this.option.paginator) {
+            this.allowTrigger = false;
+            this.option.paginator.firstPage();
+            this.queryParams.page = 0;
+            this.allowTrigger = true;
+        }
+    }//resetPaginator
 
     /**
      * 设置排序信息
@@ -106,7 +130,7 @@ export class PaginatorStore<T> extends DataSource<any> {
      * 查询数据
      */
     private query() {
-        this.option.service.query(this.queryParams).subscribe(res => {
+        this.option.service.query(this.queryParams, this.advanceQueryParams).subscribe(res => {
             this._dataSubject.next(res);
             // this.dataSubject.next(res.data ? res.data : []);
         });

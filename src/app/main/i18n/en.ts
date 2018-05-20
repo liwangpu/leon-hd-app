@@ -26,12 +26,13 @@ export const locale = {
             "Organization": "Organization",
             "OrganAccounts": "Account Management",
             "ProductCategorys": "Product Category",
+            "MaterialCategorys":"Material Category",
             "ProductSpecCategorys": "Product Spec Category",
             "Order": "Order",
             "Package": "Package",
             "StaticMesh": "StaticMesh",
-            "Material":"Material",
-            "Map":"Map"
+            "Material": "Material",
+            "Map": "Map"
         },
         "glossary": {
             "Product": "Product",
@@ -82,8 +83,10 @@ export const locale = {
             "Package": "Package",
             "PackageContent": "Content",
             "StaticMesh": "StaticMesh",
-            "Material":"Material",
-            "Map":"Map"
+            "Material": "Material",
+            "Map": "Map",
+            "UnCategory": "UnCategory",
+            "MaterialCategory":"Material Category"
         },
         "button": {
             "Save": "Save",
@@ -109,7 +112,9 @@ export const locale = {
             "AddProductSpec": "ADD NEW SPECIFICATION",
             "FileManagement": "File Manage",
             "ChangeICon": "Change ICon",
-            "BulkManage":"Bulk Manage"
+            "BulkManage": "Bulk Manage",
+            "ChangeCategory": "Change Category",
+            "ClearSelect": "Clear Select"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",
@@ -149,7 +154,8 @@ export const locale = {
             "EditProductCategory": "Edit Product Category",
             "EditProductSpecCategory": "Edit Product Spec Category",
             "CurrentSelectd": "Current Selected",
-            "ChangeICon":"Change ICon"
+            "ChangeICon": "Change ICon",
+            "SelectAll": "All"
         }
     }
 };

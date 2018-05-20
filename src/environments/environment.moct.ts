@@ -1,7 +1,10 @@
 export const environment = {
-    production: true,
+    //测试专用
+    moc: "test",
+
+    production: false,
     hmr: false,
-    serveBase: 'http://testapi.damaozhu.com.cn',
+    serveBase: 'http://localhost:1882',
     loginStyle: 2,
     isMaintaining: false,
     maintainingEndDate: '',
