@@ -1,0 +1,21 @@
+<div class="upload-container" fxLayout='column'>
+  <div fxLayout='row' fxLayoutAlign='space-between center'>
+    <div>数据上传模版</div>
+    <div>
+      <button mat-button>
+        <mat-icon>vertical_align_bottom</mat-icon>
+        <span>下载</span>
+      </button>
+    </div>
+  </div>
+  <div>
+    <span style="padding-left: 50px;">
+      CSV与EXCEL表格格式相同,请用EXCEL软件打开
+    </span>
+  </div>
+  <div fxFlex='25px'></div>
+  <div>数据文件</div>
+  <div>
+    <input type="file" name="" accept=".csv" (change)='onFileChange($event)' #fileInputCt>
+  </div>
+</div>

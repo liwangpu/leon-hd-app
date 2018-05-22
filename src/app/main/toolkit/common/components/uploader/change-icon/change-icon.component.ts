@@ -58,7 +58,7 @@ export class ChangeIconComponent implements OnInit, OnDestroy, IUploadIConDialog
       let file = fileBrowser.files[0];
       let header = new HttpHeaders({
         "fileExt": getFileExtension(file.name)
-      })
+      });
 
       formData.append("file", file);
       let fileUrl = `${this.config.serverBase}/files/UploadFormFile`;

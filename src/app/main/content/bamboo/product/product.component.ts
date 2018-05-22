@@ -2,6 +2,8 @@ import { OnInit, Component, OnDestroy, ViewChild, ElementRef } from "@angular/co
 import { ProductMdService } from "./product-md.service";
 import { fuseAnimations } from "../../../../core/animations";
 import { Observable } from "rxjs/Observable";
+import { DialogFactoryService } from "../../../toolkit/common/factory/dialog-factory.service";
+import { SimpleCsvUploadComponent } from "../../../toolkit/common/factory/dialog-template/simple-csv-upload/simple-csv-upload.component";
 
 @Component({
   selector: 'app-products',
@@ -15,7 +17,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   selectMode: boolean;
   hasSelectItems: boolean;
   @ViewChild('filter') filter: ElementRef;
-  constructor(public mdSrv: ProductMdService) {
+  constructor(public mdSrv: ProductMdService, protected dialogFac: DialogFactoryService) {
 
     this.mdSrv.multipleSelect.subscribe(check => {
       this.hasSelectItems = check;
@@ -52,4 +54,14 @@ export class ProductComponent implements OnInit, OnDestroy {
   bulkChangeCategory() {
     this.mdSrv.changeCategoryItems.next();
   }//bulkChangeCategory
+
+
+  bulkCategoryUpload() {
+    let dialog = this.dialogFac.simpleCsvUpload('上传文件', { width: '450px', height: '550px', uploadUrl: 'products/ImportProductAndCategory' });
+    // dialog.afterOpen().first().subscribe(() => {
+    //   (dialog.componentInstance.componentIns as SimpleCsvUploadComponent).afterChangeCategory.subscribe(() => {
+    //     this.onCategorySelect();
+    //   });
+    // });
+  }//bulkCategoryUpload
 }

@@ -48,7 +48,7 @@ export class SimpleConfirmDialogTplsComponent implements OnInit, OnDestroy {
 
   onConfirm() {
     (this.componentIns as ISimpleConfirm).afterConfirm.next();
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }//onConfirm
 
 }

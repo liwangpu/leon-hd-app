@@ -114,7 +114,9 @@ export const locale = {
             "ChangeICon": "Change ICon",
             "BulkManage": "Bulk Manage",
             "ChangeCategory": "Change Category",
-            "ClearSelect": "Clear Select"
+            "ClearSelect": "Clear Select",
+            "Advance": "Advance",
+            "BulkCategory": "Bulk Category"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",

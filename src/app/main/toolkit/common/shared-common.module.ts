@@ -43,6 +43,7 @@ import { WindowService } from './object/window.service';
 import { SimpleConfirmDialogTplsComponent } from './factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
 import { SimpleMessageContentComponent } from './factory/dialog-template/simple-message-content/simple-message-content.component';
 import { DialogFactoryService } from './factory/dialog-factory.service';
+import { SimpleCsvUploadComponent } from './factory/dialog-template/simple-csv-upload/simple-csv-upload.component';
 
 @NgModule({
   imports: [
@@ -83,7 +84,8 @@ import { DialogFactoryService } from './factory/dialog-factory.service';
     Panel2Component,
     SizeCtDirective,
     SimpleConfirmDialogTplsComponent,
-    SimpleMessageContentComponent
+    SimpleMessageContentComponent,
+    SimpleCsvUploadComponent
   ],
   providers: [
     DialogService,
@@ -113,7 +115,8 @@ import { DialogFactoryService } from './factory/dialog-factory.service';
     DialogSetConfirmDialogComponent,
     DialogSetUploadIconDialogComponent,
     SimpleConfirmDialogTplsComponent,
-    SimpleMessageContentComponent
+    SimpleMessageContentComponent,
+    SimpleCsvUploadComponent
   ]
 })
 export class SharedCommonModule { }

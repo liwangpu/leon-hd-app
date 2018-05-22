@@ -48,6 +48,18 @@
                     <mat-icon>swap_horiz</mat-icon>
                     {{'button.ChangeCategory'|translate}}
                 </button>
+                <button mat-button [matMenuTriggerFor]="advanceMenu">
+                    <mat-icon>settings</mat-icon>
+                    {{'button.Advance'|translate}}
+                </button>
+
+                <mat-menu #advanceMenu="matMenu">
+                    <button mat-menu-item (click)='bulkCategoryUpload()'>
+                        <mat-icon>swap_vert</mat-icon>
+                        <span>{{'button.BulkCategory'|translate}}</span>
+                    </button>
+                </mat-menu>
+
             </div>
         </div>
     </div>

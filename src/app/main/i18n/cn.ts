@@ -112,7 +112,9 @@ export const locale = {
             "ChangeICon": "更换图标",
             "BulkManage": "批量管理",
             "ChangeCategory": "改变分类",
-            "ClearSelect": "清除选择"
+            "ClearSelect": "清除选择",
+            "Advance": "高级",
+            "BulkCategory": "批量分类"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
