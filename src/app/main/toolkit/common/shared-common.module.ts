@@ -44,6 +44,7 @@ import { SimpleConfirmDialogTplsComponent } from './factory/dialog-template/simp
 import { SimpleMessageContentComponent } from './factory/dialog-template/simple-message-content/simple-message-content.component';
 import { DialogFactoryService } from './factory/dialog-factory.service';
 import { SimpleCsvUploadComponent } from './factory/dialog-template/simple-csv-upload/simple-csv-upload.component';
+import { WorkingTimeComponent } from './components/working-time/working-time.component';
 
 @NgModule({
   imports: [
@@ -85,7 +86,8 @@ import { SimpleCsvUploadComponent } from './factory/dialog-template/simple-csv-u
     SizeCtDirective,
     SimpleConfirmDialogTplsComponent,
     SimpleMessageContentComponent,
-    SimpleCsvUploadComponent
+    SimpleCsvUploadComponent,
+    WorkingTimeComponent
   ],
   providers: [
     DialogService,

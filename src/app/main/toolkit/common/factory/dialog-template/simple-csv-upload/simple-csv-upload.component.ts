@@ -6,7 +6,8 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from '../../../services/snackbar.service';
 import { ConfigService } from '../../../../config/config.service';
-
+import { WindowService } from '../../../object/window.service';
+import { saveAs } from 'file-saver/FileSaver';
 @Component({
   selector: 'app-simple-csv-upload',
   templateUrl: './simple-csv-upload.component.html',
@@ -19,7 +20,7 @@ export class SimpleCsvUploadComponent implements OnInit, OnDestroy, ISimpleConfi
   satisfyConfirm: Subject<boolean> = new Subject();
   destroy$: Subject<boolean> = new Subject();
   @ViewChild('fileInputCt') fileInputCt: ElementRef;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, private config: ConfigService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, private config: ConfigService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private windowSrv: WindowService) {
     this.afterConfirm.takeUntil(this.destroy$).subscribe(() => {
       this.uploadFile();
     });
@@ -27,8 +28,6 @@ export class SimpleCsvUploadComponent implements OnInit, OnDestroy, ISimpleConfi
 
   ngOnInit() {
     this.uploadUrl = this.data.uploadUrl;
-
-
   }//ngOnInit
 
   ngOnDestroy(): void {
@@ -63,15 +62,24 @@ export class SimpleCsvUploadComponent implements OnInit, OnDestroy, ISimpleConfi
           //   this.afterUpload$.next(resFile as FileAsset);
           //   resolve(resFile);
           // }, err => reject(err));
-          this.http.request('POST', fileUrl, { headers: header, body: formData, responseType: 'text' }).first().subscribe(() => {
-            console.log('上传成功');
+          this.http.request('PUT', fileUrl, { headers: header, body: formData, responseType: 'blob' }).first().subscribe((fs) => {
+            if (fs.size > 0) {
+              //导入失败
+              saveAs(fs, 'result.csv');
+              // reject({ k: 'message.OperationError', v: { value: '导入数据不规范' } });
+            }
+            else {
+              resolve({ k: 'message.SaveSuccessfully' });
+            }
           }, err => {
-            console.log('失败:', err);
+            reject({ k: 'message.OperationError', v: { value: err } });
           });
         });//Promise
       };//uploadAsync
 
-      uploadAsync();
+      uploadAsync().catch(()=>{
+
+      });
 
       // let changeIConAsync = (resFile: FileAsset) => {
       //   return new Promise((resolve, reject) => {
