@@ -157,7 +157,8 @@ export const locale = {
             "EditProductSpecCategory": "Edit Product Spec Category",
             "CurrentSelectd": "Current Selected",
             "ChangeICon": "Change ICon",
-            "SelectAll": "All"
+            "SelectAll": "All",
+            "UploadCategoryByCSV":"Upload Category By CSV File"
         }
     }
 };

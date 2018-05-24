@@ -31,7 +31,7 @@ export class SelectPanelComponent implements OnInit {
       //TODO:分类树里面双语言无效
       let transRootProductNameAsync = () => {
         return new Promise((resolve) => {
-          this.tranSrv.get('glossary.ProductCategory').subscribe(msg => {
+          this.tranSrv.get('glossary.MaterialCategory').subscribe(msg => {
             rootProductName = msg;
             resolve();
           });

@@ -155,7 +155,8 @@ export const locale = {
             "EditProductSpecCategory": "编辑规格分类",
             "CurrentSelectd": "当前选择",
             "ChangeICon": "更换图标",
-            "SelectAll": "全选"
+            "SelectAll": "全选",
+            "UploadCategoryByCSV":"根据CSV批量修改分类信息"
         }
     }
 };
