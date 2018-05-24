@@ -14,6 +14,8 @@ const AVATAR = 'User_Avatar';
 const NICKNAME = 'NICK_NAME';
 const ORGANID = 'Organ_Id';
 const DEPARTMENTID = 'Department_Id';
+const LASTLOGIN_ACCOUNT = 'LastLogin_Account';
+const LASTLOGIN_ACCOUNT_PWD = 'LastLogin_Account_Password';
 
 /**
  * 该服务为应用提供缓存数据
@@ -115,10 +117,10 @@ export class DessertService {
     //rememberLogin
     get rememberLogin() {
         let tmp = this.lcStoreSrv.getItem(REMEMBER_LOGIN);
-        return tmp ? true : false;
+        return tmp === '1' ? true : false;
     }
     set rememberLogin(vl: boolean) {
-        this.lcStoreSrv.setItem(REMEMBER_LOGIN, vl ? 'true' : '')
+        this.lcStoreSrv.setItem(REMEMBER_LOGIN, (vl ? '1' : '0'));
     };
     //language
     get language() {
@@ -156,6 +158,21 @@ export class DessertService {
         return false;
     }
 
+    //LastLoginAccount
+    set LastLoginAccount(vl: string) {
+        this.lcStoreSrv.setItem(LASTLOGIN_ACCOUNT, vl);
+    }
+    get LastLoginAccount() {
+        return this.lcStoreSrv.getItem(LASTLOGIN_ACCOUNT);
+    }
+    //LastLoginAccountPwd
+    set LastLoginAccountPwd(vl: string) {
+        this.lcStoreSrv.setItem(LASTLOGIN_ACCOUNT_PWD, vl);
+    }
+    get LastLoginAccountPwd() {
+        return this.lcStoreSrv.getItem(LASTLOGIN_ACCOUNT_PWD);
+    }//
+
     constructor(private translate: TranslateService, private configSrv: ConfigService, private lcStoreSrv: LocalStoreService) {
 
     }
@@ -166,7 +183,7 @@ export class DessertService {
     }
 
     clear() {
-        this.rememberLogin = false;
+        // this.rememberLogin = false;
         this.navi = '';
         this.token = '';
     }

@@ -19,7 +19,7 @@ export class Login2Component implements OnInit {
     loginForm: FormGroup;
     loginFormErrors: any;
     loginResult: string;
-    rememberLogin: boolean;
+    rememberLogin: boolean = true;
 
     constructor(
         private fuseConfig: FuseConfigService,
@@ -43,20 +43,19 @@ export class Login2Component implements OnInit {
             account: {},
             password: {}
         };
-        this.rememberLogin = dessertSrv.rememberLogin;
     }
 
     ngOnInit() {
+        this.rememberLogin = this.dessertSrv.rememberLogin;
         this.loginForm = this.formBuilder.group({
-            account: ['', [Validators.required]],
-            password: ['', Validators.required],
-            rememberLogin: [this.rememberLogin]
+            account: [this.dessertSrv.LastLoginAccount, [Validators.required]],
+            password: [this.dessertSrv.LastLoginAccountPwd, Validators.required]
         });
 
         this.loginForm.valueChanges.subscribe(() => {
             this.onLoginFormValuesChanged();
         });
-    }
+    }//ngOnInit
 
     onLoginFormValuesChanged() {
         for (const field in this.loginFormErrors) {
@@ -74,16 +73,22 @@ export class Login2Component implements OnInit {
                 this.loginFormErrors[field] = control.errors;
             }
         }
-        // this.config.rememberLogin = this.rememberLogin;
-        this.dessertSrv.rememberLogin = this.rememberLogin;
     }
 
     login() {
 
         let loginAsync = () => {
             return new Promise((resolve, reject) => {
-                this.auth.login(this.loginForm.value.account, this.loginForm.value.password).subscribe(rdata => {
+                let acc = this.loginForm.value.account;
+                let pwd = this.loginForm.value.password;
+                this.auth.login(acc, pwd).subscribe(rdata => {
                     this.dessertSrv.token = rdata['token'];
+                    if (this.rememberLogin)
+                        this.dessertSrv.LastLoginAccountPwd = pwd;
+                    else
+                        this.dessertSrv.LastLoginAccountPwd = '';
+                    this.dessertSrv.LastLoginAccount = acc;
+                    this.dessertSrv.rememberLogin = this.rememberLogin;
                     resolve();
                 }, err => {
                     reject({ k: err });
@@ -128,7 +133,6 @@ export class Login2Component implements OnInit {
             });
         };//tranAsync
 
-
         loginAsync().then(getProfileAsync).then(getNaviDataAsync).then(tranAsync).then(() => {
             if (sessionStorage.getItem('redirectUrl'))
                 this.router.navigateByUrl(sessionStorage.getItem('redirectUrl'));
@@ -140,17 +144,5 @@ export class Login2Component implements OnInit {
                 this.loginResult = '';
             }, 2000);
         });
-
-        // loginAsync().then(getProfileAsync).then(getNaviDataAsync).then(() => {
-        //     if (sessionStorage.getItem('redirectUrl'))
-        //         this.router.navigateByUrl(sessionStorage.getItem('redirectUrl'));
-        //     else
-        //         this.router.navigateByUrl("");
-        // }).catch(err => {
-        //     this.loginResult = '账户或密码有误';
-        //     setTimeout(() => {
-        //         this.loginResult = '';
-        //     }, 2000);
-        // });
     }//login
 }
