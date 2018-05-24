@@ -11,6 +11,12 @@ import { AssetCategory } from '../../../../toolkit/models/assetcategory';
 })
 export class CategoryChangeSuitComponent implements OnInit, OnDestroy, ISimpleConfirm {
 
+  doneAsync: Subject<boolean>= new Subject();
+  persistDialog: Subject<boolean> = new Subject();
+  disableButtons: Subject<boolean> = new Subject();
+  disableConfirmButton: Subject<boolean> = new Subject();
+  disableCancelButton: Subject<boolean> = new Subject();
+  closeDialog: Subject<void> = new Subject();
   afterConfirm: Subject<void> = new Subject();
   afterCancel: Subject<void> = new Subject();
   satisfyConfirm: Subject<boolean> = new Subject();

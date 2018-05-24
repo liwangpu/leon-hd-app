@@ -84,12 +84,6 @@ export class ProductListComponent implements OnInit {
   }//answerUnSelectMode
 
   onItemCheckchange(selected: boolean) {
-    //TODO:foreach性能问题
-    // for (let idx = this.iconItems.length; idx >= 0; idx--) {
-    //   let curItem = this.iconItems[idx];
-    //   console.log('select', curItem);
-    // }
-
     let anyItemSelected = false;
     this.iconItems.forEach(item => {
       if (item.Selected) {
@@ -103,13 +97,14 @@ export class ProductListComponent implements OnInit {
 
 
   chagneCategories() {
-    
+
     let ids = this.getSelectItemIds();
     let dialog = this.dialogFac.tplsConfirm('选择分类', ChangeCategoryComponent, { width: '450px', height: '550px', data: { ids: ids } });
 
     dialog.afterOpen().first().subscribe(() => {
       (dialog.componentInstance.componentIns as ChangeCategoryComponent).afterChangeCategory.subscribe(() => {
         this.onCategorySelect();
+        this.mdSrv.anyItemSelected.next(false);
       });
     });
   }//onGetSelectItems

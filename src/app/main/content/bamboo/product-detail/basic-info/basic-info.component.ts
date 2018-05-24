@@ -88,12 +88,13 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
   onEditCategory() {
     let dialog = this.dialogFac.tplsConfirm('选择分类', CategoryChangeSuitComponent, { width: '450px', height: '550px', data: {} });
 
+
     dialog.afterOpen().first().subscribe(() => {
       let ins = (dialog.componentInstance.componentIns as CategoryChangeSuitComponent);
       ins.refreshData.subscribe(cate => {
         this.productForm.patchValue({ categoryId: cate.id, categoryName: cate.name });
       });
-    });
+    });//subscribe
 
   }//onEditCategory
 

@@ -82,12 +82,6 @@ export class MaterialListComponent implements OnInit {
   }//answerUnSelectMode
 
   onItemCheckchange(selected: boolean) {
-    //TODO:foreach性能问题
-    // for (let idx = this.iconItems.length; idx >= 0; idx--) {
-    //   let curItem = this.iconItems[idx];
-    //   console.log('select', curItem);
-    // }
-
     let anyItemSelected = false;
     this.iconItems.forEach(item => {
       if (item.Selected) {
@@ -108,6 +102,7 @@ export class MaterialListComponent implements OnInit {
     dialog.afterOpen().first().subscribe(() => {
       (dialog.componentInstance.componentIns as ChangeCategorySuitComponent).afterChangeCategory.subscribe(() => {
         this.onCategorySelect();
+        this.mdSrv.anyItemSelected.next(false);
       });
     });
   }//onGetSelectItems

@@ -5,7 +5,7 @@
       {{title}}
     </div>
     <div>
-      <button mat-button class="mat-icon-button" (click)='closeDialog()'>
+      <button mat-button class="mat-icon-button" (click)='closeDialog()' [disabled]='disableCloseButton'>
         <mat-icon>close</mat-icon>
       </button>
     </div>
@@ -19,13 +19,13 @@
   </div>
   <div class="dialog-footer" fxFlex="60px" fxLayout='row' fxLayoutAlign='end center'>
     <div>
-      <button mat-button (click)='onCancel()'>
+      <button class="dialog-btn" mat-button (click)='onCancel()' [disabled]='disableCancelButton'>
         <mat-icon class="cus-cancel-button">clear</mat-icon>
         {{'button.Cancel'|translate}}
       </button>
     </div>
     <div>
-      <button mat-button [disabled]='!satisfyConfirm' (click)='onConfirm()'>
+      <button class="dialog-btn" mat-button [disabled]='!satisfyConfirm||disableConfirmButton' (click)='onConfirm()'>
         <mat-icon class="cus-confirm-button">done</mat-icon>
         {{'button.Confirm'|translate}}
       </button>

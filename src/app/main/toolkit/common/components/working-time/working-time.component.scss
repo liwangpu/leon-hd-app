@@ -1,7 +1,16 @@
 :host {
+    p {
+        padding: 0;
+        margin: 0;
+    }
     div.time-container {
         display: inline-block;
-        font-size: 1em;
+        font-size: 1.2em;
+        div.time-title {
+            display: flex;
+            flex-direction: row;
+            align-content: flex-end;
+        }
         span.time-show-part {}
         span.time-divid-part {}
     }

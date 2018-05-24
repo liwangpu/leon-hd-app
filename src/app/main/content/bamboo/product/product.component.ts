@@ -57,11 +57,12 @@ export class ProductComponent implements OnInit, OnDestroy {
 
 
   bulkCategoryUpload() {
-    let dialog = this.dialogFac.simpleCsvUpload('上传文件', { width: '450px', height: '550px', uploadUrl: 'products/ImportProductAndCategory' });
-    // dialog.afterOpen().first().subscribe(() => {
-    //   (dialog.componentInstance.componentIns as SimpleCsvUploadComponent).afterChangeCategory.subscribe(() => {
-    //     this.onCategorySelect();
-    //   });
-    // });
+    let dialog = this.dialogFac.simpleCsvUpload('上传文件', { width: '450px', height: '550px', uploadUrl: 'products/ImportProductAndCategory',templateCsvUrl:'products/ProductAndCategoryImportTemplate' });
+    dialog.afterOpen().first().subscribe(() => {
+      (dialog.componentInstance.componentIns as SimpleCsvUploadComponent).doneAsync.subscribe((state) => {
+        if (state)
+          this.mdSrv.onSearch.next(this.filter.nativeElement.value);
+      });
+    });
   }//bulkCategoryUpload
 }

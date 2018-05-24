@@ -1,5 +1,6 @@
 // Import Fuse main library
 @import "app/core/scss/core";
+@import "assets/styles/animate.css";
 .mat-tab-body-wrapper {
     height: 100% !important;
 }
@@ -34,7 +35,7 @@
 
 .fxLayout-container {
     width: 100%;
-    height: 100%; 
+    height: 100%;
 }
 
 .cus-cancel-button {

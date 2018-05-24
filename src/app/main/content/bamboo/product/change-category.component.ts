@@ -15,6 +15,12 @@ import { SnackbarService } from '../../../toolkit/common/services/snackbar.servi
 export class ChangeCategoryComponent implements OnInit, OnDestroy, ISimpleConfirm {
 
   selectedCategory: string;
+  doneAsync: Subject<boolean> = new Subject();
+  persistDialog: Subject<boolean> = new Subject();
+  disableButtons: Subject<boolean> = new Subject();
+  disableConfirmButton: Subject<boolean> = new Subject();
+  disableCancelButton: Subject<boolean> = new Subject();
+  closeDialog: Subject<void> = new Subject();
   afterConfirm: Subject<void> = new Subject();
   afterCancel: Subject<void> = new Subject();
   satisfyConfirm: Subject<boolean> = new Subject();
@@ -43,12 +49,13 @@ export class ChangeCategoryComponent implements OnInit, OnDestroy, ISimpleConfir
 
   changeCategory() {
 
+    let bCloseDialog = false;
     let changeAsync = () => {
       return new Promise((resolve, reject) => {
         this.productSrv.bulkChangeCategory(this.data.ids, this.selectedCategory).first().subscribe(() => {
+          bCloseDialog = true;
           resolve({ k: 'message.SaveSuccessfully' });
         }, err => {
-          console.log('err', err);
           resolve({ k: 'message.OperationError', v: { value: err } });
         });
       });
@@ -65,6 +72,9 @@ export class ChangeCategoryComponent implements OnInit, OnDestroy, ISimpleConfir
     changeAsync().then(transAsync).then(msg => {
       this.snackBarSrv.simpleBar(msg as string);
       this.afterChangeCategory.next();
+      this.doneAsync.next();
+      if (bCloseDialog)
+        this.closeDialog.next();
     });
 
   }//changeCategory

@@ -63,7 +63,10 @@ export class DialogFactoryService {
     if (!option.height) {
       option.minHeight = '120px';
     }
-    return this.dialog.open(SimpleMessageContentComponent, option);
+    if (!option) {
+      option = {};
+    }
+    return this.dialog.open(SimpleMessageContentComponent, { ...option, disableClose: true });
   }//simpleConfirm
 
   /**
@@ -74,7 +77,7 @@ export class DialogFactoryService {
    */
   tplsConfirm<T=any>(title: string, componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, option?: simpleConfirmOption) {
     let data = option && option.data ? { tpls: componentOrTemplateRef, title: title, ...option.data } : { tpls: componentOrTemplateRef, title: title };
-    return this.open(SimpleConfirmDialogTplsComponent, { width: option && option.width ? option.width : '0', height: option && option.height ? option.height : '0', data: data });
+    return this.open(SimpleConfirmDialogTplsComponent, { disableClose: true, width: option && option.width ? option.width : '0', height: option && option.height ? option.height : '0', data: data });
   }//tplsConfirm
 
   /**
@@ -83,7 +86,7 @@ export class DialogFactoryService {
    * @param option 
    */
   simpleCsvUpload(title: string, option: SimpleCsvUploadOption) {
-    option.data = { uploadUrl: option.uploadUrl };
+    option.data = { uploadUrl: option.uploadUrl, templateCsvUrl: option.templateCsvUrl };
     return this.tplsConfirm(title, SimpleCsvUploadComponent, option);
   }//simpleCsvUpload
 
@@ -103,4 +106,5 @@ interface simpleConfirmOption {
 
 interface SimpleCsvUploadOption extends simpleConfirmOption {
   uploadUrl: string;
+  templateCsvUrl: string;
 }
