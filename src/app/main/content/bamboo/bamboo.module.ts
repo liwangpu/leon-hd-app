@@ -85,6 +85,10 @@ import { SelectPanelComponent as MaterialSelectPanelComponent } from './material
 import { MaterialListComponent } from './material/material-list/material-list.component';
 import { ChangeCategorySuitComponent as MaterialChangeCategorySuitComponent } from './material/change-category-suit.component';
 import { CategoryChangeSuitComponent as MaterialCategoryChangeSuitComponent } from './material-detail/basic-info/category-change-suit.component';
+import { PaginatorCommonTplsComponent } from './common/paginator-common-tpls/paginator-common-tpls.component';
+import { PagingContentComponent } from './common/paginator-common-tpls/paging-content/paging-content.component';
+import { PagingBarComponent } from './common/paginator-common-tpls/paging-bar/paging-bar.component';
+import { PageManageButtonComponent } from './common/paginator-common-tpls/page-manage-button/page-manage-button.component';
 
 
 
@@ -121,7 +125,7 @@ import { CategoryChangeSuitComponent as MaterialCategoryChangeSuitComponent } fr
     MatAutocompleteModule
   ],
 
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderBasicInfoComponent, OrderDetailContentComponent, PackageComponent, PackageDetailComponent, PackageBasicInfoComponent, PacakgeDetailContentComponent, StaticmeshComponent, StaticmeshDetailComponent, StaticMeshBasicInfoComponent, MaterialComponent, MaterialDetailComponent, MaterialBasicInfoComponent, MapComponent, MapDetailComponent, MapBasicInfoComponent, ProductViewCategoryListComponent, ProductListViewComponent, ProductCategorySelectPanelComponent, ProductCategoryChangeCategoryComponent, ProductDetailCateChangeSuitComponent, MaterialCategoryComponent, MaterialCategoryListComponent, MaterialSelectPanelComponent, MaterialListComponent, MaterialChangeCategorySuitComponent, MaterialCategoryChangeSuitComponent,],
+  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, SolutionDetailComponent, SolutionBasicInfoComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderBasicInfoComponent, OrderDetailContentComponent, PackageComponent, PackageDetailComponent, PackageBasicInfoComponent, PacakgeDetailContentComponent, StaticmeshComponent, StaticmeshDetailComponent, StaticMeshBasicInfoComponent, MaterialComponent, MaterialDetailComponent, MaterialBasicInfoComponent, MapComponent, MapDetailComponent, MapBasicInfoComponent, ProductViewCategoryListComponent, ProductListViewComponent, ProductCategorySelectPanelComponent, ProductCategoryChangeCategoryComponent, ProductDetailCateChangeSuitComponent, MaterialCategoryComponent, MaterialCategoryListComponent, MaterialSelectPanelComponent, MaterialListComponent, MaterialChangeCategorySuitComponent, MaterialCategoryChangeSuitComponent, PaginatorCommonTplsComponent, PagingContentComponent, PagingBarComponent, PageManageButtonComponent,],
 
   entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductSpecCategoryPanelComponent, ProductCategorySelectPanelComponent
     , ProductCategoryChangeCategoryComponent, ProductDetailCateChangeSuitComponent, MaterialChangeCategorySuitComponent
@@ -132,7 +136,7 @@ import { CategoryChangeSuitComponent as MaterialCategoryChangeSuitComponent } fr
   ]
 
   , exports: [
-    ProductComponent
+    PaginatorCommonTplsComponent
   ]
 })
 export class BambooModule { }

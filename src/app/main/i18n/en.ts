@@ -91,6 +91,7 @@ export const locale = {
         "button": {
             "Save": "Save",
             "Add": "Add",
+            "NEW": "NEW",
             "Delete": "Delete",
             "Upload": "Upload",
             "Close": "Close",
@@ -116,7 +117,8 @@ export const locale = {
             "ChangeCategory": "Change Category",
             "ClearSelect": "Clear Select",
             "Advance": "Advance",
-            "BulkCategory": "Bulk Category"
+            "BulkCategory": "Bulk Category",
+            "AllSelect": "All"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",

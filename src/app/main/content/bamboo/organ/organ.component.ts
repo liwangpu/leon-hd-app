@@ -15,44 +15,17 @@ import { AccountTypeEnums } from "../../../toolkit/enums/enums";
 @Component({
   selector: 'app-organ',
   templateUrl: './organ.component.html',
-  styleUrls: ['./organ.component.scss'],
-  animations: fuseAnimations
+  styleUrls: ['./organ.component.scss']
 })
 export class OrganComponent implements OnInit {
-  displayedColumns = ['icon', 'name', 'description', 'createdTime', 'buttons'];
-  dataSource: PaginatorStore<Organization>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('filter') filter: ElementRef;
-  @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
-  dialogRef: any;
+
+  readDataOnly = true;
   constructor(private organSrv: OrganService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.dataSource = new PaginatorStore<Organization>({ service: this.organSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort });
+
   }//ngOnInit
 
-  /**
-   * 编辑组织管理员
-   * @param organId 
-   */
-  onEditAdmin(organId: string) {
-    this.organSrv.getOwner(organId).subscribe(resAccount => {
-
-      let owner = resAccount ? resAccount : new Account();
-      if (!owner.id)
-        owner.name = '组织管理员';
-      owner.organizationId = organId;
-      owner.type = AccountTypeEnums.organAdmin;
-
-      this.dialogRef = this.dialog.open(AccountDetailComponent, {
-        panelClass: 'contact-form-dialog',
-        data: {
-          account: owner
-        }
-      });
-    });
-  }//onEditAdmin
 
 }

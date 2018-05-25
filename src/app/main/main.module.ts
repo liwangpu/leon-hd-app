@@ -15,6 +15,7 @@ import { FuseQuickPanelComponent } from './quick-panel/quick-panel.component';
 import { FuseThemeOptionsComponent } from '../core/components/theme-options/theme-options.component';
 import { FuseShortcutsModule } from '../core/components/shortcuts/shortcuts.module';
 import { FuseSearchBarModule } from '../core/components/search-bar/search-bar.module';
+import { GlobalCommonService } from './service/global-common.service';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,9 @@ import { FuseSearchBarModule } from '../core/components/search-bar/search-bar.mo
         FuseNavbarVerticalToggleDirective,
         FuseThemeOptionsComponent,
         FuseQuickPanelComponent
+    ],
+    providers: [
+        GlobalCommonService
     ],
     imports: [
         SharedModule,

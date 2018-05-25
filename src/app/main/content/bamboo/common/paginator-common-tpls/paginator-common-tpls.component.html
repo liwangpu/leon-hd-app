@@ -1,0 +1,36 @@
+<div class="page-layout simple fullwidth page-container" fusePerfectScrollbar>
+
+  <!-- HEADER -->
+  <div class="header mat-accent-bg" fxLayout="column" fxLayoutAlign="start center">
+    <div class="fxLayout-container header-container" fxLayout='row'>
+      <div>
+        <!--ICON AND TITLE-->
+        <div class="page-icon-container">
+          <mat-icon class="page-icon">{{iconName?iconName:'shopping_basket'}}</mat-icon>
+          <span class="page-icon-title">{{pageTitle|translate}}</span>
+        </div>
+        <!-- / ICON AND TITLE-->
+      </div>
+      <div fxFlex></div>
+      <div>
+        <app-paginator-page-manage-button></app-paginator-page-manage-button>
+      </div>
+    </div>
+    <div fxFlex='65px'></div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content mat-white-bg">
+    <div class="content-container" fxLayout='column'>
+      <div class="paging-content-container" fxFlex>
+        <app-paginator-paging-content></app-paginator-paging-content>
+      </div>
+      <div fxFlex='65.5px'>
+        <app-paginator-paging-bar></app-paginator-paging-bar>
+      </div>
+    </div>
+  </div>
+  <!-- / CONTENT -->
+
+</div>

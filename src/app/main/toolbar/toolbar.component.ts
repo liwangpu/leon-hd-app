@@ -1,24 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { FuseConfigService } from '../../core/services/config.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from "../toolkit/server/webapi/auth.service";
 import { FuseNavigationService } from "../../core/components/navigation/navigation.service";
 import { DessertService } from "../content/services/dessert.service";
+import { GlobalCommonService } from '../service/global-common.service';
+import { Subject } from 'rxjs';
 @Component({
     selector: 'fuse-toolbar',
     templateUrl: './toolbar.component.html',
     styleUrls: ['./toolbar.component.scss']
 })
 
-export class FuseToolbarComponent {
+export class FuseToolbarComponent implements OnInit, OnDestroy {
+
     userStatusOptions: any[];
     languages: any;
     selectedLanguage: any;
     showLoadingBar: boolean;
     horizontalNav: boolean;
     nickName: string;
-    constructor(private router: Router, private fuseConfig: FuseConfigService, private translate: TranslateService, private auth: AuthService, private navi: FuseNavigationService, private dessertSrv: DessertService) {
+    destroy$: Subject<boolean> = new Subject();
+    constructor(private router: Router, private fuseConfig: FuseConfigService, private translate: TranslateService, private auth: AuthService, private navi: FuseNavigationService, private dessertSrv: DessertService, private globalSrv: GlobalCommonService) {
         this.nickName = this.dessertSrv.nickName ? this.dessertSrv.nickName : '用户';
 
         this.userStatusOptions = [
@@ -78,11 +82,19 @@ export class FuseToolbarComponent {
             this.horizontalNav = settings.layout.navigation === 'top';
         });
 
-    }
+    }//constructor
 
-    search(value) {
-        // Do your search here...
-        console.log(value);
+    ngOnDestroy(): void {
+        this.destroy$.next(true);
+        this.destroy$.unsubscribe();
+    }//ngOnDestroy
+
+    ngOnInit(): void {
+
+    }//ngOnInit
+
+    search(value: string) {
+        this.globalSrv.keyworkSearch$.next(value);
     }
 
     setLanguage(lang) {

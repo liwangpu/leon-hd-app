@@ -1,0 +1,23 @@
+<div class="fxLayout-container page-button-container" fxLayout='column'>
+
+  <div fxFlex fxLayout='row' fxLayoutAlign='end center'>
+    <button mat-raised-button [routerLink]="createUrl" class="newitem-button mat-white-bg mt-12">
+      <span>{{'button.NEW'|translate}}</span>
+    </button>
+  </div>
+
+  <div fxLayout='row' fxLayoutAlign='end end'>
+    <div>
+      <button mat-button class="cus-manage-button" (click)='modeChange()'>
+        <mat-icon> {{viewMode?'check_box':'indeterminate_check_box'}} </mat-icon>
+        <span>{{'button.Select'|translate}}</span>
+      </button>
+    </div>
+    <div>
+      <button mat-button class="cus-manage-button">
+        <mat-icon>settings</mat-icon>
+        <span>{{'button.Advance'|translate}}</span>
+      </button>
+    </div>
+  </div>
+</div>

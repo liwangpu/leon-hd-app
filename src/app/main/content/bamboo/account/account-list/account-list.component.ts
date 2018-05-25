@@ -25,7 +25,7 @@ import { Subject } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
   animations: fuseAnimations
 })
-export class AccountListComponent implements OnInit, OnChanges, OnDestroy {
+export class AccountListComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('departmentIdFilter') departmentIdFilter: ElementRef;
@@ -39,9 +39,9 @@ export class AccountListComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.dataSource = new PaginatorStore({ service: this.accountSrv, sort: this.sort });
 
-    this.accountMdSrv.afterDepartmentChange.takeUntil(this.destroy$).subscribe(depId => {
-      // this.dataSource.filter = depId;
-    });
+    // this.accountMdSrv.afterDepartmentChange.takeUntil(this.destroy$).subscribe(depId => {
+    //   // this.dataSource.filter = depId;
+    // });
   }//ngOnInit
 
   ngOnDestroy(): void {
@@ -49,12 +49,6 @@ export class AccountListComponent implements OnInit, OnChanges, OnDestroy {
     this.destroy$.unsubscribe();
 
   }//ngOnDestroy
-
-  ngOnChanges(changes: SimpleChanges): void {
-    // if (changes['departmentId']) {
-    //   console.log(111, 'depId', changes['departmentId']);
-    // }
-  }
 
   refresh() {
     this.dataSource.refresh();

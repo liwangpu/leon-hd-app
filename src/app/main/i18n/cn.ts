@@ -89,6 +89,7 @@ export const locale = {
         "button": {
             "Save": "保存",
             "Add": "添加",
+            "NEW": "添加",
             "Delete": "删除",
             "Upload": "上传附件",
             "Close": "关闭",
@@ -114,7 +115,8 @@ export const locale = {
             "ChangeCategory": "改变分类",
             "ClearSelect": "清除选择",
             "Advance": "高级",
-            "BulkCategory": "批量分类"
+            "BulkCategory": "批量分类",
+            "AllSelect": "全选"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
