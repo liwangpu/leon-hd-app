@@ -20,7 +20,7 @@ import { AccountTypeEnums } from "../../../toolkit/enums/enums";
 export class OrganComponent implements OnInit {
 
   readDataOnly = true;
-  constructor(private organSrv: OrganService, public dialog: MatDialog) {
+  constructor(public organSrv: OrganService, public dialog: MatDialog) {
   }
 
   ngOnInit() {

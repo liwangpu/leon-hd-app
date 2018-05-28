@@ -1,8 +1,11 @@
-import { Component, OnInit, OnDestroy, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, OnChanges, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
 import { GlobalCommonService } from '../../../../service/global-common.service';
 import { Subject } from 'rxjs';
 import { fuseAnimations } from '../../../../../core/animations';
 import { PaginatorCommonMdService } from './paginator-common-md.service';
+import { Observable } from 'rxjs/Observable';
+import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
+import { Ilistable } from '../../../../toolkit/models/ilistable';
 
 @Component({
   selector: 'app-paginator-common-tpls',
@@ -20,19 +23,28 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChange
   @Input() createUrl: string;//新建项请求路由
   @Input() readDataOnly: boolean;//列表页面模式 true为查看模式,没有新增/编辑等管理按钮
   @Input() dataDisplayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;//列表数据显示模式 列表或卡片等等
+  @Input() apiSvr: IListableService<Ilistable>;
+  @ViewChild('searchFilter') searchFilter: ElementRef;//搜索输入框
   destroy$: Subject<boolean> = new Subject();
   constructor(protected globalSrv: GlobalCommonService, protected mdSrv: PaginatorCommonMdService) {
 
-    //订阅全局搜索
-    this.globalSrv.keyworkSearch$.takeUntil(this.destroy$).subscribe(key => {
-      this.onKeywordSearch(key);
-    });//subscribe
+    // //订阅全局搜索
+    // this.globalSrv.keyworkSearch$.takeUntil(this.destroy$).subscribe(key => {
+    //   this.onKeywordSearch(key);
+    // });//subscribe
 
 
   }
 
   ngOnInit() {
-
+    this.mdSrv.apiSvr = this.apiSvr;
+    Observable.fromEvent(this.searchFilter.nativeElement, 'keyup')
+      .takeUntil(this.destroy$)
+      .debounceTime(150)
+      .distinctUntilChanged()
+      .subscribe((vs) => {
+        this.onKeywordSearch(this.searchFilter.nativeElement.value);
+      });//
   }//ngOnInit
 
   ngOnDestroy(): void {
@@ -49,7 +61,8 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChange
   }//ngOnChanges
 
   onKeywordSearch(keyword: string) {
-    console.log('quanj', keyword);
+    this.mdSrv.keyword = keyword;
+    
   }//keywordSearch
 
 }

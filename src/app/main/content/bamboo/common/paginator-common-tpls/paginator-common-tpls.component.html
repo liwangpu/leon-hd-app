@@ -11,7 +11,20 @@
         </div>
         <!-- / ICON AND TITLE-->
       </div>
-      <div fxFlex></div>
+      <!--SEARCH INPUT-->
+      <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+        <div>
+          <label for="search" class="mr-8">
+            <mat-icon class="secondary-text">search</mat-icon>
+          </label>
+        </div>
+        <div fxFlex='480px'>
+          <mat-form-field floatPlaceholder="never" fxFlex="1 0 auto">
+            <input matInput #searchFilter placeholder="{{'button.Search'|translate}}">
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- / SEARCH INPUT-->
       <div>
         <app-paginator-page-manage-button></app-paginator-page-manage-button>
       </div>

@@ -13,13 +13,13 @@ export class AppComponent {
     moc: string;
     constructor(private fuseSplashScreen: FuseSplashScreenService, private translate: TranslateService, private dessertSrv: DessertService) {
         // Add languages
-        this.translate.addLangs(['en', 'tr']);
+        this.translate.addLangs(['en', 'cn']);
 
         // Set the default language
         this.translate.setDefaultLang('en');
 
         // Use a language
-        this.translate.use('en');
+        this.translate.use(environment.language);
 
         this.dessertSrv.restoreCache();
 

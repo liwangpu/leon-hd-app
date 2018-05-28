@@ -11,7 +11,7 @@ export class PagingBarComponent implements OnInit {
 
   viewMode = true;
   destroy$: Subject<boolean> = new Subject();
-  constructor(private mdSrv: PaginatorCommonMdService) {
+  constructor(public mdSrv: PaginatorCommonMdService) {
     //订阅查看|选择模式
     this.mdSrv.selectMode$.takeUntil(this.destroy$).subscribe(selectMode => {
       this.onSelectModelChange(selectMode);

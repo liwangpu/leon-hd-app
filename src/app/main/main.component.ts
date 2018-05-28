@@ -8,13 +8,12 @@ import { locale as english } from './i18n/en';
 import { locale as chinese } from './i18n/cn';
 
 @Component({
-    selector     : 'fuse-main',
-    templateUrl  : './main.component.html',
-    styleUrls    : ['./main.component.scss'],
+    selector: 'fuse-main',
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FuseMainComponent implements OnInit, OnDestroy
-{
+export class FuseMainComponent implements OnInit, OnDestroy {
     onSettingsChanged: Subscription;
     fuseSettings: any;
     @HostBinding('attr.fuse-layout-mode') layoutMode;
@@ -26,8 +25,7 @@ export class FuseMainComponent implements OnInit, OnDestroy
         private platform: Platform,
         private translationLoader: FuseTranslationLoaderService,
         @Inject(DOCUMENT) private document: any
-    )
-    {
+    ) {
         this.onSettingsChanged =
             this.fuseConfig.onSettingsChanged
                 .subscribe(
@@ -37,30 +35,25 @@ export class FuseMainComponent implements OnInit, OnDestroy
                     }
                 );
 
-        if ( this.platform.ANDROID || this.platform.IOS )
-        {
+        if (this.platform.ANDROID || this.platform.IOS) {
             this.document.body.className += ' is-mobile';
         }
 
         this.translationLoader.loadTranslations(english, chinese);
     }
 
-    ngOnInit()
-    {
+    ngOnInit() {
     }
 
-    ngOnDestroy()
-    {
+    ngOnDestroy() {
         this.onSettingsChanged.unsubscribe();
     }
 
-    addClass(className: string)
-    {
+    addClass(className: string) {
         this._renderer.addClass(this._elementRef.nativeElement, className);
     }
 
-    removeClass(className: string)
-    {
+    removeClass(className: string) {
         this._renderer.removeClass(this._elementRef.nativeElement, className);
     }
 }

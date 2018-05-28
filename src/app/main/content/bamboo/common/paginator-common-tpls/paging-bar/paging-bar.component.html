@@ -3,7 +3,7 @@
     <mat-checkbox [style.display]='viewMode?"none":""' class="all-select-button" (change)='allSelect(allCheckCt.checked)' #allCheckCt>{{'button.AllSelect'|translate}}</mat-checkbox>
   </div>
   <div fxFlex>
-    <mat-paginator [length]="1000" [pageSize]="100" [pageSizeOptions]="[5, 10, 25, 100, 500]" [showFirstLastButtons]='true' (page)='pageChange($event)'>
+    <mat-paginator [length]="mdSrv.pageParam.length" [pageSize]="mdSrv.pageParam.pageSize" [pageSizeOptions]="[5, 10, 25, 100, 500]" [showFirstLastButtons]='true' (page)='pageChange($event)'>
     </mat-paginator>
   </div>
 </div>

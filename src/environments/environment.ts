@@ -13,7 +13,7 @@ export const environment = {
     loginStyle: 2,
     isMaintaining: false,
     maintainingEndDate: '',
-    language: 'en',
+    language: 'cn',
     dialogMin: {
         width: '450px',
         height: '600px'

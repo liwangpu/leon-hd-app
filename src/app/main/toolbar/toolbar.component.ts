@@ -55,15 +55,15 @@ export class FuseToolbarComponent implements OnInit, OnDestroy {
 
         this.languages = [
             {
-                'id': 'en',
-                'title': 'English',
-                'flag': 'us'
-            },
-            {
                 'id': 'cn',
                 'title': '简体中文',
                 'flag': 'cn'
-            }
+            },
+            {
+                'id': 'en',
+                'title': 'English',
+                'flag': 'us'
+            }   
         ];
 
         this.selectedLanguage = this.languages[0];
