@@ -1,6 +1,5 @@
 // Import Fuse main library
 @import "app/core/scss/core";
-@import "assets/styles/animate.css";
 .mat-tab-body-wrapper {
     height: 100% !important;
 }
@@ -22,6 +21,13 @@
 .mat-icon-button,
 .mat-stroked-button {
     line-height: 28px !important;
+}
+
+.mat-header-row {
+    top: 0;
+    position: sticky;
+    z-index: 1;
+    background-color: inherit;
 }
 
 .primary-title {

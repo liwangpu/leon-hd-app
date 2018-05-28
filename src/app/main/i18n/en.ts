@@ -26,7 +26,7 @@ export const locale = {
             "Organization": "Organization",
             "OrganAccounts": "Account Management",
             "ProductCategorys": "Product Category",
-            "MaterialCategorys":"Material Category",
+            "MaterialCategorys": "Material Category",
             "ProductSpecCategorys": "Product Spec Category",
             "Order": "Order",
             "Package": "Package",
@@ -35,6 +35,8 @@ export const locale = {
             "Map": "Map"
         },
         "glossary": {
+            "SeqNO": "NO",
+            "Icon": "ICon",
             "Product": "Product",
             "ProductName": "Product Name",
             "ProductSpec": "Specification",
@@ -86,7 +88,7 @@ export const locale = {
             "Material": "Material",
             "Map": "Map",
             "UnCategory": "UnCategory",
-            "MaterialCategory":"Material Category"
+            "MaterialCategory": "Material Category"
         },
         "button": {
             "Save": "Save",
@@ -160,7 +162,7 @@ export const locale = {
             "CurrentSelectd": "Current Selected",
             "ChangeICon": "Change ICon",
             "SelectAll": "All",
-            "UploadCategoryByCSV":"Upload Category By CSV File"
+            "UploadCategoryByCSV": "Upload Category By CSV File"
         }
     }
 };

@@ -27,7 +27,8 @@ export class PageManageButtonComponent implements OnInit {
   }//
 
   modeChange() {
-    this.mdSrv.selectMode$.next(this.viewMode);
+    // this.mdSrv.selectMode$.next(this.viewMode);
+    this.mdSrv.selectMode = this.viewMode;
     this.viewMode = !this.viewMode;
   }//modeChange
 

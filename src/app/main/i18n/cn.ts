@@ -35,6 +35,8 @@ export const locale = {
             "Map": "场景"
         },
         "glossary": {
+            "SeqNO": "序号",
+            "Icon": "图标",
             "Product": "产品",
             "ProductName": "产品名称",
             "ProductSpec": "产品规格",
@@ -158,7 +160,7 @@ export const locale = {
             "CurrentSelectd": "当前选择",
             "ChangeICon": "更换图标",
             "SelectAll": "全选",
-            "UploadCategoryByCSV":"根据CSV批量修改分类信息"
+            "UploadCategoryByCSV": "根据CSV批量修改分类信息"
         }
     }
 };

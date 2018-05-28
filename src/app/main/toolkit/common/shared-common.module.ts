@@ -45,6 +45,7 @@ import { SimpleMessageContentComponent } from './factory/dialog-template/simple-
 import { DialogFactoryService } from './factory/dialog-factory.service';
 import { SimpleCsvUploadComponent } from './factory/dialog-template/simple-csv-upload/simple-csv-upload.component';
 import { WorkingTimeComponent } from './components/working-time/working-time.component';
+import { ServerRedirectPipe } from './pipes/server-redirect.pipe';
 
 @NgModule({
   imports: [
@@ -87,7 +88,8 @@ import { WorkingTimeComponent } from './components/working-time/working-time.com
     SimpleConfirmDialogTplsComponent,
     SimpleMessageContentComponent,
     SimpleCsvUploadComponent,
-    WorkingTimeComponent
+    WorkingTimeComponent,
+    ServerRedirectPipe
   ],
   providers: [
     DialogService,
@@ -107,7 +109,8 @@ import { WorkingTimeComponent } from './components/working-time/working-time.com
     OrderbyPipe,
     ChangeIconComponent,
     IconChangeCtDirective,
-    SizeCtDirective
+    SizeCtDirective,
+    ServerRedirectPipe
   ],
   entryComponents: [
     SimpleDialogComponent,

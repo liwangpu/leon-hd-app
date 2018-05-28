@@ -17,18 +17,20 @@ import { PathService } from '../../services/path.service';
   animations: fuseAnimations
 })
 export class SolutionComponent implements OnInit {
-  displayedColumns = ['icon', 'name', 'description', 'createdTime'];
-  dataSource: PaginatorStore<Solution>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('filter') filter: ElementRef;
-  @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
-  dialogRef: any;
+  // displayedColumns = ['icon', 'name', 'description', 'createdTime'];
+  // dataSource: PaginatorStore<Solution>;
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  // @ViewChild(MatSort) sort: MatSort;
+  // @ViewChild('filter') filter: ElementRef;
+  // @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
+  // dialogRef: any;
+  readDataOnly = false;
+  createdUrl='app/solution-detail';
   constructor(private solutionSrv: SolutionService, public dialog: MatDialog, public pathSrv: PathService) {
   }
 
   ngOnInit() {
-    this.dataSource = new PaginatorStore<Solution>({ service: this.solutionSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort })
+    // this.dataSource = new PaginatorStore<Solution>({ service: this.solutionSrv, paginator: this.paginator, searchInputEle: this.filter, sort: this.sort })
 
   }
 

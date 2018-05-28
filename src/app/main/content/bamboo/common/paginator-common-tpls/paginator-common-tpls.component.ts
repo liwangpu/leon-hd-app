@@ -20,7 +20,7 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChange
 
   @Input() iconName: string;//列表图标名称
   @Input() pageTitle: string = 'Default';//页面标题(会经过translate pipe)
-  @Input() createUrl: string;//新建项请求路由
+  @Input() createdUrl: string;//新建项请求路由
   @Input() readDataOnly: boolean;//列表页面模式 true为查看模式,没有新增/编辑等管理按钮
   @Input() dataDisplayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;//列表数据显示模式 列表或卡片等等
   @Input() apiSvr: IListableService<Ilistable>;
@@ -37,6 +37,7 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChange
   }
 
   ngOnInit() {
+    this.mdSrv.createdUrl = this.createdUrl;
     this.mdSrv.apiSvr = this.apiSvr;
     Observable.fromEvent(this.searchFilter.nativeElement, 'keyup')
       .takeUntil(this.destroy$)
@@ -45,6 +46,7 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChange
       .subscribe((vs) => {
         this.onKeywordSearch(this.searchFilter.nativeElement.value);
       });//
+    this.mdSrv.queryData$.next();
   }//ngOnInit
 
   ngOnDestroy(): void {
@@ -56,13 +58,13 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChange
     let readDataOnlyChange = changes['readDataOnly'];
     if (readDataOnlyChange) {
       if (readDataOnlyChange.previousValue !== readDataOnlyChange.currentValue)
-        this.mdSrv.readDataOnly$.next(readDataOnlyChange.currentValue);
+        this.mdSrv.readDataOnly = readDataOnlyChange.currentValue;
     }//if
   }//ngOnChanges
 
   onKeywordSearch(keyword: string) {
     this.mdSrv.keyword = keyword;
-    
+    // console.log('keyword',keyword);
   }//keywordSearch
 
 }
