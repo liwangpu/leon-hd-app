@@ -31,7 +31,7 @@ export class PagingBarComponent implements OnInit {
   }//pageChange
 
   allSelect(checked: boolean) {
-    this.mdSrv.allSelect$.next(checked);
+    this.mdSrv.allSelect = checked;
   }//allSelect
 
   onSelectModelChange(selectMode: boolean) {

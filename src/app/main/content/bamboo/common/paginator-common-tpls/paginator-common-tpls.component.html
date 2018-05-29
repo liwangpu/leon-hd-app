@@ -1,49 +1,33 @@
-<div class="page-layout simple fullwidth page-container" fxLayout='column' fusePerfectScrollbar>
-
-  <!-- HEADER -->
-  <div class="header-container mat-accent-bg" fxLayout="row wrap" fxLayoutAlign="start start">
-
-    <div fxFlex='100%' class="header-wrapper" fxLayout='row wrap' fxLayoutAlign='space-between center'>
-      <!--ICON AND TITLE-->
-      <div fxFlexOrder.lt-sm='1'>
-        <div class="page-icon-container">
-          <mat-icon class="page-icon">{{iconName?iconName:'shopping_basket'}}</mat-icon>
-          <span class="page-icon-title">{{pageTitle|translate}}</span>
-        </div>
+<div class="page-container" fxLayout='column'>
+  <div class="header-container white-fg" fxLayout='row wrap' fxLayoutAlign='space-between center'>
+    <div fxFlexOrder.lt-sm='1'>
+      <div class="page-icon-wrap">
+        <mat-icon class="page-icon cus-header-icons">{{iconName?iconName:'shopping_basket'}}</mat-icon>
+        <span class="page-icon-title">{{pageTitle|translate}}</span>
       </div>
-      <!-- / ICON AND TITLE-->
-
-      <!--SEARCH BAR-->
-      <div fxFlex='480px' fxFlex.lt-sm='100%' fxFlexOrder.lt-sm='3' fxLayout="row" fxLayoutAlign="center center">
+    </div>
+    <div fxFlex='450px' fxFlex.lt-sm='100%' fxFlexOrder.lt-sm='3'>
+      <div class="search-bar-wrap" fxLayout="row" fxLayoutAlign="center center">
         <div fxFlex='32px'>
           <label for="search" class="mr-8">
-            <mat-icon class="secondary-text">search</mat-icon>
+            <mat-icon class="secondary-text cus-header-icons">search</mat-icon>
           </label>
         </div>
         <div fxFlex>
           <mat-form-field floatPlaceholder="never" fxFlex="1 0 auto">
-            <input matInput #searchFilter placeholder="{{'button.Search'|translate}}">
+            <input class="search-input" matInput #searchFilter placeholder="{{'button.Search'|translate}}">
           </mat-form-field>
         </div>
       </div>
-      <!-- / SEARCH BAR-->
-
-      <!--MANAGE BUTTONS-->
-      <div fxFlexOrder.lt-sm='2'>
+    </div>
+    <div fxFlexOrder.lt-sm='2'>
+      <div>
         <app-paginator-page-manage-button></app-paginator-page-manage-button>
       </div>
-      <!-- / MANAGE BUTTONS-->
-    </div>
-
-    <div fxFlex='100%' class="header-divider" style="border: 1px solid black;">
-
     </div>
   </div>
-  <!-- / HEADER -->
-
-  <!-- CONTENT -->
-  <div class="content mat-white-bg" style="border: 1px dashed red;">
-    <div class="content-container" fxLayout='column'>
+  <div fxFlex class="content-container">
+    <div class="content-wrapper" fxLayout='column'>
       <div class="paging-content-container" fxFlex>
         <app-paginator-paging-content></app-paginator-paging-content>
       </div>
@@ -52,6 +36,4 @@
       </div>
     </div>
   </div>
-  <!-- / CONTENT -->
-
 </div>

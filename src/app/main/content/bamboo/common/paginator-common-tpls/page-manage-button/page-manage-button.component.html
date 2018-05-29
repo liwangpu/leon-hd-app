@@ -9,15 +9,43 @@
   <div fxLayout='row' fxLayoutAlign='end end'>
     <div>
       <button mat-button class="cus-manage-button" (click)='modeChange()'>
-        <mat-icon> {{viewMode?'check_box':'indeterminate_check_box'}} </mat-icon>
+        <mat-icon class="cus-header-icons"> {{viewMode?'check_box':'indeterminate_check_box'}} </mat-icon>
         <span>{{'button.Select'|translate}}</span>
       </button>
     </div>
     <div>
-      <button mat-button class="cus-manage-button">
-        <mat-icon>settings</mat-icon>
+      <button mat-button class="cus-manage-button" [matMenuTriggerFor]="advanceMenu">
+        <mat-icon class="cus-header-icons">settings</mat-icon>
         <span>{{'button.Advance'|translate}}</span>
       </button>
+
+      <mat-menu #advanceMenu="matMenu">
+        <button mat-menu-item>
+          <mat-icon class="cus-mat-button-icon">delete</mat-icon>
+          <span>{{'button.Delete'|translate}}</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon class="cus-mat-button-icon">cloud_download</mat-icon>
+          <span>{{'button.Export'|translate}}</span>
+        </button>
+      </mat-menu>
+    </div>
+    <div>
+      <button mat-button class="cus-manage-button" [matMenuTriggerFor]="displayMenu">
+        <mat-icon class="cus-header-icons">view_list</mat-icon>
+        <span>{{'button.Display'|translate}}</span>
+      </button>
+
+      <mat-menu #displayMenu="matMenu">
+        <button mat-menu-item (click)='displayModeChange(1)'>
+          <mat-icon class="cus-mat-button-icon">list</mat-icon>
+          <span>{{'button.List'|translate}}</span>
+        </button>
+        <button mat-menu-item (click)='displayModeChange(2)'>
+          <mat-icon class="cus-mat-button-icon">blur_linear</mat-icon>
+          <span>{{'button.Litimg'|translate}}</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
 </div>

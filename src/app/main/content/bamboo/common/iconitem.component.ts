@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
     templateUrl: './iconitem.component.html',
     styleUrls: ['./iconitem.component.scss']
 })
-export class IconItemComponent implements OnInit {
+export class IconItemComponent implements OnInit, OnChanges {
 
     @Input() Id: string;
     @Input() Name: string;
@@ -19,11 +19,18 @@ export class IconItemComponent implements OnInit {
     @Output() OnCheckChange: EventEmitter<boolean> = new EventEmitter();
     constructor(private router: Router) {
 
-    }
+    }//constructor
 
     ngOnInit(): void {
 
     }//ngOnInit
+
+    ngOnChanges(changes: SimpleChanges): void {
+        let selected = changes['Selected'];
+        if (selected) {
+            console.log('selected', selected);
+        }
+    }//ngOnChanges
 
     onClick() {
         if (this.SelectMode) {

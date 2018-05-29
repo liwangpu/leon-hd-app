@@ -23,6 +23,11 @@
     line-height: 28px !important;
 }
 
+.mat-menu-item .mat-icon {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 .mat-header-row {
     top: 0;
     position: sticky;
@@ -51,6 +56,11 @@
     height: 100%;
 }
 
+.cus-header-icons {
+    color: white;
+    fill: white;
+}
+
 .cus-cancel-button {
     color: red;
 }
@@ -72,4 +82,9 @@
 
 div.cus-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cus-mat-button-icon {
+    margin: 0;
+    padding: 0;
 }

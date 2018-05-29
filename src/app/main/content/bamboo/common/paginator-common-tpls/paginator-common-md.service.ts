@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { IPageChangeParam } from './paging-bar/paging-bar.component';
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 import { Ilistable } from '../../../../toolkit/models/ilistable';
+import { ListDisplayModeEnum } from './paginator-common-tpls.component';
 
 @Injectable()
 export class PaginatorCommonMdService implements OnDestroy {
@@ -16,6 +17,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   private _keyword: string;//搜索关键字
   private _pageParam: IPageChangeParam = { pageIndex: 1, pageSize: 500, length: 0 };//当前分页信息
   private _selectedItems: Array<string> = [];//已选择的项id
+  private _displayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;
   cacheData: Array<Ilistable> = [];
   createdUrl: string;
   defaultPageSizeOption = [25, 100, 500];//默认分页按钮参数
@@ -28,6 +30,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   allSelect$: Subject<boolean> = new Subject();//全选|反选
   pageChange$: Subject<IPageChangeParam> = new Subject();//分页页面跳转
   queryData$: Subject<void> = new Subject();//查询数据信息,自动根据当前的关键字等条件查询
+  displayMode$: Subject<ListDisplayModeEnum> = new Subject();//列表项显示模式
   destroy$: Subject<boolean> = new Subject();
   //////////////////////////////////////////////////////////////////////////////////
   /**
@@ -52,6 +55,9 @@ export class PaginatorCommonMdService implements OnDestroy {
     else {
       this.displayColumns.shift();
     }
+
+    if (!vl)
+      this.allSelect = false;
 
   }
   get selectMode() {
@@ -99,7 +105,18 @@ export class PaginatorCommonMdService implements OnDestroy {
   get selectedItems() {
     return this._selectedItems;
   }
-
+  /**
+   * 设置分页项显示模式
+   */
+  set displayMode(vl: ListDisplayModeEnum) {
+    if (vl != this._displayMode) {
+      this._displayMode = vl;
+      this.displayMode$.next(vl);
+    }
+  }
+  get displayMode() {
+    return this._displayMode;
+  }
 
   constructor() {
     //订阅查询数据
@@ -122,6 +139,9 @@ export class PaginatorCommonMdService implements OnDestroy {
     this.apiSvr.query({ pageSize: this.pageParam.pageSize, page: this.pageParam.pageIndex, search: (this._keyword ? this._keyword : '') }).takeUntil(this.destroy$).subscribe(res => {
       this.cacheData = [];
       this._pageParam.length = res.total;
+      //校正index为1
+      if (this._pageParam.pageIndex <= 0)
+        this._pageParam.pageIndex = 1;
       if (res.total <= 0)
         return;
       for (let i = 0, len = res.data.length; i < len; i++) {
@@ -131,7 +151,5 @@ export class PaginatorCommonMdService implements OnDestroy {
       }//for
     });
   }//query
-
-
 
 }

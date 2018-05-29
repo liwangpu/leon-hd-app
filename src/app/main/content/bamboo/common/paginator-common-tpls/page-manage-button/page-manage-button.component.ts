@@ -32,6 +32,8 @@ export class PageManageButtonComponent implements OnInit {
     this.viewMode = !this.viewMode;
   }//modeChange
 
-
+  displayModeChange(num: number) {
+    this.mdSrv.displayMode = num;
+  }//displayModeChange
 
 }

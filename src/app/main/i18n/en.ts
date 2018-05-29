@@ -120,7 +120,11 @@ export const locale = {
             "ClearSelect": "Clear Select",
             "Advance": "Advance",
             "BulkCategory": "Bulk Category",
-            "AllSelect": "All"
+            "AllSelect": "All",
+            "Export": "Export",
+            "Display": "Display",
+            "List": "List",
+            "Litimg": "Litimg",
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",

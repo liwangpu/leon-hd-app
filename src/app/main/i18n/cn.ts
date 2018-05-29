@@ -118,7 +118,11 @@ export const locale = {
             "ClearSelect": "清除选择",
             "Advance": "高级",
             "BulkCategory": "批量分类",
-            "AllSelect": "全选"
+            "AllSelect": "全选",
+            "Export": "导出",
+            "Display": "显示",
+            "List": "列表",
+            "Litimg": "缩略图",
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",

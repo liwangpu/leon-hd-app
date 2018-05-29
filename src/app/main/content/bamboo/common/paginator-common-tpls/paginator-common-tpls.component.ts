@@ -26,7 +26,7 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChange
   @Input() apiSvr: IListableService<Ilistable>;
   @ViewChild('searchFilter') searchFilter: ElementRef;//搜索输入框
   destroy$: Subject<boolean> = new Subject();
-  constructor(protected globalSrv: GlobalCommonService, protected mdSrv: PaginatorCommonMdService) {
+  constructor(public globalSrv: GlobalCommonService, public mdSrv: PaginatorCommonMdService) {
 
     // //订阅全局搜索
     // this.globalSrv.keyworkSearch$.takeUntil(this.destroy$).subscribe(key => {
@@ -71,5 +71,5 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChange
 
 export enum ListDisplayModeEnum {
   List = 1,
-  Card = 2
+  Litimg = 2
 }
