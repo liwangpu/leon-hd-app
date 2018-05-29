@@ -89,6 +89,7 @@ export const locale = {
             "MaterialCategory": "材质分类"
         },
         "button": {
+            "Refresh": "刷新",
             "Save": "保存",
             "Add": "添加",
             "NEW": "添加",
@@ -141,11 +142,12 @@ export const locale = {
             "account is forzen by admin": "账户已经被冻结",
             "account not activate yet": "账户未激活",
             "RequiredError": "必填信息",
-            "MaxLengthError": "长度超限"
+            "MaxLengthError": "长度超限",
+            "BatchDeleteConfirm": "您确认删除这 {{value}} 条记录吗 ?",
         },
         "tips": {
             "DragOrClickHere": "点击或拖拽文件到这里",
-            "Prompt": "提示",
+            "Prompt": "温馨提示",
             "WaitUploadCount": "文件上传失败",
             "Name": "名称",
             "File": "文件",
@@ -164,7 +166,8 @@ export const locale = {
             "CurrentSelectd": "当前选择",
             "ChangeICon": "更换图标",
             "SelectAll": "全选",
-            "UploadCategoryByCSV": "根据CSV批量修改分类信息"
+            "UploadCategoryByCSV": "根据CSV批量修改分类信息",
+            "DeleteConfirm": "温馨提示",
         }
     }
 };

@@ -6,10 +6,16 @@
     </button>
   </div>
 
-  <div fxLayout='row' fxLayoutAlign='end end'>
+  <div fxLayout='row wrap' fxLayoutAlign='end end'>
+    <div>
+      <button mat-button class="cus-manage-button" (click)='refresh()'>
+        <mat-icon class="cus-header-icons">refresh</mat-icon>
+        <span>{{'button.Refresh'|translate}}</span>
+      </button>
+    </div>
     <div>
       <button mat-button class="cus-manage-button" (click)='modeChange()'>
-        <mat-icon class="cus-header-icons"> {{viewMode?'check_box':'indeterminate_check_box'}} </mat-icon>
+        <mat-icon class="cus-header-icons"> {{ !mdSrv.selectMode ?'check_box':'indeterminate_check_box'}} </mat-icon>
         <span>{{'button.Select'|translate}}</span>
       </button>
     </div>
@@ -18,12 +24,18 @@
         <mat-icon class="cus-header-icons">settings</mat-icon>
         <span>{{'button.Advance'|translate}}</span>
       </button>
-
       <mat-menu #advanceMenu="matMenu">
-        <button mat-menu-item>
+        <!--批量删除-->
+        <button mat-menu-item [disabled]='mdSrv.selectedItems.length>0?false:true' (click)='batchDelete()'>
           <mat-icon class="cus-mat-button-icon">delete</mat-icon>
           <span>{{'button.Delete'|translate}}</span>
         </button>
+        <!--自定义按钮-->
+        <button mat-menu-item *ngFor='let item of mdSrv.advanceMenuItems' (click)='item.click(mdSrv.selectedItems)' [disabled]='item.needSelected?(mdSrv.selectedItems.length>0?false:true):false'>
+          <mat-icon class="cus-mat-button-icon">{{item.icon}}</mat-icon>
+          <span>{{item.name|translate}}</span>
+        </button>
+        <!--导出数据-->
         <button mat-menu-item>
           <mat-icon class="cus-mat-button-icon">cloud_download</mat-icon>
           <span>{{'button.Export'|translate}}</span>

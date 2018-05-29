@@ -2,7 +2,7 @@
   <div class="dialog-header" fxFlex="60px" fxLayout='row' fxLayoutAlign='space-between center'>
     <div class="with-icon dialog-title" fxLayout='row' fxLayoutAlign='start center'>
       <mat-icon>label_important</mat-icon>
-      {{title}}
+      {{title |translate}}
     </div>
     <div>
       <button mat-button class="mat-icon-button" (click)='closeDialog()' [disabled]='disableCloseButton'>

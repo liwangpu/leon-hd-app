@@ -97,6 +97,15 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
         params = params.append('pageSize', `${query.pageSize ? query.pageSize : 10}`);
         return this.httpClient.request<Paging<T>>('get', `${this.uri}?${queryPart}`, { headers: this.header, params: params });
     }
+
+    /**
+     * 批量删除实体信息
+     * @param idsArr 
+     */
+    public batchDelete(idsArr: Array<string>) {
+        let idsStr = idsArr && idsArr.length > 0 ? idsArr.join(',') : '';
+        return this.httpClient.delete(`${this.uri}/BatchDelete?ids=${idsStr}`, { responseType: 'text' })
+    }//batchDelete
 }
 //TODO:转为q查询方式
 function conjunctFilter(advanceQueryFilters?: Array<IQueryFilter>): string {

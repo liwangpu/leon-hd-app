@@ -5,5 +5,6 @@ export interface IListableService<T> {
     // query: (query: IQuery) => Observable<Paging<T>>;
 
     // query:Function(query: IQuery)=> Observable<Paging<T>>;
-    query<T>(query: IQuery,advanceQueryFilters?: Array<IQueryFilter>);
+    query<T>(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>);
+    batchDelete(idsArr: Array<string>);
 }

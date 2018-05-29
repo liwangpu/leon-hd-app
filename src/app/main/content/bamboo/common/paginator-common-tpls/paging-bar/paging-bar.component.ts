@@ -32,6 +32,10 @@ export class PagingBarComponent implements OnInit {
 
   allSelect(checked: boolean) {
     this.mdSrv.allSelect = checked;
+    if (checked)
+      this.mdSrv.selectedItems = this.mdSrv.cacheData.map(x => x.id);
+    else
+      this.mdSrv.selectedItems = [];
   }//allSelect
 
   onSelectModelChange(selectMode: boolean) {

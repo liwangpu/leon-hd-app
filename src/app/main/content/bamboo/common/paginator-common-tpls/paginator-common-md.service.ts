@@ -20,8 +20,9 @@ export class PaginatorCommonMdService implements OnDestroy {
   private _displayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;
   cacheData: Array<Ilistable> = [];
   createdUrl: string;
-  defaultPageSizeOption = [25, 100, 500];//默认分页按钮参数
-  displayColumns = ['seqno', 'icon', 'name', 'description', 'createdTime'];
+  defaultPageSizeOption = [];//默认分页按钮参数
+  displayColumns = [];
+  advanceMenuItems = [];
   //////////////////////////////////////////////////////////////////////////////////
   //(注意,各个页面应该只订阅,发布由属性来控制)
   itemSelected$: Subject<Array<string>> = new Subject();//有任何项被选择
@@ -47,14 +48,17 @@ export class PaginatorCommonMdService implements OnDestroy {
    * 选择模式|查看模式 true=>选择模式(列表界面不显示checkbox)
    */
   set selectMode(vl: boolean) {
-    this._selectMode = vl;
-    this.selectMode$.next(vl);
     if (vl) {
       this.displayColumns.unshift('select');
     }
     else {
-      this.displayColumns.shift();
+      if (this._selectMode)
+        this.displayColumns.shift();
     }
+
+    this._selectMode = vl;
+    this.selectMode$.next(vl);
+
 
     if (!vl)
       this.allSelect = false;
@@ -96,7 +100,7 @@ export class PaginatorCommonMdService implements OnDestroy {
    * 列表选中项
    */
   set selectedItems(vl: Array<string>) {
-    if (vl && vl.length)
+    if (vl && vl.length > 0)
       this._selectedItems = vl.filter(x => x);
     else
       this._selectedItems = [];
@@ -121,6 +125,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   constructor() {
     //订阅查询数据
     this.queryData$.takeUntil(this.destroy$).subscribe(() => {
+      this.selectMode = false;
       this.query();
     });//
     //订阅页面跳转
@@ -134,6 +139,9 @@ export class PaginatorCommonMdService implements OnDestroy {
     this.destroy$.unsubscribe();
   }//ngOnDestroy
 
+  // batchDelete() {
+  //   // this.apiSvr.batchDelete(this.selectedItems);
+  // }//batchDelete
 
   private query() {
     this.apiSvr.query({ pageSize: this.pageParam.pageSize, page: this.pageParam.pageIndex, search: (this._keyword ? this._keyword : '') }).takeUntil(this.destroy$).subscribe(res => {
@@ -151,5 +159,4 @@ export class PaginatorCommonMdService implements OnDestroy {
       }//for
     });
   }//query
-
 }

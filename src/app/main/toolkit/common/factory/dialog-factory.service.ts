@@ -6,7 +6,7 @@ import { ConfigService } from '../../config/config.service';
 import { SimpleMessageContentComponent } from './dialog-template/simple-message-content/simple-message-content.component';
 import { SimpleConfirmDialogTplsComponent } from './dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
 import { SimpleCsvUploadComponent } from './dialog-template/simple-csv-upload/simple-csv-upload.component';
-
+import { environment } from "../../../../../environments/environment";
 @Injectable()
 export class DialogFactoryService {
 
@@ -56,17 +56,19 @@ export class DialogFactoryService {
 
   /**
    * 简单确认对话框
+   * @param content 
    * @param title 
    * @param option 
    */
-  simpleConfirm(title: string, option?: simpleConfirmOption) {
-    if (!option.height) {
-      option.minHeight = '120px';
-    }
-    if (!option) {
+  simpleConfirm(content: string, title?: string, option?: simpleConfirmOption) {
+    if (!option)
       option = {};
-    }
-    return this.dialog.open(SimpleMessageContentComponent, { ...option, disableClose: true });
+    if (!option.height)
+      option.height = '250px';
+    if (!option.width)
+      option.width = '400px';
+    option.data = { content: content };
+    return this.tplsConfirm(SimpleMessageContentComponent, title ? title : 'tips.DeleteConfirm', option);
   }//simpleConfirm
 
   /**
@@ -75,7 +77,16 @@ export class DialogFactoryService {
    * @param componentOrTemplateRef 
    * @param option 
    */
-  tplsConfirm<T=any>(title: string, componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, option?: simpleConfirmOption) {
+  tplsConfirm<T=any>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, title?: string, option?: simpleConfirmOption) {
+    if (!title)
+      title = 'tips.DeleteConfirm';
+    if (!option)
+      option = {};
+    if (!option.height)
+      option.height = environment.dialogMin.height;
+    if (!option.width)
+      option.width = environment.dialogMin.width;
+
     let data = option && option.data ? { tpls: componentOrTemplateRef, title: title, ...option.data } : { tpls: componentOrTemplateRef, title: title };
     return this.open(SimpleConfirmDialogTplsComponent, { disableClose: true, width: option && option.width ? option.width : '0', height: option && option.height ? option.height : '0', data: data });
   }//tplsConfirm
@@ -87,7 +98,7 @@ export class DialogFactoryService {
    */
   simpleCsvUpload(title: string, option: SimpleCsvUploadOption) {
     option.data = { uploadUrl: option.uploadUrl, templateCsvUrl: option.templateCsvUrl };
-    return this.tplsConfirm(title, SimpleCsvUploadComponent, option);
+    return this.tplsConfirm(SimpleCsvUploadComponent, title, option);
   }//simpleCsvUpload
 
 }

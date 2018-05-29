@@ -97,7 +97,7 @@ export class MaterialListComponent implements OnInit {
   chagneCategories() {
 
     let ids = this.getSelectItemIds();
-    let dialog = this.dialogFac.tplsConfirm('选择分类', ChangeCategorySuitComponent, { width: '450px', height: '550px', data: { ids: ids } });
+    let dialog = this.dialogFac.tplsConfirm( ChangeCategorySuitComponent,'选择分类', { width: '450px', height: '550px', data: { ids: ids } });
 
     dialog.afterOpen().first().subscribe(() => {
       (dialog.componentInstance.componentIns as ChangeCategorySuitComponent).afterChangeCategory.subscribe(() => {

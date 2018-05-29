@@ -99,7 +99,7 @@ export class ProductListComponent implements OnInit {
   chagneCategories() {
 
     let ids = this.getSelectItemIds();
-    let dialog = this.dialogFac.tplsConfirm('选择分类', ChangeCategoryComponent, { width: '450px', height: '550px', data: { ids: ids } });
+    let dialog = this.dialogFac.tplsConfirm(ChangeCategoryComponent, '选择分类', { width: '450px', height: '550px', data: { ids: ids } });
 
     dialog.afterOpen().first().subscribe(() => {
       (dialog.componentInstance.componentIns as ChangeCategoryComponent).afterChangeCategory.subscribe(() => {

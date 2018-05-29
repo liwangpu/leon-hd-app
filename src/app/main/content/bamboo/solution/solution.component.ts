@@ -10,11 +10,15 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { Account } from "../../../toolkit/models/account";
 import { AccountTypeEnums } from "../../../toolkit/enums/enums";
 import { PathService } from '../../services/path.service';
+import { SolutionMdService } from './solution-md.service';
 @Component({
   selector: 'app-solution',
   templateUrl: './solution.component.html',
   styleUrls: ['./solution.component.scss'],
-  animations: fuseAnimations
+  animations: fuseAnimations,
+  providers: [
+    SolutionMdService
+  ]
 })
 export class SolutionComponent implements OnInit {
   // displayedColumns = ['icon', 'name', 'description', 'createdTime'];
@@ -24,9 +28,9 @@ export class SolutionComponent implements OnInit {
   // @ViewChild('filter') filter: ElementRef;
   // @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
   // dialogRef: any;
-  readDataOnly = false;
-  createdUrl='app/solution-detail';
-  constructor(private solutionSrv: SolutionService, public dialog: MatDialog, public pathSrv: PathService) {
+  // readDataOnly = false;
+  // createdUrl = 'app/solution-detail';
+  constructor(private solutionSrv: SolutionService, public dialog: MatDialog, public pathSrv: PathService,public mdSrv:SolutionMdService) {
   }
 
   ngOnInit() {

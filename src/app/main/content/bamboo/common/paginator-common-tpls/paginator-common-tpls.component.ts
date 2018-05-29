@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, OnChanges, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ViewChild, ElementRef } from '@angular/core';
 import { GlobalCommonService } from '../../../../service/global-common.service';
 import { Subject } from 'rxjs';
 import { fuseAnimations } from '../../../../../core/animations';
@@ -16,28 +16,29 @@ import { Ilistable } from '../../../../toolkit/models/ilistable';
     PaginatorCommonMdService
   ]
 })
-export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChanges {
+export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
 
-  @Input() iconName: string;//列表图标名称
-  @Input() pageTitle: string = 'Default';//页面标题(会经过translate pipe)
-  @Input() createdUrl: string;//新建项请求路由
-  @Input() readDataOnly: boolean;//列表页面模式 true为查看模式,没有新增/编辑等管理按钮
-  @Input() dataDisplayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;//列表数据显示模式 列表或卡片等等
-  @Input() apiSvr: IListableService<Ilistable>;
+  @Input() launch: PaginatorLaunch;
   destroy$: Subject<boolean> = new Subject();
   constructor(public globalSrv: GlobalCommonService, public mdSrv: PaginatorCommonMdService) {
 
-    //订阅全局搜索
-    this.globalSrv.keyworkSearch$.takeUntil(this.destroy$).subscribe(key => {
-      this.onKeywordSearch(key);
-    });//subscribe
 
 
   }//constructor
 
   ngOnInit() {
-    this.mdSrv.createdUrl = this.createdUrl;
-    this.mdSrv.apiSvr = this.apiSvr;
+    //转移launch参数到mdSrv
+    this.mdSrv.apiSvr = this.launch.apiSrv;
+    this.mdSrv.createdUrl = this.launch.createdUrl;
+    this.mdSrv.defaultPageSizeOption = this.launch.pageSizeOption;
+    this.mdSrv.displayColumns = this.launch.displayColumns;
+    this.mdSrv.advanceMenuItems = this.launch.advanceMenuItems;
+    //订阅全局搜索
+    this.globalSrv.keyworkSearch$.takeUntil(this.destroy$).subscribe(key => {
+      this.onKeywordSearch(key);
+    });//subscribe
+
+    //执行第一次默认搜索
     this.mdSrv.queryData$.next();
   }//ngOnInit
 
@@ -45,14 +46,6 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChange
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }//ngOnDestroy
-
-  ngOnChanges(changes: SimpleChanges): void {
-    let readDataOnlyChange = changes['readDataOnly'];
-    if (readDataOnlyChange) {
-      if (readDataOnlyChange.previousValue !== readDataOnlyChange.currentValue)
-        this.mdSrv.readDataOnly = readDataOnlyChange.currentValue;
-    }//if
-  }//ngOnChanges
 
   onKeywordSearch(keyword: string) {
     this.mdSrv.keyword = keyword;
@@ -63,4 +56,45 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy, OnChange
 export enum ListDisplayModeEnum {
   List = 1,
   Litimg = 2
+}
+
+
+/**
+ * 列表模板页
+ */
+export abstract class PaginatorLaunch {
+  abstract createdUrl: string;
+  abstract titleIcon: string;
+  abstract title: string;
+  abstract apiSrv: IListableService<Ilistable>;
+  pageSizeOption = [25, 100, 500];//默认分页按钮参数
+  displayColumns = ['seqno', 'icon', 'name', 'description', 'createdTime'];
+  advanceMenuItems: Array<IAdvanceMenuItem> = [];
+  constructor() {
+    // //初始化通用的高级按钮菜单
+    // let deleteMenuItem: IAdvanceMenuItem = {
+    //   icon: 'delete',
+    //   name: 'button.Delete',
+    //   needSelected: true,
+    //   click: this.batchDelete
+    // };
+    // this.advanceMenuItems.push(deleteMenuItem);
+
+
+  }//constructor
+
+  batchDelete(idArr: Array<string>) {
+    console.log('get batch items', idArr);
+  }//batchDelete
+
+  exportData() {
+
+  }//exportData
+}
+
+export interface IAdvanceMenuItem {
+  icon: string;//icon name
+  name: string;//按钮的名字 经过translate
+  needSelected: boolean;//按钮是否需要选中项
+  click: Function;
 }

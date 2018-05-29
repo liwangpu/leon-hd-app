@@ -91,6 +91,7 @@ export const locale = {
             "MaterialCategory": "Material Category"
         },
         "button": {
+            "Refresh": "Refresh",
             "Save": "Save",
             "Add": "Add",
             "NEW": "NEW",
@@ -143,7 +144,8 @@ export const locale = {
             "account is forzen by admin": "account is forzen by admin",
             "account not activate yet": "account not activate yet",
             "RequiredError": "Fill Necessarily",
-            "MaxLengthError": "More than the standard length"
+            "MaxLengthError": "More than the standard length",
+            "BatchDeleteConfirm": "Are you sure to delete these {{value}} items ?",
         },
         "tips": {
             "DragOrClickHere": "Click or Drop your files here",
@@ -166,7 +168,8 @@ export const locale = {
             "CurrentSelectd": "Current Selected",
             "ChangeICon": "Change ICon",
             "SelectAll": "All",
-            "UploadCategoryByCSV": "Upload Category By CSV File"
+            "UploadCategoryByCSV": "Upload Category By CSV File",
+            "DeleteConfirm": "Prompt",
         }
     }
 };

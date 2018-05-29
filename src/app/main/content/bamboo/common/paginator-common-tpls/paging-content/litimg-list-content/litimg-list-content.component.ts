@@ -1,20 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { PaginatorCommonMdService } from '../../paginator-common-md.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-commom-paging-litimg-list-content',
   templateUrl: './litimg-list-content.component.html',
   styleUrls: ['./litimg-list-content.component.scss']
 })
-export class LitimgListContentComponent implements OnInit {
+export class LitimgListContentComponent implements OnInit, OnDestroy {
 
   selectedItem: Array<string> = [];
+  destroy$: Subject<boolean> = new Subject();
   constructor(public mdSrv: PaginatorCommonMdService, public router: Router) { }
 
   ngOnInit() {
-
+    //订阅选中项事件,因为有可能列表界面会删除选中项,删除后content如果不订阅,就会出现之前删除的项id又被拼接上来
+    this.mdSrv.itemSelected$.takeUntil(this.destroy$).subscribe(arr => {
+      this.selectedItem = arr;
+    });//
   }//ngOnInit
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }//ngOnDestroy
 
   onItemCheckchange(checked: boolean, id: string) {
     let exist = this.selectedItem.some(x => x == id);
