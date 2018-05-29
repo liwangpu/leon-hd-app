@@ -1,26 +1,12 @@
 <div class="page-container" fxLayout='column'>
   <div class="header-container white-fg" fxLayout='row wrap' fxLayoutAlign='space-between center'>
-    <div fxFlexOrder.lt-sm='1'>
+    <div>
       <div class="page-icon-wrap">
         <mat-icon class="page-icon cus-header-icons">{{iconName?iconName:'shopping_basket'}}</mat-icon>
         <span class="page-icon-title">{{pageTitle|translate}}</span>
       </div>
     </div>
-    <div fxFlex='450px' fxFlex.lt-sm='100%' fxFlexOrder.lt-sm='3'>
-      <div class="search-bar-wrap" fxLayout="row" fxLayoutAlign="center center">
-        <div fxFlex='32px'>
-          <label for="search" class="mr-8">
-            <mat-icon class="secondary-text cus-header-icons">search</mat-icon>
-          </label>
-        </div>
-        <div fxFlex>
-          <mat-form-field floatPlaceholder="never" fxFlex="1 0 auto">
-            <input class="search-input" matInput #searchFilter placeholder="{{'button.Search'|translate}}">
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-    <div fxFlexOrder.lt-sm='2'>
+    <div>
       <div>
         <app-paginator-page-manage-button></app-paginator-page-manage-button>
       </div>

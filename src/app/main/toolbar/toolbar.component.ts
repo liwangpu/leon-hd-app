@@ -7,6 +7,7 @@ import { FuseNavigationService } from "../../core/components/navigation/navigati
 import { DessertService } from "../content/services/dessert.service";
 import { GlobalCommonService } from '../service/global-common.service';
 import { Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 @Component({
     selector: 'fuse-toolbar',
     templateUrl: './toolbar.component.html',
@@ -63,7 +64,7 @@ export class FuseToolbarComponent implements OnInit, OnDestroy {
                 'id': 'en',
                 'title': 'English',
                 'flag': 'us'
-            }   
+            }
         ];
 
         this.selectedLanguage = this.languages[0];
