@@ -84,8 +84,6 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
         var params = new HttpParams();
         if (query.search)
             params = params.append('search', `${query.search}`);
-        if (query.order)
-            params = params.append('order', `${query.order}`);
         if (query.orderBy)
             params = params.append('orderBy', `${query.orderBy}`);
         if (query.desc)
@@ -144,7 +142,7 @@ export class Paging<E> {
  */
 export interface IQuery {
     search?: string;
-    order?: string;
+    // order?: string;
     page?: number | string;
     pageSize?: number | string;
     orderBy?: string;

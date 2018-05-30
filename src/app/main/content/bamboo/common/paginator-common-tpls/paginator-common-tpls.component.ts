@@ -18,11 +18,12 @@ import { Ilistable } from '../../../../toolkit/models/ilistable';
 })
 export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
 
+
   @Input() launch: PaginatorLaunch;
   destroy$: Subject<boolean> = new Subject();
   constructor(public globalSrv: GlobalCommonService, public mdSrv: PaginatorCommonMdService) {
 
-
+    // console.log('qqqqqq', this.launch.columnDefs);
 
   }//constructor
 
@@ -31,7 +32,7 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
     this.mdSrv.apiSvr = this.launch.apiSrv;
     this.mdSrv.createdUrl = this.launch.createdUrl;
     this.mdSrv.defaultPageSizeOption = this.launch.pageSizeOption;
-    this.mdSrv.displayColumns = this.launch.displayColumns;
+    // this.mdSrv.columnDefs = this.launch.columnDefs;
     this.mdSrv.advanceMenuItems = this.launch.advanceMenuItems;
     //订阅全局搜索
     this.globalSrv.keyworkSearch$.takeUntil(this.destroy$).subscribe(key => {
@@ -68,7 +69,8 @@ export abstract class PaginatorLaunch {
   abstract title: string;
   abstract apiSrv: IListableService<Ilistable>;
   pageSizeOption = [25, 100, 500];//默认分页按钮参数
-  displayColumns = ['seqno', 'icon', 'name', 'description', 'createdTime'];
+  // displayColumns = [];
+  columnDefs: Array<IListTableColumn<Ilistable>> = [];
   advanceMenuItems: Array<IAdvanceMenuItem> = [];
   constructor() {
     // //初始化通用的高级按钮菜单
@@ -80,7 +82,13 @@ export abstract class PaginatorLaunch {
     // };
     // this.advanceMenuItems.push(deleteMenuItem);
 
-
+    this.columnDefs = [
+      // { columnDef: 'seqno', header: 'glossary.SeqNO', cell: (data) => { return `${data.seqno}`; } }
+      , { columnDef: 'icon', header: '', cell: (data) => { return `${data.icon}`; } }
+      , { columnDef: 'name', header: 'glossary.Name', cell: (data) => { return `${data.name}`; } }
+      , { columnDef: 'description', header: 'glossary.Description', cell: (data) => { return `${data.description}`; } },
+      , { columnDef: 'createdTime', header: 'glossary.CreatedTime', cell: (data) => { return `${data.createdTime}`; } }
+    ];
   }//constructor
 
   batchDelete(idArr: Array<string>) {
@@ -97,4 +105,11 @@ export interface IAdvanceMenuItem {
   name: string;//按钮的名字 经过translate
   needSelected: boolean;//按钮是否需要选中项
   click: Function;
+}
+
+export interface IListTableColumn<TData> {
+  columnDef: string;
+  header: string;
+  width?: number;
+  cell(data: TData): string;
 }

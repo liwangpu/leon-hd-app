@@ -1,13 +1,11 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IPageChangeParam } from './paging-bar/paging-bar.component';
-import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
-import { Ilistable } from '../../../../toolkit/models/ilistable';
-import { ListDisplayModeEnum, IListTableColumn } from './paginator-common-tpls.component';
-import { IQuery } from '../../../../toolkit/server/webapi/api.service';
+import { IListableService } from '../../../../../../toolkit/server/webapi/ilistableService';
+import { Ilistable } from '../../../../../../toolkit/models/ilistable';
+import { IQuery } from '../../../../../../toolkit/server/webapi/api.service';
 
 @Injectable()
-export class PaginatorCommonMdService implements OnDestroy {
+export class SimpleScheduleService {
   //////////////////////////////////////////////////////////////////////////////////
   apiSvr: IListableService<Ilistable>;//api 服务
   //////////////////////////////////////////////////////////////////////////////////
@@ -175,4 +173,24 @@ export class PaginatorCommonMdService implements OnDestroy {
       this.afterDataRefresh$.next();
     });
   }//query
+}
+
+export interface IPageChangeParam {
+  length: number;
+  pageIndex: number;
+  pageSize: number;
+}
+
+
+export interface IListTableColumn<TData> {
+  columnDef: string;
+  header: string;
+  width?: number;
+  cell(data: TData): string;
+}
+
+
+export enum ListDisplayModeEnum {
+  List = 1,
+  Litimg = 2
 }

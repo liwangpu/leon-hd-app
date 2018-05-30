@@ -1,0 +1,19 @@
+<div class="page-container">
+  <div class="header-container">
+    <div class="header-wrapper" fxLayout='row wrap' fxLayoutAlign='space-between center'>
+      <div class="page-icon-wrap" fxFlex.lt-sm='100%'>
+        <mat-icon class="page-icon cus-header-icons">{{titleIcon?titleIcon:'shopping_basket'}}</mat-icon>
+        <span class="page-icon-title">{{title?title:'Title'|translate}}</span>
+      </div>
+      <div fxFlex>
+        <app-listable-paginator-section-manage-buttons></app-listable-paginator-section-manage-buttons>
+      </div>
+    </div>
+  </div>
+  <div class="content-container">
+    <div class="listable-container"></div>
+    <div class="paginator-container">
+      <app-listable-paginator-section-paginator-bar></app-listable-paginator-section-paginator-bar>
+    </div>
+  </div>
+</div>

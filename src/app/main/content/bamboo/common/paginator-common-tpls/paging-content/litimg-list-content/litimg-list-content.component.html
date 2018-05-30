@@ -3,7 +3,7 @@
   </div>
   <div fxFlex>
     <div style="position: relative;height: 100%;">
-      <div class="products-table">
+      <div fxLayout='row wrap' fxLayoutAlign='center start'>
         <app-litimg-icon-item *ngFor="let item of mdSrv.cacheData" [Id]='item.id' [Name]='item.name' [Description]='item.description'
           [Icon]='item.icon?(item.icon|serverRedirect):"/assets/images/place-holder/product.jpg"' [SelectMode]='mdSrv.selectMode'
           [Selected]='mdSrv.allSelect' LinkPath="{{mdSrv.createdUrl}}" (OnCheckChange)='onItemCheckchange($event,item.id)'></app-litimg-icon-item>
