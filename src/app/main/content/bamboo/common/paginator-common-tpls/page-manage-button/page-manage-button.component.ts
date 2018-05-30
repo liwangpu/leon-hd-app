@@ -13,15 +13,11 @@ import { SnackbarService } from '../../../../../toolkit/common/services/snackbar
   styleUrls: ['./page-manage-button.component.scss']
 })
 export class PageManageButtonComponent implements OnInit {
-  readDataOnly: boolean;//只读数据,不显示数据操作按钮
+
   @Input() dataDisplayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;//列表数据显示模式 列表或卡片等等
   destroy$: Subject<boolean> = new Subject();
   constructor(public mdSrv: PaginatorCommonMdService, protected dialogFac: DialogFactoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
 
-    //订阅列表数据编辑模式 true=>只读模式
-    this.mdSrv.readDataOnly$.takeUntil(this.destroy$).subscribe(readDataMode => {
-      this.readDataOnly = readDataMode;
-    });//
   }//
 
   ngOnInit() {
@@ -36,6 +32,13 @@ export class PageManageButtonComponent implements OnInit {
     this.mdSrv.displayMode = num;
   }//displayModeChange
 
+  isButtonEnable(needPermission?: boolean): boolean {
+    if (needPermission) {
+      if (!this.mdSrv.readDataOnly)
+        return true;
+    }
+    return true;
+  }
   refresh() {
     this.mdSrv.queryData$.next();
   }//refresh

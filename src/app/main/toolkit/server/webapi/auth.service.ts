@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Md5 } from 'ts-md5/dist/md5';
 import { IEntitybase } from "../../models/ientitybase";
 import { Memory } from "../../memory/memory";
+import { NavigationData } from '../../models/navigation-data';
 @Injectable()
 export class AuthService extends ApiService<IEntitybase> {
 
@@ -52,7 +53,10 @@ export class AuthService extends ApiService<IEntitybase> {
      * 获取导航信息
      */
     loadNavigationData() {
-        return this.http.get(`${this.config.serverBase}/account/navigation`);
+        return this.http.get(`${this.config.serverBase}/account/navigation`).map(rdata => {
+            Memory.getInstance().navigationDatas = (rdata as any).model as Array<NavigationData>;
+            return rdata;
+        });
     }
 
     /**

@@ -19,7 +19,6 @@ export class TableListContentComponent implements OnInit {
   _selectMode = false;//自己缓存一下上次页面模式
   selectColumn: IListTableColumn<Ilistable> = { columnDef: 'select', header: '', width: 55, cell: (data: Ilistable) => '' };
   columns: Array<IListTableColumn<Ilistable>> = [
-    // { columnDef: 'select', header: '', width: 55, cell: (data: Ilistable) => '' },
     { columnDef: 'seqno', header: 'glossary.SeqNO', width: 50, cell: (data: Ilistable) => `${data.seqno}` }
   ];
   selectedItem: Array<string> = [];
@@ -30,10 +29,6 @@ export class TableListContentComponent implements OnInit {
   get displayedColumns() {
     return this.columns.map(c => c.columnDef);
   }
-
-
-
-  // displayedColumns = this.columns.map(c => c.columnDef);
 
   constructor(public mdSrv: PaginatorCommonMdService, public router: Router) {
 
@@ -48,7 +43,6 @@ export class TableListContentComponent implements OnInit {
         this.selectedItem = [];
         this.mdSrv.selectedItems = [];
 
-        // this.mdSrv.cacheData
         if (!select) {
           for (let idx = this.mdSrv.cacheData.length - 1; idx >= 0; idx--) {
             let curItem = this.mdSrv.cacheData[idx];
@@ -73,12 +67,14 @@ export class TableListContentComponent implements OnInit {
     });//
     //表格列改变事件
     this.mdSrv.afterPaginatorColumnChange$.takeUntil(this.destroy$).subscribe(cols => {
-      // console.log('列有变', cols);
       this.columns = [...this.columns, ...this.mdSrv.columnDefs];
     });//
   }//constructor
 
   ngOnInit() {
+    if (this.mdSrv.selectMode && !this.columns.some(x => x.columnDef == 'select')) {
+      this.columns.unshift(this.selectColumn);
+    }
     this.mdSrv.afterPaginatorTableContentInit$.next();
 
     //订阅选中项事件,因为有可能列表界面会删除选中项,删除后content如果不订阅,就会出现之前删除的项id又被拼接上来
@@ -103,6 +99,11 @@ export class TableListContentComponent implements OnInit {
       return;
     this.router.navigate([this.mdSrv.createdUrl, id]);
   }//rowSelect
+
+  gotoDetail(id: string) {
+    if (this.mdSrv.selectMode) return;
+    this.router.navigate([this.mdSrv.createdUrl, id]);
+  }//
 
   onCheckBoxSelect(checked: boolean, id: string) {
     let exist = this.selectedItem.some(x => x == id);

@@ -11,7 +11,6 @@ import { ListDisplayModeEnum } from '../paginator-common-tpls.component';
 })
 export class PagingContentComponent implements OnInit, OnDestroy {
 
-  // displayMode: ListDisplayModeEnum;
   constructor(public mdSrv: PaginatorCommonMdService) {
 
 

@@ -6,7 +6,8 @@
             <ng-container *ngSwitchCase='"select"'>
                 <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
                 <mat-cell *cdkCellDef="let row">
-                    <mat-checkbox [checked]='allSelected||row.select' (change)='onCheckBoxSelect(cbox.checked,row.id)' #cbox>
+                    <mat-checkbox [checked]='allSelected||row.select' (change)='onCheckBoxSelect(cbox.checked,row.id)' (click)='$event.stopPropagation()'
+                        #cbox>
                     </mat-checkbox>
                 </mat-cell>
             </ng-container>
@@ -34,7 +35,7 @@
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
-            (click)="row.highlighted = !row.highlighted;_selectMode?(row.select=!row.select):row.select=false" (mouseover)="row.hovered = true"
-            (mouseout)="row.hovered = false"></mat-row>
+            (click)="row.highlighted = !row.highlighted;_selectMode?(row.select=!row.select):row.select=false;gotoDetail(row.id)"
+            (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></mat-row>
     </mat-table>
 </div>

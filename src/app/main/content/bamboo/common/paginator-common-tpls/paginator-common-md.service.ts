@@ -14,7 +14,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   apiSvr: IListableService<Ilistable>;//api 服务
   //////////////////////////////////////////////////////////////////////////////////
   // private _manualPaging = false;//手动分页,因为有时候需要先跳转第一页,然后查询数据,而跳转第一页又会造成查询数据,用这个变量指定跳转分页不查询数据
-  private _readyDataOnly = false;
+  private _readyDataOnly = true;
   private _selectMode = false;
   private _allSelect = false;
   private _keyword: string;//搜索关键字
@@ -56,17 +56,8 @@ export class PaginatorCommonMdService implements OnDestroy {
    * 选择模式|查看模式 true=>选择模式(列表界面不显示checkbox)
    */
   set selectMode(vl: boolean) {
-    if (vl) {
-      // this.displayColumns.unshift('select');
-    }
-    else {
-      // if (this._selectMode)
-      // this.displayColumns.shift();
-    }
-
     this._selectMode = vl;
     this.selectMode$.next(vl);
-
 
     if (!vl)
       this.allSelect = false;
@@ -154,7 +145,6 @@ export class PaginatorCommonMdService implements OnDestroy {
 
     //订阅查询数据
     this.queryData$.takeUntil(this.destroy$).subscribe(() => {
-      // this.selectMode = false;
       this.query();
     });//
   }//constructor
@@ -183,16 +173,4 @@ export class PaginatorCommonMdService implements OnDestroy {
     });
   }//query
 
-  private preparePaginatorTable() {
-    // console.log('paginator table', this._paginatorTable);
-    // this._paginatorTable.addColumnDef();
-    // let seqnoCol: CdkColumnDef = { name: '序号', _name: '', cell: {}, cssClassFriendlyName: '', headerCell: {} };
-
-  }//
 }
-// columns = [
-//   { columnDef: 'position', header: 'No.',    cell: (element: Element) => `${element.position}` },
-//   { columnDef: 'name',     header: 'Name',   cell: (element: Element) => `${element.name}`     },
-//   { columnDef: 'weight',   header: 'Weight', cell: (element: Element) => `${element.weight}`   },
-//   { columnDef: 'symbol',   header: 'Symbol', cell: (element: Element) => `${element.symbol}`   },
-// ];

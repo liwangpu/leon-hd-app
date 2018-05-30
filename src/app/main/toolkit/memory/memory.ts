@@ -1,3 +1,6 @@
+import { NavigationData } from "../models/navigation-data";
+import { Subject } from "rxjs";
+
 /**
  * 该类用于存储一些内存流的数据
  * 因为基于服务的存储无法进入interceptor
@@ -18,6 +21,7 @@ export class Memory {
         return this._instance;
     }
 
+    private _navigationDatas: Array<NavigationData> = [];
     token: string;
     loginStyle: number;
     isMaintaining: boolean;
@@ -29,4 +33,14 @@ export class Memory {
     userId: string;
     organId: string;
     departmentId: string;
+    afterGetNavigation$: Subject<void> = new Subject();
+    set navigationDatas(vl: Array<NavigationData>) {
+        this._navigationDatas = vl;
+        this.afterGetNavigation$.next();
+    }
+    get navigationDatas() {
+        return this._navigationDatas;
+    }
+
+
 }

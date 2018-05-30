@@ -3,6 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from "../../toolkit/config/config.service";
 import { LocalStoreService } from "./localstore.service";
 import { Memory } from "../../toolkit/memory/memory";
+import { NavigationData } from '../../toolkit/models/navigation-data';
+import { UrlSegment } from '@angular/router';
 const LOGIN_STYLE = "LoginStyle";
 const SERVER_BASE = 'ServerBase';
 const REMEMBER_LOGIN = 'RememberLogin';
@@ -187,6 +189,41 @@ export class DessertService {
         this.navi = '';
         this.token = '';
     }
+
+    private _editPermission: Array<string> = [];
+
+
+    /**
+     * 根据当前请求路径判断用户是否有权限进行编辑
+     * @param url 
+     */
+    hasDataEditPermission(urlSeg: Array<UrlSegment>): boolean {
+        if (!this._editPermission || this._editPermission.length <= 0) {
+            for (let item of Memory.getInstance().navigationDatas) {
+                this.parsePermission(item);
+            }
+        }
+
+        let arr = urlSeg.map(x => x.path);
+        let currentUrl = arr.join('/');
+
+        return this._editPermission.some(x => x.indexOf(currentUrl) > 0 ? true : false);
+    }//hasDataEditPermission
+
+    private parsePermission(obj: NavigationData) {
+        if (obj.url && obj.editOp)
+            this._editPermission.push(obj.url);
+        if (!obj.children) return;
+
+        if (obj.children.length === 0) {
+            obj.children = undefined;
+        }
+        else {
+            for (let child of obj.children) {
+                this.parsePermission(child);
+            }
+        }
+    }//clearChildren
 
     /**
      * 用于从localstore/indexeddb还原数据到cache类

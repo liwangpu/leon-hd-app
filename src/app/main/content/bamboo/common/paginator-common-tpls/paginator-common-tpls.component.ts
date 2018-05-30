@@ -7,6 +7,10 @@ import { Observable } from 'rxjs/Observable';
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 import { Ilistable } from '../../../../toolkit/models/ilistable';
 import { DatePipe } from '@angular/common';
+import { DessertService } from '../../../services/dessert.service';
+import { ActivatedRoute } from '@angular/router';
+import { Memory } from '../../../../toolkit/memory/memory';
+
 
 @Component({
   selector: 'app-paginator-common-tpls',
@@ -21,15 +25,17 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
 
   @Input() launch: PaginatorLaunch;
   destroy$: Subject<boolean> = new Subject();
-  constructor(public globalSrv: GlobalCommonService, public mdSrv: PaginatorCommonMdService) {
+  constructor(public globalSrv: GlobalCommonService, public mdSrv: PaginatorCommonMdService, protected dessertSrv: DessertService, public router: ActivatedRoute) {
     this.mdSrv.afterPaginatorTableContentInit$.subscribe(() => {
       this.mdSrv.columnDefs = this.launch.columnDefs;
+    });
+    //订阅用户个人导航信息(因为该页面的生命周期在get navigation之前)
+    Memory.getInstance().afterGetNavigation$.takeUntil(this.destroy$).subscribe(() => {
+      this.mdSrv.readDataOnly = !this.dessertSrv.hasDataEditPermission(this.router.snapshot.url);
     });
   }//constructor
 
   ngOnInit() {
-    // this.mdSrv.paginatorTable = this.paginatorTable;
-
     //转移launch参数到mdSrv
     this.mdSrv.apiSvr = this.launch.apiSrv;
     this.mdSrv.createdUrl = this.launch.createdUrl;
@@ -94,6 +100,7 @@ export interface IAdvanceMenuItem {
   icon: string;//icon name
   name: string;//按钮的名字 经过translate
   needSelected: boolean;//按钮是否需要选中项
+  needPermission?: boolean;//是否需要权限
   click: Function;
 }
 
