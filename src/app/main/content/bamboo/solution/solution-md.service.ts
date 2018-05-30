@@ -3,6 +3,7 @@ import { PaginatorLaunch, IAdvanceMenuItem } from '../common/paginator-common-tp
 import { IListableService } from '../../../toolkit/server/webapi/ilistableService';
 import { Ilistable } from '../../../toolkit/models/ilistable';
 import { SolutionService } from '../../../toolkit/server/webapi/solution.service';
+import { DatePipe } from '@angular/common';
 
 @Injectable()
 export class SolutionMdService extends PaginatorLaunch {
@@ -11,8 +12,8 @@ export class SolutionMdService extends PaginatorLaunch {
   titleIcon = 'shopping_basket';
   title = 'glossary.Solution';
   apiSrv: IListableService<Ilistable>;
-  constructor(public solutionSrv: SolutionService) {
-    super();
+  constructor(public solutionSrv: SolutionService, protected datePipe: DatePipe) {
+    super(datePipe);
     this.apiSrv = this.solutionSrv;
 
     // let aa = 6;

@@ -6,6 +6,7 @@ import { Ilistable } from '../../../../toolkit/models/ilistable';
 import { ListDisplayModeEnum, IListTableColumn } from './paginator-common-tpls.component';
 import { IQuery } from '../../../../toolkit/server/webapi/api.service';
 import { MatTable } from '@angular/material';
+import { CdkColumnDef } from '@angular/cdk/table';
 
 @Injectable()
 export class PaginatorCommonMdService implements OnDestroy {
@@ -21,13 +22,12 @@ export class PaginatorCommonMdService implements OnDestroy {
   private _selectedItems: Array<string> = [];//已选择的项id
   private _displayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;
   private _query: IQuery = {};
-  private _paginatorTable: MatTable<Ilistable>;
+  private _columnDefs: Array<IListTableColumn<Ilistable>> = [];
   cacheData: Array<Ilistable> = [];
   createdUrl: string;
   defaultPageSizeOption = [];//默认分页按钮参数
-  // displayColumns = [];
+
   advanceMenuItems = [];
-  columnDefs: Array<IListTableColumn<Ilistable>> = [];
   //////////////////////////////////////////////////////////////////////////////////
   //(注意,各个页面应该只订阅,发布由属性来控制)
   itemSelected$: Subject<Array<string>> = new Subject();//有任何项被选择
@@ -38,7 +38,8 @@ export class PaginatorCommonMdService implements OnDestroy {
   queryData$: Subject<void> = new Subject();//查询数据信息,自动根据当前的关键字等条件查询
   displayMode$: Subject<ListDisplayModeEnum> = new Subject();//列表项显示模式
   afterDataRefresh$: Subject<void> = new Subject();//当数据刷新后触发事件
-  afterPaginatorTableReady$: Subject<void> = new Subject();//分页表格初始化好后
+  afterPaginatorColumnChange$: Subject<Array<IListTableColumn<Ilistable>>> = new Subject();//分页表格column改变后事件
+  afterPaginatorTableContentInit$:Subject<void>=new Subject();//列表页面初始化完成后事件
   destroy$: Subject<boolean> = new Subject();
   //////////////////////////////////////////////////////////////////////////////////
   /**
@@ -139,30 +140,23 @@ export class PaginatorCommonMdService implements OnDestroy {
     }
   }//
   /**
-   * 分页表格
+   * 改变分页表格显示列
    */
-  set paginatorTable(vl: MatTable<Ilistable>) {
-    this._paginatorTable = vl;
-    this.afterPaginatorTableReady$.next();
+  set columnDefs(vl: Array<IListTableColumn<Ilistable>>) {
+    this._columnDefs = vl;
+    this.afterPaginatorColumnChange$.next(vl);
   }
-  get paginatorTable() {
-    return this._paginatorTable;
+  get columnDefs() {
+    return this._columnDefs;
   }
 
   constructor() {
+
     //订阅查询数据
     this.queryData$.takeUntil(this.destroy$).subscribe(() => {
       // this.selectMode = false;
       this.query();
     });//
-
-    this.columnDefs = [
-      // { columnDef: 'seqno', header: 'glossary.SeqNO', cell: (data) => { return `${data.seqno}`; } }
-      , { columnDef: 'icon', header: '', cell: (data) => { return `${data.icon}`; } }
-      , { columnDef: 'name', header: 'glossary.Name', cell: (data) => { return `${data.name}`; } }
-      , { columnDef: 'description', header: 'glossary.Description', cell: (data) => { return `${data.description}`; } },
-      , { columnDef: 'createdTime', header: 'glossary.CreatedTime', cell: (data) => { return `${data.createdTime}`; } }
-    ];
   }//constructor
 
   ngOnDestroy(): void {
@@ -179,14 +173,26 @@ export class PaginatorCommonMdService implements OnDestroy {
       if (this._pageParam.pageIndex <= 0)
         this._pageParam.pageIndex = 1;
 
-      if (res.data && res.data.length) {
+      if (res.data && res.data.length)
         for (let i = 0, len = res.data.length; i < len; i++) {
           let data = res.data[i];
           data.seqno = i + 1 + (this._pageParam.pageIndex - 1) * this._pageParam.pageSize;
           this.cacheData.push(data);
         }//for
-      } //if
       this.afterDataRefresh$.next();
     });
   }//query
+
+  private preparePaginatorTable() {
+    // console.log('paginator table', this._paginatorTable);
+    // this._paginatorTable.addColumnDef();
+    // let seqnoCol: CdkColumnDef = { name: '序号', _name: '', cell: {}, cssClassFriendlyName: '', headerCell: {} };
+
+  }//
 }
+// columns = [
+//   { columnDef: 'position', header: 'No.',    cell: (element: Element) => `${element.position}` },
+//   { columnDef: 'name',     header: 'Name',   cell: (element: Element) => `${element.name}`     },
+//   { columnDef: 'weight',   header: 'Weight', cell: (element: Element) => `${element.weight}`   },
+//   { columnDef: 'symbol',   header: 'Symbol', cell: (element: Element) => `${element.symbol}`   },
+// ];

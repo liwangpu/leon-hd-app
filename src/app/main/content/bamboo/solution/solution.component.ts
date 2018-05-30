@@ -21,7 +21,7 @@ import { SolutionMdService } from './solution-md.service';
   ]
 })
 export class SolutionComponent implements OnInit {
-  displayedColumns = ['select', 'seqno', 'icon', 'name', 'description', 'createdTime'];
+  displayedColumns = ['icon', 'name', 'description', 'createdTime'];
   // dataSource: PaginatorStore<Solution>;
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;

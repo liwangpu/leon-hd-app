@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ContentChild, ElementRef } from '@angular/core';
-import { ListDisplayModeEnum } from '../../paginator-common-tpls.component';
+import { ListDisplayModeEnum, IListTableColumn } from '../../paginator-common-tpls.component';
 import { PaginatorCommonMdService } from '../../paginator-common-md.service';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { IPageChangeParam } from '../../paging-bar/paging-bar.component';
@@ -16,10 +16,24 @@ import { Observable } from 'rxjs/Observable';
 })
 export class TableListContentComponent implements OnInit {
 
+  _selectMode = false;//自己缓存一下上次页面模式
+  selectColumn: IListTableColumn<Ilistable> = { columnDef: 'select', header: '', width: 55, cell: (data: Ilistable) => '' };
+  columns: Array<IListTableColumn<Ilistable>> = [
+    // { columnDef: 'select', header: '', width: 55, cell: (data: Ilistable) => '' },
+    { columnDef: 'seqno', header: 'glossary.SeqNO', width: 50, cell: (data: Ilistable) => `${data.seqno}` }
+  ];
   selectedItem: Array<string> = [];
   allSelected = false;
+  @ViewChild('paginatorTable') paginatorTable: MatTable<Ilistable>;
   destroy$: Subject<boolean> = new Subject();
-  dataStore = new CustomDataSource();
+  dataSource = new CustomDataSource();
+  get displayedColumns() {
+    return this.columns.map(c => c.columnDef);
+  }
+
+
+
+  // displayedColumns = this.columns.map(c => c.columnDef);
 
   constructor(public mdSrv: PaginatorCommonMdService, public router: Router) {
 
@@ -33,28 +47,48 @@ export class TableListContentComponent implements OnInit {
       else {
         this.selectedItem = [];
         this.mdSrv.selectedItems = [];
+
+        // this.mdSrv.cacheData
+        if (!select) {
+          for (let idx = this.mdSrv.cacheData.length - 1; idx >= 0; idx--) {
+            let curItem = this.mdSrv.cacheData[idx];
+            curItem.select = false;
+          }//for
+          this.dataSource._dataSubject.next(this.mdSrv.cacheData);
+        }//if
+
       }
+
     });//
     //订阅查看|选择模式
     this.mdSrv.selectMode$.takeUntil(this.destroy$).subscribe(selectMode => {
+      if (!this._selectMode && selectMode) {
+        this.columns.unshift(this.selectColumn);
+      }
+      if (!selectMode && this._selectMode)
+        this.columns.shift();
+
+      this._selectMode = selectMode;
       this.allSelected = !selectMode;
+    });//
+    //表格列改变事件
+    this.mdSrv.afterPaginatorColumnChange$.takeUntil(this.destroy$).subscribe(cols => {
+      // console.log('列有变', cols);
+      this.columns = [...this.columns, ...this.mdSrv.columnDefs];
     });//
   }//constructor
 
   ngOnInit() {
-
-    // this.displayedColumns = this.mdSrv.columnDefs.map(x => x.columnDef);
-    // console.log('table ', this.tableListCt);
-    // this.tableListCt.addRowDef()
+    this.mdSrv.afterPaginatorTableContentInit$.next();
 
     //订阅选中项事件,因为有可能列表界面会删除选中项,删除后content如果不订阅,就会出现之前删除的项id又被拼接上来
     this.mdSrv.itemSelected$.takeUntil(this.destroy$).subscribe(arr => {
       this.selectedItem = arr;
     });//
-    this.mdSrv.paginatorTable.dataSource = this.dataStore;
-    this.dataStore._dataSubject.next(this.mdSrv.cacheData);
+
+    this.dataSource._dataSubject.next(this.mdSrv.cacheData);
     this.mdSrv.afterDataRefresh$.takeUntil(this.destroy$).subscribe(() => {
-      this.dataStore._dataSubject.next(this.mdSrv.cacheData);
+      this.dataSource._dataSubject.next(this.mdSrv.cacheData);
     });
   }//ngOnInit
 
@@ -64,7 +98,7 @@ export class TableListContentComponent implements OnInit {
   }//ngOnDestroy
 
   rowSelect(id: any) {
-    // console.log('onCheckBoxSelect', row);
+
     if (this.mdSrv.selectMode)
       return;
     this.router.navigate([this.mdSrv.createdUrl, id]);
@@ -95,9 +129,9 @@ export class TableListContentComponent implements OnInit {
 
 class CustomDataSource extends DataSource<any> {
 
-  _dataSubject = new BehaviorSubject<Array<Ilistable>>([]);
+  _dataSubject = new BehaviorSubject<Array<{ seqno: number }>>([]);
 
-  connect(): Observable<Ilistable[]> {
+  connect(): Observable<Array<{ seqno: number }>> {
     return this._dataSubject.map(rdata => {
       return rdata;
     });
@@ -105,46 +139,3 @@ class CustomDataSource extends DataSource<any> {
 
   disconnect() { }
 }
-
-// export class CustomDataSource extends DataSource<any> {
-
-//   _dataSubject = new BehaviorSubject<Array<Element>>([]);
-
-//   connect(): Observable<Array<Element>> {
-//     return this._dataSubject.map(rdata => {
-//       return rdata;
-//     });
-//   }
-
-//   disconnect() { }
-// }
-
-// class Element {
-//   position: number;
-//   name: string;
-//   weight: number;
-//   symbol: string;
-// }
-
-// const data: Element[] = [
-//   { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-//   { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-//   // { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-//   // { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-//   // { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-//   // { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-//   // { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-//   // { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-//   // { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-//   // { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-//   // { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-//   // { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-//   // { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-//   // { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-//   // { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-//   // { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-//   // { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-//   // { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-//   // { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-//   // { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
-// ];

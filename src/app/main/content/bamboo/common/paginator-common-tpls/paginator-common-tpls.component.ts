@@ -6,6 +6,7 @@ import { PaginatorCommonMdService } from './paginator-common-md.service';
 import { Observable } from 'rxjs/Observable';
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 import { Ilistable } from '../../../../toolkit/models/ilistable';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-paginator-common-tpls',
@@ -18,21 +19,21 @@ import { Ilistable } from '../../../../toolkit/models/ilistable';
 })
 export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
 
-
-  @ContentChild('paginatorTable') paginatorTable;
   @Input() launch: PaginatorLaunch;
   destroy$: Subject<boolean> = new Subject();
   constructor(public globalSrv: GlobalCommonService, public mdSrv: PaginatorCommonMdService) {
+    this.mdSrv.afterPaginatorTableContentInit$.subscribe(() => {
+      this.mdSrv.columnDefs = this.launch.columnDefs;
+    });
   }//constructor
 
   ngOnInit() {
-    this.mdSrv.paginatorTable = this.paginatorTable;
+    // this.mdSrv.paginatorTable = this.paginatorTable;
 
     //转移launch参数到mdSrv
     this.mdSrv.apiSvr = this.launch.apiSrv;
     this.mdSrv.createdUrl = this.launch.createdUrl;
     this.mdSrv.defaultPageSizeOption = this.launch.pageSizeOption;
-    // this.mdSrv.columnDefs = this.launch.columnDefs;
     this.mdSrv.advanceMenuItems = this.launch.advanceMenuItems;
     //订阅全局搜索
     this.globalSrv.keyworkSearch$.takeUntil(this.destroy$).subscribe(key => {
@@ -69,30 +70,19 @@ export abstract class PaginatorLaunch {
   abstract title: string;
   abstract apiSrv: IListableService<Ilistable>;
   pageSizeOption = [25, 100, 500];//默认分页按钮参数
-  // displayColumns = [];
-  columnDefs: Array<IListTableColumn<Ilistable>> = [];
   advanceMenuItems: Array<IAdvanceMenuItem> = [];
-  constructor() {
-    // //初始化通用的高级按钮菜单
-    // let deleteMenuItem: IAdvanceMenuItem = {
-    //   icon: 'delete',
-    //   name: 'button.Delete',
-    //   needSelected: true,
-    //   click: this.batchDelete
-    // };
-    // this.advanceMenuItems.push(deleteMenuItem);
+  columnDefs: Array<IListTableColumn<Ilistable>> = [
+    { columnDef: 'icon', header: 'glossary.Icon', width: 84, cell: (data: Ilistable) => data.icon ? data.icon : '' }
+    , { columnDef: 'name', header: 'glossary.Name', width: 50, cell: (data: Ilistable) => data.name ? data.name : '' }
+    , { columnDef: 'description', header: 'glossary.Description', width: 50, cell: (data: Ilistable) => data.description ? data.description : '' }
+    , { columnDef: 'createdTime', header: 'glossary.CreatedTime', width: 50, cell: (data: Ilistable) => this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd') }
+  ];
+  constructor(protected datePipeTr: DatePipe) {
 
-    this.columnDefs = [
-      // { columnDef: 'seqno', header: 'glossary.SeqNO', cell: (data) => { return `${data.seqno}`; } }
-      , { columnDef: 'icon', header: '', cell: (data) => { return `${data.icon}`; } }
-      , { columnDef: 'name', header: 'glossary.Name', cell: (data) => { return `${data.name}`; } }
-      , { columnDef: 'description', header: 'glossary.Description', cell: (data) => { return `${data.description}`; } },
-      , { columnDef: 'createdTime', header: 'glossary.CreatedTime', cell: (data) => { return `${data.createdTime}`; } }
-    ];
   }//constructor
 
   batchDelete(idArr: Array<string>) {
-    console.log('get batch items', idArr);
+
   }//batchDelete
 
   exportData() {

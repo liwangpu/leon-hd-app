@@ -1,3 +1,40 @@
 <div class="content-container">
-    <ng-content></ng-content>
+    <mat-table #paginatorTable [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+
+        <ng-container *ngFor="let column of columns" [cdkColumnDef]="column.columnDef" [ngSwitch]='column.columnDef'>
+
+            <ng-container *ngSwitchCase='"select"'>
+                <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+                <mat-cell *cdkCellDef="let row">
+                    <mat-checkbox [checked]='allSelected||row.select' (change)='onCheckBoxSelect(cbox.checked,row.id)' #cbox>
+                    </mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container *ngSwitchCase='"seqno"'>
+                <mat-header-cell *cdkHeaderCellDef>{{'glossary.SeqNO'|translate}}</mat-header-cell>
+                <mat-cell *cdkCellDef="let row">
+                    {{row.seqno}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container *ngSwitchCase='"icon"'>
+                <mat-header-cell *cdkHeaderCellDef>{{'glossary.Icon'|translate}}</mat-header-cell>
+                <mat-cell *cdkCellDef="let row">
+                    <img class="listable-icon" [src]="row.icon?(row.icon|serverRedirect):'assets/images/ecommerce/product-image-placeholder.png'">
+                </mat-cell>
+            </ng-container>
+
+            <ng-container *ngSwitchDefault>
+                <mat-header-cell *cdkHeaderCellDef mat-sort-header>{{ column.header|translate }}</mat-header-cell>
+                <mat-cell *cdkCellDef="let row">{{ column.cell(row) }}</mat-cell>
+            </ng-container>
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
+            (click)="row.highlighted = !row.highlighted;_selectMode?(row.select=!row.select):row.select=false" (mouseover)="row.hovered = true"
+            (mouseout)="row.hovered = false"></mat-row>
+    </mat-table>
 </div>

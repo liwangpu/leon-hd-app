@@ -1,3 +1,33 @@
 :host {
-    div.content-container {}
+    div.content-container {
+        .mat-cell {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+        }
+        .mat-column-seqno {
+            flex: 0 1 50px;
+        }
+        .mat-column-select {
+            flex: 0 1 55px;
+            overflow: visible;
+        }
+        .mat-column-icon {
+            flex: 0 1 84px;
+        }
+        .mat-column-createdTime {
+            flex: 0 1 100px;
+        }
+        .mat-column-image {
+            flex: 0 1 84px;
+            .product-image {
+                width: 52px;
+                height: 52px;
+                border: 1px solid rgba(0, 0, 0, .12);
+            }
+        }
+        .mat-column-buttons {
+            flex: 0 1 80px;
+        }
+    }
 }

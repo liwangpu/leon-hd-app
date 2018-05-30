@@ -35,6 +35,26 @@
     background-color: inherit;
 }
 
+.mat-row.hovered {
+    background: #eee;
+}
+
+.mat-row.highlighted {
+    background: #eee;
+}
+
+/*
+    This is a work around for checkbox bug in material row
+    https://github.com/angular/material2/issues/8600
+  */
+
+mat-cell.mat-cell,
+mat-header-cell.mat-header-cell {
+    overflow: visible;
+}
+
+/******************************************************/
+
 .primary-title {
     display: block;
     font-size: 34px;
