@@ -5,6 +5,7 @@ import { IListableService } from '../../../../toolkit/server/webapi/ilistableSer
 import { Ilistable } from '../../../../toolkit/models/ilistable';
 import { ListDisplayModeEnum, IListTableColumn } from './paginator-common-tpls.component';
 import { IQuery } from '../../../../toolkit/server/webapi/api.service';
+import { MatTable } from '@angular/material';
 
 @Injectable()
 export class PaginatorCommonMdService implements OnDestroy {
@@ -20,6 +21,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   private _selectedItems: Array<string> = [];//已选择的项id
   private _displayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;
   private _query: IQuery = {};
+  private _paginatorTable: MatTable<Ilistable>;
   cacheData: Array<Ilistable> = [];
   createdUrl: string;
   defaultPageSizeOption = [];//默认分页按钮参数
@@ -36,6 +38,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   queryData$: Subject<void> = new Subject();//查询数据信息,自动根据当前的关键字等条件查询
   displayMode$: Subject<ListDisplayModeEnum> = new Subject();//列表项显示模式
   afterDataRefresh$: Subject<void> = new Subject();//当数据刷新后触发事件
+  afterPaginatorTableReady$: Subject<void> = new Subject();//分页表格初始化好后
   destroy$: Subject<boolean> = new Subject();
   //////////////////////////////////////////////////////////////////////////////////
   /**
@@ -135,6 +138,16 @@ export class PaginatorCommonMdService implements OnDestroy {
       this.query();
     }
   }//
+  /**
+   * 分页表格
+   */
+  set paginatorTable(vl: MatTable<Ilistable>) {
+    this._paginatorTable = vl;
+    this.afterPaginatorTableReady$.next();
+  }
+  get paginatorTable() {
+    return this._paginatorTable;
+  }
 
   constructor() {
     //订阅查询数据
@@ -165,13 +178,14 @@ export class PaginatorCommonMdService implements OnDestroy {
       //校正index为1
       if (this._pageParam.pageIndex <= 0)
         this._pageParam.pageIndex = 1;
-      if (res.total <= 0)
-        return;
-      for (let i = 0, len = res.data.length; i < len; i++) {
-        let data = res.data[i];
-        data.seqno = i + 1 + (this._pageParam.pageIndex - 1) * this._pageParam.pageSize;
-        this.cacheData.push(data);
-      }//for
+
+      if (res.data && res.data.length) {
+        for (let i = 0, len = res.data.length; i < len; i++) {
+          let data = res.data[i];
+          data.seqno = i + 1 + (this._pageParam.pageIndex - 1) * this._pageParam.pageSize;
+          this.cacheData.push(data);
+        }//for
+      } //if
       this.afterDataRefresh$.next();
     });
   }//query

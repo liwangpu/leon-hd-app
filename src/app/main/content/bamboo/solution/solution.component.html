@@ -1,4 +1,42 @@
-<!-- <app-paginator-common-tpls [pageTitle]='"glossary.Solution"' [iconName]='"shopping_basket"' [readDataOnly]='readDataOnly' [apiSvr]='solutionSrv' [createdUrl]='createdUrl'></app-paginator-common-tpls> -->
+<app-paginator-common-tpls [launch]='mdSrv'>
+    <div class="paginator-table">
+        <mat-table matSort (matSortChange)="sortData($event)" #paginatorTable>
+            <ng-container matColumnDef="select">
+                <mat-header-cell *matHeaderCellDef [style.flex]="'0 0 55px'"></mat-header-cell>
+                <mat-cell *matCellDef="let row" [style.flex]="'0 0 55px'">
+                    <mat-checkbox [checked]='allSelected' (change)='onCheckBoxSelect(cbox.checked,row.id)' #cbox>
+                    </mat-checkbox>
+                </mat-cell>
+            </ng-container>
 
-<!-- <app-paginator-common-tpls [launch]='mdSrv'></app-paginator-common-tpls> -->
-<app-listable-layout-tpls-simple></app-listable-layout-tpls-simple>
+            <ng-container matColumnDef="seqno">
+                <mat-header-cell *matHeaderCellDef [style.flex]="'0 0 50px'">{{'glossary.SeqNO'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let element" [style.flex]="'0 0 50px'"> {{element.seqno}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="icon">
+                <mat-header-cell *matHeaderCellDef mat-sort-header [style.flex]="'0 0 84px'">{{'glossary.Icon'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let element" [style.flex]="'0 0 84px'">
+                    <img class="listable-icon" [src]="element.icon?(element.icon|serverRedirect):'assets/images/ecommerce/product-image-placeholder.png'">
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'glossary.Name'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'glossary.Description'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="createdTime">
+                <mat-header-cell *matHeaderCellDef mat-sort-header [style.flex]="'0 0 100px'">{{'glossary.CreatedTime'|translate}} </mat-header-cell>
+                <mat-cell *matCellDef="let element" [style.flex]="'0 0 100px'"> {{element.createdTime|date:'yyyy-MM-dd'}} </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" (click)='rowSelect(row.id)' #currentRow></mat-row>
+        </mat-table>
+    </div>
+</app-paginator-common-tpls>

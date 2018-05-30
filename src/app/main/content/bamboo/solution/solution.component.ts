@@ -21,7 +21,7 @@ import { SolutionMdService } from './solution-md.service';
   ]
 })
 export class SolutionComponent implements OnInit {
-  // displayedColumns = ['icon', 'name', 'description', 'createdTime'];
+  displayedColumns = ['select', 'seqno', 'icon', 'name', 'description', 'createdTime'];
   // dataSource: PaginatorStore<Solution>;
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
@@ -30,7 +30,7 @@ export class SolutionComponent implements OnInit {
   // dialogRef: any;
   // readDataOnly = false;
   // createdUrl = 'app/solution-detail';
-  constructor(private solutionSrv: SolutionService, public dialog: MatDialog, public pathSrv: PathService,public mdSrv:SolutionMdService) {
+  constructor(private solutionSrv: SolutionService, public dialog: MatDialog, public pathSrv: PathService, public mdSrv: SolutionMdService) {
   }
 
   ngOnInit() {

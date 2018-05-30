@@ -15,7 +15,9 @@
   <div fxFlex class="content-container">
     <div class="content-wrapper" fxLayout='column'>
       <div class="paging-content-container" fxFlex>
-        <app-paginator-paging-content></app-paginator-paging-content>
+        <app-paginator-paging-content>
+            <ng-content select='.paginator-table'></ng-content>
+        </app-paginator-paging-content>
       </div>
       <div fxFlex='65.5px'>
         <app-paginator-paging-bar></app-paginator-paging-bar>
@@ -23,3 +25,4 @@
     </div>
   </div>
 </div>
+

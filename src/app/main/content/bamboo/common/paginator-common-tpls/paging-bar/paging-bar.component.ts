@@ -22,7 +22,7 @@ export class PagingBarComponent implements OnInit {
   }//constructor
 
   ngOnInit() {
-    console.log('allCheckCt', this.allCheckCt);
+
   }//ngOnInit
 
   pageChange(evt: IPageChangeParam) {

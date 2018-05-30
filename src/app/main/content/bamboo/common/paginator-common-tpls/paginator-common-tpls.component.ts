@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ViewChild, ElementRef, ContentChild } from '@angular/core';
 import { GlobalCommonService } from '../../../../service/global-common.service';
 import { Subject } from 'rxjs';
 import { fuseAnimations } from '../../../../../core/animations';
@@ -19,15 +19,15 @@ import { Ilistable } from '../../../../toolkit/models/ilistable';
 export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
 
 
+  @ContentChild('paginatorTable') paginatorTable;
   @Input() launch: PaginatorLaunch;
   destroy$: Subject<boolean> = new Subject();
   constructor(public globalSrv: GlobalCommonService, public mdSrv: PaginatorCommonMdService) {
-
-    // console.log('qqqqqq', this.launch.columnDefs);
-
   }//constructor
 
   ngOnInit() {
+    this.mdSrv.paginatorTable = this.paginatorTable;
+
     //转移launch参数到mdSrv
     this.mdSrv.apiSvr = this.launch.apiSrv;
     this.mdSrv.createdUrl = this.launch.createdUrl;
