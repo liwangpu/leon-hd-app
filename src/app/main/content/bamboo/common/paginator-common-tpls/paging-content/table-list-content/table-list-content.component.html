@@ -4,8 +4,8 @@
         <ng-container *ngFor="let column of columns" [cdkColumnDef]="column.columnDef" [ngSwitch]='column.columnDef'>
 
             <ng-container *ngSwitchCase='"select"'>
-                <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
-                <mat-cell *cdkCellDef="let row">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="55px"></mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="55px">
                     <mat-checkbox [checked]='allSelected||row.select' (change)='onCheckBoxSelect(cbox.checked,row.id)' (click)='$event.stopPropagation()'
                         #cbox>
                     </mat-checkbox>
@@ -13,22 +13,22 @@
             </ng-container>
 
             <ng-container *ngSwitchCase='"seqno"'>
-                <mat-header-cell *cdkHeaderCellDef>{{'glossary.SeqNO'|translate}}</mat-header-cell>
-                <mat-cell *cdkCellDef="let row">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="50px">{{'glossary.SeqNO'|translate}}</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="50px">
                     {{row.seqno}}
                 </mat-cell>
             </ng-container>
 
             <ng-container *ngSwitchCase='"icon"'>
-                <mat-header-cell *cdkHeaderCellDef>{{'glossary.Icon'|translate}}</mat-header-cell>
-                <mat-cell *cdkCellDef="let row">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="84px">{{'glossary.Icon'|translate}}</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="84px">
                     <img class="listable-icon" [src]="row.icon?(row.icon|serverRedirect):'assets/images/ecommerce/product-image-placeholder.png'">
                 </mat-cell>
             </ng-container>
 
             <ng-container *ngSwitchDefault>
-                <mat-header-cell *cdkHeaderCellDef mat-sort-header>{{ column.header|translate }}</mat-header-cell>
-                <mat-cell *cdkCellDef="let row">{{ column.cell(row) }}</mat-cell>
+                <mat-header-cell *cdkHeaderCellDef mat-sort-header [fxFlex]="column.width>0?column.width+'px':''">{{ column.header|translate }}</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" [fxFlex]="column.width>0?column.width+'px':''">{{ column.cell(row) }}</mat-cell>
             </ng-container>
 
         </ng-container>

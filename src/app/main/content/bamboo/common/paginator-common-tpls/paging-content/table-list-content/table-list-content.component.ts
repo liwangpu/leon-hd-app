@@ -129,6 +129,12 @@ export class TableListContentComponent implements OnInit {
   sortData(sort: Sort) {
     this.mdSrv.sortData = { orderBy: sort.active, desc: sort.direction === 'desc' };
   }//sortData
+
+  generateCellWidth() {
+    return {
+      flex: '0 0 80px'
+    };
+  }//
 }
 
 class CustomDataSource extends DataSource<any> {

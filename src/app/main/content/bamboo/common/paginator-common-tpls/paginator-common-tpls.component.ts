@@ -80,10 +80,10 @@ export abstract class PaginatorLaunch {
   pageSizeOption = [25, 100, 500];//默认分页按钮参数
   advanceMenuItems: Array<IAdvanceMenuItem> = [];
   columnDefs: Array<IListTableColumn<Ilistable>> = [
-    { columnDef: 'icon', header: 'glossary.Icon', width: 84, cell: (data: Ilistable) => data.icon ? data.icon : '' }
-    , { columnDef: 'name', header: 'glossary.Name', width: 50, cell: (data: Ilistable) => data.name ? data.name : '' }
-    , { columnDef: 'description', header: 'glossary.Description', width: 50, cell: (data: Ilistable) => data.description ? data.description : '' }
-    , { columnDef: 'createdTime', header: 'glossary.CreatedTime', width: 50, cell: (data: Ilistable) => this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd') }
+    { columnDef: 'icon', header: 'glossary.Icon', width: 0, cell: (data: Ilistable) => data.icon ? data.icon : '' }
+    , { columnDef: 'name', header: 'glossary.Name', width: 180, cell: (data: Ilistable) => data.name ? data.name : '' }
+    , { columnDef: 'description', header: 'glossary.Description', width: 0, cell: (data: Ilistable) => data.description ? data.description : '' }
+    , { columnDef: 'createdTime', header: 'glossary.CreatedTime', width: 85, cell: (data: Ilistable) => this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd') }
   ];
   constructor(protected datePipeTr: DatePipe) {
 
