@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { PaginatorCommonMdService } from '../../paginator-common-md.service';
 import { Subject } from 'rxjs';
+import { DessertService } from '../../../../../services/dessert.service';
+import { ListDisplayModeEnum } from '../../paginator-common-tpls.component';
 
 @Component({
   selector: 'app-commom-paging-litimg-list-content',
@@ -15,6 +17,7 @@ export class LitimgListContentComponent implements OnInit, OnDestroy {
   constructor(public mdSrv: PaginatorCommonMdService, public router: Router) { }
 
   ngOnInit() {
+    this.mdSrv.displayMode=ListDisplayModeEnum.Litimg;
     //订阅选中项事件,因为有可能列表界面会删除选中项,删除后content如果不订阅,就会出现之前删除的项id又被拼接上来
     this.mdSrv.itemSelected$.takeUntil(this.destroy$).subscribe(arr => {
       this.selectedItem = arr;

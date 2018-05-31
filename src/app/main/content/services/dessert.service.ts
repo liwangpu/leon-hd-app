@@ -204,11 +204,14 @@ export class DessertService {
             }
         }
 
-        let arr = urlSeg.map(x => x.path);
-        let currentUrl = arr.join('/');
-
+        let currentUrl = this.joinUrlSegment(urlSeg);
         return this._editPermission.some(x => x.indexOf(currentUrl) > 0 ? true : false);
     }//hasDataEditPermission
+
+    private joinUrlSegment(urlSeg: Array<UrlSegment>): string {
+        let arr = urlSeg.map(x => x.path);
+        return arr.join('/');
+    }//joinUrlSegment
 
     private parsePermission(obj: NavigationData) {
         if (obj.url && obj.editOp)
@@ -226,6 +229,34 @@ export class DessertService {
     }//clearChildren
 
     /**
+ * 简单缓存一下列表页面上次的显示模式
+ */
+    private _listPageLastDisplayMode: [string, number] = ['', 1];
+
+    cacheListPageLastDisplayMode(urlSeg: Array<UrlSegment>, vl: number) {
+        let currentUrl = this.joinUrlSegment(urlSeg);
+        this._listPageLastDisplayMode = [currentUrl, vl];
+    }//cacheListPageLastDisplayMode
+
+    getListPageLastDisplayMode(urlSeg: Array<UrlSegment>): number {
+        let currentUrl = this.joinUrlSegment(urlSeg);
+        if (currentUrl !== this._listPageLastDisplayMode[0])
+            return 1;
+        else
+            return this._listPageLastDisplayMode[1];
+    }//getListPageLastDisplayMode
+
+    /**
+     * 判断是否最近访问的页面
+     */
+    isLatestVisitPage(urlSeg: Array<UrlSegment>): boolean {
+        let currentUrl = this.joinUrlSegment(urlSeg);
+        if (currentUrl === this._listPageLastDisplayMode[0])
+            return true;
+        return false;
+    }//isLatestVisitPage
+
+    /**
      * 用于从localstore/indexeddb还原数据到cache类
      */
     restoreCache() {
@@ -235,4 +266,5 @@ export class DessertService {
         Memory.getInstance().organId = this.organId;
         Memory.getInstance().departmentId = this.departmentId;
     }
+
 }

@@ -7,6 +7,8 @@ import { ListDisplayModeEnum, IListTableColumn } from './paginator-common-tpls.c
 import { IQuery } from '../../../../toolkit/server/webapi/api.service';
 import { MatTable } from '@angular/material';
 import { CdkColumnDef } from '@angular/cdk/table';
+import { DessertService } from '../../../services/dessert.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class PaginatorCommonMdService implements OnDestroy {
@@ -20,7 +22,6 @@ export class PaginatorCommonMdService implements OnDestroy {
   private _keyword: string;//搜索关键字
   private _pageParam: IPageChangeParam = { pageIndex: 1, pageSize: 500, length: 0 };//当前分页信息
   private _selectedItems: Array<string> = [];//已选择的项id
-  private _displayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;
   private _query: IQuery = {};
   private _columnDefs: Array<IListTableColumn<Ilistable>> = [];
   cacheData: Array<Ilistable> = [];
@@ -39,7 +40,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   displayMode$: Subject<ListDisplayModeEnum> = new Subject();//列表项显示模式
   afterDataRefresh$: Subject<void> = new Subject();//当数据刷新后触发事件
   afterPaginatorColumnChange$: Subject<Array<IListTableColumn<Ilistable>>> = new Subject();//分页表格column改变后事件
-  afterPaginatorTableContentInit$:Subject<void>=new Subject();//列表页面初始化完成后事件
+  afterPaginatorTableContentInit$: Subject<void> = new Subject();//列表页面初始化完成后事件
   destroy$: Subject<boolean> = new Subject();
   //////////////////////////////////////////////////////////////////////////////////
   /**
@@ -111,14 +112,12 @@ export class PaginatorCommonMdService implements OnDestroy {
   /**
    * 设置分页项显示模式
    */
-  set displayMode(vl: ListDisplayModeEnum) {
-    if (vl != this._displayMode) {
-      this._displayMode = vl;
-      this.displayMode$.next(vl);
-    }
+  set displayMode(vl: number) {
+    this.dessertSrv.cacheListPageLastDisplayMode(this.router.snapshot.url, vl);
+    this.displayMode$.next(vl);
   }
-  get displayMode() {
-    return this._displayMode;
+  get displayMode(): number {
+    return this.dessertSrv.getListPageLastDisplayMode(this.router.snapshot.url);
   }
   /**
    * 设置过滤查询
@@ -141,7 +140,7 @@ export class PaginatorCommonMdService implements OnDestroy {
     return this._columnDefs;
   }
 
-  constructor() {
+  constructor(protected dessertSrv: DessertService, public router: ActivatedRoute) {
 
     //订阅查询数据
     this.queryData$.takeUntil(this.destroy$).subscribe(() => {

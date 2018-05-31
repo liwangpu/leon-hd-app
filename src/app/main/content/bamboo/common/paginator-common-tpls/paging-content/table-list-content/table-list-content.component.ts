@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Sort, MatTable } from '@angular/material';
 import { DataSource } from '@angular/cdk/table';
 import { Observable } from 'rxjs/Observable';
+import { DessertService } from '../../../../../services/dessert.service';
 
 @Component({
   selector: 'app-commom-paging-table-list-content',
@@ -72,6 +73,7 @@ export class TableListContentComponent implements OnInit {
   }//constructor
 
   ngOnInit() {
+    this.mdSrv.displayMode=ListDisplayModeEnum.List;
     if (this.mdSrv.selectMode && !this.columns.some(x => x.columnDef == 'select')) {
       this.columns.unshift(this.selectColumn);
     }

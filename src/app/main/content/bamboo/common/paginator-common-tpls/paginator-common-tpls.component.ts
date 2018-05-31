@@ -41,6 +41,9 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
     this.mdSrv.createdUrl = this.launch.createdUrl;
     this.mdSrv.defaultPageSizeOption = this.launch.pageSizeOption;
     this.mdSrv.advanceMenuItems = this.launch.advanceMenuItems;
+    if (!this.dessertSrv.isLatestVisitPage(this.router.snapshot.url))
+      this.mdSrv.displayMode = this.launch.displayMode;
+
     //订阅全局搜索
     this.globalSrv.keyworkSearch$.takeUntil(this.destroy$).subscribe(key => {
       this.onKeywordSearch(key);
@@ -61,10 +64,6 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
 
 }
 
-export enum ListDisplayModeEnum {
-  List = 1,
-  Litimg = 2
-}
 
 
 /**
@@ -75,6 +74,7 @@ export abstract class PaginatorLaunch {
   abstract titleIcon: string;
   abstract title: string;
   abstract apiSrv: IListableService<Ilistable>;
+  displayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;
   pageSizeOption = [25, 100, 500];//默认分页按钮参数
   advanceMenuItems: Array<IAdvanceMenuItem> = [];
   columnDefs: Array<IListTableColumn<Ilistable>> = [
@@ -95,6 +95,21 @@ export abstract class PaginatorLaunch {
 
   }//exportData
 }
+
+/**
+ * 列表页面的显示模式
+ */
+export enum ListDisplayModeEnum {
+  /**
+   * 列
+   */
+  List = 1,
+  /**
+   * 缩略图
+   */
+  Litimg = 2
+}
+
 
 export interface IAdvanceMenuItem {
   icon: string;//icon name

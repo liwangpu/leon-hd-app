@@ -13,7 +13,6 @@ export class PagingContentComponent implements OnInit, OnDestroy {
 
   constructor(public mdSrv: PaginatorCommonMdService) {
 
-
   }//constructor
 
   ngOnInit() {
