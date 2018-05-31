@@ -32,7 +32,8 @@ export const locale = {
             "Package": "套餐",
             "StaticMesh": "模型",
             "Material": "材质",
-            "Map": "场景"
+            "Map": "场景",
+            "Layout": "户型"
         },
         "glossary": {
             "SeqNO": "序号",
@@ -85,6 +86,7 @@ export const locale = {
             "StaticMesh": "模型",
             "Material": "材质",
             "Map": "场景",
+            "Layout": "户型",
             "UnCategory": "未分类",
             "MaterialCategory": "材质分类"
         },

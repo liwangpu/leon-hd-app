@@ -23,6 +23,7 @@ import { OrderService } from "./webapi/order.service";
 import { PackageService } from "./webapi/package.service";
 import { MapService } from "./webapi/map.service";
 import { MaterialCategoryService } from './webapi/material-category.service';
+import { LayoutService } from './webapi/layout.service';
 @NgModule({
     imports: [
         ConfigModule
@@ -48,6 +49,7 @@ import { MaterialCategoryService } from './webapi/material-category.service';
         , OrderService
         , PackageService
         , MapService
+        , LayoutService
         , MaterialCategoryService
         , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
         , { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }

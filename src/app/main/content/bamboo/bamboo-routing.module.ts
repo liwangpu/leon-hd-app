@@ -32,8 +32,9 @@ import { MapComponent } from './map/map.component';
 import { MapDetailComponent } from './map-detail/map-detail.component';
 import { MapService } from '../../toolkit/server/webapi/map.service';
 import { MaterialCategoryComponent } from './material-category/material-category.component';
-
-
+import { LayoutComponent } from './layout/layout.component';
+import { LayoutService } from '../../toolkit/server/webapi/layout.service';
+import { LayoutDetailComponent } from './layout-detail/layout-detail.component';
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -50,6 +51,8 @@ const routes: Routes = [
   , { path: 'app/staticmeshs', component: StaticmeshComponent, canActivate: [RouteGuardService] }
   , { path: 'app/materials', component: MaterialComponent, canActivate: [RouteGuardService] }
   , { path: 'app/maps', component: MapComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/layouts', component: LayoutComponent, canActivate: [RouteGuardService] }
+  /****************************************************************************************************/
   , {
     path: 'app/product-detail/:id'
     , component: ProductDetailComponent
@@ -59,6 +62,7 @@ const routes: Routes = [
     }
   }
   , { path: 'app/product-detail', component: ProductDetailComponent, canActivate: [RouteGuardService] }
+  /****************************************************************************************************/
   , {
     path: 'app/organ-detail/:id'
     , component: OrganDetailComponent
@@ -91,6 +95,7 @@ const routes: Routes = [
     }
   }
   , { path: 'app/order-detail', component: OrderDetailComponent, canActivate: [RouteGuardService] }
+  /****************************************************************************************************/
   , {
     path: 'app/package-detail/:id'
     , component: PackageDetailComponent
@@ -100,6 +105,7 @@ const routes: Routes = [
     }
   }
   , { path: 'app/package-detail', component: PackageDetailComponent, canActivate: [RouteGuardService] }
+  /****************************************************************************************************/
   , {
     path: 'app/staticmesh-detail/:id'
     , component: StaticmeshDetailComponent
@@ -108,6 +114,7 @@ const routes: Routes = [
       entity: StaticmeshService
     }
   }
+  /****************************************************************************************************/
   , {
     path: 'app/material-detail/:id'
     , component: MaterialDetailComponent
@@ -122,6 +129,23 @@ const routes: Routes = [
     , canActivate: [RouteGuardService],
     resolve: {
       entity: MapService
+    }
+  }
+  /****************************************************************************************************/
+  , {
+    path: 'app/layout-detail/:id'
+    , component: LayoutDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: LayoutService
+    }
+  }
+  , {
+    path: 'app/layout-detail/:id'
+    , component: LayoutDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: LayoutService
     }
   }
 ];

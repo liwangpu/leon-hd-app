@@ -32,7 +32,8 @@ export const locale = {
             "Package": "Package",
             "StaticMesh": "StaticMesh",
             "Material": "Material",
-            "Map": "Map"
+            "Map": "Map",
+            "Layout": "Layout"
         },
         "glossary": {
             "SeqNO": "NO",
@@ -87,6 +88,7 @@ export const locale = {
             "StaticMesh": "StaticMesh",
             "Material": "Material",
             "Map": "Map",
+            "Layout": "Layout",
             "UnCategory": "UnCategory",
             "MaterialCategory": "Material Category"
         },
