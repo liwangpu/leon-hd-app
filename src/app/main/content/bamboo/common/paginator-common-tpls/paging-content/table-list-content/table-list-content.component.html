@@ -35,7 +35,7 @@
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
-            (click)="row.highlighted = !row.highlighted;_selectMode?(row.select=!row.select):row.select=false;gotoDetail(row.id)"
+            (click)="row.highlighted = !row.highlighted;_selectMode?(row.select=!row.select):row.select=false;gotoDetail(row.id);onCheckBoxSelect(row.select,row.id)"
             (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></mat-row>
     </mat-table>
 </div>

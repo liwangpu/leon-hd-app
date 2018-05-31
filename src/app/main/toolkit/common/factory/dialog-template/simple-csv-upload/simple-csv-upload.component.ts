@@ -43,7 +43,7 @@ export class SimpleCsvUploadComponent implements OnInit, OnDestroy, ISimpleConfi
   }//ngOnInit
 
   ngOnDestroy(): void {
-    console.log(111, this.uploadUrl);
+
   }//ngOnDestroy
 
   onFileChange(event: any) {

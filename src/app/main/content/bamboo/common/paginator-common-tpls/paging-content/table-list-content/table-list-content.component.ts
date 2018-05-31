@@ -73,7 +73,7 @@ export class TableListContentComponent implements OnInit {
   }//constructor
 
   ngOnInit() {
-    this.mdSrv.displayMode=ListDisplayModeEnum.List;
+    this.mdSrv.displayMode = ListDisplayModeEnum.List;
     if (this.mdSrv.selectMode && !this.columns.some(x => x.columnDef == 'select')) {
       this.columns.unshift(this.selectColumn);
     }
@@ -108,6 +108,7 @@ export class TableListContentComponent implements OnInit {
   }//
 
   onCheckBoxSelect(checked: boolean, id: string) {
+    if (!this.mdSrv.selectMode) return;
     let exist = this.selectedItem.some(x => x == id);
     if (checked) {
       if (!exist)

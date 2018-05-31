@@ -1,56 +1,8 @@
-<div id="product" class="page-layout carded fullwidth" fusePerfectScrollbar>
+<app-detail-edit-common-tpls title='glossary.Solution' editOpWith='app/solutions' [apiSrv]='solutionSrv'>
 
-  <!-- TOP BACKGROUND -->
-  <div class="top-bg mat-accent-bg"></div>
-  <!-- / TOP BACKGROUND -->
+    <!-- <app-detail-info-tab tabName='glossary.OrderContent'>
+        详细信息
+    </app-detail-info-tab> -->
 
-  <!-- CENTER -->
-  <div class="center">
 
-    <!-- HEADER -->
-    <div class="header white-fg" fxLayout="row" fxLayoutAlign="space-between center">
-
-      <!-- APP TITLE -->
-      <div fxLayout="row" fxLayoutAlign="start center">
-
-        <button class="mr-0 mr-sm-16" mat-icon-button [routerLink]="'/app/solutions'">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-
-        <div class="product-image mr-8 mr-sm-16">
-            <img [src]="detailMdSrv.solution.icon?pathSrv.redirectServerUrl(detailMdSrv.solution.icon):'assets/images/ecommerce/product-image-placeholder.png'">
-          </div>
-
-        <div fxLayout="column" fxLayoutAlign="start start" >
-          <div class="h2">
-            {{'glossary.Solution'|translate}}
-          </div>
-          <div *ngIf='solutionName' class="subtitle secondary-text">
-            <span>{{solutionName}}</span>
-          </div>
-        </div>
-      </div>
-      <!-- / APP TITLE -->
-    </div>
-    <!-- / HEADER -->
-
-    <!-- CONTENT CARD -->
-    <div class="content-card mat-white-bg">
-
-      <!-- CONTENT -->
-      <div class="content">
-        <mat-tab-group>
-          <mat-tab label="{{'glossary.BasicInfo'|translate}}">
-            <app-solution-detail-basic-info></app-solution-detail-basic-info>
-          </mat-tab>
-
-        </mat-tab-group>
-      </div>
-      <!-- / CONTENT -->
-
-    </div>
-    <!-- / CONTENT CARD -->
-
-  </div>
-  <!-- / CENTER -->
-</div>
+</app-detail-edit-common-tpls>

@@ -13,7 +13,22 @@
 }
 
 .mat-tab-body {
-    padding: 0 15px;
+    padding: 0 0;
+}
+
+.mat-tab-group,
+.mat-tab-body-wrapper,
+.tab-content {
+    flex: 1 1 auto;
+    max-width: 100%;
+}
+
+.mat-tab-body-content {
+    display: flex;
+}
+
+.mat-tab-label {
+    height: 64px;
 }
 
 .mat-button,

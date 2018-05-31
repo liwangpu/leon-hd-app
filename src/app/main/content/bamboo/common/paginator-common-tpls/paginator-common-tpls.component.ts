@@ -75,6 +75,7 @@ export abstract class PaginatorLaunch {
   abstract titleIcon: string;
   abstract title: string;
   abstract apiSrv: IListableService<Ilistable>;
+  notNeedCreate = false;//不需要前端创建数据
   displayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;
   pageSizeOption = [25, 100, 500];//默认分页按钮参数
   advanceMenuItems: Array<IAdvanceMenuItem> = [];

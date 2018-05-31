@@ -1,7 +1,7 @@
 <div class="fxLayout-container page-button-container" fxLayout='column'>
 
   <div fxFlex fxLayout='row' fxLayoutAlign='end center'>
-    <button mat-raised-button [routerLink]="mdSrv.createdUrl" class="newitem-button mat-white-bg mt-12" *ngIf='!mdSrv.readDataOnly'>
+    <button mat-raised-button [routerLink]="'/'+mdSrv.createdUrl" class="newitem-button mat-white-bg mt-12" *ngIf='!mdSrv.readDataOnly'>
       <span>{{'button.NEW'|translate}}</span>
     </button>
   </div>

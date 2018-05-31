@@ -193,18 +193,23 @@ export class DessertService {
     private _editPermission: Array<string> = [];
 
 
+
     /**
      * 根据当前请求路径判断用户是否有权限进行编辑
      * @param url 
      */
-    hasDataEditPermission(urlSeg: Array<UrlSegment>): boolean {
-        if (!this._editPermission || this._editPermission.length <= 0) {
+    hasDataEditPermission(url: Array<UrlSegment> | string): boolean {
+        if (!this._editPermission || this._editPermission.length <= 0)
             for (let item of Memory.getInstance().navigationDatas) {
                 this.parsePermission(item);
             }
+        let currentUrl = '';
+        if (typeof url === 'object') {
+            currentUrl = this.joinUrlSegment(url);
         }
-
-        let currentUrl = this.joinUrlSegment(urlSeg);
+        else {
+            currentUrl = url;
+        }
         return this._editPermission.some(x => x.indexOf(currentUrl) > 0 ? true : false);
     }//hasDataEditPermission
 

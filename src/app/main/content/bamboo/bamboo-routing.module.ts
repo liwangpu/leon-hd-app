@@ -68,6 +68,7 @@ const routes: Routes = [
     }
   }
   , { path: 'app/organ-detail', component: OrganDetailComponent, canActivate: [RouteGuardService] }
+  /****************************************************************************************************/
   , {
     path: 'app/solution-detail/:id'
     , component: SolutionDetailComponent
@@ -76,7 +77,11 @@ const routes: Routes = [
       entity: SolutionService
     }
   }
-  , { path: 'app/solution-detail', component: SolutionDetailComponent, canActivate: [RouteGuardService] }
+  , {
+    path: 'app/solution-detail', component: SolutionDetailComponent,
+    canActivate: [RouteGuardService]
+  }
+  /****************************************************************************************************/
   , {
     path: 'app/order-detail/:id'
     , component: OrderDetailComponent

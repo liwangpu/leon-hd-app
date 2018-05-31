@@ -12,10 +12,10 @@
     </mat-form-field>
   </div>
 </form>
-<div class="form-button" fxLayout='row' fxLayoutAlign='end center'>
+<div class="form-button" fxLayout='row' fxLayoutAlign='end center' *ngIf='!detaiMdSrv.readDataOnly'>
   <div>
-    <button mat-button *ngIf='detaiMdSrv.solution.id' appIconChangeCt [uploadUrl]='iconUploadUrl' [objId]='detaiMdSrv.solution.id'
-      [iconUrl]='pathSrv.redirectServerUrl(detaiMdSrv.solution.icon)' (afterUpload)='afterIConChange($event)'>
+    <button mat-button *ngIf='detaiMdSrv.currentData.id' appIconChangeCt [uploadUrl]='iconUploadUrl' [objId]='detaiMdSrv.currentData.id'
+      [iconUrl]='detaiMdSrv.currentData.icon|serverRedirect' (afterUpload)='afterIConChange($event)'>
       <span>{{'button.ChangeICon'|translate}}</span>
     </button>
   </div>

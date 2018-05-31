@@ -19,7 +19,6 @@ export class WorkingTimeComponent implements OnInit, OnDestroy {
   }//ngOnInit
 
   ngOnDestroy(): void {
-    console.log('working time destroy');
     this.stop();
   }//ngOnDestroy
 
