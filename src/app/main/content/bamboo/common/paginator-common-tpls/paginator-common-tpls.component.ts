@@ -49,6 +49,7 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
       this.onKeywordSearch(key);
     });//subscribe
 
+    this.mdSrv.readDataOnly = !this.dessertSrv.hasDataEditPermission(this.router.snapshot.url);
     //执行第一次默认搜索
     this.mdSrv.queryData$.next();
   }//ngOnInit
