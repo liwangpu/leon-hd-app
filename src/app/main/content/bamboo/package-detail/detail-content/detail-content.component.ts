@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PackageDetailMdService } from '../package-detail-md.service';
+// import { PackageDetailMdService } from '../package-detail-md.service';
 import { Order } from "../../../../toolkit/models/order";
 import { PackageContent } from "../../../../toolkit/models/package-content";
 import { PackageContentItem } from "../../../../toolkit/models/package-content-item";
@@ -14,14 +14,14 @@ export class DetailContentComponent implements OnInit {
   displayedColumns = ['productName', 'productSpecName', 'unitPrice', 'num', 'totalPrice'];
   dataSource: MatTableDataSource<PackageContentItem>;
   packageContent: PackageContent;
-  constructor(private detaiMdSrv: PackageDetailMdService) {
+  constructor() {
 
   }
 
   ngOnInit() {
-    this.packageContent = this.detaiMdSrv.currentPackage.contentIns ? this.detaiMdSrv.currentPackage.contentIns : new PackageContent();
-    let items = this.packageContent.items ? this.packageContent.items : [];
-    this.dataSource = new MatTableDataSource(items);
+    // this.packageContent = this.detaiMdSrv.currentPackage.contentIns ? this.detaiMdSrv.currentPackage.contentIns : new PackageContent();
+    // let items = this.packageContent.items ? this.packageContent.items : [];
+    // this.dataSource = new MatTableDataSource(items);
   }//ngOnInit
 
 }

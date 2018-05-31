@@ -1,36 +1,21 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { OrderDetailMdService } from './order-detail-md.service';
-import { Order } from '../../../toolkit/models/order';
-import { PathService } from '../../services/path.service';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { OrderService } from "../../../toolkit/server/webapi/order.service";
 
 @Component({
   selector: 'app-order-detail',
   templateUrl: './order-detail.component.html',
-  styleUrls: ['./order-detail.component.scss'],
-  providers: [OrderDetailMdService]
+  styleUrls: ['./order-detail.component.scss']
 })
 export class OrderDetailComponent implements OnInit, OnDestroy {
 
-  order: Order = new Order();
-  destroy$: Subject<boolean> = new Subject<boolean>();
+  constructor(public apiSrv: OrderService) {
 
-  constructor(private route: ActivatedRoute, public orderMdSrv: OrderDetailMdService, public pathSrv: PathService) {
-    this.orderMdSrv.currentOrder = this.route.snapshot.data.entity;
-
-    this.orderMdSrv.afterOrderChange$.takeUntil(this.destroy$).subscribe(() => {
-      this.order = this.orderMdSrv.currentOrder;
-    });
-
-    this.orderMdSrv.afterOrderChange$.next();
   }//constructor
 
   ngOnInit() {
   }//ngOnInit
 
   ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
+
   }//ngOnDestroy
 }

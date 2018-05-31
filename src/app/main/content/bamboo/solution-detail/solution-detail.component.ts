@@ -8,7 +8,7 @@ import { SolutionService } from '../../../toolkit/server/webapi/solution.service
 })
 export class SolutionDetailComponent implements OnInit {
 
-  constructor(public solutionSrv:SolutionService) { }
+  constructor(public apiSrv:SolutionService) { }
 
   ngOnInit() {
   }

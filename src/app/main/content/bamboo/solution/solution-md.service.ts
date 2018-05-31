@@ -11,10 +11,8 @@ export class SolutionMdService extends PaginatorLaunch {
   createdUrl = 'app/solution-detail';
   titleIcon = 'shopping_basket';
   title = 'glossary.Solution';
-  apiSrv: IListableService<Ilistable>;
-  constructor(public solutionSrv: SolutionService, protected datePipe: DatePipe) {
+  constructor(public apiSrv: SolutionService, protected datePipe: DatePipe) {
     super(datePipe);
-    this.apiSrv = this.solutionSrv;
 
     // let aa = 6;
     // let testItem: IAdvanceMenuItem = {
