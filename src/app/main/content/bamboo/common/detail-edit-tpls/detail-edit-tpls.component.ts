@@ -27,7 +27,7 @@ export class DetailEditTplsComponent implements OnInit, OnDestroy, AfterContentI
   destroy$: Subject<boolean> = new Subject();
   @ContentChildren(DetailInfoTabComponent) inputTabs: QueryList<DetailInfoTabComponent>;
 
-  constructor(private _location: Location, protected scheduleSrv: DetailEditScheduleService, public route: ActivatedRoute, protected dessertSrv: DessertService) {
+  constructor(private _location: Location, public scheduleSrv: DetailEditScheduleService, public route: ActivatedRoute, public dessertSrv: DessertService) {
     //订阅数据更新后事件
     this.scheduleSrv.afterDataRefresh$.subscribe(() => {
       this.name = this.scheduleSrv.currentData.name;

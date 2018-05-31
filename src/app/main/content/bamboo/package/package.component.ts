@@ -10,7 +10,7 @@ import { PackageMdService } from "./package-md.service";
 })
 export class PackageComponent implements OnInit {
 
-  constructor(private mdSrv: PackageMdService) {
+  constructor(public mdSrv: PackageMdService) {
 
 
   }
