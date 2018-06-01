@@ -6,8 +6,7 @@
 
         <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
 
-            <button mat-button class="toggle-button-navbar mat-icon-button"
-                    fuseNavbarVertical="toggleBar" fxHide.gt-md>
+            <button mat-button class="toggle-button-navbar mat-icon-button" fuseNavbarVertical="toggleBar" fxHide.gt-md>
                 <mat-icon>menu</mat-icon>
             </button>
 
@@ -27,8 +26,7 @@
 
         <div class="" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
 
-            <button mat-button [matMenuTriggerFor]="userMenu"
-                    class="user-button">
+            <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
                 <div fxLayout="row" fxLayoutAlign="center center">
                     <img class="avatar" src="assets/images/avatars/profile.jpg">
                     <span class="username mr-12" fxHide fxShow.gt-sm>{{nickName}}</span>
@@ -38,19 +36,19 @@
 
             <mat-menu #userMenu="matMenu">
 
-                <button mat-menu-item>
+                <button mat-menu-item (click)='changeProfile()'>
                     <mat-icon>account_circle</mat-icon>
-                    <span>My Profile</span>
+                    <span>{{'button.Profile'|translate}}</span>
                 </button>
 
-                <button mat-menu-item class="">
+                <!-- <button mat-menu-item class="">
                     <mat-icon>mail</mat-icon>
                     <span>Inbox</span>
-                </button>
+                </button> -->
 
                 <button mat-menu-item class="" (click)="logout()">
                     <mat-icon>exit_to_app</mat-icon>
-                    <span>Logout</span>
+                    <span>{{'button.Logout'|translate}}</span>
                 </button>
 
             </mat-menu>
@@ -61,9 +59,7 @@
 
             <div class="toolbar-separator"></div>
 
-            <button mat-button fxHide fxShow.gt-xs
-                    class="language-button"
-                    [matMenuTriggerFor]="languageMenu">
+            <button mat-button fxHide fxShow.gt-xs class="language-button" [matMenuTriggerFor]="languageMenu">
                 <div fxLayout="row" fxLayoutAlign="center center">
                     <img class="flag mr-8" [src]="'assets/images/flags/'+selectedLanguage.flag+'.png'">
                     <span class="iso text-uppercase">{{selectedLanguage.id}}</span>
@@ -89,10 +85,7 @@
 
             <div class="toolbar-separator" fxHide fxShow.gt-xs></div>
 
-            <button mat-icon-button
-                    class="mat-icon-button quick-panel-toggle-button"
-                    fuseMatSidenavToggler="quick-panel"
-                    aria-label="Toggle quick panel">
+            <button mat-icon-button class="mat-icon-button quick-panel-toggle-button" fuseMatSidenavToggler="quick-panel" aria-label="Toggle quick panel">
                 <mat-icon class="icon">format_list_bulleted</mat-icon>
             </button>
 

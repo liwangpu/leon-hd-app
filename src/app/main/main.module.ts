@@ -16,6 +16,7 @@ import { FuseThemeOptionsComponent } from '../core/components/theme-options/them
 import { FuseShortcutsModule } from '../core/components/shortcuts/shortcuts.module';
 import { FuseSearchBarModule } from '../core/components/search-bar/search-bar.module';
 import { GlobalCommonService } from './service/global-common.service';
+import { ToolkitModule } from './toolkit/toolkit.module';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { GlobalCommonService } from './service/global-common.service';
         RouterModule,
         FuseNavigationModule,
         FuseShortcutsModule,
-        FuseSearchBarModule
+        FuseSearchBarModule,
+        ToolkitModule
     ],
     exports: [
         FuseMainComponent

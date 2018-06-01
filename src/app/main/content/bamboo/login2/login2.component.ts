@@ -99,9 +99,10 @@ export class Login2Component implements OnInit {
         let getProfileAsync = () => {
             return new Promise((resolve, reject) => {
                 this.auth.getProfile().subscribe(data => {
-                    this.dessertSrv.nickName = data['nickname'];
+                    this.dessertSrv.nickName = (data as any).name;
                     this.dessertSrv.icon = data['avatar'];
                     this.dessertSrv.organId = data['organizationId'];
+                    this.dessertSrv.userId = (data as any).id;
                     resolve();
                 }, err => {
                     reject({ k: 'message.OperationError', v: { value: err } });

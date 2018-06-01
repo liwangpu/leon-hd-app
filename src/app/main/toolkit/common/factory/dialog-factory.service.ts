@@ -21,6 +21,10 @@ export class DialogFactoryService {
    * @param config 
    */
   open<T, D = any>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, config?: MatDialogConfig<D>): MatDialogRef<T> {
+    if (!config)
+      config = {};
+    config.disableClose = true;
+
     let wd = this.windowSrv.screenWidth;
     let wh = this.windowSrv.screenHeight;
 

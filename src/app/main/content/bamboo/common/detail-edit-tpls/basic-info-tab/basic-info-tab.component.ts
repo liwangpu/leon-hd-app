@@ -34,10 +34,18 @@ export abstract class BasicInfoTabExtend {
 })
 export class BasicInfoTabComponent implements OnInit, AfterContentInit {
 
+
   iconUploadUrl: string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
   @ContentChild(BasicInfoTabExtend) ext: BasicInfoTabExtend;
+
+  get extCanSave() {
+    if (this.ext)
+      return this.ext.canSave;
+    return true;
+  }
+
   constructor(private formBuilder: FormBuilder, public detaiMdSrv: DetailEditScheduleService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
@@ -57,10 +65,9 @@ export class BasicInfoTabComponent implements OnInit, AfterContentInit {
   }//ngOnInit
 
   ngAfterContentInit(): void {
-    this.ext.satisfySave$.subscribe(satisfy => {
-      console.log('基本条件满足情况', satisfy);
-    });//
-    this.ext.afterDataChange$.next(this.detaiMdSrv.currentData);
+    if (this.ext) {
+      this.ext.afterDataChange$.next(this.detaiMdSrv.currentData);
+    }
   }//ngAfterContentInit
 
   afterIConChange(ass: FileAsset) {
@@ -74,7 +81,12 @@ export class BasicInfoTabComponent implements OnInit, AfterContentInit {
         let vl = this.detailForm.value;
         let ol = this.detaiMdSrv.currentData;
         vl.iconAssetId = this.detaiMdSrv.currentData.iconAssetId;
-        this.detaiMdSrv.apiSrv.update({ ...ol, ...vl, ...this.ext.data }).first().subscribe(resData => {
+        let fusdata: any;
+        if (this.ext)
+          fusdata = { ...ol, ...vl, ...this.ext.data }
+        else
+          fusdata = { ...ol, ...vl }
+        this.detaiMdSrv.apiSrv.update(fusdata).first().subscribe(resData => {
           this.detaiMdSrv.currentData = resData;
           this.detailForm.patchValue({ id: resData.id });
           resolve({ k: 'message.SaveSuccessfully' });

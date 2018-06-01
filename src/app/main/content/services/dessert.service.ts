@@ -5,6 +5,7 @@ import { LocalStoreService } from "./localstore.service";
 import { Memory } from "../../toolkit/memory/memory";
 import { NavigationData } from '../../toolkit/models/navigation-data';
 import { UrlSegment } from '@angular/router';
+import { Subject } from 'rxjs';
 const LOGIN_STYLE = "LoginStyle";
 const SERVER_BASE = 'ServerBase';
 const REMEMBER_LOGIN = 'RememberLogin';
@@ -16,6 +17,7 @@ const AVATAR = 'User_Avatar';
 const NICKNAME = 'NICK_NAME';
 const ORGANID = 'Organ_Id';
 const DEPARTMENTID = 'Department_Id';
+const USER_ID = 'User_Id';
 const LASTLOGIN_ACCOUNT = 'LastLogin_Account';
 const LASTLOGIN_ACCOUNT_PWD = 'LastLogin_Account_Password';
 
@@ -26,6 +28,7 @@ const LASTLOGIN_ACCOUNT_PWD = 'LastLogin_Account_Password';
  */
 @Injectable()
 export class DessertService {
+    afterProfileChange$: Subject<void> = new Subject();
     //nickName
     get nickName() {
         let chvl = Memory.getInstance().nickName;
@@ -49,6 +52,18 @@ export class DessertService {
     set icon(vl: string) {
         Memory.getInstance().icon = vl;
         this.lcStoreSrv.setItem(AVATAR, vl)
+    }
+    //userId
+    set userId(vl: string) {
+        Memory.getInstance().userId = vl;
+        this.lcStoreSrv.setItem(USER_ID, vl);
+    }
+    get userId() {
+        let chvl = Memory.getInstance().userId;
+        if (chvl)
+            return chvl;
+        let vl = this.lcStoreSrv.getItem(USER_ID);
+        return vl;
     }
     //organId
     get organId() {
@@ -270,6 +285,7 @@ export class DessertService {
         Memory.getInstance().icon = this.icon;
         Memory.getInstance().organId = this.organId;
         Memory.getInstance().departmentId = this.departmentId;
+        Memory.getInstance().userId = this.userId;
     }
 
 }

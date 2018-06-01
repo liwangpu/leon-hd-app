@@ -8,6 +8,10 @@ import { DessertService } from "../content/services/dessert.service";
 import { GlobalCommonService } from '../service/global-common.service';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
+import { DialogFactoryService } from '../toolkit/common/factory/dialog-factory.service';
+import { Memory } from '../toolkit/memory/memory';
+import { AccountProfileComponent } from '../content/bamboo/account/account-profile/account-profile.component';
+import { Account } from '../toolkit/models/account';
 @Component({
     selector: 'fuse-toolbar',
     templateUrl: './toolbar.component.html',
@@ -21,10 +25,14 @@ export class FuseToolbarComponent implements OnInit, OnDestroy {
     selectedLanguage: any;
     showLoadingBar: boolean;
     horizontalNav: boolean;
-    nickName: string;
+    nickName = '用户';
     destroy$: Subject<boolean> = new Subject();
-    constructor(private router: Router, private fuseConfig: FuseConfigService, private translate: TranslateService, private auth: AuthService, private navi: FuseNavigationService, private dessertSrv: DessertService, private globalSrv: GlobalCommonService) {
-        this.nickName = this.dessertSrv.nickName ? this.dessertSrv.nickName : '用户';
+    constructor(private router: Router, private fuseConfig: FuseConfigService, private translate: TranslateService, private auth: AuthService, private navi: FuseNavigationService, private dessertSrv: DessertService, private globalSrv: GlobalCommonService, private dialogFac: DialogFactoryService) {
+
+        //订阅个人信息变更事件
+        this.dessertSrv.afterProfileChange$.takeUntil(this.destroy$).subscribe(() => {
+            this.nickName = this.dessertSrv.nickName;
+        });//
 
         this.userStatusOptions = [
             {
@@ -91,7 +99,7 @@ export class FuseToolbarComponent implements OnInit, OnDestroy {
     }//ngOnDestroy
 
     ngOnInit(): void {
-
+        this.nickName = this.dessertSrv.nickName;
     }//ngOnInit
 
     search(value: string) {
@@ -120,5 +128,52 @@ export class FuseToolbarComponent implements OnInit, OnDestroy {
         else {
             this.router.navigateByUrl('/app/login2');
         }
-    }
+    }//logout
+
+    changeProfile() {
+        // let getProfileAsync = () => {
+        //     return new Promise((resolve, reject) => {
+        //         this.auth.getProfile().subscribe(data => {
+        //             this.dessertSrv.nickName = (data as any).name;
+        //             this.dessertSrv.icon = (data as any).avatar;
+
+        //             let account = new Account();
+        //             account.id=this.dessertSrv.userId;
+        //             // account.name=
+
+        //             resolve();
+        //         }, err => {
+        //             reject({ k: 'message.OperationError', v: { value: err } });
+        //         });
+        //     });
+        // };//getProfileAsync
+
+        // let prepareAccAsync = () => {
+        //     return new Promise((resolve, reject) => {
+
+        //     });
+        // };
+
+        // getProfileAsync().then(()=>{
+
+        // });
+
+        // let owner = resAccount;
+        // if (!owner.id)
+        //   owner.name = '组织管理员';
+        // owner.organizationId = data.id;
+        // owner.type = AccountTypeEnums.organAdmin;
+
+        // this.dialogFac.open(AccountDetailComponent, {
+        //   width: '400px', height: '650px', data: {
+        //     account: owner
+        //   }
+        // });
+
+        this.dialogFac.open(AccountProfileComponent, {
+            width: '400px', height: '650px', data: {
+                id: this.dessertSrv.userId
+            }
+        });
+    }//changeProfile
 }

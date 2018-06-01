@@ -1,0 +1,72 @@
+<div class="detail-container" fxLayout='column'>
+  <div class="avatar-container" fxFlex='180px' fxLayout='row' fxLayoutAlign='space-between stretch'>
+    <div class="detail-title">
+      {{'tips.Profile'|translate}}
+    </div>
+    <div fxLayout='column' fxLayoutAlign='center center'>
+      <div class="avatar-wrapper">
+        <img class="avatar" [src]="'assets/images/avatars/default-avatar.png'" />
+      </div>
+    </div>
+    <div>
+      <button mat-button class="mat-icon-button" [mat-dialog-close]="true" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="form-container" fxFlex>
+    <div class="form-wrapper">
+      <form [formGroup]="accountForm">
+        <input type="hidden" formControlName="id">
+
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">star</mat-icon>
+          <mat-form-field fxFlex>
+            <input name="name" formControlName="name" matInput placeholder="{{'glossary.Name'|translate}}" required>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">email</mat-icon>
+          <mat-form-field fxFlex>
+            <input name="mail" formControlName="mail" matInput type="email" placeholder="{{'glossary.Mail'|translate}}" required>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">phone</mat-icon>
+          <mat-form-field fxFlex>
+            <input formControlName="phone" matInput placeholder="{{'glossary.Phone'|translate}}">
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">vpn_key</mat-icon>
+          <mat-form-field fxFlex>
+            <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'" placeholder="{{'glossary.Password'|translate}}">
+            <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+        </div>
+
+
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">
+            <i class="material-icons">account_balance</i>
+          </mat-icon>
+          <mat-form-field fxFlex>
+            <input name="location" formControlName="location" matInput placeholder="{{'glossary.Location'|translate}}">
+          </mat-form-field>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <div class="detail-footer" fxFlex='55px' fxLayout='row' fxLayoutAlign='end center'>
+    <div>
+      <button class="dialog-btn" mat-button (click)='onSubmit()'>
+        <mat-icon class="cus-confirm-button">done</mat-icon>
+        {{'button.Save'|translate}}
+      </button>
+    </div>
+  </div>
+</div>

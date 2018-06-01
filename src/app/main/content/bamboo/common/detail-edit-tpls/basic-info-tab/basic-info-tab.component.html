@@ -23,7 +23,7 @@
     </button>
   </div>
   <div>
-    <button mat-button [disabled]='detailForm.invalid||!(ext?.canSave)' (click)="submit()">
+    <button mat-button [disabled]='detailForm.invalid||!extCanSave' (click)="submit()">
       <span>{{'button.Save'|translate}}</span>
     </button>
   </div>

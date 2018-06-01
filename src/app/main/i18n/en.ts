@@ -98,6 +98,8 @@ export const locale = {
             "OrganSupplier":"Supplier",
         },
         "button": {
+            "Logout":"Logout",
+            "Profile":"Profile",
             "Manage": "Manage",
             "Refresh": "Refresh",
             "Save": "Save",
