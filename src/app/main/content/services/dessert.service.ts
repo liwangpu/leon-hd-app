@@ -38,6 +38,8 @@ export class DessertService {
         return vl;
     }
     set nickName(vl: string) {
+        if (!vl)
+            vl = '';
         Memory.getInstance().nickName = vl;
         this.lcStoreSrv.setItem(NICKNAME, vl)
     }
