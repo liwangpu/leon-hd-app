@@ -19,6 +19,7 @@ export class OrganMdService extends PaginatorLaunch {
     , { columnDef: 'name', header: 'glossary.Name', width: 180, cell: (data: Organization) => data.name ? data.name : '' }
     , { columnDef: 'description', header: 'glossary.Description', width: 0, cell: (data: Organization) => data.description ? data.description : '' }
     , { columnDef: 'mail', header: 'glossary.Mail', width: 150, cell: (data: Organization) => data.mail ? data.mail : '' }
+    , { columnDef: 'typeName',_columnDef:'type', header: 'glossary.OrganType', width: 80, cell: (data: Organization) => data.typeName ? data.typeName : '' }
     , { columnDef: 'createdTime', header: 'glossary.CreatedTime', width: 85, cell: (data: Organization) => this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd') }
   ];
   itemManageMenu: IListableRecordMenu = {
@@ -32,7 +33,6 @@ export class OrganMdService extends PaginatorLaunch {
 
   manageOwner(data: Organization) {
     this.apiSrv.getOwner(data.id).subscribe(resAccount => {
-      // console.log('resAccount', resAccount);
       let owner = resAccount;
       if (!owner.id)
         owner.name = '组织管理员';

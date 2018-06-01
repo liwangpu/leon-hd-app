@@ -8,7 +8,7 @@ import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core'
 export class DetailInfoTabComponent implements OnInit {
 
   @Input() isBasic = false;
-  @Input() tabName: string;
+  @Input() tabName='glossary.BasicInfo';
   @ViewChild(TemplateRef) template: TemplateRef<any>;
   constructor() { }
 

@@ -23,7 +23,6 @@ export class TableListContentComponent implements OnInit {
   selectColumn: IListTableColumn<Ilistable> = { columnDef: 'select', header: '', width: 55, cell: (data: Ilistable) => '' };
   columns: Array<IListTableColumn<Ilistable>> = [
     this._seqnoColumn
-    , this._buttonColumn
   ];
   selectedItem: Array<string> = [];
   allSelected = false;
@@ -31,7 +30,7 @@ export class TableListContentComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject();
   dataSource = new CustomDataSource();
   get displayedColumns() {
-    let arr = this.columns.map(c => c.columnDef);
+    let arr = this.columns.map(c => c._columnDef ? c._columnDef : c.columnDef);
     return arr;
   }
 
@@ -72,7 +71,12 @@ export class TableListContentComponent implements OnInit {
     });//
     //表格列改变事件
     this.mdSrv.afterPaginatorColumnChange$.takeUntil(this.destroy$).subscribe(cols => {
-      this.columns = [this._seqnoColumn, ...this.mdSrv.columnDefs, this._buttonColumn];
+      if (this.mdSrv.itemManageMenu)
+        this.columns = [this._seqnoColumn, ...this.mdSrv.columnDefs, this._buttonColumn];
+        else{
+          this.columns=this.mdSrv.columnDefs;
+          this.columns.unshift(this._seqnoColumn);
+        }
     });//
   }//constructor
 

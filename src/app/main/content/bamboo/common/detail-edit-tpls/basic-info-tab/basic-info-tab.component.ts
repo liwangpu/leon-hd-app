@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, ContentChildren, QueryList, ContentChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { SnackbarService } from '../../../../../toolkit/common/services/snackbar.service';
@@ -6,16 +6,38 @@ import { TranslateService } from '@ngx-translate/core';
 import { DetailEditScheduleService } from '../detail-edit-schedule.service';
 import { FileAsset } from '../../../../../toolkit/models/fileasset';
 
+/**
+ * 基础信息扩展视图基类
+ */
+export abstract class BasicInfoTabExtend {
+  private _canSave = false;
+  satisfySave$: Subject<boolean> = new Subject();
+  afterDataChange$: Subject<any> = new Subject();
+  destroy$: Subject<boolean> = new Subject();
+  data: any;
+
+  set canSave(vl: boolean) {
+    this._canSave = vl;
+    this.satisfySave$.next(vl);
+  }
+  get canSave() {
+    return this._canSave;
+  }
+
+}
+
+
 @Component({
   selector: 'app-detail-edit-basic-info-tab',
   templateUrl: './basic-info-tab.component.html',
   styleUrls: ['./basic-info-tab.component.scss']
 })
-export class BasicInfoTabComponent implements OnInit {
+export class BasicInfoTabComponent implements OnInit, AfterContentInit {
 
   iconUploadUrl: string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
+  @ContentChild(BasicInfoTabExtend) ext: BasicInfoTabExtend;
   constructor(private formBuilder: FormBuilder, public detaiMdSrv: DetailEditScheduleService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
@@ -34,6 +56,13 @@ export class BasicInfoTabComponent implements OnInit {
     this.detailForm.patchValue(this.detaiMdSrv.currentData);
   }//ngOnInit
 
+  ngAfterContentInit(): void {
+    this.ext.satisfySave$.subscribe(satisfy => {
+      console.log('基本条件满足情况', satisfy);
+    });//
+    this.ext.afterDataChange$.next(this.detaiMdSrv.currentData);
+  }//ngAfterContentInit
+
   afterIConChange(ass: FileAsset) {
     this.detaiMdSrv.currentData.icon = ass.url;
     this.detaiMdSrv.currentData.iconAssetId = ass.id;
@@ -45,7 +74,7 @@ export class BasicInfoTabComponent implements OnInit {
         let vl = this.detailForm.value;
         let ol = this.detaiMdSrv.currentData;
         vl.iconAssetId = this.detaiMdSrv.currentData.iconAssetId;
-        this.detaiMdSrv.apiSrv.update({ ...ol, ...vl }).first().subscribe(resData => {
+        this.detaiMdSrv.apiSrv.update({ ...ol, ...vl, ...this.ext.data }).first().subscribe(resData => {
           this.detaiMdSrv.currentData = resData;
           this.detailForm.patchValue({ id: resData.id });
           resolve({ k: 'message.SaveSuccessfully' });
@@ -69,3 +98,4 @@ export class BasicInfoTabComponent implements OnInit {
 
   }//submit
 }
+

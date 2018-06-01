@@ -124,6 +124,7 @@ export interface IAdvanceMenuItem {
 }
 
 export interface IListTableColumn<TData> {
+  _columnDef?: string;//用来排序的字段
   columnDef: string;
   header: string;
   width?: number;

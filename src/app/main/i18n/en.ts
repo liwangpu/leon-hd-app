@@ -56,6 +56,7 @@ export const locale = {
             "MaxFileLimit": "Max File Limit",
             "FileCount": "Files",
             "Organ": "Organiztion",
+            "OrganType": "Organ Type",
             "Name": "Name",
             "Phone": "Phone",
             "Mail": "Mail",
@@ -91,7 +92,10 @@ export const locale = {
             "Map": "Map",
             "Layout": "Layout",
             "UnCategory": "UnCategory",
-            "MaterialCategory": "Material Category"
+            "MaterialCategory": "Material Category",
+            "OrganBrand":"Brand",
+            "OrganPartner":"Partner",
+            "OrganSupplier":"Supplier",
         },
         "button": {
             "Manage": "Manage",

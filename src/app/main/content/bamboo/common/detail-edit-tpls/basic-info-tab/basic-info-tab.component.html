@@ -6,12 +6,15 @@
       <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
     </mat-form-field>
 
+    <ng-content></ng-content>
+
     <mat-form-field>
       <textarea matInput name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
       <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
     </mat-form-field>
   </div>
 </form>
+
 <div class="form-button" fxLayout='row' fxLayoutAlign='end center' *ngIf='!detaiMdSrv.readDataOnly'>
   <div>
     <button mat-button *ngIf='detaiMdSrv.currentData.id' appIconChangeCt [uploadUrl]='iconUploadUrl' [objId]='detaiMdSrv.currentData.id'
@@ -20,7 +23,7 @@
     </button>
   </div>
   <div>
-    <button mat-button (click)="submit()">
+    <button mat-button [disabled]='detailForm.invalid||!(ext?.canSave)' (click)="submit()">
       <span>{{'button.Save'|translate}}</span>
     </button>
   </div>

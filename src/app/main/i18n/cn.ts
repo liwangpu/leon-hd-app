@@ -54,6 +54,7 @@ export const locale = {
             "FileSize": "文件大小",
             "Status": "状态",
             "Organ": "组织",
+            "OrganType": "组织类型",
             "Name": "名称",
             "Phone": "电话",
             "Mail": "邮件",
@@ -89,7 +90,10 @@ export const locale = {
             "Map": "场景",
             "Layout": "户型",
             "UnCategory": "未分类",
-            "MaterialCategory": "材质分类"
+            "MaterialCategory": "材质分类",
+            "OrganBrand":"品牌商",
+            "OrganPartner":"合伙人",
+            "OrganSupplier":"供应商",
         },
         "button": {
             "Manage": "管理",
@@ -153,7 +157,7 @@ export const locale = {
             "DragOrClickHere": "点击或拖拽文件到这里",
             "Prompt": "温馨提示",
             "WaitUploadCount": "文件上传失败",
-            "Profile":"个人信息",
+            "Profile": "个人信息",
             "Name": "名称",
             "File": "文件",
             "UploadFile": "上传文件",
