@@ -4,6 +4,9 @@ import { OrganService } from '../../../toolkit/server/webapi/organ.service';
 import { DatePipe } from '@angular/common';
 import { Ilistable } from '../../../toolkit/models/ilistable';
 import { Organization } from '../../../toolkit/models/organization';
+import { DialogFactoryService } from '../../../toolkit/common/factory/dialog-factory.service';
+import { AccountTypeEnums } from '../../../toolkit/enums/enums';
+import { AccountDetailComponent } from '../account/account-detail/account-detail.component';
 
 @Injectable()
 export class OrganMdService extends PaginatorLaunch {
@@ -17,19 +20,31 @@ export class OrganMdService extends PaginatorLaunch {
     , { columnDef: 'description', header: 'glossary.Description', width: 0, cell: (data: Organization) => data.description ? data.description : '' }
     , { columnDef: 'mail', header: 'glossary.Mail', width: 150, cell: (data: Organization) => data.mail ? data.mail : '' }
     , { columnDef: 'createdTime', header: 'glossary.CreatedTime', width: 85, cell: (data: Organization) => this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd') }
-    // , { columnDef: 'button', header: '', width: 50, cell: (data: Organization) => '' }
   ];
   itemManageMenu: IListableRecordMenu = {
     items: [
-      { icon: 'person', name: '', click: (data: Organization) => { this.manageOwner(data); } }
+      { icon: 'person', name: 'button.OrganOwnerManagement', click: (data: Organization) => { this.manageOwner(data); } }
     ]
   };
-  constructor(public apiSrv: OrganService, protected datePipe: DatePipe) {
+  constructor(public apiSrv: OrganService, protected datePipe: DatePipe, protected dialogFac: DialogFactoryService) {
     super(datePipe);
   }//constructor
 
   manageOwner(data: Organization) {
-    console.log('heihei', data);
+    this.apiSrv.getOwner(data.id).subscribe(resAccount => {
+      // console.log('resAccount', resAccount);
+      let owner = resAccount;
+      if (!owner.id)
+        owner.name = '组织管理员';
+      owner.organizationId = data.id;
+      owner.type = AccountTypeEnums.organAdmin;
+
+      this.dialogFac.open(AccountDetailComponent, {
+        width: '400px', height: '650px', data: {
+          account: owner
+        }
+      });
+    });//subscribe
   }//manageOwner
 
 }

@@ -1,112 +1,102 @@
-<div class="dialog-content-wrapper">
-  <mat-toolbar matDialogTitle class="mat-accent m-0">
-    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
-      <span class="title dialog-title">{{dialogTitle}}</span>
+<div class="detail-container" fxLayout='column'>
+  <div class="avatar-container" fxFlex='180px' fxLayout='row' fxLayoutAlign='space-between stretch'>
+    <div class="detail-title">
+      {{'tips.Profile'|translate}}
+    </div>
+    <div fxLayout='column' fxLayoutAlign='center center'>
+      <div class="avatar-wrapper">
+        <img class="avatar" [src]="'assets/images/avatars/default-avatar.png'" />
+      </div>
+    </div>
+    <div>
       <button mat-button class="mat-icon-button" (click)="dialogRef.close()" aria-label="Close dialog">
         <mat-icon>close</mat-icon>
       </button>
-    </mat-toolbar-row>
-
-    <mat-toolbar-row class="toolbar-bottom py-8 py-sm-16" fxLayout="column" fxLayoutAlign="center center">
-      <!-- <img [src]="contact.avatar" class=" avatar contact-avatar huge"
-               [alt]="contact.name"/> -->
-      <img [src]="'assets/images/avatars/default-avatar.png'" class=" avatar contact-avatar huge" />
-      <div class="contact-name">{{account.name}}</div>
-    </mat-toolbar-row>
-  </mat-toolbar>
-
-  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
-
-    <form [formGroup]="accountForm">
-      <input type="hidden" formControlName="id">
-      <input type="hidden" formControlName="organizationId">
-      <input type="hidden" formControlName="type">
-
-
-      <!-- <mat-form-field>
-          <mat-select placeholder="Favorite food">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{ food.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field> -->
-
-      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-        <mat-icon class="mr-12 mt-12">device_hub</mat-icon>
-        <mat-form-field fxFlex>
-          <mat-select name="departmentId" formControlName="departmentId" placeholder="{{'glossary.OrganDepartment'|translate}}" required>
-            <mat-option *ngFor="let dev of departments" [value]="dev.id">
-              {{ dev.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-        <mat-icon class="mr-12 mt-12">star</mat-icon>
-        <mat-form-field fxFlex>
-          <input name="name" formControlName="name" matInput placeholder="{{'glossary.Name'|translate}}" required>
-        </mat-form-field>
-      </div>
-
-      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-        <mat-icon class="mr-12 mt-12">email</mat-icon>
-        <mat-form-field fxFlex>
-          <input name="mail" formControlName="mail" matInput type="email" placeholder="{{'glossary.Mail'|translate}}" required>
-        </mat-form-field>
-      </div>
-
-      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-        <mat-icon class="mr-12 mt-12">phone</mat-icon>
-        <mat-form-field fxFlex>
-          <input formControlName="phone" matInput placeholder="{{'glossary.Phone'|translate}}">
-        </mat-form-field>
-      </div>
-
-      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-        <mat-icon class="mr-12 mt-12">vpn_key</mat-icon>
-        <mat-form-field fxFlex>
-          <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'" placeholder="{{'glossary.Password'|translate}}">
-          <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
-        </mat-form-field>
-      </div>
-
-      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-        <mat-icon class="mr-12 mt-12">history</mat-icon>
-        <mat-form-field fxFlex>
-          <input [matDatepicker]="activationTimePicker" formControlName="activationTime" matInput placeholder="{{'glossary.ActivationTime'|translate}}">
-          <mat-datepicker-toggle matSuffix [for]="activationTimePicker"></mat-datepicker-toggle>
-          <mat-datepicker #activationTimePicker></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-        <mat-icon class="mr-12 mt-12">slow_motion_video</mat-icon>
-        <mat-form-field fxFlex>
-          <input [matDatepicker]="expireTimePicker" formControlName="expireTime" matInput placeholder="{{'glossary.ExpireTime'|translate}}">
-          <mat-datepicker-toggle matSuffix [for]="expireTimePicker"></mat-datepicker-toggle>
-          <mat-datepicker #expireTimePicker></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-        <mat-icon class="mr-12 mt-12">
-          <i class="material-icons">account_balance</i>
-        </mat-icon>
-        <mat-form-field fxFlex>
-          <input name="location" formControlName="location" matInput placeholder="{{'glossary.Location'|translate}}">
-        </mat-form-field>
-      </div>
-
-    </form>
-
+    </div>
   </div>
+  <div class="form-container" fxFlex>
+    <div class="form-wrapper">
+      <form [formGroup]="accountForm">
+        <input type="hidden" formControlName="id">
+        <input type="hidden" formControlName="organizationId">
+        <input type="hidden" formControlName="type">
 
-  <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">device_hub</mat-icon>
+          <mat-form-field fxFlex>
+            <mat-select name="departmentId" formControlName="departmentId" placeholder="{{'glossary.OrganDepartment'|translate}}" required>
+              <mat-option *ngFor="let dev of departments" [value]="dev.id">
+                {{ dev.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-    <button mat-raised-button class="save-button mat-accent" [disabled]="accountForm.invalid" (click)='onSubmit()' aria-label="SAVE">
-      {{'button.Save'|translate}}
-    </button>
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">star</mat-icon>
+          <mat-form-field fxFlex>
+            <input name="name" formControlName="name" matInput placeholder="{{'glossary.Name'|translate}}" required>
+          </mat-form-field>
+        </div>
 
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">email</mat-icon>
+          <mat-form-field fxFlex>
+            <input name="mail" formControlName="mail" matInput type="email" placeholder="{{'glossary.Mail'|translate}}" required>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">phone</mat-icon>
+          <mat-form-field fxFlex>
+            <input formControlName="phone" matInput placeholder="{{'glossary.Phone'|translate}}">
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">vpn_key</mat-icon>
+          <mat-form-field fxFlex>
+            <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'" placeholder="{{'glossary.Password'|translate}}">
+            <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">history</mat-icon>
+          <mat-form-field fxFlex>
+            <input [matDatepicker]="activationTimePicker" formControlName="activationTime" matInput placeholder="{{'glossary.ActivationTime'|translate}}">
+            <mat-datepicker-toggle matSuffix [for]="activationTimePicker"></mat-datepicker-toggle>
+            <mat-datepicker #activationTimePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">slow_motion_video</mat-icon>
+          <mat-form-field fxFlex>
+            <input [matDatepicker]="expireTimePicker" formControlName="expireTime" matInput placeholder="{{'glossary.ExpireTime'|translate}}">
+            <mat-datepicker-toggle matSuffix [for]="expireTimePicker"></mat-datepicker-toggle>
+            <mat-datepicker #expireTimePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-icon class="mr-12 mt-12">
+            <i class="material-icons">account_balance</i>
+          </mat-icon>
+          <mat-form-field fxFlex>
+            <input name="location" formControlName="location" matInput placeholder="{{'glossary.Location'|translate}}">
+          </mat-form-field>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <div class="detail-footer" fxFlex='55px' fxLayout='row' fxLayoutAlign='end center'>
+    <div>
+      <button class="dialog-btn" mat-button (click)='onSubmit()'>
+        <mat-icon class="cus-confirm-button">done</mat-icon>
+        {{'button.Save'|translate}}
+      </button>
+    </div>
   </div>
 </div>

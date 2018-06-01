@@ -153,6 +153,7 @@ export const locale = {
             "DragOrClickHere": "点击或拖拽文件到这里",
             "Prompt": "温馨提示",
             "WaitUploadCount": "文件上传失败",
+            "Profile":"个人信息",
             "Name": "名称",
             "File": "文件",
             "UploadFile": "上传文件",

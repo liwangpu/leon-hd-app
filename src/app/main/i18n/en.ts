@@ -155,6 +155,7 @@ export const locale = {
             "DragOrClickHere": "Click or Drop your files here",
             "Prompt": "Prompt",
             "WaitUploadCount": "File Wait Upload",
+            "Profile":"Profile",
             "Name": "Name",
             "File": "File",
             "UploadFile": "Upload File",

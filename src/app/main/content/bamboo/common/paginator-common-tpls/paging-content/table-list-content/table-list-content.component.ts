@@ -17,11 +17,13 @@ import { DessertService } from '../../../../../services/dessert.service';
 })
 export class TableListContentComponent implements OnInit {
 
+  private _seqnoColumn = { columnDef: 'seqno', header: 'glossary.SeqNO', width: 50, cell: (data: Ilistable) => `${data.seqno}` };
+  private _buttonColumn = { columnDef: 'button', header: 'glossary.SeqNO', width: 50, cell: (data: Ilistable) => `${data.seqno}` };
   _selectMode = false;//自己缓存一下上次页面模式
   selectColumn: IListTableColumn<Ilistable> = { columnDef: 'select', header: '', width: 55, cell: (data: Ilistable) => '' };
   columns: Array<IListTableColumn<Ilistable>> = [
-    { columnDef: 'seqno', header: 'glossary.SeqNO', width: 50, cell: (data: Ilistable) => `${data.seqno}` }
-    , { columnDef: 'button', header: 'glossary.SeqNO', width: 50, cell: (data: Ilistable) => `${data.seqno}` }
+    this._seqnoColumn
+    , this._buttonColumn
   ];
   selectedItem: Array<string> = [];
   allSelected = false;
@@ -30,8 +32,6 @@ export class TableListContentComponent implements OnInit {
   dataSource = new CustomDataSource();
   get displayedColumns() {
     let arr = this.columns.map(c => c.columnDef);
-    // if (this.mdSrv.itemManageMenu)
-    //   arr.push('button');
     return arr;
   }
 
@@ -72,7 +72,7 @@ export class TableListContentComponent implements OnInit {
     });//
     //表格列改变事件
     this.mdSrv.afterPaginatorColumnChange$.takeUntil(this.destroy$).subscribe(cols => {
-      this.columns = [...this.columns, ...this.mdSrv.columnDefs];
+      this.columns = [this._seqnoColumn, ...this.mdSrv.columnDefs, this._buttonColumn];
     });//
   }//constructor
 

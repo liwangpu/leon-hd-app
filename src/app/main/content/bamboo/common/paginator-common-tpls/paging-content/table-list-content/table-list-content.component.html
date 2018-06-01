@@ -33,14 +33,14 @@
             <ng-container *ngIf='column.columnDef=="button"'>
                 <mat-header-cell *cdkHeaderCellDef mat-sort-header fxFlex="50px">{{'glossary.Manage'|translate}}</mat-header-cell>
                 <mat-cell *cdkCellDef="let row" fxFlex="50px">
-                    <button mat-icon-button [matMenuTriggerFor]="itemManageMenu">
+                    <button mat-icon-button [matMenuTriggerFor]="itemManageMenu" (click)="$event.stopPropagation()">
                         <mat-icon>{{mdSrv.itemManageMenu.icon?mdSrv.itemManageMenu.icon:'more_horiz'}}</mat-icon>
                     </button>
 
                     <mat-menu #itemManageMenu="matMenu">
-                        <button mat-menu-item *ngFor='let menuitem of mdSrv.itemManageMenu.items'>
+                        <button mat-menu-item *ngFor='let menuitem of mdSrv.itemManageMenu.items' (click)='menuitem.click(row)'>
                             <mat-icon>{{menuitem.icon}}</mat-icon>
-                            <span>{{menuitem.name}}</span>
+                            <span>{{menuitem.name|translate}}</span>
                         </button>
                     </mat-menu>
                 </mat-cell>

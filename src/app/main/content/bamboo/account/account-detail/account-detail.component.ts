@@ -14,8 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-account-detail',
   templateUrl: './account-detail.component.html',
-  styleUrls: ['./account-detail.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./account-detail.component.scss']
 })
 export class AccountDetailComponent implements OnInit {
   onSave: EventEmitter<Account> = new EventEmitter();
@@ -36,13 +35,13 @@ export class AccountDetailComponent implements OnInit {
     this.accountForm.patchValue(this.account);
   }
 
-   getDepartment() {
+  getDepartment() {
     this.departmentSrv.getByOrgan(this.account.organizationId).subscribe(res => {
       this.departments = res;
     });
   }//getDepartment
 
-   createAccountForm() {
+  createAccountForm() {
     return this.formBuilder.group({
       id: [''],
       organizationId: [''],
@@ -58,7 +57,7 @@ export class AccountDetailComponent implements OnInit {
     });
   }//createAccountForm
 
-   onSubmit() {
+  onSubmit() {
     let acc = this.accountForm.value;
     let saveAccountAsync = () => {
       return new Promise((resolve, reject) => {
