@@ -36,6 +36,7 @@ export const locale = {
             "Layout": "户型"
         },
         "glossary": {
+            "Manage": "管理",
             "SeqNO": "序号",
             "Icon": "图标",
             "Product": "产品",
@@ -91,6 +92,7 @@ export const locale = {
             "MaterialCategory": "材质分类"
         },
         "button": {
+            "Manage": "管理",
             "Refresh": "刷新",
             "Save": "保存",
             "Add": "添加",

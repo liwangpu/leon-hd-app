@@ -36,6 +36,7 @@ export const locale = {
             "Layout": "Layout"
         },
         "glossary": {
+            "Manage": "Manage",
             "SeqNO": "NO",
             "Icon": "ICon",
             "Product": "Product",
@@ -93,6 +94,7 @@ export const locale = {
             "MaterialCategory": "Material Category"
         },
         "button": {
+            "Manage": "Manage",
             "Refresh": "Refresh",
             "Save": "Save",
             "Add": "Add",

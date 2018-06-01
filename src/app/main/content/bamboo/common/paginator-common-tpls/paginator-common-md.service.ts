@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { IPageChangeParam } from './paging-bar/paging-bar.component';
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 import { Ilistable } from '../../../../toolkit/models/ilistable';
-import { ListDisplayModeEnum, IListTableColumn } from './paginator-common-tpls.component';
+import { ListDisplayModeEnum, IListTableColumn, IListableRecordMenu } from './paginator-common-tpls.component';
 import { IQuery } from '../../../../toolkit/server/webapi/api.service';
 import { MatTable } from '@angular/material';
 import { CdkColumnDef } from '@angular/cdk/table';
@@ -27,7 +27,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   cacheData: Array<Ilistable> = [];
   createdUrl: string;
   defaultPageSizeOption = [];//默认分页按钮参数
-
+  itemManageMenu: IListableRecordMenu;
   advanceMenuItems = [];
   //////////////////////////////////////////////////////////////////////////////////
   //(注意,各个页面应该只订阅,发布由属性来控制)

@@ -21,6 +21,7 @@ export class TableListContentComponent implements OnInit {
   selectColumn: IListTableColumn<Ilistable> = { columnDef: 'select', header: '', width: 55, cell: (data: Ilistable) => '' };
   columns: Array<IListTableColumn<Ilistable>> = [
     { columnDef: 'seqno', header: 'glossary.SeqNO', width: 50, cell: (data: Ilistable) => `${data.seqno}` }
+    , { columnDef: 'button', header: 'glossary.SeqNO', width: 50, cell: (data: Ilistable) => `${data.seqno}` }
   ];
   selectedItem: Array<string> = [];
   allSelected = false;
@@ -28,7 +29,10 @@ export class TableListContentComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject();
   dataSource = new CustomDataSource();
   get displayedColumns() {
-    return this.columns.map(c => c.columnDef);
+    let arr = this.columns.map(c => c.columnDef);
+    // if (this.mdSrv.itemManageMenu)
+    //   arr.push('button');
+    return arr;
   }
 
   constructor(public mdSrv: PaginatorCommonMdService, public router: Router) {

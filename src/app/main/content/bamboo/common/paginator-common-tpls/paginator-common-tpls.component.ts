@@ -41,6 +41,7 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
     this.mdSrv.createdUrl = this.launch.createdUrl;
     this.mdSrv.defaultPageSizeOption = this.launch.pageSizeOption;
     this.mdSrv.advanceMenuItems = this.launch.advanceMenuItems;
+    this.mdSrv.itemManageMenu = this.launch.itemManageMenu;
     if (!this.dessertSrv.isLatestVisitPage(this.router.snapshot.url))
       this.mdSrv.displayMode = this.launch.displayMode;
 
@@ -79,6 +80,7 @@ export abstract class PaginatorLaunch {
   displayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;
   pageSizeOption = [25, 100, 500];//默认分页按钮参数
   advanceMenuItems: Array<IAdvanceMenuItem> = [];
+  itemManageMenu: IListableRecordMenu;
   columnDefs: Array<IListTableColumn<Ilistable>> = [
     { columnDef: 'icon', header: 'glossary.Icon', width: 0, cell: (data: Ilistable) => data.icon ? data.icon : '' }
     , { columnDef: 'name', header: 'glossary.Name', width: 180, cell: (data: Ilistable) => data.name ? data.name : '' }
@@ -126,4 +128,17 @@ export interface IListTableColumn<TData> {
   header: string;
   width?: number;
   cell(data: TData): string;
+}
+
+
+export interface IListableRecordMenu {
+  name?: string;
+  icon?: string;
+  items: Array<IListableRecordMenuItem>;
+}
+
+export interface IListableRecordMenuItem {
+  name: string;
+  icon: string;
+  click: (data: Ilistable) => void;
 }
