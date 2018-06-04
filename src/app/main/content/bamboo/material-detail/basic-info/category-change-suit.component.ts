@@ -11,7 +11,7 @@ import { AssetCategory } from '../../../../toolkit/models/assetcategory';
 })
 export class CategoryChangeSuitComponent implements OnInit, OnDestroy, ISimpleConfirm {
 
-  doneAsync: Subject<boolean>= new Subject();
+  doneAsync: Subject<boolean> = new Subject();
   persistDialog: Subject<boolean> = new Subject();
   disableButtons: Subject<boolean> = new Subject();
   disableConfirmButton: Subject<boolean> = new Subject();
@@ -21,7 +21,12 @@ export class CategoryChangeSuitComponent implements OnInit, OnDestroy, ISimpleCo
   afterCancel: Subject<void> = new Subject();
   satisfyConfirm: Subject<boolean> = new Subject();
   refreshData: Subject<AssetCategory> = new Subject();
-  constructor() { }
+  constructor() {
+    this.afterConfirm.subscribe(() => {
+      this.doneAsync.next();
+      this.closeDialog.next();
+    });
+  }
 
   ngOnInit() {
 
@@ -34,5 +39,6 @@ export class CategoryChangeSuitComponent implements OnInit, OnDestroy, ISimpleCo
   onCategorySelect(cate: AssetCategory) {
     this.satisfyConfirm.next(true);
     this.refreshData.next(cate);
+    this.doneAsync.next();
   }//onCategorySelect
 }

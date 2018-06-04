@@ -1,4 +1,4 @@
-<form name="detailForm" [formGroup]="detailForm">
+<!-- <form name="detailForm" [formGroup]="detailForm">
   <div class="basic-info-container good">
     <input type="hidden" formControlName='id' name='id'>
     <input type="hidden" formControlName='categoryId' name='categoryId'>
@@ -31,4 +31,15 @@
       <span>{{'button.Save'|translate}}</span>
     </button>
   </div>
-</div>
+</div> -->
+
+<form name="detailForm" [formGroup]="detailForm">
+  <div class="form-container">
+
+    <mat-form-field>
+      <input matInput readonly name="categoryName" formControlName="categoryName" required placeholder="{{'glossary.ProductCategory'|translate}}"
+        (click)='onEditCategory()'>
+      <mat-error *ngIf="detailForm.get('categoryId').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+  </div>
+</form>

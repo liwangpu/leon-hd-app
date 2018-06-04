@@ -1,9 +1,12 @@
-div.basic-info-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 15px;
-}
-
-div.basic-info-container>* {
+:host {
     width: 100%;
+    height: 100%;
+    display: block;
+    div.form-container {
+        display: flex;
+        flex-direction: column;
+    }
+    div.form-container>* {
+        width: 100%;
+    }
 }

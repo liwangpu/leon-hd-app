@@ -7,6 +7,7 @@ import { PaginatorCommonMdService } from '../paginator-common-tpls/paginator-com
 import { GlobalCommonService } from '../../../../service/global-common.service';
 import { ActivatedRoute } from '@angular/router';
 import { Memory } from '../../../../toolkit/memory/memory';
+import { IQueryFilter } from '../../../../toolkit/common/interfaces/iqueryFilter';
 
 
 export abstract class CategoryNavExtend {
@@ -67,9 +68,10 @@ export class PaginatorLeftCategoryCommonTplsComponent implements OnInit, OnDestr
 
   ngAfterContentInit(): void {
     if (this.categoryNav) {
-      this.categoryName=this.categoryNav.categoryName;
+      this.categoryName = this.categoryNav.categoryName;
       this.categoryNav.afterCategorySelected$.takeUntil(this.destroy$).subscribe(catid => {
- 
+        let query: IQueryFilter = { field: 'categoryId', value: catid };
+        this.mdSrv.advanceQuery(query);
       })
     }
   }

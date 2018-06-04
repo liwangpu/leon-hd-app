@@ -7,6 +7,7 @@ import { ListDisplayModeEnum, IListTableColumn, IListableRecordMenu } from './pa
 import { IQuery } from '../../../../toolkit/server/webapi/api.service';
 import { DessertService } from '../../../services/dessert.service';
 import { ActivatedRoute } from '@angular/router';
+import { IQueryFilter } from '../../../../toolkit/common/interfaces/iqueryFilter';
 
 @Injectable()
 export class PaginatorCommonMdService implements OnDestroy {
@@ -19,6 +20,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   private _allSelect = false;
   private _keyword: string;//搜索关键字
   private _pageParam: IPageChangeParam = { pageIndex: 1, pageSize: 50, length: 0 };//当前分页信息
+  private _advanceQueryFilters: Array<IQueryFilter> = [];
   private _selectedItems: Array<string> = [];//已选择的项id
   private _query: IQuery = {};
   private _columnDefs: Array<IListTableColumn<Ilistable>> = [];
@@ -151,9 +153,16 @@ export class PaginatorCommonMdService implements OnDestroy {
     this.destroy$.unsubscribe();
   }//ngOnDestroy
 
+  advanceQuery(filter: IQueryFilter, isAppend: boolean = false) {
+    if (!isAppend)
+      this._advanceQueryFilters = [];
+    this._advanceQueryFilters.push(filter);
+    this.query();
+  }//advanceQuery
+
   private query() {
     this.cacheData = [];
-    this.apiSvr.query({ pageSize: this.pageParam.pageSize, page: this.pageParam.pageIndex, search: (this._keyword ? this._keyword : ''), orderBy: this._query.orderBy, desc: this._query.desc }).takeUntil(this.destroy$).subscribe(res => {
+    this.apiSvr.query({ pageSize: this.pageParam.pageSize, page: this.pageParam.pageIndex, search: (this._keyword ? this._keyword : ''), orderBy: this._query.orderBy, desc: this._query.desc }, this._advanceQueryFilters).takeUntil(this.destroy$).subscribe(res => {
       this.cacheData = [];
       this._pageParam.length = res.total;
       //校正index为1
