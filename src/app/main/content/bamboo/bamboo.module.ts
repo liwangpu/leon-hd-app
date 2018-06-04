@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BambooRoutingModule } from './bamboo-routing.module';
 import { ProductComponent } from './product/product.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+// import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ToolkitModule } from "../../toolkit/toolkit.module";
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -40,15 +40,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DepartmentCardComponent } from './account/department-card/department-card.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { DepartmentFormComponent } from './account/department-form/department-form.component';
-import { BasicInfoComponent as ProductBasicInfoComponent } from './product-detail/basic-info/basic-info.component';
 import { SolutionComponent } from './solution/solution.component';
-import { SpecsListComponent as ProductSpecsListComponent } from './product-detail/specs-list/specs-list.component';
-import { SpecsCardComponent as ProductSpecsCardComponent } from './product-detail/specs-card/specs-card.component';
-import { SpecFormComponent as ProductSpecFormComponent } from './product-detail/spec-form/spec-form.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { CategoryListComponent as ProductCategoryListComponent } from './product-category/category-list/category-list.component';
 import { CategoryItemDirective as ProductCategoryItemDirective } from './product-category/category-list/category-item.directive';
-import { SpecUploadComponent as ProductSpecUploadComponent } from './product-detail/spec-upload/spec-upload.component';
 import { IterateCateComponent as ProductCategoryIterateCateComponent } from './product-category/iterate-cate/iterate-cate.component';
 import { CategoryFormComponent as ProductCategoryCategoryFormComponent } from './product-category/category-form/category-form.component';
 import { CategoryPanelComponent as ProductCategoryPanelComponent } from './product-category/category-panel/category-panel.component';
@@ -68,11 +63,8 @@ import { BasicInfoComponent as MaterialBasicInfoComponent } from './material-det
 import { CategoryMdService } from './product-category/category-md.service';
 import { MapComponent } from './map/map.component';
 import { MapDetailComponent } from './map-detail/map-detail.component';
-import { CategoryListComponent as ProductViewCategoryListComponent } from './product/category-list/category-list.component';
-import { ProductListComponent as ProductListViewComponent } from './product/product-list/product-list.component';
 import { SelectPanelComponent as ProductCategorySelectPanelComponent } from './product-category/select-panel/select-panel.component';
-import { ChangeCategoryComponent as ProductCategoryChangeCategoryComponent } from "./product/change-category.component";
-import { CategoryChangeSuitComponent as ProductDetailCateChangeSuitComponent } from './product-detail/basic-info/category-change-suit.component';
+// import { CategoryChangeSuitComponent as ProductDetailCateChangeSuitComponent } from './product-detail/basic-info/category-change-suit.component';
 import { MaterialCategoryComponent } from './material-category/material-category.component';
 import { SelectPanelComponent as MaterialSelectPanelComponent } from './material-category/select-panel/select-panel.component';
 import { CategoryChangeSuitComponent as MaterialCategoryChangeSuitComponent } from './material-detail/basic-info/category-change-suit.component';
@@ -94,6 +86,8 @@ import { BasicInfoTabComponent as OrganDetailBasicInfoTabComponent } from './org
 import { AccountProfileComponent } from './account/account-profile/account-profile.component';
 import { PaginatorLeftCategoryCommonTplsComponent } from './common/paginator-left-category-common-tpls/paginator-left-category-common-tpls.component';
 import { CategoryLeftNavComponent as MaterialCategoryLeftNavComponent } from './material/category-left-nav/category-left-nav.component';
+import { CategoryLeftNavComponent as ProductCategoryLeftNavComponent } from './product/category-left-nav/category-left-nav.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 
 
@@ -131,10 +125,10 @@ import { CategoryLeftNavComponent as MaterialCategoryLeftNavComponent } from './
     MatAutocompleteModule
   ],
 
-  declarations: [ProductComponent, ProductDetailComponent, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, ProductBasicInfoComponent, SolutionComponent, ProductSpecsListComponent, ProductSpecsCardComponent, ProductSpecFormComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderDetailContentComponent, PackageComponent, PackageDetailComponent, PacakgeDetailContentComponent, StaticmeshComponent, StaticmeshDetailComponent, MaterialComponent, MaterialDetailComponent, MaterialBasicInfoComponent, MapComponent, MapDetailComponent, ProductViewCategoryListComponent, ProductListViewComponent, ProductCategorySelectPanelComponent, ProductCategoryChangeCategoryComponent, ProductDetailCateChangeSuitComponent, MaterialCategoryComponent, MaterialSelectPanelComponent, MaterialCategoryChangeSuitComponent, PaginatorCommonTplsComponent, PagingContentComponent, PagingBarComponent, PageManageButtonComponent, CommonListPageTableListContentComponent, CommonListPageLitimgListContentComponent, LitimgIconItemComponent, CommonListPageBatchDeleteConfirmTplsComponent, CommonDetailEditTplsComponent, SolutionDetailComponent, CommonDetailEditTabDetailInfoTabComponent, CommonDetailEditTabBasicInfoTabComponent, LayoutComponent, LayoutDetailComponent, OrganDetailBasicInfoTabComponent, AccountProfileComponent, PaginatorLeftCategoryCommonTplsComponent, MaterialCategoryLeftNavComponent,],
+  declarations: [ProductComponent/*ProductDetailComponent*/, IconItemComponent, DashboardComponent, Login2Component, LoginComponent, OrganComponent, OrganDetailComponent, AccountComponent, AccountDetailComponent, DepartmentCardComponent, AccountListComponent, DepartmentFormComponent, SolutionComponent, ProductCategoryComponent, ProductCategoryListComponent, ProductCategoryItemDirective, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductspecCateogoryComponent, ProductSpecCategoryPanelComponent, OrderComponent, OrderDetailComponent, OrderDetailContentComponent, PackageComponent, PackageDetailComponent, PacakgeDetailContentComponent, StaticmeshComponent, StaticmeshDetailComponent, MaterialComponent, MaterialDetailComponent, MaterialBasicInfoComponent, MapComponent, MapDetailComponent, ProductCategorySelectPanelComponent, MaterialCategoryComponent, MaterialSelectPanelComponent, MaterialCategoryChangeSuitComponent, PaginatorCommonTplsComponent, PagingContentComponent, PagingBarComponent, PageManageButtonComponent, CommonListPageTableListContentComponent, CommonListPageLitimgListContentComponent, LitimgIconItemComponent, CommonListPageBatchDeleteConfirmTplsComponent, CommonDetailEditTplsComponent, SolutionDetailComponent, CommonDetailEditTabDetailInfoTabComponent, CommonDetailEditTabBasicInfoTabComponent, LayoutComponent, LayoutDetailComponent, OrganDetailBasicInfoTabComponent, AccountProfileComponent, PaginatorLeftCategoryCommonTplsComponent, MaterialCategoryLeftNavComponent, ProductCategoryLeftNavComponent, ProductDetailComponent,],
 
-  entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductSpecFormComponent, ProductSpecUploadComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductSpecCategoryPanelComponent, ProductCategorySelectPanelComponent
-    , ProductCategoryChangeCategoryComponent, ProductDetailCateChangeSuitComponent
+  entryComponents: [AccountDetailComponent, DepartmentFormComponent, ProductCategoryIterateCateComponent, ProductCategoryCategoryFormComponent, ProductCategoryPanelComponent, ProductSpecCategoryPanelComponent, ProductCategorySelectPanelComponent
+
     , MaterialCategoryChangeSuitComponent, CommonListPageBatchDeleteConfirmTplsComponent, AccountProfileComponent],
 
   providers: [
