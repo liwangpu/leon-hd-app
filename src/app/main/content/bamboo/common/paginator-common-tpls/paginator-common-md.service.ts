@@ -18,7 +18,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   private _selectMode = false;
   private _allSelect = false;
   private _keyword: string;//搜索关键字
-  private _pageParam: IPageChangeParam = { pageIndex: 1, pageSize: 500, length: 0 };//当前分页信息
+  private _pageParam: IPageChangeParam = { pageIndex: 1, pageSize: 50, length: 0 };//当前分页信息
   private _selectedItems: Array<string> = [];//已选择的项id
   private _query: IQuery = {};
   private _columnDefs: Array<IListTableColumn<Ilistable>> = [];

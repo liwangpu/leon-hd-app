@@ -77,7 +77,7 @@ export abstract class PaginatorLaunch {
   abstract apiSrv: IListableService<Ilistable>;
   notNeedCreate = false;//不需要前端创建数据
   displayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;
-  pageSizeOption = [25, 100, 500];//默认分页按钮参数
+  pageSizeOption = [25, 50, 100, 500];//默认分页按钮参数
   advanceMenuItems: Array<IAdvanceMenuItem> = [];
   itemManageMenu: IListableRecordMenu;
   columnDefs: Array<IListTableColumn<Ilistable>> = [

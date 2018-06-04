@@ -97,8 +97,6 @@ export class TableListContentComponent implements OnInit {
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
-    // this.columns = [];
-    console.log('tpls 页面被注销');
   }//ngOnDestroy
 
   rowSelect(id: any) {
