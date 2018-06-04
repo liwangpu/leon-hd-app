@@ -18,7 +18,7 @@ import { DessertService } from '../../../../../services/dessert.service';
 export class TableListContentComponent implements OnInit {
 
   private _seqnoColumn = { columnDef: 'seqno', header: 'glossary.SeqNO', width: 50, cell: (data: Ilistable) => `${data.seqno}` };
-  private _buttonColumn = { columnDef: 'button', header: 'glossary.SeqNO', width: 50, cell: (data: Ilistable) => `${data.seqno}` };
+  private _buttonColumn = { columnDef: 'button', header: 'glossary.Manage', width: 50, cell: (data: Ilistable) => `${data.seqno}` };
   _selectMode = false;//自己缓存一下上次页面模式
   selectColumn: IListTableColumn<Ilistable> = { columnDef: 'select', header: '', width: 55, cell: (data: Ilistable) => '' };
   columns: Array<IListTableColumn<Ilistable>> = [
@@ -73,10 +73,9 @@ export class TableListContentComponent implements OnInit {
     this.mdSrv.afterPaginatorColumnChange$.takeUntil(this.destroy$).subscribe(cols => {
       if (this.mdSrv.itemManageMenu)
         this.columns = [this._seqnoColumn, ...this.mdSrv.columnDefs, this._buttonColumn];
-        else{
-          this.columns=this.mdSrv.columnDefs;
-          this.columns.unshift(this._seqnoColumn);
-        }
+      else {
+        this.columns = this.mdSrv.columnDefs;
+      }
     });//
   }//constructor
 
@@ -101,6 +100,8 @@ export class TableListContentComponent implements OnInit {
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+    // this.columns = [];
+    console.log('tpls 页面被注销');
   }//ngOnDestroy
 
   rowSelect(id: any) {
