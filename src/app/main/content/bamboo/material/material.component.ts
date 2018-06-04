@@ -14,71 +14,66 @@ import { SimpleCsvUploadComponent } from '../../../toolkit/common/factory/dialog
   providers: [MaterialMdService]
 })
 export class MaterialComponent implements OnInit, OnDestroy {
-  selectMode: boolean;
-  hasSelectItems: boolean;
-  @ViewChild('filter') filter: ElementRef;
-  constructor(public mdSrv: MaterialMdService, protected dialogFac: DialogFactoryService, protected tranSrv: TranslateService) {
 
-    this.mdSrv.multipleSelect.subscribe(check => {
-      this.hasSelectItems = check;
-    });
+  // constructor(public mdSrv: MaterialMdService, protected dialogFac: DialogFactoryService, protected tranSrv: TranslateService) {
 
-    this.mdSrv.anyItemSelected.subscribe(hasItemSelected => {
-      this.hasSelectItems = hasItemSelected;
-    });
-  }//constructor
+  //   this.mdSrv.multipleSelect.subscribe(check => {
+  //     this.hasSelectItems = check;
+  //   });
 
+  //   this.mdSrv.anyItemSelected.subscribe(hasItemSelected => {
+  //     this.hasSelectItems = hasItemSelected;
+  //   });
+  // }//constructor
+
+  constructor(public mdSrv: MaterialMdService) {
+  }
   ngOnInit() {
-    Observable.fromEvent(this.filter.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe((vl) => {
-        this.mdSrv.onSearch.next(this.filter.nativeElement.value);
-      });
+
   }
 
   ngOnDestroy(): void {
 
   }//ngOnDestroy
 
-  onSelect() {
-    this.selectMode = !this.selectMode;
-    this.mdSrv.onSelectMode.next(true);
-  }//onSelectAll
+  // onSelect() {
+  //   this.selectMode = !this.selectMode;
+  //   this.mdSrv.onSelectMode.next(true);
+  // }//onSelectAll
 
-  onUnSelect() {
-    this.selectMode = !this.selectMode;
-    this.mdSrv.onSelectMode.next(false);
-  }//onUnSelect
+  // onUnSelect() {
+  //   this.selectMode = !this.selectMode;
+  //   this.mdSrv.onSelectMode.next(false);
+  // }//onUnSelect
 
-  bulkChangeCategory() {
-    this.mdSrv.changeCategoryItems.next();
-  }//bulkChangeCategory
+  // bulkChangeCategory() {
+  //   this.mdSrv.changeCategoryItems.next();
+  // }//bulkChangeCategory
 
-  bulkCategoryUpload(){
-    let dialogTransAsync = () => {
-      return new Promise((resolve) => {
-        this.tranSrv.get('tips.UploadCategoryByCSV').subscribe(msg => {
-          resolve(msg);
-        });
-      });//promise
-    };//dialogTransAsync
+  // bulkCategoryUpload(){
+  //   let dialogTransAsync = () => {
+  //     return new Promise((resolve) => {
+  //       this.tranSrv.get('tips.UploadCategoryByCSV').subscribe(msg => {
+  //         resolve(msg);
+  //       });
+  //     });//promise
+  //   };//dialogTransAsync
 
-    let showDialogAsync = (title) => {
-      return new Promise((resolve) => {
-        let dialog = this.dialogFac.simpleCsvUpload(title, { width: '450px', height: '550px', uploadUrl: 'material/ImportMaterialAndCategory', templateCsvUrl: 'material/MaterialAndCategoryImportTemplate' });
-        dialog.afterOpen().first().subscribe(() => {
-          let ins = (dialog.componentInstance.componentIns as SimpleCsvUploadComponent);
-          ins.doneAsync.subscribe((state) => {
-            if (state) {
-              this.mdSrv.onSearch.next(this.filter.nativeElement.value);
-              ins.closeDialog.next();
-            }
-          });
-        });
-      });//promise
-    };//showDialogAsync
+  //   let showDialogAsync = (title) => {
+  //     return new Promise((resolve) => {
+  //       let dialog = this.dialogFac.simpleCsvUpload(title, { width: '450px', height: '550px', uploadUrl: 'material/ImportMaterialAndCategory', templateCsvUrl: 'material/MaterialAndCategoryImportTemplate' });
+  //       dialog.afterOpen().first().subscribe(() => {
+  //         let ins = (dialog.componentInstance.componentIns as SimpleCsvUploadComponent);
+  //         ins.doneAsync.subscribe((state) => {
+  //           if (state) {
+  //             this.mdSrv.onSearch.next(this.filter.nativeElement.value);
+  //             ins.closeDialog.next();
+  //           }
+  //         });
+  //       });
+  //     });//promise
+  //   };//showDialogAsync
 
-    dialogTransAsync().then(showDialogAsync);
-  }//bulkCategoryUpload
+  //   dialogTransAsync().then(showDialogAsync);
+  // }//bulkCategoryUpload
 }

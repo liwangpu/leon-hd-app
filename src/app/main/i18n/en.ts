@@ -96,6 +96,7 @@ export const locale = {
             "OrganBrand":"Brand",
             "OrganPartner":"Partner",
             "OrganSupplier":"Supplier",
+            "Category":"Category"
         },
         "button": {
             "Logout":"Logout",

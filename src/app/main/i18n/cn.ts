@@ -94,6 +94,7 @@ export const locale = {
             "OrganBrand": "品牌商",
             "OrganPartner": "合伙人",
             "OrganSupplier": "供应商",
+            "Category": "分类"
         },
         "button": {
             "Logout": "退出",
