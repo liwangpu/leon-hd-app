@@ -1,0 +1,58 @@
+<div class="sidenav-content">
+
+  <div class="card mat-white-bg">
+    <!-- SIDENAV HEADER -->
+    <div class="header card-header" style="height:65px;min-height:0;" fxLayout="row" fxLayoutAlign="start center">
+
+      <button mat-menu-item class="department-avatar">
+        <mat-icon class="admin-avatar-icon">device_hub</mat-icon>
+        <span>{{'glossary.ProductSpec'|translate}}</span>
+      </button>
+
+    </div>
+    <!-- / SIDENAV HEADER -->
+
+    <!-- SIDENAV CONTENT -->
+    <div class="content py-16" fusePerfectScrollbar>
+
+      <div class="nav">
+
+        <div class="nav-item" aria-label="starred" *ngFor='let spec of productSpecs' (click)="onEditSpec(spec.id)">
+          <a class="nav-link" matRipple [ngClass]="{'active':filterBy ===spec.id}">
+            <div fxLayout='row' fxFill>
+              <div fxFlex class="spec-title">
+                {{spec?.name}}
+              </div>
+              <div fxFlex='30px'>
+                <button mat-icon-button aria-label="More" [matMenuTriggerFor]="moreMenu">
+                  <mat-icon style="font-size: 16px;">more_vert</mat-icon>
+                </button>
+
+                <mat-menu #moreMenu="matMenu">
+                  <button mat-menu-item (click)="onEditSpec(spec.id)">
+                    <mat-icon>mode_edit</mat-icon>
+                    {{'button.Edit'|translate}}
+                  </button>
+                  <button mat-menu-item (click)="onDeleteSpec(spec.id,spec.name)">
+                    <mat-icon>delete</mat-icon>
+                    {{'button.Delete'|translate}}
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </a>
+        </div>
+
+
+        <div class="nav-item" (click)="onEditSpec()">
+          <a class="nav-link" matRipple>
+            <div class="title">{{'button.AddProductSpec'|translate}}</div>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- / SIDENAV CONTENT -->

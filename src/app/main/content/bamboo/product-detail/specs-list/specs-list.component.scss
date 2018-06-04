@@ -1,0 +1,36 @@
+:host {
+    width: 100%;
+    height: 100%;
+    div.list-container {
+        width: 100%;
+        height: 100%;
+    }
+    div.spec-detail-pic-container {
+        width: 400px;
+        height: 400px;
+        border: 1px solid gray;
+        margin: 10px;
+    }
+    div.spec-charlet-container {
+        width: 100%;
+        padding: 0 0 0 10px;
+    }
+    div.spec-charlet-item {
+        height: 55px;
+        border: 1px solid gray;
+        margin-bottom: 3px;
+        padding: 1px;
+    }
+    div.spec-charlet-item:hover {
+        cursor: pointer;
+    }
+    img.spec-charlet-item-pic {
+        width: 53px;
+        height: 52px;
+    }
+    img.spec-charlet-detail-pic{
+        width: 398px;
+        height: 398px;
+        padding: 1px;
+    }
+}

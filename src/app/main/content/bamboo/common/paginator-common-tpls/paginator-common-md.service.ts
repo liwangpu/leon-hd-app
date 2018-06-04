@@ -153,10 +153,11 @@ export class PaginatorCommonMdService implements OnDestroy {
     this.destroy$.unsubscribe();
   }//ngOnDestroy
 
-  advanceQuery(filter: IQueryFilter, isAppend: boolean = false) {
-    if (!isAppend)
-      this._advanceQueryFilters = [];
-    this._advanceQueryFilters.push(filter);
+  advanceQuery(filter: IQueryFilter | Array<IQueryFilter>) {
+    if (Array.isArray(filter))
+      this._advanceQueryFilters = filter;
+    else
+      this._advanceQueryFilters = [filter];
     this.query();
   }//advanceQuery
 

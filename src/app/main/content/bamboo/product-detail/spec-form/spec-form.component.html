@@ -1,0 +1,29 @@
+<div class="spec-form-container">
+
+  <form [formGroup]="specForm">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="productId">
+    <mat-form-field>
+      <input name="name" formControlName="name" required matInput placeholder="{{'glossary.Name'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="number" name="price" formControlName="price" required matInput placeholder="{{'glossary.Price'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input name="description" formControlName="description" matInput placeholder="{{'glossary.Description'|translate}}">
+    </mat-form-field>
+
+  </form>
+</div>
+<div class="spec-form-buttons" fxLayout='row' fxLayoutAlign='end center'>
+  <div *ngIf='showUploadBtn'>
+    <button mat-button (click)='onUpload()'>{{'button.FileManagement'|translate}}</button>
+  </div>
+  <div>
+    <button mat-button (click)="submitProductSpec()" [disabled]='!specForm.valid&&!specForm.dirty'>
+      <span>{{'button.Save'|translate}}</span>
+    </button>
+  </div>
+</div>

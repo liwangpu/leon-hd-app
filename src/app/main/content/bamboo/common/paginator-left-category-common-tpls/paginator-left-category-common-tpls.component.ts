@@ -71,8 +71,14 @@ export class PaginatorLeftCategoryCommonTplsComponent implements OnInit, OnDestr
       this.categoryName = this.categoryNav.categoryName;
       this.categoryNav.afterCategorySelected$.takeUntil(this.destroy$).subscribe(catid => {
         let query: IQueryFilter = { field: 'categoryId', value: catid };
-        this.mdSrv.advanceQuery(query);
-      })
+        if (catid) {
+          this.mdSrv.advanceQuery(query);
+        }
+        else {
+          let queryEx: IQueryFilter = { field: 'classify', value: 'false' };
+          this.mdSrv.advanceQuery([query, queryEx]);
+        }
+      });
     }
   }
 

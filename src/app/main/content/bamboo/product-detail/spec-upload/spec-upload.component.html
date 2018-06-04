@@ -1,0 +1,85 @@
+<!-- <mat-toolbar [style.background-color]='"#37ABDF"'>My App</mat-toolbar> -->
+
+<mat-list style="padding:0;">
+  <mat-list-item>{{'tips.UploadFile'|translate}}</mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>
+
+<mat-vertical-stepper [linear]='false' color="accent">
+  <mat-step label="{{'tips.UploadMesh'|translate}}">
+    <div fxLayout='column' fxFill>
+      <div>
+        <app-file-upload-panel [serverBase]='serverBase' [maxFileLimit]='1' [url]='fileUrl' (onUpload)='onUploadMesh($event)' (onError)='onUploadError($event)'
+          (onDelete)='onDeleteMesh($event)' (onFileSatisfy)='onMeshSatisfy()' (onFileNotSatisfy)='onMeshNotSatisfy()' [fileAsset]='meshFiles'></app-file-upload-panel>
+      </div>
+      <div>
+        <div fxLayout='row'>
+          <div fxFlex class="file-upload-tips">
+            *{{'tips.NeedUploadStaticMeshFileTotal'|translate}}: &nbsp;1
+          </div>
+          <div fxFlex='90px'>
+            <button mat-button matStepperNext>{{'button.Next'|translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step label="{{'tips.UploadMaterial'|translate}}">
+    <div fxLayout='column' fxFill>
+      <ng-container *ngIf='!isMeshSatisfy'>
+        {{'tips.UploadStaticMeshFileFirst'|translate}}
+      </ng-container>
+      <ng-container *ngIf='isMeshSatisfy'>
+        <div>
+          <app-file-upload-panel [serverBase]='serverBase' [maxFileLimit]='99' [unLimited]='true' [url]='fileUrl' (onUpload)='onUploadMaterial($event)'
+            (onError)='onUploadError($event)' (onDelete)='onDeleteMaterial($event)' (onFileSatisfy)='onMaterialSatisfy()' [fileAsset]='materialFiles'></app-file-upload-panel>
+        </div>
+        <div>
+          <div fxLayout='row'>
+            <div fxFlex class="file-upload-tips">
+              *{{'tips.AtLeastUploadMaterialFileTotal'|translate}}: &nbsp;1
+            </div>
+            <div fxFlex='90px'>
+              <button mat-button matStepperNext>{{'button.Next'|translate}}</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </mat-step>
+  <mat-step label="{{'tips.UploadProductSpecIcon'|translate}}">
+    <div fxLayout='column' fxFill>
+      <div>
+        <app-file-upload-panel [serverBase]='serverBase' [maxFileLimit]='1' [url]='fileUrl' (onUpload)='onUploadICon($event)' (onError)='onUploadError($event)'
+          (onDelete)='onDeleteICon($event)' [fileAsset]='iconFiles'></app-file-upload-panel>
+      </div>
+      <div>
+        <div fxLayout='row'>
+          <div fxFlex class="file-upload-tips">
+            *{{'tips.AtLeastUploadMaterialFileTotal'|translate}}: &nbsp;1
+          </div>
+          <div fxFlex='90px'>
+            <button mat-button matStepperNext>{{'button.Next'|translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step label="{{'tips.UploadProductSpeChartlet'|translate}}">
+    <div fxLayout='column' fxFill>
+      <div>
+        <app-file-upload-panel [serverBase]='serverBase' [maxFileLimit]='99' [unLimited]='true' [url]='fileUrl' (onUpload)='onUploadChartlet($event)'
+          (onError)='onUploadError($event)' (onDelete)='onDeleteChartlet($event)' [fileAsset]='chartletFiles' #chartletUpload></app-file-upload-panel>
+      </div>
+      <div>
+        <div fxLayout='row'>
+          <div fxFlex class="file-upload-tips">
+          </div>
+          <div fxFlex='90px'>
+            <!-- <button mat-button matStepperNext>{{'button.Next'|translate}}</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
