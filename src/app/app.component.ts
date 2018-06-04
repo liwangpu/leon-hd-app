@@ -11,7 +11,7 @@ import { environment } from "../environments/environment";
 export class AppComponent {
 
     moc: string;
-    constructor(private fuseSplashScreen: FuseSplashScreenService, private translate: TranslateService, private dessertSrv: DessertService) {
+    constructor(/*fuseSplashScreen千万不能删除*/public fuseSplashScreen: FuseSplashScreenService, private translate: TranslateService, private dessertSrv: DessertService) {
         // Add languages
         this.translate.addLangs(['en', 'cn']);
 

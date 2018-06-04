@@ -5,8 +5,6 @@ import { IListableService } from '../../../../toolkit/server/webapi/ilistableSer
 import { Ilistable } from '../../../../toolkit/models/ilistable';
 import { ListDisplayModeEnum, IListTableColumn, IListableRecordMenu } from './paginator-common-tpls.component';
 import { IQuery } from '../../../../toolkit/server/webapi/api.service';
-import { MatTable } from '@angular/material';
-import { CdkColumnDef } from '@angular/cdk/table';
 import { DessertService } from '../../../services/dessert.service';
 import { ActivatedRoute } from '@angular/router';
 

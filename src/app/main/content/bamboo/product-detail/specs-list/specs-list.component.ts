@@ -4,8 +4,6 @@ import { ProductDetailMdService } from '../product-detail-md.service';
 import { ProductSpec } from '../../../../toolkit/models/productspec';
 import { ProductSpecService } from '../../../../toolkit/server/webapi/productSpec.service';
 import { FileAsset } from '../../../../toolkit/models/fileasset';
-import { ConfigService } from '../../../../toolkit/config/config.service'
-import { IconModel } from '../../../../toolkit/models/iconmodel';
 import { PathService } from '../../../services/path.service';
 
 @Component({
@@ -17,7 +15,7 @@ export class SpecsListComponent implements OnInit, OnDestroy {
   detailCharletUrl = "";
   charlets: Array<FileAsset> = [];
   detroy$: Subject<boolean> = new Subject();
-  constructor(private detailMdSrv: ProductDetailMdService, private productSpeServ: ProductSpecService, private configSrv: ConfigService, private pathSrv: PathService) {
+  constructor(private detailMdSrv: ProductDetailMdService, private productSpeServ: ProductSpecService, private pathSrv: PathService) {
     //订阅规格图片更改事件
     this.detailMdSrv.afterProductCharletChange$.takeUntil(this.detroy$).subscribe((hasCharlet) => {
       if (hasCharlet) {

@@ -3,7 +3,7 @@ import { fuseAnimations } from '../../../../core/animations';
 import { ProductCategory } from '../../../toolkit/models/productcategory';
 import { ProductspecCategoryService } from '../../../toolkit/server/webapi/productspec-category.service';
 import { Subject } from 'rxjs';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { DessertService } from '../../services/dessert.service';
 import { IterateCateComponent } from '../product-category/iterate-cate/iterate-cate.component';
 

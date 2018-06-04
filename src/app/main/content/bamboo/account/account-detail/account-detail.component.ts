@@ -1,15 +1,12 @@
-import { Component, Inject, OnInit, ViewEncapsulation, EventEmitter } from '@angular/core';
+import { Component, Inject, OnInit, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { CalendarEvent } from 'angular-calendar';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Account } from "../../../../toolkit/models/account";
 import { AccountService } from "../../../../toolkit/server/webapi/account.service";
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
-import { Subject } from 'rxjs';
-import { AccountTypeEnums } from "../../../../toolkit/enums/enums";
 import { DepartmentService } from "../../../../toolkit/server/webapi/department.service";
 import { Department } from "../../../../toolkit/models/department";
-import { DessertService } from "../../../services/dessert.service";
 import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-account-detail',
@@ -25,8 +22,8 @@ export class AccountDetailComponent implements OnInit {
   hidePassword = true;
   hideDepartment: boolean;
   departments: Array<Department> = [];
-  constructor(private departmentSrv: DepartmentService, private dessertSrv: DessertService, public dialogRef: MatDialogRef<AccountDetailComponent>, @Inject(MAT_DIALOG_DATA) private data: any, private formBuilder: FormBuilder, private accountSrv: AccountService, private snackBarSrv: SnackbarService, private tranSrv: TranslateService) {
-    this.account = data.account;
+  constructor(private departmentSrv: DepartmentService, public dialogRef: MatDialogRef<AccountDetailComponent>, @Inject(MAT_DIALOG_DATA) private data: any, private formBuilder: FormBuilder, private accountSrv: AccountService, private snackBarSrv: SnackbarService, private tranSrv: TranslateService) {
+    this.account = this.data.account;
     this.accountForm = this.createAccountForm();
     this.getDepartment();
   }

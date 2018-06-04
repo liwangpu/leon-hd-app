@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { ProductCategoryService } from '../../../../toolkit/server/webapi/productcategory.service';
 import { DessertService } from '../../../services/dessert.service';
 import { IterateCateComponent } from '../iterate-cate/iterate-cate.component';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { CategoryListComponent } from '../category-list/category-list.component';
 import { CategoryMdService } from '../category-md.service';
 
@@ -31,7 +31,7 @@ export class CategoryPanelComponent implements OnInit, OnDestroy {
     read: ViewContainerRef
   }) folderContainer: ViewContainerRef;
   @ViewChild('mainCategoryList') mainCategoryList: CategoryListComponent;
-  constructor(private categorySrv: ProductCategoryService, private formBuilder: FormBuilder, private comFactory: ComponentFactoryResolver, private dessertSrv: DessertService, @Inject(MAT_DIALOG_DATA) private data: any, private dialogRef: MatDialogRef<CategoryPanelComponent>, private categoryMdSrv: CategoryMdService) {
+  constructor(private categorySrv: ProductCategoryService, private formBuilder: FormBuilder, private comFactory: ComponentFactoryResolver, private dessertSrv: DessertService, private dialogRef: MatDialogRef<CategoryPanelComponent>, private categoryMdSrv: CategoryMdService) {
 
     this.categoryForm = this.formBuilder.group({
       id: [''],

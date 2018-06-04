@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PaginatorLaunch, IAdvanceMenuItem } from '../common/paginator-common-tpls/paginator-common-tpls.component';
-import { IListableService } from '../../../toolkit/server/webapi/ilistableService';
-import { Ilistable } from '../../../toolkit/models/ilistable';
+import { PaginatorLaunch } from '../common/paginator-common-tpls/paginator-common-tpls.component';
 import { SolutionService } from '../../../toolkit/server/webapi/solution.service';
 import { DatePipe } from '@angular/common';
 

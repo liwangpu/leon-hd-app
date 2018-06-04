@@ -1,4 +1,4 @@
-import { Component, OnInit, ContentChildren, QueryList, AfterContentInit, ViewChildren, Query, ViewContainerRef, TemplateRef, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, ContentChildren, QueryList, AfterContentInit, Input, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { DetailInfoTabComponent } from './detail-info-tab/detail-info-tab.component';
 import { DetailEditScheduleService } from './detail-edit-schedule.service';
@@ -6,7 +6,6 @@ import { IListableService } from '../../../../toolkit/server/webapi/ilistableSer
 import { Ilistable } from '../../../../toolkit/models/ilistable';
 import { ActivatedRoute } from '@angular/router';
 import { ListableBase } from '../../../../toolkit/models/listablebase';
-import { Memory } from '../../../../toolkit/memory/memory';
 import { Subject } from 'rxjs';
 import { DessertService } from '../../../services/dessert.service';
 

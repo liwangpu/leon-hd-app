@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy, Input, ViewChild, ElementRef, ContentChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { GlobalCommonService } from '../../../../service/global-common.service';
 import { Subject } from 'rxjs';
 import { fuseAnimations } from '../../../../../core/animations';
 import { PaginatorCommonMdService } from './paginator-common-md.service';
-import { Observable } from 'rxjs/Observable';
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 import { Ilistable } from '../../../../toolkit/models/ilistable';
 import { DatePipe } from '@angular/common';

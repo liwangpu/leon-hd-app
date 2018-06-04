@@ -1,5 +1,4 @@
 import { Directive, ElementRef, Renderer2, Input, OnInit, HostListener } from '@angular/core';
-import { WindowService } from '../object/window.service';
 import { Subject } from 'rxjs';
 
 @Directive({
@@ -30,7 +29,7 @@ export class SizeCtDirective implements OnInit {
       this.fixedWidth(curWidth);
     }
   }
-  constructor(private el: ElementRef, private render2: Renderer2, private windowSrv: WindowService) {
+  constructor(private el: ElementRef, private render2: Renderer2) {
 
   }//constructor
 
@@ -41,11 +40,11 @@ export class SizeCtDirective implements OnInit {
   }//ngOnInit
 
   fixedWidth(cw: number) {
-    if (this.widthPct && this.widthPct > 0) {
-      let setw = cw * (this.widthPct / 100);
+    // if (this.widthPct && this.widthPct > 0) {
+    //   let setw = cw * (this.widthPct / 100);
      
-      // this.render2.setStyle(this.el.nativeElement, 'width', setw + 'px');
-    }
+    //   // this.render2.setStyle(this.el.nativeElement, 'width', setw + 'px');
+    // }
   }//fixedWidth
 
   fixedHeight(ch: number) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, Input, Output, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ConfigService } from "../../../../toolkit/config/config.service";
 import { FileAsset } from "../../../../toolkit/models/fileasset";
 import { ProductSpecService } from '../../../../toolkit/server/webapi/productSpec.service';
@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Material } from '../../../../toolkit/models/material';
 import { MaterialService } from '../../../../toolkit/server/webapi/material.service';
 import { ChartletService } from '../../../../toolkit/server/webapi/chartlet.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {  MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-product-detail-spec-upload',
   templateUrl: './spec-upload.component.html',

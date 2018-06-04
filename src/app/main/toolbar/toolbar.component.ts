@@ -7,11 +7,8 @@ import { FuseNavigationService } from "../../core/components/navigation/navigati
 import { DessertService } from "../content/services/dessert.service";
 import { GlobalCommonService } from '../service/global-common.service';
 import { Subject } from 'rxjs';
-import { Observable } from 'rxjs/Observable';
 import { DialogFactoryService } from '../toolkit/common/factory/dialog-factory.service';
-import { Memory } from '../toolkit/memory/memory';
 import { AccountProfileComponent } from '../content/bamboo/account/account-profile/account-profile.component';
-import { Account } from '../toolkit/models/account';
 @Component({
     selector: 'fuse-toolbar',
     templateUrl: './toolbar.component.html',

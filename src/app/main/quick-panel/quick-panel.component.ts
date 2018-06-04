@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector     : 'fuse-quick-panel',
@@ -14,7 +13,7 @@ export class FuseQuickPanelComponent implements OnInit
     notes: any[];
     events: any[];
 
-    constructor(private http: HttpClient)
+    constructor()
     {
         this.date = new Date();
         this.settings = {

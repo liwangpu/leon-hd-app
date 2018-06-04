@@ -1,12 +1,8 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, Input, OnChanges, SimpleChanges, ElementRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
 import { AccountDetailComponent } from "../account-detail/account-detail.component";
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
-import { FormGroup } from '@angular/forms';
-import { DataSource } from '@angular/cdk/collections';
 import { fuseAnimations } from '../../../../../core/animations';
-import { Subscription } from 'rxjs/Subscription';
 import { PaginatorStore } from "../../../../toolkit/common/classes/paginator-store";
 import { Account } from "../../../../toolkit/models/account";
 import { AccountService } from "../../../../toolkit/server/webapi/account.service";
@@ -16,7 +12,6 @@ import { DialogService } from "../../../../toolkit/common/services/dialog.servic
 import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
 import { AccountTypeEnums } from '../../../../toolkit/enums/enums';
-import { AccountMdService } from '../account-md.service';
 import { Subject } from 'rxjs';
 @Component({
   selector: 'app-account-list',
@@ -34,7 +29,7 @@ export class AccountListComponent implements OnInit, OnDestroy {
   displayedColumns = ['icon', 'name', 'phone', 'mail', 'buttons'];
   confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
   destroy$: Subject<boolean> = new Subject();
-  constructor(private accountSrv: AccountService, public dialog: MatDialog, private dessertSrv: DessertService, private dialogSrv: DialogService, private transSrv: TranslateService, private snackBarSrv: SnackbarService, private accountMdSrv: AccountMdService) { }
+  constructor(private accountSrv: AccountService, public dialog: MatDialog, private dessertSrv: DessertService, private dialogSrv: DialogService, private transSrv: TranslateService, private snackBarSrv: SnackbarService) { }
 
   ngOnInit() {
     this.dataSource = new PaginatorStore({ service: this.accountSrv, sort: this.sort });

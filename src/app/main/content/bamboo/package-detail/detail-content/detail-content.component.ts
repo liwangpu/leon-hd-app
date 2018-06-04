@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { PackageDetailMdService } from '../package-detail-md.service';
-import { Order } from "../../../../toolkit/models/order";
 import { PackageContent } from "../../../../toolkit/models/package-content";
 import { PackageContentItem } from "../../../../toolkit/models/package-content-item";
 import { MatTableDataSource } from '@angular/material';

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Order } from "../../../../toolkit/models/order";
 import { OrderContent } from "../../../../toolkit/models/order-content";
 import { OrderContentItem } from "../../../../toolkit/models/order-content-item";
 import { MatTableDataSource } from '@angular/material';

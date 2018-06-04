@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TreeModel, NodeEvent } from 'ng2-tree';
 import { ProductMdService } from '../product-md.service';
 @Component({
   selector: 'app-product-category-view-list',

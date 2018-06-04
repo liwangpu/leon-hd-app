@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from "../../toolkit/config/config.service";
 import { LocalStoreService } from "./localstore.service";
 import { Memory } from "../../toolkit/memory/memory";
@@ -7,7 +6,7 @@ import { NavigationData } from '../../toolkit/models/navigation-data';
 import { UrlSegment } from '@angular/router';
 import { Subject } from 'rxjs';
 const LOGIN_STYLE = "LoginStyle";
-const SERVER_BASE = 'ServerBase';
+// const SERVER_BASE = 'ServerBase';
 const REMEMBER_LOGIN = 'RememberLogin';
 const LANGUAGE = 'Language';
 const IS_MAINTAINING = 'IsMainaining';
@@ -103,7 +102,6 @@ export class DessertService {
     };
     set loginStyle(vl: number) {
         if (this.configSrv.loginStyle < 1 || this.configSrv.loginStyle > 2) {
-            let tmp = Memory.getInstance().loginStyle;
             Memory.getInstance().loginStyle = 2;
             this.lcStoreSrv.setItem(LOGIN_STYLE, 2);
         }
@@ -192,7 +190,7 @@ export class DessertService {
         return this.lcStoreSrv.getItem(LASTLOGIN_ACCOUNT_PWD);
     }//
 
-    constructor(private translate: TranslateService, private configSrv: ConfigService, private lcStoreSrv: LocalStoreService) {
+    constructor(private configSrv: ConfigService, private lcStoreSrv: LocalStoreService) {
 
     }
 

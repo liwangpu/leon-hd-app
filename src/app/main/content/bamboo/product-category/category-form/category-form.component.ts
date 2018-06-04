@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatAutocompleteSelectedEvent } from '@angular/material';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductCategory } from '../../../../toolkit/models/productcategory';
 import { ProductCategoryService } from '../../../../toolkit/server/webapi/productcategory.service';
 import { Subject } from 'rxjs';
@@ -9,7 +9,6 @@ import { SnackbarService } from '../../../../toolkit/common/services/snackbar.se
 import { DessertService } from '../../../services/dessert.service';
 import { CategoryMdService } from '../category-md.service';
 import { Observable } from 'rxjs/Observable';
-import { startWith } from 'rxjs/operator/startWith';
 import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-product-category-category-form',

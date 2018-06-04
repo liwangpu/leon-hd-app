@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { PaginatorStore } from '../../../../toolkit/common/classes/paginator-store';
 import { MatPaginator, MatCheckboxChange } from '@angular/material';
 import { ProductService } from '../../../../toolkit/server/webapi/product.service';
@@ -8,7 +8,6 @@ import { Product } from '../../../../toolkit/models/product';
 import { ProductMdService } from '../product-md.service';
 import { IconItemComponent } from '../../common/iconitem.component';
 import { IQueryFilter } from '../../../../toolkit/common/interfaces/iqueryFilter';
-import { CategoryPanelComponent } from '../../product-category/category-panel/category-panel.component';
 import { DialogFactoryService } from '../../../../toolkit/common/factory/dialog-factory.service';
 import { ChangeCategoryComponent } from '../change-category.component';
 

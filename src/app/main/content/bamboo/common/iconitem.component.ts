@@ -26,7 +26,7 @@ export class IconItemComponent implements OnInit, OnChanges {
     }//ngOnInit
 
     ngOnChanges(changes: SimpleChanges): void {
-        let selected = changes['Selected'];
+       
     }//ngOnChanges
 
     onClick() {

@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ProductSpec } from "../../../../toolkit/models/productspec";
 import { ProductDetailMdService } from "../product-detail-md.service";
 import { ProductSpecService } from "../../../../toolkit/server/webapi/productSpec.service";

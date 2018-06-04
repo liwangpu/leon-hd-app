@@ -4,7 +4,6 @@ import { MatSort, MatPaginator } from '@angular/material';
 import { Observable, BehaviorSubject, Subject } from "rxjs";
 import { Paging, IQuery } from "../../server/webapi/api.service";
 import { IListableService } from "../../server/webapi/ilistableService";
-import { QueryOperateEnums } from '../../enums/enums';
 import { IQueryFilter } from '../interfaces/iqueryFilter';
 
 /**

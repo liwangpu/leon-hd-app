@@ -1,15 +1,7 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, EventEmitter } from '@angular/core';
-import { fuseAnimations } from '../../../../../core/animations';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import { Subscription } from 'rxjs/Subscription';
-import { AccountDetailComponent } from "./../account-detail/account-detail.component";
-import { Account } from "../../../../toolkit/models/account";
-import { AccountTypeEnums } from '../../../../toolkit/enums/enums';
-import { Observable } from 'rxjs/Observable';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material';
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
 import { DepartmentFormComponent } from "../department-form/department-form.component";
 import { DepartmentService } from "../../../../toolkit/server/webapi/department.service";
@@ -17,8 +9,6 @@ import { Department } from "../../../../toolkit/models/department";
 import { DessertService } from "../../../services/dessert.service";
 import { DialogService } from "../../../../toolkit/common/services/dialog.service";
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject } from 'rxjs';
-import { OutputType } from '@angular/core/src/view';
 import { AccountMdService } from '../account-md.service';
 @Component({
   selector: 'app-department-card',

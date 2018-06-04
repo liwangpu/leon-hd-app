@@ -6,7 +6,6 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from '../../../services/snackbar.service';
 import { ConfigService } from '../../../../config/config.service';
-import { WindowService } from '../../../object/window.service';
 import { saveAs } from 'file-saver/FileSaver';
 import { WorkingTimeComponent } from '../../../components/working-time/working-time.component';
 @Component({
@@ -31,7 +30,7 @@ export class SimpleCsvUploadComponent implements OnInit, OnDestroy, ISimpleConfi
   destroy$: Subject<boolean> = new Subject();
   @ViewChild('fileInputCt') fileInputCt: ElementRef;
   @ViewChild(WorkingTimeComponent) workingAlarm: WorkingTimeComponent;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, private config: ConfigService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private windowSrv: WindowService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, private config: ConfigService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
     this.afterConfirm.takeUntil(this.destroy$).subscribe(() => {
       this.uploadFile();
     });
@@ -48,7 +47,6 @@ export class SimpleCsvUploadComponent implements OnInit, OnDestroy, ISimpleConfi
 
   onFileChange(event: any) {
     this.stopAlarm();
-    let reader = new FileReader();
     if (event.target.files && event.target.files.length > 0)
       this.satisfyConfirm.next(true);
     else

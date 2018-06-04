@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { CalendarEvent } from 'angular-calendar';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DepartmentService } from "../../../../toolkit/server/webapi/department.service";
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
 import { Department } from "../../../../toolkit/models/department";

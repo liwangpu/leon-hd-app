@@ -4,7 +4,6 @@ import { FuseConfigService } from '../../../../core/services/config.service';
 import { fuseAnimations } from '../../../../core/animations';
 import { Router } from '@angular/router';
 import { AuthService } from "../../../toolkit/server/webapi/auth.service";
-import { ConfigService } from "../../../toolkit/config/config.service";
 import { FuseNavigationService } from "../../../../core/components/navigation/navigation.service";
 import { DessertService } from "../../services/dessert.service";
 import { TranslateService } from '@ngx-translate/core';
@@ -26,7 +25,6 @@ export class Login2Component implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private auth: AuthService,
-        private config: ConfigService,
         private navi: FuseNavigationService,
         private dessertSrv: DessertService,
         private tranSrv: TranslateService

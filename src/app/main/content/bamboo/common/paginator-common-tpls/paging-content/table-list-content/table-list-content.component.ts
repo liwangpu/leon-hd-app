@@ -1,15 +1,12 @@
-import { Component, OnInit, Input, ViewChild, ContentChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { ListDisplayModeEnum, IListTableColumn } from '../../paginator-common-tpls.component';
 import { PaginatorCommonMdService } from '../../paginator-common-md.service';
 import { Subject, BehaviorSubject } from 'rxjs';
-import { IPageChangeParam } from '../../paging-bar/paging-bar.component';
 import { Ilistable } from '../../../../../../toolkit/models/ilistable';
 import { Router } from '@angular/router';
 import { Sort, MatTable } from '@angular/material';
 import { DataSource } from '@angular/cdk/table';
 import { Observable } from 'rxjs/Observable';
-import { DessertService } from '../../../../../services/dessert.service';
-
 @Component({
   selector: 'app-commom-paging-table-list-content',
   templateUrl: './table-list-content.component.html',

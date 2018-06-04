@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { PaginatorLaunch, IListTableColumn, IListableRecordMenu } from '../common/paginator-common-tpls/paginator-common-tpls.component';
 import { OrganService } from '../../../toolkit/server/webapi/organ.service';
 import { DatePipe } from '@angular/common';
-import { Ilistable } from '../../../toolkit/models/ilistable';
 import { Organization } from '../../../toolkit/models/organization';
 import { DialogFactoryService } from '../../../toolkit/common/factory/dialog-factory.service';
 import { AccountTypeEnums } from '../../../toolkit/enums/enums';

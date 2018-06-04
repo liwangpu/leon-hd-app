@@ -1,12 +1,11 @@
-import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SpecsCardComponent } from "../specs-card/specs-card.component";
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
 import { ProductDetailMdService } from "../product-detail-md.service";
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductSpecService } from "../../../../toolkit/server/webapi/productSpec.service";
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { SpecUploadComponent } from "../spec-upload/spec-upload.component";
 import { CategoryPanelComponent } from '../../productspec-cateogory/category-panel/category-panel.component';
 import { IconModel } from '../../../../toolkit/models/iconmodel';

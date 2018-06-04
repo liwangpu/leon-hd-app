@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime.js';
 import { ProductDetailMdService } from "../product-detail-md.service";
@@ -6,13 +6,8 @@ import { ProductService } from "../../../../toolkit/server/webapi/product.servic
 import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
 import { Subject } from 'rxjs';
-import { MatDialog } from '@angular/material';
-import { CategoryPanelComponent } from '../../product-category/category-panel/category-panel.component';
-import { ProductCategoryService } from '../../../../toolkit/server/webapi/productcategory.service';
-import { PathService } from '../../../services/path.service';
 import { FileAsset } from '../../../../toolkit/models/fileasset';
 import { DialogFactoryService } from '../../../../toolkit/common/factory/dialog-factory.service';
-import { SimpleConfirmDialogTplsComponent } from '../../../../toolkit/common/factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
 import { CategoryChangeSuitComponent } from './category-change-suit.component';
 
 @Component({
@@ -25,7 +20,7 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
   iconUploadUrl: string;
   productForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private formBuilder: FormBuilder, public detaiMdSrv: ProductDetailMdService, private productSrv: ProductService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private dialog: MatDialog, private categorySrv: ProductCategoryService, private pathSrv: PathService, protected dialogFac: DialogFactoryService) {
+  constructor(private formBuilder: FormBuilder, public detaiMdSrv: ProductDetailMdService, private productSrv: ProductService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService,  protected dialogFac: DialogFactoryService) {
     this.productForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],

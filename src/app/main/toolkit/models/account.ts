@@ -1,4 +1,3 @@
-import { Ilistable } from "./ilistable";
 import { ListableBase } from "./listablebase";
 export class Account extends ListableBase{
     password: string;

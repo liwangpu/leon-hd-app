@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from "../../toolkit/server/webapi/auth.service";
 import { ConfigService } from "../../toolkit/config/config.service";
@@ -13,7 +12,6 @@ export class RouteGuardService implements CanActivate {
         private auth: AuthService,
         private config: ConfigService,
         private navi: FuseNavigationService,
-        private http: HttpClient,
         private dessert: DessertService
     ) {
     }

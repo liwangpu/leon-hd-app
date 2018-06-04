@@ -1,11 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
-import { Material } from '../../../toolkit/models/material';
-import { MaterialService } from '../../../toolkit/server/webapi/material.service';
-import { PaginatorStore } from '../../../toolkit/common/classes/paginator-store';
-import { MatSort, MatPaginator } from '@angular/material';
-import { Subject } from 'rxjs';
 import { fuseAnimations } from '../../../../core/animations';
-import { PathService } from '../../services/path.service';
 import { MaterialMdService } from './material-md.service';
 import { Observable } from 'rxjs/Observable';
 import { DialogFactoryService } from '../../../toolkit/common/factory/dialog-factory.service';

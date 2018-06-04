@@ -14,7 +14,7 @@ export class FuseConfigService {
      * @param platform
      */
     constructor(
-        private router: Router,
+        public router:Router,
         public platform: Platform
     ) {
         // Set the default settings
@@ -46,7 +46,7 @@ export class FuseConfigService {
         this.settings = Object.assign({}, this.defaultSettings);
 
         // Reload the default settings on every navigation start
-        router.events.subscribe(
+        this.router.events.subscribe(
             (event) => {
                 if (event instanceof NavigationStart) {
                     this.setSettings({ layout: this.defaultSettings.layout });

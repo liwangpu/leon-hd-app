@@ -64,7 +64,7 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
         public media: ObservableMedia
     )
     {
-        navBarService.setNavBar(this);
+        this.navBarService.setNavBar(this);
 
         this.navigationServiceWatcher =
             this.fuseNavigationService.onNavCollapseToggle.subscribe(() => {
@@ -91,7 +91,7 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
                     });
                 });
 
-        router.events.subscribe(
+        this.router.events.subscribe(
             (event) => {
                 if ( event instanceof NavigationEnd )
                 {

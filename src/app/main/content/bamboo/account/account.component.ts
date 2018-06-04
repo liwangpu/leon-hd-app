@@ -1,10 +1,8 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
 import { fuseAnimations } from '../../../../core/animations';
-import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import { Subscription } from 'rxjs/Subscription';
 import { AccountDetailComponent } from "./account-detail/account-detail.component";
 import { Account } from "../../../toolkit/models/account";
 import { AccountTypeEnums } from '../../../toolkit/enums/enums';
