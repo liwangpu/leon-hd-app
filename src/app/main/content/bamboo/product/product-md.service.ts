@@ -15,12 +15,6 @@ export class ProductMdService extends PaginatorLaunch {
   createdUrl = 'app/product-detail';
   titleIcon = 'shopping_basket';
   title = 'glossary.Product';
-  onSelectMode: Subject<boolean> = new Subject();//选择模式D
-  anyItemSelected: Subject<boolean> = new Subject();//列表至少有一个选择
-  multipleSelect: Subject<boolean> = new Subject();//列表有/无选择
-  onSelectCategory: Subject<string> = new Subject();//选择分类触发事件
-  onSearch: Subject<string> = new Subject();//关键字搜索触发事件
-  changeCategoryItems: Subject<void> = new Subject();//改变材料分类
   columnDefs: Array<IListTableColumn<Product>> = [
     { columnDef: 'icon', header: 'glossary.Icon', width: 0, cell: (data: Product) => data.icon ? data.icon : '' }
     , { columnDef: 'name', header: 'glossary.Name', width: 180, cell: (data: Product) => data.name ? data.name : '' }
@@ -28,7 +22,7 @@ export class ProductMdService extends PaginatorLaunch {
     , { columnDef: 'categoryName', _columnDef: 'categoryId', header: 'glossary.Category', width: 80, cell: (data: Product) => data.categoryName ? data.categoryName : '' }
     , { columnDef: 'createdTime', header: 'glossary.CreatedTime', width: 85, cell: (data: Product) => this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd') }
   ];
-  constructor(protected datePipe: DatePipe, public apiSrv: ProductService, protected dialogFac: DialogFactoryService,protected tranSrv: TranslateService) {
+  constructor(protected datePipe: DatePipe, public apiSrv: ProductService, protected dialogFac: DialogFactoryService, protected tranSrv: TranslateService) {
     super(datePipe);
 
 
@@ -39,7 +33,7 @@ export class ProductMdService extends PaginatorLaunch {
 
         dialog.afterOpen().first().subscribe(() => {
           (dialog.componentInstance.componentIns as ChangeCategorySuitComponent).afterChangeCategory.subscribe(() => {
-            // this.refreshData$.next();
+            this.refreshData$.next();
           });
         });
       }
@@ -49,7 +43,7 @@ export class ProductMdService extends PaginatorLaunch {
 
     let uploadCategoryMenuItem: IAdvanceMenuItem = {
       icon: 'swap_vert', name: 'button.BulkCategory', click: () => {
-       
+
         let dialogTransAsync = () => {
           return new Promise((resolve) => {
             this.tranSrv.get('tips.UploadCategoryByCSV').subscribe(msg => {
@@ -57,7 +51,7 @@ export class ProductMdService extends PaginatorLaunch {
             });
           });//promise
         };//dialogTransAsync
-    
+
         let showDialogAsync = (title) => {
           return new Promise((resolve) => {
             let dialog = this.dialogFac.simpleCsvUpload(title, { width: '450px', height: '550px', uploadUrl: 'products/ImportProductAndCategory', templateCsvUrl: 'products/ProductAndCategoryImportTemplate' });
@@ -72,7 +66,7 @@ export class ProductMdService extends PaginatorLaunch {
             });
           });//promise
         };//showDialogAsync
-    
+
         dialogTransAsync().then(showDialogAsync);
 
       }

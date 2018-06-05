@@ -162,6 +162,7 @@ export class PaginatorCommonMdService implements OnDestroy {
   }//advanceQuery
 
   query() {
+    this.selectedItems = [];
     this.cacheData = [];
     this.apiSvr.query({ pageSize: this.pageParam.pageSize, page: this.pageParam.pageIndex, search: (this._keyword ? this._keyword : ''), orderBy: this._query.orderBy, desc: this._query.desc }, this._advanceQueryFilters).takeUntil(this.destroy$).subscribe(res => {
       this.cacheData = [];

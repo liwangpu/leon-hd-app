@@ -50,7 +50,10 @@ export class PaginatorLeftCategoryCommonTplsComponent implements OnInit, OnDestr
     this.mdSrv.itemManageMenu = this.launch.itemManageMenu;
     if (!this.dessertSrv.isLatestVisitPage(this.router.snapshot.url))
       this.mdSrv.displayMode = this.launch.displayMode;
-
+      this.launch.refreshData$.takeUntil(this.destroy$).subscribe(() => {
+        this.mdSrv.query();
+      });
+  
     //订阅全局搜索
     this.globalSrv.keyworkSearch$.takeUntil(this.destroy$).subscribe(key => {
       this.onKeywordSearch(key);
