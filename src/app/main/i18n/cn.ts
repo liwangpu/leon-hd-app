@@ -33,12 +33,15 @@ export const locale = {
             "StaticMesh": "模型",
             "Material": "材质",
             "Map": "场景",
-            "Layout": "户型"
+            "Layout": "户型",
+            "Share": "分享"
         },
         "glossary": {
             "Manage": "管理",
             "SeqNO": "序号",
             "Icon": "图标",
+            "Share": "分享",
+            "ShareManage": "分享管理",
             "Product": "产品",
             "ProductName": "产品名称",
             "ProductSpec": "产品规格",

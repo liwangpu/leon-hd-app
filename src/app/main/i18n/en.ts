@@ -33,12 +33,15 @@ export const locale = {
             "StaticMesh": "StaticMesh",
             "Material": "Material",
             "Map": "Map",
-            "Layout": "Layout"
+            "Layout": "Layout",
+            "Share": "Share"
         },
         "glossary": {
             "Manage": "Manage",
             "SeqNO": "NO",
             "Icon": "ICon",
+            "Share": "Share",
+            "ShareManage": "Share Manage",
             "Product": "Product",
             "ProductName": "Product Name",
             "ProductSpec": "Specification",
@@ -93,14 +96,14 @@ export const locale = {
             "Layout": "Layout",
             "UnCategory": "UnCategory",
             "MaterialCategory": "Material Category",
-            "OrganBrand":"Brand",
-            "OrganPartner":"Partner",
-            "OrganSupplier":"Supplier",
-            "Category":"Category"
+            "OrganBrand": "Brand",
+            "OrganPartner": "Partner",
+            "OrganSupplier": "Supplier",
+            "Category": "Category"
         },
         "button": {
-            "Logout":"Logout",
-            "Profile":"Profile",
+            "Logout": "Logout",
+            "Profile": "Profile",
             "Manage": "Manage",
             "Refresh": "Refresh",
             "Save": "Save",
@@ -162,7 +165,7 @@ export const locale = {
             "DragOrClickHere": "Click or Drop your files here",
             "Prompt": "Prompt",
             "WaitUploadCount": "File Wait Upload",
-            "Profile":"Profile",
+            "Profile": "Profile",
             "Name": "Name",
             "File": "File",
             "UploadFile": "Upload File",

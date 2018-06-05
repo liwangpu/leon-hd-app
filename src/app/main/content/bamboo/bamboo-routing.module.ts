@@ -35,6 +35,9 @@ import { MaterialCategoryComponent } from './material-category/material-category
 import { LayoutComponent } from './layout/layout.component';
 import { LayoutService } from '../../toolkit/server/webapi/layout.service';
 import { LayoutDetailComponent } from './layout-detail/layout-detail.component';
+import { MediaFileComponent } from './media-file/media-file.component';
+import { MediaFileDetailComponent } from './media-file-detail/media-file-detail.component';
+import { MediaFileService } from '../../toolkit/server/webapi/media-file.service';
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -52,6 +55,7 @@ const routes: Routes = [
   , { path: 'app/materials', component: MaterialComponent, canActivate: [RouteGuardService] }
   , { path: 'app/maps', component: MapComponent, canActivate: [RouteGuardService] }
   , { path: 'app/layouts', component: LayoutComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/shares', component: MediaFileComponent, canActivate: [RouteGuardService] }
   /****************************************************************************************************/
   , {
     path: 'app/product-detail/:id'
@@ -140,13 +144,18 @@ const routes: Routes = [
       entity: LayoutService
     }
   }
+  /****************************************************************************************************/
   , {
-    path: 'app/layout-detail/:id'
-    , component: LayoutDetailComponent
+    path: 'app/share-detail/:id'
+    , component: MediaFileDetailComponent
     , canActivate: [RouteGuardService],
     resolve: {
-      entity: LayoutService
+      entity: MediaFileService
     }
+  }
+  , {
+    path: 'app/share-detail', component: MediaFileDetailComponent,
+    canActivate: [RouteGuardService]
   }
 ];
 
