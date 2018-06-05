@@ -43,7 +43,10 @@ export class PaginatorCommonTplsComponent implements OnInit, OnDestroy {
     this.mdSrv.itemManageMenu = this.launch.itemManageMenu;
     if (!this.dessertSrv.isLatestVisitPage(this.router.snapshot.url))
       this.mdSrv.displayMode = this.launch.displayMode;
-
+    // this.launch.refreshData$.takeUntil(this.destroy$).subscribe(() => {
+    //   // this.mdSrv.query();
+    //   console.log('good');
+    // });
     //订阅全局搜索
     this.globalSrv.keyworkSearch$.takeUntil(this.destroy$).subscribe(key => {
       this.onKeywordSearch(key);
@@ -75,6 +78,7 @@ export abstract class PaginatorLaunch {
   abstract titleIcon: string;
   abstract title: string;
   abstract apiSrv: IListableService<Ilistable>;
+  refreshData$: Subject<void> = new Subject();
   notNeedCreate = false;//不需要前端创建数据
   displayMode: ListDisplayModeEnum = ListDisplayModeEnum.List;
   pageSizeOption = [25, 50, 100, 500];//默认分页按钮参数
@@ -89,14 +93,6 @@ export abstract class PaginatorLaunch {
   constructor(protected datePipeTr: DatePipe) {
 
   }//constructor
-
-  batchDelete(idArr: Array<string>) {
-
-  }//batchDelete
-
-  exportData() {
-
-  }//exportData
 }
 
 /**
@@ -117,7 +113,7 @@ export enum ListDisplayModeEnum {
 export interface IAdvanceMenuItem {
   icon: string;//icon name
   name: string;//按钮的名字 经过translate
-  needSelected: boolean;//按钮是否需要选中项
+  needSelected?: boolean;//按钮是否需要选中项
   needPermission?: boolean;//是否需要权限
   click: Function;
 }

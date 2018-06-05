@@ -88,4 +88,5 @@ export class PageManageButtonComponent implements OnInit {
 
   }//batchDelete
 
+
 }
