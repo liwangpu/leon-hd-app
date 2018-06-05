@@ -3,14 +3,15 @@ import { MaterialCategory } from '../../../toolkit/models/material-category';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { DessertService } from '../../services/dessert.service';
-import { CategoryMdService } from '../product-category/category-md.service';
 import { MaterialCategoryService } from '../../../toolkit/server/webapi/material-category.service';
 import { IterateCateComponent } from '../product-category/iterate-cate/iterate-cate.component';
+import { CategoryMdService } from './category-md.service';
 
 @Component({
   selector: 'app-material-category',
   templateUrl: './material-category.component.html',
-  styleUrls: ['./material-category.component.scss']
+  styleUrls: ['./material-category.component.scss'],
+  providers: [CategoryMdService]
 })
 export class MaterialCategoryComponent implements OnInit {
 

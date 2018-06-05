@@ -59,7 +59,6 @@ export class ProductMdService extends PaginatorLaunch {
               let ins = (dialog.componentInstance.componentIns as SimpleCsvUploadComponent);
               ins.doneAsync.subscribe((state) => {
                 if (state) {
-                  // this.mdSrv.onSearch.next(this.filter.nativeElement.value);
                   ins.closeDialog.next();
                 }
               });

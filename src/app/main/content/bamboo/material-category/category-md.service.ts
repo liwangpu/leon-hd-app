@@ -1,18 +1,18 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ProductCategory } from '../../../toolkit/models/productcategory';
 import { DessertService } from '../../services/dessert.service';
-import { ProductCategoryService } from '../../../toolkit/server/webapi/productcategory.service';
+import { MaterialCategoryService } from '../../../toolkit/server/webapi/material-category.service';
+import { MaterialCategory } from '../../../toolkit/models/material-category';
 
 @Injectable()
 export class CategoryMdService implements OnDestroy {
 
 
   destroy$: Subject<boolean> = new Subject();
-  productCategories: Array<ProductCategory> = [];//扁平结构的产品分类信息
-  afterCategorySelect$: Subject<ProductCategory> = new Subject();
-  afterCategoryChange$: Subject<ProductCategory> = new Subject();
-  constructor(private categorySrv: ProductCategoryService, private dessertSrv: DessertService) {
+  productCategories: Array<MaterialCategory> = [];//扁平结构的产品分类信息
+  afterCategorySelect$: Subject<MaterialCategory> = new Subject();
+  afterCategoryChange$: Subject<MaterialCategory> = new Subject();
+  constructor(private categorySrv: MaterialCategoryService, private dessertSrv: DessertService) {
 
   }
 
@@ -25,7 +25,7 @@ export class CategoryMdService implements OnDestroy {
    * 获取扁平结构的产品分类信息并存储
    */
   getAndCacheFlatProductCategories() {
-    this.categorySrv.getAllFlatProductCategory(this.dessertSrv.organId).takeUntil(this.destroy$).subscribe(resCates => {
+    this.categorySrv.getAllFlatMaterialCategory(this.dessertSrv.organId).takeUntil(this.destroy$).subscribe(resCates => {
       for (let idx = resCates.length - 1; idx >= 0; idx--) {
         if (!resCates[idx].parentId) {
           resCates[idx].name = '主分类';
