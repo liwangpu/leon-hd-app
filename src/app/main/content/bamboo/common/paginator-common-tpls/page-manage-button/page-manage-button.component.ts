@@ -88,5 +88,7 @@ export class PageManageButtonComponent implements OnInit {
 
   }//batchDelete
 
-
+  exportData() {
+    this.mdSrv.exportData();
+  }//exportData
 }

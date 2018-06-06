@@ -104,6 +104,22 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
         let idsStr = idsArr && idsArr.length > 0 ? idsArr.join(',') : '';
         return this.httpClient.delete(`${this.uri}/BatchDelete?ids=${idsStr}`, { responseType: 'text' })
     }//batchDelete
+
+    public exportData(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>) {
+        var params = new HttpParams();
+        if (query.search)
+            params = params.append('search', `${query.search}`);
+        if (query.orderBy)
+            params = params.append('orderBy', `${query.orderBy}`);
+        if (query.desc)
+            params = params.append('desc', `${query.desc}`);
+
+        let queryPart = conjunctFilter(advanceQueryFilters);
+
+        params = params.append('page', `${query.page ? query.page : 1}`);
+        params = params.append('pageSize', `${query.pageSize ? query.pageSize : 10}`);
+        return this.httpClient.request('get', `${this.uri}/export?${queryPart}`, { headers: this.header, params: params, responseType: 'blob' });
+    }//exportData
 }
 //TODO:转为q查询方式
 function conjunctFilter(advanceQueryFilters?: Array<IQueryFilter>): string {

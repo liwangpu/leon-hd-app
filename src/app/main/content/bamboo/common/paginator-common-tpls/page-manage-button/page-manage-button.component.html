@@ -39,7 +39,7 @@
         </ng-container>
 
         <!--导出数据-->
-        <button mat-menu-item>
+        <button mat-menu-item (click)='exportData()'>
           <mat-icon class="cus-mat-button-icon">cloud_download</mat-icon>
           <span>{{'button.Export'|translate}}</span>
         </button>

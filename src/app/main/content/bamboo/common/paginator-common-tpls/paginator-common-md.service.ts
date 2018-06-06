@@ -8,7 +8,7 @@ import { IQuery } from '../../../../toolkit/server/webapi/api.service';
 import { DessertService } from '../../../services/dessert.service';
 import { ActivatedRoute } from '@angular/router';
 import { IQueryFilter } from '../../../../toolkit/common/interfaces/iqueryFilter';
-
+import { saveAs } from 'file-saver/FileSaver';
 @Injectable()
 export class PaginatorCommonMdService implements OnDestroy {
   //////////////////////////////////////////////////////////////////////////////////
@@ -180,5 +180,14 @@ export class PaginatorCommonMdService implements OnDestroy {
       this.afterDataRefresh$.next();
     });
   }//query
+
+  exportData() {
+    this.apiSvr.exportData({ pageSize: this.pageParam.pageSize, page: this.pageParam.pageIndex, search: (this._keyword ? this._keyword : ''), orderBy: this._query.orderBy, desc: this._query.desc }, this._advanceQueryFilters).takeUntil(this.destroy$).subscribe((fs) => {
+      if (fs.size > 0)
+        saveAs(fs, 'Export Result.csv');
+    }, err => {
+      console.error(err);
+    });;
+  }//exportData
 
 }
