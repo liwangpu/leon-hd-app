@@ -3,8 +3,22 @@
     height: 100%;
     display: block;
     div.tab-container {
-        width: 100%;
-        height: 100%;
+        width: 100%; // height: 100%;
+        div.mat-item-container {
+            height: 50px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 1px solid #DCDCDC;
+            margin-bottom: 10px;
+            div.mat-item-wrap {
+                position: relative;
+                top: 5px;
+                div.mat-item-seqno {
+                    line-height: 55px;
+                }
+            }
+        }
         div.item-seqno {
             display: inline-block;
             height: 100%;

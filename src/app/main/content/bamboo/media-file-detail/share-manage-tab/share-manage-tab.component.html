@@ -1,12 +1,19 @@
-<div class='tab-container'>
-  <mat-list>
-    <mat-list-item>
-      <div class="item-seqno">1</div>
-      <app-media-file-share-edit-item></app-media-file-share-edit-item>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Item 2</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Item 3</mat-list-item>
-  </mat-list>
+<div class='tab-container' fxLayout='column'>
+  <div fxLayout='row' fxLayoutAlign='end center'>
+    <button mat-icon-button (click)='addShare()'>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div>
+    <div class="mat-item-container" *ngFor='let item of shares;let idx=index'>
+      <div class="mat-item-wrap" fxLayout='row'>
+        <div class="mat-item-seqno" fxFlex='25px'>
+          {{idx+1}}
+        </div>
+        <div fxFlex>
+          <app-media-file-share-edit-item (afterDelete)='deleteShare($event)' (afterSave)='saveShare($event)' [mediaId]='mediaId' [shareResource]='item'></app-media-file-share-edit-item>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

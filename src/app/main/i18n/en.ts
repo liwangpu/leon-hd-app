@@ -99,7 +99,9 @@ export const locale = {
             "OrganBrand": "Brand",
             "OrganPartner": "Partner",
             "OrganSupplier": "Supplier",
-            "Category": "Category"
+            "Category": "Category",
+            "StartShareTime": "Start ShareTime",
+            "StopShareTime": "Stop ShareTime",
         },
         "button": {
             "Logout": "Logout",

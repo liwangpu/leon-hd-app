@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class SimpleMessageContentComponent implements OnInit, ISimpleConfirm {
 
-  content:string;
+  content: string;
   afterConfirm: Subject<void> = new Subject();
   afterCancel: Subject<void> = new Subject();
   satisfyConfirm: Subject<boolean> = new Subject();
@@ -19,11 +19,15 @@ export class SimpleMessageContentComponent implements OnInit, ISimpleConfirm {
   disableButtons: Subject<boolean> = new Subject();
   disableConfirmButton: Subject<boolean> = new Subject();
   disableCancelButton: Subject<boolean> = new Subject();
-  doneAsync: Subject<boolean>= new Subject();
+  doneAsync: Subject<boolean> = new Subject();
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     this.content = this.data.content;
+    // this.satisfyConfirm.next(true);
+    setTimeout(() => {
+      this.satisfyConfirm.next(true);
+    }, 500);
   }//ngOnInit
 
 }

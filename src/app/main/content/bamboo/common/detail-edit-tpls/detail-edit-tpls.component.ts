@@ -6,8 +6,15 @@ import { IListableService } from '../../../../toolkit/server/webapi/ilistableSer
 import { Ilistable } from '../../../../toolkit/models/ilistable';
 import { ActivatedRoute } from '@angular/router';
 import { ListableBase } from '../../../../toolkit/models/listablebase';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { DessertService } from '../../../services/dessert.service';
+
+
+export abstract class DetailTabBaseExtend {
+  isBasic: boolean;
+  dataChange$: BehaviorSubject<Ilistable> = new BehaviorSubject(new ListableBase());
+}
+
 
 @Component({
   selector: 'app-detail-edit-common-tpls',
@@ -17,19 +24,25 @@ import { DessertService } from '../../../services/dessert.service';
 })
 export class DetailEditTplsComponent implements OnInit, OnDestroy, AfterContentInit {
 
-  basicTab: DetailInfoTabComponent;
-  tabs: DetailInfoTabComponent[];
+  basicTab: DetailTabBaseExtend;
+  tabs: DetailTabBaseExtend[];
   name: string;
   @Input() editOpWith: string;
   @Input() title: string;
   @Input() apiSrv: IListableService<Ilistable>;
   destroy$: Subject<boolean> = new Subject();
-  @ContentChildren(DetailInfoTabComponent) inputTabs: QueryList<DetailInfoTabComponent>;
+  @ContentChildren(DetailTabBaseExtend) inputTabs: QueryList<DetailTabBaseExtend>;
 
   constructor(private _location: Location, public scheduleSrv: DetailEditScheduleService, public route: ActivatedRoute, public dessertSrv: DessertService) {
     //订阅数据更新后事件
     this.scheduleSrv.afterDataRefresh$.subscribe(() => {
       this.name = this.scheduleSrv.currentData.name;
+      if (this.inputTabs) {
+        this.inputTabs.forEach(tab => {
+          if (!tab.isBasic)
+            tab.dataChange$.next(this.scheduleSrv.currentData);
+        });
+      }
     });//
     let tmp = this.route.snapshot.data.entity;
     this.scheduleSrv.currentData = tmp ? tmp : new ListableBase();
@@ -50,11 +63,15 @@ export class DetailEditTplsComponent implements OnInit, OnDestroy, AfterContentI
     let basic = arr.filter(x => x.isBasic);
     if (basic && basic.length > 0)
       this.basicTab = basic[0];
-
+    this.inputTabs.forEach(tab => {
+      tab.dataChange$.next(this.scheduleSrv.currentData);
+    });
   }//ngAfterContentInit
 
   goback() {
     this._location.back();
   }//goback
 }
+
+
 

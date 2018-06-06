@@ -25,6 +25,7 @@ import { MapService } from "./webapi/map.service";
 import { MaterialCategoryService } from './webapi/material-category.service';
 import { LayoutService } from './webapi/layout.service';
 import { MediaFileService } from './webapi/media-file.service';
+import { MediaShareService } from './webapi/media-share.service';
 @NgModule({
     imports: [
         ConfigModule
@@ -53,6 +54,7 @@ import { MediaFileService } from './webapi/media-file.service';
         , LayoutService
         , MaterialCategoryService
         , MediaFileService
+        , MediaShareService
         , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
         , { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
     ]
