@@ -142,6 +142,7 @@ export const locale = {
             "Display": "Display",
             "List": "List",
             "Litimg": "Litimg",
+            "Open": "Open",
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",

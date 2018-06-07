@@ -31,19 +31,19 @@
     <div fxFlex='20%' fxLayout='row' fxLayoutAlign='end center'>
       <div></div>
       <div>
-        <button mat-icon-button (click)='save()'>
+        <button mat-icon-button (click)='save()' matTooltip="{{'button.Edit'|translate}}">
           <mat-icon style="color: #007ACC;">
             {{editMode?'save':'edit'}}
           </mat-icon>
         </button>
       </div>
       <div>
-        <button mat-icon-button (click)='delete()'>
+        <button mat-icon-button (click)='delete()' matTooltip="{{'button.Delete'|translate}}">
           <mat-icon style="color: red;">delete</mat-icon>
         </button>
       </div>
       <div>
-        <button mat-icon-button (click)='viewShare()'>
+        <button mat-icon-button (click)='viewShare()' matTooltip="{{'button.Open'|translate}}">
           <mat-icon>timeline</mat-icon>
         </button>
       </div>

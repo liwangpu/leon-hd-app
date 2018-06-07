@@ -3,7 +3,7 @@ export const environment = {
     production: true,
     hmr: false,
     serveBase: 'http://testapi.damaozhu.com.cn:8002',
-    shareServerBase: 'http://localhost:1883',
+    shareServerBase: 'http://192.168.1.3:82/share-resource',
     loginStyle: 2,
     isMaintaining: false,
     maintainingEndDate: '',

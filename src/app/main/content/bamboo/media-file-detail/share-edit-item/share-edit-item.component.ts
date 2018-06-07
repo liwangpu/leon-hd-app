@@ -24,7 +24,7 @@ export class ShareEditItemComponent implements OnInit, OnChanges {
   @Input() shareResource: MediaShareResource = new MediaShareResource();
   @Output() afterDelete = new EventEmitter<string>();
   @Output() afterSave = new EventEmitter<MediaShareResource>();
-  constructor(private formBuilder: FormBuilder, protected apiSrv: MediaShareService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, protected dialogFac: DialogFactoryService,protected windowSrv:WindowService) {
+  constructor(private formBuilder: FormBuilder, protected apiSrv: MediaShareService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, protected dialogFac: DialogFactoryService, protected windowSrv: WindowService) {
 
     this.detailForm = this.formBuilder.group({
       mediaId: [''],
@@ -66,6 +66,11 @@ export class ShareEditItemComponent implements OnInit, OnChanges {
   }//
 
   delete() {
+    if (!this.shareResource.id) {
+      this.afterDelete.next(this.shareResource.id);
+      return;
+    }
+
     let ins: SimpleMessageContentComponent;
     let transTipAsync = () => {
       return new Promise((resolve) => {
