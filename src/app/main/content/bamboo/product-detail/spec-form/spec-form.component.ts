@@ -38,7 +38,10 @@ export class SpecFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.specForm.patchValue(this.detailMdSrv.productSpec);
+    if (this.detailMdSrv.productSpec)
+      this.specForm.patchValue(this.detailMdSrv.productSpec);
+    else
+      this.specForm.patchValue({ productId: this.detailMdSrv.product.id });
   }//ngOnInit
 
   ngOnDestroy(): void {

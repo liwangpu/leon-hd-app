@@ -9,7 +9,7 @@ import { CategoryNavExtend } from '../../common/paginator-left-category-common-t
 })
 export class CategoryLeftNavComponent extends CategoryNavExtend implements OnInit {
 
-  categoryName: string;
+  categoryName = 'glossary.Category';
   constructor() {
     super();
   }

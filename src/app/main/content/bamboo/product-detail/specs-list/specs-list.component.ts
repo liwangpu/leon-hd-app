@@ -1,21 +1,25 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, forwardRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ProductDetailMdService } from '../product-detail-md.service';
 import { ProductSpec } from '../../../../toolkit/models/productspec';
 import { ProductSpecService } from '../../../../toolkit/server/webapi/productSpec.service';
 import { FileAsset } from '../../../../toolkit/models/fileasset';
 import { PathService } from '../../../services/path.service';
+import { CustomTabBaseExtend } from '../../common/detail-edit-tpls/detail-info-tab/detail-info-tab.component';
+import { Product } from '../../../../toolkit/models/product';
 
 @Component({
   selector: 'app-product-detail-specs-list',
   templateUrl: './specs-list.component.html',
-  styleUrls: ['./specs-list.component.scss']
+  styleUrls: ['./specs-list.component.scss'],
+  providers: [{ provide: CustomTabBaseExtend, useExisting: forwardRef(() => SpecsListComponent) }]
 })
-export class SpecsListComponent implements OnInit, OnDestroy {
+export class SpecsListComponent extends CustomTabBaseExtend implements OnInit, OnDestroy {
   detailCharletUrl = "";
   charlets: Array<FileAsset> = [];
   detroy$: Subject<boolean> = new Subject();
   constructor(private detailMdSrv: ProductDetailMdService, private productSpeServ: ProductSpecService, private pathSrv: PathService) {
+    super();
     //订阅规格图片更改事件
     this.detailMdSrv.afterProductCharletChange$.takeUntil(this.detroy$).subscribe((hasCharlet) => {
       if (hasCharlet) {
@@ -28,6 +32,10 @@ export class SpecsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.dataChange$.takeUntil(this.destroy$).subscribe(prod => {
+      this.detailMdSrv.product = (prod as Product);
+      this.detailMdSrv.specifications = (prod as Product).specifications;
+    });
   }
 
   ngOnDestroy() {
