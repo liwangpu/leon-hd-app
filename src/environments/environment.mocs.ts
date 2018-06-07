@@ -5,6 +5,7 @@ export const environment = {
     production: false,
     hmr: false,
     serveBase: 'http://localhost:1882',
+    shareServerBase: 'http://localhost:8080',
     loginStyle: 2,
     isMaintaining: false,
     maintainingEndDate: '',

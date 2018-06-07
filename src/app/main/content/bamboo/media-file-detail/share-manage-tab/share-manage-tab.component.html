@@ -1,7 +1,8 @@
 <div class='tab-container' fxLayout='column'>
   <div fxLayout='row' fxLayoutAlign='end center'>
-    <button mat-icon-button (click)='addShare()'>
+    <button mat-button (click)='addShare()'>
       <mat-icon>add</mat-icon>
+      <span>{{'button.Add'|translate}}</span>
     </button>
   </div>
   <div>
@@ -11,7 +12,7 @@
           {{idx+1}}
         </div>
         <div fxFlex>
-          <app-media-file-share-edit-item (afterDelete)='deleteShare($event)' (afterSave)='saveShare($event)' [mediaId]='mediaId' [shareResource]='item'></app-media-file-share-edit-item>
+          <app-media-file-share-edit-item (afterDelete)='deleteShare($event)' (afterSave)='saveShare($event)' [mediaId]='mediaId' [shareResource]='item' [mediaType]='mediaType'></app-media-file-share-edit-item>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 <form [formGroup]="detailForm">
   <input type="hidden" formControlName="mediaId">
   <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="type">
   <div class="item-container" fxLayout='row' fxLayoutAlign='center center' fxLayoutGap='25px'>
     <div fxFlex='20%' class="form-field-wrap">
       <mat-form-field>
@@ -39,6 +40,11 @@
       <div>
         <button mat-icon-button (click)='delete()'>
           <mat-icon style="color: red;">delete</mat-icon>
+        </button>
+      </div>
+      <div>
+        <button mat-icon-button (click)='viewShare()'>
+          <mat-icon>timeline</mat-icon>
         </button>
       </div>
     </div>

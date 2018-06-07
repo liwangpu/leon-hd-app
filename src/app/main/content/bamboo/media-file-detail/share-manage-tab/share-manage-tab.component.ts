@@ -12,6 +12,7 @@ import { CustomTabBaseExtend } from '../../common/detail-edit-tpls/detail-info-t
 })
 export class ShareManageTabComponent extends CustomTabBaseExtend implements OnInit, OnDestroy {
 
+  mediaType:string;
   mediaId: string;
   shares: Array<MediaShareResource> = [];
   constructor() {
@@ -22,6 +23,7 @@ export class ShareManageTabComponent extends CustomTabBaseExtend implements OnIn
   ngOnInit() {
     this.dataChange$.takeUntil(this.destroy$).subscribe(data => {
       this.mediaId = data.id;
+      this.mediaType=(data as MediaFile).type;
       this.shares = (data as MediaFile).mediaShares ? (data as MediaFile).mediaShares : [];
     });
   }//

@@ -7,4 +7,5 @@ export class MediaShareResource extends ListableBase {
     startShareTimeStamp: number;
     stopShareTimeStamp: number;
     password: string;
+    type: string;
 }

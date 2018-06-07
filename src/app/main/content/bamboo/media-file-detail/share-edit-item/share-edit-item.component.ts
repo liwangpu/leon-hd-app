@@ -6,7 +6,8 @@ import { SnackbarService } from '../../../../toolkit/common/services/snackbar.se
 import { TranslateService } from '@ngx-translate/core';
 import { SimpleMessageContentComponent } from '../../../../toolkit/common/factory/dialog-template/simple-message-content/simple-message-content.component';
 import { DialogFactoryService } from '../../../../toolkit/common/factory/dialog-factory.service';
-
+import { environment } from '../../../../../../environments/environment';
+import { WindowService } from '../../../../toolkit/common/object/window.service';
 
 @Component({
   selector: 'app-media-file-share-edit-item',
@@ -19,10 +20,11 @@ export class ShareEditItemComponent implements OnInit, OnChanges {
   editMode: boolean;
   hidePassword = true;
   @Input() mediaId: string;
+  @Input() mediaType: string;
   @Input() shareResource: MediaShareResource = new MediaShareResource();
   @Output() afterDelete = new EventEmitter<string>();
   @Output() afterSave = new EventEmitter<MediaShareResource>();
-  constructor(private formBuilder: FormBuilder, protected apiSrv: MediaShareService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, protected dialogFac: DialogFactoryService) {
+  constructor(private formBuilder: FormBuilder, protected apiSrv: MediaShareService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, protected dialogFac: DialogFactoryService,protected windowSrv:WindowService) {
 
     this.detailForm = this.formBuilder.group({
       mediaId: [''],
@@ -30,7 +32,8 @@ export class ShareEditItemComponent implements OnInit, OnChanges {
       name: ['', [Validators.required]],
       startShareTimeStamp: ['', [Validators.required]],
       stopShareTimeStamp: [''],
-      password: ['']
+      password: [''],
+      type: []
     });
   }//constructor
 
@@ -126,7 +129,7 @@ export class ShareEditItemComponent implements OnInit, OnChanges {
         if (shareData.startShareTimeStamp)
           shareData.startShareTimeStamp = new Date(shareData.startShareTimeStamp).getTime() / 1000;
         if (shareData.stopShareTimeStamp)
-          shareData.stopShareTimeStamp = new Date(shareData.stopShareTimeStamp).getTime() / 1000
+          shareData.stopShareTimeStamp = new Date(shareData.stopShareTimeStamp).getTime() / 1000;
         this.apiSrv.update(shareData).first().subscribe(data => {
           this.detailForm.patchValue({ id: data.id });
           this.afterSave.next(data);
@@ -152,4 +155,10 @@ export class ShareEditItemComponent implements OnInit, OnChanges {
       this.editMode = !this.editMode;
     });
   }//save
+
+  viewShare() {
+    let type = this.mediaType ? this.mediaType : this.shareResource.type;
+    let viewShareUrl = `${environment.shareServerBase}?t=${type}&id=${this.shareResource.id}`;
+    this.windowSrv.nativeWindow.open(viewShareUrl);
+  }//viewShare
 }
