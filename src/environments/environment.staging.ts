@@ -2,7 +2,7 @@ export const environment = {
     moc: "serve",
     production: true,
     hmr: false,
-    serveBase: 'http://testapi.damaozhu.com.cn:8002',
+    serveBase: 'http://testapi.damaozhu.com.cn',
     shareServerBase: 'http://192.168.1.3:82/share-resource',
     loginStyle: 2,
     isMaintaining: false,
