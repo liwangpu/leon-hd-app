@@ -37,6 +37,7 @@ export const locale = {
             "Share": "分享",
         },
         "glossary": {
+            "OrganAccounts": "人员管理",
             "Manage": "管理",
             "SeqNO": "序号",
             "Icon": "图标",

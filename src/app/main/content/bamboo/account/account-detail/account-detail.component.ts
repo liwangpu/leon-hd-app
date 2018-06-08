@@ -41,7 +41,6 @@ export class AccountDetailComponent implements OnInit {
   createAccountForm() {
     return this.formBuilder.group({
       id: [''],
-      organizationId: [''],
       departmentId: [''],
       type: [''],
       name: [''],
@@ -55,10 +54,10 @@ export class AccountDetailComponent implements OnInit {
   }//createAccountForm
 
   onSubmit() {
-    let acc = this.accountForm.value;
     let saveAccountAsync = () => {
       return new Promise((resolve, reject) => {
-        this.accountSrv.update(acc).subscribe(resAccount => {
+        let acc = this.accountForm.value;
+        this.accountSrv.update({ ...this.account, ...acc }).subscribe(resAccount => {
           resAccount.password = acc.password;
           resAccount.departmentId = acc.departmentId;
           this.accountForm.patchValue(resAccount);

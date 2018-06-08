@@ -37,6 +37,7 @@ export const locale = {
             "Share": "Share"
         },
         "glossary": {
+            "OrganAccounts": "Account Management",
             "Manage": "Manage",
             "SeqNO": "NO",
             "Icon": "ICon",

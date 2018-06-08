@@ -19,36 +19,12 @@ import { AccountMdService } from './account-md.service';
   providers: [AccountMdService]
 })
 export class AccountComponent implements OnInit {
-  dialogRef: any;
-  selectedDepId = 'all';
-  @ViewChild('accList') accList: AccountListComponent;
+
   constructor(public dialog: MatDialog, private dessertSrv: DessertService, private momentSrv: MomentService) { }
 
   ngOnInit() {
   }
 
-  newAccount() {
-    let account = new Account();
-    account.organizationId = this.dessertSrv.organId;
-    account.type = AccountTypeEnums.organMember;
-    account.name = '用户';
-    account.activationTime = this.momentSrv.addDaysTransform(new Date(), -1, 'yyyy-MM-dd');
-    account.expireTime = this.momentSrv.addYearsTransform(new Date(), 10, 'yyyy-MM-dd');
-    let dial = this.dialog.open(AccountDetailComponent, {
-      panelClass: 'contact-form-dialog',
-      data: {
-        account: account
-      }
-    });
-
-    const obs = dial.componentInstance.onSave.subscribe((res) => {
-      // this.dataSource.refresh();
-      this.accList.refresh();
-    });
-    dial.afterClosed().subscribe(() => {
-      obs.unsubscribe();
-    });
-  }//newAccount
 
 
 }
