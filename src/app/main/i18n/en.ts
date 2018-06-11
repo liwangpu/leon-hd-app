@@ -34,7 +34,8 @@ export const locale = {
             "Material": "Material",
             "Map": "Map",
             "Layout": "Layout",
-            "Share": "Share"
+            "Share": "Share",
+            "AreaType":"Area Type"
         },
         "glossary": {
             "OrganAccounts": "Account Management",
@@ -103,6 +104,7 @@ export const locale = {
             "Category": "Category",
             "StartShareTime": "Start ShareTime",
             "StopShareTime": "Stop ShareTime",
+            "AreaType":"Area Type"
         },
         "button": {
             "Logout": "Logout",

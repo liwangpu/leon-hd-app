@@ -35,6 +35,7 @@ export const locale = {
             "Map": "场景",
             "Layout": "户型",
             "Share": "分享",
+            "AreaType":"区域类型"
         },
         "glossary": {
             "OrganAccounts": "人员管理",
@@ -101,6 +102,7 @@ export const locale = {
             "Category": "分类",
             "StartShareTime": "分享起始时间",
             "StopShareTime": "分享截止时间",
+            "AreaType":"区域类型"
         },
         "button": {
             "Logout": "退出",

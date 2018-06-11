@@ -38,6 +38,9 @@ import { LayoutDetailComponent } from './layout-detail/layout-detail.component';
 import { MediaFileComponent } from './media-file/media-file.component';
 import { MediaFileDetailComponent } from './media-file-detail/media-file-detail.component';
 import { MediaFileService } from '../../toolkit/server/webapi/media-file.service';
+import { AreaTypeComponent } from './area-type/area-type.component';
+import { AreaTypeDetailComponent } from './area-type-detail/area-type-detail.component';
+import { AreaTypeService } from '../../toolkit/server/webapi/area-type.service';
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -47,6 +50,7 @@ const routes: Routes = [
   , { path: 'app/solutions', component: SolutionComponent, canActivate: [RouteGuardService] }
   , { path: 'app/orders', component: OrderComponent, canActivate: [RouteGuardService] }
   , { path: 'app/packages', component: PackageComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/area-type', component: AreaTypeComponent, canActivate: [RouteGuardService] }
   , { path: 'app/organ-account', component: AccountComponent, canActivate: [RouteGuardService] }
   , { path: 'app/product-category', component: ProductCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/material-category', component: MaterialCategoryComponent, canActivate: [RouteGuardService] }
@@ -155,6 +159,19 @@ const routes: Routes = [
   }
   , {
     path: 'app/share-detail', component: MediaFileDetailComponent,
+    canActivate: [RouteGuardService]
+  }
+  /****************************************************************************************************/
+  , {
+    path: 'app/area-type-detail/:id'
+    , component: AreaTypeDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: AreaTypeService
+    }
+  }
+  , {
+    path: 'app/area-type-detail', component: AreaTypeDetailComponent,
     canActivate: [RouteGuardService]
   }
 ];
