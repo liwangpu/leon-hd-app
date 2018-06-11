@@ -35,7 +35,7 @@ export const locale = {
             "Map": "场景",
             "Layout": "户型",
             "Share": "分享",
-            "AreaType":"区域类型"
+            "AreaType": "区域类型"
         },
         "glossary": {
             "OrganAccounts": "人员管理",
@@ -102,7 +102,8 @@ export const locale = {
             "Category": "分类",
             "StartShareTime": "分享起始时间",
             "StopShareTime": "分享截止时间",
-            "AreaType":"区域类型"
+            "AreaType": "区域类型",
+            "AreaTypeAlias": "区域别名"
         },
         "button": {
             "Logout": "退出",
@@ -143,7 +144,7 @@ export const locale = {
             "Display": "显示",
             "List": "列表",
             "Litimg": "缩略图",
-            "Open": "打开", 
+            "Open": "打开",
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",

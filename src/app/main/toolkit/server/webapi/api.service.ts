@@ -37,7 +37,10 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<T> | Observable<Observable<T>> | Promise<Observable<T>> {
         let id = route.paramMap.get('id');
-        return this.getEntity<T>(id);
+        return this.getEntity<T>(id).map(data => {
+            this.editData$.next(data ? data : new EntityBase());
+            return data;
+        });
     }
 
     /**

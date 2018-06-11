@@ -1,0 +1,26 @@
+<div class="content-container">
+    <div class="content-header">
+        <div class="content-icon-wrap">
+            <mat-icon class="page-icon cus-header-icons">view_quilt</mat-icon>
+            <span class="page-icon-title">区域</span>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <div class="area-type-container">
+            <div class="area-type-item" appPackageAreaTypePanel>all</div>
+            <div class="area-type-item" appPackageAreaTypePanel *ngFor='let item of areaTypes' (click)='editArea(item)' fxLayout='row'
+                fxLayoutAlign='start center'>
+                <div class="one" fxFlex>{{item.name}}</div>
+                <div class="two" fxFlex='24px'>
+                    <mat-icon>more_vert</mat-icon>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="area-type-item content-footer" fxLayout='row' fxLayoutAlign='center center' (click)='editArea()'>
+        <div>
+            <mat-icon class="add-icon">add</mat-icon>
+        </div>
+    </div>
+</div>

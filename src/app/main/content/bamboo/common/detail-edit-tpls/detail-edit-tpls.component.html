@@ -56,9 +56,9 @@
           </mat-tab>
 
           <mat-tab *ngFor="let tab of tabs" label="{{tab.tabName|translate}}">
-            <div class="mat-tab-cus-wrapper">
+            <!-- <div class="mat-tab-cus-wrapper"> -->
               <ng-container *ngTemplateOutlet="tab.template"></ng-container>
-            </div>
+            <!-- </div> -->
           </mat-tab>
         </mat-tab-group>
       </div>

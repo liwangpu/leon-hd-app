@@ -8,3 +8,13 @@ export class PackageContentItem {
     totalPrice: number;
     remark: string;
 }
+
+export class PackageArea {
+    areaTypeId: string;
+    areaAlias: string;
+
+    //  Dictionary<string, string> GroupsMap  ;
+    //  Dictionary<string, string> ProductCategoryMap ;
+    //  Dictionary<string, string> Materials ;
+    //  List<PackageProductSet> ReplaceGroups ;
+}

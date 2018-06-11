@@ -1,0 +1,13 @@
+<form name="detailForm" [formGroup]="detailForm">
+  <div class="page-container">
+    <mat-form-field>
+      <input matInput formControlName="areaAlias"  placeholder="{{'glossary.AreaTypeAlias'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select formControlName="areaTypeId" placeholder="{{'glossary.AreaType'|translate}}" required>
+        <mat-option *ngFor="let item of areas" [value]="item.id">{{item.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>

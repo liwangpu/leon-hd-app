@@ -47,4 +47,12 @@ export class PackageService extends ApiService<Package>  {
   query(query: IQuery): Observable<Paging<Package>> {
     return super.queryEntities(query);
   }
+
+
+  editAreaType(data: { packageId: string, areaAlias: string, areaTypeId: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/EditAreaType', { headers: this.header, body: data }).map(x => {
+      this.editData$.next(x);
+      return x;
+    });
+  }
 }

@@ -36,6 +36,8 @@ export class AccountComponent implements OnInit {
     account.expireTime = this.momentSrv.addYearsTransform(new Date(), 10, 'yyyy-MM-dd');
     let dial = this.dialog.open(AccountDetailComponent, {
       panelClass: 'contact-form-dialog',
+      width: '400px',
+      height: '600px',
       data: {
         account: account
       }

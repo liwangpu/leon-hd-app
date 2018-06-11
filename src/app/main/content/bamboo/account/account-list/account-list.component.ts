@@ -57,6 +57,8 @@ export class AccountListComponent implements OnInit, OnDestroy {
         rdata.name = '用户';
       let ndialog = this.dialog.open(AccountDetailComponent, {
         panelClass: 'contact-form-dialog',
+        width: '400px',
+        height: '600px',
         data: {
           account: rdata
         }
