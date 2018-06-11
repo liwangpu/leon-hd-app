@@ -26,8 +26,7 @@
             "scripts": [],
             "environmentSource": "environments/environment.ts",
             "environments": {
-                "moct": "environments/environment.moct.ts",
-                "mocs": "environments/environment.mocs.ts",
+                "dev": "environments/environment.dev.ts",
                 "staging": "environments/environment.staging.ts"
             }
         }

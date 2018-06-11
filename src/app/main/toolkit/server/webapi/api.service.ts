@@ -6,11 +6,13 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { IEntitybase } from '../../models/ientitybase';
 import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
 import { QueryOperateEnums } from '../../enums/enums';
+import { EntityBase } from '../../models/entitybase';
 /**
  * webapi serve基类
  */
 export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>> {
-    onServiceChange = new BehaviorSubject<Array<T>>([]);
+    queryData$ = new BehaviorSubject<Array<T>>([]);
+    editData$ = new BehaviorSubject<IEntitybase>(new EntityBase());
     header: HttpHeaders;//默认为application/json的Content-Type Header
     private uriBase: string;//webapi基路径 例如:localhost:4200
     protected uriPart: string;//webapi实体路径 例如products

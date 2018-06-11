@@ -1,7 +1,4 @@
 export const environment = {
-    //测试专用
-    moc: "test",
-
     production: false,
     hmr: false,
     serveBase: 'http://localhost:1882',

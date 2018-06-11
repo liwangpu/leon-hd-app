@@ -74,7 +74,7 @@ export class ShareEditItemComponent implements OnInit, OnChanges {
     let ins: SimpleMessageContentComponent;
     let transTipAsync = () => {
       return new Promise((resolve) => {
-        this.tranSrv.get('message.DeleteConfirm', this.detailForm.value.name).subscribe(msg => {
+        this.tranSrv.get('message.DeleteConfirm',{value: this.detailForm.value.name}).subscribe(msg => {
           resolve(msg);
         });
       });//promise

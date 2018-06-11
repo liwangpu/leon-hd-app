@@ -13,8 +13,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "release-dev": "ng build --aot=true  --env=staging --output-hashing=all",
-    "mocs": "ng serve --env=mocs",
-    "moct": "ng serve --env=moct"
+    "dev": "ng serve --env=dev"
   },
   "private": true,
   "dependencies": {

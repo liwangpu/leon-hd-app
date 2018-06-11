@@ -47,7 +47,7 @@ export class PageManageButtonComponent implements OnInit {
     let ins: BatchDeleteConfirmTplsComponent;
     let transAsync = () => {
       return new Promise((resolve) => {
-        this.tranSrv.get('message.BatchDeleteConfirm', this.mdSrv.selectedItems.length).subscribe(msg => {
+        this.tranSrv.get('message.BatchDeleteConfirm', {value:this.mdSrv.selectedItems.length}).subscribe(msg => {
           resolve(msg);
         });
       });//promise

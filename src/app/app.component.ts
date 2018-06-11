@@ -9,8 +9,6 @@ import { environment } from "../environments/environment";
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-    moc: string;
     constructor(/*fuseSplashScreen千万不能删除*/public fuseSplashScreen: FuseSplashScreenService, private translate: TranslateService, private dessertSrv: DessertService) {
         // Add languages
         this.translate.addLangs(['en', 'cn']);
@@ -22,8 +20,5 @@ export class AppComponent {
         this.translate.use(environment.language);
 
         this.dessertSrv.restoreCache();
-
-        //测试专用
-        this.moc = environment.moc;
     }
 }
