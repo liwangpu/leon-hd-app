@@ -10,6 +10,7 @@ export class PackageContentItem {
 }
 
 export class PackageArea {
+    id: string;
     areaTypeId: string;
     areaAlias: string;
 

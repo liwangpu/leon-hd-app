@@ -49,10 +49,21 @@ export class PackageService extends ApiService<Package>  {
   }
 
 
+  /**
+   * 编辑套餐区域模型
+   * @param data 
+   */
   editAreaType(data: { packageId: string, areaAlias: string, areaTypeId: string }) {
     return this.http.request<Package>('PUT', this.uri + '/EditAreaType', { headers: this.header, body: data }).map(x => {
       this.editData$.next(x);
       return x;
     });
-  }
+  }//editAreaType
+
+  deleteAreaType(data: { packageId: string, id: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/DeleteAreaType', { headers: this.header, body: data }).map(x => {
+      this.editData$.next(x);
+      return x;
+    });
+  }//deleteAreaType
 }

@@ -31,6 +31,7 @@ export class AreaTypeSelectComponent implements OnInit, ISimpleConfirm {
   destroy$: Subject<boolean> = new Subject();
   constructor(public areaTypeSrv: AreaTypeService, public formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, public packageSrv: PackageService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
     this.detailForm = this.formBuilder.group({
+      id: [''],
       areaAlias: [''],
       packageId: [''],
       areaTypeId: ['', [Validators.required]]

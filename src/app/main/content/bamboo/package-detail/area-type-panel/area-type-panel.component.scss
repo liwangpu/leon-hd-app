@@ -74,5 +74,9 @@
         .area-type-item:hover {
             cursor: pointer;
         }
+        .item-selected {
+            background-color: #039BE5 !important;
+            color: white;
+        }
     }
 }
