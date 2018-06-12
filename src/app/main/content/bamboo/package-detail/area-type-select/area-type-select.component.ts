@@ -61,13 +61,9 @@ export class AreaTypeSelectComponent implements OnInit, ISimpleConfirm {
   }//ngOnInit
 
   submitAreaType() {
-    // console.log('在提交哦', this.detailForm.value);
-
-
     let submitAsync = () => {
       return new Promise((resolve, reject) => {
         this.packageSrv.editAreaType(this.detailForm.value).first().subscribe(data => {
-          console.log('提交了', data);
           resolve({ k: 'message.SaveSuccessfully' });
         }, err => {
           resolve({ k: 'message.OperationError', v: { value: err } });
@@ -89,5 +85,11 @@ export class AreaTypeSelectComponent implements OnInit, ISimpleConfirm {
     });
 
   }//submitAreaType
+
+  selectionChange(id: string) {
+    if (!id) return;
+    let selectedArea = this.areas.filter(x => x.id == id)[0];
+    this.detailForm.patchValue({ areaAlias: selectedArea.name });
+  }//
 
 }
