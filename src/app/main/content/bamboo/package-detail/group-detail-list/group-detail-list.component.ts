@@ -5,6 +5,10 @@ import { distinct } from 'rxjs/operator/distinct';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { GroupDetailListPanelDirective } from './group-detail-list-panel.directive';
 import { takeWhile } from 'rxjs/operator/takeWhile';
+import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
+import { TranslateService } from '@ngx-translate/core';
+import { DialogFactoryService } from '../../../../toolkit/common/factory/dialog-factory.service';
+import { GroupListGroupMapsDialogTplsComponent } from './group-list-group-maps-dialog-tpls/group-list-group-maps-dialog-tpls.component';
 
 @Component({
   selector: 'app-package-detail-group-detail-list',
@@ -16,7 +20,7 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
   selectedPanel = '';
   @ViewChildren(GroupDetailListPanelDirective) items: QueryList<GroupDetailListPanelDirective>;
   destroy$ = new Subject<boolean>();
-  constructor(public mdSrv: PackageDetailMdService) {
+  constructor(public mdSrv: PackageDetailMdService, protected dialogFac: DialogFactoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
 
   }
 
@@ -56,7 +60,8 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
   }//addItem
 
   addProductGroup() {
-    alert(1);
+    // alert(1);
+    this.dialogFac.tplsConfirm(GroupListGroupMapsDialogTplsComponent, undefined, { width: '400px', height: '450px' });
   }//addProductGroup
 
 }

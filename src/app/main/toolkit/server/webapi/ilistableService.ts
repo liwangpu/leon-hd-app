@@ -6,5 +6,5 @@ export interface IListableService<T> {
     query<T>(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>);
     update(entity: T): Observable<T>;
     batchDelete(idsArr: Array<string>);
-    exportData(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>):Observable<Paging<T>>;
+    exportData(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>);
 }

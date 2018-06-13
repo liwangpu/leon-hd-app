@@ -32,6 +32,9 @@ export class CommonAutocompleteSearchComponent implements OnInit, AfterViewInit 
   }//ngOnInit
 
   ngAfterViewInit(): void {
+
+    console.log(666,this.launch);
+
     if (!this.launch) return;
     this.valueField = this.launch.valueField;
     this.displayField = this.launch.displayField;
@@ -57,7 +60,7 @@ export class CommonAutocompleteSearchComponent implements OnInit, AfterViewInit 
 export abstract class CommonAutocompleteSearchBase {
   valueField = 'id';
   displayField = 'name';
-  abstract apiSrv: IListableService<IEntitybase>;
+  abstract apiSrv: IListableService<any>;
   keywordQeury(keyword: string): IQuery {
     return { search: keyword };
   }//keywordQeury

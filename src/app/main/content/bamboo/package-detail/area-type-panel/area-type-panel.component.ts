@@ -19,18 +19,13 @@ import { PackageDetailMdService } from '../package-detail-md.service';
 })
 export class AreaTypePanelComponent implements OnInit, OnDestroy, AfterViewInit {
 
+  selectAreaId = '';
   packageId: string;
   areas: Array<PackageArea> = [];
   @ViewChildren(AreaTypePanelDirective) items: QueryList<AreaTypePanelDirective>;
   destroy$ = new Subject<boolean>();
   constructor(public apiSrv: PackageService, protected dialogFac: DialogFactoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public mdSrv: PackageDetailMdService) {
 
-    // for (let idx = 0; idx < 5; idx++) {
-    //   let t = new AreaType();
-    //   t.id = '' + idx;
-    //   t.name = '区域' + idx;
-    //   this.areaTypes.push(t);
-    // }
   }
 
   ngOnDestroy(): void {
@@ -59,7 +54,9 @@ export class AreaTypePanelComponent implements OnInit, OnDestroy, AfterViewInit 
   ngAfterViewInit(): void {
     //默认选中第一个区域
     if (this.areas && this.areas.length > 0) {
-      this.onAreaSelected(this.areas[0].id);
+      setTimeout(() => {
+        this.onAreaSelected(this.areas[0].id);
+      }, 500);
     }
   }//ngAfterViewInit
 
@@ -72,8 +69,6 @@ export class AreaTypePanelComponent implements OnInit, OnDestroy, AfterViewInit 
   }//addArea
 
   deleteArea(areaType: PackageArea) {
-    // this.dialogFac.simpleConfirm();
-
     let ins: SimpleMessageContentComponent;
     let tipTranAsync = () => {
       return new Promise((resolve, reject) => {
@@ -128,6 +123,7 @@ export class AreaTypePanelComponent implements OnInit, OnDestroy, AfterViewInit 
       else
         x.seleteMe();
     });
+    this.selectAreaId = id;
   }//onAreaSelected
 
   trackArea(index: number, data: PackageArea): string {

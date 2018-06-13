@@ -13,7 +13,7 @@
                 <div class="one" fxFlex>{{item.areaAlias}}</div>
                 <div class="two" fxFlex='40px'>
                     <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
-                        <mat-icon>more_vert</mat-icon>
+                        <mat-icon [class.item-selected]='selectAreaId==item.id'>more_vert</mat-icon>
                     </button>
 
                     <mat-menu #menu="matMenu">
