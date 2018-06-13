@@ -192,6 +192,7 @@ export const locale = {
             "SelectAll": "All",
             "UploadCategoryByCSV": "Upload Category By CSV File",
             "DeleteConfirm": "Prompt",
+            "SearchPlaceHolder": "Enter the keyword",
         }
     }
 };

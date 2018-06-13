@@ -190,6 +190,7 @@ export const locale = {
             "SelectAll": "全选",
             "UploadCategoryByCSV": "根据CSV批量修改分类信息",
             "DeleteConfirm": "温馨提示",
+            "SearchPlaceHolder":"请输入搜索关键字"
         }
     }
 };
