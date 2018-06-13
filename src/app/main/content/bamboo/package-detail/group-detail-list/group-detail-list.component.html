@@ -12,7 +12,14 @@
       </div>
     </div>
   </div>
-  <div fxFlex>
-
+  <div fxFlex fxLayout='column' fxLayoutAlign='none stretch'>
+    <div class="manage-bar" fxFlex='40px' fxLayout='row' fxLayoutAlign='end center'>
+      <button mat-icon-button (click)='addItem()'>
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="list-content" fxFlex>
+      <app-package-detail-group-list-group-maps *ngIf='selectedPanel=="GroupsMap"' ></app-package-detail-group-list-group-maps>
+    </div>
   </div>
 </div>

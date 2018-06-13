@@ -1,0 +1,18 @@
+<div class="tpls-card-container">
+    <div class="tpls-card-header">
+        <mat-icon style="font-size: 50px;width: 50px;height: 50px;">account_balance_wallet</mat-icon>
+        <span class="card-title">add</span>
+    </div>
+    <div class="tpls-card-content">
+        <div class="tpls-card-item" appCommomCardItem fid='11' (onSelected)='onItemSelect($event)' fxLayout='row' fxLayoutAlign='start center' (click)='onItemChange()'>
+            <div fxFlex='24px'></div>
+            <div fxFlex>2</div>
+            <div fxFlex='40px'>
+                <button mat-icon-button (click)="$event.stopPropagation()">
+                    <mat-icon [class.item-selected]='seletedItemId=="11"'>more_vert</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="tpls-card-item" appCommomCardItem fid='22' (onSelected)='onItemSelect($event)'>2</div>
+    </div>
+</div>

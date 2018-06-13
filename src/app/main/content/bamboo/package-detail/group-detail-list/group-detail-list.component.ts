@@ -26,7 +26,6 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    // console.log('view init');
     setTimeout(() => {
       this.mdSrv.afterAreaSelected$.takeUntil(this.destroy$).pipe(distinctUntilChanged()).subscribe(id => {
         this.onAreaChange(id);
@@ -49,5 +48,15 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
       else
         x.seleteMe();
     });
-  }//
+  }//panelSelect
+
+  addItem() {
+    if (this.selectedPanel === 'GroupsMap')
+      this.addProductGroup();
+  }//addItem
+
+  addProductGroup() {
+    alert(1);
+  }//addProductGroup
+
 }

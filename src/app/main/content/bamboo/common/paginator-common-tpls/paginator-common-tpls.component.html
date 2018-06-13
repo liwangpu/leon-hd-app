@@ -1,25 +1,30 @@
-<div class="page-container" fxLayout='column'>
-  <div class="header-container white-fg" fxLayout='row wrap' fxLayoutAlign='space-between center'>
-    <div>
-      <div class="page-icon-wrap">
-        <mat-icon class="page-icon cus-header-icons">{{launch.titleIcon?launch.titleIcon:'shopping_basket'}}</mat-icon>
-        <span class="page-icon-title">{{launch.title|translate}}</span>
-      </div>
-    </div>
-    <div>
+<div class="tpls-page-container" fxLayout='column' fxLayoutAlign='start stretch '>
+  <div class="tpls-header">
+    <div class="header-wrap" fxLayout='row wrap' fxLayoutAlign='space-between center'>
       <div>
-        <app-paginator-page-manage-button></app-paginator-page-manage-button>
+        <div class="page-icon-wrap">
+          <mat-icon class="page-icon cus-header-icons">{{launch.titleIcon?launch.titleIcon:'shopping_basket'}}</mat-icon>
+          <span class="page-icon-title">{{launch.title|translate}}</span>
+        </div>
+      </div>
+      <div>
+        <div>
+          <app-paginator-page-manage-button></app-paginator-page-manage-button>
+        </div>
       </div>
     </div>
+    <div class="tpls-header-diviser"></div>
   </div>
-  <div fxFlex class="content-container">
-    <div class="content-wrapper" fxLayout='column'>
-      <div class="paging-content-container" fxFlex>
+  <div class="tpls-content" fxFlex fxLayout='row' fxLayoutAlign='start stretch'>
+    <div class="tpls-content-diviser"></div>
+    <div fxFlex class="content-wrap" fxLayout='column'>
+      <div fxFlex>
         <app-paginator-paging-content></app-paginator-paging-content>
       </div>
-      <div fxFlex='65.5px'>
+      <div fxFlex='65px'>
         <app-paginator-paging-bar></app-paginator-paging-bar>
       </div>
     </div>
+    <div class="tpls-content-diviser"></div>
   </div>
 </div>

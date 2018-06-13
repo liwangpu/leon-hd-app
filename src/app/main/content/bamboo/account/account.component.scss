@@ -1,7 +1,13 @@
-.organ-account-list {
-    background-color: white;
-}
-
-.department-add-button-container {
-    padding: 30px 0 0 15px;
+// * {
+//     margin: 0;
+//     padding: 0;
+// }
+div.content-container {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    div.card-container {
+        width: 200px;
+        margin: 20px;
+    }
 }
