@@ -5,6 +5,7 @@ import { ConfigService } from '../../config/config.service';
 import { Package } from '../../models/package';
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators';
+import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
 
 @Injectable()
 export class PackageService extends ApiService<Package>  {
@@ -44,9 +45,10 @@ export class PackageService extends ApiService<Package>  {
   /**
    * 查询套餐信息
    * @param query 
+   * @param advanceQueryFilters 
    */
-  query(query: IQuery): Observable<Paging<Package>> {
-    return super.queryEntities(query);
+  query(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<Package>> {
+    return super.queryEntities(query, advanceQueryFilters);
   }
 
 
@@ -73,11 +75,17 @@ export class PackageService extends ApiService<Package>  {
   }//AddProductGroup
 
 
-  deleteProductGroup(data: { packageId: string, areaId: string, productGroupId: string }){
+  deleteProductGroup(data: { packageId: string, areaId: string, productGroupId: string }) {
     return this.http.request<Package>('PUT', this.uri + '/DeleteProductGroup', { headers: this.header, body: data }).pipe(tap(x => {
       this.editData$.next(x);
     }));
   }//deleteProductGroup
+
+  addCategoryProduct(data: { packageId: string, areaId: string, productId: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/AddCategoryProduct', { headers: this.header, body: data }).pipe(tap(x => {
+      this.editData$.next(x);
+    }));
+  }//addCategoryProduct
 
 
 }

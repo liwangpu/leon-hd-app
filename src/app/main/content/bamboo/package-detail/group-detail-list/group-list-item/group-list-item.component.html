@@ -3,6 +3,11 @@
         <img [src]='iconUrl?(iconUrl|serverRedirect):"#"' alt="">
         <span>{{itemName}}</span>
     </div>
+    <div fxFlex>
+        <div class="item-desciption">
+            {{itemDescription}}
+        </div>
+    </div>
     <div>
         <button mat-icon-button (click)='deleteItem()'>
             <mat-icon>delete</mat-icon>

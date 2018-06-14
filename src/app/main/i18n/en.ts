@@ -105,7 +105,8 @@ export const locale = {
             "StartShareTime": "Start ShareTime",
             "StopShareTime": "Stop ShareTime",
             "AreaType":"Area Type",
-            "AreaTypeAlias": "Area Type Alias"
+            "AreaTypeAlias": "Area Type Alias",
+            "Selected":"Selected"
         },
         "button": {
             "Logout": "Logout",

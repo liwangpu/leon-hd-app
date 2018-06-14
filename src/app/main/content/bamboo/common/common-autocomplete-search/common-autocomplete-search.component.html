@@ -6,7 +6,8 @@
 
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="launch.displayFn" (optionSelected)='onSelected($event)'>
     <mat-option *ngFor="let option of filterOptions | async" [value]="option">
-      {{ option[displayField] }}
+      <!-- {{ option[displayField] }} -->
+      {{ launch.optionDisplayFn(option) }}
     </mat-option>
   </mat-autocomplete>
 </div>

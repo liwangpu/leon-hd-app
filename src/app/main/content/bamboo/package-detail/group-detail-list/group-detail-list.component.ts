@@ -11,6 +11,7 @@ import { DialogFactoryService } from '../../../../toolkit/common/factory/dialog-
 import { GroupListGroupMapsDialogTplsComponent } from './group-list-group-maps-dialog-tpls/group-list-group-maps-dialog-tpls.component';
 import { SimpleConfirmDialogTplsComponent } from '../../../../toolkit/common/factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
 import { PackageService } from '../../../../toolkit/server/webapi/package.service';
+import { GroupListCategoryMapsDialogTplsComponent } from './group-list-category-maps-dialog-tpls/group-list-category-maps-dialog-tpls.component';
 
 @Component({
   selector: 'app-package-detail-group-detail-list',
@@ -58,6 +59,8 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
   addItem() {
     if (this.selectedPanel === 'GroupsMap')
       this.addProductGroup();
+    if (this.selectedPanel === 'ProductCategoryMap')
+      this.addCategoryProduct();
   }//addItem
 
   addProductGroup() {
@@ -83,4 +86,13 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
     });//afterOpen
   }//addProductGroup
 
+  addCategoryProduct() {
+    let dialog = this.dialogFac.tplsConfirm(GroupListCategoryMapsDialogTplsComponent, undefined, { width: '400px', height: '450px' });
+    dialog.afterOpen().subscribe(_ => {
+      let ins = (dialog.componentInstance.componentIns as GroupListCategoryMapsDialogTplsComponent);
+      ins.afterConfirm.subscribe(() => {
+        console.log('yyyyyyyyy');
+      });//afterConfirm
+    });//afterOpen
+  }//addCategoryProduct
 }

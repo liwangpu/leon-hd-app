@@ -30,7 +30,7 @@ export class GroupListGroupMapsComponent implements OnInit, OnDestroy {
       let pck = this.packageSrv.editData$.getValue() as Package;
       let areas = pck.contentIns ? pck.contentIns.areas : [];
       let area = areas.filter(n => n.id == this.mdSrv.afterAreaSelected$.getValue())[0];
-      return area.groupsMapIns ? area.groupsMapIns : [];
+      return area && area.groupsMapIns ? area.groupsMapIns : [];
     }).subscribe(groups => {
       this.groupDatas$.next(groups);
     });//
@@ -39,7 +39,7 @@ export class GroupListGroupMapsComponent implements OnInit, OnDestroy {
       let pck = this.packageSrv.editData$.getValue() as Package;
       let areas = pck.contentIns ? pck.contentIns.areas : [];
       let area = areas.filter(n => n.id == this.mdSrv.afterAreaSelected$.getValue())[0];
-      return area.groupsMapIns ? area.groupsMapIns : [];
+      return area && area.groupsMapIns ? area.groupsMapIns : [];
     }).subscribe(groups => {
       this.groupDatas$.next(groups);
     });
@@ -77,7 +77,7 @@ export class GroupListGroupMapsComponent implements OnInit, OnDestroy {
           });
         });
       });//afterOpen
-      
+
 
     });//get
   }//deleteGroup

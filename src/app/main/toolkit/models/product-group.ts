@@ -4,4 +4,5 @@ export class ProductGroup extends ListableBase {
     pivotType: number;
     orientation: string;
     items: string;
+    serie:string;
 }

@@ -2,13 +2,12 @@ import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter } from '@
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 import { IEntitybase } from '../../../../toolkit/models/ientitybase';
 import { FormControl } from '@angular/forms';
-import { of } from 'rxjs/observable/of';
-import { Observable } from 'rxjs';
+import {  BehaviorSubject } from 'rxjs';
 import { tap, debounceTime, filter } from 'rxjs/operators';
-import { map } from 'rxjs/operator/map';
 import { IQuery } from '../../../../toolkit/server/webapi/api.service';
 import { IQueryFilter } from '../../../../toolkit/common/interfaces/iqueryFilter';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
+
 
 
 @Component({
@@ -20,7 +19,7 @@ export class CommonAutocompleteSearchComponent implements OnInit, AfterViewInit 
   searchCt = new FormControl();
   valueField = 'id';
   displayField = 'name';
-  filterOptions: Observable<any[]>;
+  filterOptions = new BehaviorSubject<any[]>([]);
   @Input() launch: CommonAutocompleteSearchBase;
   @Output() optionSelected = new EventEmitter<any>();
   constructor() {
@@ -35,14 +34,48 @@ export class CommonAutocompleteSearchComponent implements OnInit, AfterViewInit 
     if (!this.launch) return;
     this.valueField = this.launch.valueField;
     this.displayField = this.launch.displayField;
-    this.searchCt.valueChanges.pipe(debounceTime(300), filter(x => typeof x === 'string'),tap(x=>this.optionSelected.next({}))).subscribe(x => {
+    this.searchCt.valueChanges.pipe(debounceTime(300), filter(x => typeof x === 'string'), tap(x => this.optionSelected.next({}))).subscribe(x => {
       let keywordQ = this.launch.keywordQeury(x);
       let advanceQ = this.launch.advanceQuery(x);
-      this.filterOptions = this.launch.apiSrv.query(keywordQ, advanceQ).map(res => {
-        if (res.data && res.data.length > 0)
-          return res.data;
-        return [];
-      });
+      //关键字和高级搜索"与"查询
+      if (!this.launch.keywordAndAdvanceSingleSearch) {
+        this.filterOptions = this.launch.apiSrv.query(keywordQ, advanceQ).map(res => {
+          if (res.data && res.data.length > 0)
+            return res.data;
+          return [];
+        });
+      }
+      else {
+        //关键字和高级搜索"或"查询
+        let keywordSource$ = this.launch.apiSrv.query(keywordQ).map(res => {
+          if (res.data && res.data.length > 0)
+            return res.data;
+          return [];
+        });
+        let advanceSource$ = this.launch.apiSrv.query({}, advanceQ).map(res => {
+          if (res.data && res.data.length > 0)
+            return res.data;
+          return [];
+        });
+
+        keywordSource$.subscribe(kwData => {
+          if (!x) {
+            this.filterOptions.next(kwData);
+            return;
+          }
+          //有关键字才进行高级搜索
+          advanceSource$.subscribe(avData => {
+            if (avData.length > 0) {
+              for (let item of avData) {
+                let bExist = (kwData as Array<IEntitybase>).some(x => x.id === item.id);
+                if (!bExist)
+                  (kwData as Array<IEntitybase>).push(item);
+              }//for
+            }
+            this.filterOptions.next(kwData);
+          });//subscribe
+        });//subscribe
+      }
     });
   }//ngAfterViewInit
 
@@ -57,6 +90,7 @@ export class CommonAutocompleteSearchComponent implements OnInit, AfterViewInit 
 export abstract class CommonAutocompleteSearchBase {
   valueField = 'id';
   displayField = 'name';
+  keywordAndAdvanceSingleSearch = false;//关键字和高级搜索单独查询
   abstract apiSrv: IListableService<any>;
   keywordQeury(keyword: string): IQuery {
     return { search: keyword };
@@ -71,4 +105,8 @@ export abstract class CommonAutocompleteSearchBase {
   displayFn(item?: IEntitybase): string | undefined {
     return item ? item.name : '';
   }//displayFn
+
+  optionDisplayFn(item?: IEntitybase): string {
+    return item ? item.name : '';
+  }//
 }

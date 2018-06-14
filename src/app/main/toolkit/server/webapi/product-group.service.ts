@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { Observable } from 'rxjs';
 import { IListableService } from './ilistableService';
+import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
 
 @Injectable()
 export class ProductGroupService extends ApiService<ProductGroup> implements IListableService<ProductGroup> {
@@ -45,10 +46,10 @@ export class ProductGroupService extends ApiService<ProductGroup> implements ILi
   /**
    * 查询套餐信息
    * @param query 
+   * @param advanceQueryFilters 
    */
-  query(query: IQuery): Observable<Paging<ProductGroup>> {
-    return super.queryEntities(query);
+  query(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<ProductGroup>> {
+    return super.queryEntities(query, advanceQueryFilters);
   }
-
 
 }

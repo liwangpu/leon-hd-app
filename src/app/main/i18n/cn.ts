@@ -103,7 +103,8 @@ export const locale = {
             "StartShareTime": "分享起始时间",
             "StopShareTime": "分享截止时间",
             "AreaType": "区域类型",
-            "AreaTypeAlias": "区域别名"
+            "AreaTypeAlias": "区域别名",
+            "Selected":"已选"
         },
         "button": {
             "Logout": "退出",

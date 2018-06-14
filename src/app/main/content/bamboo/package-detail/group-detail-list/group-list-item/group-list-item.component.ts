@@ -10,6 +10,7 @@ export class GroupListItemComponent implements OnInit {
 
   @Input() itemId: string;
   @Input() itemName: string;
+  @Input() itemDescription: string;
   @Input() iconUrl: string;
   @Output() onDelete = new EventEmitter<{ id: string, name: string }>();
   constructor() { }
