@@ -1,13 +1,4 @@
-<!-- <p *ngFor='let item of arr'>{{item}}</p> -->
-
-<!-- <div class="list-container" fxLayout='column' fxLayoutAlign='start stretch'>
-  <div fxFlex class="list-content">
-    <p *ngFor='let item of arr'>{{item}}</p>
-    <app-package-detail-group-list-item *ngFor='let item of arr'></app-package-detail-group-list-item>
-
-  </div>
-</div> -->
-
 <div class="list-container">
-  <app-package-detail-group-list-item *ngFor='let item of arr'></app-package-detail-group-list-item>
+  <app-package-detail-group-list-item *ngFor='let item of productGroups| async;trackBy:trackProductGroup' [itemId]='item.id'
+    [itemName]='item.name' [iconUrl]='item.icon' (onDelete)='deleteGroup($event)'></app-package-detail-group-list-item>
 </div>

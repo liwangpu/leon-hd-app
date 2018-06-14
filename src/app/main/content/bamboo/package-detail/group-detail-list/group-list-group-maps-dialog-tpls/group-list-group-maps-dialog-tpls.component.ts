@@ -28,7 +28,7 @@ export class GroupListGroupMapsDialogTplsComponent implements OnInit, ISimpleCon
   }
 
   onGroupSelect(data: ProductGroup) {
-    this.selectedGroup=data;
-    console.log('ProductGroup', data);
+    this.selectedGroup = data;
+    this.satisfyConfirm.next(Boolean(this.selectedGroup.id));
   }//
 }

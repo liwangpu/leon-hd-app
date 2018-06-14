@@ -9,6 +9,8 @@ import { SnackbarService } from '../../../../toolkit/common/services/snackbar.se
 import { TranslateService } from '@ngx-translate/core';
 import { DialogFactoryService } from '../../../../toolkit/common/factory/dialog-factory.service';
 import { GroupListGroupMapsDialogTplsComponent } from './group-list-group-maps-dialog-tpls/group-list-group-maps-dialog-tpls.component';
+import { SimpleConfirmDialogTplsComponent } from '../../../../toolkit/common/factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
+import { PackageService } from '../../../../toolkit/server/webapi/package.service';
 
 @Component({
   selector: 'app-package-detail-group-detail-list',
@@ -20,7 +22,7 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
   selectedPanel = '';
   @ViewChildren(GroupDetailListPanelDirective) items: QueryList<GroupDetailListPanelDirective>;
   destroy$ = new Subject<boolean>();
-  constructor(public mdSrv: PackageDetailMdService, protected dialogFac: DialogFactoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(public mdSrv: PackageDetailMdService, protected dialogFac: DialogFactoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private packageSrv: PackageService) {
 
   }
 
@@ -39,7 +41,6 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
   }//ngAfterContentInit
 
   onAreaChange(id: string) {
-    // console.log('area', id);
     this.panelSelect('GroupsMap');
   }//onAreaChange
 
@@ -60,8 +61,26 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
   }//addItem
 
   addProductGroup() {
-    // alert(1);
-    this.dialogFac.tplsConfirm(GroupListGroupMapsDialogTplsComponent, undefined, { width: '400px', height: '450px' });
+    let dialog = this.dialogFac.tplsConfirm(GroupListGroupMapsDialogTplsComponent, undefined, { width: '400px', height: '450px' });
+    dialog.afterOpen().subscribe(_ => {
+      let ins = (dialog.componentInstance.componentIns as GroupListGroupMapsDialogTplsComponent);
+      ins.afterConfirm.subscribe(() => {
+        let data = { areaId: this.mdSrv.afterAreaSelected$.getValue(), packageId: this.packageSrv.editData$.getValue().id, productGroupId: ins.selectedGroup.id };
+        //
+        this.packageSrv.AddProductGroup(data).subscribe(res => {
+          this.tranSrv.get('message.SaveSuccessfully').subscribe(msg => {
+            this.snackBarSrv.simpleBar(msg);
+          });
+        }, err => {
+          this.tranSrv.get('message.OperationError', { value: err }).subscribe(msg => {
+            this.snackBarSrv.simpleBar(msg);
+          });
+        }, () => {
+          ins.doneAsync.next();
+          ins.closeDialog.next();
+        });//AddProductGroup
+      });//afterConfirm
+    });//afterOpen
   }//addProductGroup
 
 }

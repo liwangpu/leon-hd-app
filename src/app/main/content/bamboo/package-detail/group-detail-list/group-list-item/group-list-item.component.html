@@ -1,3 +1,11 @@
-<div class="item-container">
-  
+<div class="item-container" fxLayout='row' fxLayoutAlign='space-between center'>
+    <div class="item-info">
+        <img [src]='iconUrl?(iconUrl|serverRedirect):"#"' alt="">
+        <span>{{itemName}}</span>
+    </div>
+    <div>
+        <button mat-icon-button (click)='deleteItem()'>
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
 </div>

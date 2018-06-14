@@ -1,21 +1,46 @@
 :host {
-    display: block;
+    display: inline-block;
     width: 100%;
     height: 100%;
-    div.map-wrapper {
+    padding: 15px 15px 0;
+    box-sizing: border-box;
+    div.map-container {
         width: 100%;
         height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        div.map-container {
-            width: 360px;
-            height: 325px;
-
-            .group-img{
-                width: 100px;
-                height: 100px;
-                
+        div.map-content {
+            // border: 2px dashed gray;
+            padding-top: 10px;
+            box-sizing: border-box;
+            div.map-card {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                div.group-img-container {
+                    width: 100px;
+                    height: 100px;
+                    border: 1px solid #E0E0E0;
+                    .group-img {
+                        width: 99px;
+                        height: 99px;
+                    }
+                }
+                .title-explain{
+                    font-weight: 800;
+                }
+                .group-title {
+                    height: 100px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: start;
+                    align-items: flex-end;
+                    border-bottom: 1px solid #E0E0E0;
+                }
+                .group-description {
+                    margin: 0;
+                    padding: 0;
+                    
+                    // border-bottom: 1px solid #E0E0E0;
+                }
             }
         }
     }

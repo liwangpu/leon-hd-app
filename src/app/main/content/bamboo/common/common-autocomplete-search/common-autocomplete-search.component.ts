@@ -32,13 +32,10 @@ export class CommonAutocompleteSearchComponent implements OnInit, AfterViewInit 
   }//ngOnInit
 
   ngAfterViewInit(): void {
-
-    console.log(666,this.launch);
-
     if (!this.launch) return;
     this.valueField = this.launch.valueField;
     this.displayField = this.launch.displayField;
-    this.searchCt.valueChanges.pipe(debounceTime(300), filter(x => typeof x === 'string')).subscribe(x => {
+    this.searchCt.valueChanges.pipe(debounceTime(300), filter(x => typeof x === 'string'),tap(x=>this.optionSelected.next({}))).subscribe(x => {
       let keywordQ = this.launch.keywordQeury(x);
       let advanceQ = this.launch.advanceQuery(x);
       this.filterOptions = this.launch.apiSrv.query(keywordQ, advanceQ).map(res => {

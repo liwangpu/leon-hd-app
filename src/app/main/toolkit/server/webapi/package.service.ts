@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { Package } from '../../models/package';
 import { Observable } from 'rxjs/Observable';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class PackageService extends ApiService<Package>  {
@@ -54,16 +55,29 @@ export class PackageService extends ApiService<Package>  {
    * @param data 
    */
   editAreaType(data: { packageId: string, areaAlias: string, areaTypeId: string }) {
-    return this.http.request<Package>('PUT', this.uri + '/EditAreaType', { headers: this.header, body: data }).map(x => {
+    return this.http.request<Package>('PUT', this.uri + '/EditAreaType', { headers: this.header, body: data }).pipe(tap(x => {
       this.editData$.next(x);
-      return x;
-    });
+    }));
   }//editAreaType
 
   deleteAreaType(data: { packageId: string, id: string }) {
-    return this.http.request<Package>('PUT', this.uri + '/DeleteAreaType', { headers: this.header, body: data }).map(x => {
+    return this.http.request<Package>('PUT', this.uri + '/DeleteAreaType', { headers: this.header, body: data }).pipe(tap(x => {
       this.editData$.next(x);
-      return x;
-    });
+    }));
   }//deleteAreaType
+
+  AddProductGroup(data: { packageId: string, areaId: string, productGroupId: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/AddProductGroup', { headers: this.header, body: data }).pipe(tap(x => {
+      this.editData$.next(x);
+    }));
+  }//AddProductGroup
+
+
+  deleteProductGroup(data: { packageId: string, areaId: string, productGroupId: string }){
+    return this.http.request<Package>('PUT', this.uri + '/DeleteProductGroup', { headers: this.header, body: data }).pipe(tap(x => {
+      this.editData$.next(x);
+    }));
+  }//deleteProductGroup
+
+
 }
