@@ -14,9 +14,6 @@ export class ProductGroupDetailComponent extends CustomTabBaseExtend implements 
   }
 
   ngOnInit() {
-    this.dataChange$.takeUntil(this.destroy$).subscribe(data => {
-      console.log(111, data);
-    });
   }//ngOnInit
 
 }

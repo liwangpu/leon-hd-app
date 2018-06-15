@@ -13,7 +13,7 @@ import { Product } from '../../../../../toolkit/models/product';
 })
 export class GroupListCategoryMapsDialogTplsComponent implements OnInit, ISimpleConfirm {
 
-  selectedGroup = new Product();
+  selectedItem = new Product();
   afterConfirm: Subject<void> = new Subject();
   afterCancel: Subject<void> = new Subject();
   satisfyConfirm: Subject<boolean> = new Subject();
@@ -28,9 +28,9 @@ export class GroupListCategoryMapsDialogTplsComponent implements OnInit, ISimple
   ngOnInit() {
   }
 
-  onGroupSelect(data: Product) {
-    this.selectedGroup = data;
-    this.satisfyConfirm.next(Boolean(this.selectedGroup.id));
+  onItemSelect(data: Product) {
+    this.selectedItem = data;
+    this.satisfyConfirm.next(Boolean(this.selectedItem.id));
   }//
 
 }

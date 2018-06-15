@@ -1,4 +1,5 @@
 import { ProductGroup } from "./product-group";
+import { Product } from "./product";
 
 export class PackageContentItem {
     productId: string;
@@ -16,9 +17,5 @@ export class PackageArea {
     areaTypeId: string;
     areaAlias: string;
     groupsMapIns:Array<ProductGroup>;
-    // groupsMap: [string, string];
-    //  Dictionary<string, string> GroupsMap  ;
-    //  Dictionary<string, string> ProductCategoryMap ;
-    //  Dictionary<string, string> Materials ;
-    //  List<PackageProductSet> ReplaceGroups ;
+    productCategoryMapIns:Array<Product>;
 }

@@ -1,27 +1,27 @@
 <div class="map-container" fxLayout='column' fxLayoutAlign='none stretch'>
     <div fxFlex='40px'>
-        <app-common-autocomplete-search [launch]='mdSrv' (optionSelected)='onGroupSelect($event)'></app-common-autocomplete-search>
+        <app-common-autocomplete-search [launch]='mdSrv' (optionSelected)='onItemSelect($event)'></app-common-autocomplete-search>
     </div>
-    <div class="map-content" fxFlex *ngIf='selectedGroup.id'>
+    <div class="map-content" fxFlex *ngIf='selectedItem.id'>
         <div class="map-card" fxLayout='row wrap' fxLayoutAlign='start start'>
             <div fxFlex='100%' class="map-selected-tip">
                 {{'glossary.Selected'|translate}}:
             </div>
             <div fxFlex='100px'>
                 <div class="group-img-container">
-                    <img class="group-img" [src]='selectedGroup.icon|serverRedirect' alt="">
+                    <img class="group-img" [src]='selectedItem.icon|serverRedirect' alt="">
                 </div>
             </div>
             <div fxFlex='10px'></div>
             <div class="group-title" fxFlex>
                 <div class="title-explain">{{'glossary.Name'|translate}}:&nbsp;&nbsp;</div>
-                <div>{{selectedGroup.name}}</div>
+                <div>{{selectedItem.name}}</div>
             </div>
             <div fxFlex='100%'>
                 <div style="height: 15px;"></div>
                 <span class="title-explain">{{'glossary.Description'|translate}}:&nbsp;&nbsp;</span>
                 <span class="group-description">
-                    {{selectedGroup.description}}
+                    {{selectedItem.description}}
                 </span>
             </div>
         </div>

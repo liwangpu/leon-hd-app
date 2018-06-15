@@ -87,5 +87,12 @@ export class PackageService extends ApiService<Package>  {
     }));
   }//addCategoryProduct
 
+  deleteCategoryProduct(data: { packageId: string, areaId: string, productId: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/DeleteCategoryProduct', { headers: this.header, body: data }).pipe(tap(x => {
+      this.editData$.next(x);
+    }));
+  }//deleteProductGroup
+
+
 
 }

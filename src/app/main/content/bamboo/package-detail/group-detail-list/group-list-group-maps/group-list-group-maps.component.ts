@@ -77,8 +77,6 @@ export class GroupListGroupMapsComponent implements OnInit, OnDestroy {
           });
         });
       });//afterOpen
-
-
     });//get
   }//deleteGroup
 

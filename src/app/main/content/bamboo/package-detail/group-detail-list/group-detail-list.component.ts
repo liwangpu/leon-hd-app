@@ -12,6 +12,7 @@ import { GroupListGroupMapsDialogTplsComponent } from './group-list-group-maps-d
 import { SimpleConfirmDialogTplsComponent } from '../../../../toolkit/common/factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
 import { PackageService } from '../../../../toolkit/server/webapi/package.service';
 import { GroupListCategoryMapsDialogTplsComponent } from './group-list-category-maps-dialog-tpls/group-list-category-maps-dialog-tpls.component';
+import { Package } from '../../../../toolkit/models/package';
 
 @Component({
   selector: 'app-package-detail-group-detail-list',
@@ -19,6 +20,7 @@ import { GroupListCategoryMapsDialogTplsComponent } from './group-list-category-
   styleUrls: ['./group-detail-list.component.scss']
 })
 export class GroupDetailListComponent implements OnInit, AfterViewInit {
+
 
   selectedPanel = '';
   @ViewChildren(GroupDetailListPanelDirective) items: QueryList<GroupDetailListPanelDirective>;
@@ -57,10 +59,13 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
   }//panelSelect
 
   addItem() {
-    if (this.selectedPanel === 'GroupsMap')
-      this.addProductGroup();
-    if (this.selectedPanel === 'ProductCategoryMap')
-      this.addCategoryProduct();
+    let pckContentIns = (this.packageSrv.editData$.getValue() as Package).contentIns;
+    if (pckContentIns && pckContentIns.areas && pckContentIns.areas.length > 0) {
+      if (this.selectedPanel === 'GroupsMap')
+        this.addProductGroup();
+      if (this.selectedPanel === 'ProductCategoryMap')
+        this.addCategoryProduct();
+    }
   }//addItem
 
   addProductGroup() {
@@ -68,7 +73,7 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
     dialog.afterOpen().subscribe(_ => {
       let ins = (dialog.componentInstance.componentIns as GroupListGroupMapsDialogTplsComponent);
       ins.afterConfirm.subscribe(() => {
-        let data = { areaId: this.mdSrv.afterAreaSelected$.getValue(), packageId: this.packageSrv.editData$.getValue().id, productGroupId: ins.selectedGroup.id };
+        let data = { areaId: this.mdSrv.afterAreaSelected$.getValue(), packageId: this.packageSrv.editData$.getValue().id, productGroupId: ins.selectedGroup.id, serie: ins.selectedGroup.serie };
         //
         this.packageSrv.AddProductGroup(data).subscribe(res => {
           this.tranSrv.get('message.SaveSuccessfully').subscribe(msg => {
@@ -91,7 +96,20 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
     dialog.afterOpen().subscribe(_ => {
       let ins = (dialog.componentInstance.componentIns as GroupListCategoryMapsDialogTplsComponent);
       ins.afterConfirm.subscribe(() => {
-        console.log('yyyyyyyyy');
+        let data = { areaId: this.mdSrv.afterAreaSelected$.getValue(), packageId: this.packageSrv.editData$.getValue().id, productId: ins.selectedItem.id, productCategoryId: ins.selectedItem.categoryId };
+        this.packageSrv.addCategoryProduct(data).subscribe(res => {
+          this.tranSrv.get('message.SaveSuccessfully').subscribe(msg => {
+            this.snackBarSrv.simpleBar(msg);
+          });
+        }, err => {
+          this.tranSrv.get('message.OperationError', { value: err }).subscribe(msg => {
+            this.snackBarSrv.simpleBar(msg);
+          });
+        }, () => {
+          ins.doneAsync.next();
+          ins.closeDialog.next();
+        });
+        ins.doneAsync.next();
       });//afterConfirm
     });//afterOpen
   }//addCategoryProduct
