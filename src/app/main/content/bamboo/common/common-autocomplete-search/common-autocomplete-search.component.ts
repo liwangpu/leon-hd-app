@@ -2,7 +2,7 @@ import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter } from '@
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 import { IEntitybase } from '../../../../toolkit/models/ientitybase';
 import { FormControl } from '@angular/forms';
-import {  BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { tap, debounceTime, filter } from 'rxjs/operators';
 import { IQuery } from '../../../../toolkit/server/webapi/api.service';
 import { IQueryFilter } from '../../../../toolkit/common/interfaces/iqueryFilter';
@@ -43,7 +43,7 @@ export class CommonAutocompleteSearchComponent implements OnInit, AfterViewInit 
           if (res.data && res.data.length > 0)
             return res.data;
           return [];
-        });
+        }) as BehaviorSubject<any[]>;
       }
       else {
         //关键字和高级搜索"或"查询

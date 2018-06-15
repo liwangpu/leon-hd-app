@@ -131,13 +131,12 @@ const routes: Routes = [
       entity: MaterialService
     }
   }
+  , { path: 'app/material-detail', component: MaterialDetailComponent, canActivate: [RouteGuardService] }
+   /****************************************************************************************************/
   , {
-    path: 'app/map-detail/:id'
+    path: 'app/map-detail'
     , component: MapDetailComponent
-    , canActivate: [RouteGuardService],
-    resolve: {
-      entity: MapService
-    }
+    , canActivate: [RouteGuardService]
   }
   /****************************************************************************************************/
   , {

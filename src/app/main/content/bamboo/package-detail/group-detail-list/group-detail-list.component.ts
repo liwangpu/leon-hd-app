@@ -13,6 +13,7 @@ import { SimpleConfirmDialogTplsComponent } from '../../../../toolkit/common/fac
 import { PackageService } from '../../../../toolkit/server/webapi/package.service';
 import { GroupListCategoryMapsDialogTplsComponent } from './group-list-category-maps-dialog-tpls/group-list-category-maps-dialog-tpls.component';
 import { Package } from '../../../../toolkit/models/package';
+import { GroupListMaterialMapsDialogTplsComponent } from './group-list-material-maps-dialog-tpls/group-list-material-maps-dialog-tpls.component';
 
 @Component({
   selector: 'app-package-detail-group-detail-list',
@@ -65,6 +66,8 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
         this.addProductGroup();
       if (this.selectedPanel === 'ProductCategoryMap')
         this.addCategoryProduct();
+        if (this.selectedPanel === 'MaterialMap')
+        this.addMaterial();
     }
   }//addItem
 
@@ -113,4 +116,8 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
       });//afterConfirm
     });//afterOpen
   }//addCategoryProduct
+
+  addMaterial(){
+    let dialog = this.dialogFac.tplsConfirm(GroupListMaterialMapsDialogTplsComponent, undefined, { width: '800px', height: '550px' });
+  }//addMaterial
 }

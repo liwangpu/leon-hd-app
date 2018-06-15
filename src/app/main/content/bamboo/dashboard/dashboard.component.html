@@ -1,4 +1,8 @@
-
-<!-- <div style="width: 300px;height: 40px;margin: 100px;"> -->
-<app-common-autocomplete-search [launch]='mdSrv'></app-common-autocomplete-search>
-<!-- </div> -->
+<div style="width: 800px;height: 550px;border: 1px solid gray;" fxLayout='row' fxLayoutAlign='start stretch'>
+    <div fxFlex='200px'>
+        <app-material-category-left-nav></app-material-category-left-nav>
+    </div>
+    <div fxFlex>
+        <app-common-icon-list [launch]='mdSrv' itemWidth='180' itemHeight='150'></app-common-icon-list>
+    </div>
+</div>
