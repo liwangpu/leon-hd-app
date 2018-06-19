@@ -1,3 +1,4 @@
-<p>
-  group-list-material-maps works!
-</p>
+<div class="maps-container">
+    <app-package-detail-group-list-material-item *ngFor='let item of materials' [itemId]='item.materialId' [itemName]='item.actorName'
+        [itemLastName]='item.lastActorName' [iconUrl]='item.icon' (onSave)='onMaterialSubmit($event)'  (onDelete)='onMaterialDelete($event)'></app-package-detail-group-list-material-item>
+</div>

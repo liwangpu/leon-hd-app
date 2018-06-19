@@ -14,6 +14,7 @@ import { PackageService } from '../../../../toolkit/server/webapi/package.servic
 import { GroupListCategoryMapsDialogTplsComponent } from './group-list-category-maps-dialog-tpls/group-list-category-maps-dialog-tpls.component';
 import { Package } from '../../../../toolkit/models/package';
 import { GroupListMaterialMapsDialogTplsComponent } from './group-list-material-maps-dialog-tpls/group-list-material-maps-dialog-tpls.component';
+import { GroupListReplacegroupMapsDialogTplsComponent } from './group-list-replacegroup-maps-dialog-tpls/group-list-replacegroup-maps-dialog-tpls.component';
 
 @Component({
   selector: 'app-package-detail-group-detail-list',
@@ -66,13 +67,15 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
         this.addProductGroup();
       if (this.selectedPanel === 'ProductCategoryMap')
         this.addCategoryProduct();
-        if (this.selectedPanel === 'MaterialMap')
+      if (this.selectedPanel === 'MaterialMap')
         this.addMaterial();
+      if (this.selectedPanel === 'ReplaceGroup')
+        this.addReplaceGroup();
     }
   }//addItem
 
   addProductGroup() {
-    let dialog = this.dialogFac.tplsConfirm(GroupListGroupMapsDialogTplsComponent, undefined, { width: '400px', height: '450px' });
+    let dialog = this.dialogFac.tplsConfirm(GroupListGroupMapsDialogTplsComponent, undefined, { width: '800px', height: '550px' });
     dialog.afterOpen().subscribe(_ => {
       let ins = (dialog.componentInstance.componentIns as GroupListGroupMapsDialogTplsComponent);
       ins.afterConfirm.subscribe(() => {
@@ -94,13 +97,13 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
     });//afterOpen
   }//addProductGroup
 
-  addCategoryProduct() {
-    let dialog = this.dialogFac.tplsConfirm(GroupListCategoryMapsDialogTplsComponent, undefined, { width: '400px', height: '450px' });
+  addReplaceGroup() {
+    let dialog = this.dialogFac.tplsConfirm(GroupListReplacegroupMapsDialogTplsComponent, undefined, { width: '800px', height: '550px' });
     dialog.afterOpen().subscribe(_ => {
-      let ins = (dialog.componentInstance.componentIns as GroupListCategoryMapsDialogTplsComponent);
-      ins.afterConfirm.subscribe(() => {
-        let data = { areaId: this.mdSrv.afterAreaSelected$.getValue(), packageId: this.packageSrv.editData$.getValue().id, productId: ins.selectedItem.id, productCategoryId: ins.selectedItem.categoryId };
-        this.packageSrv.addCategoryProduct(data).subscribe(res => {
+      let ins = (dialog.componentInstance.componentIns as GroupListReplacegroupMapsDialogTplsComponent);
+      ins.afterConfirm.subscribe(_ => {
+        let data = { areaId: this.mdSrv.afterAreaSelected$.getValue(), packageId: this.packageSrv.editData$.getValue().id, productIds: ins.selectedProductIds.join(',') };
+        this.packageSrv.addReplaceGroup(data).subscribe(res => {
           this.tranSrv.get('message.SaveSuccessfully').subscribe(msg => {
             this.snackBarSrv.simpleBar(msg);
           });
@@ -115,9 +118,50 @@ export class GroupDetailListComponent implements OnInit, AfterViewInit {
         ins.doneAsync.next();
       });//afterConfirm
     });//afterOpen
+  }//addReplaceGroup
+
+  addCategoryProduct() {
+    let dialog = this.dialogFac.tplsConfirm(GroupListCategoryMapsDialogTplsComponent, undefined, { width: '800px', height: '550px' });
+    dialog.afterOpen().subscribe(_ => {
+      let ins = (dialog.componentInstance.componentIns as GroupListCategoryMapsDialogTplsComponent);
+      ins.afterConfirm.subscribe(_ => {
+        let data = { areaId: this.mdSrv.afterAreaSelected$.getValue(), packageId: this.packageSrv.editData$.getValue().id, productId: ins.selectedItem.id, productCategoryId: ins.selectedItem.categoryId };
+        this.packageSrv.addCategoryProduct(data).subscribe(res => {
+          this.tranSrv.get('message.SaveSuccessfully').subscribe(msg => {
+            this.snackBarSrv.simpleBar(msg);
+          });
+        }, err => {
+          this.tranSrv.get('message.OperationError', { value: err }).subscribe(msg => {
+            this.snackBarSrv.simpleBar(msg);
+          });
+        }, () => {
+          ins.doneAsync.next();
+          ins.closeDialog.next();
+        });
+      });//afterConfirm
+    });//afterOpen
   }//addCategoryProduct
 
-  addMaterial(){
+  addMaterial() {
     let dialog = this.dialogFac.tplsConfirm(GroupListMaterialMapsDialogTplsComponent, undefined, { width: '800px', height: '550px' });
+    dialog.afterOpen().subscribe(_ => {
+      let ins = (dialog.componentInstance.componentIns as GroupListMaterialMapsDialogTplsComponent);
+      ins.afterConfirm.subscribe(_ => {
+
+        let data = { areaId: this.mdSrv.afterAreaSelected$.getValue(), packageId: this.packageSrv.editData$.getValue().id, materialId: ins.selectedMaterialId };
+        this.packageSrv.editMaterial(data).subscribe(res => {
+          this.tranSrv.get('message.SaveSuccessfully').subscribe(msg => {
+            this.snackBarSrv.simpleBar(msg);
+          });
+        }, err => {
+          this.tranSrv.get('message.OperationError', { value: err }).subscribe(msg => {
+            this.snackBarSrv.simpleBar(msg);
+          });
+        }, () => {
+          ins.doneAsync.next();
+          ins.closeDialog.next();
+        });
+      });
+    });
   }//addMaterial
 }

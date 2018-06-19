@@ -93,6 +93,22 @@ export class PackageService extends ApiService<Package>  {
     }));
   }//deleteProductGroup
 
+  editMaterial(data: { packageId: string, areaId: string, materialId: string, actorName?: string, lastActorName?: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/EditMaterial', { headers: this.header, body: data }).pipe(tap(x => {
+      this.editData$.next(x);
+    }));
+  }//addMaterial
 
+  deleteMaterial(data: { packageId: string, areaId: string, materialId: string, lastActorName: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/DeleteMaterial', { headers: this.header, body: data }).pipe(tap(x => {
+      this.editData$.next(x);
+    }));
+  }//addMaterial
+
+  addReplaceGroup(data: { packageId: string, areaId: string, productIds: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/AddReplaceGroup', { headers: this.header, body: data }).pipe(tap(x => {
+      this.editData$.next(x);
+    }));
+  }//addReplaceGroup
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, Input } from '@angular/core';
 import { TreeModel, NodeEvent } from 'ng2-tree';
 import { ProductCategoryService } from '../../../../toolkit/server/webapi/productcategory.service';
 import { Subject } from 'rxjs';
@@ -14,6 +14,7 @@ export class SelectPanelComponent implements OnInit, OnDestroy {
   categoryModel: TreeModel;
   destroy$: Subject<boolean> = new Subject();
   afterCategorySelect: Subject<string> = new Subject();
+  @Input() addUnCategoryNode = true;
   @Output() onCategorySelect: EventEmitter<string> = new EventEmitter();
   @Output() onCategorySelectWithDetail: EventEmitter<AssetCategory> = new EventEmitter();
   constructor(protected categorySrv: ProductCategoryService, private tranSrv: TranslateService) {
@@ -48,9 +49,11 @@ export class SelectPanelComponent implements OnInit, OnDestroy {
 
       transRootProductNameAsync().then(transCategoryNameAsync).then(() => {
         resCat.value = rootProductName;
-        //添加未分类节点
-        let unCategory = { id: '', value: unCategoryName, children: undefined };
-        (resCat as TreeModel).children.unshift(unCategory);
+        if (this.addUnCategoryNode) {
+          //添加未分类节点
+          let unCategory = { id: '', value: unCategoryName, children: undefined };
+          (resCat as TreeModel).children.unshift(unCategory);
+        }
         this.clearChildren(resCat as TreeModel);
         this.categoryModel = resCat;
 
@@ -65,7 +68,7 @@ export class SelectPanelComponent implements OnInit, OnDestroy {
   clearChildren(obj: TreeModel) {
 
     if (!obj.children) return;
-  
+
     if (obj.children.length === 0) {
       obj.children = undefined;
     }

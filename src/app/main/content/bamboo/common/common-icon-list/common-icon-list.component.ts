@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChildren, QueryList, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren, QueryList, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 import { Ilistable } from '../../../../toolkit/models/ilistable';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
@@ -6,7 +6,9 @@ import { map } from "rxjs/operators";
 import { CommonIconItemComponent } from './common-icon-item/common-icon-item.component';
 import { IQuery } from '../../../../toolkit/server/webapi/api.service';
 import { IQueryFilter } from '../../../../toolkit/common/interfaces/iqueryFilter';
-import { concatMap } from 'rxjs/operator/concatMap';
+import { of } from 'rxjs/observable/of';
+
+
 
 @Component({
   selector: 'app-common-icon-list',
@@ -18,8 +20,10 @@ export class CommonIconListComponent implements OnInit, OnDestroy {
   @Input() itemWidth = 200;
   @Input() itemHeight = 150;
   @Input() launch: CommonIconListComponentBase;
+  @Output() onItemSelect = new EventEmitter<Array<string>>();
   @ViewChildren(CommonIconItemComponent) iconItems: QueryList<CommonIconItemComponent>;
-  datas = new Observable<Array<Ilistable>>();
+  datas = new Subject<Array<Ilistable>>();
+  _datas = [];
   destroy$ = new Subject<boolean>();
   constructor() {
 
@@ -37,18 +41,14 @@ export class CommonIconListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (!this.launch.apiSrv)
       return;
-    this.datas = this.launch.apiSrv.query({}).map(res => {
-      if (res.data && res.data.length > 0)
-        return res.data;
-      return [];
-    }) as Observable<Array<Ilistable>>;
-    // this.datas = this.launch.query$.takeUntil(this.destroy$).pipe(concatMap(_ => {
-    //   return this.launch.apiSrv.query({}).map(res => {
-    //     if (res.data && res.data.length > 0)
-    //       return res.data;
-    //     return [];
-    //   });
-    // }));
+    this.launch.query$.takeUntil(this.destroy$).concatMap(qParam => {
+      return this.launch.apiSrv.query(qParam.basic, qParam.advanceQueryFilters);
+    }).pipe(map(res => {
+      return res && res.data && res.data.length > 0 ? res.data : [];
+    })).subscribe(datas => {
+      this.datas.next(datas);
+    });
+
   }//ngOnInit
 
   ngOnDestroy(): void {
@@ -59,6 +59,7 @@ export class CommonIconListComponent implements OnInit, OnDestroy {
   selectedChange(data: { id: string, seleted: boolean }) {
     if (this.launch && !this.launch.multipleSelect) {
       //单选状态
+      this.selectedIds = [];
       this.iconItems.forEach(item => {
         if (item.fid != data.id)
           item.clearSelect();
@@ -76,6 +77,10 @@ export class CommonIconListComponent implements OnInit, OnDestroy {
     }
     if (!bExist)
       this.selectedIds.push(data.id);
+
+
+
+    this.onItemSelect.next(this.getSelected());
   }//selectedChange
 
   getSelected(): Array<string> {
@@ -86,9 +91,9 @@ export class CommonIconListComponent implements OnInit, OnDestroy {
 
 export abstract class CommonIconListComponentBase {
   multipleSelect = false;
-  query$ = new BehaviorSubject<{ query: IQuery, advanceQueryFilters?: Array<IQueryFilter> }>({ query: {} });
+  query$ = new BehaviorSubject<{ basic: IQuery, advanceQueryFilters?: Array<IQueryFilter> }>({ basic: {} });
   abstract apiSrv: IListableService<Ilistable>;
   query(queryParam: IQuery, advanceQueryFiltersParam?: Array<IQueryFilter>) {
-    this.query$.next({ query: queryParam, advanceQueryFilters: advanceQueryFiltersParam });
+    this.query$.next({ basic: queryParam, advanceQueryFilters: advanceQueryFiltersParam });
   }//query
 }

@@ -1,6 +1,6 @@
 <div style="width: 800px;height: 550px;border: 1px solid gray;" fxLayout='row' fxLayoutAlign='start stretch'>
     <div fxFlex='200px'>
-        <app-material-category-left-nav></app-material-category-left-nav>
+        <app-material-category-select-panel [addUnCategoryNode]='false' (onCategorySelect)='onCategorySelect($event)'></app-material-category-select-panel>
     </div>
     <div fxFlex>
         <app-common-icon-list [launch]='mdSrv' itemWidth='180' itemHeight='150'></app-common-icon-list>
