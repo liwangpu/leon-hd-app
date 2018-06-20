@@ -8,7 +8,9 @@ import { DialogFactoryService } from '../../../../../toolkit/common/factory/dial
 import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from '../../../../../toolkit/common/services/snackbar.service';
 import { SimpleMessageContentComponent } from '../../../../../toolkit/common/factory/dialog-template/simple-message-content/simple-message-content.component';
-
+import { merge } from 'rxjs/observable/merge';
+import { last, map, distinctUntilChanged } from 'rxjs/operators';
+import { concat } from 'rxjs/observable/concat';
 @Component({
   selector: 'app-package-detail-group-list-group-maps',
   templateUrl: './group-list-group-maps.component.html',
@@ -25,23 +27,23 @@ export class GroupListGroupMapsComponent implements OnInit, OnDestroy {
   }//constructor
 
   ngOnInit() {
+
     //订阅区域面板区域切换事件
-    this.mdSrv.afterAreaSelected$.takeUntil(this.destroy$).map(x => {
+    let obs1 = this.mdSrv.afterAreaSelected$.takeUntil(this.destroy$).pipe(map(x => {
       let pck = this.packageSrv.editData$.getValue() as Package;
       let areas = pck.contentIns ? pck.contentIns.areas : [];
       let area = areas.filter(n => n.id == this.mdSrv.afterAreaSelected$.getValue())[0];
       return area && area.groupsMapIns ? area.groupsMapIns : [];
-    }).subscribe(groups => {
-      this.groupDatas$.next(groups);
-    });//
-    //订阅套餐基本信息修改后更新事件
-    this.packageSrv.editData$.takeUntil(this.destroy$).map(x => {
+    }));
+    // //订阅套餐基本信息修改后更新事件
+    let obs2 = this.packageSrv.editData$.takeUntil(this.destroy$).pipe(map(x => {
       let pck = this.packageSrv.editData$.getValue() as Package;
       let areas = pck.contentIns ? pck.contentIns.areas : [];
       let area = areas.filter(n => n.id == this.mdSrv.afterAreaSelected$.getValue())[0];
       return area && area.groupsMapIns ? area.groupsMapIns : [];
-    }).subscribe(groups => {
-      this.groupDatas$.next(groups);
+    }));
+    merge(obs1, obs2).pipe(distinctUntilChanged()).subscribe(datas => {
+      this.groupDatas$.next(datas);
     });
   }//ngOnInit
 

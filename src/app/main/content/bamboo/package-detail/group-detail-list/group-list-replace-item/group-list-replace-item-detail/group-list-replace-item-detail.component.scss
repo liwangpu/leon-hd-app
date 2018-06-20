@@ -16,6 +16,8 @@
         }
         div.setting-container {
             mat-icon {
+                min-width: 15px;
+                min-height: 15px;
                 font-size: 16px;
                 margin: 0;
                 padding: 0;
@@ -24,6 +26,7 @@
                 line-height: 16px;
                 color: white;
                 border-radius: 7px;
+                margin-top: 9.5px;
                 cursor: pointer;
                 &:hover {
                     color: #039BE5;
@@ -34,9 +37,9 @@
             }
         }
         div.clear-container {
-            width: 15px;
-            height: 15px;
             mat-icon {
+                min-width: 15px;
+                min-height: 15px;
                 font-size: 15px;
                 margin: 0;
                 padding: 0;
@@ -46,6 +49,7 @@
                 color: white;
                 border-radius: 7px;
                 background-color: #929292;
+                margin-top: 9.5px;
                 cursor: pointer;
                 &:hover {
                     background-color: #5A5A5A;

@@ -1,9 +1,9 @@
 <div class="item-container" fxLayout='row' fxLayoutAlign='start center'>
   <div class="icon-container">
-    <img [src]='defaultItem?.icon'>
+    <img [src]='defaultItem.icon?(defaultItem.icon|serverRedirect):"#"'>
   </div>
   <div class="detail-container" fxFlex>
-    <app-package-detail-group-list-replace-item-detail *ngFor='let item of  items;let idx=index' [itemName]='item.name' [isDefault]='idx==0'
+    <app-package-detail-group-list-replace-item-detail *ngFor='let item of  items;let idx=index' [itemName]='item.name' [isDefault]='idx==0' [itemId]='item.id'
       (onDeleteItem)='_deleteDetailItem($event)' (onSettingItem)='_onSettingDetailItem($event)'></app-package-detail-group-list-replace-item-detail>
   </div>
   <div>

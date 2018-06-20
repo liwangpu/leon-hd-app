@@ -111,4 +111,22 @@ export class PackageService extends ApiService<Package>  {
     }));
   }//addReplaceGroup
 
+  deleteReplaceGroup(data: { packageId: string, areaId: string, productId: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/DeleteReplaceGroup', { headers: this.header, body: data }).pipe(tap(x => {
+      this.editData$.next(x);
+    }));
+  }//addReplaceGroup
+
+  setDefaultReplaceGroup(data: { packageId: string, areaId: string, productId: string, defaultId: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/SetDefaultReplaceGroup', { headers: this.header, body: data }).pipe(tap(x => {
+      this.editData$.next(x);
+    }));
+  }//addReplaceGroup
+
+  deleteReplaceGroupDetailItem(data: { packageId: string, areaId: string, productId: string, defaultId: string }) {
+    return this.http.request<Package>('PUT', this.uri + '/DeleteReplaceGroupDetailItem', { headers: this.header, body: data }).pipe(tap(x => {
+      this.editData$.next(x);
+    }));
+  }//deleteReplaceGroupDetailItem
+
 }

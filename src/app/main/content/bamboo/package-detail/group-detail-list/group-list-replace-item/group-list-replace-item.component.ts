@@ -11,7 +11,7 @@ export class GroupListReplaceItemComponent implements OnInit, OnChanges {
   @Input() items: Array<{ id: string, icon: string, name: string }> = [];
   @Output() onDeleteItem = new EventEmitter<{ id: string, icon: string, name: string }>();
   @Output() onDeleteDetailItem = new EventEmitter<{ id: string, icon: string, name: string }>();
-  @Output() onSettingDetailItem = new EventEmitter<{ id: string, icon: string, name: string }>();
+  @Output() onSettingDetailItem = new EventEmitter<{ id: string, icon: string, name: string, defaultId: string }>();
   constructor() { }
 
   ngOnInit() {
@@ -28,11 +28,13 @@ export class GroupListReplaceItemComponent implements OnInit, OnChanges {
     this.onDeleteItem.next(this.defaultItem);
   }//deleteItem
 
-  _deleteDetailItem(data: { id: string, icon: string, name: string }) {
+  _deleteDetailItem(data: { id: string, icon: string, name: string, defaultId: string }) {
+    data.defaultId = this.defaultItem.id;
     this.onDeleteDetailItem.next(data);
   }//_deleteDetailItem
 
-  _onSettingDetailItem(data: { id: string, icon: string, name: string }){
+  _onSettingDetailItem(data: { id: string, icon: string, name: string, defaultId: string }) {
+    data.defaultId = this.defaultItem.id;
     this.onSettingDetailItem.next(data);
   }//_onSettingDetailItem
 }
