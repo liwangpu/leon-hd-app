@@ -41,6 +41,7 @@ import { MediaFileService } from '../../toolkit/server/webapi/media-file.service
 import { AreaTypeComponent } from './area-type/area-type.component';
 import { AreaTypeDetailComponent } from './area-type-detail/area-type-detail.component';
 import { AreaTypeService } from '../../toolkit/server/webapi/area-type.service';
+import { ProductgroupCategoryComponent } from './productgroup-category/productgroup-category.component';
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -55,6 +56,7 @@ const routes: Routes = [
   , { path: 'app/product-category', component: ProductCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/material-category', component: MaterialCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/productspec-category', component: ProductspecCateogoryComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/productgroud-category', component: ProductgroupCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/staticmeshs', component: StaticmeshComponent, canActivate: [RouteGuardService] }
   , { path: 'app/materials', component: MaterialComponent, canActivate: [RouteGuardService] }
   , { path: 'app/maps', component: MapComponent, canActivate: [RouteGuardService] }
@@ -132,7 +134,7 @@ const routes: Routes = [
     }
   }
   , { path: 'app/material-detail', component: MaterialDetailComponent, canActivate: [RouteGuardService] }
-   /****************************************************************************************************/
+  /****************************************************************************************************/
   , {
     path: 'app/map-detail'
     , component: MapDetailComponent

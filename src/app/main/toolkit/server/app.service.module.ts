@@ -28,6 +28,7 @@ import { MediaFileService } from './webapi/media-file.service';
 import { MediaShareService } from './webapi/media-share.service';
 import { AreaTypeService } from './webapi/area-type.service';
 import { ProductGroupService } from './webapi/product-group.service';
+import { ProductgroupCategoryService } from './webapi/productgroup-category.service';
 @NgModule({
     imports: [
         ConfigModule
@@ -59,6 +60,7 @@ import { ProductGroupService } from './webapi/product-group.service';
         , MediaShareService
         , AreaTypeService
         , ProductGroupService
+        , ProductgroupCategoryService
         , { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
         , { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
     ]

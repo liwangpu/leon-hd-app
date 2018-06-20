@@ -1,0 +1,63 @@
+<div class="category-container" fxLayout='column'>
+  <!--header-->
+  <div fxFlex='80px' *ngIf='!brief'>
+    <div class="category-header" fxLayout='column'>
+      <div fxFlex>
+        <div class="category-container" fxLayout='row' fxLayoutAlign='space-between start'>
+          <div class="category-header-title" fxFlex fxFlexAlign='stretch'>
+            {{title}}
+          </div>
+          <div *ngIf='closable'>
+            <button mat-button class="mat-icon-button" (click)='close()'>
+              <mat-icon class="operate-button-icon">close</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div fxFlex='25px'>
+        <div class="fxLayout-container operate-bar" fxLayout='row' fxLayoutAlign='end end'>
+          <div>
+            <button class="operate-button" mat-icon-button (click)='onMoveUp()'>
+              <mat-icon class="operate-button-icon">keyboard_arrow_up</mat-icon>
+            </button>
+          </div>
+          <div>
+            <button class="operate-button" mat-icon-button (click)='onMoveDown()'>
+              <mat-icon class="operate-button-icon">keyboard_arrow_down</mat-icon>
+            </button>
+          </div>
+          <div>
+            <button class="operate-button" mat-icon-button (click)='onEdit("edit")'>
+              <mat-icon class="operate-button-icon" style="font-size: 18px;height: 18px;">create</mat-icon>
+            </button>
+          </div>
+          <div>
+            <button class="operate-button" mat-icon-button (click)='onEdit("new")'>
+              <mat-icon class="operate-button-icon" style="font-size: 20px;height: 20px;">add</mat-icon>
+            </button>
+          </div>
+          <div>
+            <button class="operate-button" mat-icon-button (click)='onRemove()'>
+              <mat-icon class="operate-button-icon" style="font-size: 20px;height: 20px;">remove</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/header-->
+
+  <!--content-->
+  <div fxFlex fusePerfectScrollbar>
+    <div class="category-item" *ngFor='let item of categories' appCategoryListItem [id]='item.id'
+      (onSelected)='onItemSelected($event)'>
+
+      <div class="fxLayout-container" fxLayout='row' fxLayoutAlign='space-between center'>
+        <div>
+          <img class="cate-icon" [src]="(item?.icon)?item.icon:'assets/svgs/cate-item.svg'"> {{item.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/content-->
+</div>

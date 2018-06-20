@@ -1,0 +1,61 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid gray;
+    margin-right: -1px;
+    div.category-container {
+        width: 100%;
+        height: 100%;
+    }
+    div.category-header {
+        height: 80px;
+        background: url('/assets/images/backgrounds/dark-material-bg.jpg');
+        background-size: 100% 100%;
+        border: 0 !important;
+    }
+    div.category-header-title {
+        color: white;
+        text-align: center;
+        line-height: 55px;
+    }
+    div.category-item {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #DCDCDC;
+    }
+    div.category-item-actived {
+        // border: 1px dashed ;
+        background-color: #039BE5;
+        color: white;
+    }
+    div.category-item:hover {
+        background-color: #C1C1C1;
+        cursor: pointer;
+    }
+    div.operate-bar {
+        height: 25px;
+        padding-bottom: 5px;
+    }
+    .operate-button {
+        width: 25px !important;
+        height: 25px !important;
+        line-height: 25px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .operate-button-icon {
+        color: white;
+    }
+    img.cate-icon {
+        width: 15px;
+        height: 15px;
+        margin: 17.5px 0 0 15px;
+    }
+    .category-content-container {
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+    }
+}

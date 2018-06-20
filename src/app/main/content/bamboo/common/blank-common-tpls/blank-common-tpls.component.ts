@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./blank-common-tpls.component.scss']
 })
 export class BlankCommonTplsComponent implements OnInit {
-  arr = [];
+
   @Input() titleName: string;
   @Input() iconName: string;
   constructor() {
@@ -15,9 +15,7 @@ export class BlankCommonTplsComponent implements OnInit {
   }
 
   ngOnInit() {
-    for (let idx = 100; idx >= 0; idx--) {
-      this.arr.push(idx);
-    }
+
   }
 
 }

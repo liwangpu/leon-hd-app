@@ -28,6 +28,7 @@ export const locale = {
             "ProductCategorys": "产品分类",
             "MaterialCategorys": "材质分类",
             "ProductSpecCategorys": "产品规格分类",
+            "ProductGroupCategorys": "产品组分类",
             "Order": "订单",
             "Package": "套餐",
             "StaticMesh": "模型",

@@ -28,6 +28,7 @@ export const locale = {
             "ProductCategorys": "Product Category",
             "MaterialCategorys": "Material Category",
             "ProductSpecCategorys": "Product Spec Category",
+            "ProductGroupCategorys": "ProductGroup Category",
             "Order": "Order",
             "Package": "Package",
             "StaticMesh": "StaticMesh",
@@ -35,7 +36,7 @@ export const locale = {
             "Map": "Map",
             "Layout": "Layout",
             "Share": "Share",
-            "AreaType":"Area Type"
+            "AreaType": "Area Type"
         },
         "glossary": {
             "OrganAccounts": "Account Management",
@@ -104,9 +105,9 @@ export const locale = {
             "Category": "Category",
             "StartShareTime": "Start ShareTime",
             "StopShareTime": "Stop ShareTime",
-            "AreaType":"Area Type",
+            "AreaType": "Area Type",
             "AreaTypeAlias": "Area Type Alias",
-            "Selected":"Selected"
+            "Selected": "Selected"
         },
         "button": {
             "Logout": "Logout",
