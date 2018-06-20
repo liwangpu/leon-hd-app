@@ -20,6 +20,7 @@ export class PackageArea {
     groupsMapIns: Array<ProductGroup>;
     productCategoryMapIns: Array<Product>;
     materialIns: Array<PackageMaterial>;
+    replaceGroupIns: Array<Array<Product>>;
 }
 
 export class PackageMaterial {
