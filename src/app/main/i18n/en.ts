@@ -107,7 +107,8 @@ export const locale = {
             "StopShareTime": "Stop ShareTime",
             "AreaType": "Area Type",
             "AreaTypeAlias": "Area Type Alias",
-            "Selected": "Selected"
+            "Selected": "Selected",
+            "ProductGroupCategory": "ProductGroup Category",
         },
         "button": {
             "Logout": "Logout",
@@ -195,6 +196,9 @@ export const locale = {
             "UploadCategoryByCSV": "Upload Category By CSV File",
             "DeleteConfirm": "Prompt",
             "SearchPlaceHolder": "Enter the keyword",
+        },
+        "dialog":{
+            "EditCategory":"Edit Category"
         }
     }
 };

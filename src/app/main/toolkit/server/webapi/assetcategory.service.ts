@@ -2,14 +2,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { AssetCategory } from "../../models/assetcategory";
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { tap, concatMap } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 /**
  * asset category serve基类
  */
 export class AssetCategoryService<T extends AssetCategory> {
 
+    editData$ = new BehaviorSubject<AssetCategory>(new AssetCategory());
     private uriBase: string;//webapi基路径 例如:localhost:4200
     protected header: HttpHeaders;//默认为application/json的Content-Type Header
     protected uriPart: string;//webapi实体路径 例如products
+    protected type;
     /**
      * 完整的webapi请求路径
      */
@@ -28,13 +33,17 @@ export class AssetCategoryService<T extends AssetCategory> {
      * 获取所有分类
      * @param type 
      */
-    protected getByType(type: string, organId: string) {
+    protected getByType(type: string, organId?: string) {
         if (type) {
             if (!organId)
                 organId = '';//防止organId为null或者undefine被转为字符串
-            return this.httpClient.get<T>(`${this.uri}/?type=${type}&organId=${organId}`, { headers: this.header });
+            return this.httpClient.get<T>(`${this.uri}/?type=${type}&organId=${organId}`, { headers: this.header }).pipe(tap(vl => {
+                this.editData$.next(vl);
+            }));
         }
-        return Observable.of<T>({} as T);
+        return Observable.of<T>({} as T).pipe(tap(vl => {
+            this.editData$.next(vl);
+        }));
     }//getByType
 
     /**
@@ -61,7 +70,7 @@ export class AssetCategoryService<T extends AssetCategory> {
      * @param id 
      */
     protected deleteType(type: string, id: string) {
-        return this.httpClient.request('DELETE', `${this.uri}?type=${type}&id=${id}`, {
+        return this.httpClient.request('DELETE', `${this.uri}/${id}`, {
             responseType: 'text'
         });
     }//deleteType

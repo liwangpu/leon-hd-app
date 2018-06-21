@@ -9,7 +9,6 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class CommonCategoryService extends AssetCategoryService<AssetCategory> {
 
-  protected type = 'material';
   constructor(protected http: HttpClient, protected config: ConfigService) {
     super(http, config);
     this.uriPart = 'category';
@@ -35,6 +34,7 @@ export class CommonCategoryService extends AssetCategoryService<AssetCategory> {
    * @param entity 
    */
   public createAssetCategory(entity: AssetCategory): Observable<AssetCategory> {
+    entity.type = this.type;
     return this.createType(entity);
   }//createAssetCategory
 

@@ -105,7 +105,8 @@ export const locale = {
             "StopShareTime": "分享截止时间",
             "AreaType": "区域类型",
             "AreaTypeAlias": "区域别名",
-            "Selected":"已选"
+            "Selected":"已选",
+            "ProductGroupCategory": "产品组分类",
         },
         "button": {
             "Logout": "退出",
@@ -193,6 +194,9 @@ export const locale = {
             "UploadCategoryByCSV": "根据CSV批量修改分类信息",
             "DeleteConfirm": "温馨提示",
             "SearchPlaceHolder":"请输入搜索关键字"
+        },
+        "dialog":{
+            "EditCategory":"编辑分类"
         }
     }
 };

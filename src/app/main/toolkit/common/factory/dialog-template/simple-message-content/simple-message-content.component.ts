@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ISimpleConfirm } from '../simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
 import { Subject } from 'rxjs';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-simple-message-content',
@@ -20,11 +21,29 @@ export class SimpleMessageContentComponent implements OnInit, ISimpleConfirm {
   disableConfirmButton: Subject<boolean> = new Subject();
   disableCancelButton: Subject<boolean> = new Subject();
   doneAsync: Subject<boolean> = new Subject();
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private tranSrv: TranslateService) { }
 
   ngOnInit() {
-    this.content = this.data.content;
-    // this.satisfyConfirm.next(true);
+    // this.tranSrv.get(this.data.content).subscribe(msg => {
+    //   this.content = msg;
+    // });
+
+    let transAsync = () => {
+      return new Promise((resolve, reject) => {
+        if (typeof (this.data.content) === 'string') {
+          resolve(this.data.content);
+        }
+        else {
+          this.tranSrv.get(this.data.content.key, this.data.content.value).subscribe(msg => {
+            resolve(msg);
+          });
+        }
+      });
+    };//
+
+    transAsync().then(msg => {
+      this.content = msg as string;
+    });
     setTimeout(() => {
       this.satisfyConfirm.next(true);
     }, 500);

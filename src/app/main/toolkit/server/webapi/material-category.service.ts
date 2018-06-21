@@ -4,14 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { Observable } from 'rxjs/Observable';
 import { AssetCategoryService } from './assetcategory.service';
+import { CommonCategoryService } from './common-category.service';
 
 @Injectable()
-export class MaterialCategoryService extends AssetCategoryService<MaterialCategory> {
+export class MaterialCategoryService extends CommonCategoryService {
 
-  private type = 'material';
   constructor(protected http: HttpClient, protected config: ConfigService) {
     super(http, config);
-    this.uriPart = 'category';
+    this.type = 'material';
   }
 
   /**

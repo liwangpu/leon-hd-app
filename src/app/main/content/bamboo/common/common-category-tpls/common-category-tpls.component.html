@@ -1,8 +1,10 @@
 <app-blank-common-tpls [titleName]='titleName' [iconName]='iconName'>
     <div class="category-container" fxLayout='row' fxLayoutAlign='start stretch'>
-        <div fxFlex='250px' style="background-color: blue;">
-            <app-common-category-list></app-common-category-list>
+        <div fxFlex='250px'>
+            <app-common-category-list [categories]='categories' [parentId]='parentId' title='glossary.MaterialCategory' (onCategorySelected)='onMainCategorySelect($event)' (afterCategoryChange)='afterChildrenChange($event)'></app-common-category-list>
         </div>
-        <div fxFlex></div>
+        <div fxFlex>
+            <ng-template #categoryPanel></ng-template>
+        </div>
     </div>
 </app-blank-common-tpls>

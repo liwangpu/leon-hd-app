@@ -5,7 +5,7 @@
       <div fxFlex>
         <div class="category-container" fxLayout='row' fxLayoutAlign='space-between start'>
           <div class="category-header-title" fxFlex fxFlexAlign='stretch'>
-            {{title}}
+            {{title|translate}}
           </div>
           <div *ngIf='closable'>
             <button mat-button class="mat-icon-button" (click)='close()'>
@@ -49,7 +49,7 @@
 
   <!--content-->
   <div fxFlex fusePerfectScrollbar>
-    <div class="category-item" *ngFor='let item of categories' appCategoryListItem [id]='item.id'
+    <div class="category-item" *ngFor='let item of categories;trackBy:trackCategory' appCategoryListItem [id]='item.id'
       (onSelected)='onItemSelected($event)'>
 
       <div class="fxLayout-container" fxLayout='row' fxLayoutAlign='space-between center'>

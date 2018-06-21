@@ -64,7 +64,7 @@ export class DialogFactoryService {
    * @param title 
    * @param option 
    */
-  simpleConfirm(content: string, title?: string, option?: simpleConfirmOption) {
+  simpleConfirm(content: string | any, title?: string, option?: simpleConfirmOption) {
     if (!option)
       option = {};
     if (!option.height)

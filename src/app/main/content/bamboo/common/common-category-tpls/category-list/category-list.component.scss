@@ -26,12 +26,11 @@
         border-bottom: 1px solid #DCDCDC;
     }
     div.category-item-actived {
-        // border: 1px dashed ;
-        background-color: #039BE5;
+        background-color: #039BE5 !important;
         color: white;
     }
     div.category-item:hover {
-        background-color: #C1C1C1;
+        background-color: #F6F6F6;
         cursor: pointer;
     }
     div.operate-bar {

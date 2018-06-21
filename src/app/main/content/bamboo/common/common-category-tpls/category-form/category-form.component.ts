@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ISimpleConfirm } from '../../../../../toolkit/common/factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
 import { Subject } from 'rxjs/Subject';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-category-form',
@@ -9,6 +11,7 @@ import { Subject } from 'rxjs/Subject';
 })
 export class CategoryFormComponent implements OnInit, ISimpleConfirm {
 
+  categoryForm: FormGroup;
   afterConfirm: Subject<void> = new Subject();
   afterCancel: Subject<void> = new Subject();
   satisfyConfirm: Subject<boolean> = new Subject();
@@ -18,9 +21,21 @@ export class CategoryFormComponent implements OnInit, ISimpleConfirm {
   disableConfirmButton: Subject<boolean> = new Subject();
   disableCancelButton: Subject<boolean> = new Subject();
   doneAsync: Subject<boolean> = new Subject();
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: any) {
+    this.categoryForm = this.formBuilder.group({
+      id: [''],
+      name: ['', [Validators.required]],
+      description: [''],
+      displayIndex: [''],
+      parentId: ['']
+    });
+  }//constructor
 
   ngOnInit() {
-  }
+    this.categoryForm.patchValue(this.data.category);
+    this.categoryForm.valueChanges.subscribe(vl => {
+      this.satisfyConfirm.next(vl.name ? true : false);
+    });
+  }//ngOnInit
 
 }
