@@ -2,7 +2,9 @@ export enum AccountTypeEnums {
     sysAdmin = 'sysadmin',
     sysService = 'sysservice',
     organAdmin = 'organadmin',
-    organMember = 'organmember'
+    organMember = 'organmember',
+    brandAdmin = 'brandadmin',
+    brandMember = 'brandmember'
 }
 
 export enum QueryOperateEnums {
