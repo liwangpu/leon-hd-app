@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, ViewChildren, QueryList, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 import { Ilistable } from '../../../../toolkit/models/ilistable';
-import { Subject, Observable, BehaviorSubject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { map } from "rxjs/operators";
 import { CommonIconItemComponent } from './common-icon-item/common-icon-item.component';
 import { IQuery } from '../../../../toolkit/server/webapi/api.service';
 import { IQueryFilter } from '../../../../toolkit/common/interfaces/iqueryFilter';
-import { of } from 'rxjs/observable/of';
+
 
 
 

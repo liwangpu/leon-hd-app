@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AssetCategoryService } from "./assetcategory.service";
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { ProductCategory } from '../../models/productcategory';

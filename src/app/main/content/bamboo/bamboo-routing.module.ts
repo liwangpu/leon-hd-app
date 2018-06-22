@@ -29,7 +29,6 @@ import { MaterialComponent } from './material/material.component';
 import { MaterialDetailComponent } from './material-detail/material-detail.component';
 import { MapComponent } from './map/map.component';
 import { MapDetailComponent } from './map-detail/map-detail.component';
-import { MapService } from '../../toolkit/server/webapi/map.service';
 import { MaterialCategoryComponent } from './material-category/material-category.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LayoutService } from '../../toolkit/server/webapi/layout.service';
@@ -69,7 +68,14 @@ const routes: Routes = [
       entity: ProductService
     }
   }
-  , { path: 'app/product-detail', component: ProductDetailComponent, canActivate: [RouteGuardService] }
+  , {
+    path: 'app/product-detail'
+    , component: ProductDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: ProductService
+    }
+  }
   /****************************************************************************************************/
   , {
     path: 'app/organ-detail/:id'
@@ -79,7 +85,14 @@ const routes: Routes = [
       entity: OrganService
     }
   }
-  , { path: 'app/organ-detail', component: OrganDetailComponent, canActivate: [RouteGuardService] }
+  , {
+    path: 'app/organ-detail'
+    , component: OrganDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: OrganService
+    }
+  }
   /****************************************************************************************************/
   , {
     path: 'app/solution-detail/:id'
@@ -90,8 +103,12 @@ const routes: Routes = [
     }
   }
   , {
-    path: 'app/solution-detail', component: SolutionDetailComponent,
-    canActivate: [RouteGuardService]
+    path: 'app/solution-detail'
+    , component: SolutionDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: SolutionService
+    }
   }
   /****************************************************************************************************/
   , {
@@ -102,7 +119,14 @@ const routes: Routes = [
       entity: OrderService
     }
   }
-  , { path: 'app/order-detail', component: OrderDetailComponent, canActivate: [RouteGuardService] }
+  , {
+    path: 'app/order-detail'
+    , component: OrderDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: OrderService
+    }
+  }
   /****************************************************************************************************/
   , {
     path: 'app/package-detail/:id'
@@ -112,7 +136,14 @@ const routes: Routes = [
       entity: PackageService
     }
   }
-  , { path: 'app/package-detail', component: PackageDetailComponent, canActivate: [RouteGuardService] }
+  , {
+    path: 'app/package-detail'
+    , component: PackageDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: PackageService
+    }
+  }
   /****************************************************************************************************/
   , {
     path: 'app/staticmesh-detail/:id'
@@ -131,7 +162,14 @@ const routes: Routes = [
       entity: MaterialService
     }
   }
-  , { path: 'app/material-detail', component: MaterialDetailComponent, canActivate: [RouteGuardService] }
+  , {
+    path: 'app/material-detail'
+    , component: MaterialDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: MaterialService
+    }
+  }
   /****************************************************************************************************/
   , {
     path: 'app/map-detail'
@@ -157,8 +195,12 @@ const routes: Routes = [
     }
   }
   , {
-    path: 'app/share-detail', component: MediaFileDetailComponent,
-    canActivate: [RouteGuardService]
+    path: 'app/share-detail'
+    , component: MediaFileDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: MediaFileService
+    }
   }
   /****************************************************************************************************/
   , {
@@ -170,9 +212,14 @@ const routes: Routes = [
     }
   }
   , {
-    path: 'app/area-type-detail', component: AreaTypeDetailComponent,
-    canActivate: [RouteGuardService]
+    path: 'app/area-type-detail'
+    , component: AreaTypeDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: AreaTypeService
+    }
   }
+  /****************************************************************************************************/
 ];
 
 @NgModule({

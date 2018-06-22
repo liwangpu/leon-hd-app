@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { PaginatorLaunch, IListTableColumn, IAdvanceMenuItem } from '../common/paginator-common-tpls/paginator-common-tpls.component';
-import { IListableService } from '../../../toolkit/server/webapi/ilistableService';
 import { Material } from '../../../toolkit/models/material';
 import { DatePipe } from '@angular/common';
 import { MaterialService } from '../../../toolkit/server/webapi/material.service';

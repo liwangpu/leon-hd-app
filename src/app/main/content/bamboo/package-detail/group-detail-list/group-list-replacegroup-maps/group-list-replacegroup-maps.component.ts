@@ -7,8 +7,7 @@ import { DialogFactoryService } from '../../../../../toolkit/common/factory/dial
 import { Subject, BehaviorSubject } from 'rxjs';
 import { Package } from '../../../../../toolkit/models/package';
 import { merge } from 'rxjs/observable/merge';
-import { last, map, distinctUntilChanged } from 'rxjs/operators';
-import { concat } from 'rxjs/observable/concat';
+import { map } from 'rxjs/operators';
 import { Product } from '../../../../../toolkit/models/product';
 import { SimpleMessageContentComponent } from '../../../../../toolkit/common/factory/dialog-template/simple-message-content/simple-message-content.component';
 

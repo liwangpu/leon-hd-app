@@ -1,6 +1,5 @@
 import { Component, OnInit, ContentChildren, QueryList, AfterContentInit, Input, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
-import { DetailInfoTabComponent } from './detail-info-tab/detail-info-tab.component';
 import { DetailEditScheduleService } from './detail-edit-schedule.service';
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 import { Ilistable } from '../../../../toolkit/models/ilistable';

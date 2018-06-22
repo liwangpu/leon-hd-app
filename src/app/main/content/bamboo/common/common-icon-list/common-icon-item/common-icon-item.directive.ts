@@ -1,4 +1,4 @@
-import { Directive, Output, ElementRef, Input, Renderer2, EventEmitter, HostListener } from '@angular/core';
+import { Directive, Output, ElementRef, Renderer2, EventEmitter, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appCommonIconItem]'

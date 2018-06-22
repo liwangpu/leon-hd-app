@@ -2,14 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { MatDialog } from '@angular/material';
-import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
-import { DepartmentFormComponent } from "../department-form/department-form.component";
-import { DepartmentService } from "../../../../toolkit/server/webapi/department.service";
-import { Department } from "../../../../toolkit/models/department";
-import { DessertService } from "../../../services/dessert.service";
-import { DialogService } from "../../../../toolkit/common/services/dialog.service";
-import { TranslateService } from '@ngx-translate/core';
-import { AccountMdService } from '../account-md.service';
+
 @Component({
   selector: 'app-department-card',
   templateUrl: './department-card.component.html',
@@ -20,7 +13,7 @@ export class DepartmentCardComponent implements OnInit {
   // filterBy = 'all';
   // dialogRef: any;
   // departments: Array<Department> = [];
-  constructor(private snackBarSrv: SnackbarService, public dialog: MatDialog, private departmentSrv: DepartmentService, private dessertSrv: DessertService, private dialogSrv: DialogService, private transSrv: TranslateService, private accountMdSrv: AccountMdService) { }
+  constructor( public dialog: MatDialog) { }
 
   ngOnInit() {
     // this.getAllDepartment();

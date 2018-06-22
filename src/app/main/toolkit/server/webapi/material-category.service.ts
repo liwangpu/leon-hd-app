@@ -3,7 +3,6 @@ import { MaterialCategory } from '../../models/material-category';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { Observable } from 'rxjs/Observable';
-import { AssetCategoryService } from './assetcategory.service';
 import { CommonCategoryService } from './common-category.service';
 
 @Injectable()

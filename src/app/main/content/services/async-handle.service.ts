@@ -3,9 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from '../../toolkit/common/services/snackbar.service';
 import { Observable } from 'rxjs';
 import { from } from "rxjs/observable/from";
-import { of } from "rxjs/observable/of";
-import { map, concatMap, catchError, tap } from 'rxjs/operators';
-import { mergeMap } from 'rxjs/operator/mergeMap';
+import { concatMap, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AsyncHandleService {

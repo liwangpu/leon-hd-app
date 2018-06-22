@@ -6,8 +6,6 @@ import { AreaType } from '../../../../toolkit/models/area-type';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { PackageService } from '../../../../toolkit/server/webapi/package.service';
-import { TranslateService } from '@ngx-translate/core';
-import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
 import { AsyncHandleService } from '../../../services/async-handle.service';
 
 @Component({
@@ -30,7 +28,7 @@ export class AreaTypeSelectComponent implements OnInit, ISimpleConfirm {
   disableCancelButton: Subject<boolean> = new Subject();
   doneAsync: Subject<boolean> = new Subject();
   destroy$: Subject<boolean> = new Subject();
-  constructor(public areaTypeSrv: AreaTypeService, public formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, public packageSrv: PackageService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private asyncHandle: AsyncHandleService) {
+  constructor(public areaTypeSrv: AreaTypeService, public formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, public packageSrv: PackageService, private asyncHandle: AsyncHandleService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       areaAlias: [''],

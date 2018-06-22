@@ -1,6 +1,5 @@
 import { ProductGroup } from "./product-group";
 import { Product } from "./product";
-import { Material } from "./material";
 
 export class PackageContentItem {
     productId: string;

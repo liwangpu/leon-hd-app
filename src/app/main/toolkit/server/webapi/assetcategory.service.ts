@@ -3,8 +3,7 @@ import { ConfigService } from '../../config/config.service';
 import { AssetCategory } from "../../models/assetcategory";
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { tap, concatMap } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
+import { tap } from 'rxjs/operators';
 /**
  * asset category serve基类
  */

@@ -1,12 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { PackageService } from '../../../../toolkit/server/webapi/package.service';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Package } from '../../../../toolkit/models/package';
 import { PackageArea } from '../../../../toolkit/models/package-content-item';
 import { DialogFactoryService } from '../../../../toolkit/common/factory/dialog-factory.service';
 import { AreaTypeSelectComponent } from '../area-type-select/area-type-select.component';
-import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
-import { TranslateService } from '@ngx-translate/core';
 import { SimpleMessageContentComponent } from '../../../../toolkit/common/factory/dialog-template/simple-message-content/simple-message-content.component';
 import { AreaTypePanelDirective } from './area-type-panel.directive';
 import { PackageDetailMdService } from '../package-detail-md.service';
@@ -24,7 +22,7 @@ export class AreaTypePanelComponent implements OnInit, OnDestroy, AfterViewInit 
   areas: Array<PackageArea> = [];
   @ViewChildren(AreaTypePanelDirective) items: QueryList<AreaTypePanelDirective>;
   destroy$ = new Subject<boolean>();
-  constructor(public apiSrv: PackageService, protected dialogFac: DialogFactoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public mdSrv: PackageDetailMdService, private asyncHandle: AsyncHandleService) {
+  constructor(public apiSrv: PackageService, protected dialogFac: DialogFactoryService, public mdSrv: PackageDetailMdService, private asyncHandle: AsyncHandleService) {
 
   }
 

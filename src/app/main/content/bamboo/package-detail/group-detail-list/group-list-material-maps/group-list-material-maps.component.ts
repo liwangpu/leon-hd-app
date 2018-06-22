@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import {  Subject } from 'rxjs';
 import { PackageService } from '../../../../../toolkit/server/webapi/package.service';
 import { PackageDetailMdService } from '../../package-detail-md.service';
 import { DialogFactoryService } from '../../../../../toolkit/common/factory/dialog-factory.service';

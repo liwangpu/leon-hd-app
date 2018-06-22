@@ -9,8 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from '../../../../../toolkit/common/services/snackbar.service';
 import { SimpleMessageContentComponent } from '../../../../../toolkit/common/factory/dialog-template/simple-message-content/simple-message-content.component';
 import { merge } from 'rxjs/observable/merge';
-import { last, map, distinctUntilChanged } from 'rxjs/operators';
-import { concat } from 'rxjs/observable/concat';
+import {  map, distinctUntilChanged } from 'rxjs/operators';
 @Component({
   selector: 'app-package-detail-group-list-group-maps',
   templateUrl: './group-list-group-maps.component.html',

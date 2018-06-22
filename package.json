@@ -4,15 +4,12 @@
   "license": "",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --aot=true",
-    "start-hmr": "ng serve --hmr -e=hmr -sm=false",
-    "start-hmr-sourcemaps": "ng serve --hmr -e=hmr",
-    "build": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --dev",
-    "build-prod": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod",
+    "start": "ng serve",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "release-dev": "ng build --aot=true  --env=staging --output-hashing=all",
+    "release-dev": "ng build --env=staging --aot=false --prod",
     "dev": "ng serve --env=dev"
   },
   "private": true,

@@ -4,7 +4,6 @@ import { ApiService, IQuery, Paging } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { Observable } from 'rxjs';
-import { IListableService } from './ilistableService';
 import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
 
 @Injectable()

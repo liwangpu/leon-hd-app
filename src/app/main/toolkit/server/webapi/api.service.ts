@@ -7,6 +7,7 @@ import { IEntitybase } from '../../models/ientitybase';
 import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
 import { QueryOperateEnums } from '../../enums/enums';
 import { EntityBase } from '../../models/entitybase';
+import { tap } from 'rxjs/operators';
 /**
  * webapi serve基类
  */
@@ -37,10 +38,9 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<T> | Observable<Observable<T>> | Promise<Observable<T>> {
         let id = route.paramMap.get('id');
-        return this.getEntity<T>(id).map(data => {
+        return this.getEntity<T>(id).pipe(tap(data => {
             this.editData$.next(data ? data : new EntityBase());
-            return data;
-        });
+        })) as Observable<T>;
     }
 
     /**
