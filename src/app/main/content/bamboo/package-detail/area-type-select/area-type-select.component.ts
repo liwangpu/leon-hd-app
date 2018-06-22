@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 import { PackageService } from '../../../../toolkit/server/webapi/package.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
+import { AsyncHandleService } from '../../../services/async-handle.service';
 
 @Component({
   selector: 'app-area-type-select',
@@ -29,7 +30,7 @@ export class AreaTypeSelectComponent implements OnInit, ISimpleConfirm {
   disableCancelButton: Subject<boolean> = new Subject();
   doneAsync: Subject<boolean> = new Subject();
   destroy$: Subject<boolean> = new Subject();
-  constructor(public areaTypeSrv: AreaTypeService, public formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, public packageSrv: PackageService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(public areaTypeSrv: AreaTypeService, public formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, public packageSrv: PackageService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, private asyncHandle: AsyncHandleService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       areaAlias: [''],
@@ -61,29 +62,13 @@ export class AreaTypeSelectComponent implements OnInit, ISimpleConfirm {
   }//ngOnInit
 
   submitAreaType() {
-    let submitAsync = () => {
-      return new Promise((resolve, reject) => {
-        this.packageSrv.editAreaType(this.detailForm.value).first().subscribe(data => {
-          resolve({ k: 'message.SaveSuccessfully' });
-        }, err => {
-          resolve({ k: 'message.OperationError', v: { value: err } });
-        });
-      });
-    };//submitAsync
-
-    let transAsync = (mobj: { k: string, v: any }) => {
-      return new Promise((resolve) => {
-        this.tranSrv.get(mobj.k, mobj.v).subscribe(msg => {
-          resolve(msg);
-        });
-      });//promise
-    };//transAsync
-
-    submitAsync().then(transAsync).then(msg => {
+    let source$ = this.packageSrv.editAreaType(this.detailForm.value);
+    this.asyncHandle.asyncRequest(source$).subscribe(_ => {
       this.doneAsync.next();
-      this.snackBarSrv.simpleBar(msg as string);
+      this.closeDialog.next();
+    }, err => {
+      this.doneAsync.next();
     });
-
   }//submitAreaType
 
   selectionChange(id: string) {

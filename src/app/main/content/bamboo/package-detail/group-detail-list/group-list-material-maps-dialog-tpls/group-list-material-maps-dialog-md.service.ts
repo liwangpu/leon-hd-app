@@ -4,7 +4,6 @@ import { MaterialService } from '../../../../../toolkit/server/webapi/material.s
 
 @Injectable()
 export class GroupListMaterialMapsDialogMdService extends CommonIconListComponentBase {
-  ;
 
   constructor(public apiSrv: MaterialService) {
     super();

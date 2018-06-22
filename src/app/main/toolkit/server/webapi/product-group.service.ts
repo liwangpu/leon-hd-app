@@ -8,7 +8,7 @@ import { IListableService } from './ilistableService';
 import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
 
 @Injectable()
-export class ProductGroupService extends ApiService<ProductGroup> implements IListableService<ProductGroup> {
+export class ProductGroupService extends ApiService<ProductGroup>  {
 
 
   constructor(protected http: HttpClient, protected config: ConfigService) {

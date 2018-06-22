@@ -1,50 +1,9 @@
 :host {
-    display: inline-block;
+    display: block;
     width: 100%;
     height: 100%;
-    padding: 15px 15px 0;
-    box-sizing: border-box;
     div.map-container {
         width: 100%;
         height: 100%;
-        div.map-content {
-            padding-top: 10px;
-            box-sizing: border-box;
-            div.map-card {
-                width: 100%;
-                height: 100%;
-                box-sizing: border-box;
-                div.map-selected-tip{
-                    padding-top: 15px;
-                    font-weight: 800;
-                    color: #007ACC;
-                    box-sizing: border-box;
-                }
-                div.group-img-container {
-                    width: 100px;
-                    height: 100px;
-                    border: 1px solid #E0E0E0;
-                    .group-img {
-                        width: 99px;
-                        height: 99px;
-                    }
-                }
-                .title-explain{
-                    font-weight: 800;
-                }
-                .group-title {
-                    height: 100px;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: start;
-                    align-items: flex-end;
-                    border-bottom: 1px solid #E0E0E0;
-                }
-                .group-description {
-                    margin: 0;
-                    padding: 0;
-                }
-            }
-        }
     }
 }

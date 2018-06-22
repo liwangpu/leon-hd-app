@@ -16,10 +16,13 @@
                 div.list-type-item {
                     height: 50px;
                     border-bottom: 1px solid #E0E0E0;
+                    padding: 7px;
+                    box-sizing: border-box;
                     .list-type-item-icon {
-                        width: 50px;
-                        height: 50px;
-                        font-size: 50px;
+                        $icon-size: 36px;
+                        width: $icon-size;
+                        height: $icon-size;
+                        font-size: $icon-size;
                     }
                     .list-type-item-icon {
                         cursor: pointer;
@@ -36,15 +39,15 @@
                 }
             }
         }
-        div.manage-bar{
-            border-bottom: 1px solid #E0E0E0; 
+        div.manage-bar {
+            border-bottom: 1px solid #E0E0E0;
         }
-        div.list-content{
+        div.list-content {
             // width: 100%;
             // height: 100%;
             overflow-y: auto;
         }
-        .hidden{
+        .hidden {
             display: none;
         }
     }

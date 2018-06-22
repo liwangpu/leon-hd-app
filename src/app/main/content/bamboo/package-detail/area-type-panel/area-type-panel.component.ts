@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
-import { AreaType } from '../../../../toolkit/models/area-type';
 import { PackageService } from '../../../../toolkit/server/webapi/package.service';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { Package } from '../../../../toolkit/models/package';
@@ -11,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SimpleMessageContentComponent } from '../../../../toolkit/common/factory/dialog-template/simple-message-content/simple-message-content.component';
 import { AreaTypePanelDirective } from './area-type-panel.directive';
 import { PackageDetailMdService } from '../package-detail-md.service';
+import { AsyncHandleService } from '../../../services/async-handle.service';
 
 @Component({
   selector: 'app-package-detail-area-type-panel',
@@ -24,7 +24,7 @@ export class AreaTypePanelComponent implements OnInit, OnDestroy, AfterViewInit 
   areas: Array<PackageArea> = [];
   @ViewChildren(AreaTypePanelDirective) items: QueryList<AreaTypePanelDirective>;
   destroy$ = new Subject<boolean>();
-  constructor(public apiSrv: PackageService, protected dialogFac: DialogFactoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public mdSrv: PackageDetailMdService) {
+  constructor(public apiSrv: PackageService, protected dialogFac: DialogFactoryService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public mdSrv: PackageDetailMdService, private asyncHandle: AsyncHandleService) {
 
   }
 
@@ -69,50 +69,20 @@ export class AreaTypePanelComponent implements OnInit, OnDestroy, AfterViewInit 
   }//addArea
 
   deleteArea(areaType: PackageArea) {
-    let ins: SimpleMessageContentComponent;
-    let tipTranAsync = () => {
-      return new Promise((resolve, reject) => {
-        this.tranSrv.get('message.DeleteConfirm', { value: areaType.areaAlias }).first().subscribe(msg => resolve(msg));
-      });//Promise
-    };
-
-
-    let dialogAsync = (msg) => {
-      return new Promise((resolve, reject) => {
-        let dialog = this.dialogFac.simpleConfirm(msg, '', { width: '400px', height: '300px' });
-        dialog.afterOpen().first().subscribe(() => {
-          ins = (dialog.componentInstance.componentIns as SimpleMessageContentComponent);
-          ins.afterConfirm.subscribe(() => {
-            resolve();
-          });
-        });//open
-      });//Promise
-    };//dialogAsync
-
-    let deleteAsync = () => {
-      return new Promise((resolve, reject) => {
-        this.apiSrv.deleteAreaType({ id: areaType.id, packageId: this.packageId }).first().subscribe(_ => {
-          resolve({ k: 'message.DeleteSuccessfully' });
+    let dialog = this.dialogFac.simpleConfirm({ key: 'message.DeleteConfirm', value: { value: areaType.areaAlias } }, 'tips.Prompt', { width: '400px', height: '300px' });
+    dialog.afterOpen().first().subscribe(() => {
+      let ins = (dialog.componentInstance.componentIns as SimpleMessageContentComponent);
+      ins.afterConfirm.subscribe(() => {
+        let source$ = this.apiSrv.deleteAreaType({ id: areaType.id, packageId: this.packageId });
+        this.asyncHandle.asyncRequest(source$).subscribe(_ => {
+          ins.doneAsync.next();
+          ins.closeDialog.next();
         }, err => {
-          resolve({ k: 'message.OperationError', v: { value: err }, e: true });
+          ins.doneAsync.next();
         });
-      });//Promise
-    };//deleteAsync
+      });//afterConfirm
+    });//open
 
-
-    let transAsync = (mobj: { k: string, v: any, e: boolean }) => {
-      return new Promise((resolve, reject) => {
-        this.tranSrv.get(mobj.k, mobj.v).first().subscribe(msg => {
-          resolve(msg);
-        });
-      });//Promise
-    };//transAsync
-
-    tipTranAsync().then(dialogAsync).then(deleteAsync).then(transAsync).then(msg => {
-      this.snackBarSrv.simpleBar(msg as string);
-      ins.doneAsync.next();
-      ins.closeDialog.next();
-    });
   }//deleteArea
 
   onAreaSelected(id: string) {

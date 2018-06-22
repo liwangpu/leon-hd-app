@@ -13,7 +13,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   @ViewChild('categoryPanel', {
     read: ViewContainerRef
   }) folderContainer: ViewContainerRef;
-  constructor(private mdSrv: ProductCategoryMdService) {
+  constructor(public mdSrv: ProductCategoryMdService) {
 
   }
 
