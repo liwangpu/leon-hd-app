@@ -1,6 +1,6 @@
 <div class="map-container" fxLayout='row' fxLayoutAlign='start stretch'>
   <div fxFlex='200px'>
-    <app-material-category-select-panel [addUnCategoryNode]='false' (onCategorySelect)='onCategorySelect($event)'></app-material-category-select-panel>
+    <app-common-category-select-panel [launch]='leftCategoryMdSrv' (onCategorySelect)='onCategorySelect($event)'></app-common-category-select-panel>
   </div>
   <div fxFlex>
     <app-common-icon-list [launch]='mdSrv' itemWidth='180' itemHeight='150' (onItemSelect)='onItemSelect($event)'></app-common-icon-list>

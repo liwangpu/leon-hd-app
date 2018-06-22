@@ -100,7 +100,7 @@ export const locale = {
             "OrganBrand": "品牌商",
             "OrganPartner": "合伙人",
             "OrganSupplier": "供应商",
-            "Category": "分类",
+            "Category": "所有分类",
             "StartShareTime": "分享起始时间",
             "StopShareTime": "分享截止时间",
             "AreaType": "区域类型",

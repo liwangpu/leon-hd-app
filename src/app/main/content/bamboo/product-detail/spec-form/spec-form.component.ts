@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ProductSpecService } from "../../../../toolkit/server/webapi/productSpec.service";
 import { MatDialog } from '@angular/material';
 import { SpecUploadComponent } from "../spec-upload/spec-upload.component";
-import { CategoryPanelComponent } from '../../productspec-cateogory/category-panel/category-panel.component';
+// import { CategoryPanelComponent } from '../../productspec-cateogory/category-panel/category-panel.component';
 import { IconModel } from '../../../../toolkit/models/iconmodel';
 import { ProductService } from '../../../../toolkit/server/webapi/product.service';
 @Component({
@@ -115,18 +115,18 @@ export class SpecFormComponent implements OnInit, OnDestroy {
   }//onUpload
 
   onEditCategory() {
-    let dialogObj = this.dialog.open(CategoryPanelComponent, {
-      width: '700px',
-      height: '800px'
-    });//
+    // let dialogObj = this.dialog.open(CategoryPanelComponent, {
+    //   width: '700px',
+    //   height: '800px'
+    // });//
 
-    let dialogDestroy$ = new Subject<boolean>();
-    dialogObj.componentInstance.afterUserSelect$.takeUntil(dialogDestroy$).subscribe(resCate => {
-      this.specForm.patchValue({ categoryId: resCate.id, categoryName: resCate.name });
-    });
-    dialogObj.afterClosed().first().subscribe(() => {
-      dialogDestroy$.next(true);
-      dialogDestroy$.unsubscribe();
-    });
+    // let dialogDestroy$ = new Subject<boolean>();
+    // dialogObj.componentInstance.afterUserSelect$.takeUntil(dialogDestroy$).subscribe(resCate => {
+    //   this.specForm.patchValue({ categoryId: resCate.id, categoryName: resCate.name });
+    // });
+    // dialogObj.afterClosed().first().subscribe(() => {
+    //   dialogDestroy$.next(true);
+    //   dialogDestroy$.unsubscribe();
+    // });
   }//onEditCategory
 }

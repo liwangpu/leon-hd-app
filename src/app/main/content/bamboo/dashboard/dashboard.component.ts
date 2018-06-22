@@ -7,23 +7,16 @@ import { IQueryFilter } from '../../../toolkit/common/interfaces/iqueryFilter';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  providers: [GroupListMaterialMapsDialogMdService]
+  providers: [CommonSearchDemoMdService]
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public mdSrv: GroupListMaterialMapsDialogMdService) {
+  constructor(public mdSrv: CommonSearchDemoMdService) {
 
   }
 
   ngOnInit() {
   }//
 
-  onCategorySelect(categoryId?: string) {
-    // console.log('categoryId', categoryId);
-    let advFilters: Array<IQueryFilter> = [
-      { field: 'categoryId', value: categoryId }
-    ];
-    this.mdSrv.query({}, advFilters);
-  }//onCategorySelect
 
 }

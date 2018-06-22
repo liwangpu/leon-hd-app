@@ -47,14 +47,13 @@ export class CategoryIterateListComponent implements OnInit {
     dyCom.instance.brief = this.brief;
     dyCom.instance.afterCategoryChange.subscribe(data => {
       curCate.children = data.children;
-      console.log('6666',data);
       if (!data.children || data.children.length <= 0)
-        dyCom.instance.closePanel();
+        this.folderContainer.clear();
     });
   }//openChildCategory
 
   onCurrentCategoryDeleted(id: string) {
-    this.categories = this.categories.filter(x => x.id !== id);
+    this.folderContainer.clear();
   }//onCurrentCategoryDeleted
 
   afterChildrenChange(data: { parentId: string, children: Array<AssetCategory> }) {

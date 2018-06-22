@@ -1,13 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Injectable } from '@angular/core';
 import { ISimpleConfirm } from '../../../../toolkit/common/factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
 import { Subject } from 'rxjs';
 import { AssetCategory } from '../../../../toolkit/models/assetcategory';
+import { CommonCategoryTplsMdService } from '../../common/common-category-tpls/common-category-tpls-md.service';
+import { MaterialCategoryService } from '../../../../toolkit/server/webapi/material-category.service';
+
+@Injectable()
+export class MaterialDetailCategoryMdService extends CommonCategoryTplsMdService {
+
+  constructor(public apiSrv: MaterialCategoryService) {
+    super();
+  }
+}
 
 @Component({
   selector: 'app-category-change-suit',
   template: `
-  <app-material-category-select-panel (onCategorySelectWithDetail)='onCategorySelect($event)'></app-material-category-select-panel>
-  `
+  <app-common-category-select-panel [launch]='catSelectMdSrv' (onCategorySelectWithDetail)='onCategorySelect($event)'></app-common-category-select-panel>
+  `,
+  providers: [MaterialDetailCategoryMdService]
 })
 export class CategoryChangeSuitComponent implements OnInit, OnDestroy, ISimpleConfirm {
 
@@ -21,7 +32,7 @@ export class CategoryChangeSuitComponent implements OnInit, OnDestroy, ISimpleCo
   afterCancel: Subject<void> = new Subject();
   satisfyConfirm: Subject<boolean> = new Subject();
   refreshData: Subject<AssetCategory> = new Subject();
-  constructor() {
+  constructor(public catSelectMdSrv: MaterialDetailCategoryMdService) {
     this.afterConfirm.subscribe(() => {
       this.doneAsync.next();
       this.closeDialog.next();

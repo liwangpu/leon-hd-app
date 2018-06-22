@@ -4,10 +4,12 @@ import { MaterialService } from '../../../../toolkit/server/webapi/material.serv
 import { TranslateService } from '@ngx-translate/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { SnackbarService } from '../../../../toolkit/common/services/snackbar.service';
+import { MaterialLeftCategoryMdService } from '../material-left-category-md.service';
 
 @Component({
   selector: 'app-material-change-category-suit',
-  templateUrl: './change-category-suit.component.html'
+  templateUrl: './change-category-suit.component.html',
+  providers: [MaterialLeftCategoryMdService]
 })
 export class ChangeCategorySuitComponent implements OnInit {
 
@@ -23,7 +25,7 @@ export class ChangeCategorySuitComponent implements OnInit {
   satisfyConfirm: Subject<boolean> = new Subject();
   afterChangeCategory: Subject<void> = new Subject();
   destroy$: Subject<boolean> = new Subject();
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public materialSrv: MaterialService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public materialSrv: MaterialService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService, public leftCategoryMdSrv: MaterialLeftCategoryMdService) {
     this.afterConfirm.takeUntil(this.destroy$).subscribe(() => {
       this.changeCategory();
     });

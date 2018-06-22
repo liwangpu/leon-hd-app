@@ -2,7 +2,6 @@ import { Component, OnInit, OnChanges, OnDestroy, AfterViewInit, Input, Output, 
 import { AssetCategory } from '../../../../../toolkit/models/assetcategory';
 import { CategoryListItemDirective } from './category-list-item.directive';
 import { Subject } from 'rxjs/Subject';
-import { MathexService } from '../../../../../toolkit/common/services/mathex.service';
 import { CommonCategoryTplsMdService } from '../common-category-tpls-md.service';
 import { DialogFactoryService } from '../../../../../toolkit/common/factory/dialog-factory.service';
 import { CategoryFormComponent } from '../category-form/category-form.component';
@@ -23,14 +22,12 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
   @Input() categories: Array<AssetCategory>;
   @Output() onClose = new EventEmitter();
   @Output() onCategorySelected = new EventEmitter();
-  @Output() afterCategoryDeleted = new EventEmitter();
+  @Output() afterCategoryDeleted = new EventEmitter<{ parentId: string, children: Array<AssetCategory> }>();
   @Output() afterCategoryChange = new EventEmitter<{ parentId: string, children: Array<AssetCategory> }>();
   @ViewChildren(CategoryListItemDirective) categoryItems: QueryList<CategoryListItemDirective>;
   private destroy$: Subject<boolean> = new Subject();
   private selectedCategory: AssetCategory;
-  private minIdx = 0;//最小展示序号
-  private maxIdx = 0;//最大展示序号
-  constructor(private mathexSrv: MathexService, private mdSrv: CommonCategoryTplsMdService, protected dialogFac: DialogFactoryService, private asyncHandleSrv: AsyncHandleService) {
+  constructor(private mdSrv: CommonCategoryTplsMdService, protected dialogFac: DialogFactoryService, private asyncHandleSrv: AsyncHandleService) {
   }
 
   ngOnInit() {
@@ -50,9 +47,6 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
     let categoryChange = changes['categories'];
     if (categoryChange && categoryChange.currentValue && categoryChange.currentValue.length) {
       this.categories = categoryChange.currentValue;
-      let idss = categoryChange.currentValue.map(x => x.displayIndex);
-      this.minIdx = this.mathexSrv.arrayMin(idss);
-      this.maxIdx = this.mathexSrv.arrayMax(idss);
     }
   }//ngOnChanges
 
@@ -88,25 +82,30 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
 
 
   onMoveUp() {
-    if (this.selectedCategory.displayIndex > this.minIdx) {
-      this.mdSrv.apiSrv.moveUpAssetCategory(this.selectedCategory).subscribe(resCate => {
-        this.categories = resCate.children;
-        setTimeout(() => {
-          this.selectedItem(this.selectedCategory.id);
-        }, 200);
-      });
-    }
+    if (!this.selectedCategory || this.selectedCategory.displayIndex <= 0)
+      return;
+
+    this.mdSrv.apiSrv.moveUpAssetCategory(this.selectedCategory).subscribe(resCate => {
+      this.categories = resCate.children;
+      this.selectedCategory = this.categories.filter(x => x.id == this.selectedCategory.id)[0];
+      this.afterCategoryChange.next({ parentId: this.parentId, children: this.categories });
+      setTimeout(() => {
+        this.selectedItem(this.selectedCategory.id);
+      }, 200);
+    });
   }//onMoveUp
 
   onMoveDown() {
-    if (this.selectedCategory.displayIndex < this.maxIdx) {
-      this.mdSrv.apiSrv.moveDownAssetCategory(this.selectedCategory).subscribe(resCate => {
-        this.categories = resCate.children;
-        setTimeout(() => {
-          this.selectedItem(this.selectedCategory.id);
-        }, 200);
-      });
-    }
+    if (!this.selectedCategory || this.selectedCategory.displayIndex >= this.categories.length - 1)
+      return;
+    this.mdSrv.apiSrv.moveDownAssetCategory(this.selectedCategory).subscribe(resCate => {
+      this.categories = resCate.children;
+      this.selectedCategory = this.categories.filter(x => x.id == this.selectedCategory.id)[0];
+      this.afterCategoryChange.next({ parentId: this.parentId, children: this.categories });
+      setTimeout(() => {
+        this.selectedItem(this.selectedCategory.id);
+      }, 200);
+    });
   }//onMoveDown
 
   onRemove() {
@@ -122,6 +121,7 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
           ins.closeDialog.next();
           this.categories = this.categories.filter(x => x.id !== this.selectedCategory.id);
           this.afterCategoryChange.next({ parentId: this.selectedCategory.parentId, children: this.categories });
+          this.afterCategoryDeleted.next({ parentId: this.selectedCategory.parentId, children: this.categories })
           this.selectedCategory = undefined;
         }, err => {
           ins.doneAsync.next();
@@ -146,8 +146,6 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
     dialog.afterOpen().subscribe(_ => {
       let ins = dialog.componentInstance.componentIns as CategoryFormComponent;
       ins.afterConfirm.subscribe(_ => {
-
-        // let source$ = this.mdSrv.apiSrv.createAssetCategory(new AssetCategory());
         let source$ = this.mdSrv.apiSrv.createAssetCategory(ins.categoryForm.value);
         this.asyncHandleSrv.asyncRequest(source$).subscribe(rdata => {
           let isExist = this.categories.some(x => x.id === rdata.id);
@@ -162,6 +160,7 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
           else {
             this.categories.push(rdata);
           }
+          this.afterCategoryChange.next({ parentId: this.parentId, children: this.categories });
           ins.doneAsync.next();
           ins.closeDialog.next();
         }, err => {

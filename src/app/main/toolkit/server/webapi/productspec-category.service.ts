@@ -8,10 +8,10 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ProductspecCategoryService extends AssetCategoryService<ProductspecCategory> {
 
-  private type = 'product-spec';
   constructor(protected http: HttpClient, protected config: ConfigService) {
     super(http, config);
     this.uriPart = 'category';
+    this.type = 'product-spec';
   }
 
   /**

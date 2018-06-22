@@ -22,10 +22,8 @@ export class CommonCategoryTplsComponent implements OnInit, OnDestroy {
   @ViewChild('categoryPanel', {
     read: ViewContainerRef
   }) folderContainer: ViewContainerRef;
-  dyCom: any;
   parentId: string;
   categories: Array<AssetCategory> = [];
-  currentCategory: AssetCategory = new AssetCategory();
   destroy$ = new Subject<boolean>();
   constructor(public mdSrv: CommonCategoryTplsMdService, private comFactory: ComponentFactoryResolver) {
 
@@ -50,19 +48,26 @@ export class CommonCategoryTplsComponent implements OnInit, OnDestroy {
 
   onMainCategorySelect(id: string) {
     this.folderContainer.clear();
-    this.currentCategory = this.categories.filter(x => x.id === id)[0];
+    let currentCategory = this.categories.filter(x => x.id === id)[0];
+    if (!currentCategory)
+      return;
     let comp = this.comFactory.resolveComponentFactory(CategoryIterateListComponent);
-    this.dyCom = this.folderContainer.createComponent(comp);
-    this.dyCom.instance._ref = this.dyCom;
-    this.dyCom.instance.title = this.currentCategory.name;
-    this.dyCom.instance.categories = this.currentCategory.children;
-    this.dyCom.instance.parentId = this.currentCategory.id;
+    let dyCom = this.folderContainer.createComponent(comp);
+    dyCom.instance._ref = dyCom;
+    dyCom.instance.title = currentCategory.name;
+    dyCom.instance.categories = currentCategory.children;
+    dyCom.instance.parentId = currentCategory.id;
+    dyCom.instance.afterCategoryChange.subscribe(data => {
+      currentCategory.children = data.children;
+      if (!data.children || data.children.length <= 0)
+        this.folderContainer.clear();
+    });
   }//onMainCategorySelect
 
-  afterChildrenChange(data: { parentId: string, children: Array<AssetCategory> }) {
-    if (!data.children || data.children.length <= 0)
-      this.dyCom.instance.closePanel();
-  }//afterChildrenChange
+  onMainCategoryDeleted(data: { parentId: string, children: Array<AssetCategory> }) {
+    this.categories = data.children;
+    this.folderContainer.clear();
+  }//onCurrentCategoryDeleted
 
 }
 

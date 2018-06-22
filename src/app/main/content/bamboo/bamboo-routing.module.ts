@@ -19,7 +19,6 @@ import { PackageService } from "../../toolkit/server/webapi/package.service";
 import { StaticmeshService } from "../../toolkit/server/webapi/staticmesh.service";
 import { MaterialService } from "../../toolkit/server/webapi/material.service";
 import { ProductCategoryComponent } from './product-category/product-category.component';
-import { ProductspecCateogoryComponent } from './productspec-cateogory/productspec-cateogory.component';
 import { OrderComponent } from './order/order.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { PackageComponent } from './package/package.component';
@@ -55,7 +54,6 @@ const routes: Routes = [
   , { path: 'app/organ-account', component: AccountComponent, canActivate: [RouteGuardService] }
   , { path: 'app/product-category', component: ProductCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/material-category', component: MaterialCategoryComponent, canActivate: [RouteGuardService] }
-  , { path: 'app/productspec-category', component: ProductspecCateogoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/productgroud-category', component: ProductgroupCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/staticmeshs', component: StaticmeshComponent, canActivate: [RouteGuardService] }
   , { path: 'app/materials', component: MaterialComponent, canActivate: [RouteGuardService] }

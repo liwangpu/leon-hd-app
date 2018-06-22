@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { ISimpleConfirm } from '../../../../../toolkit/common/factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
 import { Subject } from 'rxjs';
 import { GroupListMaterialMapsDialogMdService } from './group-list-material-maps-dialog-md.service';
 import { IQueryFilter } from '../../../../../toolkit/common/interfaces/iqueryFilter';
+import { CommonCategoryTplsMdService } from '../../../common/common-category-tpls/common-category-tpls-md.service';
+import { MaterialCategoryService } from '../../../../../toolkit/server/webapi/material-category.service';
 
+@Injectable()
+export class MaterialDetailCategoryMdService extends CommonCategoryTplsMdService {
 
+  constructor(public apiSrv: MaterialCategoryService) {
+    super();
+  }
+}
 @Component({
   selector: 'app-group-list-material-maps-dialog-tpls',
   templateUrl: './group-list-material-maps-dialog-tpls.component.html',
   styleUrls: ['./group-list-material-maps-dialog-tpls.component.scss'],
-  providers: [GroupListMaterialMapsDialogMdService]
+  providers: [GroupListMaterialMapsDialogMdService,MaterialDetailCategoryMdService]
 })
 export class GroupListMaterialMapsDialogTplsComponent implements OnInit, ISimpleConfirm {
   selectedMaterialId: string;
@@ -22,7 +30,7 @@ export class GroupListMaterialMapsDialogTplsComponent implements OnInit, ISimple
   disableConfirmButton: Subject<boolean> = new Subject();
   disableCancelButton: Subject<boolean> = new Subject();
   doneAsync: Subject<boolean> = new Subject();
-  constructor(public mdSrv: GroupListMaterialMapsDialogMdService) {
+  constructor(public mdSrv: GroupListMaterialMapsDialogMdService,public leftCategoryMdSrv:MaterialDetailCategoryMdService) {
   }//constructor
 
   ngOnInit() {

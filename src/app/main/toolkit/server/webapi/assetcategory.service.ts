@@ -90,8 +90,7 @@ export class AssetCategoryService<T extends AssetCategory> {
      * @param entity 
      */
     protected arrowUp(entity: T): Observable<T> {
-        entity.displayIndex--;
-        return this.arrow(entity);
+        return this.httpClient.put<T>(`${this.uri}/MoveUp?id=${entity.id}`, { headers: this.header });
     }//moveUp
 
     /**
@@ -99,8 +98,7 @@ export class AssetCategoryService<T extends AssetCategory> {
      * @param entity 
      */
     protected arrowDown(entity: T): Observable<T> {
-        entity.displayIndex++;
-        return this.arrow(entity);
+        return this.httpClient.put<T>(`${this.uri}/MoveDown?id=${entity.id}`, { headers: this.header });
     }//moveDown
 
     /**

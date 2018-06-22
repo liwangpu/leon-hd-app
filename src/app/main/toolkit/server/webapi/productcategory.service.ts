@@ -4,14 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 import { ProductCategory } from '../../models/productcategory';
 import { Observable } from 'rxjs/Observable';
-
+import { CommonCategoryService } from './common-category.service';
+ 
 @Injectable()
-export class ProductCategoryService extends AssetCategoryService<ProductCategory> {
+export class ProductCategoryService extends CommonCategoryService {
 
-    private type = 'product';
     constructor(protected http: HttpClient, protected config: ConfigService) {
         super(http, config);
         this.uriPart = 'category';
+        this.type = 'product';
     }
 
     /**
