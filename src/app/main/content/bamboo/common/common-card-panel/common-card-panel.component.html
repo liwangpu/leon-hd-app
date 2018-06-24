@@ -1,18 +1,36 @@
 <div class="tpls-card-container">
     <div class="tpls-card-header">
         <mat-icon style="font-size: 50px;width: 50px;height: 50px;">account_balance_wallet</mat-icon>
-        <span class="card-title">add</span>
+        <span class="card-title">{{(launch?.title)?(launch.title|translate):''}}</span>
     </div>
     <div class="tpls-card-content">
-        <div class="tpls-card-item" appCommomCardItem fid='11' (onSelected)='onItemSelect($event)' fxLayout='row' fxLayoutAlign='start center'>
+        <div class="tpls-card-item" *ngFor='let item of datas;trackBy:trackFn' appCommomCardItem [fid]='item.id' (onSelected)='onItemSelect($event)'
+            fxLayout='row' fxLayoutAlign='start center'>
             <div fxFlex='24px'></div>
-            <div fxFlex>2</div>
+            <div fxFlex>{{item.name}}</div>
             <div fxFlex='40px'>
-                <button mat-icon-button (click)="$event.stopPropagation()">
+                <button mat-icon-button (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu">
                     <mat-icon [class.item-selected]='seletedItemId=="11"'>more_vert</mat-icon>
                 </button>
+
+                <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button> -->
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)='launch.editData(item)'>
+                        <mat-icon>edit</mat-icon>
+                        <span>{{'button.Edit'|translate}}</span>
+                    </button>
+                    <button mat-menu-item (click)='launch.deleteData(item)'>
+                        <mat-icon>delete</mat-icon>
+                        <span>{{'button.Delete'|translate}}</span>
+                    </button>
+                </mat-menu>
             </div>
         </div>
-        <div class="tpls-card-item" appCommomCardItem fid='22' (onSelected)='onItemSelect($event)'>2</div>
+        <div class="tpls-card-item" *ngFor='let btn of buttons'>
+            <div class="manage-button" (click)='btn.onClick()'>
+                <mat-icon>{{btn.icon}}</mat-icon>
+                <span>{{btn.name|translate}}</span>
+            </div>
+        </div>
     </div>
 </div>

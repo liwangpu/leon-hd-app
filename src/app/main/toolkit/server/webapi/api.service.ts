@@ -85,7 +85,9 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      * @param query 
      * @param advanceQueryFilters 
      */
-    protected queryEntities<T>(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<T>> {
+    protected queryEntities<T>(query?: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<T>> {
+        if (!query)
+            query = {};
         var params = new HttpParams();
         if (query.search)
             params = params.append('search', `${query.search}`);

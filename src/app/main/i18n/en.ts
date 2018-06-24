@@ -37,7 +37,7 @@ export const locale = {
             "Layout": "Layout",
             "Share": "Share",
             "AreaType": "Area Type",
-            "ProductGroup":"Product Group"
+            "ProductGroup": "Product Group"
         },
         "glossary": {
             "OrganAccounts": "Account Management",
@@ -110,7 +110,8 @@ export const locale = {
             "AreaTypeAlias": "Area Type Alias",
             "Selected": "Selected",
             "ProductGroupCategory": "ProductGroup Category",
-            "ProductGroup":"Product Group"
+            "ProductGroup": "Product Group",
+            "Department":"Department"
         },
         "button": {
             "Logout": "Logout",
@@ -199,8 +200,9 @@ export const locale = {
             "DeleteConfirm": "Prompt",
             "SearchPlaceHolder": "Enter the keyword",
         },
-        "dialog":{
-            "EditCategory":"Edit Category"
+        "dialog": {
+            "EditCategory": "Edit Category",
+            "EditDepartment": "EDIT DEPARTMENT"
         }
     }
 };

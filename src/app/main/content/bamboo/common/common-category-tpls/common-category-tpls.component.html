@@ -1,7 +1,7 @@
 <app-blank-common-tpls [titleName]='titleName' [iconName]='iconName'>
     <div class="category-container" fxLayout='row' fxLayoutAlign='start stretch'>
         <div fxFlex='250px'>
-            <app-common-category-list [categories]='categories' [parentId]='parentId' title='glossary.MaterialCategory' (onCategorySelected)='onMainCategorySelect($event)'
+            <app-common-category-list [categories]='categories' [parentId]='parentId' title='glossary.Category' (onCategorySelected)='onMainCategorySelect($event)'
                 (afterCategoryDeleted)='onMainCategoryDeleted($event)'></app-common-category-list>
         </div>
         <div fxFlex>

@@ -1,24 +1,14 @@
-@import "src/app/core/scss/fuse";
-.contact-form-dialog {
-    @include media-breakpoint('xs') {
-        width: 100%;
-    }
-    @include media-breakpoint-up('xs') {
-        width: 400px;
-    }
-    .mat-dialog-container {
-        padding: 0;
-        overflow: hidden;
-        .mat-toolbar {
-            min-height: initial;
-        }
-        .toolbar-bottom {
-            height: auto;
-        }
-    }
-    .dialog-content-wrapper {
-        max-height: 85vh;
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px 18px;
+    div.form-container {
         display: flex;
         flex-direction: column;
+        & * {
+            width: 100%;
+        }
     }
 }
