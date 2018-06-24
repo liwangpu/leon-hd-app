@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChildren, QueryList, AfterViewInit, Input } from '@angular/core';
 import { CommomCardItemDirective } from './commom-card-item.directive';
+import { Ilistable } from '../../../../toolkit/models/ilistable';
+import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
 
 @Component({
   selector: 'app-common-card-panel',
@@ -38,5 +40,5 @@ export class CommonCardPanelComponent implements OnInit, AfterViewInit {
 
 
 export interface CommonCardPanelBase {
-  cardItems: Array<{ id: string, name: string }>;
+ apiSrv:IListableService<Ilistable>;
 }

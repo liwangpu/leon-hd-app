@@ -36,7 +36,8 @@ export const locale = {
             "Map": "Map",
             "Layout": "Layout",
             "Share": "Share",
-            "AreaType": "Area Type"
+            "AreaType": "Area Type",
+            "ProductGroup":"Product Group"
         },
         "glossary": {
             "OrganAccounts": "Account Management",
@@ -109,6 +110,7 @@ export const locale = {
             "AreaTypeAlias": "Area Type Alias",
             "Selected": "Selected",
             "ProductGroupCategory": "ProductGroup Category",
+            "ProductGroup":"Product Group"
         },
         "button": {
             "Logout": "Logout",

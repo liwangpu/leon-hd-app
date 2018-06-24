@@ -36,7 +36,8 @@ export const locale = {
             "Map": "场景",
             "Layout": "户型",
             "Share": "分享",
-            "AreaType": "区域类型"
+            "AreaType": "区域类型",
+            "ProductGroup":"产品组"
         },
         "glossary": {
             "OrganAccounts": "人员管理",
@@ -107,6 +108,7 @@ export const locale = {
             "AreaTypeAlias": "区域别名",
             "Selected":"已选",
             "ProductGroupCategory": "产品组分类",
+            "ProductGroup":"产品组"
         },
         "button": {
             "Logout": "退出",

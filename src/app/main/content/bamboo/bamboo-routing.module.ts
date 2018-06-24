@@ -40,6 +40,9 @@ import { AreaTypeComponent } from './area-type/area-type.component';
 import { AreaTypeDetailComponent } from './area-type-detail/area-type-detail.component';
 import { AreaTypeService } from '../../toolkit/server/webapi/area-type.service';
 import { ProductgroupCategoryComponent } from './productgroup-category/productgroup-category.component';
+import { ProductGroupComponent } from './product-group/product-group.component';
+import { ProductGroupDetailComponent } from './product-group-detail/product-group-detail.component';
+import { ProductGroupService } from '../../toolkit/server/webapi/product-group.service';
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -48,12 +51,13 @@ const routes: Routes = [
   , { path: 'app/organ', component: OrganComponent, canActivate: [RouteGuardService] }
   , { path: 'app/solutions', component: SolutionComponent, canActivate: [RouteGuardService] }
   , { path: 'app/orders', component: OrderComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/product-group', component: ProductGroupComponent, canActivate: [RouteGuardService] }
   , { path: 'app/packages', component: PackageComponent, canActivate: [RouteGuardService] }
   , { path: 'app/area-type', component: AreaTypeComponent, canActivate: [RouteGuardService] }
   , { path: 'app/organ-account', component: AccountComponent, canActivate: [RouteGuardService] }
   , { path: 'app/product-category', component: ProductCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/material-category', component: MaterialCategoryComponent, canActivate: [RouteGuardService] }
-  , { path: 'app/productgroud-category', component: ProductgroupCategoryComponent, canActivate: [RouteGuardService] }
+  , { path: 'app/product-group-category', component: ProductgroupCategoryComponent, canActivate: [RouteGuardService] }
   , { path: 'app/staticmeshs', component: StaticmeshComponent, canActivate: [RouteGuardService] }
   , { path: 'app/materials', component: MaterialComponent, canActivate: [RouteGuardService] }
   , { path: 'app/maps', component: MapComponent, canActivate: [RouteGuardService] }
@@ -151,6 +155,15 @@ const routes: Routes = [
     , canActivate: [RouteGuardService],
     resolve: {
       entity: StaticmeshService
+    }
+  }
+  /****************************************************************************************************/
+  , {
+    path: 'app/product-group-detail/:id'
+    , component: ProductGroupDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: ProductGroupService
     }
   }
   /****************************************************************************************************/

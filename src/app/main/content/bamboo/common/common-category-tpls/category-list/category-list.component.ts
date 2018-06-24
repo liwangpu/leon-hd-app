@@ -123,6 +123,7 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
           this.afterCategoryChange.next({ parentId: this.selectedCategory.parentId, children: this.categories });
           this.afterCategoryDeleted.next({ parentId: this.selectedCategory.parentId, children: this.categories })
           this.selectedCategory = undefined;
+          this.onClear();
         }, err => {
           ins.doneAsync.next();
         });

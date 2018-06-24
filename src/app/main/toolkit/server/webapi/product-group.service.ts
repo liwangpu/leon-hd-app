@@ -51,4 +51,13 @@ export class ProductGroupService extends ApiService<ProductGroup>  {
     return super.queryEntities(query, advanceQueryFilters);
   }
 
+      /**
+     * 批量修改产品分类
+     * @param ids 
+     * @param categoryId 
+     */
+    bulkChangeCategory(ids: string, categoryId: string) {
+      return this.http.request('PUT', this.uri + '/BulkChangeCategory', { headers: this.header, body: { ids: ids, categoryId: categoryId }, responseType: 'text' });
+  }//bulkChangeCategory
+
 }

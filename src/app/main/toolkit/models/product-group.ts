@@ -1,5 +1,6 @@
-import { ListableBase } from "./listablebase";
-export class ProductGroup extends ListableBase {
+
+import { AssetBase } from "./assetbase";
+export class ProductGroup extends AssetBase {
     pivotLocation: string;
     pivotType: number;
     orientation: string;

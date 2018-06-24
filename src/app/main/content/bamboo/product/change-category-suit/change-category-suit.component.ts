@@ -30,8 +30,7 @@ export class ChangeCategorySuitComponent implements OnInit, OnDestroy, ISimpleCo
     this.afterConfirm.takeUntil(this.destroy$).subscribe(() => {
       this.changeCategory();
     });
-
-  }
+  }//constructor
 
   ngOnInit() {
 

@@ -1,36 +1,8 @@
-<!-- <div class="fxLayout-container detail-content-container" fxLayout='column'>
-  <div>
-    <mat-table #table [dataSource]="dataSource">
-      <ng-container matColumnDef="productName">
-        <mat-header-cell *matHeaderCellDef> {{'glossary.ProductName'|translate}} </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element?.productName}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="productSpecName">
-        <mat-header-cell *matHeaderCellDef> {{'glossary.ProductSpec'|translate}} </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element?.productSpecName}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="unitPrice">
-        <mat-header-cell *matHeaderCellDef> {{'glossary.UnitPrice'|translate}} </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element?.unitPrice}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="num">
-        <mat-header-cell *matHeaderCellDef> {{'glossary.Quantity'|translate}} </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element?.num}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="totalPrice">
-        <mat-header-cell *matHeaderCellDef> {{'glossary.TotalPrice'|translate}} </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element?.totalPrice}} </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+<div class="content-container" fxLayout='row' fxLayoutAlign=''>
+  <div class="area-type-container" fxFlex='200px'>
+      <app-package-detail-area-type-panel></app-package-detail-area-type-panel>
   </div>
-  <div>
-
+  <div class="area-type-content-container" fxFlex>
+      <app-package-detail-group-detail-list></app-package-detail-group-detail-list>
   </div>
-</div> -->
+</div>
