@@ -1,45 +1,36 @@
-import { Component, Inject, OnInit, EventEmitter } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { CalendarEvent } from 'angular-calendar';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef, MatCheckboxChange } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Account } from "../../../../toolkit/models/account";
 import { AccountService } from "../../../../toolkit/server/webapi/account.service";
-import { SnackbarService } from "../../../../toolkit/common/services/snackbar.service";
 import { DepartmentService } from "../../../../toolkit/server/webapi/department.service";
 import { Department } from "../../../../toolkit/models/department";
-import { TranslateService } from '@ngx-translate/core';
+import { ISimpleConfirm } from '../../../../toolkit/common/factory/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
+import { Subject } from 'rxjs/Subject';
+import { AsyncHandleService } from '../../../services/async-handle.service';
 @Component({
   selector: 'app-account-detail',
   templateUrl: './account-detail.component.html',
   styleUrls: ['./account-detail.component.scss']
 })
-export class AccountDetailComponent implements OnInit {
-  onSave: EventEmitter<Account> = new EventEmitter();
-  event: CalendarEvent;
-  dialogTitle: string;
+export class AccountDetailComponent implements OnInit, ISimpleConfirm {
+  isAdmin = false;
   accountForm: FormGroup;
   account: Account;
-  hidePassword = true;
-  hideDepartment: boolean;
+  afterAccountChange = new Subject<void>();
   departments: Array<Department> = [];
-  constructor(private departmentSrv: DepartmentService, public dialogRef: MatDialogRef<AccountDetailComponent>, @Inject(MAT_DIALOG_DATA) private data: any, private formBuilder: FormBuilder, private accountSrv: AccountService, private snackBarSrv: SnackbarService, private tranSrv: TranslateService) {
-    this.account = this.data.account;
-    this.accountForm = this.createAccountForm();
-    this.getDepartment();
-  }
-
-  ngOnInit() {
-    this.accountForm.patchValue(this.account);
-  }
-
-  getDepartment() {
-    this.departmentSrv.getByOrgan(this.account.organizationId).subscribe(res => {
-      this.departments = res;
-    });
-  }//getDepartment
-
-  createAccountForm() {
-    return this.formBuilder.group({
+  afterConfirm: Subject<void> = new Subject();
+  afterCancel: Subject<void> = new Subject();
+  satisfyConfirm: Subject<boolean> = new Subject();
+  closeDialog: Subject<void> = new Subject();
+  persistDialog: Subject<boolean> = new Subject();
+  disableButtons: Subject<boolean> = new Subject();
+  disableConfirmButton: Subject<boolean> = new Subject();
+  disableCancelButton: Subject<boolean> = new Subject();
+  doneAsync: Subject<boolean> = new Subject();
+  destroy$ = new Subject<boolean>();
+  constructor(private departmentSrv: DepartmentService, public dialogRef: MatDialogRef<AccountDetailComponent>, @Inject(MAT_DIALOG_DATA) private data: any, private formBuilder: FormBuilder, private accountSrv: AccountService, protected asyncHandle: AsyncHandleService) {
+    this.accountForm = this.formBuilder.group({
       id: [''],
       departmentId: [''],
       type: [''],
@@ -48,38 +39,49 @@ export class AccountDetailComponent implements OnInit {
       phone: [''],
       password: [''],
       location: [''],
+      _isAdmin: [''],
       expireTime: [new Date(), [Validators.required]],
       activationTime: [new Date(), [Validators.required]]
     });
-  }//createAccountForm
+    this.afterConfirm.subscribe(_ => this.onSubmit());
+  }//constructor
+
+  ngOnInit() {
+    this.account = this.data.account;
+    if (this.account) {
+      this.accountForm.patchValue(this.account);
+      this.isAdmin = this.account.isAdmin;
+    }
+    else {
+      this.account = new Account();
+    }
+    this.accountForm.valueChanges.subscribe(vl => {
+      this.satisfyConfirm.next(this.accountForm.valid);
+    });
+    this.getDepartment();
+  }
+
+  getDepartment() {
+    this.departmentSrv.getByOrgan(this.account ? this.account.organizationId : '').subscribe(res => {
+      this.departments = res;
+    });
+  }//getDepartment
+
+  adminChange(evt: MatCheckboxChange) {
+    this.isAdmin = evt.checked;
+    this.account.isAdmin = evt.checked;
+    this.accountForm.patchValue({ _isAdmin: evt.checked });
+  }//adminChange
+
 
   onSubmit() {
-    let saveAccountAsync = () => {
-      return new Promise((resolve, reject) => {
-        let acc = this.accountForm.value;
-        this.accountSrv.update({ ...this.account, ...acc }).subscribe(resAccount => {
-          resAccount.password = acc.password;
-          resAccount.departmentId = acc.departmentId;
-          this.accountForm.patchValue(resAccount);
-          this.onSave.next(resAccount);
-          resolve({ k: 'message.SaveSuccessfully' });
-        }, err => {
-          resolve({ k: 'message.OperationError', v: { value: err } });
-        });
-      });//promise
-    };//saveAccountAsync
-
-    let tranAsync = (msgObj: { k: string, v: any }) => {
-      return new Promise((resolve, reject) => {
-        this.tranSrv.get(msgObj.k, msgObj.v).subscribe(resMsg => {
-          resolve(resMsg);
-        });
-      });//promise
-    };//tranAsync
-
-
-    saveAccountAsync().then(tranAsync).then((msg: string) => {
-      this.snackBarSrv.simpleBar(msg);
+    let acc = this.accountForm.value;
+    let source$ = this.accountSrv.update({ ...this.account, ...acc })
+    this.asyncHandle.asyncRequest(source$).subscribe(res => {
+      this.afterAccountChange.next();
+      this.doneAsync.next();
+    }, err => {
+      this.doneAsync.next();
     });
   }//onSubmit
 

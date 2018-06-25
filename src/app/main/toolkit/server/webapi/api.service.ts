@@ -100,7 +100,9 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
 
         params = params.append('page', `${query.page ? query.page : 1}`);
         params = params.append('pageSize', `${query.pageSize ? query.pageSize : 10}`);
-        return this.httpClient.request<Paging<T>>('get', `${this.uri}?${queryPart}`, { headers: this.header, params: params });
+        return this.httpClient.request<Paging<T>>('get', `${this.uri}?${queryPart}`, { headers: this.header, params: params }).pipe(tap(res => {
+            this.queryData$.next(res && res.data ? (res.data as any) : []);
+        }));
     }
 
     /**

@@ -5,6 +5,7 @@ import { Directive, Input, EventEmitter, HostListener, ElementRef, Renderer2, Ou
 })
 export class CommomCardItemDirective {
 
+  @Input() defaultItem = false;
   @Input() fid: string;
   @Output() onSelected: EventEmitter<string> = new EventEmitter();
   @HostListener('click')

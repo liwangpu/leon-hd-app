@@ -7,6 +7,8 @@ export class Account extends ListableBase{
     activationTime: string;
     organizationId: string;
     departmentId: string;
+    departmentName: string;
     location: string;
     type: string;
+    isAdmin:boolean;
 }

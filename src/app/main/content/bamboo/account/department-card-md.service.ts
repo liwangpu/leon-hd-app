@@ -6,10 +6,13 @@ import { DialogFactoryService } from '../../../toolkit/common/factory/dialog-fac
 import { AsyncHandleService } from '../../services/async-handle.service';
 import { DepartmentFormComponent } from './department-form/department-form.component';
 import { SimpleMessageContentComponent } from '../../../toolkit/common/factory/dialog-template/simple-message-content/simple-message-content.component';
+import { Account } from '../../../toolkit/models/account';
+import { AccountDetailComponent } from './account-detail/account-detail.component';
+import { AccountMdService } from './account-md.service';
 @Injectable()
 export class DepartmentCardMdService extends CommonCardPanelBase {
 
-  constructor(public apiSrv: DepartmentService, protected dialogFac: DialogFactoryService, private asyncHandle: AsyncHandleService) {
+  constructor(public apiSrv: DepartmentService, protected dialogFac: DialogFactoryService, private asyncHandle: AsyncHandleService, protected mdSrv: AccountMdService) {
     super();
     this.title = 'glossary.Department';
     let btnAddDepartment: ICommonCardManageButton = {
@@ -19,11 +22,27 @@ export class DepartmentCardMdService extends CommonCardPanelBase {
         this.editData();
       }
     };
-
     this.buttons.push(btnAddDepartment);
 
-  }
+    let btnAddAccount: ICommonCardManageButton = {
+      icon: 'add',
+      name: 'button.AddUser',
+      onClick: () => {
+        this.editUser();
+      },
+      needDataFirst: true
+    };
+    this.buttons.push(btnAddAccount);
 
+    this.preItems = [
+      { id: '', name: 'button.All', defaultItem: true }
+    ];
+
+
+    this.selectChange$.subscribe(departmentId => {
+      this.mdSrv.afterDepartmentChange.next(departmentId);
+    });
+  }//constructor
 
   editData(data?: EntityBase) {
     this.dialogFac.tplsConfirm(DepartmentFormComponent, 'dialog.EditDepartment', { width: '400px', height: '300px', data: { department: data } });
@@ -46,5 +65,14 @@ export class DepartmentCardMdService extends CommonCardPanelBase {
     });//afterOpen
   }//deleteData
 
+  editUser(account?: Account) {
+    let dialog = this.dialogFac.tplsConfirm(AccountDetailComponent, 'dialog.EditAccount', { width: '450px', height: '700px', data: { account: account } });
+    dialog.afterOpen().subscribe(_ => {
+      let ins = dialog.componentInstance.componentIns as AccountDetailComponent;
+      ins.afterAccountChange.subscribe(_ => {
+        this.mdSrv.afterAccountChange.next();
+      });
+    });
+  }//editUser
 
 }

@@ -123,6 +123,7 @@ export interface IListTableColumn<TData> {
   columnDef: string;
   header: string;
   width?: number;
+  translate?: boolean;
   cell(data: TData): string;
 }
 
@@ -131,6 +132,7 @@ export interface IListableRecordMenu {
   name?: string;
   icon?: string;
   items: Array<IListableRecordMenuItem>;
+  handle?: any;
 }
 
 export interface IListableRecordMenuItem {

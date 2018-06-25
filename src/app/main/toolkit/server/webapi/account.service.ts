@@ -4,6 +4,7 @@ import { ConfigService } from '../../config/config.service';
 import { ApiService, IQuery, Paging } from './api.service';
 import { Observable } from 'rxjs/Observable';
 import { Account } from '../../models/account';
+import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
 @Injectable()
 export class AccountService extends ApiService<Account> {
 
@@ -50,7 +51,7 @@ export class AccountService extends ApiService<Account> {
      * 查询账户信息
      * @param query 
      */
-    query(query: IQuery): Observable<Paging<Account>> {
-        return super.queryEntities(query);
+    query(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<Account>> {
+        return super.queryEntities(query,advanceQueryFilters);
     }
 }

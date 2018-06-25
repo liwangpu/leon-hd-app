@@ -1,14 +1,10 @@
 <app-blank-common-tpls titleName='glossary.OrganAccounts' iconName='people'>
     <div class="content-container" fxLayout='row' fxLayoutAlign='none stretch'>
-        <div fxFlex='240px'>
-            <div class="card-container">
-                <app-common-card-panel [launch]='cardMdSrv'></app-common-card-panel>
-            </div>
-            <!-- <app-department-card></app-department-card> -->
-
+        <div class="card-container" fxFlex='240px'>
+            <app-common-card-panel [launch]='cardMdSrv'></app-common-card-panel>
         </div>
-        <div fxFlex>
-            <!-- <app-account-list></app-account-list> -->
+        <div class="accounts-container" fxFlex>
+            <app-common-simple-table-list [launch]='accountMdSrv'></app-common-simple-table-list>
         </div>
     </div>
 </app-blank-common-tpls>

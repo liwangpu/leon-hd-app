@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ListDisplayModeEnum, IListTableColumn } from '../../paginator-common-tpls.component';
 import { PaginatorCommonMdService } from '../../paginator-common-md.service';
 import { Subject, BehaviorSubject } from 'rxjs';
@@ -141,7 +141,7 @@ export class TableListContentComponent implements OnInit {
   }//
 }
 
-class CustomDataSource extends DataSource<any> {
+export class CustomDataSource extends DataSource<any> {
 
   _dataSubject = new BehaviorSubject<Array<{ seqno: number }>>([]);
 

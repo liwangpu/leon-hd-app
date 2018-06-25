@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChildren, QueryList, AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { CommomCardItemDirective } from './commom-card-item.directive';
-import { Ilistable } from '../../../../toolkit/models/ilistable';
 import { IListableService } from '../../../../toolkit/server/webapi/ilistableService';
-import { Observable, Subject } from 'rxjs';
-import { ApiService } from '../../../../toolkit/server/webapi/api.service';
+import { Subject } from 'rxjs';
 import { EntityBase } from '../../../../toolkit/models/entitybase';
 
 @Component({
@@ -15,7 +13,9 @@ export class CommonCardPanelComponent implements OnInit, OnDestroy, AfterViewIni
 
   seletedItemId = '';
   datas: Array<EntityBase>;
+  preItems: Array<ICommonCardPreItem> = [];
   buttons: Array<ICommonCardManageButton>;
+  selectChange$ = new Subject<string>();
   destroy$ = new Subject<boolean>();
   @Input() launch: CommonCardPanelBase;
   @ViewChildren(CommomCardItemDirective) items: QueryList<CommomCardItemDirective>;
@@ -26,9 +26,9 @@ export class CommonCardPanelComponent implements OnInit, OnDestroy, AfterViewIni
       return;
     this.launch.apiSrv.queryData$.takeUntil(this.destroy$).subscribe(datas => {
       this.datas = datas as Array<EntityBase>;
-      // console.log('depar', datas);
     });
     this.buttons = this.launch.buttons;
+    this.preItems = this.launch.preItems;
   }//ngOnInit
 
   ngOnDestroy(): void {
@@ -38,10 +38,19 @@ export class CommonCardPanelComponent implements OnInit, OnDestroy, AfterViewIni
 
 
   ngAfterViewInit(): void {
-
+    this.items.forEach(x => {
+      if (x.defaultItem) {
+        x.seleteMe();
+        this.launch.selectChange$.next(x.fid);
+      }
+      else
+        x.clearSelected();
+    });
   }//ngAfterViewInit
 
   onItemSelect(id: string) {
+    if (this.seletedItemId === id)
+      return;
     this.seletedItemId = id;
     this.items.forEach(x => {
       if (x.fid !== id)
@@ -49,6 +58,7 @@ export class CommonCardPanelComponent implements OnInit, OnDestroy, AfterViewIni
       else
         x.seleteMe();
     });
+    this.launch.selectChange$.next(id);
   }//onItemSelect
 
   trackFn(item?: EntityBase): string {
@@ -64,13 +74,23 @@ export class CommonCardPanelComponent implements OnInit, OnDestroy, AfterViewIni
 export abstract class CommonCardPanelBase {
   title: string;
   apiSrv: IListableService<EntityBase>;
+  preItems: Array<ICommonCardPreItem> = [];
   buttons: Array<ICommonCardManageButton> = [];
+  selectChange$ = new Subject<string>();
   abstract editData(data?: EntityBase): void;
   abstract deleteData(data: EntityBase): void;
+}
+
+export interface ICommonCardPreItem {
+  id: string;
+  icon?: string;
+  name: string;
+  defaultItem?: boolean;
 }
 
 export interface ICommonCardManageButton {
   icon: string;
   name: string;
   onClick: Function;
+  needDataFirst?: boolean;
 }

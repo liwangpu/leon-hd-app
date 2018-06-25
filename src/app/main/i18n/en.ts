@@ -111,7 +111,11 @@ export const locale = {
             "Selected": "Selected",
             "ProductGroupCategory": "ProductGroup Category",
             "ProductGroup": "Product Group",
-            "Department":"Department"
+            "Department":"Department",
+            "IsAdmin": "Is Admin",
+            "AccountType":"Account Type",
+            "Admin":"Admin",
+            "Member":"Member",
         },
         "button": {
             "Logout": "Logout",
@@ -135,7 +139,7 @@ export const locale = {
             "AddProduct": "ADD NEW PRODUCT",
             "AddOrgan": "ADD NEW ORGAN",
             "OrganOwnerManagement": "Owner Management",
-            "AddDepartment": "New Department",
+            "AddDepartment": "NEW DEPARTMENT",
             "EditDepartment": "Edit Department",
             "AllUsers": "All Users",
             "AddSolution": "ADD NEW SOLUTION",
@@ -153,6 +157,8 @@ export const locale = {
             "List": "List",
             "Litimg": "Litimg",
             "Open": "Open",
+            "AddUser": "NEW USER",
+            "All":"ALL"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",
@@ -202,7 +208,9 @@ export const locale = {
         },
         "dialog": {
             "EditCategory": "Edit Category",
-            "EditDepartment": "EDIT DEPARTMENT"
+            "EditDepartment": "EDIT DEPARTMENT",
+            "EditAccount": "EDIT ACCOUNT",
+            "DeleteAccount":"Delete Account"
         }
     }
 };

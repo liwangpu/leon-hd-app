@@ -109,7 +109,11 @@ export const locale = {
             "Selected": "已选",
             "ProductGroupCategory": "产品组分类",
             "ProductGroup": "产品组",
-            "Department":"部门"
+            "Department": "部门",
+            "IsAdmin": "管理员",
+            "AccountType": "用户类型",
+            "Admin": "管理员",
+            "Member": "用户",
         },
         "button": {
             "Logout": "退出",
@@ -151,6 +155,8 @@ export const locale = {
             "List": "列表",
             "Litimg": "缩略图",
             "Open": "打开",
+            "AddUser": "添加人员",
+            "All": "所有"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
@@ -200,7 +206,9 @@ export const locale = {
         },
         "dialog": {
             "EditCategory": "编辑分类",
-            "EditDepartment": "编辑部门"
+            "EditDepartment": "编辑部门",
+            "EditAccount": "编辑人员",
+            "DeleteAccount": "删除用户"
         }
     }
 };

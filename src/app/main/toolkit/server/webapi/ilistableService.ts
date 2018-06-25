@@ -7,7 +7,7 @@ export interface IListableService<T> {
     queryData$: BehaviorSubject<Array<IEntitybase>>;
     editData$: BehaviorSubject<IEntitybase>;
     uri: string;
-    query<T>(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<any>>;
+    query<T>(query?: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<any>>;
     update(entity: T): Observable<T>;
     batchDelete(idsArr: Array<string>);
     exportData(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>);
