@@ -67,7 +67,9 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      * @param entity 
      */
     protected createEntity<T>(entity: T): Observable<T> {
-        return this.httpClient.post<T>(`${this.uri}`, entity, { headers: this.header });
+        return this.httpClient.post<T>(`${this.uri}`, entity, { headers: this.header }).pipe(tap(x => {
+            this.editData$.next(x as any);
+        }));;
     }
 
     /**
@@ -76,7 +78,9 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      */
     protected updateEntity<T extends IEntitybase>(entity: T): Observable<T> {
         if (entity.id)
-            return this.httpClient.put<T>(`${this.uri}`, entity, { headers: this.header });
+            return this.httpClient.put<T>(`${this.uri}`, entity, { headers: this.header }).pipe(tap(x => {
+                this.editData$.next(x);
+            }));
         return this.createEntity(entity);
     }
 

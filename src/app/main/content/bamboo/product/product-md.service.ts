@@ -18,6 +18,7 @@ export class ProductMdService extends PaginatorLaunch {
     { columnDef: 'icon', header: 'glossary.Icon', width: 0, cell: (data: Product) => data.icon ? data.icon : '' }
     , { columnDef: 'name', header: 'glossary.Name', width: 180, cell: (data: Product) => data.name ? data.name : '' }
     , { columnDef: 'description', header: 'glossary.Description', width: 0, cell: (data: Product) => data.description ? data.description : '' }
+    , { columnDef: 'price', header: 'glossary.Price', width: 65, cell: (data: Product) => data.price ? data.price + '' : '0' }
     , { columnDef: 'categoryName', _columnDef: 'categoryId', header: 'glossary.Category', width: 80, cell: (data: Product) => data.categoryName ? data.categoryName : '' }
     , { columnDef: 'createdTime', header: 'glossary.CreatedTime', width: 85, cell: (data: Product) => this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd') }
   ];

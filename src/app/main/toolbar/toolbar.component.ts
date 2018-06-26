@@ -8,7 +8,7 @@ import { DessertService } from "../content/services/dessert.service";
 import { GlobalCommonService } from '../service/global-common.service';
 import { Subject } from 'rxjs';
 import { DialogFactoryService } from '../toolkit/common/factory/dialog-factory.service';
-import { AccountProfileComponent } from '../content/bamboo/account/account-profile/account-profile.component';
+// import { AccountProfileComponent } from '../content/bamboo/account/account-profile/account-profile.component';
 @Component({
     selector: 'fuse-toolbar',
     templateUrl: './toolbar.component.html',
@@ -167,10 +167,10 @@ export class FuseToolbarComponent implements OnInit, OnDestroy {
         //   }
         // });
 
-        this.dialogFac.open(AccountProfileComponent, {
-            width: '400px', height: '650px', data: {
-                id: this.dessertSrv.userId
-            }
-        });
+        // this.dialogFac.open(AccountProfileComponent, {
+        //     width: '400px', height: '650px', data: {
+        //         id: this.dessertSrv.userId
+        //     }
+        // });
     }//changeProfile
 }

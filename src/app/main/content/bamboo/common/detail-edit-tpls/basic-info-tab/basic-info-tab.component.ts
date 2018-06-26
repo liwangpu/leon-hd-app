@@ -1,10 +1,9 @@
 import { Component, OnInit, AfterContentInit, ContentChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { SnackbarService } from '../../../../../toolkit/common/services/snackbar.service';
-import { TranslateService } from '@ngx-translate/core';
 import { DetailEditScheduleService } from '../detail-edit-schedule.service';
 import { FileAsset } from '../../../../../toolkit/models/fileasset';
+import { AsyncHandleService } from '../../../../services/async-handle.service';
 
 /**
  * 基础信息扩展视图基类
@@ -46,7 +45,7 @@ export class BasicInfoTabComponent implements OnInit, AfterContentInit {
     return true;
   }
 
-  constructor(private formBuilder: FormBuilder, public detaiMdSrv: DetailEditScheduleService, private tranSrv: TranslateService, private snackBarSrv: SnackbarService) {
+  constructor(private formBuilder: FormBuilder, public detaiMdSrv: DetailEditScheduleService, private asyncHandle: AsyncHandleService) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
@@ -76,38 +75,16 @@ export class BasicInfoTabComponent implements OnInit, AfterContentInit {
   }//afterIConChange
 
   submit() {
-    let saveProdAsync = () => {
-      return new Promise((resolve) => {
-        let vl = this.detailForm.value;
-        let ol = this.detaiMdSrv.currentData;
-        vl.iconAssetId = this.detaiMdSrv.currentData.iconAssetId;
-        let fusdata: any;
-        if (this.ext)
-          fusdata = { ...ol, ...vl, ...this.ext.data }
-        else
-          fusdata = { ...ol, ...vl }
-        this.detaiMdSrv.apiSrv.update(fusdata).first().subscribe(resData => {
-          this.detaiMdSrv.currentData = resData;
-          this.detailForm.patchValue({ id: resData.id });
-          resolve({ k: 'message.SaveSuccessfully' });
-        }, err => {
-          resolve({ k: 'message.OperationError', v: { value: err } });
-        });
-      });//promise
-    };//saveProdAsync
-
-    let transAsync = (mobj: { k: string, v: any }) => {
-      return new Promise((resolve) => {
-        this.tranSrv.get(mobj.k, mobj.v).first().subscribe(msg => {
-          resolve(msg);
-        });
-      });//promise
-    };//transAsync
-
-    saveProdAsync().then(transAsync).then(msg => {
-      this.snackBarSrv.simpleBar(msg as string);
-    });
-
+    let vl = this.detailForm.value;
+    let ol = this.detaiMdSrv.currentData;
+    vl.iconAssetId = this.detaiMdSrv.currentData.iconAssetId;
+    let fusdata: any;
+    if (this.ext)
+      fusdata = { ...ol, ...vl, ...this.ext.data }
+    else
+      fusdata = { ...ol, ...vl }
+    let source$ = this.detaiMdSrv.apiSrv.update(fusdata);
+    this.asyncHandle.asyncRequest(source$).subscribe();
   }//submit
 }
 

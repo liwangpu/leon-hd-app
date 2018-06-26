@@ -13,8 +13,6 @@ import { CategoryChangeSuitComponent } from './category-change-suit.component';
   providers: [{ provide: BasicInfoTabExtend, useExisting: forwardRef(() => BasicInfoComponent) }]
 })
 export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit {
-
-
   categoryId: string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -25,17 +23,22 @@ export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit {
       let mat = (data as Product);
       this.categoryId = mat.categoryId;
       this.detailForm.patchValue({ categoryId: mat.categoryId, categoryName: mat.categoryName });
+      this.detailForm.patchValue({ price: mat.price });
       this.canSave = Boolean(this.categoryId);
     });
 
     this.detailForm = this.formBuilder.group({
       categoryId: [''],
+      price: [''],
       categoryName: ['', [Validators.required]]
     });
   }//constructor
 
   ngOnInit() {
-
+    this.detailForm.valueChanges.subscribe(vl => {
+      this.data = { categoryId: vl.categoryId, price: vl.price };
+      this.canSave = this.categoryId ? true : false;
+    });
   }//ngOnInit
 
 
@@ -46,13 +49,12 @@ export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit {
       let ins = (dialog.componentInstance.componentIns as CategoryChangeSuitComponent);
       ins.refreshData.subscribe(cate => {
         this.categoryId = cate.id;
-        this.data = { categoryId: cate.id };
         this.detailForm.patchValue({ categoryId: cate.id, categoryName: cate.name });
       });
 
-      ins.afterConfirm.subscribe(() => {
-        this.canSave = Boolean(this.categoryId);
-      });
+      // ins.afterConfirm.subscribe(() => {
+      //   this.canSave = Boolean(this.categoryId);
+      // });
     });
 
   }//onEditCategory

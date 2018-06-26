@@ -21,7 +21,7 @@
             <ng-container *ngIf='column.columnDef=="icon"'>
                 <mat-header-cell *cdkHeaderCellDef fxFlex="84px">{{'glossary.Icon'|translate}}</mat-header-cell>
                 <mat-cell *cdkCellDef="let row" fxFlex="84px">
-                    <img class="listable-icon" [src]="row.icon?(row.icon|serverRedirect):'assets/images/ecommerce/product-image-placeholder.png'">
+                    <img class="listable-icon" [src]="row.icon?(row.icon|serverRedirect:128):'assets/images/ecommerce/product-image-placeholder.png'">
                 </mat-cell>
             </ng-container>
 

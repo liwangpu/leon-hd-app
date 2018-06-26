@@ -1,6 +1,6 @@
 <div class="item-container" appCommonIconItem (selectedChange)='_selectedChange($event)'>
     <div [ngStyle]='imgStyle' class="icon-container">
-        <img [src]='icon?(icon|serverRedirect):"/assets/images/common/not-upload.png"' [class.default-img]='!icon' [ngStyle]='imgStyle'>
+        <img [src]='icon?(icon|serverRedirect:256):"/assets/images/common/not-upload.png"' [class.default-img]='!icon' [ngStyle]='imgStyle'>
     </div>
     <span>{{name}}</span>
 </div>

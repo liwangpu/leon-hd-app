@@ -18,7 +18,7 @@
         </button>
 
         <div class="detail-image mr-8 mr-sm-16">
-            <img [src]="scheduleSrv.currentData.icon?(scheduleSrv.currentData.icon|serverRedirect):'assets/images/ecommerce/product-image-placeholder.png'">
+            <img [src]="scheduleSrv.currentData.icon?(scheduleSrv.currentData.icon|serverRedirect:128):'assets/images/ecommerce/product-image-placeholder.png'">
         </div>
 
         <div fxLayout="column" fxLayoutAlign="start start">
