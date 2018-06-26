@@ -172,5 +172,6 @@ export class FuseToolbarComponent implements OnInit, OnDestroy {
         //         id: this.dessertSrv.userId
         //     }
         // });
+        this.router.navigateByUrl('/app/account-profile');
     }//changeProfile
 }

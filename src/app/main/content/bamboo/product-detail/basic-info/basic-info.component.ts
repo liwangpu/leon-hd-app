@@ -1,4 +1,4 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef, OnDestroy } from '@angular/core';
 import { BasicInfoTabExtend } from '../../common/detail-edit-tpls/basic-info-tab/basic-info-tab.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -12,7 +12,8 @@ import { CategoryChangeSuitComponent } from './category-change-suit.component';
   styleUrls: ['./basic-info.component.scss'],
   providers: [{ provide: BasicInfoTabExtend, useExisting: forwardRef(() => BasicInfoComponent) }]
 })
-export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit {
+export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit, OnDestroy {
+
   categoryId: string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -40,6 +41,11 @@ export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit {
       this.canSave = this.categoryId ? true : false;
     });
   }//ngOnInit
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 
 
   onEditCategory() {

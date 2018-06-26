@@ -13,17 +13,17 @@
       <!-- APP TITLE -->
       <div fxLayout="row" fxLayoutAlign="start center">
 
-        <button class="mr-0 mr-sm-16" mat-icon-button (click)='goback()'>
+        <button class="mr-0 mr-sm-16" mat-icon-button (click)='goback()' *ngIf='!noBackup'>
           <mat-icon>arrow_back</mat-icon>
         </button>
 
         <div class="detail-image mr-8 mr-sm-16">
-            <img [src]="scheduleSrv.currentData.icon?(scheduleSrv.currentData.icon|serverRedirect:128):'assets/images/ecommerce/product-image-placeholder.png'">
+          <img [src]="scheduleSrv.currentData.icon?(scheduleSrv.currentData.icon|serverRedirect:128):'assets/images/ecommerce/product-image-placeholder.png'">
         </div>
 
         <div fxLayout="column" fxLayoutAlign="start start">
           <div class="h2">
-              {{title|translate}}
+            {{title|translate}}
           </div>
           <div class="subtitle secondary-text">
             <span>
@@ -57,7 +57,7 @@
 
           <mat-tab *ngFor="let tab of tabs" label="{{tab.tabName|translate}}">
             <!-- <div class="mat-tab-cus-wrapper"> -->
-              <ng-container *ngTemplateOutlet="tab.template"></ng-container>
+            <ng-container *ngTemplateOutlet="tab.template"></ng-container>
             <!-- </div> -->
           </mat-tab>
         </mat-tab-group>

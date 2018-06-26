@@ -5,6 +5,7 @@ import { ApiService, IQuery, Paging } from './api.service';
 import { Observable } from 'rxjs/Observable';
 import { Account } from '../../models/account';
 import { IQueryFilter } from '../../common/interfaces/iqueryFilter';
+import { Md5 } from 'ts-md5/dist/md5';
 @Injectable()
 export class AccountService extends ApiService<Account> {
 
@@ -38,6 +39,19 @@ export class AccountService extends ApiService<Account> {
     }
 
     /**
+     * 修改密码
+     * @param oldPassword 
+     * @param newPassword 
+     */
+    changePassword(oldPassword: string, newPassword: string) {
+        let data = {
+            oldPassword: Md5.hashStr(oldPassword).toString(),
+            newPassword: Md5.hashStr(newPassword).toString()
+        };
+        return this.http.put(`${this.uri}/changePassword`, data, { headers: this.header, responseType: 'text' });
+    }//changePassword
+
+    /**
      * 更新用户
      * @param entity 
      */
@@ -52,6 +66,6 @@ export class AccountService extends ApiService<Account> {
      * @param query 
      */
     query(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>): Observable<Paging<Account>> {
-        return super.queryEntities(query,advanceQueryFilters);
+        return super.queryEntities(query, advanceQueryFilters);
     }
 }

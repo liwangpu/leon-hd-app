@@ -43,6 +43,8 @@ import { ProductgroupCategoryComponent } from './productgroup-category/productgr
 import { ProductGroupComponent } from './product-group/product-group.component';
 import { ProductGroupDetailComponent } from './product-group-detail/product-group-detail.component';
 import { ProductGroupService } from '../../toolkit/server/webapi/product-group.service';
+import { AccountService } from '../../toolkit/server/webapi/account.service';
+import { AccountProfileComponent } from './account/account-profile/account-profile.component';
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -232,6 +234,15 @@ const routes: Routes = [
       entity: AreaTypeService
     }
   }
+    /****************************************************************************************************/
+    , {
+      path: 'app/account-profile'
+      , component: AccountProfileComponent
+      , canActivate: [RouteGuardService],
+      resolve: {
+        entity: AccountService
+      }
+    }
   /****************************************************************************************************/
 ];
 

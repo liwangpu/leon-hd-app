@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterContentInit, ContentChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { DetailEditScheduleService } from '../detail-edit-schedule.service';
 import { FileAsset } from '../../../../../toolkit/models/fileasset';
 import { AsyncHandleService } from '../../../../services/async-handle.service';
+import { Ilistable } from '../../../../../toolkit/models/ilistable';
 
 /**
  * 基础信息扩展视图基类
@@ -11,10 +12,10 @@ import { AsyncHandleService } from '../../../../services/async-handle.service';
 export abstract class BasicInfoTabExtend {
   private _canSave = false;
   satisfySave$: Subject<boolean> = new Subject();
-  afterDataChange$: Subject<any> = new Subject();
+  afterDataChange$ = new BehaviorSubject<any>({});
   destroy$: Subject<boolean> = new Subject();
   data: any;
-
+  manageButtons: Array<BasicInfoTabExtendManageButton> = [];
   set canSave(vl: boolean) {
     this._canSave = vl;
     this.satisfySave$.next(vl);
@@ -24,6 +25,14 @@ export abstract class BasicInfoTabExtend {
   }
 
 }
+
+export interface BasicInfoTabExtendManageButton {
+  name: string;
+  icon: string;
+  click: (data: Ilistable) => void;
+  needPersistent?: boolean;
+}
+
 
 
 @Component({
@@ -36,6 +45,7 @@ export class BasicInfoTabComponent implements OnInit, AfterContentInit {
 
   iconUploadUrl: string;
   detailForm: FormGroup;
+  manageButtons: Array<BasicInfoTabExtendManageButton> = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
   @ContentChild(BasicInfoTabExtend) ext: BasicInfoTabExtend;
 
@@ -55,6 +65,9 @@ export class BasicInfoTabComponent implements OnInit, AfterContentInit {
     //订阅实体数据更新后事件
     this.detaiMdSrv.afterDataRefresh$.takeUntil(this.destroy$).subscribe(() => {
       this.detailForm.patchValue(this.detaiMdSrv.currentData);
+      if (this.ext) {
+        this.ext.afterDataChange$.next(this.detaiMdSrv.currentData);
+      }
     });//
   }
 
@@ -66,6 +79,7 @@ export class BasicInfoTabComponent implements OnInit, AfterContentInit {
   ngAfterContentInit(): void {
     if (this.ext) {
       this.ext.afterDataChange$.next(this.detaiMdSrv.currentData);
+      this.manageButtons = this.ext.manageButtons;
     }
   }//ngAfterContentInit
 

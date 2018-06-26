@@ -26,6 +26,8 @@ export class DetailEditTplsComponent implements OnInit, OnDestroy, AfterContentI
   basicTab: DetailTabBaseExtend;
   tabs: DetailTabBaseExtend[];
   name: string;
+  @Input() forceId: string;//有些时候,id无法通过路由请求传递,改用字段传递
+  @Input() noBackup = false;
   @Input() editOpWith: string;
   @Input() title: string;
   @Input() apiSrv: IListableService<Ilistable>;
@@ -50,6 +52,12 @@ export class DetailEditTplsComponent implements OnInit, OnDestroy, AfterContentI
   ngOnInit() {
     this.scheduleSrv.readDataOnly = !this.dessertSrv.hasDataEditPermission(this.editOpWith);
     this.scheduleSrv.apiSrv = this.apiSrv;
+    if (this.forceId) {
+      this.apiSrv.getById(this.forceId).subscribe(data => {
+        this.scheduleSrv.currentData = data;
+      });
+    }
+
   }//ngOnInit
 
   ngOnDestroy(): void {

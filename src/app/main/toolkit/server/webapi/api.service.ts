@@ -57,9 +57,13 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      */
     protected getEntity<T>(id: number | string): Observable<T> {
         if (id) {
-            return this.httpClient.get<T>(`${this.uri}/${id}`, { headers: this.header });
+            return this.httpClient.get<T>(`${this.uri}/${id}`, { headers: this.header }).pipe(tap(x => {
+                this.editData$.next(x as any);
+            }));
         }
-        return Observable.of<T>({} as T);
+        return Observable.of<T>({} as T).pipe(tap(x => {
+            this.editData$.next(x as any);
+        }));
     }
 
     /**
@@ -69,7 +73,7 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
     protected createEntity<T>(entity: T): Observable<T> {
         return this.httpClient.post<T>(`${this.uri}`, entity, { headers: this.header }).pipe(tap(x => {
             this.editData$.next(x as any);
-        }));;
+        }));
     }
 
     /**

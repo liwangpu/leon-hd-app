@@ -114,6 +114,10 @@ export const locale = {
             "AccountType": "用户类型",
             "Admin": "管理员",
             "Member": "用户",
+            "AccountProfile": "个人信息",
+            "OriginalPassword": "原密码",
+            "NewPassword": "新密码",
+            "ConfirmPassword": "确认密码"
         },
         "button": {
             "Logout": "退出",
@@ -156,14 +160,15 @@ export const locale = {
             "Litimg": "缩略图",
             "Open": "打开",
             "AddUser": "添加人员",
-            "All": "所有"
+            "All": "所有",
+            "ChangePassword": "修改密码",
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
             "UploadUnSuccessfully": "文件上传失败",
             "DeleteSuccessfully": "删除成功",
             "DeleteError": "删除过程出现异常,信息:\"{{value}}\"",
-            "OperationError": "操作出现异常: {{value}}",
+            "OperationError": "{{value}}",
             "DeleteConfirm": "您确定要删除 \"{{value}}\" 吗?",
             "CopyConfirm": "您确定要复制 \"{{value}}\" 吗?",
             "Cannot_Add_Cuz_UnSaving": "请先保存当前的记录",
@@ -202,13 +207,15 @@ export const locale = {
             "SelectAll": "全选",
             "UploadCategoryByCSV": "根据CSV批量修改分类信息",
             "DeleteConfirm": "温馨提示",
-            "SearchPlaceHolder": "请输入搜索关键字"
+            "SearchPlaceHolder": "请输入搜索关键字",
+            "ConfirmPasswordMustSame": "新密码和确认密码不一致",
         },
         "dialog": {
             "EditCategory": "编辑分类",
             "EditDepartment": "编辑部门",
             "EditAccount": "编辑人员",
-            "DeleteAccount": "删除用户"
+            "DeleteAccount": "删除用户",
+            "ChangePassword": "修改密码"
         }
     }
 };

@@ -116,6 +116,10 @@ export const locale = {
             "AccountType":"Account Type",
             "Admin":"Admin",
             "Member":"Member",
+            "AccountProfile": "Account Profile",
+            "OriginalPassword":"Original Password",
+            "NewPassword":"New Password",
+            "ConfirmPassword":"Confirm Password"
         },
         "button": {
             "Logout": "Logout",
@@ -158,14 +162,15 @@ export const locale = {
             "Litimg": "Litimg",
             "Open": "Open",
             "AddUser": "NEW USER",
-            "All":"ALL"
+            "All":"ALL",
+            "ChangePassword":"Change Password",
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",
             "UploadUnSuccessfully": "Files Upload Failed",
             "DeleteSuccessfully": "Delete Successfully",
             "DeleteError": "Error in the delete process,detail:\"{{value}}\"",
-            "OperationError": "Operated Error: {{value}}",
+            "OperationError": "{{value}}",
             "DeleteConfirm": "Are you sure to delete \"{{value}}\" ?",
             "CopyConfirm": "Are you sure to copy \"{{value}}\" ?",
             "Cannot_Add_Cuz_UnSaving": "Please save the current new item first",
@@ -205,12 +210,14 @@ export const locale = {
             "UploadCategoryByCSV": "Upload Category By CSV File",
             "DeleteConfirm": "Prompt",
             "SearchPlaceHolder": "Enter the keyword",
+            "ConfirmPasswordMustSame": "Two input password must be consistent",
         },
         "dialog": {
             "EditCategory": "Edit Category",
             "EditDepartment": "EDIT DEPARTMENT",
             "EditAccount": "EDIT ACCOUNT",
-            "DeleteAccount":"Delete Account"
+            "DeleteAccount":"Delete Account",
+            "ChangePassword":"Change Password"
         }
     }
 };

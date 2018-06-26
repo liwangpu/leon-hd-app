@@ -19,11 +19,24 @@ export class ErrorInterceptor implements HttpInterceptor {
     handleError(handle: HttpErrorResponse) {
         let errorMsg = '';
 
+        console.log('ErrorInterceptor catch error:', handle);
         if (typeof (handle.error) === 'string') {
-            //delete 请求返回的error是{message:string}格式的字符串,目前没有查找到原因,临时转换json
+            //delete|post|put 在responseType: 'text' 请求返回的error是{ message: string, errors: [{ field: string, message: string }] }格式的字符串,目前没有查找到原因,临时转换json
             try {
-                let obj = JSON.parse(handle.error) as { message: string };
-                errorMsg = obj.message;
+                let obj = JSON.parse(handle.error) as { message: string, errors: [{ field: string, message: string }] };
+                if (obj.errors) {
+                    let msg = '';
+                    for (let idx = obj.errors.length - 1; idx >= 0; idx--) {
+                        let curError = obj.errors[idx];
+                        if (msg !== '')
+                            msg += `,${curError.field}:${curError.message}`;
+                        else
+                            msg += `${curError.field}:${curError.message}`;
+                    }
+                    errorMsg = msg;
+                }
+                else
+                    errorMsg = obj.message;
             }
             catch (err) {
                 errorMsg = err;
