@@ -162,8 +162,9 @@ export class ShareEditItemComponent implements OnInit, OnChanges {
   }//save
 
   viewShare() {
-    let type = this.mediaType ? this.mediaType : this.shareResource.type;
-    let viewShareUrl = `${environment.shareServerBase}?t=${type}&id=${this.shareResource.id}`;
-    this.windowSrv.nativeWindow.open(viewShareUrl);
+    // let type = this.mediaType ? this.mediaType : this.shareResource.url;
+    // let viewShareUrl = `${environment.shareServerBase}?t=${type}&id=${this.shareResource.id}`;
+    
+    this.windowSrv.nativeWindow.open(this.shareResource.url);
   }//viewShare
 }

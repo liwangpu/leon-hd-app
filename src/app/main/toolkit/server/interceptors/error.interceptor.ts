@@ -3,6 +3,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { catchError } from 'rxjs/operators';
+import { ValidationResponse } from '../../models/validation-response';
 /**
  * 用户Error Interceptor
  * 用于向WeApi请求Header中添加Authorization Token信息
@@ -21,9 +22,9 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         console.log('ErrorInterceptor catch error:', handle);
         if (typeof (handle.error) === 'string') {
-            //delete|post|put 在responseType: 'text' 请求返回的error是{ message: string, errors: [{ field: string, message: string }] }格式的字符串,目前没有查找到原因,临时转换json
+            //delete|post|put 在responseType: 'text' 请求返回的error是ValidationResponse格式的字符串,需要转换json
             try {
-                let obj = JSON.parse(handle.error) as { message: string, errors: [{ field: string, message: string }] };
+                let obj = JSON.parse(handle.error) as ValidationResponse;
                 if (obj.errors) {
                     let msg = '';
                     for (let idx = obj.errors.length - 1; idx >= 0; idx--) {

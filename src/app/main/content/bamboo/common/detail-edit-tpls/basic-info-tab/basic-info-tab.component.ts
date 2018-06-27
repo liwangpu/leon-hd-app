@@ -98,7 +98,9 @@ export class BasicInfoTabComponent implements OnInit, AfterContentInit {
     else
       fusdata = { ...ol, ...vl }
     let source$ = this.detaiMdSrv.apiSrv.update(fusdata);
-    this.asyncHandle.asyncRequest(source$).subscribe();
+    this.asyncHandle.asyncRequest(source$).subscribe(res => {
+      this.detaiMdSrv.currentData = res;
+    });
   }//submit
 }
 

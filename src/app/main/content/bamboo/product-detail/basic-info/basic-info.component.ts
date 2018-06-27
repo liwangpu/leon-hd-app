@@ -23,9 +23,11 @@ export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit, On
     this.afterDataChange$.takeUntil(this.destroy$).subscribe(data => {
       let mat = (data as Product);
       this.categoryId = mat.categoryId;
-      this.detailForm.patchValue({ categoryId: mat.categoryId, categoryName: mat.categoryName });
-      this.detailForm.patchValue({ price: mat.price });
       this.canSave = Boolean(this.categoryId);
+      if (!this.detailForm)
+        return;
+      this.detailForm.patchValue({ categoryId: mat.categoryId, categoryName: mat.categoryName });
+      this.detailForm.patchValue({ price: mat.price ? mat.price : 0 });
     });
 
     this.detailForm = this.formBuilder.group({

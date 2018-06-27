@@ -23,8 +23,10 @@ export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit {
     this.afterDataChange$.takeUntil(this.destroy$).subscribe(data => {
       let mat = (data as Material);
       this.categoryId = mat.categoryId;
-      this.detailForm.patchValue({ categoryId: mat.categoryId, categoryName: mat.categoryName });
       this.canSave = Boolean(this.categoryId);
+      if (!this.detailForm)
+        return;
+      this.detailForm.patchValue({ categoryId: mat.categoryId, categoryName: mat.categoryName });
     });
 
     this.detailForm = this.formBuilder.group({
@@ -34,7 +36,7 @@ export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit {
   }//constructor
 
   ngOnInit() {
-    
+
   }//ngOnInit
 
 
