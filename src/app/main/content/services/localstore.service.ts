@@ -11,6 +11,9 @@ export class LocalStoreService {
     }
 
     getItem(key: string) {
-        return localStorage.getItem(key);
+        let vl = localStorage.getItem(key);
+        if (vl != null && vl.toString() != 'null' && vl.toString() != 'undefined')
+            return localStorage.getItem(key);
+        return undefined;
     }
 }

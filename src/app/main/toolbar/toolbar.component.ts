@@ -22,15 +22,10 @@ export class FuseToolbarComponent implements OnInit, OnDestroy {
     selectedLanguage: any;
     showLoadingBar: boolean;
     horizontalNav: boolean;
+    avator: string;
     nickName = '用户';
     destroy$: Subject<boolean> = new Subject();
     constructor(private router: Router, private fuseConfig: FuseConfigService, private translate: TranslateService, private auth: AuthService, private navi: FuseNavigationService, private dessertSrv: DessertService, private globalSrv: GlobalCommonService, private dialogFac: DialogFactoryService) {
-
-        //订阅个人信息变更事件
-        this.dessertSrv.afterProfileChange$.takeUntil(this.destroy$).subscribe(() => {
-            this.nickName = this.dessertSrv.nickName;
-        });//
-
         this.userStatusOptions = [
             {
                 'title': 'Online',
@@ -88,6 +83,10 @@ export class FuseToolbarComponent implements OnInit, OnDestroy {
             this.horizontalNav = settings.layout.navigation === 'top';
         });
 
+        this.dessertSrv.afterProfileChange$.takeUntil(this.destroy$).debounceTime(500).subscribe(_ => {
+            this.nickName = this.dessertSrv.nickName;
+            this.avator = this.dessertSrv.icon;
+        });
     }//constructor
 
     ngOnDestroy(): void {
@@ -97,6 +96,7 @@ export class FuseToolbarComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.nickName = this.dessertSrv.nickName;
+        this.avator = this.dessertSrv.icon;
     }//ngOnInit
 
     search(value: string) {

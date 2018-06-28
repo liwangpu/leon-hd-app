@@ -6,6 +6,7 @@ import { Account } from "../../../../../toolkit/models/account";
 import { DatePipe } from '@angular/common';
 import { DialogFactoryService } from '../../../../../toolkit/common/factory/dialog-factory.service';
 import { ChangePasswordComponent } from '../../change-password/change-password.component';
+import { DessertService } from '../../../../services/dessert.service';
 
 @Component({
   selector: 'app-account-profile-basic-info',
@@ -17,7 +18,7 @@ export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit, On
 
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private formBuilder: FormBuilder, protected datePipeTr: DatePipe,protected dialogFac: DialogFactoryService) {
+  constructor(private formBuilder: FormBuilder, protected datePipeTr: DatePipe, protected dialogFac: DialogFactoryService, private dessertSrv: DessertService) {
     super();
     this.detailForm = this.formBuilder.group({
       phone: [''],
@@ -30,6 +31,11 @@ export class BasicInfoComponent extends BasicInfoTabExtend implements OnInit, On
 
     this.afterDataChange$.takeUntil(this.destroy$).subscribe(data => {
       let mat = (data as Account);
+      this.dessertSrv.nickName = mat.name;
+      this.dessertSrv.icon = mat.icon;
+      this.dessertSrv.afterProfileChange$.next();
+      if (!this.detailForm)
+        return;
       this.detailForm.patchValue({ mail: mat.mail, phone: mat.phone, location: mat.location, activationTime: this.datePipeTr.transform(mat.activationTime, 'yyyy-MM-dd'), expireTime: this.datePipeTr.transform(mat.expireTime, 'yyyy-MM-dd'), department: mat.departmentName });
     });
 

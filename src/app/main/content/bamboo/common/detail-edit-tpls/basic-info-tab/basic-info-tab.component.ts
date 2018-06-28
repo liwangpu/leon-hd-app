@@ -86,6 +86,9 @@ export class BasicInfoTabComponent implements OnInit, AfterContentInit {
   afterIConChange(ass: FileAsset) {
     this.detaiMdSrv.currentData.icon = ass.url;
     this.detaiMdSrv.currentData.iconAssetId = ass.id;
+    if (this.ext) {
+      this.ext.afterDataChange$.next(this.detaiMdSrv.currentData);
+    }
   }//afterIConChange
 
   submit() {
@@ -100,6 +103,9 @@ export class BasicInfoTabComponent implements OnInit, AfterContentInit {
     let source$ = this.detaiMdSrv.apiSrv.update(fusdata);
     this.asyncHandle.asyncRequest(source$).subscribe(res => {
       this.detaiMdSrv.currentData = res;
+      if (this.ext) {
+        this.ext.afterDataChange$.next(this.detaiMdSrv.currentData);
+      }
     });
   }//submit
 }

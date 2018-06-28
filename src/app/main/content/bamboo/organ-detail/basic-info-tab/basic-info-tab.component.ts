@@ -24,9 +24,10 @@ export class BasicInfoTabComponent extends BasicInfoTabExtend implements OnInit,
 
     this.afterDataChange$.takeUntil(this.destroy$).subscribe(data => {
       let organ = (data as Organization);
-      this.detailForm.patchValue({ type: organ.type, mail: organ.mail });
       this.data.type = organ.type;
       this.data.mail = organ.mail;
+      if (this.detailForm)
+        this.detailForm.patchValue({ type: organ.type, mail: organ.mail });
     });
 
     this.detailForm = this.formBuilder.group({
