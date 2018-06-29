@@ -119,7 +119,7 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
      */
     public batchDelete(idsArr: Array<string>) {
         let idsStr = idsArr && idsArr.length > 0 ? idsArr.join(',') : '';
-        return this.httpClient.delete(`${this.uri}/BatchDelete?ids=${idsStr}`, { responseType: 'text' })
+        return this.httpClient.delete(`${this.uri}/BatchDelete?ids=${idsStr}`, { responseType: 'text' });
     }//batchDelete
 
     public exportData(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>) {
@@ -137,6 +137,15 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
         params = params.append('pageSize', `${query.pageSize ? query.pageSize : 10}`);
         return this.httpClient.request('get', `${this.uri}/export?${queryPart}`, { headers: this.header, params: params, responseType: 'blob' });
     }//exportData
+
+    /**
+     * 分享实体信息
+     * @param idsArr 
+     */
+    public shareDatas(idsArr: Array<string>) {
+        let idsStr = idsArr && idsArr.length > 0 ? idsArr.join(',') : '';
+        return this.httpClient.request('put', `${this.uri}/Share?ids=${idsStr}`, { headers: this.header, responseType: 'text' });
+    }//shareDatas
 }
 //TODO:转为q查询方式
 function conjunctFilter(advanceQueryFilters?: Array<IQueryFilter>): string {

@@ -6,4 +6,6 @@ export class AssetBase extends ListableBase implements Iasset {
     categoryName: string;
     fileAssetId: string;
     fileAsset?: FileAsset;
+    creatorName: string;
+    modifierName: string;
 }

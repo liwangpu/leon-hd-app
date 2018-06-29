@@ -5,4 +5,7 @@ export class ListableBase extends EntityBase implements Ilistable {
     seqno: number;
     icon: string;
     iconAssetId: string;
+    resourceType: number;
+    creatorName: string;
+    modifierName: string;
 }

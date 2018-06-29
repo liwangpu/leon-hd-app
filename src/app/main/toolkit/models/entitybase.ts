@@ -1,5 +1,7 @@
 import { IEntitybase } from "./ientitybase";
 export class EntityBase implements IEntitybase {
+    creatorName: string;
+    modifierName: string;
     id: string;
     name: string;
     description: string;

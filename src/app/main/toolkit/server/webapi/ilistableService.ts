@@ -12,4 +12,5 @@ export interface IListableService<T> {
     update(entity: T): Observable<T>;
     batchDelete(idsArr: Array<string>);
     exportData(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>);
+    shareDatas(idsArr: Array<string>);
 }

@@ -76,6 +76,8 @@ export const locale = {
             "Location": "Location",
             "Description": "Description",
             "CreatedTime": "Created Time",
+            "CreatorName": "Creator Name",
+            "ModifierName": "Modifier Name",
             "NewProduct": "NEW PRODUCT",
             "NewOrgan": "NEW ORGANIZATION",
             "OrganName": "Organiztion Name",
@@ -119,7 +121,8 @@ export const locale = {
             "AccountProfile": "Account Profile",
             "OriginalPassword":"Original Password",
             "NewPassword":"New Password",
-            "ConfirmPassword":"Confirm Password"
+            "ConfirmPassword":"Confirm Password",
+            "ShareState":"Share"
         },
         "button": {
             "Logout": "Logout",
@@ -164,6 +167,7 @@ export const locale = {
             "AddUser": "NEW USER",
             "All":"ALL",
             "ChangePassword":"Change Password",
+            "Share":"Share"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",

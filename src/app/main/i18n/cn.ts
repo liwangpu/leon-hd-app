@@ -74,6 +74,8 @@ export const locale = {
             "Description": "描述",
             "Location": "地址",
             "CreatedTime": "创建时间",
+            "CreatorName": "创建人",
+            "ModifierName": "修改人",
             "NewProduct": "新产品",
             "NewOrgan": "新组织",
             "OrganName": "组织名称",
@@ -117,7 +119,8 @@ export const locale = {
             "AccountProfile": "个人信息",
             "OriginalPassword": "原密码",
             "NewPassword": "新密码",
-            "ConfirmPassword": "确认密码"
+            "ConfirmPassword": "确认密码",
+            "ShareState": "分享状态",
         },
         "button": {
             "Logout": "退出",
@@ -162,6 +165,7 @@ export const locale = {
             "AddUser": "添加人员",
             "All": "所有",
             "ChangePassword": "修改密码",
+            "Share":"分享"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",
