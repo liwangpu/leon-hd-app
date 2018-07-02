@@ -45,6 +45,7 @@ import { ProductGroupDetailComponent } from './product-group-detail/product-grou
 import { ProductGroupService } from '../../toolkit/server/webapi/product-group.service';
 import { AccountService } from '../../toolkit/server/webapi/account.service';
 import { AccountProfileComponent } from './account/account-profile/account-profile.component';
+import { MapService } from '../../toolkit/server/webapi/map.service';
 const routes: Routes = [
   { path: 'app/login', component: LoginComponent }
   , { path: 'app/login2', component: Login2Component }
@@ -191,6 +192,14 @@ const routes: Routes = [
     , component: MapDetailComponent
     , canActivate: [RouteGuardService]
   }
+  , {
+    path: 'app/map-detail/:id'
+    , component: MapDetailComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: MapService
+    }
+  }
   /****************************************************************************************************/
   , {
     path: 'app/layout-detail/:id'
@@ -234,15 +243,15 @@ const routes: Routes = [
       entity: AreaTypeService
     }
   }
-    /****************************************************************************************************/
-    , {
-      path: 'app/account-profile'
-      , component: AccountProfileComponent
-      , canActivate: [RouteGuardService],
-      resolve: {
-        entity: AccountService
-      }
+  /****************************************************************************************************/
+  , {
+    path: 'app/account-profile'
+    , component: AccountProfileComponent
+    , canActivate: [RouteGuardService],
+    resolve: {
+      entity: AccountService
     }
+  }
   /****************************************************************************************************/
 ];
 

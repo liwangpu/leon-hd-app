@@ -147,7 +147,7 @@ export class CategoryListComponent implements OnInit, OnDestroy, AfterViewInit, 
     dialog.afterOpen().subscribe(_ => {
       let ins = dialog.componentInstance.componentIns as CategoryFormComponent;
       ins.afterConfirm.subscribe(_ => {
-        let source$ = this.mdSrv.apiSrv.createAssetCategory(ins.categoryForm.value);
+        let source$ = this.mdSrv.apiSrv.updateAssetCategory(ins.categoryForm.value);
         this.asyncHandleSrv.asyncRequest(source$).subscribe(rdata => {
           let isExist = this.categories.some(x => x.id === rdata.id);
           if (isExist) {
