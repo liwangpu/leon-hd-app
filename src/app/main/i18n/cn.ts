@@ -165,7 +165,8 @@ export const locale = {
             "AddUser": "添加人员",
             "All": "所有",
             "ChangePassword": "修改密码",
-            "Share":"分享"
+            "Share":"分享",
+            "CancelShare":"取消分享"
         },
         "message": {
             "UploadSuccessfully": "文件上传成功",

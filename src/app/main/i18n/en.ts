@@ -167,7 +167,8 @@ export const locale = {
             "AddUser": "NEW USER",
             "All":"ALL",
             "ChangePassword":"Change Password",
-            "Share":"Share"
+            "Share":"Share",
+            "CancelShare":"Cancel Share"
         },
         "message": {
             "UploadSuccessfully": "Files Upload Successfully",

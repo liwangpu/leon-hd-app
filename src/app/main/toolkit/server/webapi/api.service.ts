@@ -146,6 +146,11 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
         let idsStr = idsArr && idsArr.length > 0 ? idsArr.join(',') : '';
         return this.httpClient.request('put', `${this.uri}/Share?ids=${idsStr}`, { headers: this.header, responseType: 'text' });
     }//shareDatas
+
+    public cancelShareDatas(idsArr: Array<string>) {
+        let idsStr = idsArr && idsArr.length > 0 ? idsArr.join(',') : '';
+        return this.httpClient.request('put', `${this.uri}/CancelShare?ids=${idsStr}`, { headers: this.header, responseType: 'text' });
+    }//cancelShareDatas
 }
 //TODO:转为q查询方式
 function conjunctFilter(advanceQueryFilters?: Array<IQueryFilter>): string {

@@ -24,12 +24,20 @@ export class SolutionMdService extends PaginatorLaunch {
     ];
 
     this.advanceMenuItems = [
-      { icon: 'share', name: 'button.Share', needSelected: true, click: (ids: Array<string>) => { this.shareSolutions(ids); } }
+      { icon: 'share', name: 'button.Share', needSelected: true, click: (ids: Array<string>) => { this.shares(ids); } }
+      , { icon: 'share', name: 'button.CancelShare', needSelected: true, click: (ids: Array<string>) => { this.cancelShares(ids); } }
     ];
   }//constructor
 
-  shareSolutions(ids: Array<string>) {
+  shares(ids: Array<string>) {
     let source$ = this.apiSrv.shareDatas(ids);
+    this.syncHandle.asyncRequest(source$).subscribe(_ => {
+      this.refreshData$.next();
+    });
+  }//shareSolutions
+
+  cancelShares(ids: Array<string>) {
+    let source$ = this.apiSrv.cancelShareDatas(ids);
     this.syncHandle.asyncRequest(source$).subscribe(_ => {
       this.refreshData$.next();
     });
