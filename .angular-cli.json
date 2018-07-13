@@ -27,7 +27,8 @@
             "environmentSource": "environments/environment.ts",
             "environments": {
                 "dev": "environments/environment.dev.ts",
-                "staging": "environments/environment.staging.ts"
+                "staging": "environments/environment.staging.ts",
+                "kenn": "environments/environment.kenn.ts"
             }
         }
     ],

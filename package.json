@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "release-dev": "ng build --env=staging --aot=false --prod",
-    "dev": "ng serve --env=dev"
+    "dev": "ng serve --env=dev",
+    "b-kenn":"ng build --env=kenn --aot=false --prod"
   },
   "private": true,
   "dependencies": {
