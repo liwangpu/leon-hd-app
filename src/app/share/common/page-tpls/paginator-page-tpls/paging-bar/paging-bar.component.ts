@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatCheckbox } from '@angular/material';
+import { MatCheckbox, MatPaginator } from '@angular/material';
 import { PaginatorCommonMdService } from '../paginator-common-md.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -15,6 +15,7 @@ export class PagingBarComponent implements OnInit {
   selected = false;
   viewMode = true;
   @ViewChild(MatCheckbox) allCheckCt: MatCheckbox;
+  @ViewChild(MatPaginator) paginatorCt: MatPaginator;
   destroy$ = new Subject<boolean>();
   constructor(public mdSrv: PaginatorCommonMdService) {
     //订阅查看|选择模式
@@ -28,7 +29,6 @@ export class PagingBarComponent implements OnInit {
   }//ngOnInit
 
   pageChange(evt: IPageChangeParam) {
-    evt.pageIndex++;//我们系统分页从1开始
     this.mdSrv.pageParam = evt;
   }//pageChange
 

@@ -21,7 +21,7 @@ export class PaginatorCommonMdService {
   private _selectMode = false;
   private _allSelect = false;
   private _keyword: string;//搜索关键字
-  private _pageParam: IPageChangeParam = { pageIndex: 1, pageSize: 50, length: 0 };//当前分页信息
+  private _pageParam: IPageChangeParam = { pageIndex: 0, pageSize: 50, length: 0 };//当前分页信息
   private _advanceQueryFilters: Array<IQueryFilter> = [];
   private _selectedItems: Array<string> = [];//已选择的项id
   private _query: IQuery = {};
@@ -163,7 +163,9 @@ export class PaginatorCommonMdService {
       this._advanceQueryFilters = filter;
     else
       this._advanceQueryFilters = [filter];
-    this.query();
+    this._pageParam.pageIndex = 0;
+    this._pageParam.length = 0;
+    this.pageParam = { length: 0, pageIndex: 0, pageSize: this._pageParam.pageSize };
   }//advanceQuery
 
   query() {
@@ -172,14 +174,16 @@ export class PaginatorCommonMdService {
     this.apiSvr.query({ pageSize: this.pageParam.pageSize, page: this.pageParam.pageIndex, search: (this._keyword ? this._keyword : ''), orderBy: this._query.orderBy, desc: this._query.desc }, this._advanceQueryFilters).pipe(takeUntil(this.destroy$)).subscribe(res => {
       this.cacheData = [];
       this._pageParam.length = res.total;
+
+      let tindex = this._pageParam.pageIndex;
       //校正index为1
-      if (this._pageParam.pageIndex <= 0)
-        this._pageParam.pageIndex = 1;
+      if (tindex <= 0)
+        tindex = 1;
 
       if (res.data && res.data.length)
         for (let i = 0, len = res.data.length; i < len; i++) {
           let data = res.data[i];
-          data.seqno = i + 1 + (this._pageParam.pageIndex - 1) * this._pageParam.pageSize;
+          data.seqno = i + 1 + (tindex - 1) * this._pageParam.pageSize;
           this.cacheData.push(data);
         }//for
       this.afterDataRefresh$.next();
