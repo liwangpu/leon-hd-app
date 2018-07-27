@@ -1,0 +1,12 @@
+<div class="fxLayout-container paging-bar-container" fxLayout='row' fxLayoutAlign='center center'>
+  <div fxFlex='120px' [style.display]='viewMode?"none":""'>
+    <div class="all-select-checkbox-wrapper">
+      <mat-checkbox class="all-select-button" color="primary" (change)='allSelect(allCheckCt.checked)' #allCheckCt>{{'button.AllSelect'|translate}}</mat-checkbox>
+    </div>
+  </div>
+  <div fxFlex style="position: relative;">
+    <mat-paginator [length]="mdSrv.pageParam.length" [pageSize]="mdSrv.pageParam.pageSize" [pageSizeOptions]="mdSrv.defaultPageSizeOption"
+      [showFirstLastButtons]='true' (page)='pageChange($event)' style="position: relative;">
+    </mat-paginator>
+  </div>
+</div>

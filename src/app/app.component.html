@@ -1,1 +1,16 @@
-<fuse-main></fuse-main>
+<div class="page-container">
+    <mat-drawer-container class="drawer-container" autosize>
+      <mat-drawer #drawer class="drawer-sidenav" mode="side" opened>
+        <app-nav *ngIf='!outletMaximize'></app-nav>
+      </mat-drawer>
+  
+      <div class="drawer-sidenav-content">
+        <div class="content-toolbar" *ngIf='!outletMaximize'>
+          <app-tool-bar></app-tool-bar>
+        </div>
+        <div class="content cus-scroller">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </mat-drawer-container>
+  </div>

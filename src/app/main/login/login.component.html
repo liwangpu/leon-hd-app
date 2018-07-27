@@ -1,0 +1,28 @@
+<div class="login-container" fxLayout='row'>
+  <!-- <div class="main-container" fxFlex='50%' fxFlex.lt-md> -->
+  <div class="main-container" fxFlex>
+    <div class="main-wrap">
+      <div class="logo-container">
+        <img src="assets/images/logo/dmz-cloud.png" alt="">
+      </div>
+      <form class="login-form" name="loginForm" [formGroup]="loginForm">
+        <div class="form-container">
+          <span>{{'glossary.UserName'|translate}}</span>
+          <input type="text" class="input-ct" name="username" formControlName="username">
+          <span>{{'glossary.Password'|translate}}</span>
+          <input type="password" class="input-ct" name="password" formControlName="password">
+          <button class="login-btn-ct" [disabled]='loginForm.invalid' [class.disable-login]='loginForm.invalid' (click)='login()'>{{'tips.Log_In'|translate}}</button>
+          <div class="remember-wrap">
+            <input type="checkbox" id="remember-me-ct" [checked]='rememberLogin' (change)="rememberLogin = !rememberLogin">
+            <label for="remember-me-ct">{{'tips.RememberMe'|translate}}</label>
+          </div>
+          <span class="login-tip" *ngIf='loginError'>{{'message.AccountOrPasswordWrong'|translate}}</span>
+          <div class="pwd-op-container">
+            <a href="#">{{'tips.ForgotPassword'|translate}}</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- <div class="ads-container" fxFlex='50%' fxHide.lt-md='true'></div> -->
+</div>

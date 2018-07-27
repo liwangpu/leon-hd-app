@@ -1,0 +1,10 @@
+<app-detail-page-tpls title='glossary.AccountProfile' editOpWith='app/account-profile' [apiSrv]='apiSrv' [forceId]='accountId'
+    [noBackup]='true' (afterIConChange)='afterAvatarChange($event)'>
+
+    <app-detail-info-tab isBasic='true'>
+        <app-detail-edit-basic-info-tab>
+         <app-account-profile-o-basic-info></app-account-profile-o-basic-info>
+        </app-detail-edit-basic-info-tab>
+      </app-detail-info-tab>
+
+</app-detail-page-tpls>

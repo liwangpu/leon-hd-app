@@ -1,0 +1,5 @@
+<div class="item-container" [class.item-selected]='selected' (click)='toggleSelected()'>
+    <img class="item-icon" [src]='icon?(icon|serverRedirect:128):"#"' alt="">
+    <p class="item-title">{{name}}</p>
+    <p class="item-desciption">{{description}}</p>
+</div>

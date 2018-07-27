@@ -1,0 +1,16 @@
+:host {
+    div.container {
+        width: 500px;
+        height: 500px;
+        border: 1px solid gray;
+        display: flex;
+        flex-flow: column;
+        div.one {
+            flex: 0 1 65px;
+            background-color: green;
+        }
+        div.two {
+            flex: 1 1 auto;
+        }
+    }
+}

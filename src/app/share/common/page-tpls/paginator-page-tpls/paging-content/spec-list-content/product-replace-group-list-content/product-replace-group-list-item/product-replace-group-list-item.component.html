@@ -1,0 +1,17 @@
+<div class="item-container">
+    <div class="detail-container">
+        <!-- <span *ngIf='mdSrv.selectMode'>{{idx}}</span> -->
+        <div class="item-cbox" [style.display]='mdSrv.selectMode?"inline-block":"none"'>
+            <mat-checkbox color='primary' [checked]='Selected' (change)='selectedChange(cbox.checked)' #cbox></mat-checkbox>
+        </div>
+        <img class="item-icon" [src]='icon?(icon|serverRedirect:128):"assets/images/common/image-placeholder.png"' />
+        <p class="item-title">{{title}}</p>
+        <div class="list-container" [class.un-collapsed]='!collapsed'>
+            <app-commom-paging-product-replace-group-set *ngFor='let grpItem of details;let idx=index' [idx]='idx+1' [title]='grpItem.name'
+                [fid]='grpItem.id' (setDefault)='setDefault($event)' (deleteItem)='deleteItem($event)'></app-commom-paging-product-replace-group-set>
+        </div>
+    </div>
+    <button mat-icon-button class="collapse-btn" (click)='unCollapse()'>
+        <mat-icon>{{collapsed?'arrow_drop_down':'arrow_drop_up'}}</mat-icon>
+    </button>
+</div>

@@ -1,0 +1,13 @@
+<div class="content-container" fxLayout='column'>
+  <div fxFlex='15px'>
+  </div>
+  <div fxFlex>
+    <div style="position: relative;height: 100%;">
+      <div fxLayout='row wrap' fxLayoutAlign='space-around start'>
+        <app-litimg-icon-item *ngFor="let item of mdSrv.cacheData;trackBy:trackData" [Id]='item.id' [Name]='item.name' [Description]='item.description'
+          [Icon]='item.icon?(item.icon|serverRedirect:256):"/assets/images/place-holder/product.jpg"' [SelectMode]='mdSrv.selectMode'
+          [Selected]='mdSrv.allSelect' LinkPath="{{mdSrv.createdUrl}}" (OnCheckChange)='onItemCheckchange($event,item.id)'></app-litimg-icon-item>
+      </div>
+    </div>
+  </div>
+</div>

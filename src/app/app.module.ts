@@ -1,52 +1,82 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
-import 'hammerjs';
-import { SharedModule } from './core/modules/shared.module';
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { FuseMainModule } from './main/main.module';
-import { FuseSplashScreenService } from './core/services/splash-screen.service';
-import { FuseConfigService } from './core/services/config.service';
-import { FuseNavigationService } from './core/components/navigation/navigation.service';
-import { ServicesModule } from './main/content/services/services.module';
-import { MarkdownModule } from 'angular2-markdown';
-import { TranslateModule } from '@ngx-translate/core';
-import { BambooModule } from "./main/content/bamboo/bamboo.module";
-const appRoutes: Routes = [
-    {
-        path: '**',
-        redirectTo: 'app/dashboard'
+import { ShareModule } from './share/share.module';
+import { Routes, RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { LoginComponent } from './main/login/login.component';
+import { HomeComponent } from './main/home/home.component';
+import { ToolBarComponent } from './main/tool-bar/tool-bar.component';
+import { NavComponent } from './main/nav/nav.component';
+import { RouterLinkComponent } from './main/nav/router-link/router-link.component';
+import { RouteguardService } from './share/services/common/routeguard.service';
+import { V1ListPageComponent } from './main/dynamic/v1-list-page/v1-list-page.component';
+import { ListBsModelService } from './share/services/webapis/list-bs-model.service';
+import { OContentComponent as V1ListOContentComponent } from './main/dynamic/v1-list-page/o-content/o-content.component';
+import { PTableListComponent } from './main/dynamic/v1-list-page/o-content/p-table-list/p-table-list.component';
+import { PLitimgListComponent } from './main/dynamic/v1-list-page/o-content/p-litimg-list/p-litimg-list.component';
+
+
+const routes: Routes = [
+  {
+    path: ''
+    , component: HomeComponent
+    , canActivate: [RouteguardService]
+  }
+  , {
+    path: 'login'
+    , component: LoginComponent
+  }
+  // , {
+  //   path: 'designer'
+  //   , loadChildren: './designer/designer.module#DesignerModule'
+  // }
+  , {
+    path: 'app'
+    , loadChildren: './bamboo/bamboo.module#BambooModule'
+  }
+  , {
+    path: 'v1/list/:model'
+    , component: V1ListPageComponent
+    , canActivate: [RouteguardService],
+    resolve: {
+      model: ListBsModelService
     }
+  }
+  , { path: '**', redirectTo: '' }
 ];
 
-@NgModule({
-    declarations: [
-        AppComponent
-    ],
-    imports: [
-        BrowserModule,
-        HttpModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        RouterModule.forRoot(appRoutes, { enableTracing: false }),
-        SharedModule,
-        MarkdownModule.forRoot(),
-        TranslateModule.forRoot(),
-        BambooModule,
-        FuseMainModule,
-        ServicesModule
-    ],
-    providers: [
-        FuseSplashScreenService,
-        FuseConfigService,
-        FuseNavigationService
-    ],
-    bootstrap: [
-        AppComponent
-    ]
-})
-export class AppModule {
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }
+
+@NgModule({
+  declarations: [
+    AppComponent, HomeComponent, ToolBarComponent, LoginComponent, NavComponent, RouterLinkComponent, V1ListPageComponent, V1ListOContentComponent, PTableListComponent, PLitimgListComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    ShareModule,
+    RouterModule.forRoot(routes)
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    RouterLinkComponent
+  ]
+})
+export class AppModule { }

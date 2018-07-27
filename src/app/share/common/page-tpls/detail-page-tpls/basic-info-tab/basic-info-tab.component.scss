@@ -1,0 +1,14 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    div.basic-info-container {
+        display: flex;
+        flex-direction: column;
+    }
+    div.basic-info-container * {
+        width: 100%;
+    }
+}

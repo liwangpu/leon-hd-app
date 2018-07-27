@@ -1,0 +1,39 @@
+<div class="content-container">
+  <div class="content-header">
+    <div class="content-icon-wrap">
+      <mat-icon class="page-icon">view_quilt</mat-icon>
+      <span class="page-icon-title">区域</span>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="area-type-container cus-scroller">
+      <!-- <div class="area-type-item" appPackageAreaTypePanel>all</div> -->
+      <div class="area-type-item" *ngFor='let item of areas;trackBy:trackArea' fxLayout='row' fxLayoutAlign='start center' appPackageAreaTypePanel
+        [fid]='item.id' (onSelected)='onAreaSelected(item.id)'>
+        <div class="one" fxFlex>{{item.areaAlias}}</div>
+        <div class="two" fxFlex='40px'>
+          <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+            <mat-icon [class.item-selected]='selectAreaId==item.id'>more_vert</mat-icon>
+          </button>
+
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)='editArea(item)'>
+              <mat-icon>edit</mat-icon>
+              <span>{{'button.Edit'|translate}}</span>
+            </button>
+            <button mat-menu-item (click)='deleteArea(item)'>
+              <mat-icon>delete</mat-icon>
+              <span>{{'button.Delete'|translate}}</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="area-type-item content-footer" fxLayout='row' fxLayoutAlign='center center' (click)='editArea()'>
+    <div>
+      <mat-icon class="add-icon">add</mat-icon>
+    </div>
+  </div>
+</div>

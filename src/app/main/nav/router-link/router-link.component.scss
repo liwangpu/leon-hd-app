@@ -1,0 +1,50 @@
+:host {
+    div.link-container {
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        padding: 0 15px 0 25px;
+        color: white;
+        .link-icon {
+            width: 16px;
+            height: 16px;
+            min-width: 16px;
+            min-height: 16px;
+            font-size: 16px;
+        }
+        .expand-link-icon {
+            width: 16px;
+            height: 16px;
+            min-width: 16px;
+            min-height: 16px;
+            font-size: 16px;
+        }
+        p.link-title {
+            flex: 1 1 auto;
+            box-sizing: border-box;
+            padding-left: 8px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        &:hover {
+            background-color: #2B303C;
+            cursor: pointer;
+        }
+    }
+    div.sub-link-container {
+        padding: 0 15px 0 45px;
+    }
+    div.on-route {
+        background-color: #039BE5 !important;
+    }
+    div.center-me {
+        justify-content: center !important;
+        padding: 0 !important;
+    }
+    .hide-me {
+        display: none;
+    }
+}

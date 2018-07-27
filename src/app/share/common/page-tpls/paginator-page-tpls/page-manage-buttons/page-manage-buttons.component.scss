@@ -1,0 +1,13 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+    div.page-button-container {
+        min-height: 135px;
+        div.list-button-container {
+            &>*{
+                margin-left: 8px !important;
+            }
+        }
+    }
+}

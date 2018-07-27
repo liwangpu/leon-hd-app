@@ -1,0 +1,24 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+    div.page-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        div.department-panel {
+            flex: 0 1 250px;
+            box-sizing: border-box;
+            height: 0;
+            padding: 15px 0 15px 15px;
+        }
+        div.account-list {
+            flex: 1 1 auto;
+            box-sizing: border-box;
+            height: 100%;
+            padding: 15px 15px 15px 15px;
+        }
+    }
+}

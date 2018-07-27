@@ -1,0 +1,12 @@
+<div class="content-container cus-scroller">
+
+    <ng-container [ngSwitch]='mdSrv.displayMode'>
+        <app-commom-paging-table-list-content *ngSwitchCase="1">
+        </app-commom-paging-table-list-content>
+        <app-commom-paging-litimg-list-content *ngSwitchCase="2"></app-commom-paging-litimg-list-content>
+        <app-commom-paging-card-list-content *ngSwitchCase="3"></app-commom-paging-card-list-content>
+        <app-commom-paging-product-replace-group-list-content *ngSwitchCase="31"></app-commom-paging-product-replace-group-list-content>
+        <ng-container *ngSwitchDefault></ng-container>
+    </ng-container>
+
+</div>

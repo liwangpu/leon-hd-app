@@ -2,6 +2,7 @@ export const environment = {
     production: false,
     hmr: false,
     serveBase: 'http://localhost:1882',
+    secretKey:'damaozhu-app',
     shareServerBase: 'http://192.168.1.3:82/share-resource',
     loginStyle: 2,
     isMaintaining: false,

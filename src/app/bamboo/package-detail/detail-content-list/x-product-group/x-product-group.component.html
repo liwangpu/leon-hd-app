@@ -1,0 +1,4 @@
+<div class="list-container">
+    <app-package-detail-content-list-x-common-app-y-list-item *ngFor='let item of productGroups| async;trackBy:trackProductGroup' [itemId]='item.id'
+      [itemName]='item.name' [iconUrl]='item.icon' [itemDescription]='item.description' (onDelete)='deleteGroup($event)'></app-package-detail-content-list-x-common-app-y-list-item>
+  </div>
