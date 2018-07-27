@@ -6,7 +6,7 @@
   </div>
   <div fxFlex style="position: relative;">
     <mat-paginator [length]="mdSrv.pageParam.length" [pageIndex]='mdSrv.pageParam.pageIndex' [pageSize]="mdSrv.pageParam.pageSize" [pageSizeOptions]="mdSrv.defaultPageSizeOption"
-      [showFirstLastButtons]='true' (page)='pageChange($event)' style="position: relative;" #paginatorCt>
+      [showFirstLastButtons]='true'  (page)='pageChange($event)' style="position: relative;" #paginatorCt>
     </mat-paginator>
   </div>
 </div>

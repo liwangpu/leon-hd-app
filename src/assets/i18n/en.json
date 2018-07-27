@@ -224,7 +224,8 @@
         "RememberMe": "Remember me",
         "ForgotPassword": "Forgot Your Password?",
         "InputProductGroupName": "Input Product Group Name",
-        "SelectProductGroupItems": "Select Product Group Items"
+        "SelectProductGroupItems": "Select Product Group Items",
+        "ItemsPerPageLabel":"Items per page"
     },
     "dialog": {
         "ChangeIcon": "Change Icon",

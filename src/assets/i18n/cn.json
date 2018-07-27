@@ -222,7 +222,8 @@
         "RememberMe": "记住我",
         "ForgotPassword": "忘记您的密码?",
         "InputProductGroupName": "填写替换组名称",
-        "SelectProductGroupItems": "选择替换产品"
+        "SelectProductGroupItems": "选择替换产品",
+        "ItemsPerPageLabel":"每页记录"
     },
     "dialog": {
         "ChangeIcon": "更改图标",
