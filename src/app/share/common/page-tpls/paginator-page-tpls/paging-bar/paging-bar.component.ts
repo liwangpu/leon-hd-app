@@ -4,7 +4,7 @@ import { PaginatorCommonMdService } from '../paginator-common-md.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { IPageChangeParam } from '../paginator-refers';
-import { TranslateService } from '../../../../../../../node_modules/@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-paginator-paging-bar',

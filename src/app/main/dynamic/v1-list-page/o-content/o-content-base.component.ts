@@ -1,5 +1,5 @@
-import { OnInit, OnDestroy } from "../../../../../../node_modules/@angular/core";
-import { Observable, Subject, of } from "../../../../../../node_modules/rxjs";
+import { OnInit, OnDestroy } from "@angular/core";
+import { Observable, Subject, of } from "rxjs";
 import { IEntity } from "../../../../share/models/ientity";
 import { V1ListPageScheduleService } from "../v1-list-page-schedule.service";
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { V1ListPageScheduleService } from './v1-list-page-schedule.service';
 import { ResourceService } from '../../../share/services/webapis/resource.service';
-import { ActivatedRoute } from '../../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UIListBSModel } from '../../../share/models/common';
 
 @Component({
@@ -26,14 +26,17 @@ export class V1ListPageComponent implements OnInit {
       this.icon = model.icon;
       this.resourceSrv.uriPart = model.resource;
       //中间服务参数传递
-      this.scheduleSrv.columnDefs = model.fields;
+      this.scheduleSrv.columnDefs$.next(model.fields);
+      this.scheduleSrv.pageSizeOptions$.next(model.pageSizeOptions);
+      //分页参数发布后,更改一下默认分页参数,因为这两个数据不同步,也顺便执行默认搜索
+      this.scheduleSrv.pageParam = { previousPageIndex: 0, pageIndex: 0, length: 0, pageSize: model.pageSizeOptions.length > 0 ? model.pageSizeOptions[0] : 10 };
       this.scheduleSrv.displayModel$.next(model.displayModel[0]);//默认显示第一个展示模式
 
       //默认查询
-      this.resourceSrv.query().subscribe(datas => {
-        this.scheduleSrv.datas$.next(datas);
-        // console.log('query data ', datas);
-      });
+      // this.resourceSrv.query().subscribe(datas => {
+      //   this.scheduleSrv.datas$.next(datas);
+      //   // console.log('query data ', datas);
+      // });
       console.log('list page get data ', model);
     });
   }//ngOnInit

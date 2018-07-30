@@ -4,6 +4,7 @@ export class UIListBSModel {
     modelType: string;
     displayModel: Array<string>;
     fields: Array<UIListBSModelField>;
+    pageSizeOptions:Array<number>;
 }
 
 export class UIListBSModelField {

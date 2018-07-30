@@ -4,8 +4,8 @@ import { AppCacheService } from "../../share/services/common/app-cache.service";
 import { ViewportService } from "../../share/services/common/viewport.service";
 import { AppLangService } from "../../share/services/common/app-lang.service";
 import { GlobalSearchService } from "../../share/services/common/global-search.service";
-import { Subject } from "../../../../node_modules/rxjs";
-import { map, debounceTime } from "../../../../node_modules/rxjs/operators";
+import { Subject } from "rxjs";
+import { map, debounceTime } from "rxjs/operators";
 import { AccountService } from "../../share/services/webapis/account.service";
 import { NavigationService } from "../../share/services/common/navigation.service";
 

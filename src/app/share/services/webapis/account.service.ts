@@ -7,8 +7,8 @@ import { tap } from 'rxjs/operators';
 import { Account } from '../../models/account';
 import { IQuery, IQueryFilter, Paging } from '../../models/common';
 import { WebapiService } from './webapi.service';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '../../../../../node_modules/@angular/router';
-import { Md5 } from '../../../../../node_modules/ts-md5';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Md5 } from 'ts-md5';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService extends WebapiService<Account> implements Resolve<Observable<Account>>{

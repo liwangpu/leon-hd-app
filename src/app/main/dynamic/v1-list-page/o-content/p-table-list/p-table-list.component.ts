@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OContentBase } from '../o-content-base.component';
 import { V1ListPageScheduleService } from '../../v1-list-page-schedule.service';
 import { CustomListDataSource } from '../../../list-refers/list-refers';
+import { takeUntil, skip } from 'rxjs/operators';
+import { TextTool } from '../../../../../share/objects/text-tool';
 
 @Component({
   selector: 'app-v1-list-page-o-content-p-table-list',
@@ -10,7 +12,7 @@ import { CustomListDataSource } from '../../../list-refers/list-refers';
 })
 export class PTableListComponent extends OContentBase implements OnInit, OnDestroy {
 
-  displayedColumns: string[] = ['seqno'];
+  displayedColumns: string[] = [];
   dataSource = new CustomListDataSource();
   constructor(protected scheduleSrv: V1ListPageScheduleService) {
     super(scheduleSrv);
@@ -19,18 +21,14 @@ export class PTableListComponent extends OContentBase implements OnInit, OnDestr
   ngOnInit() {
     super.ngOnInit();
 
-    let ddd = [];
-    let idx = 0;
-    setInterval(() => {
-      console.log(new Date, ddd);
-      idx++;
-      let model = {
-        seqno: idx
-      };
-      ddd.push(model);
-      this.dataSource._dataSubject.next(ddd);
-    }, 5000);
-    
+    this.scheduleSrv.datas$.pipe(takeUntil(this.destroy$)).pipe(skip(1)).subscribe(datas => {
+      // console.log('p data',datas);
+      this.dataSource._dataSubject.next(datas.data);
+    });
+    this.scheduleSrv.columnDefs$.pipe(takeUntil(this.destroy$)).subscribe(cols => {
+      this.displayedColumns = cols.map(x => TextTool.firstLetterLowerCase(x.id));
+    });
+
   }
 
   ngOnDestroy(): void {

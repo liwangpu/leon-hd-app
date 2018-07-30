@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, forwardRef, ComponentFactoryResolver } from '@angular/core';
 import { BasicInfoTabExtend, BasicInfoTabExtendManageButton } from '../../../share/common/page-tpls/detail-page-tpls/detail-edit-refers';
-import { FormGroup, FormBuilder, Validators } from '../../../../../node_modules/@angular/forms';
-import { Subject } from '../../../../../node_modules/rxjs';
-import { DatePipe } from '../../../../../node_modules/@angular/common';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { DatePipe } from '@angular/common';
 import { DialogFactoryService } from '../../../share/common/factories/dialog-factory.service';
-import { takeUntil } from '../../../../../node_modules/rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { Account } from "../../../share/models/account";
 import { OChangePasswordComponent } from '../o-change-password/o-change-password.component';
 

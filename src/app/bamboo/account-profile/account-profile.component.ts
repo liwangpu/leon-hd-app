@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AccountService } from '../../share/services/webapis/account.service';
-import { Subject } from '../../../../node_modules/rxjs';
-import { takeUntil, skip } from '../../../../node_modules/rxjs/operators';
+import { Subject } from 'rxjs';
+import { takeUntil, skip } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-profile',

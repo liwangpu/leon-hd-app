@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ISimpleConfirm } from '../../../share/common/factories/dialog-template/simple-confirm-dialog-tpls/simple-confirm-dialog-tpls.component';
-import { FormGroup, FormBuilder, Validators } from '../../../../../node_modules/@angular/forms';
-import { Subject } from '../../../../../node_modules/rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 import { AsyncHandleService } from '../../../share/services/common/async-handle.service';
-import { Router } from '../../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 import { AccountService } from '../../../share/services/webapis/account.service';
 import { ViewportService } from '../../../share/services/common/viewport.service';
 
