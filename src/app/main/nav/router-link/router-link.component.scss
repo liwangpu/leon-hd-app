@@ -1,4 +1,7 @@
 :host {
+    display: block;
+    width: 100%;
+    min-height: 50px;
     div.link-container {
         width: 100%;
         height: 50px;
@@ -37,6 +40,11 @@
     div.sub-link-container {
         padding: 0 15px 0 45px;
     }
+    div.sub-router-links {
+        height: 0;
+        overflow: hidden;
+        transition: height .25s;
+    }
     div.on-route {
         background-color: #039BE5 !important;
     }
@@ -46,5 +54,8 @@
     }
     .hide-me {
         display: none;
+    }
+    .show-me {
+        overflow: visible;
     }
 }

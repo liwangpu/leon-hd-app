@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChildren, QueryList, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChildren, QueryList, OnChanges, SimpleChanges, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { NavLink } from '../../../share/models/nav-link';
 import { NavigationService } from '../../../share/services/common/navigation.service';
 
@@ -19,8 +19,9 @@ export class RouterLinkComponent implements OnInit, OnChanges {
   @Input() collapsed: boolean;
   @Input() children: Array<NavLink>;
   @Output() onRouteChange = new EventEmitter<string>();
+  @ViewChild('subLinkContainer') subLinkContainer: ElementRef;
   @ViewChildren(RouterLinkComponent) subLinks: QueryList<RouterLinkComponent>;
-  constructor(private navSrv: NavigationService) { }
+  constructor(private navSrv: NavigationService, private renderer2: Renderer2) { }
 
   ngOnInit() {
   }
@@ -40,6 +41,22 @@ export class RouterLinkComponent implements OnInit, OnChanges {
       return;
     if (this.children && this.children.length > 0) {
       this.expandSubLink = !this.expandSubLink;
+
+      let totalHeight = 0;
+      //展开状态,计算子路由链接高度,实现transition
+      if (this.expandSubLink) {
+        let subLinkRouterNodes = this.subLinkContainer.nativeElement.children;
+        for (let node of subLinkRouterNodes) {
+          if (node.offsetHeight)
+            totalHeight += node.offsetHeight;
+        }
+        //防止浏览器不支持offsetHeight
+        if (totalHeight <= 0) {
+          this.renderer2.setStyle(this.subLinkContainer.nativeElement, 'height', 'auto');
+          return;
+        }
+      }
+      this.renderer2.setStyle(this.subLinkContainer.nativeElement, 'height', totalHeight + 'px');
       return;
     }
     this.onRoute = true;
