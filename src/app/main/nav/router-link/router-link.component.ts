@@ -68,6 +68,7 @@ export class RouterLinkComponent implements OnInit, OnChanges {
     this.onRoute = false;
     if (this.subLinks) {
       this.expandSubLink = false;
+      this.renderer2.setStyle(this.subLinkContainer.nativeElement, 'height', '0px');
       this.subLinks.forEach(x => {
         x.clearRoute();
       });
