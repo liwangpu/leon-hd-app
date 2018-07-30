@@ -4,14 +4,13 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { IEntity } from '../../../share/models/ientity';
 import { IPageChangeParam } from '../list-refers/list-refers';
 import { ResourceService } from '../../../share/services/webapis/resource.service';
-import { takeUntil } from '../../../../../node_modules/rxjs/operators';
+import { takeUntil, skip } from '../../../../../node_modules/rxjs/operators';
 
 @Injectable()
 export class V1ListPageScheduleService {
   constructor(protected resourceSrv: ResourceService) {
 
-
-  }
+  }//constructor
   /***********************private**********************/
 
   private _pageParam: IPageChangeParam = { length: 0, previousPageIndex: 0, pageIndex: 0, pageSize: 0 };//分页参数
@@ -55,9 +54,9 @@ export class V1ListPageScheduleService {
 
   /***********************method**********************/
   query() {
-    // this.selectedItems = [];
-    // this.cacheData = [];
-    this.resourceSrv.query({ pageSize: this.pageParam.pageSize, page: this.pageParam.pageIndex, search: (this._keyword ? this._keyword : ''), orderBy: this._query.orderBy, desc: this._query.desc }, this._advanceQueryFilters).subscribe(res => {
+    //修正paginator index从0开始
+    let t_pageIndex = this.pageParam.pageIndex + 1;
+    this.resourceSrv.query({ pageSize: this.pageParam.pageSize, page: t_pageIndex, search: (this._keyword ? this._keyword : ''), orderBy: this._query.orderBy, desc: this._query.desc }, this._advanceQueryFilters).subscribe(res => {
       // console.log('query datas', res);
       // this.cacheData = [];
       // this._pageParam.length = res.total;

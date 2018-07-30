@@ -1,9 +1,9 @@
 <div class="list-container">
     <mat-table [dataSource]="dataSource" class="list-table">
 
-        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-            <mat-header-cell *matHeaderCellDef> {{column}} </mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element[column]}}</mat-cell>
+        <ng-container [matColumnDef]="column.id" *ngFor="let column of columnDefs">
+            <mat-header-cell *matHeaderCellDef [fxFlex]="column.width>0?column.width+'px':''"> {{column.name}} </mat-header-cell>
+            <mat-cell *matCellDef="let element" [fxFlex]="column.width>0?column.width+'px':''">{{element[column.id]}} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -23,7 +23,6 @@ export class OPaginatorBarComponent implements OnInit, OnDestroy {
       this.pageSizeOptions = opt;
       if (opt.length > 0)
         this.pageSize = opt[0];
-      // console.log(opt);
     });
     //订阅分页数据改变事件
     this.scheduleSrv.datas$.pipe(takeUntil(this.destroy$)).subscribe(datas => {
@@ -37,7 +36,6 @@ export class OPaginatorBarComponent implements OnInit, OnDestroy {
   }//ngOnDestroy
 
   pageChange(param: PageEvent) {
-    // console.log('evt,', evt);
     this.scheduleSrv.pageParam = param;
   }//pageChange
 }
