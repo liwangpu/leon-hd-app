@@ -35,7 +35,7 @@ export class ProductPaginatorLaunchService extends PaginatorLaunch {
 
 
     let changeCategoryMenuItem: IAdvanceMenuItem = {
-      icon: 'swap_horiz', name: 'button.ChangeCategory', needSelected: true, click: (selectedIds: Array<string>) => {
+      icon: 'swap_horiz', name: 'button.ChangeCategory', needSelected: true, needPermission: true, click: (selectedIds: Array<string>) => {
         let idsStr = selectedIds.join(',');
         let dialog = this.dialogFac.simpleCategorySelect(leftCategorySrv);
 

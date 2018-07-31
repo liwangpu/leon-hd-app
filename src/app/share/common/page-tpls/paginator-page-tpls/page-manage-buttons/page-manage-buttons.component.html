@@ -32,7 +32,7 @@
       <span>{{'button.Select'|translate}}</span>
     </button>
 
-    <button mat-button class="cus-manage-button" [matMenuTriggerFor]="advanceMenu">
+    <button mat-button class="cus-manage-button" [matMenuTriggerFor]="advanceMenu" *ngIf='isButtonEnable(true)'>
       <mat-icon class="cus-header-icons">settings</mat-icon>
       <span>{{'button.Advance'|translate}}</span>
     </button>
@@ -61,7 +61,7 @@
     </ng-container>
 
     <!--导出数据-->
-    <button mat-menu-item (click)='exportData()'>
+    <button mat-menu-item (click)='exportData()' *ngIf='isButtonEnable(true)'>
       <mat-icon class="cus-mat-button-icon">cloud_download</mat-icon>
       <span>{{'button.Export'|translate}}</span>
     </button>
