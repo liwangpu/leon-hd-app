@@ -171,7 +171,9 @@ export class PaginatorCommonMdService {
   query() {
     this.selectedItems = [];
     this.cacheData = [];
-    this.apiSvr.query({ pageSize: this.pageParam.pageSize, page: this.pageParam.pageIndex, search: (this._keyword ? this._keyword : ''), orderBy: this._query.orderBy, desc: this._query.desc }, this._advanceQueryFilters).pipe(takeUntil(this.destroy$)).subscribe(res => {
+    //修正paginator index从0开始
+    let t_pageIndex = this.pageParam.pageIndex + 1;
+    this.apiSvr.query({ pageSize: this.pageParam.pageSize, page: t_pageIndex, search: (this._keyword ? this._keyword : ''), orderBy: this._query.orderBy, desc: this._query.desc }, this._advanceQueryFilters).pipe(takeUntil(this.destroy$)).subscribe(res => {
       this.cacheData = [];
       this._pageParam.length = res.total;
 
