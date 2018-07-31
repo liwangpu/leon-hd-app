@@ -27,7 +27,7 @@
       <span>{{'button.Refresh'|translate}}</span>
     </button>
 
-    <button mat-button class="cus-manage-button" (click)='modeChange()'>
+    <button mat-button class="cus-manage-button" (click)='modeChange()' *ngIf='isButtonEnable(true)'>
       <mat-icon class="cus-header-icons"> {{ !mdSrv.selectMode ?'check_box':'indeterminate_check_box'}} </mat-icon>
       <span>{{'button.Select'|translate}}</span>
     </button>
