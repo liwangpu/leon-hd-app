@@ -36,6 +36,7 @@ export class PageManageButtonsComponent implements OnInit {
     if (needPermission) {
       if (!this.mdSrv.readDataOnly)
         return true;
+      return false;
     }
     return true;
   }
