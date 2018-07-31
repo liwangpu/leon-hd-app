@@ -2,7 +2,7 @@
   <div class="form-container">
 
     <mat-form-field *ngIf='showPurchasePrice'>
-      <input type="number" matInput name="purchasePrice" formControlName="purchasePrice" required placeholder="{{'glossary.PurchasePrice'|translate}}">
+      <input type="number" matInput name="purchasePrice" formControlName="purchasePrice" required placeholder="{{'glossary.PurchasePrice'|translate}}" (change)='purchasePriceChange(purchasePriceCt.value)' #purchasePriceCt>
     </mat-form-field>
     <mat-form-field *ngIf='showPartnerPrice'>
       <input type="number" matInput name="partnerPrice" formControlName="partnerPrice" required placeholder="{{'glossary.PartnerPrice'|translate}}">

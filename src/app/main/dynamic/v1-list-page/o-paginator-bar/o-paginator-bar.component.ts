@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { V1ListPageScheduleService } from '../v1-list-page-schedule.service';
-import { takeUntil } from '../../../../../../node_modules/rxjs/operators';
-import { Subject } from '../../../../../../node_modules/rxjs';
-import { PageEvent } from '../../../../../../node_modules/@angular/material';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-v1-list-page-o-paginator-bar',

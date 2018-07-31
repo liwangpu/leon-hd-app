@@ -172,7 +172,8 @@
         "All": "ALL",
         "ChangePassword": "Change Password",
         "Share": "Share",
-        "CancelShare": "Cancel Share"
+        "CancelShare": "Cancel Share",
+        "ProductPriceRate": "Price Rate Setting"
     },
     "message": {
         "UploadSuccessfully": "Files Upload Successfully",
@@ -225,7 +226,7 @@
         "ForgotPassword": "Forgot Your Password?",
         "InputProductGroupName": "Input Product Group Name",
         "SelectProductGroupItems": "Select Product Group Items",
-        "ItemsPerPageLabel":"Items per page"
+        "ItemsPerPageLabel": "Items per page"
     },
     "dialog": {
         "ChangeIcon": "Change Icon",
@@ -236,8 +237,9 @@
         "ChangePassword": "Change Password",
         "ChangeCategory": "Change Category",
         "CreateProductReplaceGroup": "Create Product Replace Group",
-        "EditArea":"Edit Area",
-        "EditProductGroup":"Edit Product Group",
-        "EditCategoryReferProduct": "Edit Category Refer Product"
+        "EditArea": "Edit Area",
+        "EditProductGroup": "Edit Product Group",
+        "EditCategoryReferProduct": "Edit Category Refer Product",
+        "ProductPriceRate": "Price Rate Setting"
     }
 }

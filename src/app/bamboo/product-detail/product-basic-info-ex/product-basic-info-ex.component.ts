@@ -9,6 +9,7 @@ import { ProductLeftCategoryLaunchService } from '../../product/product-left-cat
 import { SimpleCategoryPanelComponent } from '../../../share/common/factories/dialog-template/simple-category-panel/simple-category-panel.component';
 import { AccountService } from '../../../share/services/webapis/account.service';
 import { AccountTypeEnums } from '../../../share/enums/enums';
+import { PreferenceService } from '../../../share/services/webapis/preference.service';
 
 @Component({
   selector: 'app-product-basic-info-ex',
@@ -20,12 +21,14 @@ import { AccountTypeEnums } from '../../../share/enums/enums';
 })
 export class ProductBasicInfoExComponent extends BasicInfoTabExtend implements OnInit, OnDestroy {
 
-  showPurchasePrice=false;
-  showPartnerPrice=false;
+  purchasePriceToPartnerPriceRate = 0;
+  purchasePriceToRetailPriceRate = 0;
+  showPurchasePrice = false;
+  showPartnerPrice = false;
   categoryId: string;
   detailForm: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(private formBuilder: FormBuilder, protected dialogFac: DialogFactoryService, protected categoryLaunch: ProductLeftCategoryLaunchService, protected accountSrv: AccountService) {
+  constructor(private formBuilder: FormBuilder, protected dialogFac: DialogFactoryService, protected categoryLaunch: ProductLeftCategoryLaunchService, protected accountSrv: AccountService, protected preferenceSrv: PreferenceService) {
     super();
 
     this.afterDataChange$.pipe(takeUntil(this.destroy$)).subscribe(data => {
@@ -35,7 +38,21 @@ export class ProductBasicInfoExComponent extends BasicInfoTabExtend implements O
       if (!this.detailForm)
         return;
       this.detailForm.patchValue({ categoryId: mat.categoryId, categoryName: mat.categoryName });
-      this.detailForm.patchValue({ price: mat.price ? mat.price : 0, purchasePrice: mat.purchasePrice ? mat.purchasePrice : 0, partnerPrice: mat.partnerPrice ? mat.partnerPrice : 0 });
+
+
+      this.preferenceSrv.uriPart = 'Products/Preference';
+      this.preferenceSrv.getByKey('Price-Setting').subscribe(prf => {
+        try {
+          let vl = JSON.parse(prf.value);
+          this.purchasePriceToPartnerPriceRate = vl.purchasePriceToPartnerPrice ? vl.purchasePriceToPartnerPrice : 0;
+          this.purchasePriceToRetailPriceRate = vl.purchasePriceToRetailPrice ? vl.purchasePriceToRetailPrice : 0;
+        } catch (error) { }
+
+        let t_purchasePrice = mat.purchasePrice ? mat.purchasePrice : 0;
+        let t_partnerPrice = mat.partnerPrice > 0 ? mat.partnerPrice : (t_purchasePrice * this.purchasePriceToPartnerPriceRate);
+        let t_price = mat.price > 0 ? mat.price : (t_purchasePrice * this.purchasePriceToRetailPriceRate);
+        this.detailForm.patchValue({ price: t_price, purchasePrice: t_purchasePrice, partnerPrice: t_partnerPrice });
+      });
     });
 
     this.detailForm = this.formBuilder.group({
@@ -56,11 +73,11 @@ export class ProductBasicInfoExComponent extends BasicInfoTabExtend implements O
     this.accountSrv.profile$.subscribe(profile => {
 
       if (profile.role == AccountTypeEnums.brandAdmin || profile.role == AccountTypeEnums.brandMember) {
-        this.showPurchasePrice=true;
-        this.showPartnerPrice=true;
+        this.showPurchasePrice = true;
+        this.showPartnerPrice = true;
       }
       else if (profile.role == AccountTypeEnums.partnerAdmin || profile.role == AccountTypeEnums.partnerMember) {
-        this.showPartnerPrice=true;
+        this.showPartnerPrice = true;
       }
       else { }
     });
@@ -70,7 +87,6 @@ export class ProductBasicInfoExComponent extends BasicInfoTabExtend implements O
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
-
 
   onEditCategory() {
     let dialog = this.dialogFac.simpleCategorySelect(this.categoryLaunch);
@@ -86,4 +102,14 @@ export class ProductBasicInfoExComponent extends BasicInfoTabExtend implements O
     });//afterOpen
 
   }//onEditCategory
+
+  purchasePriceChange(price: string) {
+    let t_purchasePrice = price.indexOf('.') > 0 ? Number.parseFloat(Number.parseFloat(price).toFixed(2)) : Number.parseFloat(price);
+    let p1 = (t_purchasePrice * this.purchasePriceToPartnerPriceRate);
+    let t_partnerPrice = p1.toString().indexOf('.') > 0 ? p1.toFixed(2) : p1;
+    let p2 = (t_purchasePrice * this.purchasePriceToRetailPriceRate);
+    let t_price = p2.toString().indexOf('.') > 0 ? p2.toFixed(2) : p2;
+    this.detailForm.patchValue({ price: t_price, purchasePrice: t_purchasePrice, partnerPrice: t_partnerPrice });
+  }//purchasePriceChange
+
 }

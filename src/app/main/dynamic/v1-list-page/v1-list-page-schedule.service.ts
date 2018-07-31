@@ -4,7 +4,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { IEntity } from '../../../share/models/ientity';
 import { IPageChangeParam } from '../list-refers/list-refers';
 import { ResourceService } from '../../../share/services/webapis/resource.service';
-import { takeUntil, skip } from '../../../../../node_modules/rxjs/operators';
+import { takeUntil, skip } from 'rxjs/operators';
 
 @Injectable()
 export class V1ListPageScheduleService {

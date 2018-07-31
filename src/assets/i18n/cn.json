@@ -170,7 +170,8 @@
         "All": "所有",
         "ChangePassword": "修改密码",
         "Share": "分享",
-        "CancelShare": "取消分享"
+        "CancelShare": "取消分享",
+        "ProductPriceRate":"价格比率设置"
     },
     "message": {
         "UploadSuccessfully": "文件上传成功",
@@ -236,6 +237,7 @@
         "CreateProductReplaceGroup": "创建产品替换组",
         "EditArea": "编辑区域",
         "EditProductGroup": "编辑产品组",
-        "EditCategoryReferProduct": "编辑分类引用产品"
+        "EditCategoryReferProduct": "编辑分类引用产品",
+        "ProductPriceRate":"价格比率设置"
     }
 }

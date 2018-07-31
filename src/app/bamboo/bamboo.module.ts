@@ -58,6 +58,7 @@ import { XDepartmentFormComponent as AccountXDepartmentFormComponent } from './a
 import { AccountProfileComponent } from './account-profile/account-profile.component';
 import { OBasicInfoComponent as AccountProfileOBasicInfoComponent } from './account-profile/o-basic-info/o-basic-info.component';
 import { OChangePasswordComponent as AccountProfileOChangePasswordComponent } from './account-profile/o-change-password/o-change-password.component';
+import { OPriceRateSettingComponent as ProductOPriceRateSettingComponent } from './product/o-price-rate-setting/o-price-rate-setting.component';
 
 
 @NgModule({
@@ -65,7 +66,7 @@ import { OChangePasswordComponent as AccountProfileOChangePasswordComponent } fr
     ShareModule,
     BambooRoutingModule
   ],
-  declarations: [OrganComponent, AccountComponent, SolutionComponent, SolutionDetailComponent, ProductCategoryComponent, MaterialCategoryComponent, ProductGroupCategoryComponent, ProductComponent, ProductDetailComponent, ProductBasicInfoExComponent, DemoComponent, StaticMeshComponent, StaticMeshDetailComponent, MaterialComponent, MaterialDetailComponent, MaterialBasicInfoExComponent, MapComponent, OrderComponent, OrderDetailComponent, ProductGroupComponent, ProductGroupDetailComponent, ProductGroupDetailBasicInfoExComponent, AreaTypeComponent, AreaTypeDetailComponent, MediaFileComponent, MediaFileDetailComponent, ShareManageTapComponent, ShareEditItemComponent, PackageComponent, PackageDetailComponent, PackageDetailContentExComponent, MapDetailComponent, AreaTypePanelComponent, AreaTypePanelDirective, AreaTypePanelEditComponent, ProductReplaceGroupComponent, PackageDetailDetailContentListComponent, PackageDetailXProductGroupComponent, PackageDetailProductGroupYEditFormComponent, PackageDetailXCategoryProductComponent, PackageDetailXCategoryProductYEditFormComponent, PackageDetailXCommonYListItemComponent, PackageDetailXMaterialComponent, PackageDetailXMaterialYEditFormComponent, PackageDetailXMaterialYListItemComponent, PackageDetailXReplaceGroupComponent, AccountXDetailComponent, ProductReplaceGroupXEditFormComponent, PackageDetailXReplaceGroupYEditFormComponent, PackageDetailXReplaceGroupYSimpleListComponent, PackageDetailXReplaceGroupYSimpleListItemComponent, OrganDetailComponent, OrganDetailXBasicInfoTabComponent, AccountXDepartmentFormComponent, AccountProfileComponent, AccountProfileOBasicInfoComponent, AccountProfileOChangePasswordComponent],
+  declarations: [OrganComponent, AccountComponent, SolutionComponent, SolutionDetailComponent, ProductCategoryComponent, MaterialCategoryComponent, ProductGroupCategoryComponent, ProductComponent, ProductDetailComponent, ProductBasicInfoExComponent, DemoComponent, StaticMeshComponent, StaticMeshDetailComponent, MaterialComponent, MaterialDetailComponent, MaterialBasicInfoExComponent, MapComponent, OrderComponent, OrderDetailComponent, ProductGroupComponent, ProductGroupDetailComponent, ProductGroupDetailBasicInfoExComponent, AreaTypeComponent, AreaTypeDetailComponent, MediaFileComponent, MediaFileDetailComponent, ShareManageTapComponent, ShareEditItemComponent, PackageComponent, PackageDetailComponent, PackageDetailContentExComponent, MapDetailComponent, AreaTypePanelComponent, AreaTypePanelDirective, AreaTypePanelEditComponent, ProductReplaceGroupComponent, PackageDetailDetailContentListComponent, PackageDetailXProductGroupComponent, PackageDetailProductGroupYEditFormComponent, PackageDetailXCategoryProductComponent, PackageDetailXCategoryProductYEditFormComponent, PackageDetailXCommonYListItemComponent, PackageDetailXMaterialComponent, PackageDetailXMaterialYEditFormComponent, PackageDetailXMaterialYListItemComponent, PackageDetailXReplaceGroupComponent, AccountXDetailComponent, ProductReplaceGroupXEditFormComponent, PackageDetailXReplaceGroupYEditFormComponent, PackageDetailXReplaceGroupYSimpleListComponent, PackageDetailXReplaceGroupYSimpleListItemComponent, OrganDetailComponent, OrganDetailXBasicInfoTabComponent, AccountXDepartmentFormComponent, AccountProfileComponent, AccountProfileOBasicInfoComponent, AccountProfileOChangePasswordComponent, ProductOPriceRateSettingComponent],
   providers: [
   ]
   , entryComponents: [
@@ -77,7 +78,8 @@ import { OChangePasswordComponent as AccountProfileOChangePasswordComponent } fr
     PackageDetailXReplaceGroupYEditFormComponent,
     AccountXDepartmentFormComponent,
     AccountXDetailComponent,
-    AccountProfileOChangePasswordComponent
+    AccountProfileOChangePasswordComponent,
+    ProductOPriceRateSettingComponent
   ]
 })
 export class BambooModule { }
