@@ -8,9 +8,11 @@
   </div>
   <div class="routers cus-scroller">
     <ng-container *ngFor='let grp of navs|async'>
-      <p class="group-nav-title" [class.center-me]='collapsed'>{{ !collapsed?(grp.title|translate):'▁▁▁'}}</p>
-      <ng-container *ngFor='let lk of grp.children'>
-        <app-router-link [icon]='lk.icon' [title]='lk.title' [url]='lk.url' [children]='lk.children' [collapsed]='collapsed' (onRouteChange)='onRouteChange($event)'></app-router-link>
+      <ng-container *ngIf='grp.children!=nul&&grp.children.length>0'>
+        <p class="group-nav-title" [class.center-me]='collapsed'>{{ !collapsed?(grp.title|translate):'▁▁▁'}}</p>
+        <ng-container *ngFor='let lk of grp.children'>
+          <app-router-link [icon]='lk.icon' [title]='lk.title' [url]='lk.url' [children]='lk.children' [collapsed]='collapsed' (onRouteChange)='onRouteChange($event)'></app-router-link>
+        </ng-container>
       </ng-container>
     </ng-container>
   </div>
