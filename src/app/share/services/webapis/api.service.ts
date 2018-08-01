@@ -139,6 +139,14 @@ export class ApiService<T extends IEntitybase> implements Resolve<Observable<T>>
     }//exportData
 
     /**
+     * 编辑资源权限
+     * @param data 
+     */
+    public editPermission(data: any) {
+        return this.httpClient.put(`${this.uri}/editPermission`, data, { headers: this.header, responseType: 'text' });
+    }//editPermission
+
+    /**
      * 分享实体信息
      * @param idsArr 
      */

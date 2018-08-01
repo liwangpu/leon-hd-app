@@ -55,9 +55,13 @@ export class TableListContentComponent implements OnInit {
     this.mdSrv.selectMode$.pipe(takeUntil(this.destroy$)).subscribe(selectMode => {
       if (!this._selectMode && selectMode) {
         this.columns.unshift(this.selectColumn);
+        this.displayedColumns.unshift('select');
       }
       if (!selectMode && this._selectMode)
+      {
         this.columns.shift();
+        this.displayedColumns.shift();
+      }
 
       this._selectMode = selectMode;
       this.allSelected = !selectMode;

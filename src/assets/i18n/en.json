@@ -173,7 +173,10 @@
         "ChangePassword": "Change Password",
         "Share": "Share",
         "CancelShare": "Cancel Share",
-        "ProductPriceRate": "Price Rate Setting"
+        "ProductPriceRate": "Price Rate Setting",
+        "EditResourcePermission":"Edit Resource Permission",
+        "Retrieve":"Retrieve",
+        "Update":"Update"
     },
     "message": {
         "UploadSuccessfully": "Files Upload Successfully",
@@ -240,6 +243,7 @@
         "EditArea": "Edit Area",
         "EditProductGroup": "Edit Product Group",
         "EditCategoryReferProduct": "Edit Category Refer Product",
-        "ProductPriceRate": "Price Rate Setting"
+        "ProductPriceRate": "Price Rate Setting",
+        "EditResourcePermission":"Edit Resource Permission"
     }
 }

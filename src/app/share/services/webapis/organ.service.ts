@@ -5,7 +5,7 @@ import { ConfigService } from '../config.service';
 import { Organization } from '../../models/organization';
 import { Observable,of } from 'rxjs';
 import { Account } from "../../models/account";
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class OrganService extends ApiService<Organization> {
     constructor(protected http: HttpClient, protected config: ConfigService) {
         super(http, config);
@@ -48,7 +48,7 @@ export class OrganService extends ApiService<Organization> {
      * 查询组织信息
      * @param query 
      */
-    query(query: IQuery): Observable<Paging<Organization>> {
+    query(query?: IQuery): Observable<Paging<Organization>> {
         return super.queryEntities(query);
     }
 

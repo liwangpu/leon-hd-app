@@ -4,6 +4,9 @@ import { Ilistable } from "../../../models/ilistable";
 import { DatePipe } from "@angular/common";
 import { DataSource } from "@angular/cdk/table";
 import { AsyncHandleService } from "../../../services/common/async-handle.service";
+import { DialogFactoryService } from "../../factories/dialog-factory.service";
+import { EditPermissionComponent } from "./edit-permission/edit-permission.component";
+import { DataOperateEnums } from "../../../enums/enums";
 
 /**
  * 列表模板页启动器
@@ -28,7 +31,7 @@ export abstract class PaginatorLaunch {
     enableDisplayModes = [1, 2];//页面可用的展示模式
     createdAction: { icon?: string, title?: string, onClick: Function };
     showHideColumn$ = new BehaviorSubject<Array<string>>([]);//展示隐藏列
-    constructor(protected datePipeTr: DatePipe, protected syncHandle: AsyncHandleService) {
+    constructor(protected datePipeTr: DatePipe, protected syncHandle: AsyncHandleService, protected dialogFac: DialogFactoryService) {
 
     }//constructor
 
@@ -38,7 +41,16 @@ export abstract class PaginatorLaunch {
      * 分享数据按钮
      */
     shareDataMenuItem: IAdvanceMenuItem = { icon: 'share', name: 'button.Share', needSelected: true, click: (ids: Array<string>) => { this._shares(ids); } };
+    /**
+     * 取消分享按钮
+     */
     cancelShareDataMenuItem: IAdvanceMenuItem = { icon: 'share', name: 'button.CancelShare', needSelected: true, click: (ids: Array<string>) => { this._cancelShares(ids); } };
+
+    /**
+     * 资源权限分配
+     */
+    editPermissionMenuItem: IAdvanceMenuItem = { icon: 'recent_actors', name: 'button.EditResourcePermission', needSelected: true, click: (ids: Array<string>) => { this._editPermission(ids); } };
+
 
     /**
      * 分享数据
@@ -60,6 +72,36 @@ export abstract class PaginatorLaunch {
             this.refreshData$.next();
         });
     }//shareSolutions
+
+    private _editPermission(ids: Array<string>) {
+        let dialog = this.dialogFac.tplsConfirm(EditPermissionComponent, 'dialog.EditResourcePermission', { width: '750px', height: '500px' });
+        dialog.afterOpen().subscribe(_ => {
+            let ins = dialog.componentInstance.componentIns as EditPermissionComponent;
+            ins.afterConfirm.subscribe(() => {
+
+                let organsPermission = ins.organizations.map(x => {
+                    let operateIds = x.retrieveOp ? DataOperateEnums.Retrieve + ',' : ',';
+                    operateIds += x.updateOp ? DataOperateEnums.Update + ',' : ',';
+                    operateIds += x.deleteOp ? DataOperateEnums.Delete + '' : '';
+                    return { OrganId: x.id, OperateIds: operateIds };
+                });
+
+                let model = {
+                    OrgansPermission: JSON.stringify(organsPermission),
+                    ResIds: ids.join(',')
+                };
+
+                let source$ = this.apiSrv.editPermission(model);
+                this.syncHandle.asyncRequest(source$).subscribe(_ => {
+                    ins.doneAsync.next();
+                    ins.closeDialog.next();
+
+                }, err => {
+                    ins.doneAsync.next();
+                });
+            });//afterConfirm
+        });//afterOpen
+    }//_editPermission
 
 }
 

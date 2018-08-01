@@ -23,7 +23,7 @@ export class ProductGroupPaginatorLaunchService extends PaginatorLaunch {
     , { columnDef: 'createdTime', header: 'glossary.CreatedTime', width: 110, cell: (data: ProductGroup) => this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd') }
   ];
   constructor(protected datePipe: DatePipe, public apiSrv: ProductGroupService, protected dialogFac: DialogFactoryService, protected syncHandle: AsyncHandleService, protected leftCategorySrv: ProductGroupLeftCategoryLaunchService) {
-    super(datePipe, syncHandle);
+    super(datePipe, syncHandle,dialogFac);
 
 
     this.advanceMenuItems = [

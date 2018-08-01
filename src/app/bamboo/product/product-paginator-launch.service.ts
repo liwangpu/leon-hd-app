@@ -30,9 +30,9 @@ export class ProductPaginatorLaunchService extends PaginatorLaunch {
     , { columnDef: 'createdTime', header: 'glossary.CreatedTime', width: 110, cell: (data: Product) => this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd') }
   ];
   constructor(protected datePipe: DatePipe, public apiSrv: ProductService, protected dialogFac: DialogFactoryService, protected tranSrv: TranslateService, protected syncHandle: AsyncHandleService, protected leftCategorySrv: ProductLeftCategoryLaunchService, protected accountSrv: AccountService, protected componentFactoryResolver: ComponentFactoryResolver, protected preferenceSrv: PreferenceService) {
-    super(datePipe, syncHandle);
+    super(datePipe, syncHandle,dialogFac);
 
-
+    this.advanceMenuItems.push(this.editPermissionMenuItem);
 
     let changeCategoryMenuItem: IAdvanceMenuItem = {
       icon: 'swap_horiz', name: 'button.ChangeCategory', needSelected: true, needPermission: true, click: (selectedIds: Array<string>) => {

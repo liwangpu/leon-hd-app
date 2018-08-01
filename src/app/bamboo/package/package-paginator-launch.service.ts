@@ -4,6 +4,7 @@ import { PackageService } from '../../share/services/webapis/package.service';
 import { DatePipe } from '@angular/common';
 import { AsyncHandleService } from '../../share/services/common/async-handle.service';
 import { Ilistable } from '../../share/models/ilistable';
+import { DialogFactoryService } from '../../share/common/factories/dialog-factory.service';
 
 @Injectable()
 export class PackagePaginatorLaunchService extends PaginatorLaunch {
@@ -11,8 +12,8 @@ export class PackagePaginatorLaunchService extends PaginatorLaunch {
   createdUrl = 'app/package-detail';
   titleIcon = 'extension';
   title = 'glossary.Package';
-  constructor(public apiSrv: PackageService, protected datePipe: DatePipe, protected syncHandle: AsyncHandleService) {
-    super(datePipe, syncHandle);
+  constructor(public apiSrv: PackageService, protected datePipe: DatePipe, protected syncHandle: AsyncHandleService, protected dialogFac: DialogFactoryService) {
+    super(datePipe, syncHandle, dialogFac);
 
     this.columnDefs = [
       { columnDef: 'icon', header: 'glossary.Icon', width: 0, cell: (data: Ilistable) => data.icon ? data.icon : '' }
@@ -24,7 +25,8 @@ export class PackagePaginatorLaunchService extends PaginatorLaunch {
     ];
 
     this.advanceMenuItems = [
-      { icon: 'share', name: 'button.Share', needSelected: true, click: (ids: Array<string>) => { this.shares(ids); } }
+      this.editPermissionMenuItem
+      , { icon: 'share', name: 'button.Share', needSelected: true, click: (ids: Array<string>) => { this.shares(ids); } }
       , { icon: 'share', name: 'button.CancelShare', needSelected: true, click: (ids: Array<string>) => { this.cancelShares(ids); } }
     ];
   }//constructor

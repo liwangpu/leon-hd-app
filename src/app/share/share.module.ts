@@ -5,9 +5,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ProductService } from './services/webapis/product.service';
 import { ProductSpecService } from './services/webapis/productSpec.service';
-import { AuthService } from './services/webapis/auth.service';
-import { AccountService } from './services/webapis/account.service';
-import { OrganService } from './services/webapis/organ.service';
 import { StaticmeshService } from './services/webapis/staticmesh.service';
 import { FileAssetService } from './services/webapis/fileasset.service';
 import { MaterialService } from './services/webapis/material.service';
@@ -77,6 +74,7 @@ import { ChangeIconComponent } from './common/components/change-icon/change-icon
 import { CardListPanelTplsComponent } from './common/page-tpls/card-list-panel-tpls/card-list-panel-tpls.component';
 import { CardListPanelTplsDirective } from './common/page-tpls/card-list-panel-tpls/card-list-panel-tpls.directive';
 import { SimpleTableListTplsComponent } from './common/page-tpls/simple-table-list-tpls/simple-table-list-tpls.component';
+import { EditPermissionComponent as PaginatorListEditPermissionComponent } from './common/page-tpls/paginator-page-tpls/edit-permission/edit-permission.component';
 
 @NgModule({
   imports: [
@@ -109,14 +107,13 @@ import { SimpleTableListTplsComponent } from './common/page-tpls/simple-table-li
     MatDatepickerModule,
     TreeModule
   ],
-  declarations: [PaginatorPageTplsComponent, PageManageButtonsComponent, PagingBarComponent, PagingContentComponent, TableListContentComponent, ServerRedirectPipe, LitimgListContentComponent, LitimgIconItemComponent, WorkingTimeComponent, SimpleCsvUploadComponent, SimpleConfirmDialogTplsComponent, SimpleMessageContentComponent, DetailPageTplsComponent, DetailPageBasicInfoTabComponent, DetailPageDetailInfoTabComponent, IconChangeCtDirective, CategoryEditPageTplsComponent, BlankPageTplsComponent, CategoryManageCategoryListComponent, CategoryManageCategoryListItemDirective, CategoryManageCategoryFormComponent, CategoryManageCategoryIterateListComponent, CategorySelectPanelComponent, PaginatorLeftCategoryPageTplsComponent, SimpleCategoryPanelComponent, CardListContentComponent, ProductReplaceGroupListContentComponent, ProductReplaceGroupListItemComponent, ProductReplaceGroupSetComponent, SimpleIconListPageComponent, SimpleIconListItemComponent, SimpleIconListItemDirective, LazyEntryDialogTplsComponent, ChangeIconComponent, CardListPanelTplsComponent, CardListPanelTplsDirective, SimpleTableListTplsComponent],
+  declarations: [PaginatorPageTplsComponent, PageManageButtonsComponent, PagingBarComponent, PagingContentComponent, TableListContentComponent, ServerRedirectPipe, LitimgListContentComponent, LitimgIconItemComponent, WorkingTimeComponent, SimpleCsvUploadComponent, SimpleConfirmDialogTplsComponent, SimpleMessageContentComponent, DetailPageTplsComponent, DetailPageBasicInfoTabComponent, DetailPageDetailInfoTabComponent, IconChangeCtDirective, CategoryEditPageTplsComponent, BlankPageTplsComponent, CategoryManageCategoryListComponent, CategoryManageCategoryListItemDirective, CategoryManageCategoryFormComponent, CategoryManageCategoryIterateListComponent, CategorySelectPanelComponent, PaginatorLeftCategoryPageTplsComponent, SimpleCategoryPanelComponent, CardListContentComponent, ProductReplaceGroupListContentComponent, ProductReplaceGroupListItemComponent, ProductReplaceGroupSetComponent, SimpleIconListPageComponent, SimpleIconListItemComponent, SimpleIconListItemDirective, LazyEntryDialogTplsComponent, ChangeIconComponent, CardListPanelTplsComponent, CardListPanelTplsDirective, SimpleTableListTplsComponent, PaginatorListEditPermissionComponent],
   providers: [
     DatePipe
     , WindowService
     , TranslateService
     , ProductService
     , ProductSpecService
-    , OrganService
     , StaticmeshService
     , FileAssetService
     , MaterialService
@@ -191,7 +188,8 @@ import { SimpleTableListTplsComponent } from './common/page-tpls/simple-table-li
     CategorySelectPanelComponent,
     SimpleCategoryPanelComponent,
     LazyEntryDialogTplsComponent,
-    ChangeIconComponent
+    ChangeIconComponent,
+    PaginatorListEditPermissionComponent
   ]
 })
 export class ShareModule { }

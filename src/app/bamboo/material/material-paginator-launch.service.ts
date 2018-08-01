@@ -29,7 +29,7 @@ export class MaterialPaginatorLaunchService extends PaginatorLaunch {
     , { columnDef: 'createdTime', header: 'glossary.CreatedTime', width: 110, cell: (data: Material) => this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd') }
   ];
   constructor(protected datePipe: DatePipe, public apiSrv: MaterialService, protected dialogFac: DialogFactoryService, protected syncHandle: AsyncHandleService, protected leftCategorySrv: MaterialLeftCategoryLaunchService) {
-    super(datePipe, syncHandle);
+    super(datePipe, syncHandle,dialogFac);
 
 
     let changeCategoryMenuItem: IAdvanceMenuItem = {

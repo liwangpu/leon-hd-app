@@ -16,7 +16,7 @@ export class ProductReplaceGroupPaginatorLaunchService extends PaginatorLaunch {
     enableDisplayModes = [ListDisplayModeEnum.ProductReplaceGroup];
     displayMode = ListDisplayModeEnum.ProductReplaceGroup;
     constructor(public apiSrv: ProductReplaceGroupService, protected datePipe: DatePipe, protected syncHandle: AsyncHandleService, protected dialogFac: DialogFactoryService, protected componentFactoryResolver: ComponentFactoryResolver) {
-        super(datePipe, syncHandle);
+        super(datePipe, syncHandle,dialogFac);
     }//constructor
 
     createdAction: { icon?: string, title?: string, onClick: Function } = {

@@ -171,7 +171,10 @@
         "ChangePassword": "修改密码",
         "Share": "分享",
         "CancelShare": "取消分享",
-        "ProductPriceRate":"价格比率设置"
+        "ProductPriceRate": "价格比率设置",
+        "EditResourcePermission": "资源权限分配",
+        "Retrieve":"查看",
+        "Update":"编辑"
     },
     "message": {
         "UploadSuccessfully": "文件上传成功",
@@ -224,7 +227,7 @@
         "ForgotPassword": "忘记您的密码?",
         "InputProductGroupName": "填写替换组名称",
         "SelectProductGroupItems": "选择替换产品",
-        "ItemsPerPageLabel":"每页记录"
+        "ItemsPerPageLabel": "每页记录"
     },
     "dialog": {
         "ChangeIcon": "更改图标",
@@ -238,6 +241,7 @@
         "EditArea": "编辑区域",
         "EditProductGroup": "编辑产品组",
         "EditCategoryReferProduct": "编辑分类引用产品",
-        "ProductPriceRate":"价格比率设置"
+        "ProductPriceRate": "价格比率设置",
+        "EditResourcePermission": "资源权限分配"
     }
 }

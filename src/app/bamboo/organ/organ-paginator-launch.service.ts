@@ -28,7 +28,7 @@ export class OrganPaginatorLaunchService extends PaginatorLaunch {
     ]
   };
   constructor(public apiSrv: OrganService, protected datePipe: DatePipe, protected syncHandle: AsyncHandleService, protected dialogFac: DialogFactoryService, protected componentFactoryResolver: ComponentFactoryResolver) {
-    super(datePipe, syncHandle);
+    super(datePipe, syncHandle,dialogFac);
   }//constructor
 
   // manageOwner() {

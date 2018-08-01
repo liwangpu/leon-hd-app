@@ -102,6 +102,9 @@ export class AccountService extends WebapiService<Account> implements Resolve<Ob
         return super.queryEntities(query, advanceQueryFilters);
     }
 
+    //规整完后删除
+    editPermission(data: any) { }
+
 }
 
 export class AccountProfile {

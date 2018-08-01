@@ -13,4 +13,5 @@ export interface IListableService<T> {
     exportData(query: IQuery, advanceQueryFilters?: Array<IQueryFilter>);
     shareDatas(idsArr: Array<string>);
     cancelShareDatas(idsArr: Array<string>);
+    editPermission(data: any);
 }
