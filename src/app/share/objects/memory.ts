@@ -28,4 +28,7 @@ export class Memory {
     organId: string;
     icon: string;
     role: string;
+
+    common_tip_403_status: string;
+
 }

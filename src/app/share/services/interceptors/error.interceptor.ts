@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ValidationResponse } from '../../models/validation-response';
 import { _throw } from 'rxjs/observable/throw';
+import { Memory } from '../../objects/memory';
 /**
  * 用户Error Interceptor
  * 用于向WeApi请求Header中添加Authorization Token信息
@@ -20,6 +21,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     handleError(handle: HttpErrorResponse) {
         let errorMsg = '';
 
+        if (handle.status == 403) {
+            return _throw(Memory.getInstance().common_tip_403_status);
+        }
         console.log('ErrorInterceptor catch error:', handle);
         if (typeof (handle.error) === 'string') {
             //delete|post|put 在responseType: 'text' 请求返回的error是ValidationResponse格式的字符串,需要转换json
@@ -64,6 +68,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 
             }
         }
-        return _throw(errorMsg) ;
+        return _throw(errorMsg);
     }
 }

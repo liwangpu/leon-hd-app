@@ -196,7 +196,8 @@
         "account not activate yet": "account not activate yet",
         "RequiredError": "Fill Necessarily",
         "MaxLengthError": "More than the standard length",
-        "BatchDeleteConfirm": "Are you sure to delete these {{value}} items ?"
+        "BatchDeleteConfirm": "Are you sure to delete these {{value}} items ?",
+        "NoPermission": "You do not have permission to perform this action"
     },
     "tips": {
         "DragOrClickHere": "Click or Drop your files here",

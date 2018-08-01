@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { Memory } from '../../objects/memory';
 
 @Injectable({ providedIn: 'root' })
 export class AppLangService {
@@ -21,6 +22,7 @@ export class AppLangService {
     //获取当前浏览器环境的语言比如en、 zh
     let broswerLang = translate.getBrowserLang();
     this.currentLang = broswerLang.match(/en|cn/) ? broswerLang : this.langs[0];
+    this.setCommonTipMsg();
   }
 
   set currentLang(lang: string) {
@@ -28,11 +30,16 @@ export class AppLangService {
     if (lang === last)
       return;
     this.changeLang$.next(lang);
+    this.setCommonTipMsg();
   }
 
   get currentLang(): string {
     return this.changeLang$.getValue();
   }
 
-
+  private setCommonTipMsg() {
+    this.translate.get('message.NoPermission').subscribe(msg => {
+      Memory.getInstance().common_tip_403_status = msg;
+    });
+  }
 }
