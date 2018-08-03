@@ -20,7 +20,7 @@ export class NavComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<boolean>();
   @ViewChildren(RouterLinkComponent) links: QueryList<RouterLinkComponent>;
   constructor(private accountSrv: AccountService, protected media: ObservableMedia) {
-    this.appName = '安住美居';
+
   }//constructor
 
   ngOnInit() {
@@ -29,6 +29,9 @@ export class NavComponent implements OnInit, OnDestroy {
     });
     this.accountSrv.getNavigation().subscribe(data => {
       this.navs = of(data['model']) as Observable<Array<Array<NavLink>>>;
+    });
+    this.accountSrv.profile$.subscribe(profile => {
+      this.appName = profile.organization;
     });
   }//ngOnInit
 

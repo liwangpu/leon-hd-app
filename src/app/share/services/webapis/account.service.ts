@@ -25,7 +25,6 @@ export class AccountService extends WebapiService<Account> implements Resolve<Ob
         let id = route.paramMap.get('id');
         return this.getEntity<Account>(id).pipe(tap(data => {
             this.editData$.next(data ? data : new Account());
-            console.log('edit data', data);
         })) as Observable<Account>;
     }
 
@@ -116,6 +115,7 @@ export class AccountProfile {
     location: string;
     brief: string;
     organizationId: string;
+    organization: string;
     departmentId: string;
     role: string;
 }
