@@ -24,7 +24,7 @@ export class SolutionPaginatorLaunchService extends PaginatorLaunch {
       , { columnDef: 'creatorName', header: 'glossary.CreatorName', width: 110, cell: (data: Ilistable) => data.creatorName ? data.creatorName : '' }
     ];
 
-    this.advanceMenuItems = [this.shareDataMenuItem, this.cancelShareDataMenuItem];
+    this.advanceMenuItems = [this.editPermissionMenuItem,this.shareDataMenuItem, this.cancelShareDataMenuItem];
   }//constructor
 
 }
