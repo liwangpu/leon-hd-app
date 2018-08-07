@@ -14,6 +14,7 @@
             box-sizing: border-box;
             padding: 0 12px;
             display: flex;
+            justify-content: space-between;
             flex-flow: row wrap;
             div.header-wrap {
                 color: white !important;
@@ -41,7 +42,7 @@
                 }
             }
             div.page-manage-buttons {
-                flex: 1 1 auto;
+                flex: 0 1 auto;
             }
         }
         div.tpls-content {

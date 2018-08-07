@@ -11,6 +11,8 @@ import { PageEvent } from '@angular/material';
 })
 export class OPaginatorBarComponent implements OnInit, OnDestroy {
 
+  showAllCheck = false;
+  allCheck = false;
   datasTotal = 0;
   pageSize = 0;
   pageSizeOptions: Array<number>;
@@ -28,6 +30,16 @@ export class OPaginatorBarComponent implements OnInit, OnDestroy {
     this.scheduleSrv.datas$.pipe(takeUntil(this.destroy$)).subscribe(datas => {
       this.datasTotal = datas.total;
     });
+    //订阅选择模式事件
+    this.scheduleSrv.selectMode$.pipe(takeUntil(this.destroy$)).subscribe(mode => {
+      this.showAllCheck = mode;
+      if (!mode)
+        this.allCheck = false;
+    });
+    //订阅分页改变事件
+    this.scheduleSrv.pageChange$.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.allCheck = false;
+    });
   }//ngOnInit
 
   ngOnDestroy(): void {
@@ -38,4 +50,12 @@ export class OPaginatorBarComponent implements OnInit, OnDestroy {
   pageChange(param: PageEvent) {
     this.scheduleSrv.pageParam = param;
   }//pageChange
+
+  onAllSelect() {
+    this.allCheck = !this.allCheck;
+    if (this.allCheck)
+      this.scheduleSrv.allSelect();
+    else
+      this.scheduleSrv.cancelAllSelect();
+  }//onAllSelect
 }

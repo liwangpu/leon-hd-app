@@ -147,6 +147,7 @@
         "Next": "Next",
         "Search": "Search",
         "Select": "Select",
+        "CancelSelect": "Cancel Select",
         "AddProduct": "ADD NEW PRODUCT",
         "AddOrgan": "ADD NEW ORGAN",
         "OrganOwnerManagement": "Owner Management",
@@ -163,6 +164,7 @@
         "Advance": "Advance",
         "BulkCategory": "Bulk Category",
         "AllSelect": "All",
+        "CancelAllSelect": "Cancel Select",
         "Export": "Export",
         "Display": "Display",
         "List": "List",
@@ -174,9 +176,9 @@
         "Share": "Share",
         "CancelShare": "Cancel Share",
         "ProductPriceRate": "Price Rate Setting",
-        "EditResourcePermission":"Edit Resource Permission",
-        "Retrieve":"Retrieve",
-        "Update":"Update"
+        "EditResourcePermission": "Edit Resource Permission",
+        "Retrieve": "Retrieve",
+        "Update": "Update"
     },
     "message": {
         "UploadSuccessfully": "Files Upload Successfully",
@@ -245,6 +247,6 @@
         "EditProductGroup": "Edit Product Group",
         "EditCategoryReferProduct": "Edit Category Refer Product",
         "ProductPriceRate": "Price Rate Setting",
-        "EditResourcePermission":"Edit Resource Permission"
+        "EditResourcePermission": "Edit Resource Permission"
     }
 }

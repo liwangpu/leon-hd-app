@@ -1,4 +1,8 @@
 <div class="bar">
-  <mat-paginator [length]="datasTotal" [pageIndex]='scheduleSrv.pageParam.pageIndex' [pageSizeOptions]="pageSizeOptions" (page)="pageChange($event)">
+  <mat-checkbox *ngIf='showAllCheck' color="primary" class="cb-all-check" [checked]='allCheck' (change)='onAllSelect()'>
+    {{(allCheck?'button.CancelAllSelect':'button.AllSelect')|translate}}
+  </mat-checkbox>
+  <mat-paginator style="flex:1 1 auto;" [length]="datasTotal" [pageIndex]='scheduleSrv.pageParam.pageIndex' [showFirstLastButtons]='true'
+    [pageSizeOptions]="pageSizeOptions" (page)="pageChange($event)">
   </mat-paginator>
 </div>

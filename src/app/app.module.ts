@@ -19,6 +19,7 @@ import { OContentComponent as V1ListOContentComponent } from './main/dynamic/v1-
 import { PTableListComponent as V1ListOContentPTableListComponent  } from './main/dynamic/v1-list-page/o-content/p-table-list/p-table-list.component';
 import { PLitimgListComponent as V1ListOContentPLitimgListComponent } from './main/dynamic/v1-list-page/o-content/p-litimg-list/p-litimg-list.component';
 import { OPaginatorBarComponent  as V1ListOPaginatorBarComponent} from './main/dynamic/v1-list-page/o-paginator-bar/o-paginator-bar.component';
+import { OManageButtonsComponent as V1ListOManageButtonsComponent } from './main/dynamic/v1-list-page/o-manage-buttons/o-manage-buttons.component';
 
 
 const routes: Routes = [
@@ -57,7 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, ToolBarComponent, LoginComponent, NavComponent, RouterLinkComponent, V1ListPageComponent, V1ListOContentComponent, V1ListOContentPTableListComponent, V1ListOContentPLitimgListComponent, V1ListOPaginatorBarComponent
+    AppComponent, HomeComponent, ToolBarComponent, LoginComponent, NavComponent, RouterLinkComponent, V1ListPageComponent, V1ListOContentComponent, V1ListOContentPTableListComponent, V1ListOContentPLitimgListComponent, V1ListOPaginatorBarComponent, V1ListOManageButtonsComponent
   ],
   imports: [
     BrowserModule,
