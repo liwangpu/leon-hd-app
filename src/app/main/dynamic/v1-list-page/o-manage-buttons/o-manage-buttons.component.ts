@@ -14,12 +14,16 @@ export class OManageButtonsComponent implements OnInit {
   }//constructor
 
   ngOnInit() {
-    
+
   }//ngOnInit
 
   changeSelectMode() {
     this.selected = !this.selected;
     this.scheduleSrv.selectMode = this.selected;
   }//changeSelectMode
+
+  refresh() {
+    this.scheduleSrv.query();
+  }//refresh
 
 }

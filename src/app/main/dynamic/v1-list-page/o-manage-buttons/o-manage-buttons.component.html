@@ -3,7 +3,7 @@
     <button mat-raised-button class="btn-add">添加</button>
   </div>
   <div class="advance-btn-area">
-    <button mat-button class="cus-manage-button adv-button">
+    <button mat-button class="cus-manage-button adv-button" (click)='refresh()'>
       <mat-icon class="cus-header-icons">refresh</mat-icon>
       <span>{{'button.Refresh'|translate}}</span>
     </button>
