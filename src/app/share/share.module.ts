@@ -75,6 +75,12 @@ import { CardListPanelTplsComponent } from './common/page-tpls/card-list-panel-t
 import { CardListPanelTplsDirective } from './common/page-tpls/card-list-panel-tpls/card-list-panel-tpls.directive';
 import { SimpleTableListTplsComponent } from './common/page-tpls/simple-table-list-tpls/simple-table-list-tpls.component';
 import { EditPermissionComponent as PaginatorListEditPermissionComponent } from './common/page-tpls/paginator-page-tpls/edit-permission/edit-permission.component';
+import { V1DyListPageTplsComponent } from './common/page-tpls/v1-dy-list-page-tpls/v1-dy-list-page-tpls.component';
+import { OPaginatorBarComponent as V1DyListPageTplsOPaginatorBarComponent } from './common/page-tpls/v1-dy-list-page-tpls/o-paginator-bar/o-paginator-bar.component';
+import { OManageButtonsComponent as V1DyListPageTplsOManageButtonsComponent } from './common/page-tpls/v1-dy-list-page-tpls/o-manage-buttons/o-manage-buttons.component';
+import { OContentComponent  as V1DyListPageTplsOContentComponent } from './common/page-tpls/v1-dy-list-page-tpls/o-content/o-content.component';
+import { PTableListComponent as V1DyListPageTplsOContentPTableListComponent} from './common/page-tpls/v1-dy-list-page-tpls/o-content/p-table-list/p-table-list.component';
+import { PLitimgListComponent as V1DyListPageTplsOContentPLitimgListComponent } from './common/page-tpls/v1-dy-list-page-tpls/o-content/p-litimg-list/p-litimg-list.component';
 
 @NgModule({
   imports: [
@@ -107,7 +113,7 @@ import { EditPermissionComponent as PaginatorListEditPermissionComponent } from 
     MatDatepickerModule,
     TreeModule
   ],
-  declarations: [PaginatorPageTplsComponent, PageManageButtonsComponent, PagingBarComponent, PagingContentComponent, TableListContentComponent, ServerRedirectPipe, LitimgListContentComponent, LitimgIconItemComponent, WorkingTimeComponent, SimpleCsvUploadComponent, SimpleConfirmDialogTplsComponent, SimpleMessageContentComponent, DetailPageTplsComponent, DetailPageBasicInfoTabComponent, DetailPageDetailInfoTabComponent, IconChangeCtDirective, CategoryEditPageTplsComponent, BlankPageTplsComponent, CategoryManageCategoryListComponent, CategoryManageCategoryListItemDirective, CategoryManageCategoryFormComponent, CategoryManageCategoryIterateListComponent, CategorySelectPanelComponent, PaginatorLeftCategoryPageTplsComponent, SimpleCategoryPanelComponent, CardListContentComponent, ProductReplaceGroupListContentComponent, ProductReplaceGroupListItemComponent, ProductReplaceGroupSetComponent, SimpleIconListPageComponent, SimpleIconListItemComponent, SimpleIconListItemDirective, LazyEntryDialogTplsComponent, ChangeIconComponent, CardListPanelTplsComponent, CardListPanelTplsDirective, SimpleTableListTplsComponent, PaginatorListEditPermissionComponent],
+  declarations: [PaginatorPageTplsComponent, PageManageButtonsComponent, PagingBarComponent, PagingContentComponent, TableListContentComponent, ServerRedirectPipe, LitimgListContentComponent, LitimgIconItemComponent, WorkingTimeComponent, SimpleCsvUploadComponent, SimpleConfirmDialogTplsComponent, SimpleMessageContentComponent, DetailPageTplsComponent, DetailPageBasicInfoTabComponent, DetailPageDetailInfoTabComponent, IconChangeCtDirective, CategoryEditPageTplsComponent, BlankPageTplsComponent, CategoryManageCategoryListComponent, CategoryManageCategoryListItemDirective, CategoryManageCategoryFormComponent, CategoryManageCategoryIterateListComponent, CategorySelectPanelComponent, PaginatorLeftCategoryPageTplsComponent, SimpleCategoryPanelComponent, CardListContentComponent, ProductReplaceGroupListContentComponent, ProductReplaceGroupListItemComponent, ProductReplaceGroupSetComponent, SimpleIconListPageComponent, SimpleIconListItemComponent, SimpleIconListItemDirective, LazyEntryDialogTplsComponent, ChangeIconComponent, CardListPanelTplsComponent, CardListPanelTplsDirective, SimpleTableListTplsComponent, PaginatorListEditPermissionComponent, V1DyListPageTplsOPaginatorBarComponent, V1DyListPageTplsOManageButtonsComponent, V1DyListPageTplsOContentComponent, V1DyListPageTplsOContentPTableListComponent, V1DyListPageTplsOContentPLitimgListComponent],
   providers: [
     DatePipe
     , WindowService
@@ -177,7 +183,10 @@ import { EditPermissionComponent as PaginatorListEditPermissionComponent } from 
     SimpleIconListPageComponent,
     IconChangeCtDirective,
     CardListPanelTplsComponent,
-    SimpleTableListTplsComponent
+    SimpleTableListTplsComponent,
+    V1DyListPageTplsOPaginatorBarComponent,
+    V1DyListPageTplsOManageButtonsComponent,
+    V1DyListPageTplsOContentComponent
   ],
   entryComponents: [
     SimpleCsvUploadComponent,

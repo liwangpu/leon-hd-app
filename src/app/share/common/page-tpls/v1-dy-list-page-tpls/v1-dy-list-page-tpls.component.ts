@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { V1ListPageScheduleService } from './v1-list-page-schedule.service';
-import { ResourceService } from '../../../share/services/webapis/resource.service';
-import { ActivatedRoute } from '@angular/router';
-import { UIListBSModel } from '../../../share/models/common';
+import { ResourceService } from '../../../services/webapis/resource.service';
+import { ActivatedRoute } from '../../../../../../node_modules/@angular/router';
+import { UIListBSModel } from '../../../models/common';
 
 @Component({
-  selector: 'app-v1-list-page',
-  templateUrl: './v1-list-page.component.html',
-  styleUrls: ['./v1-list-page.component.scss'],
+  selector: 'app-v1-dy-list-page-tpls',
+  templateUrl: './v1-dy-list-page-tpls.component.html',
+  styleUrls: ['./v1-dy-list-page-tpls.component.scss'],
   providers: [V1ListPageScheduleService, ResourceService]
 })
-export class V1ListPageComponent implements OnInit {
+export class V1DyListPageTplsComponent implements OnInit {
 
   title: string;
   icon: string;

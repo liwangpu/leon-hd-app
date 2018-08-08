@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subject } from '../../../../../../../node_modules/rxjs';
 import { V1ListPageScheduleService } from '../v1-list-page-schedule.service';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import { PageEvent } from '@angular/material';
+import { takeUntil } from '../../../../../../../node_modules/rxjs/operators';
+import { PageEvent } from '../../../../../../../node_modules/@angular/material';
 
 @Component({
-  selector: 'app-v1-list-page-o-paginator-bar',
+  selector: 'app-v1-dy-list-page-tpls-o-paginator-bar',
   templateUrl: './o-paginator-bar.component.html',
   styleUrls: ['./o-paginator-bar.component.scss']
 })
@@ -58,4 +58,5 @@ export class OPaginatorBarComponent implements OnInit, OnDestroy {
     else
       this.scheduleSrv.cancelAllSelect();
   }//onAllSelect
+
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { V1ListPageScheduleService } from '../v1-list-page-schedule.service';
 
 @Component({
-  selector: 'app-v1-list-page-o-manage-buttons',
+  selector: 'app-v1-dy-list-page-tpls-o-manage-buttons',
   templateUrl: './o-manage-buttons.component.html',
   styleUrls: ['./o-manage-buttons.component.scss']
 })
@@ -25,5 +25,4 @@ export class OManageButtonsComponent implements OnInit {
   refresh() {
     this.scheduleSrv.query();
   }//refresh
-
 }

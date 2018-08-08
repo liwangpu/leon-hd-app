@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { V1ListPageScheduleService } from '../v1-list-page-schedule.service';
 
 @Component({
-  selector: 'app-v1-list-page-o-content',
+  selector: 'app-v1-dy-list-page-tpls-o-content',
   templateUrl: './o-content.component.html',
   styleUrls: ['./o-content.component.scss']
 })
@@ -20,5 +20,4 @@ export class OContentComponent implements OnInit {
       this.displayModel = mode;
     });
   }//ngOnInit
-
 }

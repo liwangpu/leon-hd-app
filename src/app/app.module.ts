@@ -13,13 +13,10 @@ import { ToolBarComponent } from './main/tool-bar/tool-bar.component';
 import { NavComponent } from './main/nav/nav.component';
 import { RouterLinkComponent } from './main/nav/router-link/router-link.component';
 import { RouteguardService } from './share/services/common/routeguard.service';
-import { V1ListPageComponent } from './main/dynamic/v1-list-page/v1-list-page.component';
 import { ListBsModelService } from './share/services/webapis/list-bs-model.service';
-import { OContentComponent as V1ListOContentComponent } from './main/dynamic/v1-list-page/o-content/o-content.component';
-import { PTableListComponent as V1ListOContentPTableListComponent  } from './main/dynamic/v1-list-page/o-content/p-table-list/p-table-list.component';
-import { PLitimgListComponent as V1ListOContentPLitimgListComponent } from './main/dynamic/v1-list-page/o-content/p-litimg-list/p-litimg-list.component';
-import { OPaginatorBarComponent  as V1ListOPaginatorBarComponent} from './main/dynamic/v1-list-page/o-paginator-bar/o-paginator-bar.component';
-import { OManageButtonsComponent as V1ListOManageButtonsComponent } from './main/dynamic/v1-list-page/o-manage-buttons/o-manage-buttons.component';
+import { V1ListComponent } from './main/dynamic/v1-list/v1-list.component';
+
+
 
 
 const routes: Routes = [
@@ -42,7 +39,7 @@ const routes: Routes = [
   }
   , {
     path: 'v1/list/:model'
-    , component: V1ListPageComponent
+    , component: V1ListComponent
     , canActivate: [RouteguardService],
     resolve: {
       model: ListBsModelService
@@ -58,7 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, ToolBarComponent, LoginComponent, NavComponent, RouterLinkComponent, V1ListPageComponent, V1ListOContentComponent, V1ListOContentPTableListComponent, V1ListOContentPLitimgListComponent, V1ListOPaginatorBarComponent, V1ListOManageButtonsComponent
+    AppComponent, HomeComponent, ToolBarComponent, LoginComponent, NavComponent, RouterLinkComponent, V1ListComponent
   ],
   imports: [
     BrowserModule,

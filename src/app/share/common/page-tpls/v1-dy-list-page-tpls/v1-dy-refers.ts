@@ -1,5 +1,5 @@
-import { DataSource } from "@angular/cdk/table";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "../../../../../../node_modules/rxjs";
+import { DataSource } from "../../../../../../node_modules/@angular/cdk/table";
 
 export class CustomListDataSource extends DataSource<any> {
 

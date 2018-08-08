@@ -1,13 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OContentBase } from '../o-content-base.component';
+import { CustomListDataSource } from '../../v1-dy-refers';
 import { V1ListPageScheduleService } from '../../v1-list-page-schedule.service';
-import { CustomListDataSource } from '../../../list-refers/list-refers';
-import { takeUntil, skip } from 'rxjs/operators';
-import { TextTool } from '../../../../../share/objects/text-tool';
-import { UIListBSModelField } from '../../../../../share/models/common';
+import { takeUntil, skip } from '../../../../../../../../node_modules/rxjs/operators';
+import { TextTool } from '../../../../../objects/text-tool';
 
 @Component({
-  selector: 'app-v1-list-page-o-content-p-table-list',
+  selector: 'app-v1-dy-list-page-tpls-o-content-p-table-list',
   templateUrl: './p-table-list.component.html',
   styleUrls: ['./p-table-list.component.scss']
 })
