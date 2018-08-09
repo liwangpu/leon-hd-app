@@ -126,7 +126,8 @@
         "ConfirmPassword": "Confirm Password",
         "ShareState": "Share",
         "ProductReplaceGroup": "Product Replace Group",
-        "CategoryReferProduct": "Category Refer Product"
+        "CategoryReferProduct": "Category Refer Product",
+        "BSModelDef": "Model Define"
     },
     "button": {
         "Logout": "Logout",

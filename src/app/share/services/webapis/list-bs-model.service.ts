@@ -16,7 +16,7 @@ export class ListBsModelService extends WebapiBaseService {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<UIListBSModel> | Observable<Observable<UIListBSModel>> | Promise<Observable<UIListBSModel>> {
     let modelName = route.paramMap.get('model');
-    let durl = `${this.uri}/List?modelName=${modelName}`;
+    let durl = `${this.uri}/${modelName}`;
     return this.http.get<UIListBSModel>(durl, { headers: this.header });
   }
 

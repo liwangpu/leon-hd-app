@@ -17,8 +17,6 @@ import { ListBsModelService } from './share/services/webapis/list-bs-model.servi
 import { V1ListComponent } from './main/dynamic/v1-list/v1-list.component';
 
 
-
-
 const routes: Routes = [
   {
     path: ''
@@ -29,10 +27,10 @@ const routes: Routes = [
     path: 'login'
     , component: LoginComponent
   }
-  // , {
-  //   path: 'designer'
-  //   , loadChildren: './designer/designer.module#DesignerModule'
-  // }
+  , {
+    path: 'designer'
+    , loadChildren: './designer/designer.module#DesignerModule'
+  }
   , {
     path: 'app'
     , loadChildren: './bamboo/bamboo.module#BambooModule'

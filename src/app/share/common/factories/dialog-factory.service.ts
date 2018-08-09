@@ -10,6 +10,7 @@ import { WindowService } from '../objects/window.service';
 import { CommonCategoryTplsMdService } from '../page-tpls/category-edit-page-tpls/common-category-tpls-md.service';
 import { SimpleCategoryPanelComponent } from './dialog-template/simple-category-panel/simple-category-panel.component';
 import { LazyEntryDialogTplsComponent } from './dialog-template/lazy-entry-dialog-tpls/lazy-entry-dialog-tpls.component';
+import { SimpleBlankTplsComponent } from './dialog-template/simple-blank-tpls/simple-blank-tpls.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -62,6 +63,19 @@ export class DialogFactoryService {
     }
     return this.dialog.open(componentOrTemplateRef, config);
   }//pureDialog
+
+
+  simpleBlank(content: string | any, option?: SimpleBlankOption) {
+    if (!option)
+      option = {};
+    if (!option.height)
+      option.height = '250px';
+    if (!option.width)
+      option.width = '400px';
+    option.data = { content: content };
+    return this.open(SimpleBlankTplsComponent, option);
+  }//simpleBlank
+
 
   /**
    * 简单确认对话框
@@ -133,16 +147,25 @@ export class DialogFactoryService {
 /**
  * 简单对话框参数
  */
-interface simpleConfirmOption {
+interface SimpleBlankOption {
   width?: string;
   height?: string;
   minWidth?: string;
   minHeight?: string;
-  hideCancelBtn?: boolean;
   data?: any;
   [propName: string]: any;
 }
 
+/**
+ * 确认对话框参数
+ */
+interface simpleConfirmOption extends SimpleBlankOption {
+  hideCancelBtn?: boolean;
+}
+
+/**
+ * 上传Csv对话框参数
+ */
 interface SimpleCsvUploadOption extends simpleConfirmOption {
   uploadUrl: string;
   templateCsvUrl: string;

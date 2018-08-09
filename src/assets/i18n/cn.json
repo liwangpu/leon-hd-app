@@ -124,7 +124,8 @@
         "ConfirmPassword": "确认密码",
         "ShareState": "分享状态",
         "ProductReplaceGroup": "产品替换组",
-        "CategoryReferProduct": "分类引用产品"
+        "CategoryReferProduct": "分类引用产品",
+        "BSModelDef": "业务实体定义"
     },
     "button": {
         "Logout": "退出",
@@ -175,8 +176,8 @@
         "CancelShare": "取消分享",
         "ProductPriceRate": "价格比率设置",
         "EditResourcePermission": "资源权限分配",
-        "Retrieve":"查看",
-        "Update":"编辑"
+        "Retrieve": "查看",
+        "Update": "编辑"
     },
     "message": {
         "UploadSuccessfully": "文件上传成功",
