@@ -115,7 +115,7 @@ import { SimpleBlankTplsComponent } from './common/factories/dialog-template/sim
     MatDatepickerModule,
     TreeModule
   ],
-  declarations: [PaginatorPageTplsComponent, PageManageButtonsComponent, PagingBarComponent, PagingContentComponent, TableListContentComponent, ServerRedirectPipe, LitimgListContentComponent, LitimgIconItemComponent, WorkingTimeComponent, SimpleCsvUploadComponent, SimpleConfirmDialogTplsComponent, SimpleMessageContentComponent, DetailPageTplsComponent, DetailPageBasicInfoTabComponent, DetailPageDetailInfoTabComponent, IconChangeCtDirective, CategoryEditPageTplsComponent, BlankPageTplsComponent, CategoryManageCategoryListComponent, CategoryManageCategoryListItemDirective, CategoryManageCategoryFormComponent, CategoryManageCategoryIterateListComponent, CategorySelectPanelComponent, PaginatorLeftCategoryPageTplsComponent, SimpleCategoryPanelComponent, CardListContentComponent, ProductReplaceGroupListContentComponent, ProductReplaceGroupListItemComponent, ProductReplaceGroupSetComponent, SimpleIconListPageComponent, SimpleIconListItemComponent, SimpleIconListItemDirective, LazyEntryDialogTplsComponent, ChangeIconComponent, CardListPanelTplsComponent, CardListPanelTplsDirective, SimpleTableListTplsComponent, PaginatorListEditPermissionComponent, V1DyListPageTplsOPaginatorBarComponent, V1DyListPageTplsOManageButtonsComponent, V1DyListPageTplsOContentComponent, V1DyListPageTplsOContentPTableListComponent, V1DyListPageTplsOContentPLitimgListComponent, OSimpleEditComponent, SimpleBlankTplsComponent],
+  declarations: [PaginatorPageTplsComponent, PageManageButtonsComponent, PagingBarComponent, PagingContentComponent, TableListContentComponent, ServerRedirectPipe, LitimgListContentComponent, LitimgIconItemComponent, WorkingTimeComponent, SimpleCsvUploadComponent, SimpleConfirmDialogTplsComponent, SimpleMessageContentComponent, DetailPageTplsComponent, DetailPageBasicInfoTabComponent, DetailPageDetailInfoTabComponent, IconChangeCtDirective, CategoryEditPageTplsComponent, BlankPageTplsComponent, CategoryManageCategoryListComponent, CategoryManageCategoryListItemDirective, CategoryManageCategoryFormComponent, CategoryManageCategoryIterateListComponent, CategorySelectPanelComponent, PaginatorLeftCategoryPageTplsComponent, SimpleCategoryPanelComponent, CardListContentComponent, ProductReplaceGroupListContentComponent, ProductReplaceGroupListItemComponent, ProductReplaceGroupSetComponent, SimpleIconListPageComponent, SimpleIconListItemComponent, SimpleIconListItemDirective, LazyEntryDialogTplsComponent, ChangeIconComponent, CardListPanelTplsComponent, CardListPanelTplsDirective, SimpleTableListTplsComponent, PaginatorListEditPermissionComponent, V1DyListPageTplsOPaginatorBarComponent, V1DyListPageTplsOManageButtonsComponent, V1DyListPageTplsOContentComponent, V1DyListPageTplsOContentPTableListComponent, V1DyListPageTplsOContentPLitimgListComponent, OSimpleEditComponent, SimpleBlankTplsComponent,V1DyListPageTplsComponent],
   providers: [
     DatePipe
     , WindowService
@@ -188,7 +188,8 @@ import { SimpleBlankTplsComponent } from './common/factories/dialog-template/sim
     SimpleTableListTplsComponent,
     V1DyListPageTplsOPaginatorBarComponent,
     V1DyListPageTplsOManageButtonsComponent,
-    V1DyListPageTplsOContentComponent
+    V1DyListPageTplsOContentComponent,
+    V1DyListPageTplsComponent
   ],
   entryComponents: [
     SimpleBlankTplsComponent,

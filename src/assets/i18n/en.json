@@ -179,7 +179,8 @@
         "ProductPriceRate": "Price Rate Setting",
         "EditResourcePermission": "Edit Resource Permission",
         "Retrieve": "Retrieve",
-        "Update": "Update"
+        "Update": "Update",
+        "GenerateLayout": "Generate Layout"
     },
     "message": {
         "UploadSuccessfully": "Files Upload Successfully",

@@ -14,7 +14,7 @@ export class MapService extends ApiService<Map>  {
   }
 
   /**
-    * 根据id获取套餐信息
+    * 根据id获取地图信息
     * @param id 
     */
   getById(id: string | number): Observable<Map> {
@@ -25,7 +25,7 @@ export class MapService extends ApiService<Map>  {
   }
 
   /**
-   * 创建套餐信息
+   * 创建地图信息
    * @param entity 
    */
   create(entity: Map): Observable<Map> {
@@ -33,7 +33,7 @@ export class MapService extends ApiService<Map>  {
   }
 
   /**
-   * 更新套餐信息
+   * 更新地图信息
    * @param entity 
    */
   update(entity: Map): Observable<Map> {
@@ -41,11 +41,19 @@ export class MapService extends ApiService<Map>  {
   }
 
   /**
-   * 查询套餐信息
+   * 查询地图信息
    * @param query 
    */
   query(query: IQuery): Observable<Paging<Map>> {
     return super.queryEntities(query);
   }
+
+  /**
+   * 地图生成户型
+   * @param mapId 
+   */
+  transToLayout(mapId: string) {
+    return this.http.put(`${this.uri}/TransferToLayout`, { MapId: mapId }, { headers: this.header, responseType: 'text' });
+  }//transToLayout
 }
 

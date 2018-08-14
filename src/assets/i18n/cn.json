@@ -177,7 +177,8 @@
         "ProductPriceRate": "价格比率设置",
         "EditResourcePermission": "资源权限分配",
         "Retrieve": "查看",
-        "Update": "编辑"
+        "Update": "编辑",
+        "GenerateLayout": "生成户型"
     },
     "message": {
         "UploadSuccessfully": "文件上传成功",
