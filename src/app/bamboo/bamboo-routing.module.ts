@@ -43,6 +43,9 @@ import { OrganService } from '../share/services/webapis/organ.service';
 import { RouteguardService } from '../share/services/common/routeguard.service';
 import { AccountProfileComponent } from './account-profile/account-profile.component';
 import { AccountService } from '../share/services/webapis/account.service';
+import { LayoutComponent } from './layout/layout.component';
+import { LayoutDetailComponent } from './layout-detail/layout-detail.component';
+import { LayoutService } from '../share/services/webapis/layout.service';
 
 
 const routes: Routes = [
@@ -314,6 +317,28 @@ const routes: Routes = [
     path: 'product-replace-group'
     , component: ProductReplaceGroupComponent
     , canActivate: [RouteguardService]
+  }
+  /****************************************************************************************************/
+  , {
+    path: 'layout'
+    , component: LayoutComponent
+    , canActivate: [RouteguardService]
+  }
+  , {
+    path: 'layout-detail/:id'
+    , component: LayoutDetailComponent
+    , canActivate: [RouteguardService],
+    resolve: {
+      entity: LayoutService
+    }
+  }
+  , {
+    path: 'layout-detail'
+    , component: LayoutDetailComponent
+    , canActivate: [RouteguardService],
+    resolve: {
+      entity: LayoutService
+    }
   }
 ];
 
