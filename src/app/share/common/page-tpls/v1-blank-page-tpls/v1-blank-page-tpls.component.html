@@ -1,0 +1,13 @@
+<div class="bk-page-container" fxLayout='column'>
+  <div fxFlex='120px' class="bk-page-header" fxLayout='row' fxLayoutAlign='start center'>
+      <div class="bk-page-icon-wrap">
+          <mat-icon class="page-icon cus-header-icons animated fadeIn">{{iconName?iconName:'shopping_basket'}}</mat-icon>
+          <span class="page-icon-title animated flipInX">{{titleName|translate}}</span>
+      </div>
+  </div>
+  <div fxFlex class="bk-page-content">
+      <div class="bk-content-container">
+          <ng-content></ng-content>
+      </div>
+  </div>
+</div>
