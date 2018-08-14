@@ -35,7 +35,8 @@
         "Layout": "户型",
         "Share": "分享",
         "AreaType": "区域类型",
-        "ProductGroup": "产品组"
+        "ProductGroup": "产品组",
+        "NavSetting":"导航栏设置"
     },
     "glossary": {
         "OrganAccounts": "人员管理",

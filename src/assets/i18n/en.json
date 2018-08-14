@@ -35,7 +35,8 @@
         "Layout": "Layout",
         "Share": "Share",
         "AreaType": "Area Type",
-        "ProductGroup": "Product Group"
+        "ProductGroup": "Product Group",
+        "NavSetting": "Navigation Setting"
     },
     "glossary": {
         "OrganAccounts": "Account Management",

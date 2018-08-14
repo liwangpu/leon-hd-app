@@ -1,3 +1,25 @@
-<app-v2-blank-page-tpls titleName='' iconName=''>
-    asdf
-</app-v2-blank-page-tpls>
+<div class="bk-page">
+    <div class="bk-head">
+        <div class="bk-head-icon-wrap">
+            <button mat-icon-button *ngIf='!showDrawer' (click)='!drawerOnSwitch?drawer.open():drawer.close()'>
+                <mat-icon>{{!drawerOnSwitch?'menu':'keyboard_backspace'}}</mat-icon>
+            </button>
+            <mat-icon class="animated fadeIn">{{iconName?iconName:'shopping_basket'}}</mat-icon>
+            <span class="bk-head-title animated flipInX">{{titleName|translate}}</span>
+        </div>
+    </div>
+    <div class="bk-content">
+        <div class="bk-content-wrap">
+            <mat-drawer-container class="nav-drawer-container" autosize>
+                <mat-drawer #drawer class="nav-drawer" [mode]="sideMode" [ngStyle]='drawerDyStyle' (openedChange)='drawerOnSwitch = drawer.opened'>
+
+                </mat-drawer>
+
+                <div class="example-sidenav-content">
+
+                </div>
+
+            </mat-drawer-container>
+        </div>
+    </div>
+</div>
