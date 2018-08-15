@@ -8,17 +8,17 @@ export class ConfigService {
         return environment.serveBase;
     }
 
-    get isMaintaining() {
-        return environment.isMaintaining;
-    }
+    // get isMaintaining() {
+    //     return environment.isMaintaining;
+    // }
 
-    get maintainingEndDate() {
-        return environment.maintainingEndDate;
-    }
+    // get maintainingEndDate() {
+    //     return environment.maintainingEndDate;
+    // }
 
-    get language() {
-        return environment.language;
-    }
+    // get language() {
+    //     return environment.language;
+    // }
     get dialog_min(): { width: string, height: string } {
         return environment.dialogMin;
     }
