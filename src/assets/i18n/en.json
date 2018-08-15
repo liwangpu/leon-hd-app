@@ -128,7 +128,8 @@
         "ShareState": "Share",
         "ProductReplaceGroup": "Product Replace Group",
         "CategoryReferProduct": "Category Refer Product",
-        "BSModelDef": "Model Define"
+        "BSModelDef": "Model Define",
+        "UserRole":"User Role"
     },
     "button": {
         "Logout": "Logout",

@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from '../../../../node_modules/rxjs';
+import { Subscription, Observable } from '../../../../node_modules/rxjs';
 import { ObservableMedia } from '../../../../node_modules/@angular/flex-layout';
 import { MatDrawer } from '../../../../node_modules/@angular/material';
+import { UserRoleService } from '../../share/services/webapis/user-role.service';
+import { UserRole } from '../../share/models/user-role';
+import { TreeModel } from '../../../../node_modules/ng2-tree';
 
 @Component({
   selector: 'app-nav-edit',
@@ -9,6 +12,21 @@ import { MatDrawer } from '../../../../node_modules/@angular/material';
   styleUrls: ['./nav-edit.component.scss']
 })
 export class NavEditComponent implements OnInit {
+  public tree: TreeModel = {
+    value: '用户角色',
+    // children: [
+    //   {
+    //     value: 'Object-oriented programming',
+    //     children: [{ value: 'Java' }, { value: 'C++' }, { value: 'C#' }]
+    //   },
+    //   {
+    //     value: 'Prototype-based programming',
+    //     children: [{ value: 'JavaScript' }, { value: 'CoffeeScript' }, { value: 'Lua' }]
+    //   }
+    // ]
+  };
+
+
 
   titleName = 'nav.NavSetting';
   iconName = 'chrome_reader_mode'
@@ -17,10 +35,24 @@ export class NavEditComponent implements OnInit {
   sideMode = 'side';
   watcher: Subscription;
   drawerDyStyle = {};
+  // selectedRole = '';
+  userRoles: Observable<Array<UserRole>>;
   @ViewChild('drawer', { read: MatDrawer }) drawer: MatDrawer;
-  constructor(public media: ObservableMedia) {
+  constructor(public media: ObservableMedia, public userRoleSrv: UserRoleService) {
 
   }//constructor
+
+  /**
+   * selectedRole
+   */
+  private _selectedRole: string;
+  set selectedRole(vl: string) {
+    this._selectedRole = vl;
+    this.getRoleNav();
+  }
+  get selectedRole() {
+    return this._selectedRole;
+  }
 
   ngOnInit() {
     this.watcher = this.media.subscribe(() => {
@@ -46,6 +78,16 @@ export class NavEditComponent implements OnInit {
       }
       this.drawerDyStyle = { width: drawerWidth };
     });
+
+    // this.userRoleSrv.getRole().subscribe(res => {
+    //   // console.log('user role', res);
+    //   this.userRoles=
+    // });
+    this.userRoles = this.userRoleSrv.getRole();
   }//ngOnInit
+
+  getRoleNav() {
+
+  }//getRoleNav
 
 }

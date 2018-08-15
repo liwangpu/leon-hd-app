@@ -1,22 +1,45 @@
 <div class="bk-page">
     <div class="bk-head">
         <div class="bk-head-icon-wrap">
-            <button mat-icon-button *ngIf='!showDrawer' (click)='!drawerOnSwitch?drawer.open():drawer.close()'>
-                <mat-icon>{{!drawerOnSwitch?'menu':'keyboard_backspace'}}</mat-icon>
+            <div class="up">
+                <button mat-icon-button *ngIf='!showDrawer' (click)='!drawerOnSwitch?drawer.open():drawer.close()'>
+                    <mat-icon>{{!drawerOnSwitch?'menu':'keyboard_backspace'}}</mat-icon>
+                </button>
+                <mat-icon class="animated fadeIn">{{iconName?iconName:'shopping_basket'}}</mat-icon>
+                <span class="bk-head-title animated flipInX">{{titleName|translate}}</span>
+            </div>
+            <div class="down">
+                <mat-select class="white-serie role-select" [(value)]="selectedRole" placeholder="{{'glossary.UserRole'|translate}}">
+                    <ng-container *ngFor='let opt of userRoles|async'>
+                        <mat-option [value]="opt.role">{{opt.role}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </div>
+        </div>
+        <div class="bk-head-buttons">
+            <button mat-button class="cus-manage-button">
+                <mat-icon>refresh</mat-icon>
+                <span>{{'button.Refresh'|translate}}</span>
             </button>
-            <mat-icon class="animated fadeIn">{{iconName?iconName:'shopping_basket'}}</mat-icon>
-            <span class="bk-head-title animated flipInX">{{titleName|translate}}</span>
+            <button mat-button class="cus-manage-button">
+                <mat-icon>save</mat-icon>
+                <span>{{'button.Save'|translate}}</span>
+            </button>
+            <button mat-button class="cus-manage-button">
+                <mat-icon>settings</mat-icon>
+                <span>{{'button.Advance'|translate}}</span>
+            </button>
         </div>
     </div>
     <div class="bk-content">
         <div class="bk-content-wrap">
             <mat-drawer-container class="nav-drawer-container" autosize>
                 <mat-drawer #drawer class="nav-drawer" [mode]="sideMode" [ngStyle]='drawerDyStyle' (openedChange)='drawerOnSwitch = drawer.opened'>
-
+                    <tree [tree]="tree"></tree>
                 </mat-drawer>
 
                 <div class="example-sidenav-content">
-
+                    123
                 </div>
 
             </mat-drawer-container>

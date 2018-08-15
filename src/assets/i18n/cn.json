@@ -126,7 +126,8 @@
         "ShareState": "分享状态",
         "ProductReplaceGroup": "产品替换组",
         "CategoryReferProduct": "分类引用产品",
-        "BSModelDef": "业务实体定义"
+        "BSModelDef": "业务实体定义",
+        "UserRole":"角色"
     },
     "button": {
         "Logout": "退出",
