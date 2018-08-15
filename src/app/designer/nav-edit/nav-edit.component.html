@@ -35,11 +35,13 @@
         <div class="bk-content-wrap">
             <mat-drawer-container class="nav-drawer-container" autosize>
                 <mat-drawer #drawer class="nav-drawer" [mode]="sideMode" [ngStyle]='drawerDyStyle' (openedChange)='drawerOnSwitch = drawer.opened'>
-                    <tree [tree]="tree"></tree>
+                    <tree [tree]="tree" (menuItemSelected)="onMenuItemSelected($event)"></tree>
                 </mat-drawer>
 
-                <div class="example-sidenav-content">
-                    123
+                <div class="nav-content">
+                    <app-nav-edit-o-edit-area-node></app-nav-edit-o-edit-area-node>
+                    <app-nav-edit-o-edit-link-group></app-nav-edit-o-edit-link-group>
+                    <app-nav-edit-o-edit-link></app-nav-edit-o-edit-link>
                 </div>
 
             </mat-drawer-container>

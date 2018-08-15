@@ -36,7 +36,7 @@
         "Share": "分享",
         "AreaType": "区域类型",
         "ProductGroup": "产品组",
-        "NavSetting":"导航栏设置"
+        "NavSetting": "导航栏设置"
     },
     "glossary": {
         "OrganAccounts": "人员管理",
@@ -127,7 +127,7 @@
         "ProductReplaceGroup": "产品替换组",
         "CategoryReferProduct": "分类引用产品",
         "BSModelDef": "业务实体定义",
-        "UserRole":"角色"
+        "UserRole": "角色"
     },
     "button": {
         "Logout": "退出",
@@ -201,7 +201,9 @@
         "RequiredError": "必填信息",
         "MaxLengthError": "长度超限",
         "BatchDeleteConfirm": "您确认删除这 {{value}} 条记录吗 ?",
-        "NoPermission": "您没有该操作权限"
+        "NoPermission": "您没有该操作权限",
+        "AreaNodeOnly": "该节点只能添加区域",
+        "ForbidEditRootNode": "不能编辑根节点"
     },
     "tips": {
         "DragOrClickHere": "点击或拖拽文件到这里",

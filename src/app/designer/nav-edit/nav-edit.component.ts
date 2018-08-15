@@ -4,7 +4,9 @@ import { ObservableMedia } from '../../../../node_modules/@angular/flex-layout';
 import { MatDrawer } from '../../../../node_modules/@angular/material';
 import { UserRoleService } from '../../share/services/webapis/user-role.service';
 import { UserRole } from '../../share/models/user-role';
-import { TreeModel } from '../../../../node_modules/ng2-tree';
+import { TreeModel, NodeMenuItemAction, MenuItemSelectedEvent } from '../../../../node_modules/ng2-tree';
+import { UUID } from 'angular2-uuid';
+import { SnackbarService } from '../../share/services/common/snackbar.service';
 
 @Component({
   selector: 'app-nav-edit',
@@ -13,6 +15,7 @@ import { TreeModel } from '../../../../node_modules/ng2-tree';
 })
 export class NavEditComponent implements OnInit {
   public tree: TreeModel = {
+    id: 'root-node',
     value: '用户角色',
     // children: [
     //   {
@@ -24,6 +27,14 @@ export class NavEditComponent implements OnInit {
     //     children: [{ value: 'JavaScript' }, { value: 'CoffeeScript' }, { value: 'Lua' }]
     //   }
     // ]
+    settings: {
+      menuItems: [
+        { action: NodeMenuItemAction.Custom, name: 'Add Area' },
+        { action: NodeMenuItemAction.Custom, name: 'Add Link Group' },
+        { action: NodeMenuItemAction.Custom, name: 'Add Link' },
+        { action: NodeMenuItemAction.Custom, name: 'Edit' }
+      ]
+    }
   };
 
 
@@ -38,7 +49,7 @@ export class NavEditComponent implements OnInit {
   // selectedRole = '';
   userRoles: Observable<Array<UserRole>>;
   @ViewChild('drawer', { read: MatDrawer }) drawer: MatDrawer;
-  constructor(public media: ObservableMedia, public userRoleSrv: UserRoleService) {
+  constructor(public media: ObservableMedia, public userRoleSrv: UserRoleService, public snackBarSrv: SnackbarService) {
 
   }//constructor
 
@@ -79,15 +90,36 @@ export class NavEditComponent implements OnInit {
       this.drawerDyStyle = { width: drawerWidth };
     });
 
-    // this.userRoleSrv.getRole().subscribe(res => {
-    //   // console.log('user role', res);
-    //   this.userRoles=
-    // });
     this.userRoles = this.userRoleSrv.getRole();
   }//ngOnInit
 
   getRoleNav() {
 
   }//getRoleNav
+
+  onMenuItemSelected(vl: MenuItemSelectedEvent) {
+    console.log('onMenuItemSelected', vl.selectedItem, vl.node.id);
+
+
+    //根节点右键菜单响应
+    if (vl.node.id.toString().indexOf('root-node') >= 0) {
+      if (vl.selectedItem == 'Add Area') {
+
+      }
+      else if (vl.selectedItem == 'Edit') {
+        this.snackBarSrv.simpleTranslateBar('message.ForbidEditRootNode');
+      }
+      else {
+        this.snackBarSrv.simpleTranslateBar('message.AreaNodeOnly');
+      }
+    }
+
+    //
+
+
+
+  }//onMenuItemSelected
+
+
 
 }

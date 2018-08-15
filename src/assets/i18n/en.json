@@ -129,7 +129,7 @@
         "ProductReplaceGroup": "Product Replace Group",
         "CategoryReferProduct": "Category Refer Product",
         "BSModelDef": "Model Define",
-        "UserRole":"User Role"
+        "UserRole": "User Role"
     },
     "button": {
         "Logout": "Logout",
@@ -203,7 +203,9 @@
         "RequiredError": "Fill Necessarily",
         "MaxLengthError": "More than the standard length",
         "BatchDeleteConfirm": "Are you sure to delete these {{value}} items ?",
-        "NoPermission": "You do not have permission to perform this action"
+        "NoPermission": "You do not have permission to perform this action",
+        "AreaNodeOnly": "This Node Can Add Area Node Only",
+        "ForbidEditRootNode": "Can't Edit Root Node"
     },
     "tips": {
         "DragOrClickHere": "Click or Drop your files here",
