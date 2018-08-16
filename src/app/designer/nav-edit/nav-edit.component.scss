@@ -87,7 +87,9 @@
                     .nav-content {
                         width: 100%;
                         height: 100%;
-                        // background-color: orange;
+                        .hidden-me {
+                            display: none;
+                        }
                     }
                 }
             }

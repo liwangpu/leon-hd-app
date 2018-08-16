@@ -1,3 +1,32 @@
-<p>
-  o-edit-link-group works!
-</p>
+<div class="design-head">
+    <mat-icon>bookmark</mat-icon>
+    <span>{{'tips.EditNavGroupLink'|translate}}</span>
+  </div>
+<div class="node-container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <mat-form-field>
+      <input matInput name="value" formControlName="value" required placeholder="{{'glossary.Name'|translate}}">
+      <mat-error *ngIf="detailForm.get('value').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="nameTranslateKey" formControlName="nameTranslateKey" required placeholder="{{'glossary.NameTranslateKey'|translate}}">
+      <mat-error *ngIf="detailForm.get('nameTranslateKey').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="icon" formControlName="icon" required placeholder="{{'glossary.Icon'|translate}}">
+      <mat-error *ngIf="detailForm.get('icon').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+
+
+  </form>
+</div>
+
+<div class="buttons-container">
+  <button mat-button [disabled]='detailForm.invalid' (click)="submit()">
+    <mat-icon>save</mat-icon>
+    <span>{{'button.Save'|translate}}</span>
+  </button>
+</div>

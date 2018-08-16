@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OEditBaseComponent } from '../o-edit-base/o-edit-base.component';
+import { FormBuilder } from '../../../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-nav-edit-o-edit-area-node',
@@ -8,12 +9,13 @@ import { OEditBaseComponent } from '../o-edit-base/o-edit-base.component';
 })
 export class OEditAreaNodeComponent extends OEditBaseComponent implements OnInit {
 
-  constructor() {
-    super();
+  constructor(protected formBuilder: FormBuilder) {
+    super(formBuilder);
   }//constructor
 
   ngOnInit() {
     super.ngOnInit();
+    console.log('uuu',this.currentNode);
   }//ngOnInit
 
 }

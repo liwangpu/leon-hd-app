@@ -27,7 +27,7 @@ import { ProductGroupService } from './services/webapis/product-group.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/interceptors/auth.interceptor';
 import { ErrorInterceptor } from './services/interceptors/error.interceptor';
-import { MatGridListModule, MatStepperModule, MatProgressBarModule, MatInputModule, MatFormFieldModule, MatTooltipModule, MatSnackBarModule, MatDialogModule, MatTableModule, MatSelectModule, MatCheckboxModule, MatPaginatorModule, MatTabsModule, MatButtonModule, MatIconModule, MatSidenavModule, MatMenuModule, MatNativeDateModule } from '@angular/material';
+import { MatGridListModule, MatStepperModule, MatProgressBarModule, MatInputModule, MatFormFieldModule, MatTooltipModule, MatSnackBarModule, MatDialogModule, MatTableModule, MatSelectModule, MatCheckboxModule, MatPaginatorModule, MatTabsModule, MatButtonModule, MatIconModule, MatSidenavModule, MatMenuModule, MatNativeDateModule, MatChipsModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { PaginatorPageTplsComponent } from './common/page-tpls/paginator-page-tpls/paginator-page-tpls.component';
@@ -95,6 +95,7 @@ import { V2BlankPageTplsComponent } from './common/page-tpls/v2-blank-page-tpls/
     FlexLayoutModule,
     TranslateModule,
     MatTabsModule,
+    MatChipsModule,
     MatSelectModule,
     MatCheckboxModule,
     MatSidenavModule,
@@ -154,6 +155,7 @@ import { V2BlankPageTplsComponent } from './common/page-tpls/v2-blank-page-tpls/
     FlexLayoutModule,
     TranslateModule,
     MatSidenavModule,
+    MatChipsModule,
     MatButtonModule,
     CdkTableModule,
     MatSelectModule,

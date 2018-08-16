@@ -21,7 +21,7 @@
                 <mat-icon>refresh</mat-icon>
                 <span>{{'button.Refresh'|translate}}</span>
             </button>
-            <button mat-button class="cus-manage-button">
+            <button mat-button class="cus-manage-button" (click)='test()'>
                 <mat-icon>save</mat-icon>
                 <span>{{'button.Save'|translate}}</span>
             </button>
@@ -35,13 +35,13 @@
         <div class="bk-content-wrap">
             <mat-drawer-container class="nav-drawer-container" autosize>
                 <mat-drawer #drawer class="nav-drawer" [mode]="sideMode" [ngStyle]='drawerDyStyle' (openedChange)='drawerOnSwitch = drawer.opened'>
-                    <tree [tree]="tree" (menuItemSelected)="onMenuItemSelected($event)"></tree>
+                    <tree #treeComponent [tree]="tree" (menuItemSelected)="onMenuItemSelected($event)" (nodeSelected)="onNodeItemSelected($event)" (updateData)="onUpdateTreeData($event)"></tree>
                 </mat-drawer>
 
                 <div class="nav-content">
-                    <app-nav-edit-o-edit-area-node></app-nav-edit-o-edit-area-node>
-                    <app-nav-edit-o-edit-link-group></app-nav-edit-o-edit-link-group>
-                    <app-nav-edit-o-edit-link></app-nav-edit-o-edit-link>
+                    <app-nav-edit-o-edit-area-node #areaNodeFrm [class.hidden-me]='currentEditNodeType!="1"'></app-nav-edit-o-edit-area-node>
+                    <app-nav-edit-o-edit-link-group #groupLinkNodeFrm [class.hidden-me]='currentEditNodeType!="2"'></app-nav-edit-o-edit-link-group>
+                    <app-nav-edit-o-edit-link #linkNodeFrm [class.hidden-me]='currentEditNodeType!="3"'></app-nav-edit-o-edit-link>
                 </div>
 
             </mat-drawer-container>

@@ -127,7 +127,10 @@
         "ProductReplaceGroup": "产品替换组",
         "CategoryReferProduct": "分类引用产品",
         "BSModelDef": "业务实体定义",
-        "UserRole": "角色"
+        "UserRole": "角色",
+        "NameTranslateKey": "名称翻译的key",
+        "Url": "链接",
+        "Permission": "权限点"
     },
     "button": {
         "Logout": "退出",
@@ -203,6 +206,8 @@
         "BatchDeleteConfirm": "您确认删除这 {{value}} 条记录吗 ?",
         "NoPermission": "您没有该操作权限",
         "AreaNodeOnly": "该节点只能添加区域",
+        "GroupLinkNodeOrLinkNodePermitted": "该节点只能添加链接组或者链接",
+        "ForbidAddNode": "该节点无法执行该操作",
         "ForbidEditRootNode": "不能编辑根节点"
     },
     "tips": {
@@ -236,7 +241,10 @@
         "ForgotPassword": "忘记您的密码?",
         "InputProductGroupName": "填写替换组名称",
         "SelectProductGroupItems": "选择替换产品",
-        "ItemsPerPageLabel": "每页记录"
+        "ItemsPerPageLabel": "每页记录",
+        "EditNavArea": "导航栏区域",
+        "EditNavGroupLink": "导航栏链接组",
+        "EditNavLink": "导航栏链接"
     },
     "dialog": {
         "ChangeIcon": "更改图标",

@@ -129,7 +129,10 @@
         "ProductReplaceGroup": "Product Replace Group",
         "CategoryReferProduct": "Category Refer Product",
         "BSModelDef": "Model Define",
-        "UserRole": "User Role"
+        "UserRole": "User Role",
+        "NameTranslateKey": "Name's Translate Key",
+        "Url": "Url",
+        "Permission": "Permission Points"
     },
     "button": {
         "Logout": "Logout",
@@ -204,8 +207,10 @@
         "MaxLengthError": "More than the standard length",
         "BatchDeleteConfirm": "Are you sure to delete these {{value}} items ?",
         "NoPermission": "You do not have permission to perform this action",
-        "AreaNodeOnly": "This Node Can Add Area Node Only",
-        "ForbidEditRootNode": "Can't Edit Root Node"
+        "AreaNodeOnly": "This node can add area node only",
+        "GroupLinkNodeOrLinkNodePermitted": "This node can add group link node or link node",
+        "ForbidAddNode": "Can't execute this operation",
+        "ForbidEditRootNode": "Can't edit root node"
     },
     "tips": {
         "DragOrClickHere": "Click or Drop your files here",
@@ -238,7 +243,10 @@
         "ForgotPassword": "Forgot Your Password?",
         "InputProductGroupName": "Input Product Group Name",
         "SelectProductGroupItems": "Select Product Group Items",
-        "ItemsPerPageLabel": "Items per page"
+        "ItemsPerPageLabel": "Items per page",
+        "EditNavArea": "Edit Nav Area",
+        "EditNavGroupLink": "Edit Nav Group Link",
+        "EditNavLink": "Edit Nav Link"
     },
     "dialog": {
         "ChangeIcon": "Change Icon",
