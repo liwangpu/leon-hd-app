@@ -11,7 +11,9 @@
     "staging": "ng build --configuration=staging",
     "dev": "ng serve --configuration=development",
     "b-staging": "ng build --configuration=staging",
-    "b-prod": "ng build --configuration=production"
+    "b-prod": "ng build --configuration=production",
+    "b-anzhumeiju-test": "ng build --configuration=anzhumeiju-test",
+    "b-anzhumeiju": "ng build --configuration=anzhumeiju"
   },
   "private": true,
   "dependencies": {
