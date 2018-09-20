@@ -8,6 +8,7 @@ import { Subject } from "rxjs";
 import { map, debounceTime } from "rxjs/operators";
 import { AccountService } from "../../share/services/webapis/account.service";
 import { NavigationService } from "../../share/services/common/navigation.service";
+import { DrawerService } from "../../share/services/common/drawer.service";
 
 
 @Component({
@@ -18,16 +19,16 @@ import { NavigationService } from "../../share/services/common/navigation.servic
 export class ToolBarComponent implements OnInit {
 
   nickName = 'User';
+  selectedLang = 'en';
   avatar: string;
-  keyUp = new Subject<string>();
   fullSearchMode = false;
-  selectedLang: string;
+  keyUp = new Subject<string>();
   @ViewChild('searchCt') searchCt: ElementRef;
-  constructor(private router: Router, private appCacheSrv: AppCacheService, private viewPortSrv: ViewportService, public langSrv: AppLangService, protected globalSearchSrv: GlobalSearchService, protected accountSrv: AccountService, protected navSrv: NavigationService) {
+  constructor(public drawerSrv: DrawerService, public langSrv: AppLangService, protected router: Router, protected appCacheSrv: AppCacheService, protected navSrv: NavigationService, protected viewPortSrv: ViewportService, protected globalSearchSrv: GlobalSearchService, protected accountSrv: AccountService) {
 
   }//constructor
 
-  ngOnInit() {
+  ngOnInit(): void {
     //订阅个人信息变更事件
     this.accountSrv.profile$.subscribe(profile => {
       this.nickName = profile.name;

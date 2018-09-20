@@ -15,6 +15,7 @@ import { RouterLinkComponent } from './main/nav/router-link/router-link.componen
 import { RouteguardService } from './share/services/common/routeguard.service';
 import { ListBsModelService } from './share/services/webapis/list-bs-model.service';
 import { V1ListComponent } from './main/dynamic/v1-list/v1-list.component';
+import { NavsComponent } from './main/navs/navs.component';
 
 
 const routes: Routes = [
@@ -53,7 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, ToolBarComponent, LoginComponent, NavComponent, RouterLinkComponent, V1ListComponent
+    AppComponent, HomeComponent, ToolBarComponent, LoginComponent, NavComponent, RouterLinkComponent, V1ListComponent, NavsComponent
   ],
   imports: [
     BrowserModule,

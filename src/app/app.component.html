@@ -1,4 +1,4 @@
-<div class="page-container">
+<!-- <div class="page-container">
     <mat-drawer-container class="drawer-container" autosize>
       <mat-drawer #drawer class="drawer-sidenav" mode="side" opened>
         <app-nav *ngIf='!outletMaximize'></app-nav>
@@ -13,4 +13,38 @@
         </div>
       </div>
     </mat-drawer-container>
+  </div> -->
+
+<!-- <mat-drawer-container class="drawer-container" autosize>
+    <mat-drawer #drawer class="drawer-sidenav" mode="side" opened>
+      <app-nav *ngIf='!outletMaximize'></app-nav>
+    </mat-drawer>
+
+    <div class="drawer-sidenav-content">
+      <div class="content-toolbar" *ngIf='!outletMaximize'>
+        <app-tool-bar></app-tool-bar>
+      </div>
+      <div class="content cus-scroller">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-drawer-container> -->
+
+<mat-drawer-container class="page-container" autosize>
+
+  <mat-drawer #drawer class="page-sidenav" mode="over">
+    <!-- <app-nav></app-nav> -->
+    <app-navs *ngIf='!outletMaximize'></app-navs>
+  </mat-drawer>
+
+  <div class="page-sidenav-content">
+    <div class="header" *ngIf='!outletMaximize'>
+      <app-tool-bar></app-tool-bar>
+    </div>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer"></div>
   </div>
+
+</mat-drawer-container>
