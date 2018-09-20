@@ -1,0 +1,93 @@
+:host {
+    div.container {
+        width: 280px;
+        height: 100%;
+        background-color: #2D323E;
+        position: relative;
+        overflow-x: hidden;
+        div.wrap {
+            width: 280px;
+            height: 100%;
+            background-color: #2D323E;
+            div.header {
+                display: flex;
+                width: 100%;
+                height: 4rem;
+                padding: 0 10px;
+                background-color: #383C48;
+                box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+                z-index: 9998;
+                flex-flow: row;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                img.logo {
+                    min-width: 36px;
+                    width: 36px;
+                    height: 36px;
+                }
+                p.crop {
+                    flex: 1 1 auto;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    padding: 0 4px;
+                }
+                button.op {
+                    &.sm {
+                        display: none;
+                    }
+                }
+            }
+            div.content {}
+        }
+    }
+    div.container.mini {
+        width: 4rem;
+        div.wrap {
+            position: fixed;
+            width: 4rem;
+            transition: 200ms width;
+            div.header {
+                p.crop {
+                    display: none;
+                }
+                button.op {
+                    display: none !important;
+                }
+            }
+        }
+    }
+    div.container.mini.actived {
+        div.wrap {
+            width: 280px;
+            div.header {
+                p.crop {
+                    display: inline-block;
+                }
+                button.op {
+                    display: inline-block !important;
+                    &.xs {
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (min-width:960px) {
+        div.container {
+            div.wrap {
+                div.header {
+                    button.op {
+                        &.xs {
+                            display: none;
+                        }
+                        &.sm {
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
