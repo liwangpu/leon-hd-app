@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "staging": "ng build --configuration=staging",
-    "dev": "ng serve --configuration=development",
+    "dev": "ng serve --configuration=development --host 0.0.0.0",
     "b-staging": "ng build --configuration=staging",
     "b-prod": "ng build --configuration=production",
     "b-anzhumeiju-test": "ng build --configuration=anzhumeiju-test",
