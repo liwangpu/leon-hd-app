@@ -133,26 +133,26 @@ export class NavEditComponent implements OnInit, AfterViewInit {
   }//ngAfterViewInit
 
   getRoleNav() {
-    this.navSrv.getByRole(this._selectedRole).subscribe((data: { children: Array<any>, id: string }) => {
-      const currentNodeCt = this.treeComponent.getControllerByNodeId('0@');
-      currentNodeCt.setChildren([]);
-      if (data && data.children) {
-        for (let item of data.children) {
-          console.log('aa', item);
-          currentNodeCt.addChild(item);
-        }
-      }
-      // // currentNodeCt.collapse();
-      // currentNodeCt.setChildren(data && data.children ? data.children : []);
-      // // currentNodeCt.select();
-      // setTimeout(() => {
-      //   currentNodeCt.reloadChildren();
-      // }, 3000);
-      // // currentNodeCt.reloadChildren();
-      // // currentNodeCt.expand();
-      // // this.tree = data as TreeModel;
+    // this.navSrv.getByRole(this._selectedRole).subscribe((data: { children: Array<any>, id: string }) => {
+    //   const currentNodeCt = this.treeComponent.getControllerByNodeId('0@');
+    //   currentNodeCt.setChildren([]);
+    //   if (data && data.children) {
+    //     for (let item of data.children) {
+    //       console.log('aa', item);
+    //       currentNodeCt.addChild(item);
+    //     }
+    //   }
+    //   // // currentNodeCt.collapse();
+    //   // currentNodeCt.setChildren(data && data.children ? data.children : []);
+    //   // // currentNodeCt.select();
+    //   // setTimeout(() => {
+    //   //   currentNodeCt.reloadChildren();
+    //   // }, 3000);
+    //   // // currentNodeCt.reloadChildren();
+    //   // // currentNodeCt.expand();
+    //   // // this.tree = data as TreeModel;
 
-    });
+    // });
   }//getRoleNav
 
   onNodeItemSelected(evt: NodeSelectedEvent) {

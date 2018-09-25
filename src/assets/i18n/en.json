@@ -10,8 +10,8 @@
     },
     "nav": {
         "General": "General",
-        "dashboards": "dashboards",
-        "profile": "profile",
+        "Dashboards": "Dashboards",
+        "Profile": "Profile",
         "MyResources": "My Resources",
         "MyResourcesMeshes": "Meshes",
         "MyResourcesMaterials": "Materials",

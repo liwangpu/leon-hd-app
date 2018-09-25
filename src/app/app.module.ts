@@ -16,6 +16,7 @@ import { RouteguardService } from './share/services/common/routeguard.service';
 import { ListBsModelService } from './share/services/webapis/list-bs-model.service';
 import { V1ListComponent } from './main/dynamic/v1-list/v1-list.component';
 import { NavsComponent } from './main/navs/navs.component';
+import { NavFilterPipe } from './main/navs/nav-filter.pipe';
 
 
 const routes: Routes = [
@@ -54,7 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, ToolBarComponent, LoginComponent, NavComponent, RouterLinkComponent, V1ListComponent, NavsComponent
+    AppComponent, HomeComponent, ToolBarComponent, LoginComponent, NavComponent, RouterLinkComponent, V1ListComponent, NavsComponent, NavFilterPipe
   ],
   imports: [
     BrowserModule,

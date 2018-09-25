@@ -10,8 +10,8 @@
     },
     "nav": {
         "General": "通用",
-        "dashboards": "仪表盘",
-        "profile": "个人信息",
+        "Dashboards": "仪表盘",
+        "Profile": "个人信息",
         "MyResources": "我的资源",
         "MyResourcesMeshes": "模型",
         "MyResourcesMaterials": "材质",

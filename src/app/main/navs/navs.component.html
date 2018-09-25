@@ -1,5 +1,6 @@
 <div class="container" #nav (mouseenter)='onMouseEnterSideNav()' (mouseleave)='onMouseLeaveSideNav()'>
   <div class="wrap">
+
     <div class="header">
       <img class="logo" src="/assets/images/logo/dmz-logo.png">
       <p class="crop">安住美居</p>
@@ -10,6 +11,37 @@
         <mat-icon>arrow_back</mat-icon>
       </button>
     </div>
-    <div class="content"></div>
+
+    <div class="content cus-scroller">
+
+      <div class="area" *ngFor='let areaItem of navs | navFilter:"area"'>
+        <p>{{areaItem.name|translate}}</p>
+        <ng-container *ngFor='let glItem of navs | navFilter:"group,link":areaItem.id'>
+
+          <div class="link" *ngIf='glItem.nodeType=="link"'>
+            <mat-icon class="link-icon">{{glItem.icon?glItem.icon:'label_important'}}</mat-icon>
+            <p class="link-title">{{glItem.name|translate}}</p>
+          </div>
+
+          <div class="group" *ngIf='glItem.nodeType=="group"'>
+            <div class="link">
+              <mat-icon class="link-icon">{{glItem.icon?glItem.icon:'label_important'}}</mat-icon>
+              <p class="link-title">{{glItem.name|translate}}</p>
+              <mat-icon class="link-icon expand">{{'keyboard_arrow_down'}}</mat-icon>
+            </div>
+            <div class="link" *ngFor='let lItem of navs | navFilter:"link":glItem.id'>
+              <mat-icon class="link-icon">{{lItem.icon?lItem.icon:'label_important'}}</mat-icon>
+              <p class="link-title">{{lItem.name|translate}}</p>
+            </div>
+          </div>
+
+        </ng-container>
+
+      </div>
+
+
+      <!-- <div style="width:100%;height:1000px;background-color: orange;">123</div> -->
+    </div>
+
   </div>
 </div>

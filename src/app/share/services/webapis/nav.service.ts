@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
 import { WebapiBaseService } from './webapi-base.service';
 import { HttpClient } from '../../../../../node_modules/@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import { Navigation } from '../../models/navigation';
+import { tap } from "rxjs/operators";
 
 @Injectable({ providedIn: 'root' })
 export class NavService extends WebapiBaseService {
 
+  userNavs$ = new BehaviorSubject<Array<Navigation>>([]);
   constructor(protected httpClient: HttpClient) {
     super(httpClient);
     this.uriPart = 'navigation';
   }
 
   getByRole(role: string) {
-    return this.httpClient.get(`${this.uri}?role=${role}`, { headers: this.header });
+    return this.httpClient.get(`${this.uri}?role=${role}`, { headers: this.header }).pipe(tap((arr: Array<Navigation>) => {
+      this.userNavs$.next(arr);
+    }));
   }//getByRole
 
   update(role: string, navs: string) {

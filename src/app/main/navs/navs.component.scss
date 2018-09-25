@@ -9,6 +9,8 @@
             width: 280px;
             height: 100%;
             background-color: #2D323E;
+            display: flex;
+            flex-flow: column;
             div.header {
                 display: flex;
                 width: 100%;
@@ -39,7 +41,56 @@
                     }
                 }
             }
-            div.content {}
+            div.content {
+                width: 100%;
+                flex: 1 1 0;
+                div.area {
+                    color: #96999F;
+                    padding-top: 2rem;
+                    font-size: 1rem;
+                    &>p {
+                        padding-left: 1.2rem;
+                        padding-bottom: 1rem;
+                    }
+                    & .link-icon {
+                        width: 1rem;
+                        height: 1rem;
+                        font-size: 1rem;
+                        &.expand{
+                            width: 1.5rem;
+                            padding-right: .5rem
+                        }
+                    }
+                    & .link-title {
+                        // display: inline-block;
+                        flex: 1 1 auto;
+                    }
+                    div.link {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        color: white;
+                        height: 3.125rem;
+                        padding-left: 1.5rem;
+                        &>p {
+                            padding-left: .5rem;
+                        }
+                        &:hover {
+                            cursor: pointer;
+                            background-color: #2B303C;
+                        }
+                    }
+                    div.link {}
+                    div.group {
+                        div.link:first-child {
+                            padding-left: 1.5rem !important;
+                        }
+                        div.link {
+                            padding-left: 3rem;
+                        }
+                    }
+                }
+            }
         }
     }
     div.container.mini {
