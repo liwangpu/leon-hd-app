@@ -8,4 +8,5 @@ export class Navigation {
     lValue: number;
     rValue: string;
     parentId: string;
+    actived: boolean;
 }

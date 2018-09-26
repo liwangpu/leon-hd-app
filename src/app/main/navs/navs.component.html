@@ -15,32 +15,35 @@
     <div class="content cus-scroller">
 
       <div class="area" *ngFor='let areaItem of navs | navFilter:"area"'>
-        <p>{{areaItem.name|translate}}</p>
+        <p>
+          <span>{{areaItem.name|translate}}</span>
+        </p>
         <ng-container *ngFor='let glItem of navs | navFilter:"group,link":areaItem.id'>
 
-          <div class="link" *ngIf='glItem.nodeType=="link"'>
+          <div class="link" *ngIf='glItem.nodeType=="link"' (click)='activeNav(glItem.id,glItem.url)' [class.actived]='glItem.actived'>
             <mat-icon class="link-icon">{{glItem.icon?glItem.icon:'label_important'}}</mat-icon>
-            <p class="link-title">{{glItem.name|translate}}</p>
+            <p class="link-title mini-hidden">{{glItem.name|translate}}</p>
           </div>
 
-          <div class="group" *ngIf='glItem.nodeType=="group"'>
-            <div class="link">
+          <div class="group" *ngIf='glItem.nodeType=="group"' [style.height.rem]="glItem.actived?((navs | navFilter:'link':glItem.id).length+1)*3.125:3.125">
+
+            <div class="link" (click)='activeNav(glItem.id)'>
               <mat-icon class="link-icon">{{glItem.icon?glItem.icon:'label_important'}}</mat-icon>
-              <p class="link-title">{{glItem.name|translate}}</p>
-              <mat-icon class="link-icon expand">{{'keyboard_arrow_down'}}</mat-icon>
+              <p class="link-title mini-hidden">{{glItem.name|translate}}</p>
+              <mat-icon class="link-icon expand mini-hidden" [class.actived]='glItem.actived'>keyboard_arrow_right</mat-icon>
             </div>
-            <div class="link" *ngFor='let lItem of navs | navFilter:"link":glItem.id'>
+
+            <div class="link" *ngFor='let lItem of navs | navFilter:"link":glItem.id' (click)='activeNav(lItem.id,lItem.url)'
+              [class.actived]='lItem.actived'>
               <mat-icon class="link-icon">{{lItem.icon?lItem.icon:'label_important'}}</mat-icon>
               <p class="link-title">{{lItem.name|translate}}</p>
             </div>
+
           </div>
 
         </ng-container>
 
       </div>
-
-
-      <!-- <div style="width:100%;height:1000px;background-color: orange;">123</div> -->
     </div>
 
   </div>

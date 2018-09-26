@@ -5,6 +5,8 @@ import { MediaService } from '../../share/services/common/media.service';
 import { takeUntil } from 'rxjs/operators';
 import { NavService } from '../../share/services/webapis/nav.service';
 import { Navigation } from '../../share/models/navigation';
+import { NavNodeTypeEnum } from '../../share/enums/nav-node-type.enum';
+import { NavigationService } from '../../share/services/common/navigation.service';
 
 @Component({
   selector: 'app-navs',
@@ -16,7 +18,7 @@ export class NavsComponent implements OnInit, OnDestroy, AfterViewInit {
   navs: Array<Navigation> = [];
   destroy$ = new Subject<boolean>();
   @ViewChild('nav') navEl: ElementRef;
-  constructor(protected drawerSrv: DrawerService, protected mediaSrv: MediaService, protected renderer2: Renderer2, protected navSrv: NavService) {
+  constructor(protected drawerSrv: DrawerService, protected mediaSrv: MediaService, protected renderer2: Renderer2, protected navSrv: NavService, private navRouteSrv: NavigationService) {
 
   }//constructor
 
@@ -72,6 +74,36 @@ export class NavsComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!this._bMiniMode) return;
     this.renderer2.removeClass(this.navEl.nativeElement, 'actived');
   }//onMouseLeaveSideNav
+
+  activeNav(id: string, url?: string) {
+    let bIsLinkNode = false;
+    for (let idx = this.navs.length - 1; idx >= 0; idx--) {
+      let item = this.navs[idx];
+      if (item.id == id) {
+        //group节点
+        if (item.nodeType == NavNodeTypeEnum.Group) {
+          item.actived = !item.actived;
+          return;
+        }
+        //link节点
+        if (item.nodeType == NavNodeTypeEnum.Link) {
+          item.actived = true;
+          bIsLinkNode = true;
+        }
+        break;
+      }
+    }//for
+    //如果激活的是link节点,遍历取消激活其他节点
+    for (let idx = this.navs.length - 1; idx >= 0; idx--) {
+      let item = this.navs[idx];
+      if (item.nodeType == NavNodeTypeEnum.Link && item.id != id) {
+        item.actived = false;
+      }
+    }//for
+    if (url)
+      this.navRouteSrv.navigate$.next(url);
+    console.log('togo', url);
+  }//activeNav
 
 
 }
