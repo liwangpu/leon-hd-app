@@ -1,0 +1,15 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' [tabSecond]='organOwnerEditorRef'
+  [tabSecondTitle]='"tips.OrganizationAdmin"' (goback)='onGoBack()'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+  <page-plate-basic-detail-editor [basicEditorEx]='basicEditorExRef' (commitChange)='onCommitChange($event)'
+    (commitIconChange)='onCommitIconChange($event)'></page-plate-basic-detail-editor>
+</ng-template>
+
+<ng-template #basicEditorExRef>
+  <app-organization-detail-basic-editor-ex></app-organization-detail-basic-editor-ex>
+</ng-template>
+
+<ng-template #organOwnerEditorRef>
+  <app-organization-detail-owner-editor></app-organization-detail-owner-editor>
+</ng-template>

@@ -1,0 +1,11 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+    <mat-form-field>
+      <input matInput placeholder="Input" name="keyword" formControlName="keyword" placeholder="{{'glossary.Keyword'|translate}}"
+        required>
+      <mat-error *ngIf="detailForm.get('keyword').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('keyword').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+  </form>
+</div>

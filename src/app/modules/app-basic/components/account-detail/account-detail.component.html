@@ -1,0 +1,24 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' [tabSecond]='userRoleEditorRef'
+    [tabSecondTitle]='"tips.UserRoleManagement"' (goback)='onGoBack()'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+    <page-plate-basic-detail-editor [needlessChangeIcon]='true' [basicEditorEx]='basicEditorExRef' (commitChange)='onCommitChange($event)'
+        (commitIconChange)='onCommitIconChange($event)'>
+
+        <ng-template #basicEditorExRef>
+            <app-account-detail-basic-editor-ex></app-account-detail-basic-editor-ex>
+        </ng-template>
+
+        <div class="cus-buttons" custom-buttons>
+            <button mat-button *ngIf='_persisted' (click)='resetPassword()'>
+                <mat-icon>settings</mat-icon>
+                <span>{{'button.ResetPassword'|translate}}</span>
+            </button>
+        </div>
+    </page-plate-basic-detail-editor>
+</ng-template>
+
+
+<ng-template #userRoleEditorRef>
+    <app-account-detail-role-editor></app-account-detail-role-editor>
+</ng-template>

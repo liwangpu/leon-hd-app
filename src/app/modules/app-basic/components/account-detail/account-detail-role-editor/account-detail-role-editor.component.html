@@ -1,0 +1,23 @@
+<div class="container">
+  <p>默认角色</p>
+  <div class="roles">
+    <div class="role-item" *ngIf='defaultRole'>
+      <span>{{defaultRole|translate}}</span>
+    </div>
+  </div>
+  <p>附加角色</p>
+  <div class="roles">
+    <div class="role-item" *ngFor='let item of additionalRoles'>
+      <span>{{item.userRoleName}}</span>
+      <div class="i-bar" (click)='deleteAdditionalRole(item.userRoleId)'>
+        <mat-icon style="font-size:16px;">clear</mat-icon>
+      </div>
+    </div>
+  </div>
+  <div class="bar">
+    <button mat-button (click)='addAdditionalRole()'>
+      <mat-icon>add</mat-icon>
+      <span>{{'button.AddUserRole'|translate}}</span>
+    </button>
+  </div>
+</div>

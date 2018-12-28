@@ -1,0 +1,109 @@
+:host {
+    div.header {
+        width: 100%;
+        div.flag {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            min-height: 6rem;
+            div.icon {
+                display: flex;
+                flex-flow: row;
+                align-items: center;
+                padding: .5rem 0;
+                span {
+                    padding-left: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+                }
+            }
+            div.news {
+                padding: .5rem 0;
+            }
+        }
+        div.management {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            min-height: 2.5rem;
+        }
+    }
+    div.content {
+        width: 100%;
+        height: 100%;
+        .content-drawer {
+            width: 100%;
+            height: 100%;
+            div.content-drawer {
+                width: 300px;
+                height: 100%;
+                position: relative;
+                div.mend {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    box-sizing: border-box;
+                    border-right: 1px solid #D0D0D0;
+                }
+            }
+            div.content-main {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                div.mend {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                }
+            }
+        }
+    }
+    div.column-panel {
+        display: flex;
+        flex-flow: column;
+        width: 200px;
+        min-height: 250px;
+        max-height: 100%; // max-height:80px;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 9999999;
+        box-sizing: border-box;
+        padding-top: 1rem;
+        transform: translateX(250px);
+        transition: 200ms transform;
+        box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2), 0px 7px 10px 1px rgba(0, 0, 0, 0.14), 0px 2px 16px 1px rgba(0, 0, 0, 0.12);
+        &.actived {
+            transform: translateX(0);
+        }
+        div.content {
+            flex: 1 1 0;
+            position: relative;
+            div.mend {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                div.col-item {
+                    padding-left: 1rem;
+                }
+            }
+        }
+        div.bar {
+            width: 100%;
+            height: 44px;
+            border-top: 1px solid #D0D0D0;
+            background-color: white;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            padding: .5rem;
+        }
+    }
+}

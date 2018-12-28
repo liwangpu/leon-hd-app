@@ -1,0 +1,22 @@
+<mat-drawer-container class="page-container" autosize>
+
+  <mat-drawer #drawer class="page-sidenav" mode="over">
+    <ng-template *ngIf='!maximize' [ngTemplateOutlet]='navBarRef'></ng-template>
+  </mat-drawer>
+
+  <div class="page-sidenav-content">
+    <div class="header" *ngIf='!maximize'>
+      <ng-template [ngTemplateOutlet]='toolBarRef'></ng-template>
+    </div>
+    <div class="content">
+      <div class="mend">
+        <ng-template [ngTemplateOutlet]='contentRef'></ng-template>
+      </div>
+    </div>
+  </div>
+
+</mat-drawer-container>
+
+<div class="progress" [class.actived]='showProgress'>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>

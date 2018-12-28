@@ -1,0 +1,77 @@
+:host {
+    div.container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        div.bar {
+            width: 100%;
+            padding: 1rem 0 .5rem 1rem;
+        }
+        div.list {
+            width: 100%;
+            div.wf {
+                width: 100%;
+                padding: 0 1rem;
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: center;
+                div.wf-item {
+                    width: 100%;
+                    max-width: 500px;
+                    height: 80px;
+                    border: 1px solid #E0E0E0;
+                    background-color: #01B0F1;
+                    margin-bottom: 25px;
+                    border-radius: 5px;
+                    font-size: 1.5rem;
+                    position: relative;
+                    color: white;
+                    overflow: visible;
+                    &>div.content {
+                        width: 100%;
+                        height: 80px;
+                        &>p.name {
+                            width: 100%;
+                            height: 80px;
+                            line-height: 80px;
+                            text-align: center;
+                        }
+                        &>div.manage-bar {
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            display: none;
+                        }
+                        &:hover {
+                            &>div.manage-bar {
+                                display: block;
+                            }
+                        }
+                    }
+                    &>div.arror {
+                        width: 100%;
+                        height: 24px;
+                        display: flex;
+                        flex-flow: row;
+                        justify-content: center;
+                        align-items: center;
+                        color: gray;
+                    }
+                    &.start,
+                    &.end {
+                        width: 300px;
+                        border-radius: 40px;
+                        background-color: #F96872;
+                        height: 80px;
+                        line-height: 80px;
+                        text-align: center;
+                        &:hover {
+                            cursor: not-allowed;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

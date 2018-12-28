@@ -1,0 +1,46 @@
+<div class="container customized-scroller">
+  <div class="content">
+    <form name="detailForm" [formGroup]="detailForm">
+      <input type="hidden" formControlName='id' name='id'>
+      <input type="hidden" formControlName='iconAssetId' name='iconAssetId'>
+      <mat-form-field>
+        <input matInput placeholder="Input" name="name" formControlName="name" placeholder="{{'glossary.Name'|translate}}"
+          required>
+        <mat-error *ngIf="detailForm.get('name').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+        <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+      </mat-form-field>
+
+      <ng-template [ngTemplateOutlet]='basicEditorEx'></ng-template>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Textarea" name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
+        <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      </mat-form-field>
+
+      <ng-content select='[custom-fields]'></ng-content>
+
+      <div class="opt-field" [class.hidden]='hideCreatedTime'>
+        <mat-form-field>
+          <input matInput name="createdTime" formControlName="createdTime" placeholder="{{'glossary.CreatedTime'|translate}}">
+        </mat-form-field>
+      </div>
+
+      <div class="opt-field" [class.hidden]='hideModifiedTime'>
+        <mat-form-field>
+          <input matInput name="modifiedTime" formControlName="modifiedTime" placeholder="{{'glossary.ModifiedTime'|translate}}">
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div class="footer">
+    <ng-content select='[custom-buttons]'></ng-content>
+    <button mat-button *ngIf='persisted&&(!needlessChangeIcon)' (click)='changeIcon()'>
+      <mat-icon>donut_small</mat-icon>
+      <span>{{'button.ChangeICon'|translate}}</span>
+    </button>
+    <button mat-button *ngIf='_enbleUpdate' [disabled]='!satisfyCommit' (click)='submit()' #submitBtn>
+      <mat-icon>save</mat-icon>
+      <span>{{'button.Save'|translate}}</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' [tabSecond]='specEditorRef' [tabSecondTitle]='"glossary.ProductSpec"' (goback)='onGoBack()'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+    <page-plate-basic-detail-editor (commitChange)='onCommitChange($event)' [basicEditorEx]='basicEditorExRef'
+        (commitIconChange)='onCommitIconChange($event)'>
+    </page-plate-basic-detail-editor>
+</ng-template>
+
+<ng-template #basicEditorExRef>
+    <app-product-detail-basic-editor-ex></app-product-detail-basic-editor-ex>
+</ng-template>
+
+<ng-template #specEditorRef>
+    <app-product-detail-spec-editor></app-product-detail-spec-editor>
+</ng-template>

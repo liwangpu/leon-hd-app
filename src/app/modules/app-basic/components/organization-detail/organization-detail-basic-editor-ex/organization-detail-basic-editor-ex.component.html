@@ -1,0 +1,30 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+    <input type="hidden" formControlName='organizationTypeId' name='organizationTypeId'>
+
+    <app-mat-api-auto-select [fieldTitle]='"glossary.OrganType"' [required]='true' [apiService]='organTypeSrv'
+      [indentify]='defaultOrganTypeId' (afterSelect)='onOrganTypeSelected($event)' (afterClear)='onOrganTypeClear()'></app-mat-api-auto-select>
+      
+    <mat-form-field>
+      <input [matDatepicker]="activationTimePicker" formControlName="activationTime" matInput placeholder="{{'glossary.ActivationTime'|translate}}"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="activationTimePicker"></mat-datepicker-toggle>
+      <mat-datepicker #activationTimePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [matDatepicker]="expireTimePicker" formControlName="expireTime" matInput placeholder="{{'glossary.ExpireTime'|translate}}"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="expireTimePicker"></mat-datepicker-toggle>
+      <mat-datepicker #expireTimePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Input" name="location" formControlName="location" placeholder="{{'glossary.Location'|translate}}">
+      <mat-error *ngIf="detailForm.get('location').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('location').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+  </form>
+</div>

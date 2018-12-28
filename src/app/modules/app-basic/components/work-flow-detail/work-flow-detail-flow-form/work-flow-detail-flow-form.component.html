@@ -1,0 +1,56 @@
+<page-plate-simple-confirm-dialog [dialogTitle]='"dialog.EditWorkFlow"' [enableConfirm]='detailForm.valid'
+    (afterConfirm)='afterConfirm()' (afterReceiveData)='afterReceiveData($event)'>
+    <div class="container">
+        <form name="detailForm" [formGroup]="detailForm">
+            <input type="hidden" formControlName='id' name='id'>
+            <input type="hidden" formControlName='workFlowId' name='workFlowId'>
+            <input type="hidden" formControlName='flowGrade' name='flowGrade'>
+            <input type="hidden" formControlName='subWorkFlowId' name='subWorkFlowId'>
+            <input type="hidden" formControlName='operateRoles' name='operateRoles'>
+            <input type="hidden" formControlName='autoWorkFlow' name='autoWorkFlow'>
+            <mat-form-field>
+                <input matInput placeholder="Input" name="name" formControlName="name" placeholder="{{'glossary.Name'|translate}}"
+                    required>
+                <mat-error *ngIf="detailForm.get('name').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+                <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+            </mat-form-field>
+
+            <div class="auto-wf">
+                <mat-checkbox [formControl]='autoWorkFlowCt' color='primary'> {{'glossary.AutoWorkFlow'|translate}}</mat-checkbox>
+            </div>
+
+            <mat-form-field>
+                <input type="text" matInput formControlName="subWorkFlowName" name='subWorkFlowName' placeholder="{{'glossary.SubWorkFlow'|translate}}"
+                    [matAutocomplete]="subWFAuto">
+            </mat-form-field>
+
+            <mat-autocomplete #subWFAuto="matAutocomplete" [displayWith]="displaySubWorkFlowFn" (optionSelected)='onSubWorkFlowSelectd($event)'>
+                <mat-option *ngFor="let wk of usableWorkFlows | async" [value]="wk">{{wk.name}}</mat-option>
+            </mat-autocomplete>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Textarea" name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
+                <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+            </mat-form-field>
+
+            <div class="apo">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{'glossary.OperateUserRole'|translate}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            已选择&nbsp;{{_selectedRoleCount}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div class="roles">
+                        <mat-checkbox color='primary' *ngFor='let ur of usableUserRoles' [value]='ur.id' [checked]='ur.checked'
+                            (change)='onUserRoleCheck($event)'>{{ur.name}}</mat-checkbox>
+                    </div>
+
+                </mat-expansion-panel>
+            </div>
+        </form>
+    </div>
+</page-plate-simple-confirm-dialog>

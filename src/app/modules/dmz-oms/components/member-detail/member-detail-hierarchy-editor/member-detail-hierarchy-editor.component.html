@@ -1,0 +1,18 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+
+    <!-- <mat-form-field>
+      <input matInput name="province" formControlName="province" required placeholder="{{'glossary.Province'|translate}}">
+    </mat-form-field> -->
+
+    <mat-form-field>
+      <input matInput name="province" formControlName="province" required placeholder="{{'glossary.Province'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="city" formControlName="city" required placeholder="{{'glossary.City'|translate}}">
+    </mat-form-field>
+
+  </form>
+</div>

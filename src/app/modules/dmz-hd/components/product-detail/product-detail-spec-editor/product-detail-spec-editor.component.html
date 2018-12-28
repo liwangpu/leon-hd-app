@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="preview">
+    <img *ngIf='currentSpecIcon' [src]="currentSpecIcon|serverRedirect" class="icon">
+  </div>
+  <div class="specs">
+    <p class="flag">{{'glossary.ProductSpec'|translate}}:</p>
+    <p class="spec-item" [class.selected]='it.selected' *ngFor='let it of specifications' (click)='selectSpec(it.id)'>
+      <span>{{it.name}}</span>
+    </p>
+    <!-- <button class="add-btn" mat-icon-button (click)='addSpec()'>
+      <mat-icon>add</mat-icon>
+    </button> -->
+  </div>
+  <div class="detail">
+    <form name="detailForm" [formGroup]="detailForm">
+      <input type="hidden" formControlName='id' name='id'>
+      <mat-form-field>
+        <input matInput name="name" formControlName="name" required placeholder="{{'glossary.Name'|translate}}">
+        <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" matInput name="purchasePrice" formControlName="purchasePrice" required placeholder="{{'glossary.PurchasePrice'|translate}}">
+        <mat-error *ngIf="detailForm.get('purchasePrice').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" matInput name="partnerPrice" formControlName="partnerPrice" required placeholder="{{'glossary.PartnerPrice'|translate}}">
+        <mat-error *ngIf="detailForm.get('partnerPrice').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" matInput name="price" formControlName="price" required placeholder="{{'glossary.RetailPrice'|translate}}">
+        <mat-error *ngIf="detailForm.get('price').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Textarea" name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
+        <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      </mat-form-field>
+      <div class="bar">
+        <button mat-button (click)='submit()' [disabled]='!detailForm.valid'>
+          <mat-icon>save</mat-icon>
+          <span>{{'button.Save'|translate}}</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

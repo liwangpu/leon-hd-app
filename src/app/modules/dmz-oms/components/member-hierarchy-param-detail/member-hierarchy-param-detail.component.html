@@ -1,0 +1,17 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' (goback)='onGoBack()'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+    <page-plate-basic-detail-editor [basicEditorEx]='basicEditorExRef' [needlessChangeIcon]='true' [permissionPoints]='permissionPoints'
+        (commitChange)='onCommitChange($event)' (commitIconChange)='onCommitIconChange($event)'>
+        <div custom-buttons>
+            <button mat-button (click)='submitSetting()'>
+                <mat-icon>save</mat-icon>
+                <span>{{'button.Save'|translate}}</span>
+            </button>
+        </div>
+    </page-plate-basic-detail-editor>
+</ng-template>
+
+<ng-template #basicEditorExRef>
+    <app-member-hierarchy-param-setting-ex #settingExRefCt></app-member-hierarchy-param-setting-ex>
+</ng-template>

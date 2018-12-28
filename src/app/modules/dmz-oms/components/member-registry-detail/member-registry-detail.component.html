@@ -1,0 +1,17 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' (goback)='onGoBack()'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+    <page-plate-basic-detail-editor [basicEditorEx]='basicEditorExRef' (commitChange)='onCommitChange($event)'
+        (commitIconChange)='onCommitIconChange($event)' [needlessChangeIcon]='true'>
+        <div class="cus-buttons" custom-buttons>
+            <button mat-button (click)='approveMember()' #approveBtnCt>
+                <mat-icon>done</mat-icon>
+                <span>{{'button.Approve'|translate}}</span>
+            </button>
+        </div>
+    </page-plate-basic-detail-editor>
+</ng-template>
+
+<ng-template #basicEditorExRef>
+    <app-member-registry-detail-basic-editor-ex></app-member-registry-detail-basic-editor-ex>
+</ng-template>

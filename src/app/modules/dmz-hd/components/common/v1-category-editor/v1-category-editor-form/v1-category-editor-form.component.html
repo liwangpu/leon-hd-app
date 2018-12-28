@@ -1,0 +1,18 @@
+<page-plate-simple-confirm-dialog [dialogTitle]='"dialog.EditCategory"' [enableConfirm]='enableConfirm' (afterConfirm)='onConfirm()' (afterReceiveData)='afterReceiveData($event)'>
+  <div class="container">
+    <form name="detailForm" [formGroup]="detailForm">
+      <input type="hidden" formControlName='id' name='id'>
+      <input type="hidden" formControlName='parentId' name='parentId'>
+      <mat-form-field>
+        <input matInput name="name" formControlName="name" placeholder="{{'glossary.Name'|translate}}" required>
+        <mat-error *ngIf="detailForm.get('name').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+        <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Textarea" name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
+        <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+</page-plate-simple-confirm-dialog>

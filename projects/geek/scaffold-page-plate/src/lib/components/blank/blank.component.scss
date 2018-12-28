@@ -1,0 +1,48 @@
+:host {
+    div.page {
+        width: 100%;
+        height: 100%;
+        $page_padding: 1.5rem;
+        div.header {
+            width: 100%;
+            min-height: 8.5rem;
+            padding: 0 $page_padding;
+            background-color: #03a9f4;
+            position: relative;
+            color: white;
+            &::after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 3.5rem;
+                background-color: #03a9f4;
+                position: absolute;
+                left: 0;
+                bottom: -3.5rem;
+                z-index: -9;
+            }
+        }
+        div.content {
+            padding: 0 $page_padding;
+            div.main {
+                position: relative;
+                $paging_list_radius: .6rem;
+                background-color: white;
+                border-top-left-radius: $paging_list_radius;
+                border-top-right-radius: $paging_list_radius;
+                box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2), 0px 7px 10px 1px rgba(0, 0, 0, 0.14), 0px 2px 16px 1px rgba(0, 0, 0, 0.12);
+                div.mend {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    overflow-x: hidden;
+                }
+            }
+        }
+    }
+    @media screen and (max-height:600px) {
+        div.page {
+            height: 700px;
+        }
+    }
+}

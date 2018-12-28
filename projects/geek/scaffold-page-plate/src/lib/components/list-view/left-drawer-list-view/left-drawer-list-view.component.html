@@ -1,0 +1,71 @@
+<page-plate-blank>
+  <div class="header" page-header>
+    <div class="flag">
+      <div class="icon">
+        <button mat-icon-button *ngIf='showDrawer' (click)='drawer.close()'>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf='!showDrawer' (click)='drawer.open()'>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-icon>{{icon}}</mat-icon>
+        <span class="animated flipInX">{{title|translate}}</span>
+      </div>
+      <div class="news">
+        <button mat-raised-button (click)='onCreateData()'>
+          <span>{{'button.NEW'|translate}}</span>
+        </button>
+      </div>
+    </div>
+    <div class="management">
+      <div class="filter">
+        <ng-content select='[query-filter]'></ng-content>
+      </div>
+      <page-plate-common-manage-bar [readOnly]='readOnly' [pageModels]='pageModels' [permissionPoints]='permissionPoints'
+        [advanceMenus]='advanceMenus' [selectedItems]='_selectedItems' (refresh)='onRefresh()' (selectChange)='onSelect($event)'
+        (pageModelChange)='onPageModelChange($event)' (toggleColumnPanel)='onToggleColumnPanel()'></page-plate-common-manage-bar>
+    </div>
+  </div>
+  <div class="content" page-content>
+    <mat-drawer-container class="content-drawer" autosize>
+      <mat-drawer mode="over" #drawer [mode]="sideMode" (openedChange)='showDrawer = drawer.opened'>
+        <div class="content-drawer">
+          <div class="mend customized-scroller">
+            <ng-content></ng-content>
+          </div>
+        </div>
+      </mat-drawer>
+      <mat-drawer-content>
+        <div class="content-main">
+          <div class="mend customized-scroller">
+            <page-plate-common-list-viewer [select]='_select' [pageModel]='_currentPageModel' [pageSizeOptions]='pageSizeOptions'
+              [rowMenus]='rowMenus' [displayedColumns]='displayedColumns' [columnDefs]='columnDefs' [pageData]='pageData'
+              [selectedItems]='_selectedItems' (pageChange)='onPageChange($event)' (pageOptionChange)='onPageOptionChange($event)'
+              (selectItemChange)='onSelectItemChange($event)' (rowClick)='onRowClick($event)' (allSelectChange)='onAllSelectChange($event)'
+              (sortData)='onSortData($event)' #listViewerCt></page-plate-common-list-viewer>
+          </div>
+        </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
+
+    <div class="column-panel" [class.actived]='_showColumnDisplayPanel'>
+      <div class="content">
+        <div class="mend customized-scroller">
+          <div class="col-item" *ngFor='let item of columnDefs'>
+            <mat-checkbox color='primary' [checked]='checkColumnIsDisplay(item.id)' (change)='onDisplayColumnChange($event,item.id)'>{{item.name|translate}}</mat-checkbox>
+          </div>
+        </div>
+      </div>
+      <div class="bar">
+        <button mat-button (click)='closeColumnDisplayPanel()'>
+          <mat-icon>close</mat-icon>
+          <span>{{'button.Close'|translate}}</span>
+        </button>
+        <button mat-button (click)='resetDisplayColumn()' [disabled]='!_enableResetColumnDisplayPanel'>
+          <mat-icon>autorenew</mat-icon>
+          <span>{{'button.Reset'|translate}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</page-plate-blank>

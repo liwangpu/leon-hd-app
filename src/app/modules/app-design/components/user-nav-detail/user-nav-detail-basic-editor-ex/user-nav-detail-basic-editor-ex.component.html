@@ -1,0 +1,6 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+    <app-mat-api-auto-select [fieldTitle]='"glossary.UserRole"' [required]='true' [apiService]='roleSrv' [indentify]='defaultRoleId' (afterSelect)='afterUserRoleSelect($event)'  (afterClear)='afterUserRoleClear()'></app-mat-api-auto-select>
+  </form>
+</div>

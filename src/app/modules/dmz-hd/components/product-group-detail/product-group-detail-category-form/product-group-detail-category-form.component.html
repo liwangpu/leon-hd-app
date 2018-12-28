@@ -1,0 +1,6 @@
+<page-plate-simple-confirm-dialog [dialogTitle]='"dialog.ChangeCategory"' [enableConfirm]='enableConfirm'
+    (afterConfirm)='afterConfirm()'>
+    <div class="container">
+        <app-common-v1-product-group-category-select-panel [addUnCategoryNode]='false' (nodeItemSelected)='onCategoryNodeItemSelected($event)'></app-common-v1-product-group-category-select-panel>
+    </div>
+</page-plate-simple-confirm-dialog>

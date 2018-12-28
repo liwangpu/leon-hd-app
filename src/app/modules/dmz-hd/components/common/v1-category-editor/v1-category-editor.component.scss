@@ -1,0 +1,40 @@
+:host {
+    div.container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+        div.head {
+            width: 100%;
+            height: 120px;
+            color: white;
+            background-color: #03a9f4;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-flow: row;
+            justify-content: flex-start;
+            align-items: center;
+            span.title {
+                padding-left: 1rem;
+                font-size: 1.5rem;
+                font-weight: 400;
+            }
+        }
+        div.content {
+            flex: 1 1 0;
+            position: relative;
+            div.mend {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                div.list {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-flow: row;
+                    overflow-x: auto;
+                }
+            }
+        }
+    }
+}

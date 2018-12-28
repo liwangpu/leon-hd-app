@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="manage">
+        <button mat-button class="mat-button-04lrp" (click)='addUser()'>
+            <mat-icon>add</mat-icon>
+            <span>添加用户</span>
+        </button>
+        <button mat-button class="mat-button-04lrp" (click)='clearLatestUser()'>
+            <mat-icon>delete_forever</mat-icon>
+            <span>清空用户</span>
+        </button>
+        <div class="loging-panel" [class.hidden]='!showLoginPanel'>
+            <form name="logingForm" [formGroup]="logingForm">
+                    <input type="hidden" formControlName='id' name='id'>
+                <mat-form-field>
+                    <input matInput name="username" formControlName="username" placeholder="{{'glossary.UserName'|translate}}"
+                        required>
+                    <mat-error *ngIf="logingForm.get('username').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="password" matInput name="password" formControlName="password" placeholder="{{'glossary.Password'|translate}}"
+                        required autocomplete="new-password">
+                    <mat-error *ngIf="logingForm.get('password').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput name="flag" formControlName="flag" placeholder="{{'glossary.Description'|translate}}">
+                    <mat-error *ngIf="logingForm.get('flag').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+                </mat-form-field>
+
+                <div class="bar">
+                    <button mat-button class="mat-button-04lrp" (click)='toggleLoginPanel()'>
+                        <mat-icon>clear</mat-icon>
+                        <span>取消</span>
+                    </button>
+                    <button mat-button class="mat-button-04lrp" [disabled]='!logingForm.valid' (click)='saveUser()'>
+                        <mat-icon>save</mat-icon>
+                        <span>保存</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="list">
+        <div class="user-item" *ngFor='let user of latestUsers'>
+            <div class="icon">
+                <img src="/assets/images/avatars/profile.jpg">
+            </div>
+            <p class="name">
+                <span>{{user.username}}</span>
+                <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                <span>{{user.flag}}</span>
+            </p>
+            <div class="bar">
+                <button mat-button class="mat-button-04lrp" (click)='deleteUser(user.id)'>
+                    <mat-icon>delete</mat-icon>
+                    <span>删除</span>
+                </button>
+                <button mat-button class="mat-button-04lrp" (click)='editUser(user.id)'>
+                    <mat-icon>edit</mat-icon>
+                    <span>编辑</span>
+                </button>
+                <button mat-button class="mat-button-04lrp" (click)='toggleUser(user.id)'>
+                    <mat-icon>input</mat-icon>
+                    <span>切换</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

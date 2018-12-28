@@ -1,0 +1,101 @@
+.mat-button,
+.mat-flat-button,
+.mat-icon-button,
+.mat-stroked-button {
+    min-width: 0 !important;
+}
+
+.mat-tab-body {
+    padding: 0 0;
+}
+
+.mat-tab-body-wrapper {
+    flex: 1 1 0;
+    position: relative;
+}
+
+.mat-tab-body {
+    width: 100%;
+    height: 100%;
+    position: absolute !important;
+}
+
+.mat-tab-body-content {
+    // display: flex;
+}
+
+// table
+// .mat-header-row {
+//     top: 0;
+//     position: sticky;
+//     z-index: 1;
+//     background-color: inherit;
+// }
+// .mat-header-row,
+// .mat-row {
+//     justify-content: space-between;
+// }
+.mat-row,
+.mat-header-row {
+    //   min-width: 644px;
+    //   width: 100%;
+    //   width: max-content;
+    display: inline-flex;
+}
+
+.mat-table {
+    //   overflow: auto;
+    //   max-height: 100%;
+}
+
+.mat-cell,
+.mat-header-cell {
+    min-width: 90px;
+}
+
+/*unnecessary to make table header fixed*/
+
+.mat-header-row {
+    top: 0;
+    position: sticky;
+    z-index: 1;
+    background-color: inherit;
+    text-align: center;
+}
+
+.mat-row.hovered {
+    background: #eee;
+    cursor: pointer;
+}
+
+.mat-row.highlighted {
+    background: #eee;
+}
+
+// expansion-panel
+.mat-expansion-panel {
+    .mat-action-row {
+        padding: 0;
+    }
+}
+
+// button
+.mat-button-04lrp {
+    padding: 0 .4rem !important;
+}
+
+.mat-dialog-container {
+    padding: 0 !important;
+}
+
+.mat-radio-button {
+    margin-right: 1rem;
+}
+
+tree-internal{
+    .node-name{
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

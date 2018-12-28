@@ -1,0 +1,55 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "roboto", "Microsoft YaHei", "黑体", "宋体", "sans-serif";
+    background-color: #1E2129;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+/************************导航栏滚动条定制*********************/
+
+.navigation-scroller {
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.navigation-scroller::-webkit-scrollbar {
+    width: 0;
+}
+
+/************************普通滚动条定制*********************/
+
+.customized-scroller {
+    /* overflow: hidden; */
+    /* box-sizing: border-box;
+    overflow-y: auto; */
+    /* background-color: gray; */
+}
+
+/* .customized-scroller:hover {
+    overflow-y: auto !important;
+} */
+
+/* .customized-scroller::-webkit-scrollbar {
+    width: 8px;
+    height: 1px;
+}
+
+.customized-scroller::-webkit-scrollbar-thumb {
+    background-color: #A1A1A1;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
+.customized-scroller::-webkit-scrollbar-track {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+    background-color: rgba(218, 218, 218, .4);
+} */

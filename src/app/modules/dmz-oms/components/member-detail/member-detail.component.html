@@ -1,0 +1,16 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' [tabSecond]='hierarchyEditorRef' [tabSecondTitle]='"tips.HierarchyInfo"'
+  (goback)='onGoBack()'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+  <page-plate-basic-detail-editor (commitChange)='onCommitChange($event)' (commitIconChange)='onCommitIconChange($event)'
+    [needlessChangeIcon]='true' [permissionPoints]='permissionPoints' [basicEditorEx]='basicEditorExRef'>
+  </page-plate-basic-detail-editor>
+</ng-template>
+
+<ng-template #hierarchyEditorRef>
+  <app-member-detail-hierarchy-editor></app-member-detail-hierarchy-editor>
+</ng-template>
+
+<ng-template #basicEditorExRef>
+  <app-member-detail-basic-editor-ex></app-member-detail-basic-editor-ex>
+</ng-template>

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="header">
+    <mat-icon>label_important</mat-icon>
+    <p>{{title|translate}}</p>
+    <button mat-button class="mat-icon-button" (click)='closeDialog()'>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content">
+    <div class="mend customized-scroller">
+      <ng-template #dialogContentContainer></ng-template>
+    </div>
+  </div>
+  <div class="footer">
+    <button mat-button *ngIf='hideCancelButton' (click)='closeDialog()' [disabled]='disableCancelButton'>
+      <mat-icon>clear</mat-icon>
+      {{'button.Cancel'|translate}}
+    </button>
+    <ng-container *ngFor='let btn of manageButtons'>
+      <button mat-button (click)='btn.onClick()' [disabled]='disableCancelButton'>
+        <mat-icon>{{btn.icon}}</mat-icon>
+        {{btn.name|translate}}
+      </button>
+    </ng-container>
+    <button mat-button [disabled]='!satisfyConfirm' (click)='onConfirm()'>
+      <mat-icon>done</mat-icon>
+      {{'button.Confirm'|translate}}
+    </button>
+  </div>
+</div>

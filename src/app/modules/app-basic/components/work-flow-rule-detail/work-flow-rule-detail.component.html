@@ -1,0 +1,16 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' [tabSecond]='detailDefineEditorRef' [tabSecondTitle]='"tips.DetailWorkFlowRuleDefine"'
+    (goback)='onGoBack()'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+    <page-plate-basic-detail-editor [needlessChangeIcon]='true' [basicEditorEx]='basicEditorExRef' [permissionPoints]='permissionPoints'
+        (commitChange)='onCommitChange($event)' (commitIconChange)='onCommitIconChange($event)'></page-plate-basic-detail-editor>
+
+    <ng-template #basicEditorExRef>
+        <app-work-flow-rule-detail-basic-editor-ex></app-work-flow-rule-detail-basic-editor-ex>
+    </ng-template>
+</ng-template>
+
+
+<ng-template #detailDefineEditorRef>
+    <app-work-flow-rule-detail-define-editor></app-work-flow-rule-detail-define-editor>
+</ng-template>

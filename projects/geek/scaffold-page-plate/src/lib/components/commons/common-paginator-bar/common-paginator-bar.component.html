@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="cb" *ngIf='select'>
+    <mat-checkbox class="all-select-button" color="primary" (change)='onAllSelect(allCheckCt.checked)' #allCheckCt>{{'button.AllSelect'|translate}}</mat-checkbox>
+  </div>
+  <div class="tip" *ngIf='select'>{{'tips.CurrentSelect'|translate:selectCountParam}}</div>
+  <div class="bar">
+    <mat-paginator [showFirstLastButtons]='true' [length]="pageTotal" [pageSize]="pageSizeOptions[0]" [pageSizeOptions]="pageSizeOptions"
+      (page)='onPageChange($event)' #paginatorCt>
+    </mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+:host {
+    div.container {
+        display: flex;
+        flex-flow: row wrap;
+        align-content: flex-start;
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
+        div.preview {
+            width: 350px;
+            height: 350px;
+            border: 1px solid #EEEEEE;
+            img.icon {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        div.specs {
+            flex: 1 1 0;
+            display: flex;
+            flex-flow: row wrap;
+            align-content: flex-start;
+            align-items: flex-start;
+            align-content: flex-start;
+            padding: 0 1rem;
+            color: #999999;
+            p.flag {
+                padding: .5rem 1.5rem;
+            }
+            p.spec-item {
+                height: 40px;
+                line-height: 40px;
+                padding: 0 1.5rem;
+                margin-right: 15px;
+                border: 1px solid #EEEEEE;
+                &:hover {
+                    cursor: pointer;
+                }
+                &.selected {
+                    border: 1px solid #03A9F4;
+                }
+            }
+            .add-btn {
+                position: relative;
+                top: -3px;
+            }
+        }
+        div.detail {
+            margin: 1rem 0;
+            width: 100%;
+            form {
+                display: block;
+                &>* {
+                    width: 100%;
+                }
+                div.bar {
+                    display: flex;
+                    flex-flow: row;
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+}

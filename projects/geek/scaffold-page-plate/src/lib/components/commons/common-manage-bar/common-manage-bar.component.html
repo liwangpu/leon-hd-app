@@ -1,0 +1,56 @@
+<div class="container">
+  <button mat-button class="mat-button-04lrp" (click)='onRefresh()'>
+    <mat-icon>refresh</mat-icon>
+    <span>{{'button.Refresh'|translate}}</span>
+  </button>
+
+  <button mat-button class="mat-button-04lrp" (click)='changeSelectedMode()'>
+    <mat-icon>{{selected?'indeterminate_check_box':'check_box'}}</mat-icon>
+    <span>{{'button.Select'|translate}}</span>
+  </button>
+
+  <button mat-button class="mat-button-04lrp" [matMenuTriggerFor]="advanceMenu">
+    <mat-icon>settings</mat-icon>
+    <span>{{'button.Advance'|translate}}</span>
+  </button>
+
+  <button mat-button class="mat-button-04lrp" [matMenuTriggerFor]="displayMenu">
+    <mat-icon>view_list</mat-icon>
+    <span>{{'button.Display'|translate}}</span>
+  </button>
+
+  <button mat-button class="mat-button-04lrp" (click)='onToggleColumnPanel()'>
+    <mat-icon>view_module</mat-icon>
+    <span>{{'button.ColumnDisplay'|translate}}</span>
+  </button>
+
+  <mat-menu #advanceMenu="matMenu" yPosition="below" [overlapTrigger]="false">
+    <!--自定义按钮-->
+    <ng-container *ngFor='let item of advanceMenus'>
+      <button mat-menu-item *ngIf='checkPermission(item.permissionPoint)' [disabled]='item.needSelectedItem?(hasSelectedItem?false:true):false'
+        (click)='item.onClick(selectedItems)'>
+        <mat-icon class="cus-mat-button-icon">{{item.icon}}</mat-icon>
+        <span>{{item.name|translate}}</span>
+      </button>
+    </ng-container>
+  </mat-menu>
+
+
+  <mat-menu #displayMenu="matMenu" yPosition="below" [overlapTrigger]="false">
+    <ng-container *ngFor='let mod of pageModels'>
+      <ng-container [ngSwitch]='mod.toLocaleLowerCase()'>
+        <button *ngSwitchCase="'table'" mat-menu-item (click)='displayModeChange("table")'>
+          <mat-icon class="cus-mat-button-icon">list</mat-icon>
+          <span>{{'button.List'|translate}}</span>
+        </button>
+        <button *ngSwitchCase="'litimg'" mat-menu-item (click)='displayModeChange("litimg")'>
+          <mat-icon class="cus-mat-button-icon">blur_linear</mat-icon>
+          <span>{{'button.Litimg'|translate}}</span>
+        </button>
+        <ng-container *ngSwitchDefault></ng-container>
+      </ng-container>
+    </ng-container>
+  </mat-menu>
+
+
+</div>

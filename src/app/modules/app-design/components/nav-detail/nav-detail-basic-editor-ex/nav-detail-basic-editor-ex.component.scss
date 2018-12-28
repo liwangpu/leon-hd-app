@@ -1,0 +1,22 @@
+:host {
+    div.container {
+        width: 100%;
+        form {
+            display: block;
+            width: 100%;
+            &>* {
+                width: 100%;
+            }
+            div.nav-type {
+                font-size: .8rem;
+                color: #838383;
+                p.tip {
+                    padding-bottom: .6rem;
+                }
+                .d-gap {
+                    height: 1.5rem;
+                }
+            }
+        }
+    }
+}

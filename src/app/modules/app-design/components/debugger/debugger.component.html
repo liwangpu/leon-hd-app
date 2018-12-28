@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="nav">
+        <ul>
+            <li (click)='toggleDebuggerTool("user-switcher")'>用户切换器</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="mend">
+            <div class="main" [ngSwitch]='debuggingTool'>
+                <ng-container *ngSwitchCase='"user-switcher"'>
+                    <app-debugger-user-switcher></app-debugger-user-switcher>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                    <app-debugger-user-switcher></app-debugger-user-switcher>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

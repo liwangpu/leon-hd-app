@@ -1,0 +1,56 @@
+:host {
+    div.container {
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem 1.5rem 0 1.5rem;
+        display: flex;
+        flex-flow: column;
+        div.log {
+            flex: 1 1 0;
+            position: relative;
+            div.mend {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                overflow: auto;
+                p.state {
+                    padding-left: 2rem;
+                    margin: .5rem 0;
+                }
+                div.tips {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                }
+                div.log-item {
+                    width: 100%;
+                    min-height: 50px;
+                    margin-top: 8px;
+                    border: 1px solid #F0F0F0;
+                    border-radius: 5px;
+                    color: white;
+                    background-color: #F96872;
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: .2rem 1rem;
+                    &.approve {
+                        background-color: #51C69B;
+                    }
+                    &.current {
+                        background-color: #3E8BB9;
+                    }
+                }
+            }
+        }
+        div.bar {
+            width: 100%;
+            height: 64px;
+            display: flex;
+            flex-flow: row;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
+}

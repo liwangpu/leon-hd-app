@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="head">
+    <p class="title">{{(category?.isRoot?'glossary.Category':category.name)|translate}}</p>
+    <div class="bar">
+      <button class="operate-button" mat-icon-button (click)='onMoveUp()'>
+        <mat-icon class="operate-button-icon">keyboard_arrow_up</mat-icon>
+      </button>
+      <button class="operate-button" mat-icon-button (click)='onMoveDown()'>
+        <mat-icon class="operate-button-icon">keyboard_arrow_down</mat-icon>
+      </button>
+      <button class="operate-button" mat-icon-button (click)='onEdit()'>
+        <mat-icon class="operate-button-icon" style="font-size: 17px;height: 17px;width: 17px;margin-bottom: 5px !important;">create</mat-icon>
+      </button>
+      <button class="operate-button" mat-icon-button (click)='onAdd()'>
+        <mat-icon class="operate-button-icon" style="font-size: 20px;height: 20px;">add</mat-icon>
+      </button>
+      <button class="operate-button" mat-icon-button (click)='onRemove()'>
+        <mat-icon class="operate-button-icon" style="font-size: 20px;height: 20px;">remove</mat-icon>
+      </button>
+    </div>
+    <button class="close-bar" mat-icon-button *ngIf='!category?.isRoot' (click)='onClose()'>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content">
+    <div class="mend">
+      <div class="cat-item" *ngFor='let item of categories' (click)='onSelect(item.id)' [class.actived]='item.id==selectedId'>
+        <img class="cate-icon" [src]="(item?.icon)?item.icon:'assets/images/svgs/cate-item.svg'">
+        <p class="cate-title">{{item.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>

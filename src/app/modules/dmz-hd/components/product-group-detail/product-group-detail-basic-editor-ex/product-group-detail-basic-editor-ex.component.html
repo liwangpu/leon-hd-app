@@ -1,0 +1,11 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+    <input type="hidden" formControlName='categoryId' name='categoryId'>
+    <mat-form-field>
+      <input matInput name="categoryName" formControlName="categoryName" required placeholder="{{'glossary.Category'|translate}}"
+        [readonly]="true" (click)='onEditCategory()'>
+      <mat-error *ngIf="detailForm.get('categoryName').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+  </form>
+</div>

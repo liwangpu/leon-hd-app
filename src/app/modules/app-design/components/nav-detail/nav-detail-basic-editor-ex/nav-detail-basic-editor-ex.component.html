@@ -1,0 +1,54 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+
+    <div class="nav-type">
+      <p class="tip">{{'glossary.NavType'|translate}}</p>
+      <mat-radio-group (change)='onNodeTypeChange($event)' formControlName="nodeType">
+        <mat-radio-button color='primary' value="area">
+          {{'glossary.NavType-Area'|translate}}
+        </mat-radio-button>
+        <mat-radio-button color='primary' value="group">
+          {{'glossary.NavType-Group'|translate}}
+        </mat-radio-button>
+        <mat-radio-button color='primary' value="link">
+          {{'glossary.NavType-Link'|translate}}
+        </mat-radio-button>
+        <div class="d-gap"></div>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field>
+      <input matInput name="title" formControlName="title" placeholder="{{'glossary.Title'|translate}}" required>
+      <mat-error *ngIf="detailForm.get('title').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="resource" formControlName="resource" placeholder="{{'glossary.ResourceType'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="icon" formControlName="icon" placeholder="{{'glossary.Icon'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="field" formControlName="field" placeholder="{{'glossary.Fiels'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="url" formControlName="url" placeholder="{{'glossary.Url'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="pagedModel" formControlName="pagedModel" placeholder="{{'glossary.PagedModel'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="permission" formControlName="permission" placeholder="{{'glossary.Permission'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="queryParams" formControlName="queryParams" placeholder="{{'glossary.QueryParams'|translate}}">
+    </mat-form-field>
+  </form>
+</div>

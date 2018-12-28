@@ -1,0 +1,42 @@
+<page-plate-blank>
+    <div class="header" page-header>
+        <button mat-icon-button *ngIf='!hideGoBack' (click)='onGoBack()'>
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+
+        <div class="detail-image animated flipInY">
+            <img [src]="avatar?(avatar|serverRedirect:128):'assets/images/common/image-placeholder.png'">
+        </div>
+
+        <div class="detail-title animated fadeIn">
+            <span class="primary-title">{{title|translate}}</span>
+            <span class="sub-title">{{name}}</span>
+        </div>
+    </div>
+    <div class="content" page-content>
+        <div class="main">
+            <mat-tab-group style="width:100%;height:100%;">
+
+                <mat-tab *ngIf='tabFirst' [label]="tabFirstTitle|translate">
+                    <ng-template [ngTemplateOutlet]='tabFirst'></ng-template>
+                </mat-tab>
+
+                <mat-tab *ngIf='tabSecond&&_entityPersist' [label]="tabSecondTitle|translate">
+                    <ng-template [ngTemplateOutlet]='tabSecond'></ng-template>
+                </mat-tab>
+
+                <mat-tab *ngIf='tabThird&&_entityPersist' [label]="tabThirdTitle|translate">
+                    <ng-template [ngTemplateOutlet]='tabThird'></ng-template>
+                </mat-tab>
+
+                <mat-tab *ngIf='tabFourth&&_entityPersist' [label]="tabFourthTitle|translate">
+                    <ng-template [ngTemplateOutlet]='tabFourth'></ng-template>
+                </mat-tab>
+
+                <mat-tab *ngIf='tabFifth&&_entityPersist' [label]="tabFifthTitle|translate">
+                    <ng-template [ngTemplateOutlet]='tabFifth'></ng-template>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</page-plate-blank>

@@ -1,0 +1,36 @@
+<div class="container customized-scroller">
+  <div class="bar">
+    <button mat-button (click)='onEditFlow()'>
+      <mat-icon>add</mat-icon>
+      <span>{{'button.Add'|translate}}</span>
+    </button>
+  </div>
+  <div class="list">
+    <div class="wf">
+      <div class="wf-item work-flow-item start">
+        <div class="content">
+          {{'glossary.Start'|translate}}
+        </div>
+        <div class="arror">
+          <mat-icon>arrow_downward</mat-icon>
+        </div>
+      </div>
+    </div>
+    <div class="wf" cdkDropList (cdkDropListDropped)="onMoveFlowItem($event)">
+      <ng-container *ngFor='let it of workFlowItems'>
+        <app-work-flow-detail-flow-item [flowId]='it.id' [flowName]='it.name' [subFlowId]='it.subWorkFlowId' [attr.data-id]='it.id' (editWorkFlowItem)='onEditFlow($event)'
+          (deleteWorkFlowItem)='onDeleteFlow($event)' cdkDrag>
+        </app-work-flow-detail-flow-item>
+        <mat-icon style="color:gray;">arrow_downward</mat-icon>
+      </ng-container>
+    </div>
+    <div class="wf">
+      <div class="wf-item work-flow-item end">
+        <div class="content">
+          {{'glossary.End'|translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

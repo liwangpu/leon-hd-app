@@ -1,0 +1,10 @@
+<div class="container">
+    <mat-form-field #selectFCt>
+        <input matInput placeholder="{{fieldTitle|translate}}" [formControl]="fieldControl" [matAutocomplete]="selectedAuto"
+            [required]='required' (click)='onInputClick()'>
+    </mat-form-field>
+
+    <mat-autocomplete #selectedAuto="matAutocomplete" [displayWith]="displayValueFn" (optionSelected)='onSelectd($event)'>
+        <mat-option *ngFor="let it of usableSelectItems" [value]="it">{{it.name}}</mat-option>
+    </mat-autocomplete>
+</div>

@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/geek/scaffold-app-core",
+  "lib": {
+    "entryFile": "src/public_api.ts"
+  }
+}

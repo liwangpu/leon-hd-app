@@ -1,0 +1,16 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' [tabSecondTitle]='"glossary.WorkFlowSetting"'
+    [tabSecond]='flowDesignerEditorRef' (goback)='onGoBack()'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+    <page-plate-basic-detail-editor [basicEditorEx]='basicEditorExRef' (commitChange)='onCommitChange($event)'
+        (commitIconChange)='onCommitIconChange($event)'>
+        <ng-template #basicEditorExRef>
+            <app-work-flow-detail-basic-editor-ex></app-work-flow-detail-basic-editor-ex>
+        </ng-template>
+    </page-plate-basic-detail-editor>
+</ng-template>
+
+<ng-template #flowDesignerEditorRef>
+    <app-work-flow-detail-flow-designer></app-work-flow-detail-flow-designer>
+</ng-template>
+

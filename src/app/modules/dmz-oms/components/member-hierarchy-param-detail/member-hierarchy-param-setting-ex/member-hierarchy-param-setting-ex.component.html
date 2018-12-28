@@ -1,0 +1,9 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='memberHierarchyParamId' name='memberHierarchyParamId'>
+    <mat-form-field>
+      <input type="number" matInput name="rate" formControlName="rate" required placeholder="{{'glossary.Rate'|translate}}">
+      <mat-error *ngIf="detailForm.get('rate').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+  </form>
+</div>

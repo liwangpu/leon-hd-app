@@ -1,0 +1,46 @@
+<div class="container">
+  <form [formGroup]="detailForm">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="type">
+    <input type="hidden" formControlName="isAdmin">
+    <input type="hidden" formControlName="departmentId">
+    <input type="hidden" formControlName="location">
+    
+    <mat-form-field>
+      <input name="name" formControlName="name" matInput placeholder="{{'glossary.Name'|translate}}">
+      <mat-icon class="field-prefix" matPrefix>star</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input name="mail" formControlName="mail" matInput type="email" placeholder="{{'glossary.Mail'|translate}}"
+      >
+      <mat-icon class="field-prefix" matPrefix>email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input formControlName="phone" matInput placeholder="{{'glossary.Phone'|translate}}">
+      <mat-icon class="field-prefix" matPrefix>phone</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'" placeholder="{{'glossary.Password'|translate}}">
+      <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-icon class="field-prefix" matPrefix>vpn_key</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [matDatepicker]="activationTimePicker" formControlName="activationTime" matInput placeholder="{{'glossary.ActivationTime'|translate}}">
+      <mat-datepicker-toggle matSuffix [for]="activationTimePicker"></mat-datepicker-toggle>
+      <mat-datepicker #activationTimePicker></mat-datepicker>
+      <mat-icon class="field-prefix" matPrefix>history</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [matDatepicker]="expireTimePicker" formControlName="expireTime" matInput placeholder="{{'glossary.ExpireTime'|translate}}">
+      <mat-datepicker-toggle matSuffix [for]="expireTimePicker"></mat-datepicker-toggle>
+      <mat-datepicker #expireTimePicker></mat-datepicker>
+      <mat-icon class="field-prefix" matPrefix>slow_motion_video</mat-icon>
+    </mat-form-field>
+
+  </form>
+</div>

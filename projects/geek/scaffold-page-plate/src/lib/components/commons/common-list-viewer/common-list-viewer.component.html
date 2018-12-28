@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="list">
+    <div class="mend">
+      <ng-container [ngSwitch]='pageModel'>
+        <!-- table -->
+        <page-plate-common-table-list *ngSwitchCase='"table"' [select]='select' [selectAll]='_selectAll' [rowMenus]='rowMenus'
+          [displayedColumns]='displayedColumns' [columnDefs]='columnDefs' [datas]='pageData.data' (selectItemChange)='onSelectItemChange($event)'
+          (sortData)='onSortData($event)' (rowClick)='onRowClick($event)' #tableListCt></page-plate-common-table-list>
+        <!-- litimg -->
+        <page-plate-common-litimg-list *ngSwitchCase='"litimg"' [select]='select' [datas]='pageData.data'
+           (rowClick)='onRowClick($event)' (selectItemChange)='onSelectItemChange($event)' #litimgListCt></page-plate-common-litimg-list>
+
+        <div *ngSwitchDefault></div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="paging">
+    <page-plate-common-paginator-bar [select]='select' [pageIndex]='_pageIndex' [pageTotal]='_pageTotal' [selectedItems]='selectedItems'
+      [pageSizeOptions]='pageSizeOptions' (pageChange)='onPageChange($event)' (pageOptionChange)='onPageOptionChange($event)'
+      (allSelectChange)='onAllSelectChange($event)' #paginatorBarCt></page-plate-common-paginator-bar>
+  </div>
+</div>

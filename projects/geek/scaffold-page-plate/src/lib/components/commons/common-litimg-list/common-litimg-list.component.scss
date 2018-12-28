@@ -1,0 +1,42 @@
+:host {
+    div.container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        box-sizing: border-box;
+        padding: 1rem;
+        div.lititem {
+            width: 290px;
+            min-height: 192px;
+            margin-bottom: .8rem;
+            .item-button {
+                width: 290px;
+                height: 192px;
+                padding: 0 !important;
+                border: 1px solid #D0D0D0;
+                .litimg {
+                    width: 100%;
+                    height: 100%;
+                    &.notupload {
+                        width: 35px;
+                        height: 35px;
+                    }
+                }
+            }
+            .des {
+                display: flex;
+                flex-flow: row;
+                align-items: center;
+                box-sizing: border-box;
+                min-height: 2.375rem;
+                padding: 0 1rem;
+                p.littile {
+                    flex: 1 1 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

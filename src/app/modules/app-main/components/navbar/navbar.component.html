@@ -1,0 +1,50 @@
+<div class="container" #nav (mouseenter)='onMouseEnterSideNav()' (mouseleave)='onMouseLeaveSideNav()'>
+  <div class="wrap">
+
+    <div class="header">
+      <img class="logo" [src]='organIcon?(organIcon|serverRedirect:128):"/assets/images/logo/dmz-logo.png"'>
+      <p class="crop">{{organName}}</p>
+      <button mat-icon-button class="op sm" (click)='toggleSideNavMiniMode()'>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-icon-button class="op xs" (click)='closeSideNav()'>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+
+    <div class="content navigation-scroller">
+
+      <div class="area" *ngFor='let areaItem of navs | navFilter:"area"'>
+        <p>
+          <span>{{areaItem.title|translate}}</span>
+        </p>
+        <ng-container *ngFor='let glItem of navs | navFilter:"group,link":areaItem.id'>
+
+          <div class="link" *ngIf='glItem.nodeType=="link"' (click)='activeNav(glItem.id,glItem.url)' [class.actived]='glItem.actived'>
+            <mat-icon class="link-icon">{{glItem.icon?glItem.icon:'dashboard'}}</mat-icon>
+            <p class="link-title mini-hidden">{{glItem.title|translate}}</p>
+          </div>
+
+          <div class="group" *ngIf='glItem.nodeType=="group"' [style.height.rem]="glItem.actived?((navs | navFilter:'link':glItem.id).length+1)*3.125:3.125">
+
+            <div class="link" (click)='activeNav(glItem.id)'>
+              <mat-icon class="link-icon">{{glItem.icon?glItem.icon:'label_important'}}</mat-icon>
+              <p class="link-title mini-hidden">{{glItem.title|translate}}</p>
+              <mat-icon class="link-icon expand mini-hidden" [class.actived]='glItem.actived'>keyboard_arrow_right</mat-icon>
+            </div>
+
+            <div class="link" *ngFor='let lItem of navs | navFilter:"link":glItem.id' (click)='activeNav(lItem.id,lItem.url)'
+              [class.actived]='lItem.actived'>
+              <mat-icon class="link-icon">{{lItem.icon?lItem.icon:'timeline'}}</mat-icon>
+              <p class="link-title">{{lItem.title|translate}}</p>
+            </div>
+
+          </div>
+
+        </ng-container>
+
+      </div>
+    </div>
+
+  </div>
+</div>

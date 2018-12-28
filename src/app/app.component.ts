@@ -1,63 +1,100 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { ViewportService } from './share/services/common/viewport.service';
-import { AppCacheService } from './share/services/common/app-cache.service';
-import { NavigationService } from './share/services/common/navigation.service';
-import { AppLangService } from './share/services/common/app-lang.service';
-import { Router } from '@angular/router';
-import { DrawerService } from './share/services/common/drawer.service';
-import { MatDrawer } from '@angular/material';
-import { MediaService } from './share/services/common/media.service';
-import { ObservableMedia, MediaChange } from '@angular/flex-layout';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { CommonAppBasicNavSidebarComponent } from '@geek/scaffold-page-plate';
+import { MediaService, DrawerService, NavRouterService, LanguageService, AppCacheService, AppProgressService, WindowService } from '@geek/scaffold-app-core';
+import { HotkeysService, Hotkey } from 'angular2-hotkeys';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('drawer') drawerIns: MatDrawer;
-  outletMaximize = true;
-  constructor(protected viewPortSrv: ViewportService, protected appCacheSrv: AppCacheService, protected navSrv: NavigationService, protected router: Router, protected langSrv: AppLangService/*需要引用,因为在构造函数里面有浏览器语言检测*/, protected drawerSrv: DrawerService, protected mediaSrv: MediaService, protected media: ObservableMedia) {
+  showProgress = false;
+  maximize = true;
+  maxPageRouters = ['login', 'error', 'maintenance', 'sign-in', 'debugger'];//需要app页面最大化的路由
+  langs: Array<string> = ['cn', 'en'];
+  @ViewChild('drawerCt') drawerCt: CommonAppBasicNavSidebarComponent;
+  constructor(protected media: ObservableMedia, protected mediaSrv: MediaService, protected drawerSrv: DrawerService, protected navRouterSrv: NavRouterService, protected appCacheSrv: AppCacheService, protected translate: TranslateService, protected langSrv: LanguageService, protected progressSrv: AppProgressService, protected _hotkeysService: HotkeysService, protected windowSrv: WindowService) {
+    this.appCacheSrv.reload();
+
+    //添加语言支持
+    this.translate.addLangs(this.langs);
+    //设置默认语言，一般在无法匹配的时候使用
+    this.translate.setDefaultLang(this.langs[0]);
+    //获取当前浏览器环境的语言比如en、 zh
+    let broswerLang = translate.getBrowserLang();
+
+    //服务器端渲染translate.getBrowserLang()会是undefined
+    if (broswerLang) {
+      let lastLang = this.appCacheSrv.lastLang;
+      if (lastLang)
+        broswerLang = lastLang;
+      this.langSrv.currentLang = broswerLang && broswerLang.match(/en|cn/) ? broswerLang : this.langs[0];
+
+      //绑定快捷键
+      //跳转开发调试平台
+      this._hotkeysService.add(new Hotkey('alt+shift+d', (event: KeyboardEvent): boolean => {
+        windowSrv.nativeWindow.open("/app-design/debugger");
+        return false; // Prevent bubbling
+      }));//add
+      //跳转根页面
+      this._hotkeysService.add(new Hotkey('alt+shift+r', (event: KeyboardEvent): boolean => {
+        navRouterSrv.goto('/');
+        return false; // Prevent bubbling
+      }));//add
+
+    }//if
+
+    //订阅路由跳转事件,以响应不同路由进行页面最大化或者抽屉模式
+    this.navRouterSrv.routeChange$.subscribe(url => {
+      console.log('route to:', url);
+      //忽略默认触发事件
+      if (url == null) return;
+      url = url ? url : "/";
+      this.maximize = this.maxPageRouters.some(path => url.toLocaleLowerCase().indexOf(path.toLocaleLowerCase()) > 0);
+    });//subscribe
+  }//constructor
+
+  ngOnInit() {
     //监听设备屏幕尺寸事件
     this.media.subscribe((change: MediaChange) => {
       let alia = change ? `${change.mqAlias}` : '';
       this.mediaSrv.mqAliaChange(alia);
-    });
-
-    this.appCacheSrv.reload();
-    //
-    this.viewPortSrv.outletMaximize$.subscribe(max => {
-      this.outletMaximize = max;
-    });
-    //
-    this.navSrv.navigate$.subscribe(url => {
-      //浏览器刷新页面时候url为空,如果这时候路由跳转会照成总是进入默认路由,而不是输入的路由
-      if (!url) return;
-      this.router.navigateByUrl(url);
-    });
-  }//constructor
+    });//subscribe
+    //订阅是否显示进度条
+    this.progressSrv.showProgress$.subscribe(show => this.showProgress = show);
+  }//ngOnInit
 
   ngAfterViewInit(): void {
-    //订阅屏幕尺寸响应事件
-    this.mediaSrv._mqAlia$.subscribe(alia => {
+    // 订阅屏幕尺寸响应事件
+    this.mediaSrv.mqAlia$.subscribe(alia => {
       //大屏幕展开SideNav
       let showSideNavScreens = ['md', 'lg', 'xl'];
       if (showSideNavScreens.some(x => x == alia)) {
         setTimeout(() => {
-          this.drawerIns.mode = 'side';
-          this.drawerIns.open();
-
+          this.drawerCt.changeDrawerMode('side');
+          this.drawerCt.openDrawer();
         }, 500);
       } else {
         setTimeout(() => {
-          this.drawerIns.mode = 'over';
-          this.drawerIns.close();
+          this.drawerCt.changeDrawerMode('over');
+          this.drawerCt.closeDrawer();
         }, 500);
       }
-    });
+    });//subscribe
     //订阅抽屉操作响应事件
-    this.drawerSrv._toggle$.subscribe(() => {
-      this.drawerIns.toggle();
-    });
+    this.drawerSrv.toggle$.subscribe(() => {
+      this.drawerCt.toggleDrawer();
+    });//subscribe
+
+    //订阅语言改变后响应事件,用于记录最近使用语言
+    this.langSrv.changeLang$.subscribe(lang => {
+      this.appCacheSrv.lastLang = lang;
+    });//subscribe
   }//ngAfterViewInit
+
 }

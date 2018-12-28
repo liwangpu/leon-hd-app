@@ -1,0 +1,76 @@
+<div class="container" #containerCt>
+    <mat-table [dataSource]="dataSource" (matSortChange)="onSortData($event)" [ngStyle]='{"min-width":rowMiniWidth+"px"}'
+        matSort>
+
+        <!-- 序号常用列 -->
+        <ng-container cdkColumnDef='seqno'>
+            <mat-header-cell *cdkHeaderCellDef [fxFlex]='_iconColWidth+"px"'>{{'glossary.SeqNO'|translate}}</mat-header-cell>
+            <mat-cell *cdkCellDef="let row" [fxFlex]='_iconColWidth+"px"'>
+                {{row.seqno}}
+            </mat-cell>
+        </ng-container>
+
+        <!-- 选择框常用列 -->
+        <ng-container cdkColumnDef='select'>
+            <mat-header-cell *cdkHeaderCellDef [fxFlex]='_seqnoColWidth+"px"'></mat-header-cell>
+            <mat-cell *cdkCellDef="let row" [fxFlex]='_seqnoColWidth+"px"'>
+                <mat-checkbox color='primary' [checked]='row.select' (change)='onCheckBoxSelect(row.id,cbox.checked)'
+                    (click)='$event.stopPropagation()' #cbox>
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <!-- 图标常用列 -->
+        <ng-container cdkColumnDef='icon'>
+            <mat-header-cell *cdkHeaderCellDef [fxFlex]='_iconColWidth+"px"'>{{'glossary.Icon'|translate}}</mat-header-cell>
+            <mat-cell *cdkCellDef="let row" [fxFlex]='_iconColWidth+"px"'>
+                <img class="listable-icon" [src]="row.icon?(row.icon|serverRedirect:128):'assets/images/common/image-placeholder.png'">
+            </mat-cell>
+        </ng-container>
+
+        <!-- 自定义列 -->
+        <ng-container *ngFor="let column of columnDefs" [cdkColumnDef]="column.id?column.id:column.name">
+            <mat-header-cell *cdkHeaderCellDef mat-sort-header [fxFlex]="column.width>0?column.width+'px':''">{{
+                column.name|translate }}</mat-header-cell>
+            <mat-cell *cdkCellDef="let row" [fxFlex]="column.width>0?column.width+'px':''">
+
+                <ng-container *ngIf='column.transToCheckFlag;else normalRenderRef'>
+                    <ng-container *ngIf='column.cell(row);else falseFlagRef'>
+                        <mat-icon style="color:green;">check</mat-icon>
+                    </ng-container>
+                    <ng-template #falseFlagRef>
+                        <mat-icon style="color:red;">close</mat-icon>
+                    </ng-template>
+                </ng-container>
+
+                <ng-template #normalRenderRef>
+                    <p class="cell-content">{{ column.needTranslate?(column.cell(row)|translate):column.cell(row) }}</p>
+                </ng-template>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef='buttons'>
+            <mat-header-cell *cdkHeaderCellDef [fxFlex]='_buttonsColWidth+"px"'>{{'glossary.Manage'|translate}}</mat-header-cell>
+            <mat-cell *cdkCellDef="let row" [fxFlex]='_buttonsColWidth+"px"'>
+                <button mat-icon-button [matMenuTriggerFor]="itemManageMenu" (click)="$event.stopPropagation()">
+                    <mat-icon>more_horiz</mat-icon>
+                </button>
+
+                <mat-menu #itemManageMenu="matMenu" yPosition="below" [overlapTrigger]="false">
+                    <button mat-menu-item *ngFor='let menuitem of rowMenus' (click)='menuitem.onClick(row)'>
+                        <mat-icon>{{menuitem.icon}}</mat-icon>
+                        <span>{{menuitem.name|translate}}</span>
+                    </button>
+                </mat-menu>
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <!-- <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
+            (mouseover)="row.hovered = true" (mouseout)="row.hovered = false" (click)='select?(row.select=!row.select):row.select=false;onCheckBoxSelect(row,row.id,row.select);onRowClick(row,row.id)'></mat-row> -->
+
+            <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
+            (mouseover)="row.hovered = true" (mouseout)="row.hovered = false" (click)='onRowClick(row,row.id)'></mat-row>
+    </mat-table>
+</div>

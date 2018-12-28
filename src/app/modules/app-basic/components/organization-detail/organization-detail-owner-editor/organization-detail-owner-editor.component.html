@@ -1,0 +1,44 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+    <input type="hidden" formControlName='isAdmin' name='isAdmin'>
+    <input type="hidden" formControlName='activationTime' name='activationTime'>
+    <input type="hidden" formControlName='expireTime' name='expireTime'>
+    <mat-form-field>
+      <input matInput placeholder="Input" name="name" formControlName="name" placeholder="{{'glossary.Name'|translate}}"
+        required>
+      <mat-error *ngIf="detailForm.get('name').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Input" name="mail" formControlName="mail" placeholder="{{'glossary.Mail'|translate}}"
+        required>
+      <mat-error *ngIf="detailForm.get('mail').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('mail').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Input" name="phone" formControlName="phone" placeholder="{{'glossary.Phone'|translate}}">
+      <mat-error *ngIf="detailForm.get('phone').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('phone').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Input" name="location" formControlName="location" placeholder="{{'glossary.Location'|translate}}">
+      <mat-error *ngIf="detailForm.get('location').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('location').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <div class="bar">
+      <button mat-button [class.hidden]='!mailPersistent' (click)='resetPassword()'>
+        <mat-icon>lock_open</mat-icon>
+        <span>{{'button.ResetPassword'|translate}}</span>
+      </button>
+      <button mat-button [disabled]='!detailForm.valid' (click)='submitOwner()'>
+        <mat-icon>save</mat-icon>
+        <span>{{'button.Save'|translate}}</span>
+      </button>
+    </div>
+  </form>
+</div>

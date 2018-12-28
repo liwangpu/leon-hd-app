@@ -1,0 +1,41 @@
+<page-plate-simple-confirm-dialog [dialogTitle]='"dialog.EditOrderDetail"' [enableConfirm]='detailForm.valid'
+    (afterConfirm)='afterConfirm()' (afterReceiveData)='afterReceiveData($event)'>
+    <div class="container">
+        <form name="detailForm" [formGroup]="detailForm">
+            <input type="hidden" formControlName='id' name='id'>
+            <input type="hidden" formControlName='unitPrice' name='unitPrice'>
+            <input type="hidden" formControlName='totalPrice' name='totalPrice'>
+
+            <mat-form-field>
+                <input matInput name="productName" formControlName="productName" placeholder="{{'glossary.ProductName'|translate}}">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="productSpecName" formControlName="productSpecName" placeholder="{{'glossary.ProductSpec'|translate}}">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="productUnit" formControlName="productUnit" placeholder="{{'glossary.Unit'|translate}}">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="number" name="num" formControlName="num" placeholder="{{'glossary.Quantity'|translate}}"
+                    required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]='totalPriceCt' placeholder="{{'glossary.Amount'|translate}}">
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput name="remark" formControlName="remark" placeholder="{{'glossary.Remark'|translate}}"></textarea>
+                <mat-error *ngIf="detailForm.get('remark').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+                <mat-error *ngIf="detailForm.get('remark').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+    <div custom-button>
+        <div style="display:none;">
+            <input type="file" name="attachment" multiple="multiple" (change)="fileChange($event)" #attachmentCt>
+        </div>
+        <button mat-button (click)='addFile()'>
+            <mat-icon>cloud_upload</mat-icon>
+            <span>{{'button.Upload'|translate}}</span>
+        </button>
+    </div>
+</page-plate-simple-confirm-dialog>

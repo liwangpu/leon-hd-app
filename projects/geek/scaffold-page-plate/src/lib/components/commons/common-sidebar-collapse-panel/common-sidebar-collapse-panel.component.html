@@ -1,0 +1,11 @@
+<div class="container">
+  <ng-container *ngFor='let item of panels'>
+    <div class="bar" (click)='collapse(contentCt)'>
+      <mat-icon>{{item.icon?item:'toc'}}</mat-icon>
+      <p>{{item.title|translate}}</p>
+    </div>
+    <div class="content customized-scroller" #contentCt>
+      <ng-template [ngTemplateOutlet]='item.panel'></ng-template>
+    </div>
+  </ng-container>
+</div>

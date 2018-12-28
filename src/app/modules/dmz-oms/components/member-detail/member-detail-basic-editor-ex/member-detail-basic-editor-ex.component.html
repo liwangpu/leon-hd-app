@@ -1,0 +1,16 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+    <mat-form-field>
+      <input matInput name="mail" formControlName="mail" placeholder="{{'glossary.Mail'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="phone" formControlName="phone" placeholder="{{'glossary.Phone'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="inviterName" formControlName="inviterName" placeholder="{{'glossary.Inviter'|translate}}">
+    </mat-form-field>
+  </form>
+</div>

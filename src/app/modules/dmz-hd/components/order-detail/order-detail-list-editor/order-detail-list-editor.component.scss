@@ -1,0 +1,82 @@
+:host {
+    div.container {
+        width: 100%;
+        min-width: 1200px;
+        padding: 1.5rem;
+        div.content {
+            width: 100%;
+            table.dlist {
+                width: 100%;
+                border-collapse: collapse;
+                td,
+                th {
+                    border: 1px solid #E6E6E6;
+                }
+                tr.h-row {
+                    height: 42px;
+                    background-color: #F2F2F2;
+                    .op {
+                        width: 50px;
+                    }
+                    .icon {
+                        width: 110px;
+                    }
+                    .product-name {
+                        width: 150px;
+                    }
+                    .productspec-name {
+                        width: 150px;
+                    }
+                    .unit {
+                        width: 70px;
+                    }
+                    .num {
+                        width: 90px;
+                    }
+                    .unit-price {
+                        width: 90px;
+                    }
+                    .total-price {
+                        width: 90px;
+                    }
+                    .material {
+                        width: 150px;
+                    }
+                    .fabric {
+                        width: 150px;
+                    }
+                    .remark {
+                        width: 200px;
+                    }
+                    .files {
+                        width: 150px;
+                    }
+                }
+                tr.d-row {
+                    height: 35px;
+                    text-align: center;
+                    .icon {
+                        width: 128px;
+                        height: 128px;
+                        margin: 5px;
+                    }
+                    .attach-item {
+                        &:hover {
+                            .delete {
+                                visibility:visible;
+                            }
+                        }
+                        .delete {
+                            visibility: hidden;
+                            margin-left: 5px;
+                            color: red;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

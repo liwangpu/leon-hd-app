@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="header">
+    <div class="icon">
+      <mat-icon>{{dialogIcon}}</mat-icon>
+      <p>{{dialogTitle|translate}}</p>
+    </div>
+    <button mat-icon-button (click)='onCloseDialog()'>
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+  <div class="content">
+    <div class="mend customized-scroller">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <div class="footer">
+    <ng-content select='[custom-button]'></ng-content>
+    <button mat-button [disabled]='!enableConfirm' (click)='onConfirm()'>
+      <mat-icon>save</mat-icon>
+      <span>{{'button.Confirm'|translate}}</span>
+    </button>
+
+    <button mat-button (click)='onCloseDialog()'>
+      <mat-icon>clear</mat-icon>
+      <span>{{'button.Cancel'|translate}}</span>
+    </button>
+  </div>
+</div>

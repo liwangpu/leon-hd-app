@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="manage-bar">
+    <button class="mat-button-04lrp" mat-button (click)='onEditNav("area")'>
+      <mat-icon>add</mat-icon>
+      <span>{{'button.AddNavArea'|translate}}</span>
+    </button>
+  </div>
+  <div class="navs">
+
+    <ng-container *ngFor='let areaItem of userNavDetails | navFilter:"area"'>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <span>{{"glossary.NavType-Area"|translate}}</span>
+          <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+          <span>{{areaItem.name}}</span>
+        </mat-expansion-panel-header>
+
+        <div class="area-container">
+          <ng-container *ngFor='let groupItem of userNavDetails | navFilter:"group":areaItem.id'>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <span>{{"glossary.NavType-Group"|translate}}</span>
+                <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                <span>{{groupItem.name}}</span>
+              </mat-expansion-panel-header>
+
+              <div class="group-container">
+
+                <p class="link-item" *ngFor='let linkItem of userNavDetails | navFilter:"link":groupItem.id'>
+                  <!-- <mat-icon>{{linkItem.icon}}</mat-icon> -->
+                  <span>{{linkItem.name}}</span>
+                  <span class="bar">
+                    <mat-icon class="btn" (click)='onDeleteNav(linkItem.id)'>delete</mat-icon>
+                    <mat-icon class="btn" (click)='onEditNav("link",groupItem.id,linkItem.id)'>edit</mat-icon>
+                  </span>
+                </p>
+              </div>
+              <mat-action-row>
+                <div class="group-bar">
+                  <button class="mat-button-04lrp" mat-button (click)='onDeleteNav(groupItem.id)'>
+                    <mat-icon>delete</mat-icon>
+                    <span>{{'button.DeleteNavGroup'|translate}}</span>
+                  </button>
+                  <button class="mat-button-04lrp" mat-button (click)='onEditNav("link",groupItem.id)'>
+                    <mat-icon>add</mat-icon>
+                    <span>{{'button.AddNavLink'|translate}}</span>
+                  </button>
+                </div>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </ng-container>
+        </div>
+
+        <mat-action-row>
+          <div class="area-bar">
+            <button class="mat-button-04lrp" mat-button (click)='onDeleteNav(areaItem.id)'>
+              <mat-icon>delete</mat-icon>
+              <span>{{'button.DeleteNavArea'|translate}}</span>
+            </button>
+            <button class="mat-button-04lrp" mat-button (click)='onEditNav("group",areaItem.id)'>
+              <mat-icon>add</mat-icon>
+              <span>{{'button.AddNavGroup'|translate}}</span>
+            </button>
+          </div>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </ng-container>
+
+  </div>
+</div>

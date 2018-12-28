@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="head">
+    <mat-icon>{{icon?icon:'chrome_reader_mode'}}</mat-icon>
+    <span class="title">{{title|translate}}</span>
+  </div>
+  <div class="content">
+    <div class="mend">
+      <div class="list">
+        <app-v1-category-editor-list *ngIf='rootCategory' [category]='rootCategory' (editCategory)='onEditCategory($event)'
+          (selectCategory)='onSelectCategory($event)' (moveDown)='onMoveDown($event)' (moveUp)='onMoveUp($event)'
+          (remove)='onRemove($event)'></app-v1-category-editor-list>
+        <app-v1-category-editor-list *ngFor='let item of categoryPanels' [category]='item' (editCategory)='onEditCategory($event)'
+          (selectCategory)='onSelectCategory($event)' (closeCategory)='onCloseCategory($event)' (moveDown)='onMoveDown($event)'
+          (moveUp)='onMoveUp($event)' (remove)='onRemove($event)'></app-v1-category-editor-list>
+      </div>
+    </div>
+  </div>
+</div>

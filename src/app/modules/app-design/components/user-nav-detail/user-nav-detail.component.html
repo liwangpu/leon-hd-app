@@ -1,0 +1,15 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' [tabSecond]='navDesignerEditorRef'
+    [tabSecondTitle]='"glossary.UserRoleNavDesign"' (goback)='onGoBack()'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+    <page-plate-basic-detail-editor [basicEditorEx]='basicEditorExRef' [needlessChangeIcon]='true' (commitChange)='onCommitChange($event)'
+        (commitIconChange)='onCommitIconChange($event)'>
+        <ng-template #basicEditorExRef>
+      <app-user-nav-detail-basic-editor-ex></app-user-nav-detail-basic-editor-ex>
+        </ng-template>
+    </page-plate-basic-detail-editor>
+</ng-template>
+
+<ng-template #navDesignerEditorRef>
+    <app-user-nav-detail-nav-designer-editor></app-user-nav-detail-nav-designer-editor>
+</ng-template>

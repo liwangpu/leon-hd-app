@@ -1,66 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ShareModule } from './share/share.module';
-import { Routes, RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ScaffoldAppCoreModule, AuthInterceptorService, ErrorInterceptorService } from '@geek/scaffold-app-core';
+import { ScaffoldAppMinorModule } from '@geek/scaffold-app-minor';
+import { ScaffoldPagePlateModule } from '@geek/scaffold-page-plate';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LoginComponent } from './main/login/login.component';
-import { HomeComponent } from './main/home/home.component';
-import { ToolBarComponent } from './main/tool-bar/tool-bar.component';
-import { NavComponent } from './main/nav/nav.component';
-import { RouterLinkComponent } from './main/nav/router-link/router-link.component';
-import { RouteguardService } from './share/services/common/routeguard.service';
-import { ListBsModelService } from './share/services/webapis/list-bs-model.service';
-import { V1ListComponent } from './main/dynamic/v1-list/v1-list.component';
-import { NavsComponent } from './main/navs/navs.component';
-import { NavFilterPipe } from './main/navs/nav-filter.pipe';
-
-
-const routes: Routes = [
-  {
-    path: ''
-    , component: HomeComponent
-    , canActivate: [RouteguardService]
-  }
-  , {
-    path: 'login'
-    , component: LoginComponent
-  }
-  , {
-    path: 'designer'
-    , loadChildren: './designer/designer.module#DesignerModule'
-  }
-  , {
-    path: 'app'
-    , loadChildren: './bamboo/bamboo.module#BambooModule'
-  }
-  , {
-    path: 'v1/list/:model'
-    , component: V1ListComponent
-    , canActivate: [RouteguardService],
-    resolve: {
-      model: ListBsModelService
-    }
-  }
-  , { path: '**', redirectTo: '' }
-];
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MicroAppBasicModule } from '@geek/micro-app-basic';
+import { MicroDmzHdModule } from '@geek/micro-dmz-hd';
+import { AppMainModule } from './modules/app-main/app-main.module';
+import {HotkeyModule} from 'angular2-hotkeys';
+import { MicroDmzOmsModule } from '@geek/micro-dmz-oms';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+/** Http interceptor providers in outside-in order */
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  , { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true }
+]; 
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, ToolBarComponent, LoginComponent, NavComponent, RouterLinkComponent, V1ListComponent, NavsComponent, NavFilterPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -68,14 +41,19 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    ShareModule,
-    RouterModule.forRoot(routes)
+    ScaffoldAppCoreModule.forRoot(),
+    ScaffoldAppMinorModule,
+    ScaffoldPagePlateModule,
+    MicroAppBasicModule.forRoot(),
+    MicroDmzHdModule.forRoot(),
+    MicroDmzOmsModule.forRoot(),
+    HotkeyModule.forRoot(),
+    AppMainModule,
+    AppRoutingModule
   ],
   providers: [
+    httpInterceptorProviders
   ],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    RouterLinkComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

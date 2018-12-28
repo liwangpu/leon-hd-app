@@ -1,0 +1,44 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' [tabSecond]='customerRef'
+    [tabSecondTitle]='"tips.CustomerMessage"' [tabThird]='detailListRef' [tabThirdTitle]='"glossary.OrderDetail"'
+    [tabFourth]='workFlowRef' [tabFourthTitle]='"tips.OrderWorkFlowManagement"' (goback)='onGoBack()'>
+</page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+    <page-plate-basic-detail-editor [needlessChangeIcon]='true' (commitChange)='onCommitChange($event)'
+        (commitIconChange)='onCommitIconChange($event)'>
+        <div class="state" custom-fields>
+            <mat-form-field>
+                <input matInput [formControl]='orderNoCt' placeholder="{{'glossary.OrderNo'|translate}}">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]='orderStateCt' placeholder="{{'glossary.OrderState'|translate}}">
+            </mat-form-field>
+        </div>
+
+        <div class="btns" custom-buttons>
+            <div style="display:none;">
+                <!-- <a [href]="detailViewUrl" target="_blank" #detailViewCt></a> -->
+            </div>
+            <button mat-button (click)='viewDetailPage()'>
+                <mat-icon>assignment</mat-icon>
+                <span>{{'button.OrderOverview'|translate}}</span>
+            </button>
+        </div>
+    </page-plate-basic-detail-editor>
+</ng-template>
+
+<ng-template #basicEditorExRef>
+    <app-order-detail-basic-editor-ex></app-order-detail-basic-editor-ex>
+</ng-template>
+
+<ng-template #customerRef>
+    <app-order-detail-customer-editor></app-order-detail-customer-editor>
+</ng-template>
+
+<ng-template #detailListRef>
+    <app-order-detail-list-editor></app-order-detail-list-editor>
+</ng-template>
+
+<ng-template #workFlowRef>
+    <app-order-detail-workflow-editor></app-order-detail-workflow-editor>
+</ng-template>

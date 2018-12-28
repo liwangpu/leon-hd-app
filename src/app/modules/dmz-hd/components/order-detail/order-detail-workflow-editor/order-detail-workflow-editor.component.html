@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="log">
+        <div class="mend">
+            <div class="tips">
+                <mat-icon>label</mat-icon>
+                <span>{{'tips.CurrentState'|translate}}</span>
+            </div>
+            <!-- <p class="state">{{currentWorkFlowItemName}}</p> -->
+            <div class="log-item current">
+                <span>{{currentWorkFlowItemName}}</span>
+                <!-- <span>角色:</span> -->
+            </div>
+            <div class="tips">
+                <mat-icon>label_important</mat-icon>
+                <span>{{'tips.OrderWorkFlowMessage'|translate}}</span>
+            </div>
+            <div class="log-item" [class.approve]='it.approve' *ngFor='let it of workFlowLogs'>
+                <span>{{'tips.Action'|translate}}:&nbsp;{{it.workFlowItemName}}</span>
+                <span>{{it.remark}}</span>
+                <span>{{it.creatorName}} &nbsp;-&nbsp; {{it.createdTime|date:'yyyy-MM-dd HH:mm'}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="bar" *ngIf='hasOperatePermission'>
+        <button mat-button *ngIf='!hideReject' (click)='orderReject()'>
+            <mat-icon>close</mat-icon>
+            <span>{{'button.Reject'|translate}}</span>
+        </button>
+        <button mat-button (click)='orderAudit()'>
+            <mat-icon>check</mat-icon>
+            <span>{{operateWorkFlowItemName}}</span>
+        </button>
+    </div>
+</div>

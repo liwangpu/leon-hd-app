@@ -1,0 +1,26 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+    <input type="hidden" formControlName='isAdmin' name='isAdmin'>
+
+    <mat-form-field>
+      <input matInput placeholder="Input" name="mail" formControlName="mail" placeholder="{{'glossary.Mail'|translate}}"
+        required>
+      <mat-error *ngIf="detailForm.get('mail').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('mail').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Input" name="phone" formControlName="phone" placeholder="{{'glossary.Phone'|translate}}">
+      <mat-error *ngIf="detailForm.get('phone').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('phone').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Input" name="location" formControlName="location" placeholder="{{'glossary.Location'|translate}}">
+      <mat-error *ngIf="detailForm.get('location').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('location').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+  </form>
+</div>

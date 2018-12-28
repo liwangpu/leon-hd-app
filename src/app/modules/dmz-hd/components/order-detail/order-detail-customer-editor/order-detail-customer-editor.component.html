@@ -1,0 +1,32 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='orderId' name='orderId'>
+    <mat-form-field>
+      <input matInput name="customerName" formControlName="customerName" placeholder="{{'glossary.PeopleName'|translate}}"
+        required>
+      <mat-error *ngIf="detailForm.get('customerName').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('customerName').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="customerPhone" formControlName="customerPhone" placeholder="{{'glossary.Phone'|translate}}"
+        required>
+      <mat-error *ngIf="detailForm.get('customerPhone').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('customerPhone').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="customerAddress" formControlName="customerAddress" placeholder="{{'glossary.Address'|translate}}"
+        required>
+      <mat-error *ngIf="detailForm.get('customerAddress').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('customerAddress').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <div class="bar">
+      <button mat-button [disabled]='!detailForm.valid' (click)='submit()'>
+        <mat-icon>save</mat-icon>
+        <span>{{'button.Save'|translate}}</span>
+      </button>
+    </div>
+  </form>
+</div>

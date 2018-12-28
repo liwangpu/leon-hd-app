@@ -1,0 +1,40 @@
+<page-plate-simple-confirm-dialog [enableConfirm]='enableConfirm' [dialogTitle]='"dialog.EditUserRoleNav"'
+    (afterConfirm)='afterConfirm()' (afterReceiveData)='afterReceiveData($event)'>
+    <div class="container">
+        <form name="detailForm" [formGroup]="detailForm">
+            <input type="hidden" formControlName='id' name='id'>
+            <input type="hidden" formControlName='grade' name='grade'>
+            <input type="hidden" formControlName='userNavId' name='userNavId'>
+            <input type="hidden" formControlName='refNavigationId' name='refNavigationId'>
+
+            <app-mat-api-auto-select [fieldTitle]='"glossary.NavItem"' [required]='true' [apiService]='apiSrv'
+                [advanceFilters]='navAdvanceFilters' [indentify]='defaultNavId' (afterSelect)='onNavSelected($event)'></app-mat-api-auto-select>
+
+            <div class="overide" [class.show]='showOverridePanel'>
+                <mat-form-field>
+                    <input matInput placeholder='{{"glossary.Fiels"|translate}}' [formControl]="originFieldControl">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput name="excludeFiled" formControlName="excludeFiled" placeholder="{{'glossary.Fiels'|translate}} {{'glossary.Exclude'|translate}}">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder='{{"glossary.Permission"|translate}}' [formControl]="originPermissionControl">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput name="excludePermission" formControlName="excludePermission" placeholder="{{'glossary.Permission'|translate}} {{'glossary.Exclude'|translate}}">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder='{{"glossary.QueryParams"|translate}}' [formControl]="originQueryParamsControl">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput name="excludeQueryParams" formControlName="excludeQueryParams" placeholder="{{'glossary.QueryParams'|translate}} {{'glossary.Exclude'|translate}}">
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+</page-plate-simple-confirm-dialog>

@@ -1,0 +1,21 @@
+<div class="page">
+    <img class="logo" src="assets/images/logo/dmz-cloud.png">
+    <form name="loginForm" [formGroup]="loginForm" autocomplete="off">
+      <div class="form-container">
+        <span>{{'glossary.UserName'|translate}}</span>
+        <input type="text" class="input-ct" name="username" formControlName="username">
+        <span>{{'glossary.Password'|translate}}</span>
+        <input type="password" class="input-ct" name="password" formControlName="password" autocomplete="new-password">
+        <button class="login-btn-ct" (click)='login()'>{{'tips.Log_In'|translate}}</button>
+        <!-- <button class="login-btn-ct" [disabled]='loginForm.invalid' [class.disable-login]='loginForm.invalid' (click)='login()'>{{'tips.Log_In'|translate}}</button> -->
+        <div class="remember-wrap">
+          <input type="checkbox" id="remember-me-ct" [checked]='rememberLogin' (change)="rememberLogin = !rememberLogin">
+          <label for="remember-me-ct">{{'tips.RememberMe'|translate}}</label>
+        </div>
+        <span class="login-tip" *ngIf='loginError'>{{'message.AccountOrPasswordWrong'|translate}}</span>
+        <div class="pwd-op-container">
+          <a href="#">{{'tips.ForgotPassword'|translate}}</a>
+        </div>
+      </div>
+    </form>
+  </div>

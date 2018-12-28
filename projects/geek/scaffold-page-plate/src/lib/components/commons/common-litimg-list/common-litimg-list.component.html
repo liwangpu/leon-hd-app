@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="lititem" *ngFor='let item of datas'>
+      <button mat-button class="item-button" (click)='onClick(item)'>
+          <img class="litimg" src="{{item.icon?(item.icon|serverRedirect:256):'/assets/images/common/not-upload.png'}}" [class.notupload]='!item.icon'>
+      </button>
+      <div class="des">
+          <mat-checkbox color="primary" [checked]='item.select' *ngIf='select' #cbox></mat-checkbox>
+          <p class="littile">{{item.name}}</p>
+      </div>
+  </div>
+</div>

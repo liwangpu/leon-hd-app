@@ -1,20 +1,16 @@
-<mat-drawer-container class="page-container" autosize>
+<page-plate-app-basic-nav-sidebar [showProgress]='showProgress' [maximize]='maximize' [navBarRef]='navBarRef' [toolBarRef]='toolBarRef' [contentRef]='contentRef'
+    #drawerCt>
 
-  <mat-drawer #drawer class="page-sidenav" mode="over">
-    <!-- <app-nav></app-nav> -->
-    <app-navs *ngIf='!outletMaximize'></app-navs>
-  </mat-drawer>
+    <ng-template #navBarRef>
+        <app-main-navbar></app-main-navbar>
+    </ng-template>
 
-  <div class="page-sidenav-content">
-    <div class="header" *ngIf='!outletMaximize'>
-      <app-tool-bar></app-tool-bar>
-    </div>
-    <div class="content">
-      <div class="content-wrap cus-scroller">
+    <ng-template #toolBarRef>
+        <app-main-toolbar></app-main-toolbar>
+    </ng-template>
+
+    <ng-template #contentRef>
         <router-outlet></router-outlet>
-      </div>
-    </div>
-    <div class="footer"></div>
-  </div>
+    </ng-template>
 
-</mat-drawer-container>
+</page-plate-app-basic-nav-sidebar>

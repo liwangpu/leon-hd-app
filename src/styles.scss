@@ -1,60 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-@import "./assets/styles/global-mat-setting.scss";
-@import "./assets/styles/white-serie-mat.scss";
-/******************************************************/
-
-.primary-title {
-    display: block;
-    font-size: 34px;
-}
-
-.sub-title {
-    display: block;
-    font-size: 24px;
-}
-
-.listable-icon {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
-    /* border-radius: 25px; */
-}
-
-.fxLayout-container {
-    width: 100%;
-    height: 100%;
-}
-
-.cus-header-icons {
-    color: white;
-    fill: white;
-}
-
-.cus-cancel-button {
-    color: red;
-}
-
-.cus-confirm-button {
-    color: green;
-}
-
-.cus-full-height {
-    height: 100%;
-}
-
-.cus-manage-button {
-    margin: 0 0 0 0 !important;
-    padding: 3px 6px 3px 3px !important;
-    line-height: 28px;
-    min-width: 0 !important;
-    color: white !important;
-}
-
-div.cus-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.cus-mat-button-icon {
-    margin: 0;
-    padding: 0;
-}
+@import './styles.legacy';
+@import './styles.material';
+@import './styles.app';
+// @import './styles.material.scss';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

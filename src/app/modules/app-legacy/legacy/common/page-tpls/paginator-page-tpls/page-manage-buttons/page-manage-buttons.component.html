@@ -1,0 +1,62 @@
+<div class="container">
+  <button mat-button class="mat-button-04lrp" (click)='refresh()'>
+    <mat-icon>refresh</mat-icon>
+    <span>{{'button.Refresh'|translate}}</span>
+  </button>
+
+  <button mat-button class="mat-button-04lrp" (click)='changeSelectedMode()'>
+    <mat-icon>{{selected?'indeterminate_check_box':'check_box'}}</mat-icon>
+    <span>{{'button.Select'|translate}}</span>
+  </button>
+
+  <button mat-button class="mat-button-04lrp" [matMenuTriggerFor]="advanceMenu">
+    <mat-icon>settings</mat-icon>
+    <span>{{'button.Advance'|translate}}</span>
+  </button>
+
+  <button mat-button class="mat-button-04lrp" [matMenuTriggerFor]="displayMenu">
+    <mat-icon>view_list</mat-icon>
+    <span>{{'button.Display'|translate}}</span>
+  </button>
+
+  <mat-menu #advanceMenu="matMenu">
+    <!--批量删除-->
+    <button mat-menu-item [disabled]='mdSrv.selectedItems.length>0?false:true' (click)='batchDelete()' *ngIf='!mdSrv.readDataOnly'>
+      <mat-icon class="cus-mat-button-icon">delete</mat-icon>
+      <span>{{'button.Delete'|translate}}</span>
+    </button>
+    <!--自定义按钮-->
+    <ng-container *ngFor='let item of mdSrv.advanceMenuItems'>
+      <button mat-menu-item *ngIf='isButtonEnable(item.needPermission)' (click)='item.click(mdSrv.selectedItems)'
+        [disabled]='item.needSelected?(mdSrv.selectedItems.length>0?false:true):false'>
+        <mat-icon class="cus-mat-button-icon">{{item.icon}}</mat-icon>
+        <span>{{item.name|translate}}</span>
+      </button>
+    </ng-container>
+    <!--导出数据-->
+    <button mat-menu-item (click)='exportData()' *ngIf='isButtonEnable(true)'>
+      <mat-icon class="cus-mat-button-icon">cloud_download</mat-icon>
+      <span>{{'button.Export'|translate}}</span>
+    </button>
+  </mat-menu>
+
+  <mat-menu #displayMenu="matMenu">
+    <ng-container *ngFor='let mod of pagedModel'>
+      <ng-container [ngSwitch]='mod.toLocaleLowerCase()'>
+        <button *ngSwitchCase="'table'" mat-menu-item (click)='displayModeChange("table")'>
+          <mat-icon class="cus-mat-button-icon">list</mat-icon>
+          <span>{{'button.List'|translate}}</span>
+        </button>
+        <button *ngSwitchCase="'litimg'" mat-menu-item (click)='displayModeChange("litimg")'>
+          <mat-icon class="cus-mat-button-icon">blur_linear</mat-icon>
+          <span>{{'button.Litimg'|translate}}</span>
+        </button>
+        <!-- <button *ngSwitchCase="31" mat-menu-item (click)='displayModeChange(31)'>
+                <mat-icon class="cus-mat-button-icon">list</mat-icon>
+                <span>{{'button.Litimg'|translate}}</span>
+              </button> -->
+        <ng-container *ngSwitchDefault></ng-container>
+      </ng-container>
+    </ng-container>
+  </mat-menu>
+</div>

@@ -1,0 +1,10 @@
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' (goback)='onGoBack()'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+    <page-plate-basic-detail-editor [basicEditorEx]='basicEditorExRef' (commitChange)='onCommitChange($event)'
+        (commitIconChange)='onCommitIconChange($event)'></page-plate-basic-detail-editor>
+</ng-template>
+
+<ng-template #basicEditorExRef>
+    <app-product-group-detail-basic-editor-ex></app-product-group-detail-basic-editor-ex>
+</ng-template>

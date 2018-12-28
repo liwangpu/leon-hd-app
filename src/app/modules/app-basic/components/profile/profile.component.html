@@ -1,0 +1,21 @@
+<page-plate-detail-editor [hideGoBack]='hideGoBack' [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef'></page-plate-detail-editor>
+
+<ng-template #basicEditorRef>
+    <page-plate-basic-detail-editor [basicEditorEx]='basicEditorExRef' (commitChange)='onCommitChange($event)'
+        (commitIconChange)='onCommitIconChange($event)'>
+        <ng-template #basicEditorExRef>
+            <app-profile-basic-editor-ex></app-profile-basic-editor-ex>
+        </ng-template>
+
+        <div class="cus-buttons" custom-buttons>
+            <button mat-button (click)='memberInvite()'>
+                <mat-icon>record_voice_over</mat-icon>
+                <span>{{'button.MemberInvitation'|translate}}</span>
+            </button>
+            <button mat-button (click)='changePassword()'>
+                <mat-icon>settings</mat-icon>
+                <span>{{'button.ChangePassword'|translate}}</span>
+            </button>
+        </div>
+    </page-plate-basic-detail-editor>
+</ng-template>

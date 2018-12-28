@@ -1,0 +1,31 @@
+<div class="page">
+  <form name="loginForm" [formGroup]="loginForm" autocomplete="off">
+    <div class="form-container">
+      <div class="flag">
+        <div class="logo">
+          <img src="/assets/images/logo/dmz-logo.png">
+          <span class="t1">BAMBOO</span>
+          <span class="t2">魔集</span>
+          <span class="t3">一体式家装平台</span>
+        </div>
+        <p class="tip">注册成为我们的品牌商</p>
+      </div>
+
+
+      <span>{{'tips.YourEmail'|translate}}</span>
+      <input type="text" class="input-ct" name="username" formControlName="username">
+      <span>{{'tips.YourPhone'|translate}}</span>
+      <input type="password" class="input-ct" name="password" formControlName="password" autocomplete="new-password">
+      <button class="login-btn-ct" >{{'tips.Log_In'|translate}}</button>
+      <!-- <button class="login-btn-ct" [disabled]='loginForm.invalid' [class.disable-login]='loginForm.invalid' (click)='login()'>{{'tips.Log_In'|translate}}</button> -->
+      <div class="remember-wrap">
+        <input type="checkbox" id="remember-me-ct" [checked]='rememberLogin' (change)="rememberLogin = !rememberLogin">
+        <label for="remember-me-ct">{{'tips.RememberMe'|translate}}</label>
+      </div>
+      <span class="login-tip" *ngIf='loginError'>{{'message.AccountOrPasswordWrong'|translate}}</span>
+      <div class="pwd-op-container">
+        <a href="#">{{'tips.ForgotPassword'|translate}}</a>
+      </div>
+    </div>
+  </form>
+</div>

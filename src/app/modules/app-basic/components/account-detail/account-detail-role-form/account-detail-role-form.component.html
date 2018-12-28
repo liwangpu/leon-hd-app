@@ -1,0 +1,11 @@
+<page-plate-simple-confirm-dialog [dialogTitle]='"dialog.AddAdditionalRole"' [enableConfirm]='enableConfirm'
+    (afterConfirm)='afterConfirm()' (afterReceiveData)='afterReceiveData($event)'>
+    <div class="container">
+        <form name="detailForm" [formGroup]="detailForm">
+
+            <app-mat-api-auto-select [fieldTitle]='"glossary.UserRole"' [required]='false' [apiService]='roleSrv'
+                [advanceFilters]='roleAdvanceFilters' (afterSelect)='onRoleSelected($event)' (afterClear)='onRoleClear()'></app-mat-api-auto-select>
+            <p class="tip" *ngIf='existUserRole'>已经添加该角色</p>
+        </form>
+    </div>
+</page-plate-simple-confirm-dialog>

@@ -1,0 +1,11 @@
+<div class="flow-item" [class.sub-workflow]='subFlowId'>
+  <p>{{flowName}}</p>
+  <div class="manage-bar">
+    <button mat-icon-button (click)='onDelete()'>
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-icon-button (click)='onEdit()'>
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+</div>

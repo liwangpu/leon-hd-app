@@ -1,0 +1,11 @@
+<page-plate-simple-confirm-dialog [dialogTitle]='"dialog.OrderReject"' [enableConfirm]='enableConfirm' (afterConfirm)='afterConfirm()'>
+    <div class="container">
+        <form name="detailForm" [formGroup]="detailForm">
+            <mat-form-field>
+                <textarea matInput name="remark" formControlName="remark" placeholder="{{'glossary.RejectReason'|translate}}" required></textarea>
+                <mat-error *ngIf="detailForm.get('remark').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+                <mat-error *ngIf="detailForm.get('remark').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+</page-plate-simple-confirm-dialog>

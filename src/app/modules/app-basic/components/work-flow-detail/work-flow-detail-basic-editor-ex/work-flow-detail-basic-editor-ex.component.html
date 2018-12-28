@@ -1,0 +1,21 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+
+    <div class="apply-organ">
+      <p class="tip">{{'glossary.ApplyOrgan'|translate}}</p>
+      <mat-radio-group (change)='onApplyOrganChange($event)' formControlName="applyOrgans">
+        <mat-radio-button color='primary' value="brand">
+          {{'glossary.OrganBrand'|translate}}
+        </mat-radio-button>
+        <mat-radio-button color='primary' value="partner">
+          {{'glossary.OrganPartner'|translate}}
+        </mat-radio-button>
+        <mat-radio-button color='primary' value="supplier">
+          {{'glossary.OrganSupplier'|translate}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="apo-gap"></div>
+    </div>
+  </form>
+</div>

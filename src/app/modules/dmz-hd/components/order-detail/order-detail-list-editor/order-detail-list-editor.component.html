@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="content">
+    <table class="dlist">
+      <thead>
+        <tr class="h-row">
+          <th class="op">操作</th>
+          <th class="icon">图片</th>
+          <th class="product-name">产品名称</th>
+          <th class="productspec-name">规格</th>
+          <th class="unit">单位</th>
+          <th class="num">数量</th>
+          <th class="unit-price">单价</th>
+          <th class="total-price">小计</th>
+          <th class="material">材质</th>
+          <th class="fabric">面料</th>
+          <th class="remark">备注</th>
+          <th class="files">附件</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="d-row" *ngFor='let it of orderDetails;let i=index;'>
+          <td>
+            <!-- {{i+1}} -->
+            <button mat-icon-button (click)='editListItem(it.id)'>
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+          <td>
+            <img class="icon" [src]='it.icon|serverRedirect:128' alt="">
+          </td>
+          <td>{{it.productName}}</td>
+          <td>{{it.productSpecName}}</td>
+          <td>{{it.productUnit}}</td>
+          <td>{{it.num}}</td>
+          <td>{{it.unitPrice}}</td>
+          <td>{{it.totalPrice}}</td>
+          <td></td>
+          <td></td>
+          <td>{{it.remark}}</td>
+          <td>
+            <div class="attach-item" *ngFor='let itx of it.attachments'>
+              <a class="down" [href]="itx.url|serverRedirect" download target="_blank">{{itx.name}}</a>
+              <span class="delete" (click)='deleteAttach(itx.id,it.id)'>×</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

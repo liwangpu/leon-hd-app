@@ -1,0 +1,42 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+    <input type="hidden" formControlName='departmentId' name='departmentId'>
+
+    <mat-form-field>
+      <input [matDatepicker]="activationTimePicker" formControlName="activationTime" matInput placeholder="{{'glossary.ActivationTime'|translate}}"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="activationTimePicker"></mat-datepicker-toggle>
+      <mat-datepicker #activationTimePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [matDatepicker]="expireTimePicker" formControlName="expireTime" matInput placeholder="{{'glossary.ExpireTime'|translate}}"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="expireTimePicker"></mat-datepicker-toggle>
+      <mat-datepicker #expireTimePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Input" name="mail" formControlName="mail" placeholder="{{'glossary.Mail'|translate}}"
+        required>
+      <mat-error *ngIf="detailForm.get('mail').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('mail').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <app-mat-api-auto-select [fieldTitle]='"glossary.Department"' [required]='false' [apiService]='departmentSrv'
+      [indentify]='curDepartmentId' (afterSelect)='onDepartmentSelected($event)' (afterClear)='onDepartmentClear()'></app-mat-api-auto-select>
+
+    <mat-form-field>
+      <input matInput placeholder="Input" name="phone" formControlName="phone" placeholder="{{'glossary.Phone'|translate}}">
+      <mat-error *ngIf="detailForm.get('phone').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('phone').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Input" name="location" formControlName="location" placeholder="{{'glossary.Location'|translate}}">
+      <mat-error *ngIf="detailForm.get('location').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+    </mat-form-field>
+
+  </form>
+</div>

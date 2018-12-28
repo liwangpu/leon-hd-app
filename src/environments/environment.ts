@@ -1,20 +1,26 @@
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `.angular-cli.json`.
+// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    production: false,
-    hmr: false,
-    serveBase: 'http://localhost:1882',
-    secretKey:'damaozhu-app',
-    shareServerBase: 'http://192.168.1.3:82/share-resource',
-    dialogMin: {
-        width: '450px',
-        height: '600px'
-    },
-    dialogMed: {
-        width: '600px',
-        height: '750px'
-    }
+  production: false,
+  serveBase: 'http://localhost:1882',
+  webtoolServer: 'http://192.168.1.6:8990',
+  secretKey: 'damaozhu-app',
+  dialogMin: {
+    width: '450px',
+    height: '600px'
+  },
+  dialogMed: {
+    width: '600px',
+    height: '750px'
+  }
 };
+
+/*
+ * In development mode, for easier debugging, you can ignore zone related error
+ * stack frames such as `zone.run`/`zoneDelegate.invokeTask` by importing the
+ * below file. Don't forget to comment it out in production mode
+ * because it will have a performance impact when errors are thrown
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.

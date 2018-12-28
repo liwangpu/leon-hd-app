@@ -1,0 +1,88 @@
+:host {
+    div.container {
+        width: 250px;
+        height: 100%;
+        border-left: 1px solid #D0D0D0;
+        border-right: 1px solid #D0D0D0;
+        display: flex;
+        flex-flow: column;
+        div.head {
+            width: 100%;
+            height: 80px;
+            color: white;
+            background: url('/assets/images/backgrounds/dark-material-bg.jpg');
+            background-size: 100% 100%;
+            position: relative;
+            p.title {
+                height: 55px;
+                line-height: 55px;
+                text-align: center;
+            }
+            div.bar {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                ;
+                height: 25px;
+                display: flex;
+                flex-flow: row;
+                justify-content: flex-end;
+                .operate-button {
+                    width: 25px !important;
+                    height: 25px !important;
+                    line-height: 25px !important;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                }
+                .operate-button-icon {
+                    color: white;
+                }
+            }
+            .close-bar {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+        div.content {
+            flex: 1 1 0;
+            position: relative;
+            div.mend {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                overflow-y: auto;
+                div.cat-item {
+                    width: 100%;
+                    height: 3.125rem;
+                    border-bottom: 1px solid #D0D0D0;
+                    padding: 0 1rem;
+                    display: flex;
+                    flex-flow: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                    &.actived {
+                        background-color: #039BE5 !important;
+                        color: white;
+                    }
+                    img.cate-icon {
+                        width: 1rem;
+                        height: 1rem;
+                    }
+                    p.cate-title {
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        box-sizing: border-box;
+                        padding: 0 0 0 5px;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                        background-color: #F6F6F6;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,15 +1,27 @@
-# 服务器相关配置
-> App相关配置保存在src/environments 相关文件夹下面,不同服务器配置在environment.*.ts里.以environment.dev.ts测试配置为例,需要启的动命令为npm run dev,如果是environment.prod.ts,则启动命令为npm run prod,以此类推,具体编译等详细命令参考package.json=>scripts
+# LeonAngularAppScaffold
 
-**配置项说明**
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
-| 配置项 | 说明 |
-| :------ | :------ |
-| production: false | 是否为生产环境 |
-| hmr: false | App热更新 |
-| serveBase: 'http://localhost:1882' | API服务器 |
-| secretKey:'damaozhu-app' | App密钥,用于加密cache,local store等信息,App采用对称加密方式对一些缓存信息进行加密 |
-| shareServerBase: 'http://192.168.1.3:82/share-resource' | 分享链接服务器 |
-| dialogMin | App小型对话框默认大小 |
-| dialogMed | App中型对话框默认大小 |
+## Development server
 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

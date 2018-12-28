@@ -5,7 +5,7 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "noUnusedLocals": false,
+    "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -14,8 +14,46 @@
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@app/app-legacy": [
+        "src/app/modules/app-legacy/legacy/public_api"
+      ],
+      "@geek/micro-base": [
+        "projects/geek/micro-base/src/public_api"
+      ],
+      "@geek/micro-app-basic": [
+        "projects/geek/micro-app-basic/src/public_api"
+      ],
+      "@geek/scaffold-mat-bcl": [
+        "projects/geek/scaffold-mat-bcl/src/public_api"
+      ],
+      "@geek/scaffold-ng-bcl": [
+        "projects/geek/scaffold-ng-bcl/src/public_api"
+      ],
+      "@geek/scaffold-page-plate": [
+        "projects/geek/scaffold-page-plate/src/public_api"
+      ],
+      "@geek/scaffold-app-core": [
+        "projects/geek/scaffold-app-core/src/public_api"
+      ],
+      "@geek/micro-dmz-hd": [
+        "projects/geek/micro-dmz-hd/src/public_api"
+      ],
+      "@geek/scaffold-app-minor": [
+        "projects/geek/scaffold-app-minor/src/public_api"
+      ],
+      "@geek/apps-base": [
+        "projects/geek/apps-base/src/public_api"
+      ],
+      "@geek/micro-dmz-oms": [
+        "projects/geek/micro-dmz-oms/src/public_api"
+      ]
+    }
   }
 }
