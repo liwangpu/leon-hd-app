@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DetailEditorInteractService, SimpleConfirmMessageDialogComponent } from '@geek/scaffold-page-plate';
-import { AsyncHandleService, DialogFactoryService } from '@geek/scaffold-app-minor';
-import { Order, OrderService, OrderFlowLog } from '@geek/micro-dmz-hd';
+import { DetailEditorInteractService, SimpleConfirmMessageDialogComponent } from 'scaffold-page-plate';
+import { AsyncHandleService, DialogFactoryService } from 'scaffold-app-minor';
+import { Order, OrderService, OrderFlowLog } from 'micro-dmz-hd';
 import { Subject, concat } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
-import { WorkFlowItem, WorkFlow, AccountService, Account } from '@geek/micro-app-basic';
-import { AppCacheService } from '@geek/scaffold-app-core';
+import { WorkFlowItem, WorkFlow, AccountService, Account } from 'micro-app-basic';
+import { AppCacheService } from 'scaffold-app-core';
 import { OrderDetailFlowRejectFormComponent } from '../order-detail-flow-reject-form/order-detail-flow-reject-form.component';
 
 @Component({

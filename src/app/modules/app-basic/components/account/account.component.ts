@@ -2,11 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { Location } from '@angular/common';
-import { ICommonTableColumndef } from '@geek/scaffold-page-plate';
-import { AccountService, Account } from '@geek/micro-app-basic';
-import { AppProgressService, AppSearchService } from '@geek/scaffold-app-core';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
-import { V1ListViewPageBase } from '@geek/apps-base';
+import { ICommonTableColumndef } from 'scaffold-page-plate';
+import { AccountService, Account } from 'micro-app-basic';
+import { AppProgressService, AppSearchService } from 'scaffold-app-core';
+import { AsyncHandleService } from 'scaffold-app-minor';
+import { V1ListViewPageBase } from 'apps-base';
 
 @Component({
   selector: 'app-account',

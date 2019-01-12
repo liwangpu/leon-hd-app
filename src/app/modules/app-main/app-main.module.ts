@@ -5,9 +5,9 @@ import { LoginComponent } from './components/contents/login/login.component';
 import { HomeComponent } from './components/contents/home/home.component';
 import { RegisterComponent } from './components/contents/register/register.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ScaffoldNgBclModule } from '@geek/scaffold-ng-bcl';
-import { ScaffoldMatBclModule } from '@geek/scaffold-mat-bcl';
-import { ScaffoldAppMinorModule } from '@geek/scaffold-app-minor';
+import { ScaffoldNgBclModule } from 'scaffold-ng-bcl';
+import { ScaffoldMatBclModule } from 'scaffold-mat-bcl';
+import { ScaffoldAppMinorModule } from 'scaffold-app-minor';
 import { AppMainRoutingModule } from './app-main-routing.module';
 
 @NgModule({

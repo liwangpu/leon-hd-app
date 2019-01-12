@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { ProductSpec, Product, ProductSpecService } from '@geek/micro-dmz-hd';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { ProductSpec, Product, ProductSpecService } from 'micro-dmz-hd';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
+import { AsyncHandleService } from 'scaffold-app-minor';
 
 @Component({
   selector: 'app-product-detail-spec-editor',
@@ -67,7 +67,9 @@ export class ProductDetailSpecEditorComponent implements OnInit {
   }//addSpec
 
   submit() {
-    let data = this.detailForm.value;
+    let form = this.detailForm.value;
+    let orgSpec = this.specifications.filter(x => x.id == form.id)[0];
+    let data = { ...orgSpec, ...form };
     data['productId'] = this.currentProductId;
     let source$ = this.productSpecSrv.update(data);
     this.asyncHandleSrv.asyncRequest(source$).subscribe(res => {

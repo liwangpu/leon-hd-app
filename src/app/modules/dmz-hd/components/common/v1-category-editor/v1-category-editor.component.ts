@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AssetCategory } from '@geek/micro-dmz-hd';
+import { AssetCategory } from 'micro-dmz-hd';
 import { V1CategoryEditorInteractService } from './v1-category-editor-interact.service';
-import { IV1CategoryApiServer } from '@geek/apps-base';
-import { DialogFactoryService, AsyncHandleService } from '@geek/scaffold-app-minor';
+import { IV1CategoryApiServer } from 'apps-base';
+import { DialogFactoryService, AsyncHandleService } from 'scaffold-app-minor';
 import { V1CategoryEditorFormComponent } from './v1-category-editor-form/v1-category-editor-form.component';
 
 @Component({

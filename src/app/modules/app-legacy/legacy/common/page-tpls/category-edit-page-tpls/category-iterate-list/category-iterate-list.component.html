@@ -1,9 +1,0 @@
-<div class="list-container">
-  <div class="category-folder">
-    <app-common-category-list [categories]='categories' [closable]='true' [title]='title' [parentId]='parentId' (onCategorySelected)='openChildCategory($event)'
-      (onClose)="closePanel()" (afterCategoryDeleted)='onCurrentCategoryDeleted($event)' (afterCategoryChange)='afterChildrenChange($event)'></app-common-category-list>
-  </div>
-  <div class="category-sub-folder">
-    <ng-template #childCategory></ng-template>
-  </div>
-</div>

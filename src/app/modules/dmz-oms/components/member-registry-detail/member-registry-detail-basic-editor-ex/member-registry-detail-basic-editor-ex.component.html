@@ -9,13 +9,16 @@
       <input matInput name="phone" formControlName="phone" required placeholder="{{'glossary.Phone'|translate}}">
     </mat-form-field>
 
-    <mat-form-field>
+    <app-national-urban-select *ngIf='showUrbanSelect' [provinceId]='defaultProvince' [cityId]='defaultCity'
+      (urbanChange)='onUrbanChange($event)'></app-national-urban-select>
+
+    <!-- <mat-form-field>
       <input matInput name="province" formControlName="province" required placeholder="{{'glossary.Province'|translate}}">
     </mat-form-field>
 
     <mat-form-field>
       <input matInput name="city" formControlName="city" required placeholder="{{'glossary.City'|translate}}">
-    </mat-form-field>
+    </mat-form-field> -->
 
   </form>
 </div>

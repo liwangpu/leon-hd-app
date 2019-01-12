@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map, takeUntil, debounceTime } from 'rxjs/operators';
-import { DrawerService, LanguageService, NavRouterService, AppCacheService, NavResolverService, ProfileResolverService, AppSearchService } from '@geek/scaffold-app-core';
+import { DrawerService, LanguageService, NavRouterService, AppCacheService, NavResolverService, ProfileResolverService, AppSearchService } from 'scaffold-app-core';
 
 @Component({
   selector: 'app-main-toolbar',

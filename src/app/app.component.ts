@@ -1,9 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { CommonAppBasicNavSidebarComponent } from '@geek/scaffold-page-plate';
-import { MediaService, DrawerService, NavRouterService, LanguageService, AppCacheService, AppProgressService, WindowService } from '@geek/scaffold-app-core';
-import { HotkeysService, Hotkey } from 'angular2-hotkeys';
+import { CommonAppBasicNavSidebarComponent } from 'scaffold-page-plate';
+import { MediaService, DrawerService, NavRouterService, LanguageService, AppCacheService, AppProgressService, WindowService } from 'scaffold-app-core';
 
 
 @Component({
@@ -18,7 +17,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   maxPageRouters = ['login', 'error', 'maintenance', 'sign-in', 'debugger'];//需要app页面最大化的路由
   langs: Array<string> = ['cn', 'en'];
   @ViewChild('drawerCt') drawerCt: CommonAppBasicNavSidebarComponent;
-  constructor(protected media: ObservableMedia, protected mediaSrv: MediaService, protected drawerSrv: DrawerService, protected navRouterSrv: NavRouterService, protected appCacheSrv: AppCacheService, protected translate: TranslateService, protected langSrv: LanguageService, protected progressSrv: AppProgressService, protected _hotkeysService: HotkeysService, protected windowSrv: WindowService) {
+  constructor(protected media: ObservableMedia, protected mediaSrv: MediaService, protected drawerSrv: DrawerService, protected navRouterSrv: NavRouterService, protected appCacheSrv: AppCacheService, protected translate: TranslateService, protected langSrv: LanguageService, protected progressSrv: AppProgressService, protected windowSrv: WindowService) {
     this.appCacheSrv.reload();
 
     //添加语言支持
@@ -34,19 +33,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       if (lastLang)
         broswerLang = lastLang;
       this.langSrv.currentLang = broswerLang && broswerLang.match(/en|cn/) ? broswerLang : this.langs[0];
-
-      //绑定快捷键
-      //跳转开发调试平台
-      this._hotkeysService.add(new Hotkey('alt+shift+d', (event: KeyboardEvent): boolean => {
-        windowSrv.nativeWindow.open("/app-design/debugger");
-        return false; // Prevent bubbling
-      }));//add
-      //跳转根页面
-      this._hotkeysService.add(new Hotkey('alt+shift+r', (event: KeyboardEvent): boolean => {
-        navRouterSrv.goto('/');
-        return false; // Prevent bubbling
-      }));//add
-
     }//if
 
     //订阅路由跳转事件,以响应不同路由进行页面最大化或者抽屉模式

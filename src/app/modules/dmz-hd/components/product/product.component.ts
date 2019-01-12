@@ -2,12 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { Location } from '@angular/common';
-import { V1ListViewPageBase } from '@geek/apps-base';
-import { AppProgressService, AppSearchService } from '@geek/scaffold-app-core';
-import { ICommonTableColumndef, IListViewAdvanceMenu } from '@geek/scaffold-page-plate';
-import { ProductService, Product } from '@geek/micro-dmz-hd';
-import { AsyncHandleService, DialogFactoryService } from '@geek/scaffold-app-minor';
-import { IQueryFilter, QueryOperateEnum } from '@geek/micro-base';
+import { V1ListViewPageBase } from 'apps-base';
+import { AppProgressService, AppSearchService } from 'scaffold-app-core';
+import { ICommonTableColumndef, IListViewAdvanceMenu } from 'scaffold-page-plate';
+import { ProductService, Product } from 'micro-dmz-hd';
+import { AsyncHandleService, DialogFactoryService } from 'scaffold-app-minor';
+import { IQueryFilter, QueryOperateEnum } from 'micro-base';
 import { ProductDetailCategoryFormComponent } from '../product-detail/product-detail-category-form/product-detail-category-form.component';
 
 @Component({

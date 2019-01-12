@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { AssetCategory } from '@geek/micro-dmz-hd';
+import { AssetCategory } from 'micro-dmz-hd';
 import { V1CategoryEditorInteractService } from '../v1-category-editor-interact.service';
 import { Subject } from 'rxjs';
 

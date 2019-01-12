@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
-import { AccountService } from '@geek/micro-app-basic';
+import { AsyncHandleService } from 'scaffold-app-minor';
+import { AccountService } from 'micro-app-basic';
 import { Subject } from 'rxjs';
 
 @Component({

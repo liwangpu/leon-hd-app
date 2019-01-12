@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { AsyncHandleService, DialogFactoryService } from '@geek/scaffold-app-minor';
-import { Order, OrderDetail, OrderService } from '@geek/micro-dmz-hd';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { AsyncHandleService, DialogFactoryService } from 'scaffold-app-minor';
+import { Order, OrderDetail, OrderService } from 'micro-dmz-hd';
 import { OrderDetailListItemFormComponent } from '../order-detail-list-item-form/order-detail-list-item-form.component';
 
 @Component({

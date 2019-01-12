@@ -16,12 +16,12 @@ import { WorkFlowDetailBasicEditorExComponent } from './components/work-flow-det
 import { WorkFlowDetailFlowDesignerComponent } from './components/work-flow-detail/work-flow-detail-flow-designer/work-flow-detail-flow-designer.component';
 import { WorkFlowDetailFlowFormComponent } from './components/work-flow-detail/work-flow-detail-flow-form/work-flow-detail-flow-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { ScaffoldNgBclModule } from '@geek/scaffold-ng-bcl';
+import { ScaffoldNgBclModule } from 'scaffold-ng-bcl';
 import { TranslateModule } from '@ngx-translate/core';
-import { ScaffoldMatBclModule } from '@geek/scaffold-mat-bcl';
-import { ScaffoldPagePlateModule } from '@geek/scaffold-page-plate';
+import { ScaffoldMatBclModule } from 'scaffold-mat-bcl';
+import { ScaffoldPagePlateModule } from 'scaffold-page-plate';
 import { AppBasicRoutingModule } from './app-basic-routing.module';
-import { ScaffoldAppMinorModule } from '@geek/scaffold-app-minor';
+import { ScaffoldAppMinorModule } from 'scaffold-app-minor';
 import { AccountComponent } from './components/account/account.component';
 import { AccountDetailComponent } from './components/account-detail/account-detail.component';
 import { AccountDetailBasicEditorExComponent } from './components/account-detail/account-detail-basic-editor-ex/account-detail-basic-editor-ex.component';

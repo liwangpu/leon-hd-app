@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { V1DetailEditorPageBase } from '@geek/apps-base';
+import { V1DetailEditorPageBase } from 'apps-base';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { AsyncHandleService, DialogFactoryService } from "@geek/scaffold-app-minor";
-import { AccountService, Account } from '@geek/micro-app-basic';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { AsyncHandleService, DialogFactoryService } from "scaffold-app-minor";
+import { AccountService, Account } from 'micro-app-basic';
 import { AccountDetailResetpwdFormComponent } from './account-detail-resetpwd-form/account-detail-resetpwd-form.component';
 
 @Component({

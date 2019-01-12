@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'leon-angular-app-scaffold'`, () => {
+  it(`should have as title 'hd-app-site'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('leon-angular-app-scaffold');
+    expect(app.title).toEqual('hd-app-site');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to leon-angular-app-scaffold!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to hd-app-site!');
   });
 });

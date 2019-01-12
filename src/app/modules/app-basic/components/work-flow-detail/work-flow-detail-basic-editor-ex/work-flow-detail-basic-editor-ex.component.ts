@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatRadioChange } from '@angular/material';
-import { DetailBasicEditorExBase, DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { UserRole } from '@geek/micro-app-basic';
+import { DetailBasicEditorExBase, DetailEditorInteractService } from 'scaffold-page-plate';
+import { UserRole } from 'micro-app-basic';
 
 
 @Component({

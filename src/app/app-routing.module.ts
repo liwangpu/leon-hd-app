@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RouteGuardService, NavResolverService, ProfileResolverService } from '@geek/scaffold-app-core';
+import { RouteGuardService, NavResolverService, ProfileResolverService } from 'scaffold-app-core';
 import { HomeComponent } from './modules/app-main/components/contents/home/home.component';
 
 const routes: Routes = [
@@ -49,15 +49,15 @@ const routes: Routes = [
     },
     loadChildren: './modules/dmz-oms/dmz-oms.module#DmzOmsModule'
   }
-  , {
-    path: 'dmz-hd-lgc',
-    canActivate: [RouteGuardService],
-    resolve: {
-      navigations: NavResolverService
-      , profile: ProfileResolverService
-    },
-    loadChildren: './modules/app-legacy/bamboo-legacy/bamboo-legacy.module#BambooLegacyModule'
-  }
+  // , {
+  //   path: 'dmz-hd-lgc',
+  //   canActivate: [RouteGuardService],
+  //   resolve: {
+  //     navigations: NavResolverService
+  //     , profile: ProfileResolverService
+  //   },
+  //   loadChildren: './modules/app-legacy/bamboo-legacy/bamboo-legacy.module#BambooLegacyModule'
+  // }
   , { path: '**', redirectTo: '' }
 ];
 

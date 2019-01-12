@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { AsyncHandleService, DialogFactoryService } from '@geek/scaffold-app-minor';
-import { OrganizationService, AccountService, Organization, Account } from '@geek/micro-app-basic';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { AsyncHandleService, DialogFactoryService } from 'scaffold-app-minor';
+import { OrganizationService, AccountService, Organization, Account } from 'micro-app-basic';
 import { OrganizationDetailOwnerResetpasswordFormComponent } from '../organization-detail-owner-resetpassword-form/organization-detail-owner-resetpassword-form.component';
 
 @Component({

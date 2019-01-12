@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { AppProgressService, AppSearchService } from '@geek/scaffold-app-core';import { AsyncHandleService } from '@geek/scaffold-app-minor';
+import { AppProgressService, AppSearchService } from 'scaffold-app-core';import { AsyncHandleService } from 'scaffold-app-minor';
 import { Location } from '@angular/common';
-import { V1ListViewPageBase } from '@geek/apps-base';
-import { LayoutService } from '@geek/micro-dmz-hd';
+import { V1ListViewPageBase } from 'apps-base';
+import { LayoutService } from 'micro-dmz-hd';
 
 @Component({
   selector: 'app-layout',

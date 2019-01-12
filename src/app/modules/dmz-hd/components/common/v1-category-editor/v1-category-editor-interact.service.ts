@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AssetCategory } from '@geek/micro-dmz-hd';
+import { AssetCategory } from 'micro-dmz-hd';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()

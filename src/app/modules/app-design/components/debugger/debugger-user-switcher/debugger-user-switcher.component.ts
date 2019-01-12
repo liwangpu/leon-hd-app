@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
-import { LocalStoreService, AppCacheService } from '@geek/scaffold-app-core';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
-import { TokenService, AccountService } from '@geek/micro-app-basic';
+import { LocalStoreService, AppCacheService } from 'scaffold-app-core';
+import { AsyncHandleService } from 'scaffold-app-minor';
+import { TokenService, AccountService } from 'micro-app-basic';
 import { tap } from 'rxjs/operators';
 import { concat } from 'rxjs';
 const LatestUser_Store = 'dmz_debugger_latest_users';

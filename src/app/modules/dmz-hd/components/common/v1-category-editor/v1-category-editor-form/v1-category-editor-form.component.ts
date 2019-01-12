@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { AssetCategory } from '@geek/micro-dmz-hd';
+import { AssetCategory } from 'micro-dmz-hd';
 
 @Component({
   selector: 'app-v1-category-editor-form',

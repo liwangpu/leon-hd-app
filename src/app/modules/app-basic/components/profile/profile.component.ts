@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { V1DetailEditorPageBase } from '@geek/apps-base';
+import { V1DetailEditorPageBase } from 'apps-base';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { AsyncHandleService, DialogFactoryService } from "@geek/scaffold-app-minor";
-import { AccountService } from '@geek/micro-app-basic';
-import { AppCacheService, ProfileResolverService } from '@geek/scaffold-app-core';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { AsyncHandleService, DialogFactoryService } from "scaffold-app-minor";
+import { AccountService } from 'micro-app-basic';
+import { AppCacheService, ProfileResolverService } from 'scaffold-app-core';
 import { ProfileChangePasswordFormComponent } from './profile-change-password-form/profile-change-password-form.component';
 import { ProfileMemberInviteFormComponent } from './profile-member-invite-form/profile-member-invite-form.component';
 

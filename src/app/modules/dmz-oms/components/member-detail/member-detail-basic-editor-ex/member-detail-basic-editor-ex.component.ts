@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DetailBasicEditorExBase, DetailEditorInteractService } from '@geek/scaffold-page-plate';
+import { DetailBasicEditorExBase, DetailEditorInteractService } from 'scaffold-page-plate';
 import { Validators, FormBuilder } from '@angular/forms';
 
 @Component({

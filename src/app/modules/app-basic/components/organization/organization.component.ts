@@ -2,12 +2,12 @@ import { Component, OnInit, OnDestroy, ComponentFactoryResolver } from '@angular
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { Location } from '@angular/common';
-import { V1ListViewPageBase } from '@geek/apps-base';
+import { V1ListViewPageBase } from 'apps-base';
 import { OrganizationOwnerProfileComponent } from './organization-owner-profile/organization-owner-profile.component';
-import { AppProgressService, AppSearchService } from '@geek/scaffold-app-core';
-import { ITableListRowMenu, ICommonTableColumndef } from '@geek/scaffold-page-plate';
-import { Organization, OrganizationService } from '@geek/micro-app-basic';
-import { AsyncHandleService, DialogFactoryService } from '@geek/scaffold-app-minor';
+import { AppProgressService, AppSearchService } from 'scaffold-app-core';
+import { ITableListRowMenu, ICommonTableColumndef } from 'scaffold-page-plate';
+import { Organization, OrganizationService } from 'micro-app-basic';
+import { AsyncHandleService, DialogFactoryService } from 'scaffold-app-minor';
 
 @Component({
   selector: 'app-organization',

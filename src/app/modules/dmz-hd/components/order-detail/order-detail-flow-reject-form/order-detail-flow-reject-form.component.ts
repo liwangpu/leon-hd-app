@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AsyncHandleService } from "@geek/scaffold-app-minor";
-import { WorkFlowService } from '@geek/micro-app-basic';
+import { AsyncHandleService } from "scaffold-app-minor";
+import { WorkFlowService } from 'micro-app-basic';
 
 @Component({
   selector: 'app-order-detail-flow-reject-form',

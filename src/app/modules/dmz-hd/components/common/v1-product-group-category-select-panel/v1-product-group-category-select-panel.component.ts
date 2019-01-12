@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { V1CategorySelectPanelBase } from '@geek/apps-base';
-import { ProductGroupCategoryService } from '@geek/micro-dmz-hd';
+import { V1CategorySelectPanelBase } from 'apps-base';
+import { ProductGroupCategoryService } from 'micro-dmz-hd';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

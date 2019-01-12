@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { DetailBasicEditorExBase, DetailEditorInteractService } from '@geek/scaffold-page-plate';
+import { DetailBasicEditorExBase, DetailEditorInteractService } from 'scaffold-page-plate';
 
 @Component({
   selector: 'app-profile-basic-editor-ex',

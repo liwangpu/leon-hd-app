@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogFactoryService, AsyncHandleService } from '@geek/scaffold-app-minor';
+import { DialogFactoryService, AsyncHandleService } from 'scaffold-app-minor';
 import { UserNavDetailNavDesignFormComponent } from '../user-nav-detail-nav-design-form/user-nav-detail-nav-design-form.component';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { Navigation, UserNav, UserNavService } from '@geek/micro-app-basic';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { Navigation, UserNav, UserNavService } from 'micro-app-basic';
 
 @Component({
   selector: 'app-user-nav-detail-nav-designer-editor',

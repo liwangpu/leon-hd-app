@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { UserRoleService, AccountService, UserRole } from '@geek/micro-app-basic';
-import { IQueryFilter, QueryOperateEnum } from '@geek/micro-base';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
+import { UserRoleService, AccountService, UserRole } from 'micro-app-basic';
+import { IQueryFilter, QueryOperateEnum } from 'micro-base';
+import { AsyncHandleService } from 'scaffold-app-minor';
 import { Subject } from 'rxjs';
 
 @Component({

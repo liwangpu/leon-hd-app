@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, concat } from 'rxjs';
 import { tap, takeUntil } from "rxjs/operators";
-import { NavRouterService, AppCacheService } from '@geek/scaffold-app-core';
-import { AccountService, TokenService, Account } from '@geek/micro-app-basic';
+import { NavRouterService, AppCacheService } from 'scaffold-app-core';
+import { AccountService, TokenService, Account } from 'micro-app-basic';
 
 @Component({
   selector: 'app-main-login',
@@ -14,7 +14,7 @@ import { AccountService, TokenService, Account } from '@geek/micro-app-basic';
 export class LoginComponent implements OnInit, OnDestroy {
 
   rememberLogin: boolean = true;
-  loginMsg = '';
+  loginMsg = 'message.AccountOrPasswordWrong';
   loginError = false;
   returnUrl: string;
   loginForm: FormGroup;
@@ -34,8 +34,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       let lastLoginAccount = JSON.parse(lastLoginAccountStr);
       this.loginForm.patchValue(lastLoginAccount);
     }
-    this.loginForm.valueChanges.subscribe(vl => {
-      this.loginMsg = undefined;
+    this.loginForm.valueChanges.subscribe(() => {
       this.loginError = false;
     });
   }//ngOnInit
@@ -68,8 +67,24 @@ export class LoginComponent implements OnInit, OnDestroy {
     }));
 
     concat(token$, profile$).subscribe(x => {
-    }, error => {
+    }, err => {
+      if (err.error && err.error.message) {
+
+        if (err.error.message == '账户已失效')
+          this.loginMsg = 'message.AccountExpire';
+        else if (err.error.message == '账户已被冻结')
+          this.loginMsg = 'message.AccountFrozen';
+        else if (err.error.message == '账户未启用')
+          this.loginMsg = 'message.AccountNotActivateYet';
+        else
+          this.loginMsg = 'message.AccountOrPasswordWrong';
+      }
       this.loginError = true;
+
+      setTimeout(() => {
+        this.loginError = false;
+      }, 3000);
+      
     }, () => {
       if (this.returnUrl)
         this.navRouteSrv.goto(this.returnUrl);

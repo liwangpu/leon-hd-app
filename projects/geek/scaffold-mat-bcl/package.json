@@ -1,8 +1,0 @@
-{
-  "name": "@geek/scaffold-mat-bcl",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/material": "~7.0.3",
-    "@angular/cdk": "~7.0.3"
-  }
-}

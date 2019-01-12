@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { AsyncHandleService, DialogFactoryService } from "@geek/scaffold-app-minor";
-import { DetailBasicEditorExBase, DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { Account, UserRoleService, UserRole, AccountService } from '@geek/micro-app-basic';
-import { IQueryFilter, QueryOperateEnum } from '@geek/micro-base';
+import { AsyncHandleService, DialogFactoryService } from "scaffold-app-minor";
+import { DetailBasicEditorExBase, DetailEditorInteractService } from 'scaffold-page-plate';
+import { Account, UserRoleService, UserRole, AccountService } from 'micro-app-basic';
+import { IQueryFilter, QueryOperateEnum } from 'micro-base';
 import { AccountDetailRoleFormComponent } from '../account-detail-role-form/account-detail-role-form.component';
 
 @Component({

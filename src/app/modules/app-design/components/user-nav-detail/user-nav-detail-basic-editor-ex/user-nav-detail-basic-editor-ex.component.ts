@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { DetailBasicEditorExBase, DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { UserNav, UserRoleService, UserRole } from '@geek/micro-app-basic';
+import { DetailBasicEditorExBase, DetailEditorInteractService } from 'scaffold-page-plate';
+import { UserNav, UserRoleService, UserRole } from 'micro-app-basic';
 
 @Component({
   selector: 'app-user-nav-detail-basic-editor-ex',

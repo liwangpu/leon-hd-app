@@ -1,0 +1,22 @@
+<div class="container">
+
+  <mat-form-field>
+    <input matInput name="province" [formControl]="provinceControl" [matAutocomplete]="provinceAuto" required
+      placeholder="{{'glossary.Province'|translate}}">
+    <mat-autocomplete #provinceAuto="matAutocomplete" [displayWith]="proviceDisplayFn" (optionSelected)='onProvinceSelect($event)'>
+      <mat-option *ngFor="let option of proviceOptions | async" [value]="option">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="city" [formControl]="cityControl" [matAutocomplete]="cityAuto" required placeholder="{{'glossary.City'|translate}}">
+    <mat-autocomplete #cityAuto="matAutocomplete" [displayWith]="cityDisplayFn" (optionSelected)='onCitySelect($event)'>
+      <mat-option *ngFor="let option of cityOptions" [value]="option">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+</div>

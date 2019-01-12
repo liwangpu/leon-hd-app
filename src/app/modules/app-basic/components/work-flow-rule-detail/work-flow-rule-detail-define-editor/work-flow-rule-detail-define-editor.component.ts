@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { AsyncHandleService } from "@geek/scaffold-app-minor";
+import { AsyncHandleService } from "scaffold-app-minor";
 import { MatAutocompleteSelectedEvent } from '@angular/material';
-import { DetailBasicEditorExBase, DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { WorkFlowService, WorkFlowRuleService, WorkFlowRule, WorkFlow } from '@geek/micro-app-basic';
+import { DetailBasicEditorExBase, DetailEditorInteractService } from 'scaffold-page-plate';
+import { WorkFlowService, WorkFlowRuleService, WorkFlowRule, WorkFlow } from 'micro-app-basic';
 
 @Component({
   selector: 'app-work-flow-rule-detail-define-editor',

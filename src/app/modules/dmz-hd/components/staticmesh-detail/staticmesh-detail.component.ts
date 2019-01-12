@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { V1DetailEditorPageBase } from '@geek/apps-base';
+import { V1DetailEditorPageBase } from 'apps-base';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { StaticmeshService } from '@geek/micro-dmz-hd';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { StaticmeshService } from 'micro-dmz-hd';
+import { AsyncHandleService } from 'scaffold-app-minor';
 
 @Component({
   selector: 'app-staticmesh-detail',

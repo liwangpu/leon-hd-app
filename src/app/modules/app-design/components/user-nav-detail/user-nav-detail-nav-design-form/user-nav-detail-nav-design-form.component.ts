@@ -1,9 +1,9 @@
 import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
-import { NavService, Navigation, NavNodeTypeEnum, UserNavService, UserNav } from '@geek/micro-app-basic';
-import { IQueryFilter, QueryOperateEnum } from '@geek/micro-base';
+import { AsyncHandleService } from 'scaffold-app-minor';
+import { NavService, Navigation, NavNodeTypeEnum, UserNavService, UserNav } from 'micro-app-basic';
+import { IQueryFilter, QueryOperateEnum } from 'micro-base';
 
 @Component({
   selector: 'app-user-nav-detail-nav-design-form',

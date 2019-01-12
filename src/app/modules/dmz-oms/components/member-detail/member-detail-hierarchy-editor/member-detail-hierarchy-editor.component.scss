@@ -8,6 +8,11 @@
             &>* {
                 width: 100%;
             }
+            div.bar {
+                display: flex;
+                flex-flow: row;
+                justify-content: flex-end;
+            }
         }
     }
 }

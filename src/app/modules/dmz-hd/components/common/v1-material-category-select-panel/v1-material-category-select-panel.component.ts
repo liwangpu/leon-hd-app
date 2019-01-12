@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { MaterialCategoryService } from '@geek/micro-dmz-hd';
-import { V1CategorySelectPanelBase } from '@geek/apps-base';
+import { MaterialCategoryService } from 'micro-dmz-hd';
+import { V1CategorySelectPanelBase } from 'apps-base';
 
 @Component({
   selector: 'app-common-v1-material-category-select-panel',

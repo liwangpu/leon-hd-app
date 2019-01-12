@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "target": "es5",
     "typeRoots": [
       "node_modules/@types"
@@ -24,35 +25,35 @@
       "@app/app-legacy": [
         "src/app/modules/app-legacy/legacy/public_api"
       ],
-      "@geek/micro-base": [
-        "projects/geek/micro-base/src/public_api"
+      "micro-base": [
+        "src/app/modules/micro-base/public_api"
       ],
-      "@geek/micro-app-basic": [
-        "projects/geek/micro-app-basic/src/public_api"
+      "micro-app-basic": [
+        "src/app/modules/micro-app-basic/public_api"
       ],
-      "@geek/scaffold-mat-bcl": [
-        "projects/geek/scaffold-mat-bcl/src/public_api"
+      "scaffold-mat-bcl": [
+        "src/app/modules/scaffold-mat-bcl/public_api"
       ],
-      "@geek/scaffold-ng-bcl": [
-        "projects/geek/scaffold-ng-bcl/src/public_api"
+      "scaffold-ng-bcl": [
+        "src/app/modules/scaffold-ng-bcl/public_api"
       ],
-      "@geek/scaffold-page-plate": [
-        "projects/geek/scaffold-page-plate/src/public_api"
+      "scaffold-page-plate": [
+        "src/app/modules/scaffold-page-plate/public_api"
       ],
-      "@geek/scaffold-app-core": [
-        "projects/geek/scaffold-app-core/src/public_api"
+      "scaffold-app-core": [
+        "src/app/modules/scaffold-app-core/public_api"
       ],
-      "@geek/micro-dmz-hd": [
-        "projects/geek/micro-dmz-hd/src/public_api"
+      "micro-dmz-hd": [
+        "src/app/modules/micro-dmz-hd/public_api"
       ],
-      "@geek/scaffold-app-minor": [
-        "projects/geek/scaffold-app-minor/src/public_api"
+      "scaffold-app-minor": [
+        "src/app/modules/scaffold-app-minor/public_api"
       ],
-      "@geek/apps-base": [
-        "projects/geek/apps-base/src/public_api"
+      "apps-base": [
+        "src/app/modules/apps-base/public_api"
       ],
-      "@geek/micro-dmz-oms": [
-        "projects/geek/micro-dmz-oms/src/public_api"
+      "micro-dmz-oms": [
+        "src/app/modules/micro-dmz-oms/public_api"
       ]
     }
   }

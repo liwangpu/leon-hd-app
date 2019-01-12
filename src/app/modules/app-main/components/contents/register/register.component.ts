@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, concat } from 'rxjs';
 import { tap, takeUntil } from "rxjs/operators";
-import { NavRouterService, AppCacheService } from '@geek/scaffold-app-core';
-import { TokenService, AccountService } from '@geek/micro-app-basic';
+import { NavRouterService, AppCacheService } from 'scaffold-app-core';
+import { TokenService, AccountService } from 'micro-app-basic';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

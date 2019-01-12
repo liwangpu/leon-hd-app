@@ -185,8 +185,8 @@
         "Address": "地址",
         "AutoWorkFlow": "自动流程",
         "Rate": "比率",
-        "Inviter":"邀请人",
-        "Superior":"上级"
+        "Inviter": "邀请人",
+        "Superior": "上级"
     },
     "button": {
         "Logout": "退出",
@@ -253,7 +253,8 @@
         "Reject": "驳回",
         "Approve": "批准",
         "OrderOverview": "订单总览",
-        "MemberInvitation": "用户邀请"
+        "MemberInvitation": "用户邀请",
+        "PointExchange": "积分兑换设定"
     },
     "message": {
         "UploadSuccessfully": "文件上传成功",
@@ -269,8 +270,8 @@
         "SaveSuccessfully": "保存成功",
         "OperateSuccessfully": "操作成功",
         "AccountOrPasswordWrong": "用户名或者密码有误",
-        "account expired": "账户已经过期",
-        "account is forzen by admin": "账户已经被冻结",
+        "AccountExpire": "账户已失效",
+        "AccountFrozen": "账户已被冻结",
         "AccountNotActivateYet": "账户未激活",
         "RequiredError": "必填信息",
         "MaxLengthError": "长度超限",
@@ -337,7 +338,7 @@
         "CurrentState": "当前状态",
         "OrderWorkFlowMessage": "订单流程信息",
         "CopyLink": "复制链接",
-        "HierarchyInfo":"层级信息"
+        "HierarchyInfo": "层级信息"
     },
     "dialog": {
         "ChangeIcon": "更改图标",
@@ -359,6 +360,7 @@
         "AddAdditionalRole": "添加附加角色",
         "OrderReject": "订单驳回",
         "EditOrderDetail": "编辑订单详情",
-        "MemberInvitation": "用户邀请"
+        "MemberInvitation": "用户邀请",
+        "PointExchange": "积分兑换设定"
     }
 }

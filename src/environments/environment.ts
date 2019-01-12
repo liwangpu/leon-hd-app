@@ -4,9 +4,7 @@
 
 export const environment = {
   production: false,
-  serveBase: 'http://localhost:1882',
-  webtoolServer: 'http://192.168.1.6:8990',
-  secretKey: 'damaozhu-app',
+  // secretKey: 'damaozhu-app',
   dialogMin: {
     width: '450px',
     height: '600px'

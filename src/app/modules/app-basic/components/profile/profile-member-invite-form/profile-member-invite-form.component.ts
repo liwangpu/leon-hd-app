@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl, } from '@angular/platform-browser';
 import { environment } from "@env/environment";
 import { MatTooltip } from '@angular/material';
+import { AppConfigService } from '../../../../../app-config.service';
 @Component({
   selector: 'app-profile-member-invite-form',
   templateUrl: './profile-member-invite-form.component.html',
@@ -13,18 +14,13 @@ export class ProfileMemberInviteFormComponent implements OnInit {
   inviteUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl('about:blank');
   inviteOriginUrl: string;//用户资料填写原url
   @ViewChild('cpTooltip') cpTooltip: MatTooltip;
-  constructor(public sanitizer: DomSanitizer) { }
+  constructor(public sanitizer: DomSanitizer, protected appConfigSrv: AppConfigService) { }
 
   ngOnInit() {
   }
 
   afterReceiveData(data: { userId: string, username: string, avatar: string }) {
-
-    let avater = data.avatar ? `${environment.serveBase}/${data.avatar}` : '';
-    avater = avater.replace(/\/\//g, '/');
-    avater = avater.replace('http:/', 'http://');
-    avater = avater.replace('https:/', 'https://');
-    this.inviteOriginUrl = `${environment.webtoolServer}/dmz/member/invite?s=${encodeURIComponent(environment.serveBase)}&u=${data.userId}&n=${data.username ? encodeURIComponent(data.username) : ''}&a=${encodeURIComponent(avater)}`;
+    this.inviteOriginUrl = `${this.appConfigSrv.appConfig.toolServer}/dmz-oms/member-invite?u=${data.userId}`;
   }//afterReceiveData
 
   copyQRCode() {

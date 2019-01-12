@@ -2,8 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
-import { AsyncHandleService ,ConfirmDialogBase} from "@geek/scaffold-app-minor";
-import { AccountService } from '@geek/micro-app-basic';
+import { AsyncHandleService ,ConfirmDialogBase} from "scaffold-app-minor";
+import { AccountService } from 'micro-app-basic';
 
 
 @Component({

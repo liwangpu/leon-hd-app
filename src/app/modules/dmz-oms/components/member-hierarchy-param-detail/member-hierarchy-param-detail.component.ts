@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { V1DetailEditorPageBase } from '@geek/apps-base';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { V1DetailEditorPageBase } from 'apps-base';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
-import { MemberHierarchyParamService } from '@geek/micro-dmz-oms';
+import { AsyncHandleService } from 'scaffold-app-minor';
+import { MemberHierarchyParamService } from 'micro-dmz-oms';
 import { MemberHierarchyParamSettingExComponent } from './member-hierarchy-param-setting-ex/member-hierarchy-param-setting-ex.component';
 
 @Component({

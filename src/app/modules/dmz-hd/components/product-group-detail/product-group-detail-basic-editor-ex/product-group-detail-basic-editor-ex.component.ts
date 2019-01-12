@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { DetailBasicEditorExBase, DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { DialogFactoryService } from '@geek/scaffold-app-minor';
+import { DetailBasicEditorExBase, DetailEditorInteractService } from 'scaffold-page-plate';
+import { DialogFactoryService } from 'scaffold-app-minor';
 import { ProductGroupDetailCategoryFormComponent } from '../product-group-detail-category-form/product-group-detail-category-form.component';
 
 

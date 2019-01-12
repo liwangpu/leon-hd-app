@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { DialogFactoryService, AsyncHandleService } from '@geek/scaffold-app-minor';
-import { DetailEditorInteractService, DetailBasicEditorExBase } from '@geek/scaffold-page-plate';
-import { MemberHierarchyParamService } from '@geek/micro-dmz-oms';
+import { DialogFactoryService, AsyncHandleService } from 'scaffold-app-minor';
+import { DetailEditorInteractService, DetailBasicEditorExBase } from 'scaffold-page-plate';
+import { MemberHierarchyParamService } from 'micro-dmz-oms';
 
 @Component({
   selector: 'app-member-hierarchy-param-setting-ex',

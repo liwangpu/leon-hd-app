@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { AppProgressService, AppSearchService } from '@geek/scaffold-app-core'; import { AsyncHandleService } from '@geek/scaffold-app-minor';
+import { AppProgressService, AppSearchService } from 'scaffold-app-core'; import { AsyncHandleService } from 'scaffold-app-minor';
 import { Location } from '@angular/common';
-import { V1ListViewPageBase } from '@geek/apps-base';
-import { ICommonTableColumndef } from '@geek/scaffold-page-plate';
-import { MemberRegistry, MemberRegistryService } from '@geek/micro-dmz-oms';
+import { V1ListViewPageBase } from 'apps-base';
+import { ICommonTableColumndef } from 'scaffold-page-plate';
+import { MemberRegistry, MemberRegistryService } from 'micro-dmz-oms';
 
 @Component({
   selector: 'app-member-registry',
@@ -30,12 +30,12 @@ export class MemberRegistryComponent extends V1ListViewPageBase implements OnIni
     }
     , {
       id: 'province', name: 'glossary.Province', width: 90, cell: (data: MemberRegistry) => {
-        return data.province;
+        return data.provinceName;
       }
     }
     , {
       id: 'city', name: 'glossary.City', width: 90, cell: (data: MemberRegistry) => {
-        return data.city;
+        return data.cityName;
       }
     }
     , this._createdTime

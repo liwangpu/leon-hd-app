@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { V1ListViewPageBase } from '@geek/apps-base';
-import { Member, MemberService } from '@geek/micro-dmz-oms';
+import { V1ListViewPageBase } from 'apps-base';
+import { Member, MemberService } from 'micro-dmz-oms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppProgressService, AppSearchService } from '@geek/scaffold-app-core';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
+import { AppProgressService, AppSearchService } from 'scaffold-app-core';
+import { AsyncHandleService } from 'scaffold-app-minor';
 import { DatePipe } from '@angular/common';
 import { Location } from '@angular/common';
-import { ICommonTableColumndef } from '@geek/scaffold-page-plate';
+import { ICommonTableColumndef } from 'scaffold-page-plate';
 @Component({
   selector: 'app-member',
   templateUrl: './member.component.html',
@@ -35,12 +35,12 @@ export class MemberComponent extends V1ListViewPageBase implements OnInit, OnDes
     }
     , {
       id: 'province', name: 'glossary.Province', width: 90, cell: (data: Member) => {
-        return data.province;
+        return data.provinceName;
       }
     }
     , {
       id: 'city', name: 'glossary.City', width: 90, cell: (data: Member) => {
-        return data.city;
+        return data.cityName;
       }
     }
     , this._createdTime

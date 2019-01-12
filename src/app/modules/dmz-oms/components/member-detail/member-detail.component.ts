@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { V1DetailEditorPageBase } from '@geek/apps-base';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
+import { V1DetailEditorPageBase } from 'apps-base';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MemberService } from '@geek/micro-dmz-oms';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
+import { MemberService } from 'micro-dmz-oms';
+import { AsyncHandleService } from 'scaffold-app-minor';
 
 @Component({
   selector: 'app-member-detail',

@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { V1DetailEditorPageBase } from '@geek/apps-base';
+import { V1DetailEditorPageBase } from 'apps-base';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AsyncHandleService } from "@geek/scaffold-app-minor";
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { WorkFlowRuleService } from '@geek/micro-app-basic';
+import { AsyncHandleService } from "scaffold-app-minor";
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { WorkFlowRuleService } from 'micro-app-basic';
 
 @Component({
   selector: 'app-work-flow-rule-detail',

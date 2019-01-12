@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { WorkFlowDetailFlowFormComponent } from '../work-flow-detail-flow-form/work-flow-detail-flow-form.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { WorkFlowItem, UserRoleService, WorkFlowService, WorkFlow } from '@geek/micro-app-basic';
-import { DialogFactoryService, AsyncHandleService } from '@geek/scaffold-app-minor';
-import { IQueryFilter, QueryOperateEnum } from '@geek/micro-base';
+import { WorkFlowItem, UserRoleService, WorkFlowService, WorkFlow } from 'micro-app-basic';
+import { DialogFactoryService, AsyncHandleService } from 'scaffold-app-minor';
+import { IQueryFilter, QueryOperateEnum } from 'micro-base';
 
 
 @Component({

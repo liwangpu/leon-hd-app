@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { V1CategoryEditorBase } from '@geek/apps-base';
+import { V1CategoryEditorBase } from 'apps-base';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MaterialCategoryService } from '@geek/micro-dmz-hd';
+import { MaterialCategoryService } from 'micro-dmz-hd';
 
 @Component({
   selector: 'app-material-category',

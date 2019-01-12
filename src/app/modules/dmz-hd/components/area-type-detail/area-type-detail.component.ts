@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { AsyncHandleService } from "@geek/scaffold-app-minor";
-import { AreaTypeService } from '@geek/micro-dmz-hd';
-import { V1DetailEditorPageBase } from '@geek/apps-base';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { AsyncHandleService } from "scaffold-app-minor";
+import { AreaTypeService } from 'micro-dmz-hd';
+import { V1DetailEditorPageBase } from 'apps-base';
 
 @Component({
   selector: 'app-area-type-detail',

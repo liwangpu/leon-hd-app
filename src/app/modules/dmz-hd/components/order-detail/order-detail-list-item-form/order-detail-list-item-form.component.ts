@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { OrderDetail } from '@geek/micro-dmz-hd';
+import { OrderDetail } from 'micro-dmz-hd';
 import { Subject, forkJoin } from 'rxjs';
-import { FileService } from '@geek/micro-app-basic';
+import { FileService } from 'micro-app-basic';
 
 @Component({
   selector: 'app-order-detail-list-item-form',

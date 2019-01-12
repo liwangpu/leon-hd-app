@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { V1CategoryEditorBase } from '@geek/apps-base';
+import { V1CategoryEditorBase } from 'apps-base';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProductGroupCategoryService } from '@geek/micro-dmz-hd';
+import { ProductGroupCategoryService } from 'micro-dmz-hd';
 
 @Component({
   selector: 'app-product-group-category',

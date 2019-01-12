@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { DrawerService, MediaService, NavResolverService, NavRouterService, ProfileResolverService } from '@geek/scaffold-app-core';
-import { Navigation, NavNodeTypeEnum } from '@geek/micro-app-basic';
+import { DrawerService, MediaService, NavResolverService, NavRouterService, ProfileResolverService } from 'scaffold-app-core';
+import { Navigation, NavNodeTypeEnum } from 'micro-app-basic';
 
 @Component({
   selector: 'app-main-navbar',

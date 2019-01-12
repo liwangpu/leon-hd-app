@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AreaTypeService } from '@geek/micro-dmz-hd';
+import { AreaTypeService } from 'micro-dmz-hd';
 import { DatePipe } from '@angular/common';
-import { AppProgressService, AppSearchService } from '@geek/scaffold-app-core';
+import { AppProgressService, AppSearchService } from 'scaffold-app-core';
 import { Location } from '@angular/common';
-import { V1ListViewPageBase } from '@geek/apps-base';
-import { AsyncHandleService } from '@geek/scaffold-app-minor';
+import { V1ListViewPageBase } from 'apps-base';
+import { AsyncHandleService } from 'scaffold-app-minor';
 
 @Component({
   selector: 'app-area-type',

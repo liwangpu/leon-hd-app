@@ -255,7 +255,8 @@
         "Reject": "Reject",
         "Approve": "Approve",
         "OrderOverview": "Order Overview",
-        "MemberInvitation": "Member Invitation"
+        "MemberInvitation": "Member Invitation",
+        "PointExchange": "Point Exchange Setting"
     },
     "message": {
         "UploadSuccessfully": "Files Upload Successfully",
@@ -270,10 +271,10 @@
         "Upload_Failed": "\"{{value}}\" upload failed",
         "SaveSuccessfully": "Save Successfully",
         "OperateSuccessfully": "Operate Successfully",
-        "AccountOrPasswordWrong": "account or password wrong",
-        "account expired": "account expired",
-        "account is forzen by admin": "account is forzen by admin",
-        "account not activate yet": "account not activate yet",
+        "AccountOrPasswordWrong": "Account or password wrong",
+        "AccountExpire": "The account has expired",
+        "AccountFrozen": "The account has been frozen",
+        "AccountNotActivateYet": "Account not activated",
         "RequiredError": "Fill Necessarily",
         "MaxLengthError": "More than the standard length",
         "BatchDeleteConfirm": "Are you sure to delete these {{value}} items ?",
@@ -361,6 +362,7 @@
         "AddAdditionalRole": "Add Additional Role",
         "OrderReject": "Order Reject",
         "EditOrderDetail": "Edit Order Item",
-        "MemberInvitation": "Member Invitation"
+        "MemberInvitation": "Member Invitation",
+        "PointExchange": "Point Exchange Setting"
     }
 }

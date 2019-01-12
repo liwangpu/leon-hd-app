@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AsyncHandleService } from "@geek/scaffold-app-minor";
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { OrderService, Order } from '@geek/micro-dmz-hd';
+import { AsyncHandleService } from "scaffold-app-minor";
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { OrderService, Order } from 'micro-dmz-hd';
 
 @Component({
   selector: 'app-order-detail-customer-editor',

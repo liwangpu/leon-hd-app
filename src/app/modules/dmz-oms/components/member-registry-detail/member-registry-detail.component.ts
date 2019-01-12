@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { V1DetailEditorPageBase } from '@geek/apps-base';
+import { V1DetailEditorPageBase } from 'apps-base';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DetailEditorInteractService } from '@geek/scaffold-page-plate';
-import { AsyncHandleService } from "@geek/scaffold-app-minor";
-import { MemberRegistryService, MemberRegistry } from '@geek/micro-dmz-oms';
+import { DetailEditorInteractService } from 'scaffold-page-plate';
+import { AsyncHandleService } from "scaffold-app-minor";
+import { MemberRegistryService, MemberRegistry } from 'micro-dmz-oms';
 import { MatButton } from '@angular/material';
 
 

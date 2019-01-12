@@ -1,0 +1,17 @@
+div.form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    input.rate {
+        width: 80px;
+        height: 35px;
+        border: none;
+        border-bottom: 1px solid #D0D0D0;
+        padding: 0 .5rem;
+        outline: none;
+        text-align: center;
+    }
+}
