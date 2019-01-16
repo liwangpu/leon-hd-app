@@ -2,7 +2,7 @@
   (afterReceiveData)='afterReceiveData($event)'>
   <div class="container">
     <div class="qrcode">
-      <qrcode *ngIf='inviteOriginUrl' [qrdata]="inviteOriginUrl" [size]="250" [level]="'M'"></qrcode>
+      <!-- <qrcode *ngIf='inviteOriginUrl' [qrdata]="inviteOriginUrl" [size]="250" [level]="'M'"></qrcode> -->
     </div>
     <p class="cp-qrcode" [copy-clipboard]="inviteOriginUrl" (copied)="copyQRCode()">{{'tips.CopyLink'|translate}}</p>
     <p #cpTooltip="matTooltip" matTooltip="{{'message.CopySuccessfully'|translate}}" matTooltipPosition="below"></p>

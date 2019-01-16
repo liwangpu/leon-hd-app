@@ -12,4 +12,7 @@ export class PointExchangeRadioSettingComponent implements OnInit {
   ngOnInit() {
   }
 
+  afterConfirm(){
+
+  }//afterConfirm
 }

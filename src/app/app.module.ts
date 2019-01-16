@@ -37,7 +37,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'hd-app-tool' }),
     HttpClientModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot({

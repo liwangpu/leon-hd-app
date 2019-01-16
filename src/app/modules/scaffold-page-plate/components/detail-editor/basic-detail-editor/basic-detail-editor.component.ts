@@ -7,7 +7,7 @@ import { DatePipe } from '@angular/common';
 import { DetailEditorInteractService } from '../../../services/detail-editor-interact.service';
 import { DialogFactoryService, ChangeIconDialogPlateComponent } from 'scaffold-app-minor';
 import { MatButton } from '@angular/material';
-import { AppConfigService } from 'src/app/app-config.service';
+import { AppConfigService } from '../../../../../app-config.service';
 
 @Component({
   selector: 'page-plate-basic-detail-editor',
