@@ -13,6 +13,7 @@ import { MatAutoSelectComponent } from './components/select-input/mat-auto-selec
 import { MatApiAutoSelectComponent } from './components/select-input/mat-api-auto-select/mat-api-auto-select.component';
 import { NavFilterPipe } from './pipes/nav-filter.pipe';
 import { CopyClipboardDirective } from './directives/copy-clipboard.directive';
+import { QrcodeComponent } from './components/qrcode/qrcode.component';
 // import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
@@ -21,7 +22,7 @@ import { CopyClipboardDirective } from './directives/copy-clipboard.directive';
     TranslateModule,
     ScaffoldMatBclModule
   ],
-  declarations: [ChangeIconDialogPlateComponent, LazyModuleConfirmDialogPlateComponent, SimpleConfirmDialogPlateComponent, ServerRedirectPipe, NavFilterPipe, MatAutoSelectComponent, MatApiAutoSelectComponent, CopyClipboardDirective],
+  declarations: [ChangeIconDialogPlateComponent, LazyModuleConfirmDialogPlateComponent, SimpleConfirmDialogPlateComponent, ServerRedirectPipe, NavFilterPipe, MatAutoSelectComponent, MatApiAutoSelectComponent, CopyClipboardDirective, QrcodeComponent],
   providers: [
     AsyncHandleService,
     DialogFactoryService,
@@ -35,6 +36,7 @@ import { CopyClipboardDirective } from './directives/copy-clipboard.directive';
     , MatAutoSelectComponent
     , MatApiAutoSelectComponent
     , CopyClipboardDirective
+    , QrcodeComponent
     // , QRCodeModule
   ],
   entryComponents: [
