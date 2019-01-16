@@ -1,5 +1,6 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
+import { AppConfigService } from '../../../../../app-config.service';
 
 export class WebapiBaseService {
 
@@ -13,7 +14,7 @@ export class WebapiBaseService {
     return `${this.uriBase}/${this.uriPart}`;
   }
   constructor(protected httpClient: HttpClient) {
-    this.uriBase = environment.serveBase;
+    this.uriBase = AppConfigService._AppConfig.server;
 
     this.header = new HttpHeaders({
       'Content-Type': 'application/json'

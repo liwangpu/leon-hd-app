@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
+import { AppConfigService } from '../../../../app-config.service';
 
 @Injectable({ providedIn: 'root' })
 export class ConfigService {
 
     get serverBase() {
-        return environment.serveBase;
+        return AppConfigService._AppConfig.server;
     }
 
     // get isMaintaining() {
