@@ -1,0 +1,31 @@
+<div class="list-container">
+  <div class="manage-bar">
+    <button mat-icon-button class="panel-close-btn" (click)='close()' *ngIf='closable'>
+      <mat-icon class="operate-button-icon">close</mat-icon>
+    </button>
+    <p class="category-header-title">{{title|translate}}</p>
+    <div class="op-buttons">
+      <button class="operate-button" mat-icon-button (click)='onMoveUp()'>
+        <mat-icon class="operate-button-icon">keyboard_arrow_up</mat-icon>
+      </button>
+      <button class="operate-button" mat-icon-button (click)='onMoveDown()'>
+        <mat-icon class="operate-button-icon">keyboard_arrow_down</mat-icon>
+      </button>
+      <button class="operate-button" mat-icon-button (click)='onEdit("edit")'>
+        <mat-icon class="operate-button-icon" style="font-size: 17px;height: 17px;width: 17px;padding-bottom: 3px !important;">create</mat-icon>
+      </button>
+      <button class="operate-button" mat-icon-button (click)='onEdit("new")'>
+        <mat-icon class="operate-button-icon" style="font-size: 20px;height: 20px;">add</mat-icon>
+      </button>
+      <button class="operate-button" mat-icon-button (click)='onRemove()'>
+        <mat-icon class="operate-button-icon" style="font-size: 20px;height: 20px;">remove</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="list-content">
+    <div class="category-item" *ngFor='let item of categories;trackBy:trackCategory' appCategoryListItem [id]='item.id' (onSelected)='onItemSelected($event)'>
+        <img class="cate-icon" [src]="(item?.icon)?item.icon:'assets/images/svgs/cate-item.svg'"> 
+        <p class="cate-title">{{item.name}}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<page-plate-blank>
+  <div class="header" page-header>
+    <div class="flag">
+      <div class="icon">
+        <button class="page-drawer" mat-icon-button *ngIf='!showDrawer' (click)='drawer.open()'>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-icon>{{icon}}</mat-icon>
+        <span>{{title|translate}}</span>
+      </div>
+      <div class="news">
+        <button mat-raised-button>
+          <span>{{'button.NEW'|translate}}</span>
+        </button>
+      </div>
+    </div>
+    <div class="management">
+      <app-paginator-page-manage-buttons></app-paginator-page-manage-buttons>
+    </div>
+  </div>
+
+  <div class="content" page-content>
+    <div class="mend">
+      <mat-drawer-container class="tpls-drawer-container">
+        <mat-drawer class="tpls-drawer-nav-wrap" #drawer [mode]="sideMode" (openedChange)='showDrawer = drawer.opened'>
+          <div class="tpls-drawer-nav">
+            <div class="header">
+              <mat-icon>toc</mat-icon>
+              <span>{{'glossary.Category'|translate}}</span>
+              <button mat-icon-button (click)='drawer.close()'>
+                <mat-icon>keyboard_arrow_left</mat-icon>
+              </button>
+            </div>
+            <div class="content">
+              <ng-content></ng-content>
+            </div>
+          </div>
+        </mat-drawer>
+        <mat-drawer-content class="tpls-drawer-content-wrap">
+          <div class="tpls-drawer-content">
+            <div class="paginator">
+              <div class="mend">
+                <app-paginator-paging-content></app-paginator-paging-content>
+              </div>
+            </div>
+            <div class="bar">
+              <app-paginator-paging-bar></app-paginator-paging-bar>
+            </div>
+          </div>
+        </mat-drawer-content>
+      </mat-drawer-container>
+    </div>
+  </div>
+</page-plate-blank>

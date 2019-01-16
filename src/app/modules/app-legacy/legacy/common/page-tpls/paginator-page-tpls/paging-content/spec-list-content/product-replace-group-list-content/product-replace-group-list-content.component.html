@@ -1,0 +1,4 @@
+<div class="content-container">
+    <app-commom-paging-product-replace-group-list-item *ngFor="let item of mdSrv.cacheData;trackBy:trackData;let idx=index" [idx]='idx+1'
+        [fid]='item.id' [title]='item.name' [icon]='item.icon' [details]='item.groupItems' [Selected]='mdSrv.allSelect' (OnCheckChange)='onItemCheckchange($event,item.id)' (onDelete)='onItemDelete($event)'></app-commom-paging-product-replace-group-list-item>
+</div>

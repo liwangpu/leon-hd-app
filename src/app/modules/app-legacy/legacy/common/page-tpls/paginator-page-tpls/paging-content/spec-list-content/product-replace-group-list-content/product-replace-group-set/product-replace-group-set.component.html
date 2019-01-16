@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="wrap">
+    <mat-icon class="setting-btn set-default" [class.setting-btn-default]='isDefault' (click)='_setDefault()'>{{isDefault?'check':'skip_previous'}}</mat-icon>
+    <span class="setting-title">{{title}}</span>
+    <mat-icon class="setting-btn delete-item" (click)='_deleteItem()'>close</mat-icon>
+  </div>
+</div>

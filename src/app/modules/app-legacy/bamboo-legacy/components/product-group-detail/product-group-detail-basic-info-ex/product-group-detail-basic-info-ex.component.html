@@ -1,0 +1,9 @@
+<form name="detailForm" [formGroup]="detailForm">
+    <div class="form-container">
+      <mat-form-field>
+        <input matInput readonly name="categoryName" formControlName="categoryName" required placeholder="{{'glossary.ProductCategory'|translate}}"
+          (click)='onEditCategory()'>
+        <mat-error *ngIf="detailForm.get('categoryId').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+      </mat-form-field>
+    </div>
+  </form>

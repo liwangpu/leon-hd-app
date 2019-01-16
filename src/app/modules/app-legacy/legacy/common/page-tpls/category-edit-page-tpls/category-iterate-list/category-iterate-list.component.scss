@@ -1,0 +1,18 @@
+:host {
+    display: block;
+    height: 100%;
+    height: 100%;
+    div.list-container {
+        height: 100%;
+        height: 100%;
+        display: flex;
+        div.category-folder {
+            flex: 0 1 240px;
+            height: 100%;
+        }
+        div.category-sub-folder {
+            flex: 1 1 auto;
+            height: 100%;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.title-img {
+    width: 256px;
+    height: 190px;
+    max-width: 256px;
+    max-height: 190px;
+    margin: 0px;
+}
+
+.title-text {
+    margin: 0px;
+    width: 256px;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.image-container {
+    width: 256px;
+    height: 190px;
+    border: 1px solid #B1B1B1;
+    overflow: hidden;
+}
+
+div.item-container {
+    display: inline-block;
+}

@@ -49,15 +49,15 @@ const routes: Routes = [
     },
     loadChildren: './modules/dmz-oms/dmz-oms.module#DmzOmsModule'
   }
-  // , {
-  //   path: 'dmz-hd-lgc',
-  //   canActivate: [RouteGuardService],
-  //   resolve: {
-  //     navigations: NavResolverService
-  //     , profile: ProfileResolverService
-  //   },
-  //   loadChildren: './modules/app-legacy/bamboo-legacy/bamboo-legacy.module#BambooLegacyModule'
-  // }
+  , {
+    path: 'dmz-hd-lgc',
+    canActivate: [RouteGuardService],
+    resolve: {
+      navigations: NavResolverService
+      , profile: ProfileResolverService
+    },
+    loadChildren: './modules/app-legacy/bamboo-legacy/bamboo-legacy.module#BambooLegacyModule'
+  }
   , { path: '**', redirectTo: '' }
 ];
 

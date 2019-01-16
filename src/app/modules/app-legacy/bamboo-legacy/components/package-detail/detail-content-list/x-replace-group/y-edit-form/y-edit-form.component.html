@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="left-category">
+        <app-category-select-panel [launch]='leftCategoyMdSrv' [addUnCategoryNode]='false' (onCategorySelect)='onSelectCategory($event)'></app-category-select-panel>
+    </div>
+    <div class="select-panel">
+        <app-package-detail-content-list-x-replace-group-y-simple-list [launch]='dataLaunch' (onItemSelect)='onItemSelect($event)'></app-package-detail-content-list-x-replace-group-y-simple-list>
+    </div>
+</div>

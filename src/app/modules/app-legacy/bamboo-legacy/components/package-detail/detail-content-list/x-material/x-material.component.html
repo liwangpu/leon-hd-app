@@ -1,0 +1,4 @@
+<div class="maps-container">
+  <app-package-detail-content-list-x-material-y-list-item *ngFor='let item of materials' [itemId]='item.materialId' [itemName]='item.actorName'
+    [itemLastName]='item.lastActorName' [iconUrl]='item.icon' (onSave)='onEditSubmit($event)' (onDelete)='onDelete($event)'></app-package-detail-content-list-x-material-y-list-item>
+</div>

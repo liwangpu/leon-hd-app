@@ -1,0 +1,29 @@
+<page-plate-blank>
+  <div class="header" page-header>
+    <div class="flag">
+      <div class="icon">
+        <mat-icon>{{icon}}</mat-icon>
+        <span>{{title|translate}}</span>
+      </div>
+      <div class="news">
+        <button mat-raised-button>
+          <span>{{'button.NEW'|translate}}</span>
+        </button>
+      </div>
+    </div>
+    <div class="management">
+      <app-paginator-page-manage-buttons></app-paginator-page-manage-buttons>
+    </div>
+  </div>
+
+  <div class="content" page-content>
+      <div class="list">
+        <div class="mend">
+          <app-paginator-paging-content></app-paginator-paging-content>
+        </div>
+      </div>
+      <div class="paging">
+          <app-paginator-paging-bar></app-paginator-paging-bar>
+      </div>
+    </div>
+</page-plate-blank>
