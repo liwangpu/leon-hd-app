@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl, } from '@angular/platform-browser';
-import { environment } from "@env/environment";
 import { MatTooltip } from '@angular/material';
 import { AppConfigService } from '../../../../../app-config.service';
 @Component({
