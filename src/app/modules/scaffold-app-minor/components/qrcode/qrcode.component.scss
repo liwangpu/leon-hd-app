@@ -1,0 +1,9 @@
+:host {
+    div.container {
+        display: inline-block;
+        overflow: hidden;
+        &>iframe {
+            overflow: hidden;
+        }
+    }
+}

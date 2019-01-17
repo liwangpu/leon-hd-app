@@ -10,8 +10,7 @@ import { AppConfigService } from '../../../../../app-config.service';
 export class ProfileMemberInviteFormComponent implements OnInit {
 
   satisfyConfirm = true;
-  inviteUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl('about:blank');
-  inviteOriginUrl: string;//用户资料填写原url
+  inviteUrl: string;
   @ViewChild('cpTooltip') cpTooltip: MatTooltip;
   constructor(public sanitizer: DomSanitizer, protected appConfigSrv: AppConfigService) { }
 
@@ -19,7 +18,7 @@ export class ProfileMemberInviteFormComponent implements OnInit {
   }
 
   afterReceiveData(data: { userId: string, username: string, avatar: string }) {
-    this.inviteOriginUrl = `${this.appConfigSrv.appConfig.toolServer}/dmz-oms/member-invite?u=${data.userId}`;
+    this.inviteUrl = `${this.appConfigSrv.appConfig.toolServer}/dmz-oms/member-invite?u=${data.userId}`;
   }//afterReceiveData
 
   copyQRCode() {

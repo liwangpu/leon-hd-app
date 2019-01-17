@@ -1,5 +1,5 @@
 {
-    "server": "http://testapi.damaozhu.com.cn",
-    "toolServer": "http://testtool.damaozhu.com.cn",
+    "server": "http://kennapi.damaozhu.com.cn",
+    "toolServer": "http://kenntool.damaozhu.com.cn",
     "secretKey": "damaozhu-morejee-app"
 }

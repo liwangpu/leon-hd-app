@@ -14,7 +14,6 @@ import { MatApiAutoSelectComponent } from './components/select-input/mat-api-aut
 import { NavFilterPipe } from './pipes/nav-filter.pipe';
 import { CopyClipboardDirective } from './directives/copy-clipboard.directive';
 import { QrcodeComponent } from './components/qrcode/qrcode.component';
-// import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
@@ -37,7 +36,6 @@ import { QrcodeComponent } from './components/qrcode/qrcode.component';
     , MatApiAutoSelectComponent
     , CopyClipboardDirective
     , QrcodeComponent
-    // , QRCodeModule
   ],
   entryComponents: [
     SimpleConfirmDialogPlateComponent

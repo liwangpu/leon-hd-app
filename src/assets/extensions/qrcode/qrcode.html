@@ -43,7 +43,7 @@
 
         function generateQRCode(size, text) {
             size = size ? Number(size) : 64;
-            text = text ? text : '如果你看见我,说明你没有给我传递参数';
+            text = text ? decodeURIComponent(text) : '如果你看见我,说明你没有给我传递参数';
             var option = {
                 // render method: 'canvas', 'image' or 'div'
                 render: 'canvas',
