@@ -9,6 +9,7 @@ import { ScaffoldNgBclModule } from 'scaffold-ng-bcl';
 import { ScaffoldMatBclModule } from 'scaffold-mat-bcl';
 import { ScaffoldAppMinorModule } from 'scaffold-app-minor';
 import { AppMainRoutingModule } from './app-main-routing.module';
+import { LoadingComponent } from './components/contents/loading/loading.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { AppMainRoutingModule } from './app-main-routing.module';
     ScaffoldAppMinorModule,
     AppMainRoutingModule
   ],
-  declarations: [NavbarComponent, ToolbarComponent, LoginComponent, HomeComponent, RegisterComponent],
+  declarations: [NavbarComponent, ToolbarComponent, LoginComponent, HomeComponent, RegisterComponent, LoadingComponent],
   exports: [
     NavbarComponent, ToolbarComponent
   ]

@@ -20,4 +20,12 @@ export class MemberHierarchyParamService extends WebapiService<MemberHierarchyPa
   updateHierarchySetting(data: any): Observable<any> {
     return this.httpClient.put<any>(`${this.uri}/updateHierarchySetting`, data, { headers: this.header });
   }//updateHierarchySetting
+
+  getPointExchange() {
+    return this.httpClient.get<number>(`${this.uri}/PointExchange`, { headers: this.header });
+  }//getPointExchange
+
+  updatePointExchange(rate: number) {
+    return this.httpClient.put(`${this.uri}/PointExchange`, { rate: rate }, { headers: this.header });
+  }//updatePointExchange
 }

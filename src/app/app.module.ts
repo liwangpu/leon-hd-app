@@ -26,11 +26,13 @@ export const httpInterceptorProviders = [
   , { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true }
 ];
 
-const appInitializerFn = (appConfig: AppConfigService) => {
+const appConfigInitializerFn = (appConfig: AppConfigService) => {
   return () => {
     return appConfig.loadAppConfig();
   }
 };
+
+// const appCachInitializerFn=();
 
 @NgModule({
   declarations: [
@@ -60,7 +62,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     httpInterceptorProviders,
     {
       provide: APP_INITIALIZER,
-      useFactory: appInitializerFn,
+      useFactory: appConfigInitializerFn,
       multi: true,
       deps: [AppConfigService]
     }

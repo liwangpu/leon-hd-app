@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberHierarchyParamService } from 'micro-dmz-oms';
+import { AsyncHandleService } from 'scaffold-app-minor';
 
 @Component({
   selector: 'app-point-exchange-radio-setting',
@@ -7,12 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PointExchangeRadioSettingComponent implements OnInit {
 
-  constructor() { }
+  rate: number;
+  constructor(protected prmSrv: MemberHierarchyParamService, protected asyncHandleSrv: AsyncHandleService) {
+
+  }//constructor
 
   ngOnInit() {
-  }
+    this.prmSrv.getPointExchange().subscribe(rat => {
+      this.rate = rat;
+    });
+  }//ngOnInit
 
-  afterConfirm(){
-
+  afterConfirm() {
+    let source$ = this.prmSrv.updatePointExchange(this.rate);
+    this.asyncHandleSrv.asyncRequest(source$).subscribe();
   }//afterConfirm
 }

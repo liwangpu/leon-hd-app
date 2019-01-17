@@ -14,7 +14,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   showProgress = false;
   maximize = true;
-  maxPageRouters = ['login', 'error', 'maintenance', 'sign-in', 'debugger'];//需要app页面最大化的路由
+  maxPageRouters = ['login', 'loading', 'error', 'maintenance', 'sign-in', 'debugger'];//需要app页面最大化的路由
   langs: Array<string> = ['cn', 'en'];
   @ViewChild('drawerCt') drawerCt: CommonAppBasicNavSidebarComponent;
   constructor(protected media: ObservableMedia, protected mediaSrv: MediaService, protected drawerSrv: DrawerService, protected navRouterSrv: NavRouterService, protected appCacheSrv: AppCacheService, protected translate: TranslateService, protected langSrv: LanguageService, protected progressSrv: AppProgressService, protected windowSrv: WindowService) {
