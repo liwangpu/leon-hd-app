@@ -3,14 +3,15 @@ import { MemberRegistryService } from './services/member-registry.service';
 import { MemberHierarchyParamService } from './services/member-hierarchy-param.service';
 import { MemberService } from './services/member.service';
 import { NationalUrbanService } from './services/national-urban.service';
-
+import { OrderService } from './services/order.service';
 
 @NgModule({
   providers: [
     MemberRegistryService,
     MemberHierarchyParamService,
     NationalUrbanService,
-    MemberService
+    MemberService,
+    OrderService
   ]
 })
 export class MicroDmzOmsModule {

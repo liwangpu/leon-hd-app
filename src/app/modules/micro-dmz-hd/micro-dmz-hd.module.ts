@@ -6,7 +6,6 @@ import { MaterialCategoryService } from './services/material-category.service';
 import { MaterialService } from './services/material.service';
 import { MediaFileService } from './services/media-file.service';
 import { MediaShareService } from './services/media-share.service';
-import { OrderService } from './services/order.service';
 import { ProductCategoryService } from './services/product-category.service';
 import { ProductService } from './services/product.service';
 import { SolutionService } from './services/solution.service';
@@ -25,7 +24,6 @@ import { ProductGroupService } from './services/product-group.service';
     MaterialService,
     MediaFileService,
     MediaShareService,
-    OrderService,
     ProductCategoryService,
     ProductService,
     PackageService,

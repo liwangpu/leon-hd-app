@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy, AfterContentInit, ElementRef, ViewChild } from '@angular/core';
 import { V1DetailEditorPageBase } from 'apps-base';
 import { Router, ActivatedRoute } from '@angular/router';
-import { OrderService, Order } from 'micro-dmz-hd';
 import { DetailEditorInteractService } from 'scaffold-page-plate';
 import { AsyncHandleService } from "scaffold-app-minor";
+import { Order, OrderService } from 'micro-dmz-oms';
 
 @Component({
   selector: 'app-order-detail',

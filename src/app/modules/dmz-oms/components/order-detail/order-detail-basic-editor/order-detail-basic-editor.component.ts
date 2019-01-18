@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AsyncHandleService } from 'scaffold-app-minor';
 import { DetailEditorInteractService } from 'scaffold-page-plate';
-import { OrderService, Order } from 'micro-dmz-hd';
 import { DatePipe } from '@angular/common';
 import { AppConfigService } from 'src/app/app-config.service';
+import { OrderService, Order } from 'micro-dmz-oms';
 
 @Component({
   selector: 'app-order-detail-basic-editor',

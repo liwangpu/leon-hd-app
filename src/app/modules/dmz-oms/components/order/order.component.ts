@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrderService, Order } from 'micro-dmz-hd';
 import { DatePipe } from '@angular/common';
 import { AppProgressService, AppSearchService } from 'scaffold-app-core'; import { AsyncHandleService } from 'scaffold-app-minor';
 import { Location } from '@angular/common';
 import { V1ListViewPageBase } from 'apps-base';
 import { ICommonTableColumndef } from 'scaffold-page-plate';
+import { OrderService, Order } from 'micro-dmz-oms';
 
 @Component({
   selector: 'app-order',

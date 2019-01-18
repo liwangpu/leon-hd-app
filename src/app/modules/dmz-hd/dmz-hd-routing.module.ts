@@ -8,8 +8,6 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { LayoutDetailComponent } from './components/layout-detail/layout-detail.component';
 import { SolutionComponent } from './components/solution/solution.component';
 import { SolutionDetailComponent } from './components/solution-detail/solution-detail.component';
-import { OrderComponent } from './components/order/order.component';
-import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { AreaTypeComponent } from './components/area-type/area-type.component';
 import { AreaTypeDetailComponent } from './components/area-type-detail/area-type-detail.component';
 import { MediaFileComponent } from './components/media-file/media-file.component';
@@ -73,18 +71,6 @@ const routes: Routes = [
   , {
     path: 'solution-detail'
     , component: SolutionDetailComponent
-  }
-  , {
-    path: 'order'
-    , component: OrderComponent
-  }
-  , {
-    path: 'order-detail/:id'
-    , component: OrderDetailComponent
-  }
-  , {
-    path: 'order-detail'
-    , component: OrderDetailComponent
   }
   , {
     path: 'area-type'

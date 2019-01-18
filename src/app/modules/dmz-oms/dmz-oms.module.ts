@@ -18,6 +18,15 @@ import { MemberDetailBasicEditorExComponent } from './components/member-detail/m
 import { MemberDetailHierarchyEditorComponent } from './components/member-detail/member-detail-hierarchy-editor/member-detail-hierarchy-editor.component';
 import { NationalUrbanSelectComponent } from './components/common/national-urban-select/national-urban-select.component';
 import { PointExchangeRadioSettingComponent } from './components/member-hierarchy-param/point-exchange-radio-setting/point-exchange-radio-setting.component';
+import { OrderComponent } from './components/order/order.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { OrderDetailListEditorComponent } from './components/order-detail/order-detail-list-editor/order-detail-list-editor.component';
+import { OrderDetailWorkflowEditorComponent } from './components/order-detail/order-detail-workflow-editor/order-detail-workflow-editor.component';
+import { OrderDetailFlowRejectFormComponent } from './components/order-detail/order-detail-flow-reject-form/order-detail-flow-reject-form.component';
+import { OrderDetailCustomerEditorComponent } from './components/order-detail/order-detail-customer-editor/order-detail-customer-editor.component';
+import { OrderDetailListItemFormComponent } from './components/order-detail/order-detail-list-item-form/order-detail-list-item-form.component';
+import { OrderDetailBasicEditorComponent } from './components/order-detail/order-detail-basic-editor/order-detail-basic-editor.component';
+
 @NgModule({
   imports: [
     ScaffoldNgBclModule,
@@ -28,9 +37,11 @@ import { PointExchangeRadioSettingComponent } from './components/member-hierarch
     ScaffoldPagePlateModule,
     DmzOmsRoutingModule
   ],
-  declarations: [MemberRegistryComponent, MemberRegistryDetailComponent, MemberRegistryDetailBasicEditorExComponent, MemberHierarchyParamComponent, MemberHierarchyParamDetailComponent, MemberHierarchyParamSettingExComponent, MemberComponent, MemberDetailComponent, MemberDetailBasicEditorExComponent, MemberDetailHierarchyEditorComponent, NationalUrbanSelectComponent, PointExchangeRadioSettingComponent],
+  declarations: [MemberRegistryComponent, MemberRegistryDetailComponent, MemberRegistryDetailBasicEditorExComponent, MemberHierarchyParamComponent, MemberHierarchyParamDetailComponent, MemberHierarchyParamSettingExComponent, MemberComponent, MemberDetailComponent, MemberDetailBasicEditorExComponent, MemberDetailHierarchyEditorComponent, NationalUrbanSelectComponent, PointExchangeRadioSettingComponent, OrderComponent, OrderDetailComponent, OrderDetailListEditorComponent, OrderDetailWorkflowEditorComponent, OrderDetailFlowRejectFormComponent, OrderDetailCustomerEditorComponent, OrderDetailListItemFormComponent, OrderDetailBasicEditorComponent],
   entryComponents: [
     PointExchangeRadioSettingComponent
+    , OrderDetailFlowRejectFormComponent
+    , OrderDetailListItemFormComponent
   ]
 })
 export class DmzOmsModule { }

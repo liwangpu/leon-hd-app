@@ -6,6 +6,8 @@ import { MemberHierarchyParamComponent } from './components/member-hierarchy-par
 import { MemberHierarchyParamDetailComponent } from './components/member-hierarchy-param-detail/member-hierarchy-param-detail.component';
 import { MemberComponent } from './components/member/member.component';
 import { MemberDetailComponent } from './components/member-detail/member-detail.component';
+import { OrderComponent } from './components/order/order.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,18 @@ const routes: Routes = [
   , {
     path: 'member-detail/:id'
     , component: MemberDetailComponent
+  }
+  , {
+    path: 'order'
+    , component: OrderComponent
+  }
+  , {
+    path: 'order-detail/:id'
+    , component: OrderDetailComponent
+  }
+  , {
+    path: 'order-detail'
+    , component: OrderDetailComponent
   }
 ];
 
