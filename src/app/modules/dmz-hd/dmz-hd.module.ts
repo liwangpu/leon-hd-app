@@ -33,7 +33,6 @@ import { MaterialDetailCategoryFormComponent } from './components/material-detai
 import { OrderDetailListEditorComponent } from './components/order-detail/order-detail-list-editor/order-detail-list-editor.component';
 import { ScaffoldAppMinorModule } from 'scaffold-app-minor';
 import { OrderDetailWorkflowEditorComponent } from './components/order-detail/order-detail-workflow-editor/order-detail-workflow-editor.component';
-import { OrderDetailBasicEditorExComponent } from './components/order-detail/order-detail-basic-editor-ex/order-detail-basic-editor-ex.component';
 import { OrderDetailFlowRejectFormComponent } from './components/order-detail/order-detail-flow-reject-form/order-detail-flow-reject-form.component';
 import { OrderDetailCustomerEditorComponent } from './components/order-detail/order-detail-customer-editor/order-detail-customer-editor.component';
 import { OrderDetailListItemFormComponent } from './components/order-detail/order-detail-list-item-form/order-detail-list-item-form.component';
@@ -50,6 +49,7 @@ import { ProductGroupDetailComponent } from './components/product-group-detail/p
 import { V1ProductGroupCategorySelectPanelComponent } from './components/common/v1-product-group-category-select-panel/v1-product-group-category-select-panel.component';
 import { ProductGroupDetailBasicEditorExComponent } from './components/product-group-detail/product-group-detail-basic-editor-ex/product-group-detail-basic-editor-ex.component';
 import { ProductGroupDetailCategoryFormComponent } from './components/product-group-detail/product-group-detail-category-form/product-group-detail-category-form.component';
+import { OrderDetailBasicEditorComponent } from './components/order-detail/order-detail-basic-editor/order-detail-basic-editor.component';
 
 @NgModule({
   imports: [
@@ -61,7 +61,7 @@ import { ProductGroupDetailCategoryFormComponent } from './components/product-gr
     ScaffoldPagePlateModule,
     DmzHdRoutingModule
   ],
-  declarations: [StaticmeshComponent, StaticmeshDetailComponent, MapComponent, MapDetailComponent, LayoutComponent, LayoutDetailComponent, SolutionComponent, SolutionDetailComponent, OrderComponent, OrderDetailComponent, AreaTypeComponent, AreaTypeDetailComponent, MediaFileComponent, PackageComponent, ProductComponent, ProductDetailComponent, V1CategorySelectPanelComponent, V1ProductCategorySelectPanelComponent, MaterialComponent, MaterialDetailComponent, V1MaterialCategorySelectPanelComponent, ProductDetailBasicEditorExComponent, ProductDetailCategoryFormComponent, MaterialDetailBasicEditorExComponent, MaterialDetailCategoryFormComponent, OrderDetailListEditorComponent, OrderDetailWorkflowEditorComponent, OrderDetailBasicEditorExComponent, OrderDetailFlowRejectFormComponent, OrderDetailCustomerEditorComponent, OrderDetailListItemFormComponent, ProductDetailSpecEditorComponent, ProductionCategoryComponent, V1CategoryEditorComponent, V1CategoryEditorListComponent, V1CategoryEditorFormComponent, MaterialCategoryComponent, ProductGroupCategoryComponent, PackageDetailComponent, ProductGroupComponent, ProductGroupDetailComponent, V1ProductGroupCategorySelectPanelComponent, ProductGroupDetailBasicEditorExComponent, ProductGroupDetailCategoryFormComponent],
+  declarations: [StaticmeshComponent, StaticmeshDetailComponent, MapComponent, MapDetailComponent, LayoutComponent, LayoutDetailComponent, SolutionComponent, SolutionDetailComponent, OrderComponent, OrderDetailComponent, AreaTypeComponent, AreaTypeDetailComponent, MediaFileComponent, PackageComponent, ProductComponent, ProductDetailComponent, V1CategorySelectPanelComponent, V1ProductCategorySelectPanelComponent, MaterialComponent, MaterialDetailComponent, V1MaterialCategorySelectPanelComponent, ProductDetailBasicEditorExComponent, ProductDetailCategoryFormComponent, MaterialDetailBasicEditorExComponent, MaterialDetailCategoryFormComponent, OrderDetailListEditorComponent, OrderDetailWorkflowEditorComponent, OrderDetailFlowRejectFormComponent, OrderDetailCustomerEditorComponent, OrderDetailListItemFormComponent, ProductDetailSpecEditorComponent, ProductionCategoryComponent, V1CategoryEditorComponent, V1CategoryEditorListComponent, V1CategoryEditorFormComponent, MaterialCategoryComponent, ProductGroupCategoryComponent, PackageDetailComponent, ProductGroupComponent, ProductGroupDetailComponent, V1ProductGroupCategorySelectPanelComponent, ProductGroupDetailBasicEditorExComponent, ProductGroupDetailCategoryFormComponent, OrderDetailBasicEditorComponent],
   entryComponents: [
     ProductDetailCategoryFormComponent
     , MaterialDetailCategoryFormComponent

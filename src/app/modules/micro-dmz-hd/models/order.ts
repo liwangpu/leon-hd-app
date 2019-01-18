@@ -4,6 +4,8 @@ import { OrderFlowLog } from "./order-flow-log";
 
 export class Order extends ListableBase {
     orderNo: string;
+    orderState: string;
+    orderStateName: string;
     customerName: string;
     customerAddress: string;
     customerPhone: string;

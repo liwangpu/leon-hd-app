@@ -21,9 +21,13 @@ export class OrderService extends WebapiService<Order> {
     return this.httpClient.put<Order>(`${this.uri}/AuditOrder`, data, { headers: this.header });
   }//auditOrder
 
-  updateCustomerMessage(data: any) {
-    return this.httpClient.put<Order>(`${this.uri}/UpdateCustomerMessage`, data, { headers: this.header });
-  }//updateCustomerMessage
+  updateBasicInfo(data: any) {
+    return this.httpClient.put(`${this.uri}/BasicInfo`, data, { headers: this.header });
+  }//updateBasicInfo
+
+  updateCustomerInfo(data: any) {
+    return this.httpClient.put(`${this.uri}/CustomerInfo`, data, { headers: this.header });
+  }//updateCustomerInfo
 
   updateOrderDetail(data: any) {
     return this.httpClient.put<Order>(`${this.uri}/UpdateOrderDetail`, data, { headers: this.header });

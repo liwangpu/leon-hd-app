@@ -15,7 +15,7 @@ export class OrderDetailCustomerEditorComponent implements OnInit, OnDestroy {
   constructor(protected formBuilder: FormBuilder, protected interactSrv: DetailEditorInteractService, protected asyncHandleSrv: AsyncHandleService, protected orderSrv: OrderService) {
 
     this.detailForm = this.formBuilder.group({
-      orderId: ['', [Validators.required]],
+      id: ['', [Validators.required]],
       customerName: ['', [Validators.required]],
       customerPhone: ['', [Validators.required]],
       customerAddress: ['', [Validators.required]]
@@ -26,7 +26,7 @@ export class OrderDetailCustomerEditorComponent implements OnInit, OnDestroy {
     this.interactSrv.afterDataRefresh$.subscribe((data: Order) => {
       if (!data) return;
       this.detailForm.patchValue({
-        orderId: data.id,
+        id: data.id,
         customerName: data.customerName,
         customerPhone: data.customerPhone,
         customerAddress: data.customerAddress
@@ -41,7 +41,7 @@ export class OrderDetailCustomerEditorComponent implements OnInit, OnDestroy {
 
   submit() {
     let data = this.detailForm.value;
-    let source$ = this.orderSrv.updateCustomerMessage(data);
+    let source$ = this.orderSrv.updateCustomerInfo(data);
     this.asyncHandleSrv.asyncRequest(source$).subscribe();
   }//submit
 
