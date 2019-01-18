@@ -30,7 +30,7 @@ export class OrderService extends WebapiService<Order> {
   }//updateCustomerInfo
 
   updateOrderDetail(data: any) {
-    return this.httpClient.put<Order>(`${this.uri}/UpdateOrderDetail`, data, { headers: this.header });
+    return this.httpClient.put(`${this.uri}/OrderDetail`, data, { headers: this.header });
   }//updateOrderDetail
 
 }
