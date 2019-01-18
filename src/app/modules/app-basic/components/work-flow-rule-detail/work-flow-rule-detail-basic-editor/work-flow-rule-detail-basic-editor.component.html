@@ -1,0 +1,32 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm">
+    <input type="hidden" formControlName='id' name='id'>
+    <mat-form-field>
+      <input matInput placeholder="Input" name="name" formControlName="name" placeholder="{{'glossary.Name'|translate}}"
+        required>
+      <mat-error *ngIf="detailForm.get('name').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+      <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Textarea" name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
+      <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput name="createdTime" formControlName="createdTime" placeholder="{{'glossary.CreatedTime'|translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="modifiedTime" formControlName="modifiedTime" placeholder="{{'glossary.ModifiedTime'|translate}}">
+    </mat-form-field>
+
+    <div class="bar">
+      <button mat-button [disabled]='!detailForm.valid' (click)='submit()'>
+        <mat-icon>save</mat-icon>
+        <span>{{'button.Save'|translate}}</span>
+      </button>
+    </div>
+  </form>
+</div>
