@@ -1,5 +1,4 @@
-<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' [tabSecond]='detailDefineEditorRef'
-    [tabSecondTitle]='"tips.DetailWorkFlowRuleDefine"' (goback)='onGoBack()'></page-plate-detail-editor>
+<page-plate-detail-editor [title]='title' [name]='name' [avatar]='avatar' [tabFirst]='basicEditorRef' (goback)='onGoBack()'></page-plate-detail-editor>
 
 <ng-template #basicEditorRef>
     <app-work-flow-rule-detail-basic-editor></app-work-flow-rule-detail-basic-editor>

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AsyncHandleService } from 'scaffold-app-minor';
 import { DetailEditorInteractService } from 'scaffold-page-plate';
 import { DatePipe } from '@angular/common';
-import { AppConfigService } from 'src/app/app-config.service';
+import { AppConfigService } from '../../../../../app-config.service';
 import { OrderService, Order } from 'micro-dmz-oms';
 
 @Component({
@@ -15,7 +15,7 @@ export class OrderDetailBasicEditorComponent implements OnInit {
 
   currentOrderId: string;
   detailForm: FormGroup;
-  constructor(protected formBuilder: FormBuilder, protected interactSrv: DetailEditorInteractService, protected asyncHandleSrv: AsyncHandleService, protected orderSrv: OrderService, protected datePipeTr: DatePipe,protected appConfigSrv: AppConfigService) {
+  constructor(protected formBuilder: FormBuilder, protected interactSrv: DetailEditorInteractService, protected asyncHandleSrv: AsyncHandleService, protected orderSrv: OrderService, protected datePipeTr: DatePipe, protected appConfigSrv: AppConfigService) {
 
     this.detailForm = this.formBuilder.group({
       id: ['', [Validators.required]],
@@ -31,7 +31,7 @@ export class OrderDetailBasicEditorComponent implements OnInit {
   ngOnInit() {
     this.interactSrv.afterDataRefresh$.subscribe((data: Order) => {
       if (!data) return;
-      this.currentOrderId=data.id;
+      this.currentOrderId = data.id;
       this.detailForm.patchValue({
         id: data.id,
         name: data.name,
