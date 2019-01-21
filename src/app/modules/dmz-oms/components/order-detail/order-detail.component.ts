@@ -16,6 +16,7 @@ import { Order, OrderService } from 'micro-dmz-oms';
 export class OrderDetailComponent extends V1DetailEditorPageBase implements OnInit, AfterContentInit, OnDestroy {
 
   currentOrderId: string;
+  currentWorkFlowItemId: string;
   detailPdfDownloadUrl: string;
   resource = 'Order';
   @ViewChild('detailViewCt') detailViewCt: ElementRef;
@@ -31,6 +32,7 @@ export class OrderDetailComponent extends V1DetailEditorPageBase implements OnIn
     this.interactSrv.afterDataRefresh$.subscribe((data: Order) => {
       if (!data) return;
       this.currentOrderId = data.id;
+      this.currentWorkFlowItemId = data.workFlowItemId;
     });
   }//ngAfterContentInit
 

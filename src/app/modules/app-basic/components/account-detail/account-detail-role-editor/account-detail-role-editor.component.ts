@@ -34,28 +34,8 @@ export class AccountDetailRoleEditorComponent extends DetailBasicEditorExBase im
       if (!data) return;
       this.currentAccount = data;
       this.defaultRole = data.roleName;
-      console.log(121, data);
 
       this.additionalRoles = data.additionRoles ? data.additionRoles : [];
-
-
-      // let roleAdvanceFilters: Array<IQueryFilter> = [
-      //   {
-      //     field: 'innerOnly',
-      //     value: true,
-      //     operate: QueryOperateEnum.equal
-      //   }
-      // ];
-
-      // this.roleSrv.query({
-      //   page: 1,
-      //   pageSize: 999
-      // }, roleAdvanceFilters).subscribe(roles => {
-      //   roles.data = roles.data ? roles.data : [];
-      //   let refRole: UserRole = roles.data.filter(x => x.role == data.roleId)[0];
-      //   if (!refRole) return;
-      //   this.defaultRole = refRole.name;
-      // });
     });//subscribe
 
   }//ngOnInit

@@ -27,7 +27,7 @@ export class MaterialDetailComponent implements OnInit,OnDestroy {
         if (refNav) {
           this.title = refNav.name;
           this.editPermission = refNav.permission && refNav.permission.toLocaleLowerCase().indexOf('create') > -1;
-          console.log(1234,refNav,this.editPermission);
+          // console.log(1234,refNav,this.editPermission);
         }
       }
     });//subscribe

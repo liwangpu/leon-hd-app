@@ -15,7 +15,7 @@ export class NavService extends WebapiBaseService {
   }
 
   checkPermission(url: string, point: string) {
-    console.log('url:', url, ",point:", point);
+    // console.log('url:', url, ",point:", point);
   }//checkPermission
 
   getByRole(role: string) {

@@ -22,7 +22,7 @@ export class OrderDetailBasicEditorComponent implements OnInit {
       name: ['', [Validators.required, Validators.maxLength(50)]],
       description: ['', [Validators.maxLength(200)]],
       orderNo: [{ value: '', disabled: true }],
-      orderStateName: [{ value: '', disabled: true }],
+      workFlowItemName: [{ value: '', disabled: true }],
       createdTime: [{ value: '', disabled: true }],
       modifiedTime: [{ value: '', disabled: true }]
     });
@@ -37,7 +37,7 @@ export class OrderDetailBasicEditorComponent implements OnInit {
         name: data.name,
         description: data.description,
         orderNo: data.orderNo,
-        orderStateName: data.orderStateName,
+        workFlowItemName: data.workFlowItemName,
         createdTime: this.datePipeTr.transform(data.createdTime, 'yyyy-MM-dd'),
         modifiedTime: this.datePipeTr.transform(data.modifiedTime, 'yyyy-MM-dd')
       });

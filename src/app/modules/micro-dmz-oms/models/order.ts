@@ -3,6 +3,8 @@ import { OrderDetail } from "./order-detail";
 import { OrderFlowLog } from "./order-flow-log";
 
 export class Order extends ListableBase {
+    totalNum: number;
+    totalPrice: number;
     orderNo: string;
     orderState: string;
     orderStateName: string;

@@ -37,7 +37,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     //订阅路由跳转事件,以响应不同路由进行页面最大化或者抽屉模式
     this.navRouterSrv.routeChange$.subscribe(url => {
-      console.log('route to:', url);
+      // console.log('route to:', url);
       //忽略默认触发事件
       if (url == null) return;
       url = url ? url : "/";

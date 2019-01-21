@@ -17,12 +17,27 @@ export class OrderComponent extends V1ListViewPageBase implements OnInit, OnDest
   resource = 'Order';
   columnDefs: Array<ICommonTableColumndef> = [
     this._nameColumnDef
-    , this._descriptionColumnDef
     , {
-      id: 'orderState', name: 'glossary.OrderState', width: 150, cell: (data: Order) => {
+      id: 'orderNo', name: 'glossary.OrderNo', width: 150, cell: (data: Order) => {
+        return data.orderNo;
+      }
+    }
+    , {
+      id: 'totalNum', name: 'glossary.Quantity', width: 85, cell: (data: Order) => {
+        return data.totalNum;
+      }
+    }
+    , {
+      id: 'totalPrice', name: 'glossary.TotalPrice', width: 85, cell: (data: Order) => {
+        return data.totalPrice;
+      }
+    }
+    , {
+      id: 'workFlowItemName', name: 'glossary.OrderState', width: 150, cell: (data: Order) => {
         return data.workFlowItemName;
       }
     }
+    , this._descriptionColumnDef
     , this._createdTime
   ];
   constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: OrderService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe) {

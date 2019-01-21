@@ -16,5 +16,5 @@
 </ng-template>
 
 <ng-template #workFlowRef>
-    <app-order-detail-workflow-editor></app-order-detail-workflow-editor>
+    <app-order-detail-workflow-editor *ngIf='currentWorkFlowItemId'></app-order-detail-workflow-editor>
 </ng-template>

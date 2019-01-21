@@ -102,7 +102,7 @@ export class DebuggerUserSwitcherComponent implements OnInit, OnDestroy {
       this.appCacheSrv.icon = profile.icon;
       this.appCacheSrv.role = profile.roleId;
 
-      console.log('当前用户个人信息:', profile);
+      // console.log('当前用户个人信息:', profile);
     }));
     this.asyncHandle.asyncRequest(concat(token$, profile$)).subscribe();
   }//toggleUser

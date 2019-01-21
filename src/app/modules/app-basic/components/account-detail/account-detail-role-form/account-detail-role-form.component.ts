@@ -86,7 +86,6 @@ export class AccountDetailRoleFormComponent implements OnInit, OnDestroy {
     this.asyncHandleSrv.asyncRequest(source$).subscribe(() => {
       this.afterAddRole$.next();
     });
-    console.log('uuu', data);
   }//afterConfirm
 
 }

@@ -77,7 +77,6 @@ export class WorkFlowDetailFlowFormComponent implements OnInit, OnDestroy {
         data.WorkFlowItem.subWorkFlowName = { name: data.WorkFlowItem.subWorkFlowName } as any;
       this.detailForm.patchValue(data.WorkFlowItem);
       this.autoWorkFlowCt.patchValue(data.WorkFlowItem.autoWorkFlow);
-      console.log(123, data);
     }
     if (data.UsableUserRoles) {
       let correctRoles = [];
