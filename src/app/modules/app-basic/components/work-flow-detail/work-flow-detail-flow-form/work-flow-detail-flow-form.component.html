@@ -15,9 +15,9 @@
                 <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
             </mat-form-field>
 
-            <div class="auto-wf">
+            <!-- <div class="auto-wf">
                 <mat-checkbox [formControl]='autoWorkFlowCt' color='primary'> {{'glossary.AutoWorkFlow'|translate}}</mat-checkbox>
-            </div>
+            </div> -->
 
             <mat-form-field>
                 <input type="text" matInput formControlName="subWorkFlowName" name='subWorkFlowName' placeholder="{{'glossary.SubWorkFlow'|translate}}"
@@ -37,10 +37,10 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            {{'glossary.OperateUserRole'|translate}}
+                            {{'glossary.OperateUserRole'|translate}} &nbsp;*
                         </mat-panel-title>
                         <mat-panel-description>
-                            已选择&nbsp;{{_selectedRoleCount}}
+                            {{'tips.Selected'|translate}}&nbsp;{{_selectedRoleCount}}
                         </mat-panel-description>
                     </mat-expansion-panel-header>
 

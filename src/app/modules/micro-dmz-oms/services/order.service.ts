@@ -14,7 +14,7 @@ export class OrderService extends WebapiService<Order> {
   }//constructor
 
   getOrganOrderFlow() {
-    return this.httpClient.get<WorkFlow>(`${this.uri}/GetOrganOrderFlow`);
+    return this.httpClient.get<WorkFlow>(`${this.uri}/OrganOrderFlow`);
   }//getOrganOrderFlow
 
   auditOrder(data: any) {

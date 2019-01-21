@@ -340,7 +340,8 @@
         "CurrentState": "Current State",
         "OrderWorkFlowMessage": "Order Workflow Message",
         "CopyLink": "Copy Link",
-        "HierarchyInfo": "Hierarchy Info"
+        "HierarchyInfo": "Hierarchy Info",
+        "Selected": "Selected"
     },
     "dialog": {
         "ChangeIcon": "Change Icon",

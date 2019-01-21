@@ -12,8 +12,8 @@ export class WorkFlowRuleService extends WebapiService<WorkFlowRule> {
     this.uriPart = 'WorkFlowRule';
   }//constructor
 
-  defineRuleDetail(entity: any) {
-    return this.httpClient.put<any>(`${this.uri}/DefineRuleDetail`, entity, { headers: this.header });
-  }//defineRuleDetail
+  updateRuleDetail(entity: any) {
+    return this.httpClient.put<any>(`${this.uri}/Detail`, entity, { headers: this.header });
+  }//updateRuleDetail
 
 }

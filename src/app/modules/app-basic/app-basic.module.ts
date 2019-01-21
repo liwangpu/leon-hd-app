@@ -6,8 +6,6 @@ import { OrganizationOwnerProfileComponent } from './components/organization/org
 import { WorkFlowDetailFlowItemComponent } from './components/work-flow-detail/work-flow-detail-flow-item/work-flow-detail-flow-item.component';
 import { WorkFlowRuleComponent } from './components/work-flow-rule/work-flow-rule.component';
 import { WorkFlowRuleDetailComponent } from './components/work-flow-rule-detail/work-flow-rule-detail.component';
-import { WorkFlowRuleDetailBasicEditorExComponent } from './components/work-flow-rule-detail/work-flow-rule-detail-basic-editor-ex/work-flow-rule-detail-basic-editor-ex.component';
-import { WorkFlowRuleDetailDefineEditorComponent } from './components/work-flow-rule-detail/work-flow-rule-detail-define-editor/work-flow-rule-detail-define-editor.component';
 import { UserRoleComponent } from './components/user-role/user-role.component';
 import { UserRoleDetailComponent } from './components/user-role-detail/user-role-detail.component';
 import { WorkFlowComponent } from './components/work-flow/work-flow.component';
@@ -49,7 +47,7 @@ import { WorkFlowRuleDetailBasicEditorComponent } from './components/work-flow-r
     AppBasicRoutingModule
   ],
   declarations: [
-    OrganizationComponent, OrganizationDetailComponent, OrganizationDetailBasicEditorExComponent, OrganizationOwnerProfileComponent, UserRoleComponent, UserRoleDetailComponent, WorkFlowComponent, WorkFlowDetailComponent, WorkFlowDetailBasicEditorExComponent, WorkFlowDetailFlowDesignerComponent, WorkFlowDetailFlowFormComponent, WorkFlowDetailFlowItemComponent, WorkFlowRuleComponent, WorkFlowRuleDetailComponent, WorkFlowRuleDetailBasicEditorExComponent, WorkFlowRuleDetailDefineEditorComponent, ProfileComponent, AccountComponent, AccountDetailComponent, AccountDetailBasicEditorExComponent, DepartmentComponent, DepartmentDetailComponent, AccountDetailRoleEditorComponent, ProfileBasicEditorExComponent, OrganizationDetailOwnerEditorComponent, OrganizationTypeComponent, OrganizationTypeDetailComponent, OrganizationDetailOwnerResetpasswordFormComponent, AccountDetailRoleFormComponent, AccountDetailResetpwdFormComponent, ProfileChangePasswordFormComponent, ProfileMemberInviteFormComponent, WorkFlowRuleDetailBasicEditorComponent
+    OrganizationComponent, OrganizationDetailComponent, OrganizationDetailBasicEditorExComponent, OrganizationOwnerProfileComponent, UserRoleComponent, UserRoleDetailComponent, WorkFlowComponent, WorkFlowDetailComponent, WorkFlowDetailBasicEditorExComponent, WorkFlowDetailFlowDesignerComponent, WorkFlowDetailFlowFormComponent, WorkFlowDetailFlowItemComponent, WorkFlowRuleComponent, WorkFlowRuleDetailComponent, ProfileComponent, AccountComponent, AccountDetailComponent, AccountDetailBasicEditorExComponent, DepartmentComponent, DepartmentDetailComponent, AccountDetailRoleEditorComponent, ProfileBasicEditorExComponent, OrganizationDetailOwnerEditorComponent, OrganizationTypeComponent, OrganizationTypeDetailComponent, OrganizationDetailOwnerResetpasswordFormComponent, AccountDetailRoleFormComponent, AccountDetailResetpwdFormComponent, ProfileChangePasswordFormComponent, ProfileMemberInviteFormComponent, WorkFlowRuleDetailBasicEditorComponent
   ],
   entryComponents: [
     OrganizationOwnerProfileComponent,

@@ -338,7 +338,8 @@
         "CurrentState": "当前状态",
         "OrderWorkFlowMessage": "订单流程信息",
         "CopyLink": "复制链接",
-        "HierarchyInfo": "层级信息"
+        "HierarchyInfo": "层级信息",
+        "Selected": "已选择"
     },
     "dialog": {
         "ChangeIcon": "更改图标",

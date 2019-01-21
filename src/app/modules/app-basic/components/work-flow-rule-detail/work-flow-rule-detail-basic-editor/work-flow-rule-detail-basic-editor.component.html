@@ -8,6 +8,9 @@
       <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
     </mat-form-field>
 
+    <app-mat-api-auto-select *ngIf='showFlowSelect' fieldTitle='glossary.WorkFlowSetting' [apiService]='workFlowSrv'
+      [indentify]='workFlowId' (afterSelect)='afterFlowSelect($event)' (afterClear)='afterFlowClear($event)'></app-mat-api-auto-select>
+
     <mat-form-field>
       <textarea matInput placeholder="Textarea" name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
       <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
