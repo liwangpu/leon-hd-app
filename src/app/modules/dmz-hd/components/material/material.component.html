@@ -2,7 +2,7 @@
     [rowMenus]='rowMenus' [pageSizeOptions]='pageSizeOptions' [advanceMenus]='advanceMenus' [columnDefs]='columnDefs'
     [displayedColumns]='displayedColumns' [pageData]='pageData' (pageChange)='onPageChange($event)' (pageRefresh)='onRefresh()'
     (pageOptionChange)='onPageOptionChange($event)' (pageModelChange)='onPageModelChange($event)' (rowClick)='onRowClick($event)'
-    (createData)='onCreateData()'(sortData)='onSortData($event)' #listViewCt>
+    (createData)='onCreateData()' (sortData)='onSortData($event)' #listViewCt>
 
     <page-plate-common-sidebar-collapse-panel [panels]='[{title:"glossary.Category",panel:tab1}]'>
     </page-plate-common-sidebar-collapse-panel>
@@ -10,5 +10,9 @@
     <ng-template #tab1>
         <app-common-v1-material-category-select-panel (nodeSelected)='onCategoryNodeSelected($event)'></app-common-v1-material-category-select-panel>
     </ng-template>
+
+    <div style="display:none;">
+        <input type="file" #fileCt (change)="onFileChange($event)">
+    </div>
 
 </page-plate-left-drawer-list-view>

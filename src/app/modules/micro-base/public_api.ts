@@ -23,3 +23,5 @@ export * from './interfaces/i-entity';
 export * from './interfaces/i-page-data';
 export * from './interfaces/i-query';
 export * from './interfaces/i-query-filter';
+
+export * from './conjunct-filter';

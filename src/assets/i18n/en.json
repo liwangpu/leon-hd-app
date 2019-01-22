@@ -256,7 +256,10 @@
         "Approve": "Approve",
         "OrderOverview": "Order Overview",
         "MemberInvitation": "Member Invitation",
-        "PointExchange": "Point Exchange Setting"
+        "PointExchange": "Point Exchange Setting",
+        "ExportAll": "Export All",
+        "ExportTemplate": "Export Template",
+        "Import": "Import"
     },
     "message": {
         "UploadSuccessfully": "Files Upload Successfully",
@@ -291,7 +294,8 @@
         "IWannaTryNow": "I can't wait,I wanna try now!",
         "GotoHomePage": "Goto Home Page",
         "WorkFlowOperateConfirm": "You'll do the \"{{value}}\" operateion,attention please,if you confirm the operation,the order's workflow will go to the next one,please confirm the operateion!",
-        "CopySuccessfully": "Copy Successfully"
+        "CopySuccessfully": "Copy Successfully",
+        "PleaseBePatientWhileProcessing": "Please be patient while processing!"
     },
     "tips": {
         "DragOrClickHere": "Click or Drop your files here",

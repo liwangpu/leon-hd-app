@@ -254,7 +254,10 @@
         "Approve": "批准",
         "OrderOverview": "订单总览",
         "MemberInvitation": "用户邀请",
-        "PointExchange": "积分兑换设定"
+        "PointExchange": "积分兑换设定",
+        "ExportAll": "导出全部",
+        "ExportTemplate": "导出模版",
+        "Import": "导入"
     },
     "message": {
         "UploadSuccessfully": "文件上传成功",
@@ -289,7 +292,8 @@
         "IWannaTryNow": "我不管，我现在就再试一次！",
         "GotoHomePage": "去主页瞧瞧",
         "WorkFlowOperateConfirm": "您将执行 \"{{value}}\"操作,请注意,执行操作后订单将进入下一个流程,并且不可撤回,请确认是否继续进行!",
-        "CopySuccessfully": "复制成功"
+        "CopySuccessfully": "复制成功",
+        "PleaseBePatientWhileProcessing": "正在处理,请耐心等待!"
     },
     "tips": {
         "DragOrClickHere": "点击或拖拽文件到这里",

@@ -8,6 +8,7 @@ import { IQueryFilter } from '../interfaces/i-query-filter';
 import { IPageData } from '../interfaces/i-page-data';
 import { QueryOperateEnum } from '../enums/query-operate-enum';
 import { AppConfigService } from '../../../app-config.service';
+import { ConjunctFilter } from '../conjunct-filter';
 
 export class WebapiService<T extends IEntity> extends WebapiBaseService {
 
@@ -109,7 +110,7 @@ export class WebapiService<T extends IEntity> extends WebapiBaseService {
     if (query.desc)
       params = params.append('desc', `${query.desc}`);
 
-    let queryPart = conjunctFilter(advanceQueryFilters);
+    let queryPart = ConjunctFilter(advanceQueryFilters);
 
     params = params.append('page', `${query.page ? query.page : 1}`);
     params = params.append('pageSize', `${query.pageSize ? query.pageSize : 10}`);
@@ -118,23 +119,3 @@ export class WebapiService<T extends IEntity> extends WebapiBaseService {
 
 
 }
-
-//TODO:转为q查询方式
-function conjunctFilter(advanceQueryFilters?: Array<IQueryFilter>): string {
-  let queryPart = '';
-  if (advanceQueryFilters && advanceQueryFilters.length) {
-    for (let item of advanceQueryFilters) {
-      let operateStr = '';
-      switch (item.operate) {
-        case QueryOperateEnum.equal:
-          operateStr = '=';
-          break;
-        default:
-          operateStr = '=';
-          break;
-      }
-      queryPart += `${item.field}${operateStr}${item.value}&`;
-    }
-  }
-  return queryPart;
-}//conjunctFilter

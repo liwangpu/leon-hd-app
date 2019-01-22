@@ -11,8 +11,8 @@
         <app-common-v1-product-category-select-panel (nodeSelected)='onCategoryNodeSelected($event)'></app-common-v1-product-category-select-panel>
     </ng-template>
 
-    <!-- <ul class="list-page-filters" query-filter>
-        <li>123</li>
-        <li>123</li>
-    </ul> -->
+    <div style="display:none;">
+        <input type="file" #fileCt (change)="onFileChange($event)">
+    </div>
+
 </page-plate-left-drawer-list-view>

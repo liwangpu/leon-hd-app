@@ -1,14 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { Location } from '@angular/common';
 import { V1ListViewPageBase } from 'apps-base';
-import { AppProgressService, AppSearchService } from 'scaffold-app-core';
+import { AppProgressService, AppSearchService, Path } from 'scaffold-app-core';
 import { ICommonTableColumndef, IListViewAdvanceMenu } from 'scaffold-page-plate';
 import { ProductService, Product } from 'micro-dmz-hd';
-import { AsyncHandleService, DialogFactoryService } from 'scaffold-app-minor';
-import { IQueryFilter, QueryOperateEnum } from 'micro-base';
+import { AsyncHandleService, DialogFactoryService, SnackbarService } from 'scaffold-app-minor';
+import { IQueryFilter, QueryOperateEnum, ConjunctFilter } from 'micro-base';
 import { ProductDetailCategoryFormComponent } from '../product-detail/product-detail-category-form/product-detail-category-form.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
   selector: 'app-product',
@@ -71,11 +73,62 @@ export class ProductComponent extends V1ListViewPageBase implements OnInit, OnDe
       });//subscribe
     }//onClick
   };
+  _importTemplate: IListViewAdvanceMenu = {
+    name: 'button.Import',
+    icon: 'cloud_upload',
+    needSelectedItem: false,
+    permissionPoint: 'import_template',
+    onClick: () => {
+      this.fileCt.nativeElement.click();
+    }
+  };
+  _exportTemplate: IListViewAdvanceMenu = {
+    name: 'button.ExportTemplate',
+    icon: 'cloud_download',
+    needSelectedItem: false,
+    permissionPoint: 'export_template',
+    onClick: () => {
+      this.httpClient.get(`${this.apiSrv.uri}/ProductAndCategoryImportTemplate?`, { responseType: 'blob' }).subscribe(fs => {
+        saveAs(fs, 'Export Result.csv');
+      });
+    }
+  };
+  _exportAll: IListViewAdvanceMenu = {
+    name: 'button.ExportAll',
+    icon: 'cloud_download',
+    needSelectedItem: false,
+    permissionPoint: 'export_all',
+    onClick: () => {
+
+      let advanQueryArr: Array<IQueryFilter> = [
+        {
+          field: 'page',
+          value: this.pageData.page,
+          operate: QueryOperateEnum.equal
+        },
+        {
+          field: 'pageSize',
+          value: this.pageData.size,
+          operate: QueryOperateEnum.equal
+        }
+      ];
+      let queryPart = ConjunctFilter(advanQueryArr.concat(this._advanceQueryFilters));
+
+      this.snackbarSrv.simpleTranslateBar('message.PleaseBePatientWhileProcessing');
+      this.httpClient.get(`${this.apiSrv.uri}/Export?${queryPart}`, { responseType: 'blob' }).subscribe(fs => {
+        saveAs(fs, 'Export Result.csv');
+      });
+    }
+  };
   advanceMenus: Array<IListViewAdvanceMenu> = [
     this._changeCategoryAdvanceMenu,
-    this._deleteAdvanceMenu
+    this._deleteAdvanceMenu,
+    this._exportTemplate,
+    this._importTemplate,
+    this._exportAll
   ];
-  constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: ProductService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe, protected dialogSrv: DialogFactoryService) {
+  @ViewChild('fileCt') fileCt: ElementRef;
+  constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: ProductService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe, protected dialogSrv: DialogFactoryService, protected httpClient: HttpClient, protected snackbarSrv: SnackbarService) {
     super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr);
   }//constructor
 
@@ -109,5 +162,21 @@ export class ProductComponent extends V1ListViewPageBase implements OnInit, OnDe
 
     this.advanceQueryFilters = filters;
   }//onNodeSelected
+
+  onFileChange(event: any) {
+    let fileBrowser = this.fileCt.nativeElement;
+    if (fileBrowser.files && fileBrowser.files[0]) {
+      let formData = new FormData();
+      let file = fileBrowser.files[0];
+      let header = new HttpHeaders({
+        "fileExt": Path.getFileExtension(file.name)
+      });
+      formData.append("file", file);
+      this.snackbarSrv.simpleTranslateBar('message.PleaseBePatientWhileProcessing');
+      this.httpClient.put(`${this.apiSrv.uri}/ImportProductAndCategory`, formData, { headers: header, responseType: 'blob' }).subscribe(fs => {
+        saveAs(fs, 'Import Result.csv');
+      });
+    }
+  }//onFileChange
 
 }
