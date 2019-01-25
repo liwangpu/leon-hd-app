@@ -80,8 +80,8 @@ export class WorkFlowDetailFlowDesignerComponent implements OnInit, AfterViewIni
       id: id,
       workFlowId: this.workFlowId
     });
-    this.asyncHandleSrv.asyncRequest(source$).subscribe(res => {
-      this.workFlowItems = res.workFlowItems;
+    this.asyncHandleSrv.asyncRequest(source$).subscribe(() => {
+      this.workFlowItems = this.workFlowItems.filter(x => x.id != id);
     });//subscribe
   }//onDeleteFlow
 
