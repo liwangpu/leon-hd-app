@@ -2,47 +2,9 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "baseUrl": "./",
+    "baseUrl": "../",
     "module": "commonjs",
-    "types": [],
-    "paths": {
-      "@env/*": [
-        "./environments/*"
-      ],
-      "@app/app-legacy": [
-        "./app/modules/app-legacy/legacy/public_api"
-      ],
-      "micro-base": [
-        "./app/modules/micro-base/public_api"
-      ],
-      "micro-app-basic": [
-        "./app/modules/micro-app-basic/public_api"
-      ],
-      "scaffold-mat-bcl": [
-        "./app/modules/scaffold-mat-bcl/public_api"
-      ],
-      "scaffold-ng-bcl": [
-        "./app/modules/scaffold-ng-bcl/public_api"
-      ],
-      "scaffold-page-plate": [
-        "./app/modules/scaffold-page-plate/public_api"
-      ],
-      "scaffold-app-core": [
-        "./app/modules/scaffold-app-core/public_api"
-      ],
-      "micro-dmz-hd": [
-        "./app/modules/micro-dmz-hd/public_api"
-      ],
-      "scaffold-app-minor": [
-        "./app/modules/scaffold-app-minor/public_api"
-      ],
-      "apps-base": [
-        "./app/modules/apps-base/public_api"
-      ],
-      "micro-dmz-oms": [
-        "./app/modules/micro-dmz-oms/public_api"
-      ]
-    }
+    "types": []
   },
   "exclude": [
     "test.ts",
