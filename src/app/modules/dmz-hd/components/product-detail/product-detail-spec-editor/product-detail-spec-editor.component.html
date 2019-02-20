@@ -19,20 +19,28 @@
         <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input type="number" matInput name="purchasePrice" formControlName="purchasePrice" required placeholder="{{'glossary.PurchasePrice'|translate}}">
-        <mat-error *ngIf="detailForm.get('purchasePrice').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+        <input type="number" matInput name="purchasePrice" formControlName="purchasePrice" required
+          placeholder="{{'glossary.PurchasePrice'|translate}}">
+        <mat-error *ngIf="detailForm.get('purchasePrice').hasError('required')">{{'message.RequiredError'|translate}}
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input type="number" matInput name="partnerPrice" formControlName="partnerPrice" required placeholder="{{'glossary.PartnerPrice'|translate}}">
-        <mat-error *ngIf="detailForm.get('partnerPrice').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+        <input type="number" matInput name="partnerPrice" formControlName="partnerPrice" required
+          placeholder="{{'glossary.PartnerPrice'|translate}}">
+        <mat-error *ngIf="detailForm.get('partnerPrice').hasError('required')">{{'message.RequiredError'|translate}}
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input type="number" matInput name="price" formControlName="price" required placeholder="{{'glossary.RetailPrice'|translate}}">
-        <mat-error *ngIf="detailForm.get('price').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
+        <input type="number" matInput name="price" formControlName="price" required
+          placeholder="{{'glossary.RetailPrice'|translate}}">
+        <mat-error *ngIf="detailForm.get('price').hasError('required')">{{'message.RequiredError'|translate}}
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput placeholder="Textarea" name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
-        <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+        <textarea matInput placeholder="Textarea" name="description" formControlName="description"
+          placeholder="{{'glossary.Description'|translate}}"></textarea>
+        <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}
+        </mat-error>
       </mat-form-field>
       <div class="bar">
         <button mat-button (click)='submit()' [disabled]='!detailForm.valid'>
@@ -41,5 +49,8 @@
         </button>
       </div>
     </form>
+  </div>
+  <div class="package">
+    <app-product-package-manage [productSpecId]='currentProductSpecId'></app-product-package-manage>
   </div>
 </div>

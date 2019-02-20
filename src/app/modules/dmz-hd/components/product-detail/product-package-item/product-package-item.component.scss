@@ -1,0 +1,29 @@
+:host {
+    div.container {
+        border-bottom: 1px solid #999999;
+        vertical-align: bottom;
+        display: flex;
+        flex-flow: row;
+        input {
+            padding: .3rem;
+            outline: none;
+            font-size: 1rem;
+            &.name {
+                width: 150px;
+            }
+            &.num {
+                width: 150px;
+            }
+        }
+        textarea{
+            flex: 1 1 0;
+            height: 40px;
+            padding: .3rem;
+            font-size: 1rem;
+            outline: none;
+        }
+        div.bar {
+            width: 80px;
+        }
+    }
+}

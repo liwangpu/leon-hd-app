@@ -12,6 +12,7 @@ import { AsyncHandleService } from 'scaffold-app-minor';
 export class ProductDetailSpecEditorComponent implements OnInit {
 
   currentProductId: string;
+  currentProductSpecId: string;
   currentSpecIcon: string;
   detailForm: FormGroup;
   specifications: Array<ProductSpec> = [];
@@ -58,6 +59,7 @@ export class ProductDetailSpecEditorComponent implements OnInit {
       return;
     }
     let item = this.specifications.filter(x => x.id == specId)[0];
+    this.currentProductSpecId = item.id;
     this.currentSpecIcon = item.icon;
     this.detailForm.patchValue(item);
   }//loadSpecMsg

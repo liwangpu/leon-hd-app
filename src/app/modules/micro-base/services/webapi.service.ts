@@ -6,7 +6,6 @@ import { Entity } from '../models/entity';
 import { IQuery } from '../interfaces/i-query';
 import { IQueryFilter } from '../interfaces/i-query-filter';
 import { IPageData } from '../interfaces/i-page-data';
-import { QueryOperateEnum } from '../enums/query-operate-enum';
 import { AppConfigService } from '../../../app-config.service';
 import { ConjunctFilter } from '../conjunct-filter';
 

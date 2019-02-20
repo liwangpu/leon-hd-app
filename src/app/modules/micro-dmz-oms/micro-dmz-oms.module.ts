@@ -4,6 +4,7 @@ import { MemberHierarchyParamService } from './services/member-hierarchy-param.s
 import { MemberService } from './services/member.service';
 import { NationalUrbanService } from './services/national-urban.service';
 import { OrderService } from './services/order.service';
+import { ProductPackageService } from './services/product-package.service';
 
 @NgModule({
   providers: [
@@ -11,7 +12,8 @@ import { OrderService } from './services/order.service';
     MemberHierarchyParamService,
     NationalUrbanService,
     MemberService,
-    OrderService
+    OrderService,
+    ProductPackageService
   ]
 })
 export class MicroDmzOmsModule {

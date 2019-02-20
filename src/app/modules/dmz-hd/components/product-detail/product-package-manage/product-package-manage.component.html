@@ -1,0 +1,52 @@
+<div class="container">
+  <p class="title">包装管理</p>
+  <div class="bar">
+    <button mat-button (click)='addPackage()'>
+      <mat-icon>add</mat-icon>
+      <span>添加</span>
+    </button>
+  </div>
+  <div class="header">
+    <table>
+      <tr>
+        <td class="name">包装名称</td>
+        <td class="num">数量</td>
+        <td class="remark">备注</td>
+      </tr>
+    </table>
+  </div>
+  <div class="content">
+    <app-product-package-item></app-product-package-item>
+  </div>
+  <!-- <table class="pck">
+    <thead>
+      <tr>
+        <th class="name">名称</th>
+        <th class="num">数量</th>
+        <th class="remark">备注</th>
+        <th class="op"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf='newPackage'>
+        <td>
+          <input type="text" class="edit">
+        </td>
+        <td>
+          <input type="number">
+        </td>
+        <td>
+          <textarea name="" id=""></textarea>
+        </td>
+        <td>
+          <button mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+</div>

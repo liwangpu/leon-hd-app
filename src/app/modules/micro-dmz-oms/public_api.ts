@@ -10,6 +10,7 @@ export * from './services/member-hierarchy-param.service';
 export * from './services/member.service';
 export * from './services/national-urban.service';
 export * from './services/order.service';
+export * from './services/product-package.service';
 /*
  * Models 
  */
@@ -22,6 +23,7 @@ export * from './models/order-content-item';
 export * from './models/order-flow-log';
 export * from './models/order';
 export * from './models/order-detail';
+export * from './models/product-package';
 /*
  *  Enums 
  */

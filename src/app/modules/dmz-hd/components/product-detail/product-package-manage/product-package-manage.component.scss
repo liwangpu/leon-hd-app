@@ -1,0 +1,29 @@
+:host {
+    div.container {
+        p.title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #999999;
+        }
+        div.bar {
+            display: flex;
+            flex-flow: row;
+            justify-content: flex-end;
+        }
+        div.header {
+            table {
+                width: 100%;
+                color: #999999;
+                td {
+                    text-align: left;
+                    &.name {
+                        width: 150px;
+                    }
+                    &.num{
+                        width: 150px;  
+                    }
+                }
+            }
+        }
+    }
+}
