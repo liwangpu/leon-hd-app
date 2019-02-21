@@ -188,7 +188,8 @@
         "AutoWorkFlow": "Auto WorkFlow",
         "Rate": "Rate",
         "Inviter": "Inviter",
-        "Superior": "Superior"
+        "Superior": "Superior",
+        "ProductPackageManage": "Package Management"
     },
     "button": {
         "Logout": "Logout",

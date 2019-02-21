@@ -1,28 +1,29 @@
 <div class="container">
   <div class="title">
     <mat-icon style='color:#999999;'>subtitles</mat-icon>
-    <span class="title">包装管理</span>
+    <span class="title">{{'glossary.ProductPackageManage'|translate}}</span>
   </div>
   <div class="header">
     <table>
       <tr>
-        <td class="name">包装名称</td>
-        <td class="num">数量</td>
-        <td class="remark">备注</td>
+        <td class="name">{{'glossary.Name'|translate}}</td>
+        <td class="num">{{'glossary.Quantity'|translate}}</td>
+        <td class="remark">{{'glossary.Description'|translate}}</td>
       </tr>
     </table>
   </div>
   <div class="content">
-    <app-product-package-item (save)='savePackage($event)' (delete)='deletePackage($event)'  *ngFor='let pck of packages' [packageId]='pck.id'
-      [packageName]='pck.name' [packageNum]='pck.num' [packageRemark]='pck.description'>
+    <app-product-package-item (save)='savePackage($event)' (delete)='deletePackage($event)' *ngFor='let pck of packages'
+      [packageId]='pck.id' [packageName]='pck.name' [packageNum]='pck.num' [packageRemark]='pck.description'>
     </app-product-package-item>
-    <app-product-package-item (save)='savePackage($event)' (delete)='deletePackage()' *ngIf='newPackage' [editMode]='true'>
+    <app-product-package-item (save)='savePackage($event)' (delete)='deletePackage()' *ngIf='newPackage'
+      [editMode]='true'>
     </app-product-package-item>
   </div>
   <div class="bar">
     <button mat-button (click)='addPackage()'>
       <mat-icon>add</mat-icon>
-      <span>添加</span>
+      <span>{{'button.Add'|translate}}</span>
     </button>
   </div>
 </div>

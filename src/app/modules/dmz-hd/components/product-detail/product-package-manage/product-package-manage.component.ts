@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductPackageService, ProductPackage } from 'micro-dmz-oms';
+import { AsyncHandleService } from 'scaffold-app-minor';
 
 @Component({
   selector: 'app-product-package-manage',
@@ -26,7 +27,7 @@ export class ProductPackageManageComponent implements OnInit {
 
     this._lastSpecId = id;
   }
-  constructor(protected pckSrv: ProductPackageService) {
+  constructor(protected pckSrv: ProductPackageService, protected asyncSrv: AsyncHandleService) {
 
   }//constructor
 
@@ -52,7 +53,14 @@ export class ProductPackageManageComponent implements OnInit {
 
   savePackage(pck: ProductPackage) {
     pck.productSpecId = this._lastSpecId;
-    this.pckSrv.update(pck).subscribe(res => {
+    let source = this.pckSrv.update(pck);
+    this.asyncSrv.asyncRequest(source, false, (err) => {
+      if (err.error.num && err.error.num[0])
+        return err.error.num && err.error.num[0];
+      if (err.error.name && err.error.name[0])
+        return err.error.name && err.error.name[0];
+      return '';
+    }).subscribe(res => {
       this.newPackage = undefined;
       let arr = [...this.packages];
       if (!pck.id) {

@@ -1,9 +1,10 @@
 <div class="container">
-  <input type="text" class="name" placeholder="请输入名称" [(ngModel)]='packageName' [readonly]='!editMode'
+  <input type="text" class="name" placeholder="—" [(ngModel)]='packageName' [readonly]='!editMode'
     [class.edit]='editMode'>
-  <input type="number" class="num" placeholder="请输入数量" [(ngModel)]='packageNum' [readonly]='!editMode'
+  <input type="number" class="num" placeholder="0" [(ngModel)]='packageNum' [readonly]='!editMode'
     [class.edit]='editMode'>
-  <textarea rows="1" [(ngModel)]='packageRemark' [readonly]='!editMode' [class.edit]='editMode'></textarea>
+  <textarea rows="1" placeholder="—" [(ngModel)]='packageRemark' [readonly]='!editMode'
+    [class.edit]='editMode'></textarea>
   <div class="bar">
     <button mat-icon-button (click)='onEdit()'>
       <mat-icon>
