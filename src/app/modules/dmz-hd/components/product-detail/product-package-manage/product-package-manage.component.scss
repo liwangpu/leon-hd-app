@@ -1,9 +1,16 @@
 :host {
     div.container {
-        p.title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #999999;
+        div.title {
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            margin: .5rem 0;
+            span.title {
+                font-size: 1rem;
+                font-weight: 600;
+                padding-left: .5rem;
+                color: #999999;
+            }
         }
         div.bar {
             display: flex;
@@ -19,8 +26,8 @@
                     &.name {
                         width: 150px;
                     }
-                    &.num{
-                        width: 150px;  
+                    &.num {
+                        width: 150px;
                     }
                 }
             }

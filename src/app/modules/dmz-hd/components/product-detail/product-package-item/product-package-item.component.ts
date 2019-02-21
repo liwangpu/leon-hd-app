@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-product-package-item',
@@ -7,14 +7,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductPackageItemComponent implements OnInit {
 
-  editMode = false;
+  @Input() editMode = false;
+  @Input() packageId: string;
+  @Input() packageName: string;
+  @Input() packageNum: number;
+  @Input() packageRemark: string;
+  @Output() save = new EventEmitter<any>();
+  @Output() delete = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
-  }
 
-  edit() {
+  }//ngOnInit
+
+  onEdit() {
+    if (this.editMode) {
+      this.save.next({
+        id: this.packageId,
+        name: this.packageName,
+        num: this.packageNum,
+        description: this.packageRemark
+      });
+    }
     this.editMode = !this.editMode;
-  }//edit
+  }//onEdit
+
+  onDelete() {
+    this.delete.next(this.packageId ? this.packageId : undefined);
+  }//onDelete
+
 
 }

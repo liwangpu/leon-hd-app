@@ -1,14 +1,16 @@
 <div class="container">
-  <input type="text" class="name" placeholder="请输入名称">
-  <input type="number" class="num" placeholder="请输入数量">
-  <textarea rows="1"></textarea>
+  <input type="text" class="name" placeholder="请输入名称" [(ngModel)]='packageName' [readonly]='!editMode'
+    [class.edit]='editMode'>
+  <input type="number" class="num" placeholder="请输入数量" [(ngModel)]='packageNum' [readonly]='!editMode'
+    [class.edit]='editMode'>
+  <textarea rows="1" [(ngModel)]='packageRemark' [readonly]='!editMode' [class.edit]='editMode'></textarea>
   <div class="bar">
-    <button mat-icon-button (click)='edit()'>
+    <button mat-icon-button (click)='onEdit()'>
       <mat-icon>
         {{editMode?"save":"edit"}}
       </mat-icon>
     </button>
-    <button mat-icon-button>
+    <button mat-icon-button (click)='onDelete()'>
       <mat-icon>delete</mat-icon>
     </button>
   </div>

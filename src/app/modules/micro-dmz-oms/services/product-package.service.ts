@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { WebapiBaseService } from 'micro-base';
+import { WebapiBaseService, WebapiService } from 'micro-base';
 import { HttpClient } from '@angular/common/http';
 import { AppConfigService } from '../../../app-config.service';
 import { ProductPackage } from '../models/product-package';
 
 @Injectable()
-export class ProductPackageService extends WebapiBaseService {
+export class ProductPackageService extends WebapiService<ProductPackage> {
 
   constructor(protected httpClient: HttpClient, protected appConfigSrv: AppConfigService) {
     super(httpClient, appConfigSrv);
@@ -13,7 +13,7 @@ export class ProductPackageService extends WebapiBaseService {
   }//constructor
 
   getBySpecId(productSpecId: string) {
-    return this.httpClient.get<Array<ProductPackage>>(`${this.uri}?productSpecId=${productSpecId}`, { headers: this.header });
+    return this.httpClient.get<Array<ProductPackage>>(`${this.uri}/GetByProductSpecId/${productSpecId}`, { headers: this.header });
   }//getBySpecId
 
 }
