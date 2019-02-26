@@ -1,4 +1,5 @@
 import { Entity } from "micro-base";
+import { OrderDetailPackage } from "./order-detail-package";
 
 export class OrderDetail extends Entity {
     productSpecId: string;
@@ -13,4 +14,5 @@ export class OrderDetail extends Entity {
     productSpecName: string;
     attachmentIds: string;
     attachments: Array<{ id: string, name: string, url: string }>;
+    packages:Array<OrderDetailPackage>;
 }

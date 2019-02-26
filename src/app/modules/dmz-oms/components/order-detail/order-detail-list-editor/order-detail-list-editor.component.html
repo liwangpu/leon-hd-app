@@ -13,6 +13,7 @@
           <th class="total-price">小计</th>
           <th class="material">材质</th>
           <th class="fabric">面料</th>
+          <th class="package">包装</th>
           <th class="remark">备注</th>
           <th class="files">附件</th>
         </tr>
@@ -36,6 +37,13 @@
           <td>{{it.totalPrice}}</td>
           <td></td>
           <td></td>
+          <td>
+            <p *ngFor='let pck of it.packages'>
+              {{pck.packageName}}
+              ({{pck.packingUnit}}件/包)
+              *{{pck.num}}
+            </p>
+          </td>
           <td>{{it.remark}}</td>
           <td>
             <div class="attach-item" *ngFor='let itx of it.attachments'>

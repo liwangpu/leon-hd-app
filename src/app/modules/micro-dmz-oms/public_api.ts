@@ -24,6 +24,7 @@ export * from './models/order-flow-log';
 export * from './models/order';
 export * from './models/order-detail';
 export * from './models/product-package';
+export * from './models/order-detail-package';
 /*
  *  Enums 
  */

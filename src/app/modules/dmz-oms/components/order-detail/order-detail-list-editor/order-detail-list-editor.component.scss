@@ -45,6 +45,9 @@
                     .fabric {
                         width: 150px;
                     }
+                    .package {
+                        width: 300px;
+                    }
                     .remark {
                         width: 200px;
                     }
@@ -63,7 +66,7 @@
                     .attach-item {
                         &:hover {
                             .delete {
-                                visibility:visible;
+                                visibility: visible;
                             }
                         }
                         .delete {

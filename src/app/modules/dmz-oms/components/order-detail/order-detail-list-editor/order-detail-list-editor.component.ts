@@ -42,13 +42,14 @@ export class OrderDetailListEditorComponent implements OnInit, OnDestroy {
     dialogRef.componentInstance.afterDataRefresh.subscribe(form => {
       form['orderId'] = this.currentOrderId;
       let source$ = this.orderSrv.updateOrderDetail(form);
-      this.asyncHandleSrv.asyncRequest(source$).subscribe((order: Order) => {
+      this.asyncHandleSrv.asyncRequest(source$).subscribe((detail: OrderDetail) => {
         for (let idx = this.orderDetails.length - 1; idx >= 0; idx--) {
           let item = this.orderDetails[idx];
           if (item.id == form.id) {
             item.num = form.num;
             item.totalPrice = form.totalPrice;
             item.remark = form.remark;
+            item.packages = detail.packages;
             break;
           }//if
         }
