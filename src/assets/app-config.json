@@ -1,5 +1,5 @@
 {
-    "server": "http://testapi.damaozhu.com.cn",
+    "server": "http://localhost:1882",
     "toolServer": "http://testtool.damaozhu.com.cn",
     "secretKey": "damaozhu-morejee-app"
 }

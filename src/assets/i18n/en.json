@@ -189,7 +189,8 @@
         "Rate": "Rate",
         "Inviter": "Inviter",
         "Superior": "Superior",
-        "ProductPackageManage": "Package Management"
+        "ProductPackageManage": "Package Management",
+        "Brand":"Brand"
     },
     "button": {
         "Logout": "Logout",

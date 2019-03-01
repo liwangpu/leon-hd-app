@@ -47,6 +47,11 @@ export class ProductComponent extends V1ListViewPageBase implements OnInit, OnDe
         return data.unit;
       }
     }
+    , {
+      id: 'brand', name: 'glossary.Brand', width: 150, cell: (data: Product) => {
+        return data.brand;
+      }
+    }
     , this._descriptionColumnDef
     , this._createdTime
   ];

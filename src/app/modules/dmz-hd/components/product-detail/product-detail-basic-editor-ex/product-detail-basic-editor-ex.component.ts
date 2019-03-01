@@ -18,6 +18,7 @@ export class ProductDetailBasicEditorExComponent extends DetailBasicEditorExBase
       id: [],
       categoryId: [''],
       unit: [''],
+      brand: [''],
       categoryName: ['', [Validators.required]]
     });
   }

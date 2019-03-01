@@ -187,7 +187,8 @@
         "Rate": "比率",
         "Inviter": "邀请人",
         "Superior": "上级",
-        "ProductPackageManage": "包装管理"
+        "ProductPackageManage": "包装管理",
+        "Brand":"品牌"
     },
     "button": {
         "Logout": "退出",
