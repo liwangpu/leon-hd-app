@@ -2,17 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ScaffoldAppCoreModule, AuthInterceptorService, ErrorInterceptorService } from 'scaffold-app-core';
-import { ScaffoldAppMinorModule } from 'scaffold-app-minor';
-import { ScaffoldPagePlateModule } from 'scaffold-page-plate';
+import { AuthInterceptorService, ErrorInterceptorService } from 'scaffold-app-core';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MicroAppBasicModule } from 'micro-app-basic';
-import { MicroDmzHdModule } from 'micro-dmz-hd';
-import { AppMainModule } from './modules/app-main/app-main.module';
-import { MicroDmzOmsModule } from 'micro-dmz-oms';
 import { AppConfigService } from './app-config.service';
 
 // AoT requires an exported function for factories
@@ -49,13 +43,13 @@ const appConfigInitializerFn = (appConfig: AppConfigService) => {
         deps: [HttpClient]
       }
     }),
-    ScaffoldAppCoreModule.forRoot(),
-    ScaffoldAppMinorModule,
-    ScaffoldPagePlateModule,
-    MicroAppBasicModule.forRoot(),
-    MicroDmzHdModule.forRoot(),
-    MicroDmzOmsModule.forRoot(),
-    AppMainModule,
+    // ScaffoldAppCoreModule.forRoot(),
+    // ScaffoldAppMinorModule,
+    // ScaffoldPagePlateModule,
+    // MicroAppBasicModule.forRoot(),
+    // MicroDmzHdModule.forRoot(),
+    // MicroDmzOmsModule.forRoot(),
+    // AppMainModule,
     AppRoutingModule
   ],
   providers: [
