@@ -6,5 +6,7 @@ export class AssetCategory extends ListableBase {
     displayIndex: number;
     parentId: string;
     type: string;
+    isolate: boolean;
+    tag: string;
     children: Array<AssetCategory>;
 }

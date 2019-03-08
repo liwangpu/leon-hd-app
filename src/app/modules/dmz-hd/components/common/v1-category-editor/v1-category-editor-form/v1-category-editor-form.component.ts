@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { AssetCategory } from 'micro-dmz-hd';
+import { MatCheckbox, MatCheckboxChange } from '@angular/material';
 
 @Component({
   selector: 'app-v1-category-editor-form',
@@ -14,12 +15,15 @@ export class V1CategoryEditorFormComponent implements OnInit, OnDestroy {
   enableConfirm = false;
   detailForm: FormGroup;
   afterSubmit = new Subject<any>();
+  @ViewChild('isolateCt') isolateCt: MatCheckbox;
   constructor(protected formBuilder: FormBuilder) {
     this.detailForm = this.formBuilder.group({
       id: [''],
       parentId: ['', [Validators.required]],
       type: ['', [Validators.required]],
       name: ['', [Validators.required]],
+      tag: [''],
+      isolate: ['false'],
       description: ['']
     });
   }
@@ -37,10 +41,17 @@ export class V1CategoryEditorFormComponent implements OnInit, OnDestroy {
 
   afterReceiveData(data: { category: AssetCategory }) {
     this.detailForm.patchValue(data.category);
+    this.isolateCt.checked = data.category.isolate;
   }//afterReceiveData
 
   onConfirm() {
     this.afterSubmit.next(this.detailForm.value);
   }//onConfirm
+
+  onIsolateChange(evt: MatCheckboxChange) {
+    this.detailForm.patchValue({
+      isolate: evt.checked
+    });
+  }//onIsolateChange
 
 }

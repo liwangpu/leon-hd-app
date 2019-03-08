@@ -1,17 +1,27 @@
-<page-plate-simple-confirm-dialog [dialogTitle]='"dialog.EditCategory"' [enableConfirm]='enableConfirm' (afterConfirm)='onConfirm()' (afterReceiveData)='afterReceiveData($event)'>
+<page-plate-simple-confirm-dialog [dialogTitle]='"dialog.EditCategory"' [enableConfirm]='enableConfirm'
+  (afterConfirm)='onConfirm()' (afterReceiveData)='afterReceiveData($event)'>
   <div class="container">
     <form name="detailForm" [formGroup]="detailForm">
       <input type="hidden" formControlName='id' name='id'>
       <input type="hidden" formControlName='parentId' name='parentId'>
       <mat-form-field>
         <input matInput name="name" formControlName="name" placeholder="{{'glossary.Name'|translate}}" required>
-        <mat-error *ngIf="detailForm.get('name').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+        <mat-error *ngIf="detailForm.get('name').hasError('maxlength')">{{'message.MaxLengthError'|translate}}
+        </mat-error>
         <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <textarea matInput placeholder="Textarea" name="description" formControlName="description" placeholder="{{'glossary.Description'|translate}}"></textarea>
-        <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}</mat-error>
+        <input matInput name="tag" formControlName="tag" placeholder="{{'glossary.Tag'|translate}}">
+      </mat-form-field>
+
+      <mat-checkbox color='primary' (change)='onIsolateChange($event)' #isolateCt>独立节点</mat-checkbox>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Textarea" name="description" formControlName="description"
+          placeholder="{{'glossary.Description'|translate}}"></textarea>
+        <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}
+        </mat-error>
       </mat-form-field>
     </form>
   </div>

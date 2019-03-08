@@ -190,7 +190,8 @@
         "Inviter": "Inviter",
         "Superior": "Superior",
         "ProductPackageManage": "Package Management",
-        "Brand":"Brand"
+        "Brand":"Brand",
+        "Tag":"Tag"
     },
     "button": {
         "Logout": "Logout",
