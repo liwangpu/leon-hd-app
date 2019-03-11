@@ -7,7 +7,7 @@ import { AppCacheService } from './app-cache.service';
 @Injectable()
 export class LanguageService {
 
-  langs: Array<string> = ['cn', 'en'];
+  langs: Array<string> = ['cn', 'zh-tw', 'en'];
   private _changeLang$ = new BehaviorSubject<string>(undefined);
   changeLang$ = this._changeLang$.asObservable();
   constructor(protected translate: TranslateService, protected appCacheSrv: AppCacheService) {
