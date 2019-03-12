@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
-import { TreeModel, NodeEvent } from 'ng2-tree';
+import { TreeModel, NodeEvent, Ng2TreeSettings } from 'ng2-tree';
 
 @Component({
   selector: 'app-common-v1-category-select-panel',
@@ -9,6 +9,7 @@ import { TreeModel, NodeEvent } from 'ng2-tree';
 })
 export class V1CategorySelectPanelComponent implements OnInit {
 
+  @Input() settings: Ng2TreeSettings;
   categoryName: string;
   afterCategorySelected$ = new Subject<string>();
   @Input() categoryModel: TreeModel = { value: '默认值' };

@@ -6,11 +6,17 @@ import { V1CategorySelectPanelBase } from 'apps-base';
 @Component({
   selector: 'app-common-v1-panel-assembly-category-select-panel',
   template: `
-  <app-common-v1-category-select-panel [categoryModel]='categoryModel' (nodeSelected)='onNodeSelected($event)'></app-common-v1-category-select-panel>
+  <app-common-v1-category-select-panel [settings]='settings' [categoryModel]='categoryModel' (nodeSelected)='onNodeSelected($event)'></app-common-v1-category-select-panel>
   `
 })
 export class V1PanelAssemblyCategorySelectPanelComponent extends V1CategorySelectPanelBase implements OnInit {
 
+  settings = {
+    static: true,
+    rightMenu: false,
+    leftMenu: false,
+    rootIsVisible: true
+  };
   constructor(protected categorySrv: PanelAssemblyCategoryService, protected tranSrv: TranslateService) {
     super(categorySrv, tranSrv);
   }//constructor

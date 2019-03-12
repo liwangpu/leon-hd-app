@@ -11,7 +11,8 @@ export class V1CategorySelectPanelBase implements OnInit {
     settings = {
         static: true,
         rightMenu: false,
-        leftMenu: false
+        leftMenu: false,
+        rootIsVisible:false
     };
     categoryModel: TreeModel = { value: '默认值' };
     @Input() unCategoryName = 'glossary.UnCategory';
