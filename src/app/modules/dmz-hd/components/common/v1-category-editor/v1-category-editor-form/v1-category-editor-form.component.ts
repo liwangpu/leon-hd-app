@@ -15,7 +15,7 @@ export class V1CategoryEditorFormComponent implements OnInit, OnDestroy {
   enableConfirm = false;
   detailForm: FormGroup;
   afterSubmit = new Subject<any>();
-  @ViewChild('isolateCt') isolateCt: MatCheckbox;
+  // @ViewChild('isolateCt') isolateCt: MatCheckbox;
   constructor(protected formBuilder: FormBuilder) {
     this.detailForm = this.formBuilder.group({
       id: [''],
@@ -41,7 +41,7 @@ export class V1CategoryEditorFormComponent implements OnInit, OnDestroy {
 
   afterReceiveData(data: { category: AssetCategory }) {
     this.detailForm.patchValue(data.category);
-    this.isolateCt.checked = data.category.isolate;
+    // this.isolateCt.checked = data.category.isolate;
   }//afterReceiveData
 
   onConfirm() {

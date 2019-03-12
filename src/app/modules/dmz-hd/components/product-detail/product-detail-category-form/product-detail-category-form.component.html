@@ -1,6 +1,19 @@
 <page-plate-simple-confirm-dialog [dialogTitle]='"dialog.ChangeCategory"' [enableConfirm]='enableConfirm'
     (afterConfirm)='afterConfirm()'>
     <div class="container">
-        <app-common-v1-product-category-select-panel [addUnCategoryNode]='false' (nodeItemSelected)='onCategoryNodeItemSelected($event)'></app-common-v1-product-category-select-panel>
+        <app-common-v1-product-category-select-panel categoryType='glossary.Product' [addUnCategoryNode]='false'
+            (nodeItemSelected)='onCategoryNodeItemSelected($event)'></app-common-v1-product-category-select-panel>
+
+        <app-common-v1-panel-category-select-panel categoryType='glossary.Panel' [addUnCategoryNode]='false'
+            (nodeItemSelected)='onCategoryNodeItemSelected($event)'>
+        </app-common-v1-panel-category-select-panel>
+
+        <app-common-v1-panel-component-category-select-panel categoryType='glossary.PanelComponent' [addUnCategoryNode]='false'
+            (nodeItemSelected)='onCategoryNodeItemSelected($event)'>
+        </app-common-v1-panel-component-category-select-panel>
+
+        <app-common-v1-panel-assembly-category-select-panel categoryType='glossary.PanelAssembly' [addUnCategoryNode]='false'
+            (nodeItemSelected)='onCategoryNodeItemSelected($event)'>
+        </app-common-v1-panel-assembly-category-select-panel>
     </div>
 </page-plate-simple-confirm-dialog>

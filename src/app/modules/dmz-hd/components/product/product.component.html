@@ -15,17 +15,17 @@
     </ng-template>
 
     <ng-template #tab2>
-        <app-common-v1-panel-category-select-panel [addUnCategoryNode]='false' (nodeSelected)='onCategoryNodeSelected($event)'>
+        <app-common-v1-panel-category-select-panel categoryType='glossary.Panel' [addUnCategoryNode]='false' (nodeSelected)='onCategoryNodeSelected($event)'>
         </app-common-v1-panel-category-select-panel>
     </ng-template>
 
     <ng-template #tab3>
-        <app-common-v1-panel-component-category-select-panel [addUnCategoryNode]='false' (nodeSelected)='onCategoryNodeSelected($event)'>
+        <app-common-v1-panel-component-category-select-panel categoryType='glossary.PanelComponent' [addUnCategoryNode]='false' (nodeSelected)='onCategoryNodeSelected($event)'>
         </app-common-v1-panel-component-category-select-panel>
     </ng-template>
 
     <ng-template #tab4>
-        <app-common-v1-panel-assembly-category-select-panel [addUnCategoryNode]='false' (nodeSelected)='onCategoryNodeSelected($event)'>
+        <app-common-v1-panel-assembly-category-select-panel categoryType='glossary.PanelAssembly' [addUnCategoryNode]='false' (nodeSelected)='onCategoryNodeSelected($event)'>
         </app-common-v1-panel-assembly-category-select-panel>
     </ng-template>
 

@@ -11,11 +11,11 @@
         <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field>
+      <!-- <mat-form-field>
         <input matInput name="tag" formControlName="tag" placeholder="{{'glossary.Tag'|translate}}">
       </mat-form-field>
 
-      <mat-checkbox color='primary' (change)='onIsolateChange($event)' #isolateCt>独立节点</mat-checkbox>
+      <mat-checkbox color='primary' (change)='onIsolateChange($event)' #isolateCt>独立节点</mat-checkbox> -->
 
       <mat-form-field>
         <textarea matInput placeholder="Textarea" name="description" formControlName="description"
