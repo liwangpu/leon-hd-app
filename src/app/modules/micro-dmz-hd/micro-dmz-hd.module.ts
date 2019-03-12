@@ -14,6 +14,9 @@ import { ProductSpecService } from './services/product-spec.service';
 import { ProductGroupCategoryService } from './services/product-group-category.service';
 import { PackageService } from './services/package.service';
 import { ProductGroupService } from './services/product-group.service';
+import { PanelCategoryService } from './services/panel-category.service';
+import { PanelComponentCategoryService } from './services/panel-component-category.service';
+import { PanelAssemblyCategoryService } from './services/panel-assembly-category.service';
 
 @NgModule({
   providers: [
@@ -31,7 +34,10 @@ import { ProductGroupService } from './services/product-group.service';
     StaticmeshService,
     ProductSpecService,
     ProductGroupService,
-    ProductGroupCategoryService
+    ProductGroupCategoryService,
+    PanelCategoryService,
+    PanelComponentCategoryService,
+    PanelAssemblyCategoryService
   ]
 })
 export class MicroDmzHdModule {

@@ -191,7 +191,10 @@
         "Superior": "Superior",
         "ProductPackageManage": "Package Management",
         "Brand":"Brand",
-        "Tag":"Tag"
+        "Tag":"Tag",
+        "Panel": "Panel",
+        "PanelComponent": "Panel Component",
+        "PanelAssembly": "Panel Assembly"
     },
     "button": {
         "Logout": "Logout",

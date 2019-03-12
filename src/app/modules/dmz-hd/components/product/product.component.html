@@ -1,14 +1,32 @@
-<page-plate-left-drawer-list-view [title]='title' [icon]='icon' [pageModels]='pageModels' [permissionPoints]='permissionPoints'
-    [rowMenus]='rowMenus' [pageSizeOptions]='pageSizeOptions' [advanceMenus]='advanceMenus' [columnDefs]='columnDefs'
-    [displayedColumns]='displayedColumns' [pageData]='pageData' (pageChange)='onPageChange($event)' (pageRefresh)='onRefresh()'
-    (pageOptionChange)='onPageOptionChange($event)' (pageModelChange)='onPageModelChange($event)' (rowClick)='onRowClick($event)'
-    (createData)='onCreateData()' (sortData)='onSortData($event)' #listViewCt>
+<page-plate-left-drawer-list-view [title]='title' [icon]='icon' [pageModels]='pageModels'
+    [permissionPoints]='permissionPoints' [rowMenus]='rowMenus' [pageSizeOptions]='pageSizeOptions'
+    [advanceMenus]='advanceMenus' [columnDefs]='columnDefs' [displayedColumns]='displayedColumns' [pageData]='pageData'
+    (pageChange)='onPageChange($event)' (pageRefresh)='onRefresh()' (pageOptionChange)='onPageOptionChange($event)'
+    (pageModelChange)='onPageModelChange($event)' (rowClick)='onRowClick($event)' (createData)='onCreateData()'
+    (sortData)='onSortData($event)' #listViewCt>
 
-    <page-plate-common-sidebar-collapse-panel [panels]='[{title:"glossary.Category",panel:tab1}]'>
+    <page-plate-common-sidebar-collapse-panel
+        [panels]='[{title:"glossary.Product",panel:tab1},{title:"glossary.Panel",panel:tab2},{title:"glossary.PanelComponent",panel:tab3},{title:"glossary.PanelAssembly",panel:tab4}]'>
     </page-plate-common-sidebar-collapse-panel>
 
     <ng-template #tab1>
-        <app-common-v1-product-category-select-panel (nodeSelected)='onCategoryNodeSelected($event)'></app-common-v1-product-category-select-panel>
+        <app-common-v1-product-category-select-panel (nodeSelected)='onCategoryNodeSelected($event)'>
+        </app-common-v1-product-category-select-panel>
+    </ng-template>
+
+    <ng-template #tab2>
+        <app-common-v1-panel-category-select-panel (nodeSelected)='onCategoryNodeSelected($event)'>
+        </app-common-v1-panel-category-select-panel>
+    </ng-template>
+
+    <ng-template #tab3>
+        <app-common-v1-panel-component-category-select-panel (nodeSelected)='onCategoryNodeSelected($event)'>
+        </app-common-v1-panel-component-category-select-panel>
+    </ng-template>
+
+    <ng-template #tab4>
+        <app-common-v1-panel-assembly-category-select-panel (nodeSelected)='onCategoryNodeSelected($event)'>
+        </app-common-v1-panel-assembly-category-select-panel>
     </ng-template>
 
     <div style="display:none;">

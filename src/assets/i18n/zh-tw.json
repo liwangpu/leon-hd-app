@@ -188,8 +188,11 @@
         "Inviter": "邀請人",
         "Superior": "上級",
         "ProductPackageManage": "包裝管理",
-        "Brand":"品牌",
-        "Tag":"標簽"
+        "Brand": "品牌",
+        "Tag": "標簽",
+        "Panel": "板材",
+        "PanelComponent": "板式零件",
+        "PanelAssembly": "板式組件"
     },
     "button": {
         "Logout": "退出",

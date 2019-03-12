@@ -21,6 +21,9 @@ export * from './services/product-spec.service';
 export * from './services/product-group-category.service';
 export * from './services/package.service';
 export * from './services/product-group.service';
+export * from './services/panel-category.service';
+export * from './services/panel-component-category.service';
+export * from './services/panel-assembly-category.service';
 /*
  * models 
  */
@@ -31,7 +34,7 @@ export * from './models/map';
 export * from './models/layout';
 export * from './models/solution';
 export * from './models/area-type';
-
+export * from './models/panel-category';
 export * from './models/media-file';
 export * from './models/media-share';
 export * from './models/product-spec';
@@ -43,6 +46,8 @@ export * from './models/asset-category';
 export * from './models/product-group-category';
 export * from './models/package';
 export * from './models/product-group';
+export * from './models/panel-component-category';
+export * from './models/panel-assembly-category';
 /*
  * interfaces 
  */
