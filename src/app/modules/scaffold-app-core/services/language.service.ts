@@ -8,6 +8,20 @@ import { AppCacheService } from './app-cache.service';
 export class LanguageService {
 
   langs: Array<string> = ['cn', 'zh-tw', 'en'];
+  langsDisplay: Array<{ key: string, value: string }> = [
+    {
+      key: 'cn',
+      value: '简体'
+    },
+    {
+      key: 'zh-tw',
+      value: '繁體'
+    },
+    {
+      key: 'en',
+      value: 'English'
+    }
+  ];
   private _changeLang$ = new BehaviorSubject<string>(undefined);
   changeLang$ = this._changeLang$.asObservable();
   constructor(protected translate: TranslateService, protected appCacheSrv: AppCacheService) {

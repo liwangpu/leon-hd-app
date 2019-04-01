@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       let lastLang = this.appCacheSrv.lastLang;
       if (lastLang)
         broswerLang = lastLang;
-      this.langSrv.currentLang = broswerLang && broswerLang.match(/en|cn/) ? broswerLang : this.langs[0];
+      this.langSrv.currentLang = broswerLang && broswerLang.match(/en|cn|zh-tw/) ? broswerLang : this.langs[0];
     }//if
 
     //订阅路由跳转事件,以响应不同路由进行页面最大化或者抽屉模式

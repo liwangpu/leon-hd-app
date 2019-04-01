@@ -25,8 +25,7 @@
         <mat-icon>search</mat-icon>
       </button>
       <button mat-button class="op lb lang" [matMenuTriggerFor]="langMenu">
-        <img class="lang-flag" [src]="'assets/images/flags/'+selectedLang+'.png'">
-        <span class="lang-flag-title">{{selectedLang|uppercase }}</span>
+        <span class="lang-flag-title">{{selectedLang}}</span>
       </button>
       <button mat-button class="op lb setting">
         <mat-icon>list</mat-icon>
@@ -44,9 +43,8 @@
       </mat-menu>
 
       <mat-menu #langMenu="matMenu" yPosition="below" [overlapTrigger]="false">
-        <button mat-menu-item *ngFor='let it of langSrv.langs' (click)='langSrv.currentLang=it'>
-          <img [src]="'assets/images/flags/'+it+'.png'">
-          <span style="margin-left: 10px;">{{it|uppercase }}</span>
+        <button mat-menu-item *ngFor='let it of langSrv.langsDisplay' (click)='langSrv.currentLang=it.key'>
+          <span style="margin-left: 10px;">{{it.value}}</span>
         </button>
       </mat-menu>
     </div>
@@ -54,7 +52,8 @@
   </div>
 
   <div class="search-bar" [class.active]='fullSearchMode'>
-    <input type="text" class="full-search-input" placeholder="{{'tips.SearchPlaceHolder'|translate}}" #searchCt (keyup)='keyUp.next($event)'>
+    <input type="text" class="full-search-input" placeholder="{{'tips.SearchPlaceHolder'|translate}}" #searchCt
+      (keyup)='keyUp.next($event)'>
     <button mat-icon-button (click)='closeSearch()'>
       <mat-icon>clear</mat-icon>
     </button>

@@ -33,7 +33,9 @@ export class ToolbarComponent implements OnInit {
     });
 
     this.langSrv.changeLang$.subscribe(lang => {
-      this.selectedLang = lang;
+      let it = this.langSrv.langsDisplay.filter(x => x.key == lang)[0];
+      if (it)
+        this.selectedLang = it.value;
     });
     this.keyUp.pipe(map((event: any) => event.target.value)).pipe(debounceTime(500)).subscribe(keyword => {
       this.searchSrv.keyword = keyword;
