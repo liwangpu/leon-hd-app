@@ -3,6 +3,9 @@ import { DetailEditorInteractService } from 'scaffold-page-plate';
 import { AsyncHandleService, DialogFactoryService } from 'scaffold-app-minor';
 import { OrderDetailListItemFormComponent } from '../order-detail-list-item-form/order-detail-list-item-form.component';
 import { Order, OrderDetail, OrderService } from 'micro-dmz-oms';
+import { AppConfigService } from '../../../../../app-config.service';
+import { saveAs } from 'file-saver/FileSaver';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-order-detail-list-editor',
@@ -13,7 +16,7 @@ export class OrderDetailListEditorComponent implements OnInit, OnDestroy {
 
   currentOrderId: string;
   orderDetails: Array<OrderDetail> = [];
-  constructor(protected interactSrv: DetailEditorInteractService, protected asyncHandleSrv: AsyncHandleService, protected dialogSrv: DialogFactoryService, protected orderSrv: OrderService) {
+  constructor(protected interactSrv: DetailEditorInteractService, protected asyncHandleSrv: AsyncHandleService, protected dialogSrv: DialogFactoryService, protected orderSrv: OrderService, protected appConfSrv: AppConfigService, protected httpClient: HttpClient) {
 
   }//constructor
 
@@ -102,4 +105,12 @@ export class OrderDetailListEditorComponent implements OnInit, OnDestroy {
       }//for
     });//subscribe
   }//deleteAttach
+
+  exportList() {
+    let serverUrl = encodeURIComponent(this.appConfSrv.appConfig.server);
+    let url = `http://testtoolplus.damaozhu.com.cn/dmz/oms/order2excel?orderId=${this.currentOrderId}&server=${serverUrl}`;
+    this.httpClient.get(url, { responseType: 'blob' }).subscribe(fs => {
+      saveAs(fs, 'Order Detail.xlsx');
+    });
+  }//exportList
 }
