@@ -54,7 +54,10 @@
         "Navigation": "Navigation",
         "UserNavDesigner": "User Role Navigation Design",
         "OrganizationType": "Organization Type",
-        "MemberRegistry": "Member Registry"
+        "MemberRegistry": "Member Registry",
+        "PanelProductCategory": "Panel Product Category",
+        "PanelComponentCategory": "Panel Component Category",
+        "PanelAssemblyCategory": "Panel Assembly Category"
     },
     "glossary": {
         "OrganAccounts": "Account Management",

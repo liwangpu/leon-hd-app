@@ -10,6 +10,7 @@ export class OrderDetail extends Entity {
     orderDetailStateId: number;
     productName: string;
     productUnit: string;
+    productBrand: string;
     productDescription: string;
     productSpecName: string;
     attachmentIds: string;

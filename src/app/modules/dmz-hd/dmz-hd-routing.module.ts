@@ -22,6 +22,9 @@ import { PackageComponent } from './components/package/package.component';
 import { PackageDetailComponent } from './components/package-detail/package-detail.component';
 import { ProductGroupComponent } from './components/product-group/product-group.component';
 import { ProductGroupDetailComponent } from './components/product-group-detail/product-group-detail.component';
+import { ProductionCategoryPanelproductComponent } from './components/production-category-panelproduct/production-category-panelproduct.component';
+import { ProductionCategoryPanelcomponentComponent } from './components/production-category-panelcomponent/production-category-panelcomponent.component';
+import { ProductionCategoryPanelassemblyComponent } from './components/production-category-panelassembly/production-category-panelassembly.component';
 
 const routes: Routes = [
   {
@@ -148,8 +151,18 @@ const routes: Routes = [
     path: 'product-group-detail'
     , component: ProductGroupDetailComponent
   }
-
-
+  , {
+    path: 'panel-product-category'
+    , component: ProductionCategoryPanelproductComponent
+  }
+  , {
+    path: 'panel-component-category'
+    , component: ProductionCategoryPanelcomponentComponent
+  }
+  , {
+    path: 'panel-assembly-category'
+    , component: ProductionCategoryPanelassemblyComponent
+  }
 ];
 
 @NgModule({

@@ -24,7 +24,18 @@ export class OrderDetailListEditorComponent implements OnInit, OnDestroy {
     this.interactSrv.afterDataRefresh$.subscribe((data: Order) => {
       if (!data) return;
       this.currentOrderId = data.id;
-      this.orderDetails = data.orderDetails ? data.orderDetails : [];
+      let tmpArr=data.orderDetails ? data.orderDetails : []
+
+      this.orderDetails = tmpArr.sort(function (a, b) {
+        var nameA = a.productBrand ? a.productBrand : '';
+        var nameB = b.productBrand ? b.productBrand : '';
+        if (nameA > nameB)
+            return -1;
+        if (nameA < nameB)
+            return 1;
+        return 0;
+    });
+
     });//subscribe
   }//ngOnInit
 
