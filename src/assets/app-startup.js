@@ -7,6 +7,7 @@ var appConfig = {
     server: process.env.APISERVER
     , toolServer: process.env.TOOLSERVER
     , secretKey: process.env.SECRETKEY
+    , omsOrder2ExcelToolServer: process.env.OMSORDER2EXCELTOOLSERVER
 };
 fs.writeFile(appConfigPath, JSON.stringify(appConfig), function (err) {
     if (err) {

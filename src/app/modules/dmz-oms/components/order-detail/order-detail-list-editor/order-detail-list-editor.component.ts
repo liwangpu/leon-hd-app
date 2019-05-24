@@ -119,7 +119,7 @@ export class OrderDetailListEditorComponent implements OnInit, OnDestroy {
 
   exportList() {
     let serverUrl = encodeURIComponent(this.appConfSrv.appConfig.server);
-    let url = `http://testtoolplus.damaozhu.com.cn/dmz/oms/order2excel?orderId=${this.currentOrderId}&server=${serverUrl}`;
+    let url = `${this.appConfSrv.appConfig.omsOrder2ExcelToolServer}?orderId=${this.currentOrderId}&server=${serverUrl}`;
     this.httpClient.get(url, { responseType: 'blob' }).subscribe(fs => {
       saveAs(fs, 'Order Detail.xlsx');
     });
