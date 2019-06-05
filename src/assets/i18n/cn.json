@@ -55,7 +55,7 @@
         "UserNavDesigner": "角色导航栏设计",
         "OrganizationType": "组织类型",
         "MemberRegistry": "会员申请",
-        "PanelProductCategory": "板材分类",
+        "PanelProductCategory": "板式产品分类",
         "PanelComponentCategory": "板式零件分类",
         "PanelAssemblyCategory": "板式组件分类"
     },
@@ -193,7 +193,7 @@
         "ProductPackageManage": "包装管理",
         "Brand": "品牌",
         "Tag": "标签",
-        "Panel": "板材",
+        "Panel": "板式产品",
         "PanelComponent": "板式零件",
         "PanelAssembly": "板式组件"
     },

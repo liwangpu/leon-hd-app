@@ -54,7 +54,10 @@
         "Navigation": "導航欄",
         "UserNavDesigner": "角色導航欄設計",
         "OrganizationType": "組織類型",
-        "MemberRegistry": "會員申請"
+        "MemberRegistry": "會員申請",
+        "PanelProductCategory": "板式産品分類",
+        "PanelComponentCategory": "板式零件分類",
+        "PanelAssemblyCategory": "板式組件分類"
     },
     "glossary": {
         "OrganAccounts": "人員管理",
@@ -190,7 +193,7 @@
         "ProductPackageManage": "包裝管理",
         "Brand": "品牌",
         "Tag": "標簽",
-        "Panel": "板材",
+        "Panel": "板式産品",
         "PanelComponent": "板式零件",
         "PanelAssembly": "板式組件"
     },
