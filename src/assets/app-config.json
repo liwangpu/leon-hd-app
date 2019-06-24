@@ -1,5 +1,5 @@
 {
-    "server": "http://testapi.damaozhu.com.cn",
+    "server": "http://localhost:1882",
     "toolServer": "http://testtool.damaozhu.com.cn",
     "omsOrder2ExcelToolServer": "http://omstool.damaozhu.com.cn/dmz/oms/norya/order2excel",
     "secretKey": "damaozhu-morejee-app"
