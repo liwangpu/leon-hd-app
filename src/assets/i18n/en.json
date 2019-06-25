@@ -197,7 +197,8 @@
         "Tag":"Tag",
         "Panel": "Panel",
         "PanelComponent": "Panel Component",
-        "PanelAssembly": "Panel Assembly"
+        "PanelAssembly": "Panel Assembly",
+        "TPID": "TPID"
     },
     "button": {
         "Logout": "Logout",

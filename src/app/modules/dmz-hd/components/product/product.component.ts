@@ -52,6 +52,11 @@ export class ProductComponent extends V1ListViewPageBase implements OnInit, OnDe
         return data.brand;
       }
     }
+    , {
+      id: 'tpid', name: 'glossary.TPID', width: 150, cell: (data: Product) => {
+        return data.tpid;
+      }
+    }
     , this._descriptionColumnDef
     , this._createdTime
   ];

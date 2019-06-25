@@ -4,8 +4,9 @@ import { ProductSpec } from "./product-spec";
 export class Product extends AssetBase {
     unit: string;
     price: number;
-    brand:string;
+    brand: string;
     partnerPrice: number;
     purchasePrice: number;
+    tpid: string;
     specifications: ProductSpec[];
 }

@@ -20,6 +20,7 @@ export class ProductDetailSpecEditorComponent implements OnInit {
     this.detailForm = this.formBuilder.group({
       id: []
       , name: ['', [Validators.required]]
+      , tpid: ['']
       , price: ['', [Validators.required]]
       , purchasePrice: ['', [Validators.required]]
       , partnerPrice: ['', [Validators.required]]

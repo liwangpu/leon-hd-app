@@ -37,6 +37,9 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field>
+        <input matInput name="tpid" formControlName="tpid" placeholder="{{'glossary.TPID'|translate}}">
+      </mat-form-field>
+      <mat-form-field>
         <textarea matInput placeholder="Textarea" name="description" formControlName="description"
           placeholder="{{'glossary.Description'|translate}}"></textarea>
         <mat-error *ngIf="detailForm.get('description').hasError('maxlength')">{{'message.MaxLengthError'|translate}}

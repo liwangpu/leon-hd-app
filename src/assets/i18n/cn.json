@@ -195,7 +195,8 @@
         "Tag": "标签",
         "Panel": "板木产品",
         "PanelComponent": "板木零件",
-        "PanelAssembly": "板木组件"
+        "PanelAssembly": "板木组件",
+        "TPID": "品号"
     },
     "button": {
         "Logout": "退出",
