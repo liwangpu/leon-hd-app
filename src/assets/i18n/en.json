@@ -193,11 +193,15 @@
         "Inviter": "Inviter",
         "Superior": "Superior",
         "ProductPackageManage": "Package Management",
-        "Brand":"Brand",
-        "Tag":"Tag",
+        "Brand": "Brand",
+        "Tag": "Tag",
         "Panel": "Panel",
         "PanelComponent": "Panel Component",
-        "PanelAssembly": "Panel Assembly"
+        "PanelAssembly": "Panel Assembly",
+        "Depth": "Depth",
+        "Width": "Width",
+        "Height": "Height",
+        "SpecificationDescription": "Specification Description"
     },
     "button": {
         "Logout": "Logout",

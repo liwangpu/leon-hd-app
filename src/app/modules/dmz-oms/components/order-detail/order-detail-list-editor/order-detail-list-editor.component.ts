@@ -6,7 +6,7 @@ import { Order, OrderDetail, OrderService } from 'micro-dmz-oms';
 import { AppConfigService } from '../../../../../app-config.service';
 import { saveAs } from 'file-saver/FileSaver';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import * as moment from "moment";
 @Component({
   selector: 'app-order-detail-list-editor',
   templateUrl: './order-detail-list-editor.component.html',
@@ -14,6 +14,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class OrderDetailListEditorComponent implements OnInit, OnDestroy {
 
+  orderName: string;
   currentOrderId: string;
   orderDetails: Array<OrderDetail> = [];
   constructor(protected interactSrv: DetailEditorInteractService, protected asyncHandleSrv: AsyncHandleService, protected dialogSrv: DialogFactoryService, protected orderSrv: OrderService, protected appConfSrv: AppConfigService, protected httpClient: HttpClient) {
@@ -23,18 +24,19 @@ export class OrderDetailListEditorComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.interactSrv.afterDataRefresh$.subscribe((data: Order) => {
       if (!data) return;
+      this.orderName = data.name;
       this.currentOrderId = data.id;
-      let tmpArr=data.orderDetails ? data.orderDetails : []
+      let tmpArr = data.orderDetails ? data.orderDetails : []
 
       this.orderDetails = tmpArr.sort(function (a, b) {
         var nameA = a.productBrand ? a.productBrand : '';
         var nameB = b.productBrand ? b.productBrand : '';
         if (nameA > nameB)
-            return -1;
+          return -1;
         if (nameA < nameB)
-            return 1;
+          return 1;
         return 0;
-    });
+      });
 
     });//subscribe
   }//ngOnInit
@@ -118,10 +120,11 @@ export class OrderDetailListEditorComponent implements OnInit, OnDestroy {
   }//deleteAttach
 
   exportList() {
+    let xlsxName = `${this.orderName == "未命名" ? "報價單" : this.orderName} ${moment().format("YYYY-MM-DD HHmmss")}.xlsx`;
     let serverUrl = encodeURIComponent(this.appConfSrv.appConfig.server);
     let url = `${this.appConfSrv.appConfig.omsOrder2ExcelToolServer}?orderId=${this.currentOrderId}&server=${serverUrl}`;
     this.httpClient.get(url, { responseType: 'blob' }).subscribe(fs => {
-      saveAs(fs, 'Order Detail.xlsx');
+      saveAs(fs, xlsxName);
     });
   }//exportList
 }

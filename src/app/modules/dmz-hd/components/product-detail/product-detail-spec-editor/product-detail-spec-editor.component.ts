@@ -23,6 +23,9 @@ export class ProductDetailSpecEditorComponent implements OnInit {
       , price: ['', [Validators.required]]
       , purchasePrice: ['', [Validators.required]]
       , partnerPrice: ['', [Validators.required]]
+      , depth: ['']
+      , width: ['']
+      , height: ['']
       , description: ['']
     });
   }//constructor

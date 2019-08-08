@@ -15,7 +15,7 @@
     <form name="detailForm" [formGroup]="detailForm">
       <input type="hidden" formControlName='id' name='id'>
       <mat-form-field>
-        <input matInput name="name" formControlName="name" required placeholder="{{'glossary.Name'|translate}}">
+        <input matInput name="name" formControlName="name" required placeholder="{{'glossary.SpecificationDescription'|translate}}">
         <mat-error *ngIf="detailForm.get('name').hasError('required')">{{'message.RequiredError'|translate}}</mat-error>
       </mat-form-field>
       <mat-form-field>
@@ -36,6 +36,23 @@
         <mat-error *ngIf="detailForm.get('price').hasError('required')">{{'message.RequiredError'|translate}}
         </mat-error>
       </mat-form-field>
+      <div class="lwh">
+        <mat-form-field>
+          <input type="number" matInput name="width" formControlName="width"
+            placeholder="{{'glossary.Width'|translate}}">
+          <span class="lwhunit" matSuffix>mm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="number" matInput name="depth" formControlName="depth"
+            placeholder="{{'glossary.Depth'|translate}}">
+          <span class="lwhunit" matSuffix>mm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="number" matInput name="height" formControlName="height"
+            placeholder="{{'glossary.Height'|translate}}">
+          <span class="lwhunit" matSuffix>mm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </mat-form-field>
+      </div>
       <mat-form-field>
         <textarea matInput placeholder="Textarea" name="description" formControlName="description"
           placeholder="{{'glossary.Description'|translate}}"></textarea>

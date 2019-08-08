@@ -195,7 +195,11 @@
         "Tag": "標簽",
         "Panel": "板木産品",
         "PanelComponent": "板木零件",
-        "PanelAssembly": "板木組件"
+        "PanelAssembly": "板木組件",
+        "Depth": "深度",
+        "Width": "寬度",
+        "Height": "高度",
+        "SpecificationDescription": "規格說明"
     },
     "button": {
         "Logout": "退出",
