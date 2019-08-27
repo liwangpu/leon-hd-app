@@ -1,6 +1,6 @@
 {
-    "server": "http://192.168.1.175:9503",
-    "toolServer": "http://testtool.damaozhu.com.cn",
-    "omsOrder2ExcelToolServer": "http://192.168.1.175:9523/dmz/oms/norya/order2excel",
+    "server": "http://183.193.83.230:9503",
+    "toolServer": "http://183.193.83.230:9522",
+    "omsOrder2ExcelToolServer": "http://183.193.83.230:9523/dmz/oms/norya/order2excel",
     "secretKey": "damaozhu-morejee-app"
 }

@@ -55,7 +55,7 @@ export class ProductGroupComponent extends V1ListViewPageBase implements OnInit,
     this._deleteAdvanceMenu
   ];
   constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: ProductGroupService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe,protected dialogSrv: DialogFactoryService) {
-    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr);
+    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr,dialogSrv);
   }//constructor
 
   ngOnInit() {

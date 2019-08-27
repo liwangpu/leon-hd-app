@@ -108,7 +108,7 @@ export class MaterialComponent extends V1ListViewPageBase implements OnInit, OnD
   ];
   @ViewChild('fileCt') fileCt: ElementRef;
   constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: MaterialService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe, protected dialogSrv: DialogFactoryService, protected httpClient: HttpClient, protected snackbarSrv: SnackbarService) {
-    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr);
+    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr,dialogSrv);
   }//constructor
 
   ngOnInit() {

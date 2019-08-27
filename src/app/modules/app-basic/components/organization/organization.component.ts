@@ -35,7 +35,7 @@ export class OrganizationComponent extends V1ListViewPageBase implements OnInit,
     , this._createdTime
   ];
   constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: OrganizationService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe, protected dialogSrv: DialogFactoryService, protected componentFactoryResolver: ComponentFactoryResolver) {
-    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr);
+    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr, dialogSrv);
   }//constructor
 
   ngOnInit() {

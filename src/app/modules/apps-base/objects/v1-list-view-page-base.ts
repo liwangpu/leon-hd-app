@@ -6,10 +6,10 @@ import { DatePipe } from "@angular/common";
 import { Location } from '@angular/common';
 import { IQueryFilter, IQuery, QueryOperateEnum } from "micro-base";
 import { Navigation } from "micro-app-basic";
-import { ICommonTableColumndef, IListViewAdvanceMenu, ITableListRowMenu, ClassicListViewComponent } from "scaffold-page-plate";
+import { ICommonTableColumndef, IListViewAdvanceMenu, ITableListRowMenu, ClassicListViewComponent, SimpleConfirmMessageDialogComponent } from "scaffold-page-plate";
 import { IV1ListViewPageApiServer } from "../interfaces/i-v1-list-view-page-api-server";
 import { AppProgressService, AppSearchService } from "scaffold-app-core";
-import { AsyncHandleService } from "scaffold-app-minor";
+import { AsyncHandleService, DialogFactoryService } from "scaffold-app-minor";
 import { IPageData } from 'scaffold-page-plate';
 
 export class V1ListViewPageBase implements OnInit, OnDestroy {
@@ -38,19 +38,31 @@ export class V1ListViewPageBase implements OnInit, OnDestroy {
         needSelectedItem: true,
         permissionPoint: 'delete',
         onClick: (selectedIds: Array<string>) => {
-            this.progressSrv.showProgress = true;
-            let manualHandleError = (err: any) => {
-                let msg = '';
-                if (err.error && err.error.errors && err.error.errors.length > 0)
-                    for (let it of err.error.errors) {
-                        msg += it.message;
-                    }
-                return msg;
-            };
-            let source$ = this.apiSrv.batchDelete(selectedIds);
-            this.asyncHandle.asyncRequest(source$, false, manualHandleError).subscribe(() => {
-                this._queryData();
-                this.listViewCt.clearSelected();
+            let ins = this.dialogSrv.open(SimpleConfirmMessageDialogComponent, {
+                width: '450px',
+                height: '350px',
+                data: { message: `您确定删除这 ${selectedIds.length} 条记录吗？删除后数据将无法恢复,请确认是否继续进行！` }
+            });
+
+            ins.componentInstance.afterConfirm$.subscribe(() => {
+                ins.componentInstance.afterReceiveData({ message: "234234", param: "" });
+                let manualHandleError = (err: any) => {
+                    let msg = '';
+                    if (err.error && err.error.errors && err.error.errors.length > 0)
+                        for (let it of err.error.errors) {
+                            msg += it.message;
+                        }
+                    return msg;
+                };
+                let source$ = this.apiSrv.batchDelete(selectedIds);
+                this.asyncHandle.asyncRequest(source$, false, manualHandleError).subscribe(() => {
+                    this._queryData();
+                    this.listViewCt.clearSelected();
+                });
+
+                ins.componentInstance.closeDialog();
+            }, err => {
+                ins.componentInstance.closeDialog();
             });
         }
     };
@@ -79,7 +91,7 @@ export class V1ListViewPageBase implements OnInit, OnDestroy {
     ];//给几个默认常用列
     destroy$ = new Subject<boolean>();
     @ViewChild('listViewCt') listViewCt: ClassicListViewComponent;
-    constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: IV1ListViewPageApiServer, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe) {
+    constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: IV1ListViewPageApiServer, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe, protected dialogSrv: DialogFactoryService) {
 
     }//constructor
 

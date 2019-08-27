@@ -4,7 +4,7 @@ import { DatePipe } from '@angular/common';
 import { Location } from '@angular/common';
 import { DepartmentService } from 'micro-app-basic';
 import { AppProgressService, AppSearchService } from 'scaffold-app-core';
-import { AsyncHandleService } from 'scaffold-app-minor';
+import { AsyncHandleService, DialogFactoryService } from 'scaffold-app-minor';
 import { V1ListViewPageBase } from 'apps-base';
 
 @Component({
@@ -15,8 +15,8 @@ import { V1ListViewPageBase } from 'apps-base';
 export class DepartmentComponent extends V1ListViewPageBase implements OnInit, OnDestroy {
 
   resource = 'Department';
-  constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: DepartmentService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe) {
-    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr);
+  constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: DepartmentService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe,protected dialogSrv: DialogFactoryService) {
+    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr,dialogSrv);
   }//constructor
 
   ngOnInit() {

@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { SimpleConfirmDialogComponent } from 'scaffold-page-plate';
 
 @Component({
   selector: 'page-plate-simple-confirm-message-dialog',
@@ -12,6 +13,7 @@ export class SimpleConfirmMessageDialogComponent implements OnInit, OnDestroy {
   enableConfirm = false;
   message: string;
   afterConfirm$ = new Subject();
+  @ViewChild("confirmDialogCt") confirmDialogCt: SimpleConfirmDialogComponent;
   constructor(private tranSrv: TranslateService) {
 
   }//constructor
@@ -28,6 +30,10 @@ export class SimpleConfirmMessageDialogComponent implements OnInit, OnDestroy {
   afterConfirm() {
     this.afterConfirm$.next();
   }//afterConfirm
+
+  closeDialog() {
+    this.confirmDialogCt.dialogRef.close();
+  }//closeDialog
 
   afterReceiveData(data: { message: string, param: any }) {
     if (data && data.message) {

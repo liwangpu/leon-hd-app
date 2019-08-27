@@ -41,7 +41,7 @@ export class MemberHierarchyParamComponent extends V1ListViewPageBase implements
     }
   ];//给个默认高级按钮
   constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: MemberHierarchyParamService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe, protected dialogFacSrv: DialogFactoryService, protected componentFactoryResolver: ComponentFactoryResolver) {
-    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr);
+    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr,dialogFacSrv);
   }//constructor
 
   ngOnInit() {

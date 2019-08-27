@@ -1,5 +1,5 @@
-<page-plate-simple-confirm-dialog [dialogTitle]='"tips.Prompt"' [enableConfirm]='enableConfirm' (afterReceiveData)='afterReceiveData($event)'
-  (afterConfirm)='afterConfirm()'>
+<page-plate-simple-confirm-dialog [dialogTitle]='"tips.Prompt"' [enableConfirm]='enableConfirm'
+  (afterReceiveData)='afterReceiveData($event)' (afterConfirm)='afterConfirm()' #confirmDialogCt>
   <div class="container">
     <p class="msg">{{message}}</p>
   </div>
