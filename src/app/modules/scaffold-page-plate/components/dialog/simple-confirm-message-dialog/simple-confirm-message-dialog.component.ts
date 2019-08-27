@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { SimpleConfirmDialogComponent } from 'scaffold-page-plate';
+import { SimpleConfirmDialogComponent } from '../simple-confirm-dialog/simple-confirm-dialog.component';
 
 @Component({
   selector: 'page-plate-simple-confirm-message-dialog',
@@ -15,7 +15,7 @@ export class SimpleConfirmMessageDialogComponent implements OnInit, OnDestroy {
   afterConfirm$ = new Subject();
   @ViewChild("confirmDialogCt") confirmDialogCt: SimpleConfirmDialogComponent;
   constructor(private tranSrv: TranslateService) {
-
+ 
   }//constructor
 
   ngOnInit(): void {
