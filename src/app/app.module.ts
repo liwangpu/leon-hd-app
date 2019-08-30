@@ -14,6 +14,8 @@ import { MicroDmzHdModule } from 'micro-dmz-hd';
 import { AppMainModule } from './modules/app-main/app-main.module';
 import { MicroDmzOmsModule } from 'micro-dmz-oms';
 import { AppConfigService } from './app-config.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -56,7 +58,8 @@ const appConfigInitializerFn = (appConfig: AppConfigService) => {
     MicroDmzHdModule.forRoot(),
     MicroDmzOmsModule.forRoot(),
     AppMainModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     httpInterceptorProviders,
