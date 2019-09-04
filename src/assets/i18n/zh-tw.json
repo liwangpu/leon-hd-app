@@ -267,7 +267,8 @@
         "PointExchange": "積分兌換設定",
         "ExportAll": "導出全部",
         "ExportTemplate": "導出模版",
-        "Import": "導入"
+        "Import": "導入",
+        "ImportProductConfiguration": "上傳產品配置表"
     },
     "message": {
         "UploadSuccessfully": "文件上傳成功",

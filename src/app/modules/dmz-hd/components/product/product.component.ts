@@ -11,6 +11,7 @@ import { IQueryFilter, QueryOperateEnum, ConjunctFilter } from 'micro-base';
 import { ProductDetailCategoryFormComponent } from '../product-detail/product-detail-category-form/product-detail-category-form.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { saveAs } from 'file-saver/FileSaver';
+import { AppConfigService } from '../../../../app-config.service';
 
 @Component({
   selector: 'app-product',
@@ -130,16 +131,41 @@ export class ProductComponent extends V1ListViewPageBase implements OnInit, OnDe
       });
     }
   };
+  _importProductConfiguration: IListViewAdvanceMenu = {
+    name: 'button.ImportProductConfiguration',
+    icon: 'cloud_upload',
+    needSelectedItem: false,
+    permissionPoint: 'import_product_configuration',
+    onClick: () => {
+      this.productConfigurationfileCt.nativeElement.click();
+    }
+  };
+  _exportProductConfiguration: IListViewAdvanceMenu = {
+    name: 'button.ExportProductConfiguration',
+    icon: 'cloud_download',
+    needSelectedItem: false,
+    permissionPoint: 'export_product_configuration',
+    onClick: () => {
+      this.productConfigurationDownloadCt.nativeElement.click();
+    }
+  };
   advanceMenus: Array<IListViewAdvanceMenu> = [
     this._changeCategoryAdvanceMenu,
     this._deleteAdvanceMenu,
     this._exportTemplate,
     this._importTemplate,
-    this._exportAll
+    this._exportAll,
+    this._importProductConfiguration,
+    this._exportProductConfiguration
   ];
+  get productConfigurationDownloadUrl() {
+    return `${this.appConfigSrv.appConfig.server}/upload/产品配置.xlsx`;
+  }
   @ViewChild('fileCt') fileCt: ElementRef;
-  constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: ProductService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe, protected dialogSrv: DialogFactoryService, protected httpClient: HttpClient, protected snackbarSrv: SnackbarService) {
-    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr,dialogSrv);
+  @ViewChild('productConfigurationfileCt') productConfigurationfileCt: ElementRef;
+  @ViewChild('productConfigurationDownloadCt') productConfigurationDownloadCt: ElementRef;
+  constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: ProductService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe, protected dialogSrv: DialogFactoryService, protected httpClient: HttpClient, protected snackbarSrv: SnackbarService, protected appConfigSrv: AppConfigService) {
+    super(actr, router, location, apiSrv, progressSrv, searchSrv, asyncHandle, datePipeTr, dialogSrv);
   }//constructor
 
   ngOnInit() {
@@ -189,4 +215,22 @@ export class ProductComponent extends V1ListViewPageBase implements OnInit, OnDe
     }
   }//onFileChange
 
+  onProductConfigurationFileChange(event: any) {
+    let fileBrowser = this.productConfigurationfileCt.nativeElement;
+    if (fileBrowser.files && fileBrowser.files[0]) {
+      let formData = new FormData();
+      let file = fileBrowser.files[0];
+      let header = new HttpHeaders({
+        "fileExt": Path.getFileExtension(file.name)
+      });
+      formData.append("file", file);
+      this.snackbarSrv.simpleTranslateBar('message.PleaseBePatientWhileProcessing');
+      this.httpClient.post(`${this.apiSrv.uri}/ProductConfiguration`, formData, { headers: header, responseType: 'blob' }).subscribe(fs => {
+        this.snackbarSrv.simpleTranslateBar("message.UploadSuccessfully");
+        this.productConfigurationfileCt.nativeElement.value = "";
+      }, err => {
+        this.productConfigurationfileCt.nativeElement.value = "";
+      });
+    }
+  }//onProductConfigurationFileChange
 }

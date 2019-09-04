@@ -193,8 +193,8 @@
         "Inviter": "Inviter",
         "Superior": "Superior",
         "ProductPackageManage": "Package Management",
-        "Brand":"Brand",
-        "Tag":"Tag",
+        "Brand": "Brand",
+        "Tag": "Tag",
         "Panel": "Panel",
         "PanelComponent": "Panel Component",
         "PanelAssembly": "Panel Assembly",
@@ -269,7 +269,8 @@
         "PointExchange": "Point Exchange Setting",
         "ExportAll": "Export All",
         "ExportTemplate": "Export Template",
-        "Import": "Import"
+        "Import": "Import",
+        "ImportProductConfiguration": "Import Product Configuration"
     },
     "message": {
         "UploadSuccessfully": "Files Upload Successfully",

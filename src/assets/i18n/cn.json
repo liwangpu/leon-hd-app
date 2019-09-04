@@ -267,7 +267,9 @@
         "PointExchange": "积分兑换设定",
         "ExportAll": "导出全部",
         "ExportTemplate": "导出模版",
-        "Import": "导入"
+        "Import": "导入",
+        "ImportProductConfiguration": "上传产品配置表",
+        "ExportProductConfiguration": "导出产品配置表"
     },
     "message": {
         "UploadSuccessfully": "文件上传成功",
