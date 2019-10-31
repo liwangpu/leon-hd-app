@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="icon">
+    <img *ngIf='icon' [src]="icon?(icon|serverRedirect:128):'assets/images/common/image-placeholder.png'">
+  </div>
+  <div class="groups">
+    <div class="group-item" *ngFor='let it of items'>
+      <span class="opbtn up">﹤</span>
+      <span class="name">{{it.name}}</span>
+      <span class="opbtn delete">×</span>
+    </div>
+  </div>
+  <div class="bar">
+    <mat-icon>arrow_drop_down</mat-icon>
+  </div>
+</div>
