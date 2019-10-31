@@ -17,6 +17,7 @@ import { ProductGroupService } from './services/product-group.service';
 import { PanelCategoryService } from './services/panel-category.service';
 import { PanelComponentCategoryService } from './services/panel-component-category.service';
 import { PanelAssemblyCategoryService } from './services/panel-assembly-category.service';
+import { ProductReplaceGroupService } from './services/product-replace-group.service';
 
 @NgModule({
   providers: [
@@ -37,7 +38,8 @@ import { PanelAssemblyCategoryService } from './services/panel-assembly-category
     ProductGroupCategoryService,
     PanelCategoryService,
     PanelComponentCategoryService,
-    PanelAssemblyCategoryService
+    PanelAssemblyCategoryService,
+    ProductReplaceGroupService
   ]
 })
 export class MicroDmzHdModule {

@@ -1,0 +1,38 @@
+<page-plate-blank>
+    <div class="header" page-header>
+        <div class="flag">
+            <div class="icon">
+                <mat-icon>scatter_plot</mat-icon>
+                <span class="animated flipInX">{{'nav.ProductReplaceGroup'|translate}}</span>
+            </div>
+        </div>
+        <div class="management">
+            <div class="filter">
+                <button mat-button class="mat-button-04lrp">
+                    <mat-icon>{{selected?'indeterminate_check_box':'check_box'}}</mat-icon>
+                    <span>{{'button.Select'|translate}}</span>
+                </button>
+                <button mat-button class="mat-button-04lrp" [matMenuTriggerFor]="advanceMenu">
+                    <mat-icon>settings</mat-icon>
+                    <span>{{'button.Advance'|translate}}</span>
+                </button>
+                <mat-menu #advanceMenu="matMenu" yPosition="below" [overlapTrigger]="false">
+                    <button mat-menu-item>
+                        <mat-icon class="cus-mat-button-icon">delete</mat-icon>
+                        <span>{{'button.Delete'|translate}}</span>
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+    <div class="content" page-content>
+        <div class="left">
+            <page-plate-common-sidebar-collapse-panel [panels]='[{title:"glossary.Category",panel:tab1}]'>
+            </page-plate-common-sidebar-collapse-panel>
+            <ng-template #tab1>
+                <app-common-v1-product-category-select-panel></app-common-v1-product-category-select-panel>
+            </ng-template>
+        </div>
+        <div class="right"></div>
+    </div>
+</page-plate-blank>

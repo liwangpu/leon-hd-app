@@ -24,6 +24,7 @@ export * from './services/product-group.service';
 export * from './services/panel-category.service';
 export * from './services/panel-component-category.service';
 export * from './services/panel-assembly-category.service';
+export * from './services/product-replace-group.service';
 /*
  * models 
  */
@@ -48,6 +49,7 @@ export * from './models/package';
 export * from './models/product-group';
 export * from './models/panel-component-category';
 export * from './models/panel-assembly-category';
+export * from './models/product-replace-group';
 /*
  * interfaces 
  */

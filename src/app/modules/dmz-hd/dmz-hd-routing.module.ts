@@ -25,6 +25,7 @@ import { ProductGroupDetailComponent } from './components/product-group-detail/p
 import { ProductionCategoryPanelproductComponent } from './components/production-category-panelproduct/production-category-panelproduct.component';
 import { ProductionCategoryPanelcomponentComponent } from './components/production-category-panelcomponent/production-category-panelcomponent.component';
 import { ProductionCategoryPanelassemblyComponent } from './components/production-category-panelassembly/production-category-panelassembly.component';
+import { ProductReplaceGroupComponent } from './components/product-replace-group/product-replace-group.component';
 
 const routes: Routes = [
   {
@@ -162,6 +163,10 @@ const routes: Routes = [
   , {
     path: 'panel-assembly-category'
     , component: ProductionCategoryPanelassemblyComponent
+  }
+  , {
+    path: 'product-replace-group'
+    , component: ProductReplaceGroupComponent
   }
 ];
 
