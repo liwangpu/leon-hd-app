@@ -15,6 +15,7 @@ import { tap } from 'rxjs/operators';
 })
 export class ProductReplaceGroupComponent implements OnInit {
 
+  selected = false;
   groups: Array<ProductReplaceGroup> = [];
   constructor(protected actr: ActivatedRoute, protected router: Router, protected location: Location, protected apiSrv: ProductReplaceGroupService, protected progressSrv: AppProgressService, protected searchSrv: AppSearchService, protected asyncHandle: AsyncHandleService, protected datePipeTr: DatePipe, protected dialogSrv: DialogFactoryService, protected httpClient: HttpClient, protected snackbarSrv: SnackbarService) {
 

@@ -14,7 +14,7 @@
     "build:docker:image": "docker build -t apps-morejee-site:latest .",
     "run:docker:image": "docker run -p 4000:4000 -e APISERVER=http://kennapi.damaozhu.com.cn -e TOOLSERVER=http://kenntool.damaozhu.com.cn -e SECRETKEY=my-test-app-key --name hd-app-site-c apps-morejee-site:latest",
     "rebuild-and-run-docker-image": "npm run upload:docker:test && npm run build:docker:image && npm run run:docker:image",
-    "build:prod:docker:image": "npm run build:ssr && docker build -t dockerhub.damaozhu.com.cn:5000/app-site-morejee:norya ."
+    "build:prod:docker:image": "docker build -t omegaluo/app-site-morejee:norya ."
   },
   "private": true,
   "dependencies": {
